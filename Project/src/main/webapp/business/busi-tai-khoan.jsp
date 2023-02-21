@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Admin
   Date: 06/01/2023
-  Time: 8:28 SA
+  Time: 8:16 SA
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,24 +11,24 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
-    <link rel="icon" type="image/png" href="assets/img/logo/logo.png">
-    <title>Thông báo hệ thống</title>
+    <link rel="icon" type="image/png" href="../assets/img/logo/logo.png">
+    <title>
+        Tài khoản
+    </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href=business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
-    <link rel="stylesheet" href="business/assets/css/style.css">
-    <link rel="stylesheet" href="business/assets/css/thong-bao-he-thong.css">
 
+    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="g-sidenav-show  bg-gray-100">
-<!--  start nav left -->
+<body class="g-sidenav-show bg-gray-100">
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
        id="sidenav-main">
     <!--    logo -->
@@ -36,7 +36,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="busi-trang-chu.jsp">
-            <img src="assets/img/logo/logo.png">
+            <img src="../assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -45,7 +45,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="bang-tin.html">
+                <a class="nav-link" href="busi-trang-chu.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -69,7 +69,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="busi-quan-li-cv.jsp">
+                <a class="nav-link" href="busi-quan-li-cv.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -115,7 +115,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active " href="busi-thong-bao-he-thong.jsp">
+                <a class="nav-link  " href="busi-thong-bao-he-thong.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 
                         <i class=" fa fa-bell cursor-pointer text-dark"></i>
@@ -129,7 +129,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Trang tài khoản</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="busi-tai-khoan.jsp">
+                <a class="nav-link  active " href="busi-tai-khoan.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -176,166 +176,153 @@
            href="busi-cap-nhat-thong-tin-xac-thuc.jsp">Nâng cấp tài khoản</a>
     </div>
 </aside>
-<!--  end nav left -->
-<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+<div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <!-- Navbar -->
     <jsp:include page="busi-header.jsp"></jsp:include>
     <!-- End Navbar -->
 
-    <!-- start thông báo   -->
-    <div class="page-wrapper chiller-theme">
-        <main data-v-18bc4a1a="" id="system-notifications" class="page-container">
-            <div data-v-18bc4a1a="" class="breadcrumb-box"><h6 class="breadcrumb-title d-flex1"><span>Thông báo từ hệ thống</span>
-            </h6></div>
-            <div data-v-18bc4a1a="" class="container-fluid page-content">
-                <div data-v-18bc4a1a="" class="shadow-sm bg-white rounded mb-3">
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">16/11/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Ứng dụng di động TopCV - Nhà tuyển dụng cập nhật phiên bản mới
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">12/10/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                TopHR Insights #12: Chiến lược xây dựng nguồn ứng viên IT bền vững
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">29/08/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo về sự thay đổi của box tin Việc làm từ xa (Remote)
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">05/08/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo về việc thay đổi cấp độ tài khoản để đạt hạng Khách hàng thân thiết
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">01/08/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo cập nhật cấp độ xác thực tài khoản nhà tuyển dụng
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">22/07/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo nâng cấp và bảo trì hệ thống
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">14/07/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo nâng cấp và bảo trì hệ thống
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">07/07/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                THÔNG BÁO LỊCH NGHỈ TEAMBUILDING THÁNG 07/2022
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-primary1">Tính năng</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">01/07/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo Nâng cấp Toppy AI - Cân bằng &amp; tối ưu hiệu quả tin đăng trên toàn hệ thống
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-primary1">Tính năng</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">29/06/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Cập nhật tính năng Tìm CV
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <!--                        <hr data-v-18bc4a1a="" class="m-0">-->
+    <div class="container-fluid">
+        <div class="page-header min-height-300 border-radius-xl mt-4"
+             style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+            <span class="mask bg-gradient-primary opacity-6"></span>
+        </div>
+        <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+            <div class="row gx-4">
+                <div class="col-auto">
+                    <div class="avatar avatar-xl position-relative">
+                        <img src="assets/img/bruce-mars.jpg" alt="profile_image"
+                             class="w-100 border-radius-lg shadow-sm">
                     </div>
                 </div>
-                <nav data-v-18bc4a1a="">
-                    <ul class="pagination justify-content-center mb-0"><!---->
-                        <li class="page-item active"><a href="#change" class="page-link mr-1 rounded shadow-sm">1</a>
-                        </li>
-                        <li class="page-item"><a href="#change" class="page-link mr-1 rounded shadow-sm">2</a></li>
-                        <li class="page-item"><a href="#change" class="page-link mr-1 rounded shadow-sm">3</a></li>
-                        <li class="page-item"><a href="#next" class="page-link mr-1 rounded shadow-sm"><i
-                                class="fal fa-angle-right"></i></a></li>
-                        <li class="page-item"><a href="#last" class="page-link mr-1 rounded shadow-sm"><i
-                                class="fal fa-angle-double-right"></i></a></li>
-                    </ul>
-                </nav>
+                <div class="col-auto my-auto">
+                    <div class="h-100">
+                        <h5 class="mb-1">
+                            Lê Hửu Phước
+                        </h5>
+                        <p class="mb-0 font-weight-bold text-sm">
+                            ID: 123 | 0258700668 | email@st.hcmuaf.edu.vn
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                    <div class="nav-wrapper position-relative end-0">
+                        <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link mb-0 px-0 py-1 active " href="busi-doi-mat-khau.jsp">
+                                    <svg class="text-dark" width="10px" height="16px" viewBox="0 0 40 40" version="1.1"
+                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <title>settings</title>
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF"
+                                               fill-rule="nonzero">
+                                                <g transform="translate(1716.000000, 291.000000)">
+                                                    <g transform="translate(304.000000, 151.000000)">
+                                                        <polygon class="color-background" opacity="0.596981957"
+                                                                 points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667">
+                                                        </polygon>
+                                                        <path class="color-background"
+                                                              d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"
+                                                              opacity="0.596981957"></path>
+                                                        <path class="color-background"
+                                                              d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z">
+                                                        </path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <span class="ms-1"> Đổi mật khẩu </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </main>
+        </div>
     </div>
-    <!-- End thông báo     -->
+    <div class="container-fluid py-4">
+        <div class="row my-4">
+            <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="row">
+                            <div class="col-lg-6 col-7">
+                            </div>
+                            <div class="col-lg-6 col-5 my-auto text-end">
+                                <!--                                <div class="dropdown float-lg-end pe-4">-->
+                                <!--                                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown"-->
+                                <!--                                       aria-expanded="false">-->
+                                <!--                                        <i class="fa fa-ellipsis-v text-secondary"></i>-->
+                                <!--                                    </a>-->
+                                <!--                                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">-->
+                                <!--                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a>-->
+                                <!--                                        </li>-->
+                                <!--                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Another-->
+                                <!--                                            action</a></li>-->
+                                <!--                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else-->
+                                <!--                                            here</a></li>-->
+                                <!--                                    </ul>-->
+                                <!--                                </div>-->
+                            </div>
+                            <div><b> Tài khoản xác thực: </b> <span class="col-blue bold"> Cấp 1/5 </span></div>
+                            <div>
+                                <div>
+                    <span>
+                     <b> Nâng cấp tài khoản: </b>
+                    </span>
+                                    Để đạt
+                                    <span class="col-blue"> cấp 2/5</span>
+                                    , quý khách cần
+                                    <span class="col-blue"> xác thực số điện thoại </span>
+                                </div>
+                                <div>
+                    <span>
+                      <b> Quyền lợi: </b>
+                    </span>
+                                    Khi đạt
+                                    <span class="col-blue"> cấp 2/5, </span>
+                                    nhà tuyển dụng có 30 lượt tìm kiếm CV và 10 lượt xem CV từ công cụ tìm kiếm CV ứng
+                                    viên
+                                </div>
+                            </div>
+                            <div>
+                                <button class=" btn bg-blue col-white" style="margin-top: 15px"> Cập nhật thông tin xác
+                                    thực
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive">
 
-</main>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 </body>
 <!--   Core JS Files   -->
-<script src="business/assets/js/core/popper.min.js"></script>
-<script src="business/assets/js/core/bootstrap.min.js"></script>
-<script src="business/assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="business/assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+</script>
+<!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+<script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 
 </html>

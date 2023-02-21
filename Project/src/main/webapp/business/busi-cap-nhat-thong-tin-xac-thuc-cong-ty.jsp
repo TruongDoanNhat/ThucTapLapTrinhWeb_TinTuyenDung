@@ -19,14 +19,14 @@
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
-    <link rel="stylesheet" href="business/assets/css/cap-nhat-thong-tin-xac-thuc.css">
+    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/cap-nhat-thong-tin-xac-thuc.css">
     <script src="business/assets/js/cap-nhat-thong-tin-xac-thuc.js"></script>
 </head>
 <body class="g-sidenav-show  bg-gray-100">
@@ -38,7 +38,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="busi-trang-chu.jsp" >
-            <img src="assets/img/logo/logo.png" >
+            <img src="../assets/img/logo/logo.png" >
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -161,7 +161,7 @@
     <div class="sidenav-footer mx-3 ">
         <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
             <div class="full-background"
-                 style="background-image: url('business/assets/img/curved-images/white-curved.jpg')"></div>
+                 style="background-image: url('assets/img/curved-images/white-curved.jpg')"></div>
             <div class="card-body text-start p-3 w-100">
                 <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
                     <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true"
@@ -219,7 +219,7 @@
                                         <label data-v-c4f347a8="" class="col-form-label mr-2"></label>
                                         <div data-v-2a31697a="" data-v-c4f347a8="" class="mr-2  avatar"
                                              style="width: 40px; height: 40px; flex: 0 0 40px;">
-                                            <img src="admin/images/user.png">
+                                            <img src="../admin/images/user.png">
                                         </div>
                                         <div data-v-c4f347a8="">
                                             <div data-v-ea13fd1a="" data-v-c4f347a8="" class="file-upload mt-2 d-none1"
@@ -357,10 +357,10 @@
 </main>
 </body>
 <!--   Core JS Files   -->
-<script src="business/assets/js/core/popper.min.js"></script>
-<script src="business/assets/js/core/bootstrap.min.js"></script>
-<script src="business/assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="business/assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -374,6 +374,6 @@
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+<script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 <script src="business/assets/js/cap-nhat-thong-tin-xac-thuc.js"></script>
 </html>

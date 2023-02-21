@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Admin
   Date: 06/01/2023
-  Time: 9:54 SA
+  Time: 5:55 SA
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,25 +11,23 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
-    <link rel="icon" type="image/png" href="assets/img/logo/logo.png">
-    <link type="text/css" href="css/theme.css" rel="stylesheet">
-    <title>
-        Cập nhật thông tin xác thực
-    </title>
+    <link rel="icon" type="image/png" href="../assets/img/logo/logo.png">
+    <title>Đăng tin</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
-    <link rel="stylesheet" href="business/assets/css/cap-nhat-thong-tin-xac-thuc.css">
-    <script src="business/assets/js/cap-nhat-thong-tin-xac-thuc.js"></script>
+    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 <body class="g-sidenav-show  bg-gray-100">
+<!--  start nav left -->
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
        id="sidenav-main">
     <!--    logo -->
@@ -37,7 +35,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="busi-trang-chu.jsp">
-            <img src="assets/img/logo/logo.png">
+            <img src="../assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -93,7 +91,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="busi-tin-tuyen-dung.jsp">
+                <a class="nav-link active" href="busi-tin-tuyen-dung.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -130,7 +128,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Trang tài khoản</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link  active " href="busi-tai-khoan.jsp">
+                <a class="nav-link   " href="busi-tai-khoan.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -177,113 +175,156 @@
            href="busi-cap-nhat-thong-tin-xac-thuc.jsp">Nâng cấp tài khoản</a>
     </div>
 </aside>
+<!--  end nav left -->
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <jsp:include page="busi-header.jsp"></jsp:include>
     <!-- End Navbar -->
 
-    <!--    làm ở đây -->
-    <div data-v-c4f347a8="" class="container-fluid py-4">
-        <div data-v-c4f347a8="" class="d-flex shadow-sm">
-            <div data-v-c4f347a8="">
-                <div data-v-61ae721f="" data-v-c4f347a8="" class="list-group rounded">
-                    <a data-v-61ae721f="" href="/app/account/settings/password-login"
-                       class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-white">
-                        <i data-v-61ae721f="" class="fa mr-2 fa-lock"></i> Đổi mật khẩu
-                    </a>
-                    <a data-v-61ae721f="" href="busi-cap-nhat-thong-tin-xac-thuc.jsp" aria-current="page"
-                       class="list-group-item list-group-item-action border-0  bg-none">
-                        <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Thông tin cá nhân
-                    </a>
-                    <a data-v-61ae721f="" href="busi-cap-nhat-thong-tin-xac-thuc-cong-ty.jsp"
-                       class="list-group-item list-group-item-action border-0 bg-none">
-                        <i data-v-61ae721f="" class="fa mr-2 fa-building"></i> Thông tin công ty
-                    </a>
+    <div class="">
+        <div class="content">
+
+            <div class="module">
+                <div class="module-head">
+                    <h3>Đăng tin</h3>
+                </div>
+                <div class="module-body">
+                    <br/>
+
+                    <form class="form-horizontal row-fluid">
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Chức vụ</label>
+                            <div class="controls">
+                                <input type="text" id="basicinput" placeholder="Nhập chức vụ."
+                                       class="span8">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Lĩnh vực</label>
+                            <div class="controls">
+                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
+                                    <option value="">Vui lòng chọn..</option>
+                                    <option value="Category 1">Trí tuệ nhân tạo</option>
+                                    <option value="Category 1">Công nghệ phần mềm</option>
+                                    <option value="Category 3">Mạng</option>
+                                    <option value="Category 4">Hệ thống thông tin</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Ngành nghề</label>
+                            <div class="controls">
+                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
+                                    <option value="">Vui lòng chọn..</option>
+                                    <option value="Category 1"> Lập trình</option>
+                                    <option value="Category 2"> Kiểm thử phần mềm</option>
+                                    <option value="Category 3"> Quản trị mạng</option>
+                                    <option value="Category 4"> Phân tích dữ liêệu</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Hình thức công việc</label>
+                            <div class="controls">
+                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
+                                    <option value="">Vui lòng chọn..</option>
+                                    <option value="Category 1">Toàn thời gian</option>
+                                    <option value="Category 2">Bán thời gian</option>
+                                    <option value="Category 3">Hợp đồng</option>
+                                    <option value="Category 4">Kỳ thực tập</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Địa điểm làm việc</label>
+                            <div class="controls">
+                                <input type="text" placeholder=""
+                                       class="span8">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Mức lương</label>
+                            <div class="controls">
+                                <div class="input-append">
+                                    <input type="text" placeholder="10.000.000 VND" class="span8">
+                                </div>
+                                <span class="help-inline">(Thỏa thuận : 0 VND)</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Số lượng tuyển</label>
+                            <div class="controls">
+                                <div class="input-prepend">
+                                    <input class="span8" type="text" placeholder="">
+                                    <span class="help-inline">
+
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" value="">
+                                                Nam
+                                            </label>
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" value="">
+                                                Nữ
+                                            </label>
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" value="">
+                                                Không yêu cầu
+                                            </label>
+                                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Mô tả công việc</label>
+                            <div class="controls">
+                                <textarea class="span8a" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Yêu cầu</label>
+                            <div class="controls">
+                                <textarea class="span8a" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Thông tin công ty</label>
+                            <div class="controls">
+                                <textarea class="span8a" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Hình ảnh</label>
+                            <div class="controls">
+                                <input class="input-file" type="file" name="file_cv" id="file">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Hết hạn nộp hồ sơ</label>
+                            <div class="controls">
+                                <input type="date" name="date_cv" id="date">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <button type="submit" class="btn">Đăng</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div data-v-c4f347a8="" class="bg-white w-100 rounded">
-                <!--               form -->
-                <form data-v-c4f347a8="">
-                    <div data-v-c4f347a8="" class="active">
-                        <div data-v-c4f347a8="" class="card-header bg-white font-weight-bold1 border-0 fs-16">
-                            <h5> Đổi mật khẩu </h5>
-                        </div>
-
-                        <div data-v-c4f347a8="" class="card-body setting-form">
-                            <div data-v-c4f347a8="" class="row">
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8=""> Nhập mật khẩu cũ </label>
-                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
-                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" type="text"
-                                                   placeholder="Nhập mật khẩu hiện tại" autocomplete="true"
-                                                   class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div data-v-c4f347a8="" class="row">
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8=""> Nhập mật khẩu mới </label>
-                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
-                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" id="ncSqdCYZxB" type="text"
-                                                   placeholder="Nhập mật khẩu mới" autocomplete="true"
-                                                   class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div data-v-c4f347a8="" class="row">
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8=""> Nhập lại mật khẩu </label>
-                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
-                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" type="text"
-                                                   placeholder="Nhập lại mật khẩu mới" autocomplete="true"
-                                                   class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div data-v-c4f347a8="" class="form-group mb-0"><a data-v-c4f347a8="" href="/app/dashboard"
-                                                                               class="btn min-width btn btn-secondary mr-2 btn-lg">Hủy</a>
-                                <button data-v-c4f347a8="" type="submit" class="btn min-width btn btn-primary btn-lg">
-                                    <!---->
-                                    Lưu
-
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <!--                end form-->
-            </div>
-
-        </div>
-
+        </div><!--/.content-->
     </div>
-    <!--    end ne`-->
 </main>
 </body>
-!-- Core JS Files -->
-<script src="business/assets/js/core/popper.min.js"></script>
-<script src="business/assets/js/core/bootstrap.min.js"></script>
-<script src="business/assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="business/assets/js/plugins/smooth-scrollbar.min.js"></script>
-<script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
-        }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-</script>
-
-<!-- Github buttons -->
+<!--   Core JS Files   -->
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
-<script src="business/assets/js/cap-nhat-thong-tin-xac-thuc.js"></script>
+<script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 </html>

@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Admin
   Date: 06/01/2023
-  Time: 5:55 SA
+  Time: 8:28 SA
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,19 +11,20 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
-    <link rel="icon" type="image/png" href="assets/img/logo/logo.png">
-    <title>Đăng tin</title>
+    <link rel="icon" type="image/png" href="../assets/img/logo/logo.png">
+    <title>Thông báo hệ thống</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href=business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
-    <link rel="stylesheet" href="business/assets/css/style.css">
+    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/thong-bao-he-thong.css">
 
 </head>
 <body class="g-sidenav-show  bg-gray-100">
@@ -35,7 +36,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="busi-trang-chu.jsp">
-            <img src="assets/img/logo/logo.png">
+            <img src="../assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -44,7 +45,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="busi-trang-chu.jsp">
+                <a class="nav-link" href="bang-tin.html">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -68,7 +69,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="busi-quan-li-cv.jsp">
+                <a class="nav-link " href="busi-quan-li-cv.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -91,7 +92,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="busi-tin-tuyen-dung.jsp">
+                <a class="nav-link " href="busi-tin-tuyen-dung.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -114,7 +115,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href="busi-thong-bao-he-thong.jsp">
+                <a class="nav-link active " href="busi-thong-bao-he-thong.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 
                         <i class=" fa fa-bell cursor-pointer text-dark"></i>
@@ -128,7 +129,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Trang tài khoản</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link   " href="busi-tai-khoan.jsp">
+                <a class="nav-link " href="busi-tai-khoan.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -181,150 +182,160 @@
     <jsp:include page="busi-header.jsp"></jsp:include>
     <!-- End Navbar -->
 
-    <div class="">
-        <div class="content">
-
-            <div class="module">
-                <div class="module-head">
-                    <h3>Đăng tin</h3>
+    <!-- start thông báo   -->
+    <div class="page-wrapper chiller-theme">
+        <main data-v-18bc4a1a="" id="system-notifications" class="page-container">
+            <div data-v-18bc4a1a="" class="breadcrumb-box"><h6 class="breadcrumb-title d-flex1"><span>Thông báo từ hệ thống</span>
+            </h6></div>
+            <div data-v-18bc4a1a="" class="container-fluid page-content">
+                <div data-v-18bc4a1a="" class="shadow-sm bg-white rounded mb-3">
+                    <div data-v-18bc4a1a="">
+                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
+                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
+                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
+                            </div>
+                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">16/11/2022</div>
+                            <a data-v-18bc4a1a="" href="javascript:void(0)"
+                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
+                                Ứng dụng di động TopCV - Nhà tuyển dụng cập nhật phiên bản mới
+                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
+                        <hr data-v-18bc4a1a="" class="m-0">
+                    </div>
+                    <div data-v-18bc4a1a="">
+                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
+                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
+                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
+                            </div>
+                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">12/10/2022</div>
+                            <a data-v-18bc4a1a="" href="javascript:void(0)"
+                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
+                                TopHR Insights #12: Chiến lược xây dựng nguồn ứng viên IT bền vững
+                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
+                        <hr data-v-18bc4a1a="" class="m-0">
+                    </div>
+                    <div data-v-18bc4a1a="">
+                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
+                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
+                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
+                            </div>
+                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">29/08/2022</div>
+                            <a data-v-18bc4a1a="" href="javascript:void(0)"
+                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
+                                Thông báo về sự thay đổi của box tin Việc làm từ xa (Remote)
+                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
+                        <hr data-v-18bc4a1a="" class="m-0">
+                    </div>
+                    <div data-v-18bc4a1a="">
+                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
+                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
+                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
+                            </div>
+                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">05/08/2022</div>
+                            <a data-v-18bc4a1a="" href="javascript:void(0)"
+                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
+                                Thông báo về việc thay đổi cấp độ tài khoản để đạt hạng Khách hàng thân thiết
+                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
+                        <hr data-v-18bc4a1a="" class="m-0">
+                    </div>
+                    <div data-v-18bc4a1a="">
+                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
+                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
+                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
+                            </div>
+                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">01/08/2022</div>
+                            <a data-v-18bc4a1a="" href="javascript:void(0)"
+                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
+                                Thông báo cập nhật cấp độ xác thực tài khoản nhà tuyển dụng
+                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
+                        <hr data-v-18bc4a1a="" class="m-0">
+                    </div>
+                    <div data-v-18bc4a1a="">
+                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
+                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
+                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
+                            </div>
+                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">22/07/2022</div>
+                            <a data-v-18bc4a1a="" href="javascript:void(0)"
+                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
+                                Thông báo nâng cấp và bảo trì hệ thống
+                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
+                        <hr data-v-18bc4a1a="" class="m-0">
+                    </div>
+                    <div data-v-18bc4a1a="">
+                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
+                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
+                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
+                            </div>
+                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">14/07/2022</div>
+                            <a data-v-18bc4a1a="" href="javascript:void(0)"
+                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
+                                Thông báo nâng cấp và bảo trì hệ thống
+                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
+                        <hr data-v-18bc4a1a="" class="m-0">
+                    </div>
+                    <div data-v-18bc4a1a="">
+                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
+                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
+                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
+                            </div>
+                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">07/07/2022</div>
+                            <a data-v-18bc4a1a="" href="javascript:void(0)"
+                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
+                                THÔNG BÁO LỊCH NGHỈ TEAMBUILDING THÁNG 07/2022
+                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
+                        <hr data-v-18bc4a1a="" class="m-0">
+                    </div>
+                    <div data-v-18bc4a1a="">
+                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
+                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
+                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-primary1">Tính năng</span>
+                            </div>
+                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">01/07/2022</div>
+                            <a data-v-18bc4a1a="" href="javascript:void(0)"
+                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
+                                Thông báo Nâng cấp Toppy AI - Cân bằng &amp; tối ưu hiệu quả tin đăng trên toàn hệ thống
+                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
+                        <hr data-v-18bc4a1a="" class="m-0">
+                    </div>
+                    <div data-v-18bc4a1a="">
+                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
+                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
+                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-primary1">Tính năng</span>
+                            </div>
+                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">29/06/2022</div>
+                            <a data-v-18bc4a1a="" href="javascript:void(0)"
+                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
+                                Cập nhật tính năng Tìm CV
+                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
+                        <!--                        <hr data-v-18bc4a1a="" class="m-0">-->
+                    </div>
                 </div>
-                <div class="module-body">
-                    <br/>
-
-                    <form class="form-horizontal row-fluid">
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Chức vụ</label>
-                            <div class="controls">
-                                <input type="text" id="basicinput" placeholder="Nhập chức vụ."
-                                       class="span8">
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Lĩnh vực</label>
-                            <div class="controls">
-                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
-                                    <option value="">Vui lòng chọn..</option>
-                                    <option value="Category 1">Trí tuệ nhân tạo</option>
-                                    <option value="Category 1">Công nghệ phần mềm</option>
-                                    <option value="Category 3">Mạng</option>
-                                    <option value="Category 4">Hệ thống thông tin</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Ngành nghề</label>
-                            <div class="controls">
-                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
-                                    <option value="">Vui lòng chọn..</option>
-                                    <option value="Category 1"> Lập trình</option>
-                                    <option value="Category 2"> Kiểm thử phần mềm</option>
-                                    <option value="Category 3"> Quản trị mạng</option>
-                                    <option value="Category 4"> Phân tích dữ liêệu</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Hình thức công việc</label>
-                            <div class="controls">
-                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
-                                    <option value="">Vui lòng chọn..</option>
-                                    <option value="Category 1">Toàn thời gian</option>
-                                    <option value="Category 2">Bán thời gian</option>
-                                    <option value="Category 3">Hợp đồng</option>
-                                    <option value="Category 4">Kỳ thực tập</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Địa điểm làm việc</label>
-                            <div class="controls">
-                                <input type="text" placeholder=""
-                                       class="span8">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Mức lương</label>
-                            <div class="controls">
-                                <div class="input-append">
-                                    <input type="text" placeholder="10.000.000 VND" class="span8">
-                                </div>
-                                <span class="help-inline">(Thỏa thuận : 0 VND)</span>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Số lượng tuyển</label>
-                            <div class="controls">
-                                <div class="input-prepend">
-                                    <input class="span8" type="text" placeholder="">
-                                    <span class="help-inline">
-
-                                            <label class="checkbox inline">
-                                                <input type="checkbox" value="">
-                                                Nam
-                                            </label>
-                                            <label class="checkbox inline">
-                                                <input type="checkbox" value="">
-                                                Nữ
-                                            </label>
-                                            <label class="checkbox inline">
-                                                <input type="checkbox" value="">
-                                                Không yêu cầu
-                                            </label>
-                                                </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Mô tả công việc</label>
-                            <div class="controls">
-                                <textarea class="span8a" rows="5"></textarea>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Yêu cầu</label>
-                            <div class="controls">
-                                <textarea class="span8a" rows="5"></textarea>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Thông tin công ty</label>
-                            <div class="controls">
-                                <textarea class="span8a" rows="5"></textarea>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Hình ảnh</label>
-                            <div class="controls">
-                                <input class="input-file" type="file" name="file_cv" id="file">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Hết hạn nộp hồ sơ</label>
-                            <div class="controls">
-                                <input type="date" name="date_cv" id="date">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <div class="controls">
-                                <button type="submit" class="btn">Đăng</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                <nav data-v-18bc4a1a="">
+                    <ul class="pagination justify-content-center mb-0"><!---->
+                        <li class="page-item active"><a href="#change" class="page-link mr-1 rounded shadow-sm">1</a>
+                        </li>
+                        <li class="page-item"><a href="#change" class="page-link mr-1 rounded shadow-sm">2</a></li>
+                        <li class="page-item"><a href="#change" class="page-link mr-1 rounded shadow-sm">3</a></li>
+                        <li class="page-item"><a href="#next" class="page-link mr-1 rounded shadow-sm"><i
+                                class="fal fa-angle-right"></i></a></li>
+                        <li class="page-item"><a href="#last" class="page-link mr-1 rounded shadow-sm"><i
+                                class="fal fa-angle-double-right"></i></a></li>
+                    </ul>
+                </nav>
             </div>
-        </div><!--/.content-->
+        </main>
     </div>
+    <!-- End thông báo     -->
+
 </main>
 </body>
 <!--   Core JS Files   -->
-<script src="business/assets/js/core/popper.min.js"></script>
-<script src="business/assets/js/core/bootstrap.min.js"></script>
-<script src="business/assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="business/assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+<script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+
 </html>

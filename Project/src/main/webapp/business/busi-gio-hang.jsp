@@ -11,7 +11,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
-    <link rel="icon" type="image/png" href="assets/img/logo/logo.png">
+    <link rel="icon" type="image/png" href="../assets/img/logo/logo.png">
     <link rel="stylesheet" href="business/assets/css/login.css">
     <title>
         Giỏ hàng
@@ -19,16 +19,16 @@
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
+    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
     <!--     <link rel="stylesheet" href="../assets/css/style.css">-->
-    <link rel="stylesheet" href="business/assets/css/gio-hang.css">
-    <link rel="stylesheet" href="business/assets/css/thanh-toan.css">
+    <link rel="stylesheet" href="assets/css/gio-hang.css">
+    <link rel="stylesheet" href="assets/css/thanh-toan.css">
 
 
 </head>
@@ -41,7 +41,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="busi-trang-chu.jsp">
-            <img src="assets/img/logo/logo.png">
+            <img src="../assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -451,7 +451,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <img src='business/assets/img/logos/logo-acb-inkythuatso.png' height='80'
+                                <img src='assets/img/logos/logo-acb-inkythuatso.png' height='80'
                                      class='credit-card-image' id='credit-card-image'></img>
                                 <table class='half-input-table'>
                                     <tr>
@@ -570,10 +570,10 @@
 </div>
 </body>
 <!--   Core JS Files   -->
-<script src="business/assets/js/core/popper.min.js"></script>
-<script src="business/assets/js/core/bootstrap.min.js"></script>
-<script src="business/assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="business/assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
@@ -587,7 +587,7 @@
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+<script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 <!--Show-->
 <script>
     const btn_open = document.getElementById('btn1');
