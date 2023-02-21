@@ -27,7 +27,7 @@
                 <ul class="nav pull-right">
                     <ul class="nav nav-icons">
                         <!--                    <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>-->
-                        <li><a href="trang-chu-candi.jsp"><i class="icon-eye-open"></i></a></li>
+                        <li><a href="../trang-chu-candi.jsp"><i class="icon-eye-open"></i></a></li>
                         <li><a href=""><i class="icon-bell "></i></a>
                             <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4">
                                 <li class="mb-2 font-weight-bold" style="text-align: center"><a href="#"> Đăng xuất</a>
@@ -44,7 +44,7 @@
                         </ul>
                     </li>
                     <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="admin/images/user.png" class="nav-avatar"/>
+                        <img src="images/user.png" class="nav-avatar"/>
                         <c:if test="${sessionScope.account == null}">
                             <span>User</span>
                         </c:if>
