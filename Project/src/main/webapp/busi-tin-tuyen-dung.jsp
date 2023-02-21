@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
     <link rel="icon" type="image/png" href="assets/img/logo/logo.png">
@@ -17,15 +17,15 @@
         Tin tuyển dụng
     </title>
     <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet" />
+    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
 
 </head>
 <body class="g-sidenav-show  bg-gray-100">
@@ -35,8 +35,8 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="busi-trang-chu.jsp" >
-            <img src="assets/img/logo/logo.png" >
+        <a class="navbar-brand m-0" href="busi-trang-chu.jsp">
+            <img src="assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -92,7 +92,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active"  href="busi-tin-tuyen-dung.jsp">
+                <a class="nav-link active" href="busi-tin-tuyen-dung.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -118,7 +118,7 @@
                 <a class="nav-link  " href="busi-thong-bao-he-thong.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 
-                        <i  class=" fa fa-bell cursor-pointer text-dark"></i>
+                        <i class=" fa fa-bell cursor-pointer text-dark"></i>
 
                     </div>
                     <span class="nav-link-text ms-1">Thông báo hệ thống</span>
@@ -168,7 +168,7 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="tro-giup-busi.jsp"  class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="tro-giup-busi.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>
@@ -192,47 +192,63 @@
                         <ul class="list-group">
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
-                                    <a  href="chi-tiet-tin-tuyen-dung-busi.jsp">
+                                    <a href="chi-tiet-tin-tuyen-dung-busi.jsp">
                                         <h6 class="mb-3 text-sm">Nhân viên kế toán</h6>
                                     </a>
                                     <span class="mb-2 text-xs">Vị trí: <span class="text-dark ms-sm-2 font-weight-bold">Nhân viên</span></span>
-                                    <span class="mb-2 text-xs">Địa chỉ: <span class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
-                                    <span class="mb-2 text-xs">Mức lương: <span class="text-dark font-weight-bold ms-sm-2">20.000.000 VND</span></span>
-                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span class="text-dark font-weight-bold ms-sm-2">03/01/2023</span></span>
+                                    <span class="mb-2 text-xs">Địa chỉ: <span
+                                            class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
+                                    <span class="mb-2 text-xs">Mức lương: <span
+                                            class="text-dark font-weight-bold ms-sm-2">20.000.000 VND</span></span>
+                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
+                                            class="text-dark font-weight-bold ms-sm-2">03/01/2023</span></span>
                                 </div>
-<%--                                <div class="ms-auto text-end">--%>
-<%--                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>--%>
-<%--                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>--%>
-<%--                                </div>--%>
+                                <%--                                <div class="ms-auto text-end">--%>
+                                <%--                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>--%>
+                                <%--                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>--%>
+                                <%--                                </div>--%>
                                 <div class="ms-auto text-end">
-                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt1 text-dark me-2" aria-hidden="true"></i>Ngừng tuyển dụng</a>
-                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                            class="fas fa-pencil-alt1 text-dark me-2" aria-hidden="true"></i>Ngừng tuyển
+                                        dụng</a>
+                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                            class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                                 </div>
                             </li>
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-3 text-sm">Nhân viên tư vật - mua hàng</h6>
                                     <span class="mb-2 text-xs">Vị trí: <span class="text-dark ms-sm-2 font-weight-bold">Nhân viên</span></span>
-                                    <span class="mb-2 text-xs">Địa chỉ: <span class="text-dark ms-sm-2 font-weight-bold">Xuân trung, Hà Nội</span></span>
-                                    <span class="mb-2 text-xs">Mức lương: <span class="text-dark font-weight-bold ms-sm-2">15.000.000 VND</span></span>
-                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span class="text-dark font-weight-bold ms-sm-2">02/01/2023</span></span>
+                                    <span class="mb-2 text-xs">Địa chỉ: <span
+                                            class="text-dark ms-sm-2 font-weight-bold">Xuân trung, Hà Nội</span></span>
+                                    <span class="mb-2 text-xs">Mức lương: <span
+                                            class="text-dark font-weight-bold ms-sm-2">15.000.000 VND</span></span>
+                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
+                                            class="text-dark font-weight-bold ms-sm-2">02/01/2023</span></span>
                                 </div>
                                 <div class="ms-auto text-end">
-                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
+                                            class="far fa-trash-alt me-2"></i>Delete</a>
+                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                            class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                                 </div>
                             </li>
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-3 text-sm">Lập trình game</h6>
                                     <span class="mb-2 text-xs">Vị trí: <span class="text-dark ms-sm-2 font-weight-bold">Giám đốc</span></span>
-                                    <span class="mb-2 text-xs">Địa chỉ: <span class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
-                                    <span class="mb-2 text-xs">Mức lương: <span class="text-dark font-weight-bold ms-sm-2">10.000.000 VND</span></span>
-                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span class="text-dark font-weight-bold ms-sm-2">01/01/2023</span></span>
+                                    <span class="mb-2 text-xs">Địa chỉ: <span
+                                            class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
+                                    <span class="mb-2 text-xs">Mức lương: <span
+                                            class="text-dark font-weight-bold ms-sm-2">10.000.000 VND</span></span>
+                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
+                                            class="text-dark font-weight-bold ms-sm-2">01/01/2023</span></span>
                                 </div>
                                 <div class="ms-auto text-end">
-                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
+                                            class="far fa-trash-alt me-2"></i>Delete</a>
+                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                            class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                                 </div>
                             </li>
                         </ul>
@@ -257,9 +273,10 @@
                         <ul class="list-group">
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                 <div class="d-flex align-items-center">
-                                    <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-down"></i></button>
+                                    <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-arrow-down"></i></button>
                                     <div class="d-flex flex-column">
-                                        <a  href="chi-tiet-tin-tuyen-dung-busi.jsp">
+                                        <a href="chi-tiet-tin-tuyen-dung-busi.jsp">
                                             <h6 class="mb-1 text-dark text-sm">Phát triển phần mềm</h6>
                                         </a>
                                         <span class="text-xs">03/01/2023, at 12:30 AM</span>
@@ -271,13 +288,15 @@
                             </li>
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                 <div class="d-flex align-items-center">
-                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-arrow-up"></i></button>
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">Tester</h6>
                                         <span class="text-xs">03/01/2023, at 07:00 AM</span>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold"> Đã duyệt
+                                <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                                    Đã duyệt
                                 </div>
                             </li>
                         </ul>
@@ -285,9 +304,10 @@
                         <ul class="list-group">
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                 <div class="d-flex align-items-center">
-                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-arrow-up"></i></button>
                                     <div class="d-flex flex-column">
-                                        <a  href="chi-tiet-tin-tuyen-dung-busi.jsp">
+                                        <a href="chi-tiet-tin-tuyen-dung-busi.jsp">
                                             <h6 class="mb-1 text-dark text-sm">AI</h6>
                                         </a>
                                         <span class="text-xs">01/01/2023, at 11:30 AM</span>
@@ -299,7 +319,8 @@
                             </li>
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                 <div class="d-flex align-items-center">
-                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-arrow-up"></i></button>
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">Lập trình Dot Net</h6>
                                         <span class="text-xs">02/01/2023, at 14:30 PM</span>
@@ -311,7 +332,8 @@
                             </li>
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                 <div class="d-flex align-items-center">
-                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-arrow-up"></i></button>
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">Data analyst</h6>
                                         <span class="text-xs">05/01/2023, at 16:00 PM</span>
@@ -323,7 +345,8 @@
                             </li>
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                 <div class="d-flex align-items-center">
-                                    <button class="btn btn-icon-only btn-rounded btn-outline-dark mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-exclamation"></i></button>
+                                    <button class="btn btn-icon-only btn-rounded btn-outline-dark mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-exclamation"></i></button>
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">Lập trình website</h6>
                                         <span class="text-xs">25/12/2022, at 12:00 AM</span>

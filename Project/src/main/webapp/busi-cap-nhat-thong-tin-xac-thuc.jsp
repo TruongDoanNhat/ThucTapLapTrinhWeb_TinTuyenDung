@@ -36,8 +36,8 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="busi-trang-chu.jsp" >
-            <img src="assets/img/logo/logo.png" >
+        <a class="navbar-brand m-0" href="busi-trang-chu.jsp">
+            <img src="assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -119,7 +119,7 @@
                 <a class="nav-link  " href="busi-thong-bao-he-thong.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 
-                        <i  class=" fa fa-bell cursor-pointer text-dark"></i>
+                        <i class=" fa fa-bell cursor-pointer text-dark"></i>
 
                     </div>
                     <span class="nav-link-text ms-1">Thông báo hệ thống</span>
@@ -169,7 +169,7 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="tro-giup-busi.jsp"  class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="tro-giup-busi.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>

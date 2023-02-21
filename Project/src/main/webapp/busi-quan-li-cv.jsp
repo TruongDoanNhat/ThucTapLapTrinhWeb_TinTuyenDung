@@ -35,8 +35,8 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="busi-trang-chu.jsp" >
-            <img src="assets/img/logo/logo.png" >
+        <a class="navbar-brand m-0" href="busi-trang-chu.jsp">
+            <img src="assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -92,7 +92,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link "  href="busi-tin-tuyen-dung.jsp">
+                <a class="nav-link " href="busi-tin-tuyen-dung.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -118,7 +118,7 @@
                 <a class="nav-link  " href="busi-thong-bao-he-thong.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 
-                        <i  class=" fa fa-bell cursor-pointer text-dark"></i>
+                        <i class=" fa fa-bell cursor-pointer text-dark"></i>
 
                     </div>
                     <span class="nav-link-text ms-1">Thông báo hệ thống</span>
@@ -168,7 +168,7 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="tro-giup-busi.jsp"  class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="tro-giup-busi.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>
@@ -193,7 +193,8 @@
                         <div class="input-group w-60 format  ">
                             <button type="submit" class="input-group-text text-body"><i class="fas fa-search"
                                                                                         aria-hidden="true"></i></button>
-                            <input type="text" class="form-control" placeholder="Tìm kiếm tên, email, số điện thoại" name="actiom">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm tên, email, số điện thoại"
+                                   name="actiom">
                         </div>
                         <div class=" input-group w-50">
                             <select required name="cars" id="cars" class="multiselect__tags format boder w-50">
@@ -238,8 +239,8 @@
                                 <tr class="bg-gray">
                                     <td>
                                         <div class="d-flex px-2 py-1">
-<%--                                            <% ArrayList<Post> list = (ArrayList<Post>) request.getAttribute("list");--%>
-<%--                                                for (Post p : list) { %>--%>
+                                            <%--                                            <% ArrayList<Post> list = (ArrayList<Post>) request.getAttribute("list");--%>
+                                            <%--                                                for (Post p : list) { %>--%>
                                             <div>
                                                 <img src="business/assets/img/team-2.jpg" class="avatar avatar-sm me-3"
                                                      alt="user1">
