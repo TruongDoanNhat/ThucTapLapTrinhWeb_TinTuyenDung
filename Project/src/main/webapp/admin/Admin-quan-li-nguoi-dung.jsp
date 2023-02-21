@@ -1,78 +1,26 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-
+<%--
+  Created by IntelliJ IDEA.
+  User: Admin
+  Date: 06/01/2023
+  Time: 10:36 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin | Ứng viên</title>
-        <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link type="text/css" href="css/theme.css" rel="stylesheet">
-        <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
-              rel='stylesheet'>
-        <link rel="stylesheet" href="css/quan-ly-bai-dang.css">
-
-    </head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Nguời dùng</title>
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" href="css/theme.css" rel="stylesheet">
+    <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+          rel='stylesheet'>
+    <link rel="stylesheet" href="css/quan-ly-bai-dang.css">
+</head>
 <body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-
-                <i class="icon-reorder shaded"></i></a><a class="brand" href="trang-chu.html">Admin </a>
-            <div class="nav-collapse collapse navbar-inverse-collapse">
-                <!--                <form class="navbar-search pull-left input-append" action="#">-->
-                <!--                    <input type="text" class="span3">-->
-                <!--                    <button class="btn" type="button">-->
-                <!--                        <i class="icon-search"></i>-->
-                <!--                    </button>-->
-                <!--                </form>-->
-                <ul class="nav pull-right">
-                    <ul class="nav nav-icons">
-                        <!--                    <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>-->
-                        <li><a href="../user/trang-chu.html"><i class="icon-eye-open"></i></a></li>
-                        <li><a href=""><i class="icon-bell "></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4">
-                                <li class="mb-2 font-weight-bold" style="text-align: center"><a href="#"> Đăng xuất</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Cài đặt giao diện
-                        <b class="caret"></b></a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Logo</a></li>
-                            <li><a href="#">Màu sắc</a></li>
-                            <li><a href="#">Ảnh</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="images/user.png" class="nav-avatar"/>
-                        <span>User</span>
-                        <b class="caret"></b></a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Trang cá nhân</a></li>
-                            <li><a href="#">Chỉnh sửa trang cá nhân</a></li>
-                            <li><a href="#">Cài đặt tài khoản</a></li>
-
-
-                            <li class="divider"></li>
-                            <li><a href="#">Đăng xuất</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.nav-collapse -->
-        </div>
-    </div>
-    <!-- /navbar-inner -->
-</div>
-<!-- /navbar -->
+<jsp:include page="Admin-header.jsp"></jsp:include>
 <div class="wrapper">
     <div class="container">
         <div class="row">
@@ -97,15 +45,10 @@
                         </li>
 
 
-                        <li><a class="collapsed" data-toggle="collapse" href="#togglePages1"><i
-                                class="menu-icon icon-tasks">
-                        </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                        </i> Báo cáo </a>
-                            <ul id="togglePages1" class="collapse unstyled">
-                                <li><a href=""><i class="icon-inbox"></i> Thống kê bài đăng </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Thống kê ứng tuyển </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Thống kê doanh thu </a></li>
-                            </ul>
+                        <li>
+                            <a href="baocao-thongke-Admin.jsp">
+                                <i class="menu-icon icon-tasks"></i> Báo cáo - thống kê
+                            </a>
                         </li>
                         <li><a class="collapsed" data-toggle="collapse" href="#togglePages2"><i
                                 class="menu-icon icon-cog">
@@ -132,7 +75,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mb-0">Quản lý ứng viên</h5>
+                        <h5 class="mb-0">Quản lý người dùng</h5>
                     </div>
                     <form class="navbar-search pull-left input-append" action="#">
                         <input type="text" class="span3" placeholder="Tìm kiếm theo tên, chức vụ">
@@ -156,24 +99,20 @@
                                 <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Tên ứng viên</th>
-                                    <th>Ngày sinh</th>
-                                    <th>Giới tính</th>
-                                    <th>Công việc</th>
-                                    <th>Mô tả</th>
+                                    <th>Tên người dùng</th>
+                                    <th>Đối tượng</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
                                     <th>Chức năng</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>Nguyễn Đình Nguyên</td>
-                                    <td>06/02/2002</td>
-                                    <td>Nam</td>
-                                    <td class="cv">Front-end</td>
-                                    <td class="mt">Tôi đang tìm kiếm một công việc với tư cách là nhà phát triển front-end để làm
-                                        việc trong các dự án thú vị và đầy thử thách
-                                    </td>
+                                    <td>Lê Hữu Phước</td>
+                                    <td>Doanh nghiệp</td>
+                                    <td>0384748409</td>
+                                    <td>lhphuoc602@gmail.com</td>
                                     <td>
                                         <div class="btn-group ml-auto">
                                             <button class="btn btn-sm btn-outline-light" style="outline: none">
@@ -188,16 +127,11 @@
                                 <tr>
                                     <td>2</td>
                                     <td>Trương Đoàn Nhất</td>
-                                    <td>20/11/2000</td>
-                                    <td>Nam</td>
-                                    <td class="cv">Lập trình PHP</td>
-                                    <td class="mt">Tôi đang tìm kiếm một công việc với tư cách là lập trình viên PHP để làm việc
-                                        trong các dự án thú vị
-                                    </td>
-                                    <!--                                    <td>Quận 2, Tp.HCM, Việt Nam</td>-->
-                                    <!--                                    <td class="col-blue">Đã duyệt</td>-->
+                                    <td>Doanh nghiệp</td>
+                                    <td>0346966814</td>
+                                    <td>tdnhat2011@gmail.com</td>
                                     <td>
-                                        <div class="btn-group ml-auto">
+                                        <div class="btn-group ml-auto" >
                                             <button class="btn btn-sm btn-outline-light" style="outline: none">
                                                 <i class="icon-pencil"></i>
                                             </button>
@@ -209,13 +143,10 @@
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>Hồ Yến Nhi</td>
-                                    <td>11/09/2000</td>
-                                    <td>Nữ</td>
-                                    <td class="cv"> Quản lý hệ thống nhân sự</td>
-                                    <td class="mt">Tôi đang tìm kiếm một nhóm để thực hiện các dự án thú vị</td>
-                                    <!--                                    <td>Quận 2, Tp.HCM, Việt Nam</td>-->
-                                    <!--                                    <td class="col-blue">Đã duyệt</td>-->
+                                    <td>Nguyễn Đình Nguyên</td>
+                                    <td>Người ứng tuyển</td>
+                                    <td>0937087259</td>
+                                    <td>ndn1123@gmail.com</td>
                                     <td>
                                         <div class="btn-group ml-auto">
                                             <button class="btn btn-sm btn-outline-light" style="outline: none">
@@ -229,11 +160,10 @@
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td>Lê Hữu Phước</td>
-                                    <td>24/12/2003</td>
-                                    <td>Nam</td>
-                                    <td class="cv">Thiết kế và chế tạo cơ khí</td>
-                                    <td class="mt">Tôi muốn tìm kiếm thêm nhóm để thiết kế và chế tạo máy móc</td>
+                                    <td>Hồ Yến Nhi</td>
+                                    <td>Người ứng tuyển</td>
+                                    <td>0249995354</td>
+                                    <td>yennhi241@gmail.com</td>
                                     <td>
                                         <div class="btn-group ml-auto">
                                             <button class="btn btn-sm btn-outline-light" style="outline: none">
@@ -248,10 +178,9 @@
                                 <tr>
                                     <td>5</td>
                                     <td>Lê Thị Hoa Hồng</td>
-                                    <td>22/02/2002</td>
-                                    <td>Nữ</td>
-                                    <td class="cv"> Kỹ thuật điện tử viễn thông</td>
-                                    <td class="mt">Tôi muốn làm nhân viên kinh doanh dich vụ viễn thông</td>
+                                    <td>Doanh nghiệp</td>
+                                    <td>0981845655</td>
+                                    <td>lthoahong111@gmail.com</td>
                                     <td>
                                         <div class="btn-group ml-auto">
                                             <button class="btn btn-sm btn-outline-light" style="outline: none">
@@ -265,11 +194,44 @@
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                    <td>Nguyễn Thị Huệ</td>
-                                    <td>06/11/1999</td>
-                                    <td>Nữ</td>
-                                    <td class="cv">Luật</td>
-                                    <td class="mt">Tôi muốn làm luật sư để bào chữa hoặc biện hộ cho bị can</td>
+                                    <td>Hoàng Văn Thụ</td>
+                                    <td>Người ứng tuyển</td>
+                                    <td>0254888737</td>
+                                    <td>hvthu0606@gmail.com</td>
+                                    <td>
+                                        <div class="btn-group ml-auto">
+                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
+                                                <i class="icon-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
+                                                <i class="icon-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Nguyễn Thị Kim Cúc</td>
+                                    <td>Daonh nghiệp</td>
+                                    <td>0562608743</td>
+                                    <td>ntkcuc@gmail.com</td>
+                                    <td>
+                                        <div class="btn-group ml-auto">
+                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
+                                                <i class="icon-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
+                                                <i class="icon-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Lê Thị Bưởi</td>
+                                    <td>Người ứng tuyển</td>
+                                    <td>0988070515</td>
+                                    <td>ltbuoi0612@gmail.com</td>
                                     <td>
                                         <div class="btn-group ml-auto">
                                             <button class="btn btn-sm btn-outline-light" style="outline: none">
@@ -302,8 +264,7 @@
 <!--/.container-->
 </div>
 <!--/.wrapper-->
-
-
+</body>
 <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -312,5 +273,4 @@
 <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
 <script src="scripts/common.js" type="text/javascript"></script>
 
-
-</body>
+</html>

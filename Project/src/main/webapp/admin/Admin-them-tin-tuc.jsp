@@ -1,78 +1,27 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-
+<%--
+  Created by IntelliJ IDEA.
+  User: Dell
+  Date: 1/6/2023
+  Time: 11:06 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin | Tin tức | Thêm tin tức</title>
-        <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link type="text/css" href="css/theme.css" rel="stylesheet">
-        <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
-              rel='stylesheet'>
-        <link rel="stylesheet" href="css/quan-ly-bai-dang.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Tin tức | Thêm tin tức</title>
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" href="css/theme.css" rel="stylesheet">
+    <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+          rel='stylesheet'>
+    <link rel="stylesheet" href="css/quan-ly-bai-dang.css">
 
-    </head>
+</head>
 <body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-
-                <i class="icon-reorder shaded"></i></a><a class="brand" href="trang-chu.html">Admin </a>
-            <div class="nav-collapse collapse navbar-inverse-collapse">
-                <!--                <form class="navbar-search pull-left input-append" action="#">-->
-                <!--                    <input type="text" class="span3">-->
-                <!--                    <button class="btn" type="button">-->
-                <!--                        <i class="icon-search"></i>-->
-                <!--                    </button>-->
-                <!--                </form>-->
-                <ul class="nav pull-right">
-                    <ul class="nav nav-icons">
-                        <!--                    <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>-->
-                        <li><a href="../user/trang-chu.html"><i class="icon-eye-open"></i></a></li>
-                        <li><a href=""><i class="icon-bell "></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4">
-                                <li class="mb-2 font-weight-bold" style="text-align: center"><a href="#"> Đăng xuất</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Cài đặt giao diện
-                        <b class="caret"></b></a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Logo</a></li>
-                            <li><a href="#">Màu sắc</a></li>
-                            <li><a href="#">Ảnh</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="images/user.png" class="nav-avatar"/>
-                        <span>User</span>
-                        <b class="caret"></b></a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Trang cá nhân</a></li>
-                            <li><a href="#">Chỉnh sửa trang cá nhân</a></li>
-                            <li><a href="#">Cài đặt tài khoản</a></li>
-
-
-                            <li class="divider"></li>
-                            <li><a href="#">Đăng xuất</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.nav-collapse -->
-        </div>
-    </div>
-    <!-- /navbar-inner -->
-</div>
-<!-- /navbar -->
+<jsp:include page="header-Admin.jsp"></jsp:include>
 <div class="wrapper">
     <div class="container">
         <div class="row">
@@ -97,15 +46,10 @@
                         </li>
 
 
-                        <li><a class="collapsed" data-toggle="collapse" href="#togglePages1"><i
-                                class="menu-icon icon-tasks">
-                        </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                        </i> Báo cáo </a>
-                            <ul id="togglePages1" class="collapse unstyled">
-                                <li><a href=""><i class="icon-inbox"></i> Thống kê bài đăng </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Thống kê ứng tuyển </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Thống kê doanh thu </a></li>
-                            </ul>
+                        <li>
+                            <a href="baocao-thongke-Admin.jsp">
+                                <i class="menu-icon icon-tasks"></i> Báo cáo - thống kê
+                            </a>
                         </li>
                         <li><a class="collapsed" data-toggle="collapse" href="#togglePages2"><i
                                 class="menu-icon icon-cog">
@@ -182,6 +126,7 @@
 <!--/.wrapper-->
 
 
+</body>
 <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -189,6 +134,4 @@
 <script src="scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
 <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
 <script src="scripts/common.js" type="text/javascript"></script>
-
-
-</body>
+</html>

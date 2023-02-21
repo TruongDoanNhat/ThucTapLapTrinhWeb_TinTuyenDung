@@ -1,5 +1,12 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Admin
+  Date: 06/01/2023
+  Time: 3:04 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -11,60 +18,10 @@
         <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
               rel='stylesheet'>
-
     </head>
+</head>
 <body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                <i class="icon-reorder shaded"></i></a><a class="brand" href="trang-chu.html">Admin </a>
-            <div class="nav-collapse collapse navbar-inverse-collapse">
-                <!--                <form class="navbar-search pull-left input-append" action="#">-->
-                <!--                    <input type="text" class="span3">-->
-                <!--                    <button class="btn" type="button">-->
-                <!--                        <i class="icon-search"></i>-->
-                <!--                    </button>-->
-                <!--                </form>-->
-                <ul class="nav pull-right">
-                    <ul class="nav nav-icons">
-                        <!--                    <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>-->
-                        <li><a href="../user/trang-chu.html"><i class="icon-eye-open"></i></a></li>
-                        <li><a href=""><i class="icon-bell "></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4">
-                                <li class="mb-2 font-weight-bold" style="text-align: center"><a href="#"> Đăng xuất</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Cài đặt giao diện
-                        <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Logo</a></li>
-                            <li><a href="#">Màu sắc</a></li>
-                            <li><a href="#">Ảnh</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="images/user.png" class="nav-avatar"/>
-                        <span>User</span>
-                        <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Trang cá nhân</a></li>
-                            <li><a href="#">Chỉnh sửa trang cá nhân</a></li>
-                            <li><a href="#">Cài đặt tài khoản</a></li>
-
-                            <li class="divider"></li>
-                            <li><a href="#">Đăng xuất</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.nav-collapse -->
-        </div>
-    </div>
-    <!-- /navbar-inner -->
-</div>
+<jsp:include page="Admin-header.jsp"></jsp:include>
 <!-- /navbar -->
 <div class="wrapper">
     <div class="container">
@@ -90,7 +47,7 @@
                         </li>
 
                         <li>
-                            <a href="baocao-thongke.html">
+                            <a href="Admin-baocao-thongke.jsp">
                                 <i class="menu-icon icon-tasks"></i> Báo cáo - thống kê
                             </a>
                         </li>
@@ -117,29 +74,6 @@
                     </ul>
 
                 </div>
-                <!--                        <li><a href="quan-ly-bai-dang.html"><i class="menu-icon icon-bullhorn"></i> Việc làm mới </a>-->
-                <!--                        </li>-->
-                <!--                        <li><a href="tin-nhan.html"><i class="menu-icon icon-inbox"></i>Tin nhắn <b-->
-                <!--                                class="label green pull-right">-->
-                <!--                            11</b> </a></li>-->
-                <!--                        <li><a href="quan-ly-don-ung-tuyen.html"><i class="menu-icon icon-tasks"></i> Ứng viên <b-->
-                <!--                                class="label orange pull-right">-->
-                <!--                            19</b> </a></li>-->
-                <!--                    </ul>-->
-                <!--/.widget-nav-->
-
-
-                <!--                    <ul class="widget widget-menu unstyled">-->
-
-                <!--                        &lt;!&ndash;                                <li><a href="ui-button-icon.html"><i class="menu-icon icon-bold"></i> Giao diện </a></li>&ndash;&gt;-->
-                <!--                        &lt;!&ndash;                                <li><a href="ui-typography.html"><i class="menu-icon icon-book"></i>Typography </a></li>&ndash;&gt;-->
-                <!--                        <li><a href="dang-tuyen.html"><i class="menu-icon icon-paste"></i> Đăng tuyển </a></li>-->
-                <!--                        <li><a href="danh-sach-viec-lam-ngung-quan-ly-don-ung-tuyen.html"><i class="menu-icon icon-table"></i> Danh sách-->
-                <!--                            việc làm hết hạn </a>-->
-                <!--                        </li>-->
-                <!--                        &lt;!&ndash;                                <li><a href="charts.html"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>&ndash;&gt;-->
-                <!--                    </ul>-->
-                <!--/.widget-nav-->
 
                 <!--/.sidebar-->
             </div>
@@ -186,12 +120,7 @@
 </div>
 <!--/.wrapper-->
 
-
-<div class="footer">
-    <div class="container">
-        <!--                <b class="copyright">&copy; 2014 Edmin - EGrappler.com </b>All rights reserved.-->
-    </div>
-</div>
+</body>
 <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -200,5 +129,4 @@
 <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
 <script src="scripts/common.js" type="text/javascript"></script>
 
-
-</body>
+</html>
