@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
+import vn.edu.hcmuaf.fit.Util.Util;
 import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
 
@@ -23,7 +24,7 @@ public class Login extends HttpServlet {
         DAOAccount d = new DAOAccount();
         String user = request.getParameter("username");
         String pass = request.getParameter("password");
-
+        pass = Util.maHoaMatKhau(pass);
         boolean checkAccount = d.checkAccount(user, pass);
         String message = d.getMessage();
         String action = request.getParameter("action");

@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
+import vn.edu.hcmuaf.fit.Util.Util;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
 
 import javax.servlet.*;
@@ -16,6 +17,7 @@ public class SignUp extends HttpServlet {
         String name = request.getParameter("hoten");
         String user_name = request.getParameter("user_name");
         String password = request.getParameter("password");
+        password = Util.maHoaMatKhau(password);
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String s = request.getParameter("gen");
