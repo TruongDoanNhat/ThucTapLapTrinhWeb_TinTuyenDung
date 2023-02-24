@@ -1,26 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<%--
+  Created by IntelliJ IDEA.
+  User: Admin
+  Date: 06/01/2023
+  Time: 5:55 SA
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/logo/logo.png">
-    <link rel="icon" type="image/png" href="../../assets/img/logo/logo.png">
-    <title>Tin nhắn</title>
+    <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
+    <link rel="icon" type="image/png" href="../assets/img/logo/logo.png">
+    <title>Đăng tin</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
-
 <body class="g-sidenav-show  bg-gray-100">
 <!--  start nav left -->
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
@@ -29,8 +34,8 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="bang-tin.html" >
-            <img src="../../assets/img/logo/logo.png" >
+        <a class="navbar-brand m-0" href="busi-trang-chu.jsp">
+            <img src="../assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -39,7 +44,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="bang-tin.html">
+                <a class="nav-link" href="busi-trang-chu.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -63,7 +68,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="quan-li-cv.html">
+                <a class="nav-link" href="busi-quan-li-cv.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -86,7 +91,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link "  href="tin-tuyen-dung.html">
+                <a class="nav-link active" href="busi-tin-tuyen-dung.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -109,10 +114,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href="thong-bao-he-thong.html">
+                <a class="nav-link  " href="busi-thong-bao-he-thong.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 
-                        <i  class=" fa fa-bell cursor-pointer text-dark"></i>
+                        <i class=" fa fa-bell cursor-pointer text-dark"></i>
 
                     </div>
                     <span class="nav-link-text ms-1">Thông báo hệ thống</span>
@@ -123,7 +128,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Trang tài khoản</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="tai-khoan.html">
+                <a class="nav-link   " href="busi-tai-khoan.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -162,189 +167,164 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="tro-giup.html"  class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="tro-giup-busi.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>
         <a class="btn bg-gradient-primary mt-3 w-100"
-           href="cap-nhat-thong-tin-xac-thuc.html">Nâng cấp tài khoản</a>
+           href="busi-cap-nhat-thong-tin-xac-thuc.jsp">Nâng cấp tài khoản</a>
     </div>
 </aside>
 <!--  end nav left -->
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-         navbar-scroll="true">
-        <div class="container-fluid py-1 px-3">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Trang</a>
-                    </li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Tin nhắn</li>
-                    </li>
-
-                </ol>
-                <h6 class="font-weight-bolder mb-0">Tin nhắn</h6>
-            </nav>
-            <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                </div>
-                <ul class="navbar-nav  justify-content-end">
-                    <li class="nav-item d-flex align-items-center">
-                        <!--button-->
-                        <a class="btn btn-outline-primary btn-sm mb-0 me-3  "
-                           href="dang-tin.html">Đăng tin</a>
-                        <a class="btn btn-outline-primary btn-sm mb-0 me-3"
-                           href="quan-li-cv.html">Xem CV</a>
-                        <a class="btn btn-outline-primary btn-sm mb-0 me-3"
-                           href="tro-giup.html">Trợ giúp</a>
-                    </li>
-
-                    </li>
-                </ul>
-            </div>
-            <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="">
-                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                </div>
-                <ul class="navbar-nav  justify-content-end">
-                    <!--           st         -->
-                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-body p-0" id=""
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-user me-sm-1"></i>
-                            <span class=" d-sm-inline d-none font-weight-bold text-sm"> User </span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4" >
-                            <li class="mb-2 font-weight-bold" style="text-align: center"><a href="#"> Đăng xuất</a></li>
-                        </ul>
-                        <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
-                            aria-labelledby="dropdownMenuButton">
-                            <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex py-1">
-                                        <div class="my-auto">
-                                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                <span class="font-weight-bold">Tin nhắn mới</span> từ Nguyên
-                                            </h6>
-                                            <p class="text-xs text-secondary mb-0 ">
-                                                <i class="fa fa-clock me-1"></i>
-                                                13 phút trước
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-
-
-                        </ul>
-                    </li>
-                    <!--             end       -->
-                    <li class="nav-item px-3 d-flex align-items-center">
-                        <!--                        <a href="javascript:;" class="nav-link text-body p-0">-->
-                        <!--                            <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>-->
-                        <!--                        </a>-->
-                    </li>
-
-                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-bell cursor-pointer"></i>
-                        </a>
-                        <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
-                            aria-labelledby="dropdownMenuButton">
-                            <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex py-1">
-                                        <div class="my-auto">
-                                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                <span class="font-weight-bold">Tin nhắn mới</span> từ Nguyên
-                                            </h6>
-                                            <p class="text-xs text-secondary mb-0 ">
-                                                <i class="fa fa-clock me-1"></i>
-                                                13 phút trước
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex py-1">
-                                        <div class="my-auto">
-                                            <img src="../assets/img/small-logos/logo-spotify.svg"
-                                                 class="avatar avatar-sm bg-gradient-dark  me-3 ">
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                <span class="font-weight-bold">Album mới</span> bởi Nhất
-                                            </h6>
-                                            <p class="text-xs text-secondary mb-0 ">
-                                                <i class="fa fa-clock me-1"></i>
-                                                1 Ngày trước
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex py-1">
-                                        <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                                            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
-                                                 xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                <title>credit-card</title>
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF"
-                                                       fill-rule="nonzero">
-                                                        <g transform="translate(1716.000000, 291.000000)">
-                                                            <g transform="translate(453.000000, 454.000000)">
-                                                                <path class="color-background"
-                                                                      d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
-                                                                      opacity="0.593633743"></path>
-                                                                <path class="color-background"
-                                                                      d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                Thanh toán thành công
-                                            </h6>
-                                            <p class="text-xs text-secondary mb-0 ">
-                                                <i class="fa fa-clock me-1"></i>
-                                                2 Ngày trước
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <jsp:include page="busi-header.jsp"></jsp:include>
     <!-- End Navbar -->
 
+    <div class="">
+        <div class="content">
 
+            <div class="module">
+                <div class="module-head">
+                    <h3>Đăng tin</h3>
+                </div>
+                <div class="module-body">
+                    <br/>
 
+                    <form class="form-horizontal row-fluid">
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Chức vụ</label>
+                            <div class="controls">
+                                <input type="text" id="basicinput" placeholder="Nhập chức vụ."
+                                       class="span8">
+                            </div>
+                        </div>
 
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Lĩnh vực</label>
+                            <div class="controls">
+                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
+                                    <option value="">Vui lòng chọn..</option>
+                                    <option value="Category 1">Trí tuệ nhân tạo</option>
+                                    <option value="Category 1">Công nghệ phần mềm</option>
+                                    <option value="Category 3">Mạng</option>
+                                    <option value="Category 4">Hệ thống thông tin</option>
+                                </select>
+                            </div>
+                        </div>
 
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Ngành nghề</label>
+                            <div class="controls">
+                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
+                                    <option value="">Vui lòng chọn..</option>
+                                    <option value="Category 1"> Lập trình</option>
+                                    <option value="Category 2"> Kiểm thử phần mềm</option>
+                                    <option value="Category 3"> Quản trị mạng</option>
+                                    <option value="Category 4"> Phân tích dữ liêệu</option>
+                                </select>
+                            </div>
+                        </div>
 
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Hình thức công việc</label>
+                            <div class="controls">
+                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
+                                    <option value="">Vui lòng chọn..</option>
+                                    <option value="Category 1">Toàn thời gian</option>
+                                    <option value="Category 2">Bán thời gian</option>
+                                    <option value="Category 3">Hợp đồng</option>
+                                    <option value="Category 4">Kỳ thực tập</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Địa điểm làm việc</label>
+                            <div class="controls">
+                                <input type="text" placeholder=""
+                                       class="span8">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Mức lương</label>
+                            <div class="controls">
+                                <div class="input-append">
+                                    <input type="text" placeholder="10.000.000 VND" class="span8">
+                                </div>
+                                <span class="help-inline">(Thỏa thuận : 0 VND)</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Số lượng tuyển</label>
+                            <div class="controls">
+                                <div class="input-prepend">
+                                    <input class="span8" type="text" placeholder="">
+                                    <span class="help-inline">
 
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" value="">
+                                                Nam
+                                            </label>
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" value="">
+                                                Nữ
+                                            </label>
+                                            <label class="checkbox inline">
+                                                <input type="checkbox" value="">
+                                                Không yêu cầu
+                                            </label>
+                                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Mô tả công việc</label>
+                            <div class="controls">
+                                <textarea class="span8a" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Yêu cầu</label>
+                            <div class="controls">
+                                <textarea class="span8a" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Thông tin công ty</label>
+                            <div class="controls">
+                                <textarea class="span8a" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Hình ảnh</label>
+                            <div class="controls">
+                                <input class="input-file" type="file" name="file_cv" id="file">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Hết hạn nộp hồ sơ</label>
+                            <div class="controls">
+                                <input type="date" name="date_cv" id="date">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <button type="submit" class="btn">Đăng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!--/.content-->
+    </div>
 </main>
-
 </body>
-
+<!--   Core JS Files   -->
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 </html>
-

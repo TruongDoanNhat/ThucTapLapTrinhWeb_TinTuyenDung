@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Admin
-  Date: 06/01/2023
-  Time: 8:16 SA
+  Date: 05/01/2023
+  Time: 10:52 CH
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,32 +11,34 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
-    <link rel="icon" type="image/png" href="assets/img/logo/logo.png">
+    <link rel="icon" type="image/png" href="business/assets/img/logo/logo.png">
+    <link type="text/css" href="css/theme.css" rel="stylesheet">
     <title>
-        Tài khoản
+        Cập nhật thông tin xác thực công ty
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-
-    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
-    <link rel="stylesheet" href="business/assets/css/style.css">
+    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/cap-nhat-thong-tin-xac-thuc.css">
+    <script src="business/assets/js/cap-nhat-thong-tin-xac-thuc.js"></script>
 </head>
-<body class="g-sidenav-show bg-gray-100">
+<body class="g-sidenav-show  bg-gray-100">
+<!--  start nav left -->
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
        id="sidenav-main">
     <!--    logo -->
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="busi-trang-chu.jsp">
-            <img src="assets/img/logo/logo.png">
+        <a class="navbar-brand m-0" href="busi-trang-chu.jsp" >
+            <img src="../assets/img/logo/logo.png" >
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -92,7 +94,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="busi-tin-tuyen-dung.jsp">
+                <a class="nav-link" href="busi-tin-tuyen-dung.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -118,7 +120,7 @@
                 <a class="nav-link  " href="busi-thong-bao-he-thong.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 
-                        <i class=" fa fa-bell cursor-pointer text-dark"></i>
+                        <i  class=" fa fa-bell cursor-pointer text-dark"></i>
 
                     </div>
                     <span class="nav-link-text ms-1">Thông báo hệ thống</span>
@@ -159,7 +161,7 @@
     <div class="sidenav-footer mx-3 ">
         <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
             <div class="full-background"
-                 style="background-image: url('../assets/img/curved-images/white-curved.jpg')"></div>
+                 style="background-image: url('assets/img/curved-images/white-curved.jpg')"></div>
             <div class="card-body text-start p-3 w-100">
                 <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
                     <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true"
@@ -168,7 +170,7 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="tro-giup-busi.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="tro-giup-busi.jsp"  class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>
@@ -176,141 +178,189 @@
            href="busi-cap-nhat-thong-tin-xac-thuc.jsp">Nâng cấp tài khoản</a>
     </div>
 </aside>
-<div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+<!--  end nav left -->
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <jsp:include page="busi-header.jsp"></jsp:include>
     <!-- End Navbar -->
 
-    <div class="container-fluid">
-        <div class="page-header min-height-300 border-radius-xl mt-4"
-             style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
-            <span class="mask bg-gradient-primary opacity-6"></span>
-        </div>
-        <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
-            <div class="row gx-4">
-                <div class="col-auto">
-                    <div class="avatar avatar-xl position-relative">
-                        <img src="business/assets/img/bruce-mars.jpg" alt="profile_image"
-                             class="w-100 border-radius-lg shadow-sm">
-                    </div>
-                </div>
-                <div class="col-auto my-auto">
-                    <div class="h-100">
-                        <h5 class="mb-1">
-                            Lê Hửu Phước
-                        </h5>
-                        <p class="mb-0 font-weight-bold text-sm">
-                            ID: 123 | 0258700668 | email@st.hcmuaf.edu.vn
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-                    <div class="nav-wrapper position-relative end-0">
-                        <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link mb-0 px-0 py-1 active " href="busi-doi-mat-khau.jsp">
-                                    <svg class="text-dark" width="10px" height="16px" viewBox="0 0 40 40" version="1.1"
-                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <title>settings</title>
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF"
-                                               fill-rule="nonzero">
-                                                <g transform="translate(1716.000000, 291.000000)">
-                                                    <g transform="translate(304.000000, 151.000000)">
-                                                        <polygon class="color-background" opacity="0.596981957"
-                                                                 points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667">
-                                                        </polygon>
-                                                        <path class="color-background"
-                                                              d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"
-                                                              opacity="0.596981957"></path>
-                                                        <path class="color-background"
-                                                              d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z">
-                                                        </path>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                    <span class="ms-1"> Đổi mật khẩu </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                            </li>
-                        </ul>
-                    </div>
+    <!--    làm ở đây -->
+    <div data-v-c4f347a8="" class="container-fluid py-4">
+        <div data-v-c4f347a8="" class="d-flex shadow-sm">
+            <div data-v-c4f347a8="">
+                <div data-v-61ae721f="" data-v-c4f347a8="" class="list-group rounded">
+                    <a data-v-61ae721f="" href="busi-doi-mat-khau.jsp"
+                       class="list-group-item list-group-item-action border-0 bg-none">
+                        <i data-v-61ae721f="" class="fa mr-2 fa-lock"></i> Đổi mật khẩu
+                    </a>
+                    <a data-v-61ae721f="" href="busi-cap-nhat-thong-tin-xac-thuc.jsp" aria-current="page"
+                       class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-none ">
+                        <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Thông tin cá nhân
+                    </a>
+                    <a data-v-61ae721f="" href="busi-cap-nhat-thong-tin-xac-thuc-cong-ty.jsp"
+                       class="list-group-item list-group-item-action border-0 bg-white">
+                        <i data-v-61ae721f="" class="fa mr-2 fa-building"></i> Thông tin công ty
+                    </a>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid py-4">
-        <div class="row my-4">
-            <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-                <div class="card">
-                    <div class="card-header pb-0">
-                        <div class="row">
-                            <div class="col-lg-6 col-7">
-                            </div>
-                            <div class="col-lg-6 col-5 my-auto text-end">
-                                <!--                                <div class="dropdown float-lg-end pe-4">-->
-                                <!--                                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown"-->
-                                <!--                                       aria-expanded="false">-->
-                                <!--                                        <i class="fa fa-ellipsis-v text-secondary"></i>-->
-                                <!--                                    </a>-->
-                                <!--                                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">-->
-                                <!--                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a>-->
-                                <!--                                        </li>-->
-                                <!--                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Another-->
-                                <!--                                            action</a></li>-->
-                                <!--                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else-->
-                                <!--                                            here</a></li>-->
-                                <!--                                    </ul>-->
-                                <!--                                </div>-->
-                            </div>
-                            <div><b> Tài khoản xác thực: </b> <span class="col-blue bold"> Cấp 1/5 </span></div>
-                            <div>
-                                <div>
-                    <span>
-                     <b> Nâng cấp tài khoản: </b>
-                    </span>
-                                    Để đạt
-                                    <span class="col-blue"> cấp 2/5</span>
-                                    , quý khách cần
-                                    <span class="col-blue"> xác thực số điện thoại </span>
+            <div data-v-c4f347a8="" class="bg-white w-100 rounded">
+                <!--               form -->
+                <form data-v-c4f347a8="">
+                    <div data-v-c4f347a8="" class="active">
+                        <div data-v-c4f347a8="" class="card-header bg-white font-weight-bold1 border-0 fs-16">
+                            <h5> Cập nhật thông tin công ty </h5>
+                        </div>
+
+                        <div data-v-c4f347a8="" class="card-body setting-form">
+                            <div data-v-c4f347a8="" class="row">
+                                <!--                                avt-->
+                                <div data-v-c4f347a8="" class="form-group col-md-6" >
+                                    <div data-v-c4f347a8="" class="d-flex align-items-center">
+                                        <label data-v-c4f347a8="" class="col-form-label mr-2"></label>
+                                        <div data-v-2a31697a="" data-v-c4f347a8="" class="mr-2  avatar"
+                                             style="width: 40px; height: 40px; flex: 0 0 40px;">
+                                            <img src="../admin/images/user.png">
+                                        </div>
+                                        <div data-v-c4f347a8="">
+                                            <div data-v-ea13fd1a="" data-v-c4f347a8="" class="file-upload mt-2 d-none1"
+                                                 type="file" name="avatar">
+                                                <div data-v-ea13fd1a="" class="mx-4">
+                                                    <span data-v-ea13fd1a="" class="text-muted">
+                                                        <span data-v-ea13fd1a="">Chọn hoặc kéo file vào đây</span>
+                                                    </span>
+                                                </div>
+                                                <input data-v-ea13fd1a="" id="avatar" type="file" accept="image/*">
+                                                <label data-v-ea13fd1a="" for="audio-file"
+                                                       class="btn btn-secondary text-primary btn-sm mt-2">
+                                                    <i data-v-ea13fd1a="" class="fas fa-upload"></i> Chọn file
+                                                </label>
+                                            </div>
+                                            <input data-v-c4f347a8="" type="text" name="avatar" class="d-none1">
+                                            <button data-v-c4f347a8="" type="button" class="btn min-width btn-dark" style="margin: 10px 50px;">
+                                                Đổi logo
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                    <span>
-                      <b> Quyền lợi: </b>
-                    </span>
-                                    Khi đạt
-                                    <span class="col-blue"> cấp 2/5, </span>
-                                    nhà tuyển dụng có 30 lượt tìm kiếm CV và 10 lượt xem CV từ công cụ tìm kiếm CV ứng
-                                    viên
+                                <!--                                avt end-->
+                                <div data-v-c4f347a8="" class="form-group col-md-6">
+                                    <label data-v-c4f347a8="">Email</label>
+                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
+                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
+                                            <input data-v-8c64d55c="" type="text"
+                                                   placeholder="Nhập email" autocomplete="true"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                                <button class=" btn bg-blue col-white" style="margin-top: 15px"> Cập nhật thông tin xác
-                                    thực
+                            <div data-v-c4f347a8="" class="row">
+                                <div data-v-c4f347a8="" class="form-group col-md-6">
+                                    <label data-v-c4f347a8="">Tên công ty</label>
+                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
+                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
+                                            <input data-v-8c64d55c="" id="ncSqdCYZxB" type="text"
+                                                   placeholder="Nhập tên công ty" autocomplete="true"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-v-c4f347a8="" class="form-group col-md-6">
+                                    <label data-v-c4f347a8="">Lĩnh vực hoạt động</label>
+                                    <select class="form-control cursor-pointer" >
+
+                                        <option>IT</option>
+                                        <option>Kế toán</option>
+                                        <option>Luật</option>
+                                        <option>Chứng khoáng</option>
+                                        <option>Xây dựng</option>
+                                        <option>Thời trang</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div data-v-c4f347a8="" class="row">
+                                <div data-v-c4f347a8="" class="form-group col-md-6">
+                                    <label data-v-c4f347a8="">Mã số thuế</label>
+                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
+                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
+                                            <input data-v-8c64d55c="" type="text"
+                                                   placeholder="Nhập mã số thuế" autocomplete="true"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-v-c4f347a8="" class="form-group col-md-6">
+                                    <label data-v-c4f347a8="">Website</label>
+                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
+                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
+                                            <input data-v-8c64d55c="" type="text"
+                                                   placeholder="http://" autocomplete="true"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-v-c4f347a8="" class="row">
+                                <div data-v-c4f347a8="" class="form-group col-md-6">
+                                    <label data-v-c4f347a8="">Địa chỉ</label>
+                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
+                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
+                                            <input data-v-8c64d55c="" type="text"
+                                                   placeholder="Nhập địa chỉ" autocomplete="true"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-v-c4f347a8="" class="form-group col-md-6">
+                                    <label data-v-c4f347a8="">Điện thoai</label>
+                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
+                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
+                                            <input data-v-8c64d55c="" type="text"
+                                                   placeholder="Nhập số điện thoại" autocomplete="true"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-v-c4f347a8="" class="row">
+                                <div data-v-c4f347a8="" class="form-group col-md-6">
+                                    <div data-v-c4f347a8="" class="d-flex justify-content-between">
+                                        <label data-v-c4f347a8="">Mô tả công ty</label>
+                                    </div>
+                                    <div data-v-55ff225c="" data-v-c4f347a8="" class="mask-input ">
+                                        <textarea class="form-control">
+
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div data-v-c4f347a8="" class="form-group mb-0"><a data-v-c4f347a8="" href="/app/dashboard"
+                                                                               class="btn min-width btn btn-secondary mr-2 btn-lg">Hủy</a>
+                                <button data-v-c4f347a8="" type="submit" class="btn min-width btn btn-primary btn-lg">
+                                    <!---->
+                                    Lưu
+
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body px-0 pb-2">
-                        <div class="table-responsive">
-
-                        </div>
-                    </div>
-                </div>
+                </form>
+                <!--                end form-->
             </div>
 
         </div>
+
     </div>
-</div>
+    <!--    end ne`-->
+</main>
 </body>
 <!--   Core JS Files   -->
-<script src="business/assets/js/core/popper.min.js"></script>
-<script src="business/assets/js/core/bootstrap.min.js"></script>
-<script src="business/assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="business/assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -320,9 +370,10 @@
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
 </script>
+
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
-
+<script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+<script src="business/assets/js/cap-nhat-thong-tin-xac-thuc.js"></script>
 </html>

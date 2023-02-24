@@ -14,15 +14,15 @@
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" type="text/css" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="business/assets/css/nucleo-icons.css" type="text/css" rel="stylesheet"/>
-    <link href="business/assets/css/nucleo-svg.css" type="text/css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-icons.css" type="text/css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" type="text/css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
 
-    <link href="business/assets/css/nucleo-svg.css" type="text/css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" type="text/css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link type="text/css" href="business/assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="business/assets/css/style.css">
-    <link rel="icon" type="image/png" href="assets/img/logo/logo.png">
+    <link type="text/css" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="../assets/img/logo/logo.png">
     <link type="text/css" href="business/assets/css/theme.css" rel="stylesheet">
 </head>
 <body class="g-sidenav-show  bg-gray-100">
@@ -34,7 +34,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="busi-trang-chu.jsp">
-            <img src="assets/img/logo/logo.png">
+            <img src="../assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -157,7 +157,7 @@
     <div class="sidenav-footer mx-3 ">
         <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
             <div class="full-background"
-                 style="background-image: url('business/assets/img/curved-images/white-curved.jpg')"></div>
+                 style="background-image: url('assets/img/curved-images/white-curved.jpg')"></div>
             <div class="card-body text-start p-3 w-100">
                 <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
                     <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true"
@@ -270,7 +270,7 @@
             <div class="col-lg-5">
                 <div class="card h-100 p-3">
                     <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100"
-                         style="background-image: url('business/assets/img/ivancik.jpg');">
+                         style="background-image: url('assets/img/ivancik.jpg');">
                         <span class="mask bg-gradient-dark"></span>
                         <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
                             <!--                            <h5 class="text-white font-weight-bolder mb-4 pt-2">Tuyển dụng cuối năm chẳng cần lăn tăn về-->
@@ -343,11 +343,11 @@
 </main>
 </body>
 <!--   Core JS Files   -->
-<script src="business/assets/js/core/popper.min.js"></script>
-<script src="business/assets/js/core/bootstrap.min.js"></script>
-<script src="business/assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="business/assets/js/plugins/smooth-scrollbar.min.js"></script>
-<script src="business/assets/js/plugins/chartjs.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="assets/js/plugins/chartjs.min.js"></script>
 <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
@@ -530,6 +530,6 @@
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
-<script src="https://kit.fontawesome.com/42d5adcbca.js"  type="text/javascript" crossorigin="anonymous"></script>
+<script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+<script src="https://kit.fontawesome.com/42d5adcbca.js" type="text/javascript" crossorigin="anonymous"></script>
 </html>

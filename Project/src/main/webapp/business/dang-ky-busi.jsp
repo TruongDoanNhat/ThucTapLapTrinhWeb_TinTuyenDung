@@ -15,7 +15,7 @@
     <%--    <link rel="stylesheet" type="text/css" href="business/assets/css/sigin-business.css">--%>
 </head>
 <style>
-    <%@include file="business/assets/css/sigin-business.css"%>
+    <%@include file="assets/css/sigin-business.css"%>
 </style>
 <body>
 <div id="__nuxt">
@@ -75,7 +75,7 @@
                                 <%
                                     if (message != null) {
                                 %>
-                                <jsp:include page="error.jsp"></jsp:include>
+                                <jsp:include page="../error.jsp"></jsp:include>
                                 <%
                                     }
                                 %>
