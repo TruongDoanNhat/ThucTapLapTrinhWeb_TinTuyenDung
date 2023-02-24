@@ -34,9 +34,9 @@
                                         <li><a href="/Post">Việc làm </a>
                                             <ul class="submenu">
                                                 <li><a href="/Post">Tìm việc làm </a></li>
-                                                <li><a href="candi-viec-lam-da-ung-tuyen.jsp">Việc làm đã ứng tuyển</a>
+                                                <li><a href="../candidate/candi-viec-lam-da-ung-tuyen.jsp">Việc làm đã ứng tuyển</a>
                                                 </li>
-                                                <li><a href="candi-viec-lam-da-luu.jsp">Việc làm đã lưu</a></li>
+                                                <li><a href="../candidate/candi-viec-lam-da-luu.jsp">Việc làm đã lưu</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="Recruitment">Ứng tuyển</a></li>
@@ -63,7 +63,7 @@
                                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
 
                                     <c:if test="${sessionScope.account != null}">
-                                        <a href="tai-khoan-candi.jsp">
+                                        <a href="../candidate/candi-tai-khoan.jsp">
                                             <i class="fa fa-user"></i>
                                             <span> Xin chào ${sessionScope.account.name}</span>
                                         </a>

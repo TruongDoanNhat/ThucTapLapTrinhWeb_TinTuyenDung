@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../assets/css/main.css" media="all">
 </head>
 <body>
-<jsp:include page="header-candi.jsp"></jsp:include>
+<jsp:include page="../visitor/header-candi.jsp"></jsp:include>
 <!-- Hero Area Start-->
 <div class="slider-area ">
   <div class="single-slider section-overly slider-height2 d-flex align-items-center"
@@ -106,7 +106,7 @@
   </div>
 </div>
 <!-- End Align Area -->
-<jsp:include page="footter-candi.jsp"></jsp:include>
+<jsp:include page="../visitor/footter-candi.jsp"></jsp:include>
 </body>
 <!-- JS here -->
 

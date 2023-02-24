@@ -43,7 +43,7 @@
 <body>
 
 <!--================Blog Area =================-->
-<jsp:include page="header-candi.jsp"></jsp:include>
+<jsp:include page="../visitor/header-candi.jsp"></jsp:include>
 
 <div id="main">
     <div id="history-apply">
@@ -249,7 +249,7 @@
 </div>
 </div>
 <!--================Blog Area =================-->
-<jsp:include page="footter-candi.jsp"></jsp:include>
+<jsp:include page="../visitor/footter-candi.jsp"></jsp:include>
 </body>
 <!-- JS here -->
 

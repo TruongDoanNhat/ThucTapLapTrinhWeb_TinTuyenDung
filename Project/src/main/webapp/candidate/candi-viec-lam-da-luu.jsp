@@ -52,7 +52,7 @@
     </div>
 </div>
 <!-- Preloader Start -->
-<jsp:include page="header-candi.jsp"></jsp:include>
+<jsp:include page="../visitor/header-candi.jsp"></jsp:include>
 <!--================Blog Area =================-->
 <div id="main">
     <div class="container" id="box-save-job">
@@ -201,7 +201,7 @@
     })
 </script> </div>
 <!--================Blog Area =================-->
-<jsp:include page="footter-candi.jsp"></jsp:include>
+<jsp:include page="../visitor/footter-candi.jsp"></jsp:include>
 </body>
 <!-- JS here -->
 

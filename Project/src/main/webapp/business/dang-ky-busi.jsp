@@ -75,7 +75,7 @@
                                 <%
                                     if (message != null) {
                                 %>
-                                <jsp:include page="../candidate/error.jsp"></jsp:include>
+                                <jsp:include page="../visitor/error.jsp"></jsp:include>
                                 <%
                                     }
                                 %>

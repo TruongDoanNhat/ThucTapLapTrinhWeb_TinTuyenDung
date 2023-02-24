@@ -223,7 +223,7 @@
                     <div class="cv-caption text-center">
                         <span><b class="tittle"> NỔI BẬT</b></span>
                         <p class="pera2">Nộp CV để chớp lấy cơ hội việc làm mơ ước</p>
-                        <a href="candi-ung-tuyen.jsp" class="border-btn2 border-btn4">Tải CV của bạn</a>
+                        <a href="../candidate/candi-ung-tuyen.jsp" class="border-btn2 border-btn4">Tải CV của bạn</a>
                     </div>
                 </div>
             </div>
