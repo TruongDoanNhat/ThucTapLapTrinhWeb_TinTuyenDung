@@ -32,19 +32,19 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/themify-icons.css">
 </head>
-<body>
-<div id="preloader-active">
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-                <img src="../assets/img/logo/logo.png" alt="">
-            </div>
-        </div>
-    </div>
-</div>
-<jsp:include page="header-candi.jsp"></jsp:include>
 
+<body>
+<%--<div id="preloader-active">--%>
+<%--    <div class="preloader d-flex align-items-center justify-content-center">--%>
+<%--        <div class="preloader-inner position-relative">--%>
+<%--            <div class="preloader-circle"></div>--%>
+<%--            <div class="preloader-img pere-text">--%>
+<%--                <img src="../assets/img/logo/logo.png" alt="">--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<jsp:include page="header-candi.jsp"></jsp:include>
 <main>
     <!-- slider Area Start-->
     <div class="slider-area ">
@@ -67,18 +67,17 @@
                                     <input type="text" placeholder="Tìm kiếm việc làm, công ty">
                                 </div>
                                 <div class="select-form">
-                                    <div class="select-itms">
-                                        <select name="select" id="select1">
-                                            <option value="">Hồ Chí Minh</option>
-                                            <option value="">Hà Nội</option>
-                                            <option value="">Đà Nẵng</option>
-                                            <option value="">Cần Thơ</option>
-                                            <option value="">Vũng Tàu</option>
-                                            <option value="">Quảng Nam</option>
-                                            <option value="">Hải Phòng</option>
-                                            <option value="">Long An</option>
-                                        </select>
-                                    </div>
+                                    <select name="select" id="select1" style=" margin-top: 20px; text-transform: none;
+                                     height: 30px;width: 99%;  border: none; appearance: none;">
+                                        <option value="">Hồ Chí Minh</option>
+                                        <option value="">Hà Nội</option>
+                                        <option value="">Đà Nẵng</option>
+                                        <option value="">Cần Thơ</option>
+                                        <option value="">Vũng Tàu</option>
+                                        <option value="">Quảng Nam</option>
+                                        <option value="">Hải Phòng</option>
+                                        <option value="">Long An</option>
+                                    </select>
                                 </div>
                                 <div class="search-form">
                                     <a href="#">Tìm việc</a>
@@ -92,6 +91,7 @@
     </div>
     <!-- slider Area End-->
     <!-- Our Services Start -->
+<%--    lỗi từ 94 - 218 --%>
     <div class="our-services section-pad-t30">
         <div class="container">
             <!-- Section Tittle -->

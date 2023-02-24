@@ -32,7 +32,7 @@ public class AccountServlet extends HttpServlet {
             DAOAccount d = new DAOAccount();
             d.updateAccountCandi(account.getUsername(), account.getName(), account.getPhone(), account.getEmail(), account.getGen());
         }else{
-            request.getRequestDispatcher("dang-nhap-candi.jsp").forward(request, response);
+            request.getRequestDispatcher("dang-nhap.jsp").forward(request, response);
         }
 
     }

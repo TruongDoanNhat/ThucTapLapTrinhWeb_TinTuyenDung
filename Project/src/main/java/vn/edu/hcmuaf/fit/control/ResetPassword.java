@@ -32,7 +32,7 @@ public class ResetPassword extends HttpServlet {
             String subject = " Reset password ";
             String content = "Hi " + name + ",  We provide your password again: " + password;
             MailService.sendMail(email, subject, content);
-            UtilControl.send(role, "dang-nhap-Admmin.jsp", "dang-nhap-candi.jsp", "busi-dang-nhap.jsp", response);
+            UtilControl.send(role, "dang-nhap-Admmin.jsp", "dang-nhap.jsp", "busi-dang-nhap.jsp", response);
         }
     }
 }

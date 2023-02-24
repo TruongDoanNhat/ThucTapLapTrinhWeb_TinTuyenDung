@@ -74,7 +74,7 @@
                 </div>
                 <div class=" đfffb">
                     <div class="input-form">
-                        <p>Bạn đã có tài khoản? <a class="in" href="dang-nhap-candi.jsp">Đăng nhập ngay</a></p>
+                        <p>Bạn đã có tài khoản? <a class="in" href="dang-nhap.jsp">Đăng nhập ngay</a></p>
                     </div>
                 </div>
             </form>

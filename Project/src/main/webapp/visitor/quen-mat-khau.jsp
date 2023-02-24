@@ -23,7 +23,7 @@
     <div class="noi-dung">
         <!-- Logo -->
         <div class="logo-log">
-            <a href="dang-nhap-candi.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
+            <a href="dang-nhap.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
         </div>
         <!-- Form -->
         <div class="form">
@@ -69,7 +69,7 @@
                                     bảo mật</a> của chúng tôi</p>
                         </div>
                         <div>
-                            <div class="left"><a class="in" href="dang-nhap-candi.jsp">Quay lại đăng nhập</a></div>
+                            <div class="left"><a class="in" href="dang-nhap.jsp">Quay lại đăng nhập</a></div>
                             <div class="right"><a class="in" href="dang-ky-candi.jsp">Đăng ký tài khoản mới</a></div>
                         </div>
                     </div>

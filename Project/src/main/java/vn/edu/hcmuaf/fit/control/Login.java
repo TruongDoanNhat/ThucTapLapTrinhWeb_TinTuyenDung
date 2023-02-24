@@ -31,24 +31,24 @@ public class Login extends HttpServlet {
         if (action != null) {
             switch (action) {
                 case "login-candi":
-                    request.getRequestDispatcher("dang-nhap-candi.jsp").forward(request, response);
+                    request.getRequestDispatcher("/visitor/dang-nhap.jsp").forward(request, response);
                     break;
                 case "login-busi":
-                    request.getRequestDispatcher("busi-dang-nhap.jsp").forward(request, response);
+                    request.getRequestDispatcher("/visitor/dang-nhap.jsp").forward(request, response);
                     break;
                 case "login-admin":
-                    request.getRequestDispatcher("/admin/dang-ky-Admin.jsp").forward(request, response);
+                    request.getRequestDispatcher("/visitor/dang-nhap.jsp").forward(request, response);
                     break;
             }
         } else {
             if (checkAccount) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("account", (Account) d.getAccount());
-                UtilControl.send(d.getAccount().getRole(), "Admin-trang-chu.jsp", "trang-chu-candi.jsp", "busi-trang-chu.jsp", response);
+                UtilControl.send(d.getAccount().getRole(), "/admin/Admin-trang-chu.jsp", "/visitor/trang-chu-candi.jsp", "/business/busi-trang-chu.jsp", response);
             } else {
                 request.setAttribute("message", message);
-//                UtilControl.forward(role, "Admin-dang-nhap.jsp", "dang-nhap-candi.jsp", "busi-dang-nhap.jsp", request, response);
-//                UtilControl.forward("#",request, response);
+//                UtilControl.forward(role, "Admin-dang-nhap.jsp", "dang-nhap.jsp", "busi-dang-nhap.jsp", request, response);
+                UtilControl.forward("/visitor/dang-nhap.jsp",request, response);
             }
         }
     }
