@@ -48,15 +48,14 @@ public class DAOAccount {
         return listAccount;
     }
 
-    public boolean checkAccount(String user_name, String password, int role) {
-        String query = "select * from account where  user_name = ? and password = ? and role = ?";
+    public boolean checkAccount(String user_name, String password) {
+        String query = "select * from account where  user_name = ? and password = ?";
         List<Account> listAccount = JDBIConnector.get().withHandle(handle -> handle.createQuery(query)
                 .bind(0, user_name)
                 .bind(1, password)
-                .bind(2, role)
                 .mapToBean(Account.class).list());
         for (Account account : listAccount) {
-            if (account.getUsername().equals(user_name) && account.getPassword().equals(password) && account.getRole() == role) {
+            if (account.getUsername().equals(user_name) && account.getPassword().equals(password)) {
                 this.account = account;
                 return true;
             }

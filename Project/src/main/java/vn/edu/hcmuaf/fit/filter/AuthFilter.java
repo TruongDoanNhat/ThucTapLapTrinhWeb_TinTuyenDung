@@ -26,7 +26,8 @@ public class AuthFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String url = request.getRequestURI();
         Account account = UtilSession.getInstance().getValue(request, "account");
-        if (url.startsWith("/Admin")) {
+        if (url.startsWith("/admin")) {
+            System.out.println("ok1");
             if (account != null) {
                 if (account.getRole() == 0) {
                     chain.doFilter(servletRequest, servletResponse);
@@ -57,6 +58,8 @@ public class AuthFilter implements Filter {
                 response.sendRedirect(request.getContextPath() + "/Login?action=login-candi");
             }
         } else {
+            System.out.println(url.toString());
+            System.out.println("ok2");
             chain.doFilter(servletRequest, servletResponse);
 
         }
