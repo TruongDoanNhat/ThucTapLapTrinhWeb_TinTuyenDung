@@ -21,7 +21,7 @@
                     <div class="col-lg-3 col-md-2 padding-left">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="trang-chu-candi.jsp"><img src="assets/img/logo/logo.png" alt=""></a>
+                            <a href="trang-chu-candi.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">

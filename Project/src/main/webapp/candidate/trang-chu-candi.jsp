@@ -1,5 +1,16 @@
-<!Doctype html>
-<html class="no-js" lang="zxx" xmlns:jsp="http://java.sun.com/JSP/Page">
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %><%--
+  Created by IntelliJ IDEA.
+  User: DELL
+  Date: 31/12/2022
+  Time: 4:26 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,21 +20,19 @@
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/flaticon.css">
-    <link rel="stylesheet" href="../assets/css/price_rangs.css">
-    <link rel="stylesheet" href="../assets/css/slicknav.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/price_rangs.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/slicknav.css">
     <!--    <link rel="stylesheet" href="../assets/css/animate.min.css">-->
-    <link rel="stylesheet" href="../assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="../assets/css/slick.css">
-    <link rel="stylesheet" href="../assets/css/nice-select.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/themify-icons.css">
 </head>
-
 <body>
-<!-- Preloader Start -->
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-inner position-relative">
@@ -34,87 +43,26 @@
         </div>
     </div>
 </div>
-<!-- Preloader Start -->
-<header>
-    <!-- Header Start -->
-    <div class="header-area header-transparrent">
-        <div class="headder-top header-sticky">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-2 padding-left">
-                        <!-- Logo -->
-                        <div class="logo">
-                            <a href="trang-chu.html"><img src="../assets/img/logo/logo.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-9">
-                        <div class="menu-wrapper">
-                            <!-- Main-menu -->
-                            <div class="main-menu">
-                                <nav class="d-none d-lg-block">
-                                    <ul id="navigation">
-                                        <li><a href="trang-chu.html">Trang chủ</a></li>
-                                        <li><a href="danh-sach-viec-lam.html">Việc làm </a>
-                                            <ul class="submenu">
-                                                <li><a href="danh-sach-viec-lam.html">Tìm việc làm </a></li>
-                                                <li><a href="viec-lam-da-ung-tuyen.html">Việc làm đã ứng tuyển</a></li>
-                                                <li><a href="viec-lam-da-luu.html">Việc làm đã lưu</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="ung-tuyen.html">Ứng tuyển</a></li>
-                                        <li><a href="danh-sach-cong-ty.html">Công ty</a>
-                                            <ul class="submenu">
-                                                <li><a href="danh-sach-cong-ty.html">Danh sách công ty</a></li>
-                                                <li><a href="danh-sach-top-cong-ty.html">Top công ty</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="tin-tuc.html">Trang</a>
-                                            <ul class="submenu">
-                                                <li><a href="tin-tuc.html">Tin tức</a></li>
-                                                <li><a href="lien-he.html">Liên hệ</a></li>
-                                                <li><a href="ve-chung-toi.html">Về Chúng tôi</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <!-- Header-btn -->
-                            <div class="header-btn d-none f-right d-lg-block">
-                                <a href="dang-ky.html" class="btn head-btn2">Đăng kí</a>
-                                <a href="dang-nhap.html" class="btn head-btn2">Đăng nhập</a>
-                                <a href="../bussiness/pages/dang-nhap.html" class="btn head-btn1">Nhà tuyển dụng</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Mobile Menu -->
-                    <div class="col-12">
-                        <div class="mobile_menu d-block d-lg-none"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
-</header>
-<main>
+<jsp:include page="header-candi.jsp"></jsp:include>
 
+<main>
     <!-- slider Area Start-->
     <div class="slider-area ">
         <!-- Mobile Menu -->
         <div class="slider-active">
             <div class="single-slider slider-height d-flex align-items-center"
-                 data-background="../assets/img/hero/h1_hero.jpg">
+                 data-background="assets/img/hero/h3_hero.jpg">
                 <div class="container">
                     <div class="row">
-                        <div class="hero__caption">
-                            <h1>Tìm kiếm việc làm</h1>
+                        <div class="hero__caption" style="padding-left: 270px; ">
+                            <h1 style="margin-bottom: 100px">Topvieclam.com</h1>
                         </div>
                     </div>
                     <!-- Search Box -->
-                    <div class="row">
+                    <div class="row" style=" padding-bottom: 200px; padding-left: 140px;">
                         <div class="col-xl-8">
                             <!-- form -->
-                            <form action="#" class="search-box">
+                            <form action="Post" method="post" class="search-box">
                                 <div class="input-form">
                                     <input type="text" placeholder="Tìm kiếm việc làm, công ty">
                                 </div>
@@ -156,101 +104,111 @@
                 </div>
             </div>
             <div class="row d-flex">
+
+                <% DAOPost dp = new DAOPost();
+//                    ArrayList<Category> categoryList = (ArrayList<Category>) request.getAttribute("categoryList");
+                    for (Category c : dp.getCategoryAll()) {
+                %>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
-                            <span class="flaticon-tour"></span>
+                            <span class="flaticon-cms "></span>
                         </div>
-                        <div class="services-cap">
-                            <h5><a href="danh-sach-viec-lam.html">Nhân sự</a></h5>
-                            <span>(263)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-cms"></span>
-                        </div>
-                        <div class="services-cap">
-                            <h5><a href="danh-sach-viec-lam.html">IT phần mềm</a></h5>
-                            <span>(525)</span>
+                        <div class="<%=c.getCategoryID()%>">
+                            <h5>
+                                <a href="/Category?action=<%=c.getCategoryID()%>"><%=c.getName()%>
+                                </a>
+                            </h5>
+                            <span>(<%=dp.getPostofCategoryByID(c.getCategoryID())%>)</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-report"></span>
-                        </div>
-                        <div class="services-cap">
-                            <h5><a href="danh-sach-viec-lam.html">Kế toán / kiểm toán</a></h5>
-                            <span>(658)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-app "></span>
-                        </div>
-                        <div class="services-cap">
-                            <h5><a href="danh-sach-viec-lam.html"></a> Viễn thông </h5>
-                            <span>(336)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-helmet"></span>
-                        </div>
-                        <div class="services-cap">
-                            <h5><a href="danh-sach-viec-lam.html">Cơ khí</a></h5>
-                            <span>(123)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-high-tech"></span>
-                        </div>
-                        <div class="services-cap">
-                            <h5><a href="danh-sach-viec-lam.html">Bảo trì / Sửa chữa</a></h5>
-                            <span>(147)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-real-estate"></span>
-                        </div>
-                        <div class="services-cap">
-                            <h5><a href="danh-sach-viec-lam.html">Xây dựng</a></h5>
-                            <span>(75)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-content"></span>
-                        </div>
-                        <div class="services-cap">
-                            <h5><a href="danh-sach-viec-lam.html">Luật</a></h5>
-                            <span>(95)</span>
-                        </div>
-                    </div>
-                </div>
+                <% }%>
+                <%--                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">--%>
+                <%--                    <div class="single-services text-center mb-30">--%>
+                <%--                        <div class="services-ion">--%>
+                <%--                            <span class="flaticon-cms"></span>--%>
+                <%--                        </div>--%>
+                <%--                        <div class="services-cap">--%>
+                <%--                            <h5><a href="danh-sach-viec-lam.html">IT phần mềm</a></h5>--%>
+                <%--                            <span>(525)</span>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+                <%--                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">--%>
+                <%--                    <div class="single-services text-center mb-30">--%>
+                <%--                        <div class="services-ion">--%>
+                <%--                            <span class="flaticon-report"></span>--%>
+                <%--                        </div>--%>
+                <%--                        <div class="services-cap">--%>
+                <%--                            <h5><a href="danh-sach-viec-lam.html">Kế toán / kiểm toán</a></h5>--%>
+                <%--                            <span>(658)</span>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+                <%--                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">--%>
+                <%--                    <div class="single-services text-center mb-30">--%>
+                <%--                        <div class="services-ion">--%>
+                <%--                            <span class="flaticon-app "></span>--%>
+                <%--                        </div>--%>
+                <%--                        <div class="services-cap">--%>
+                <%--                            <h5><a href="danh-sach-viec-lam.html"></a> Viễn thông </h5>--%>
+                <%--                            <span>(336)</span>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+                <%--                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">--%>
+                <%--                    <div class="single-services text-center mb-30">--%>
+                <%--                        <div class="services-ion">--%>
+                <%--                            <span class="flaticon-helmet"></span>--%>
+                <%--                        </div>--%>
+                <%--                        <div class="services-cap">--%>
+                <%--                            <h5><a href="danh-sach-viec-lam.html">Cơ khí</a></h5>--%>
+                <%--                            <span>(123)</span>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+                <%--                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">--%>
+                <%--                    <div class="single-services text-center mb-30">--%>
+                <%--                        <div class="services-ion">--%>
+                <%--                            <span class="flaticon-high-tech"></span>--%>
+                <%--                        </div>--%>
+                <%--                        <div class="services-cap">--%>
+                <%--                            <h5><a href="danh-sach-viec-lam.html">Bảo trì / Sửa chữa</a></h5>--%>
+                <%--                            <span>(147)</span>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+                <%--                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">--%>
+                <%--                    <div class="single-services text-center mb-30">--%>
+                <%--                        <div class="services-ion">--%>
+                <%--                            <span class="flaticon-real-estate"></span>--%>
+                <%--                        </div>--%>
+                <%--                        <div class="services-cap">--%>
+                <%--                            <h5><a href="danh-sach-viec-lam.html">Xây dựng</a></h5>--%>
+                <%--                            <span>(75)</span>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+                <%--                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">--%>
+                <%--                    <div class="single-services text-center mb-30">--%>
+                <%--                        <div class="services-ion">--%>
+                <%--                            <span class="flaticon-content"></span>--%>
+                <%--                        </div>--%>
+                <%--                        <div class="services-cap">--%>
+                <%--                            <h5><a href="danh-sach-viec-lam.html">Luật</a></h5>--%>
+                <%--                            <span>(95)</span>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+
             </div>
             <!-- More Btn -->
             <!-- Section Button -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="browse-btn2 text-center mt-50">
-                        <a href="danh-sach-viec-lam.html" class="border-btn2">Xem thêm</a>
+                        <a href="/Post" class="border-btn2">Xem thêm</a>
                     </div>
                 </div>
             </div>
@@ -258,14 +216,14 @@
     </div>
     <!-- Our Services End -->
     <!-- Online CV Area Start -->
-    <div class="online-cv cv-bg section-overly pt-90 pb-120" data-background="../assets/img/gallery/cv_bg.jpg">
+    <div class="online-cv cv-bg section-overly pt-90 pb-120" data-background="assets/img/gallery/cv_bg.jpg">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-10">
                     <div class="cv-caption text-center">
                         <span><b class="tittle"> NỔI BẬT</b></span>
                         <p class="pera2">Nộp CV để chớp lấy cơ hội việc làm mơ ước</p>
-                        <a href="ung-tuyen.html" class="border-btn2 border-btn4">Tải CV của bạn</a>
+                        <a href="candi-ung-tuyen.jsp" class="border-btn2 border-btn4">Tải CV của bạn</a>
                     </div>
                 </div>
             </div>
@@ -378,7 +336,7 @@
     </section>
     <!-- Featured_job_end -->
     <!-- How  Apply Process Start-->
-    <div class="apply-process-area apply-bg pt-150 pb-150" data-background="../assets/img/gallery/how-applybg.png">
+    <div class="apply-process-area apply-bg pt-150 pb-150" data-background="assets/img/gallery/how-applybg.png">
         <div class="container">
             <!-- Section Tittle -->
             <div class="row">
@@ -505,19 +463,27 @@
                         </div>
                         <div class="support-caption">
                             <p class="pera-top">
-                                Kết nối đúng người đúng việc là một bài toán rất khó ở Việt Nam, là thách thức của bất
-                                kỳ nền tảng tuyển dụng nào. Với năng lực lõi là công nghệ, đặc biệt là trí tuệ nhân tạo
-                                (AI), sứ mệnh của TopCV đặt ra cho mình là thay đổi thị trường tuyển dụng - nhân sự ngày
+                                Kết nối đúng người đúng việc là một bài toán rất khó ở Việt Nam, là thách thức của
+                                bất
+                                kỳ nền tảng tuyển dụng nào. Với năng lực lõi là công nghệ, đặc biệt là trí tuệ nhân
+                                tạo
+                                (AI), sứ mệnh của TopCV đặt ra cho mình là thay đổi thị trường tuyển dụng - nhân sự
+                                ngày
                                 một hiệu quả hơn.</p>
-                            <p>Bằng công nghệ, TopCV mang đến các giải pháp toàn diện giúp doanh nghiệp giải quyết đồng
-                                thời các bài toán xoay quanh vấn đề tuyển dụng, từ việc quảng bá thương hiệu, xây dựng
-                                quy trình, đăng tin tuyển dụng, tìm kiếm ứng viên, sàng lọc cho đến đánh giá ứng viên và
+                            <p>Bằng công nghệ, TopCV mang đến các giải pháp toàn diện giúp doanh nghiệp giải quyết
+                                đồng
+                                thời các bài toán xoay quanh vấn đề tuyển dụng, từ việc quảng bá thương hiệu, xây
+                                dựng
+                                quy trình, đăng tin tuyển dụng, tìm kiếm ứng viên, sàng lọc cho đến đánh giá ứng
+                                viên và
                                 đo lường hiệu quả.
 
-                                Mỗi ngày, chúng tôi kết nối hàng nghìn ứng viên tiềm năng với các doanh nghiệp phù hợp,
-                                đồng hành cùng hơn 110.000 doanh nghiệp tuyển dụng hiệu quả, từ các tập đoàn đa quốc gia
+                                Mỗi ngày, chúng tôi kết nối hàng nghìn ứng viên tiềm năng với các doanh nghiệp phù
+                                hợp,
+                                đồng hành cùng hơn 110.000 doanh nghiệp tuyển dụng hiệu quả, từ các tập đoàn đa quốc
+                                gia
                                 đến các công ty khởi nghiệp trẻ.</p>
-                            <a href="../bussiness/pages/dang-nhap.html  " class="btn post-btn">Đăng tuyển</a>
+                            <a href="busi-dang-nhap.jsp" class="btn post-btn">Đăng tuyển</a>
                         </div>
                     </div>
                 </div>
@@ -551,7 +517,8 @@
                     <div class="home-blog-single mb-30">
                         <div class="blog-img-cap">
                             <div class="blog-img">
-                                <a href="tin-tuc-chi-tiet.html"> <img src="../assets/img/blog/home-blog1.jpg"> </a>
+                                <a href="tin-tuc-chi-tiet-candi.jsp"> <img src="../assets/img/blog/home-blog1.jpg">
+                                </a>
                                 <!-- Blog date -->
                                 <div class="blog-date text-center">
                                     <span>24</span>
@@ -560,8 +527,10 @@
                             </div>
                             <div class="blog-cap">
                                 <p>| Tin nóng</p>
-                                <h3><a href="tin-tuc-chi-tiet.html">Hệ thống thông tin phát triển vượt bậc...</a></h3>
-                                <a href="tin-tuc-chi-tiet.html" class="more-btn">Xem thêm »</a>
+                                <h3><a href="tin-tuc-chi-tiet-candi.jsp">Hệ thống thông tin phát triển vượt
+                                    bậc...</a>
+                                </h3>
+                                <a href="tin-tuc-candi.jsp" class="more-btn">Xem thêm »</a>
                             </div>
                         </div>
                     </div>
@@ -570,8 +539,8 @@
                     <div class="home-blog-single mb-30">
                         <div class="blog-img-cap">
                             <div class="blog-img">
-                                <a href="tin-tuc-chi-tiet.html"> <img src="../assets/img/blog/home-blog2.jpg"
-                                                                      alt=""></a>
+                                <a href="tin-tuc-chi-tiet-candi.jsp"> <img src="../assets/img/blog/home-blog2.jpg"
+                                                                           alt=""></a>
                                 <!-- Blog date -->
                                 <div class="blog-date text-center">
                                     <span>24</span>
@@ -580,8 +549,10 @@
                             </div>
                             <div class="blog-cap">
                                 <p>| Tin mới</p>
-                                <h3><a href="tin-tuc-chi-tiet.html">Trên con đường thành công không có dấu ...</a></h3>
-                                <a href="tin-tuc-chi-tiet.html" class="more-btn">Xem thêm »</a>
+                                <h3><a href="tin-tuc-chi-tiet-candi.jsp">Trên con đường thành công không có dấu
+                                    ...</a>
+                                </h3>
+                                <a href="tin-tuc-chi-tiet-candi.jsp" class="more-btn">Xem thêm »</a>
                             </div>
                         </div>
                     </div>
@@ -592,108 +563,8 @@
     <!-- Blog Area End -->
 
 </main>
-<footer>
-    <!-- Footer Start-->
-    <div class="footer-area footer-bg padding">
-        <div class="container">
-            <!-- logo -->
-            <div class="foot-logo">
-                <a href="trang-chu.html"><img src="../assets//img/logo/logo2_footer.png" alt=""></a>
-            </div>
-            <div class="row d-flex justify-content-between">
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 padding-left">
-                    <div class="single-footer-caption mb-50">
-                        <div class="footer-tittle">
-                            <h4>Về TopVieclam</h4>
-                            <ul>
-                                <li><a href="ve-chung-toi.html">Giới thiệu</a></li>
-                                <li><a href="tin-tuc.html">Góc báo chí</a></li>
-                                <li><a href="lien-he.html">Liên hệ</a></li>
-                                <li><a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a></li>
-                                <li><a href="dieu-khoang-dich-vu.html">Điều khoản dịch vụ</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-4 col-sm-5">
-                    <div class="single-footer-caption mb-50">
-                        <div class="footer-tittle">
-                            <h4>Thông tin liên hệ</h4>
-                            <ul>
-                                <li>
-                                    <p>Địa chỉ: Đại học Nông Lâm, khu phố 6, phường Linh Trung, tp Thủ Đức. </p>
-                                </li>
-                                <li><p>Điện thoại: 19009090 </p></li>
-                                <li><a href="#">Email: mssv@hcmuaf.edu.vn </a></li>
-                            </ul>
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="col-xl-3  col-md-4 col-sm-5">
-                    <div class="single-footer-caption mb-50">
-                        <div class="footer-tittle">
-                            <h4>Việc làm theo khu vực</h4>
-                            <ul>
-                                <li><a href="#">Hồ Chí Minh</a></li>
-                                <li><a href="#">Hà Nội</a></li>
-                                <li><a href="#">Hải Phòng</a></li>
-                                <li><a href="#">Đà Nẵng</a></li>
-                                <li><a href="#">Cần Thơ</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3  col-md-4 col-sm-5">
-                    <div class="single-footer-caption mb-50">
-                        <div class="footer-tittle">
-                            <h4>Việc làm</h4>
-                            <!-- Form -->
-                            <ul>
-                                <li><a href="#">Lập trình web</a></li>
-                                <li><a href="#">Trí tuệ nhân tạo</a></li>
-                                <li><a href="#">An ninh mạng</a></li>
-                                <li><a href="#">Hệ thống thông tin</a></li>
-                                <li><a href="#">Công nghệ phần mềm</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <!-- footer-bottom area -->
-    <div class="footer-bottom-area footer-bg">
-        <div class="container">
-            <div class="footer-border">
-                <div class="row d-flex justify-content-between align-items-center">
-                    <div class="col-xl-10 col-lg-10 ">
-                        <div class="footer-copy-right">
-                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy; Công ty cổ phần 3 thành viên N^3 Group VN
-                                <script>document.write(new Date().getFullYear());</script>
-                                </a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2">
-                        <div class="footer-social f-right">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-globe"></i></a>
-                            <a href="#"><i class="fab fa-behance"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End-->
-</footer>
-
+<jsp:include page="footter-candi.jsp"></jsp:include>
+</body>
 <!-- JS here -->
 
 <!-- All JS Custom Plugins Link Here here -->
@@ -730,6 +601,4 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="../assets/js/plugins.js"></script>
 <script src="../assets/js/main.js"></script>
-
-</body>
 </html>

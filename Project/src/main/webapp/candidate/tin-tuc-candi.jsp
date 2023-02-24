@@ -23,21 +23,21 @@
   <title>Tin tức</title>
   <meta name=" description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
   <!-- CSS here -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="assets/css/slicknav.css">
-  <link rel="stylesheet" href="assets/css/animate.min.css">
-  <link rel="stylesheet" href="assets/css/price_rangs.css">
-  <link rel="stylesheet" href="assets/css/magnific-popup.css">
-  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-  <link rel="stylesheet" href="assets/css/themify-icons.css">
-  <link rel="stylesheet" href="assets/css/themify-icons.css">
-  <link rel="stylesheet" href="assets/css/slick.css">
-  <link rel="stylesheet" href="assets/css/nice-select.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../assets/css/slicknav.css">
+  <link rel="stylesheet" href="../assets/css/animate.min.css">
+  <link rel="stylesheet" href="../assets/css/price_rangs.css">
+  <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="../assets/css/themify-icons.css">
+  <link rel="stylesheet" href="../assets/css/themify-icons.css">
+  <link rel="stylesheet" href="../assets/css/slick.css">
+  <link rel="stylesheet" href="../assets/css/nice-select.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
 </head>
 <body>
 <div id="preloader-active">
@@ -45,7 +45,7 @@
     <div class="preloader-inner position-relative">
       <div class="preloader-circle"></div>
       <div class="preloader-img pere-text">
-        <img src="assets/img/logo/logo.png" alt="">
+        <img src="../assets/img/logo/logo.png" alt="">
       </div>
     </div>
   </div>
@@ -77,7 +77,7 @@
         <div class="blog_left_sidebar">
           <article class="blog_item">
             <div class="blog_item_img">
-              <img class="card-img rounded-0" src="assets/img/blog/single_blog_1.png" alt="">
+              <img class="card-img rounded-0" src="../assets/img/blog/single_blog_1.png" alt="">
               <a href="#" class="blog_item_date">
                 <h3>15</h3>
                 <p>Tháng 2</p>
@@ -96,7 +96,7 @@
 
           <article class="blog_item">
             <div class="blog_item_img">
-              <img class="card-img rounded-0" src="assets/img/blog/single_blog_2.png" alt="">
+              <img class="card-img rounded-0" src="../assets/img/blog/single_blog_2.png" alt="">
               <a href="#" class="blog_item_date">
                 <h3>23</h3>
                 <p>Tháng 7</p>
@@ -115,7 +115,7 @@
 
           <article class="blog_item">
             <div class="blog_item_img">
-              <img class="card-img rounded-0" src="assets/img/blog/single_blog_3.png" alt="">
+              <img class="card-img rounded-0" src="../assets/img/blog/single_blog_3.png" alt="">
               <a href="#" class="blog_item_date">
                 <h3>14</h3>
                 <p> Tháng 9</p>
@@ -134,7 +134,7 @@
 
           <article class="blog_item">
             <div class="blog_item_img">
-              <img class="card-img rounded-0" src="assets/img/blog/single_blog_4.png" alt="">
+              <img class="card-img rounded-0" src="../assets/img/blog/single_blog_4.png" alt="">
               <a href="#" class="blog_item_date">
                 <h3>21</h3>
                 <p>Tháng 12</p>
@@ -153,7 +153,7 @@
 
           <article class="blog_item">
             <div class="blog_item_img">
-              <img class="card-img rounded-0" src="assets/img/blog/single_blog_5.png" alt="">
+              <img class="card-img rounded-0" src="../assets/img/blog/single_blog_5.png" alt="">
               <a href="#" class="blog_item_date">
                 <h3>29</h3>
                 <p>Tháng 3</p>
@@ -256,7 +256,7 @@
           <aside class="single_sidebar_widget popular_post_widget">
             <h3 class="widget_title">Bài viết gần đây</h3>
             <div class="media post_item">
-              <img src="assets/img/post/post_1.png" alt="post">
+              <img src="../assets/img/post/post_1.png" alt="post">
               <div class="media-body">
                 <a href="single-blog.html">
                   <h3>Rộn ràng ngày hội Việc làm Công nghệ thông tin...</h3>
@@ -265,7 +265,7 @@
               </div>
             </div>
             <div class="media post_item">
-              <img src="assets/img/post/post_2.png" alt="post">
+              <img src="../assets/img/post/post_2.png" alt="post">
               <div class="media-body">
                 <a href="single-blog.html">
                   <h3>Đẩy mạnh ứng dụng công nghệ thông tin</h3>
@@ -274,7 +274,7 @@
               </div>
             </div>
             <div class="media post_item">
-              <img src="assets/img/post/post_3.png" alt="post">
+              <img src="../assets/img/post/post_3.png" alt="post">
               <div class="media-body">
                 <a href="single-blog.html">
                   <h3>Thị trường hoạt động công nghệ thông tin...</h3>
@@ -283,7 +283,7 @@
               </div>
             </div>
             <div class="media post_item">
-              <img src="assets/img/post/post_4.png" alt="post">
+              <img src="../assets/img/post/post_4.png" alt="post">
               <div class="media-body">
                 <a href="single-blog.html">
                   <h3>Có thật công nghệ thông tin là vua của mọi loại nghề</h3>
@@ -332,38 +332,38 @@
 <!-- JS here -->
 
 <!-- All JS Custom Plugins Link Here here -->
-<script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <!-- Jquery, Popper, Bootstrap -->
-<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="../assets/js/popper.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
 <!-- Jquery Mobile Menu -->
-<script src="assets/js/jquery.slicknav.min.js"></script>
+<script src="../assets/js/jquery.slicknav.min.js"></script>
 
 <!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/slick.min.js"></script>
-<script src="assets/js/price_rangs.js"></script>
+<script src="../assets/js/owl.carousel.min.js"></script>
+<script src="../assets/js/slick.min.js"></script>
+<script src="../assets/js/price_rangs.js"></script>
 
 <!-- One Page, Animated-HeadLin -->
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/animated.headline.js"></script>
-<script src="assets/js/jquery.magnific-popup.js"></script>
+<script src="../assets/js/wow.min.js"></script>
+<script src="../assets/js/animated.headline.js"></script>
+<script src="../assets/js/jquery.magnific-popup.js"></script>
 
 <!-- Scrollup, nice-select, sticky -->
-<script src="assets/js/jquery.scrollUp.min.js"></script>
-<script src="assets/js/jquery.nice-select.min.js"></script>
-<script src="assets/js/jquery.sticky.js"></script>
+<script src="../assets/js/jquery.scrollUp.min.js"></script>
+<script src="../assets/js/jquery.nice-select.min.js"></script>
+<script src="../assets/js/jquery.sticky.js"></script>
 
 <!-- contact js -->
-<script src="assets/js/contact.js"></script>
-<script src="assets/js/jquery.form.js"></script>
-<script src="assets/js/jquery.validate.min.js"></script>
-<script src="assets/js/mail-script.js"></script>
-<script src="assets/js/jquery.ajaxchimp.min.js"></script>
+<script src="../assets/js/contact.js"></script>
+<script src="../assets/js/jquery.form.js"></script>
+<script src="../assets/js/jquery.validate.min.js"></script>
+<script src="../assets/js/mail-script.js"></script>
+<script src="../assets/js/jquery.ajaxchimp.min.js"></script>
 
 <!-- Jquery Plugins, main Jquery -->
-<script src="assets/js/plugins.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="../assets/js/plugins.js"></script>
+<script src="../assets/js/main.js"></script>
 </html>
 
