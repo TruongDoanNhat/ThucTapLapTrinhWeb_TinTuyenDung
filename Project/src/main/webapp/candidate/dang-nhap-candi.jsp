@@ -12,19 +12,19 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <%--    <meta name="viewport" content="width=device-width, initial-scale=1">--%>
     <title>Đăng nhập</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome-all.min.css">
 </head>
 <body>
 <section>
     <div class="img-bg">
-        <img src="assets/img/log_in/img2.jpg" alt="">
+        <img src="../assets/img/log_in/img2.jpg" alt="">
     </div>
 
     <div class="noi-dung">
         <!-- Logo -->
         <div class="logo-log">
-            <a href="#"><img src="assets/img/logo/logo.png" alt=""></a>
+            <a href="#"><img src="../assets/img/logo/logo.png" alt=""></a>
         </div>
         <div class="form">
             <h2 class="in">Chào mừng bạn trở lại </h2>

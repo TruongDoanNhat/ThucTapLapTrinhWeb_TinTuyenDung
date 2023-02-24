@@ -14,17 +14,17 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <%--    <meta name="viewport" content="width=device-width, initial-scale=1">--%>
     <title>Đăng ký</title>
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
 </head>
 <body>
 <section>
     <div class="img-bg">
-        <img src="assets/img/log_in/img2.jpg" alt="">
+        <img src="../assets/img/log_in/img2.jpg" alt="">
     </div>
     <div class="noi-dung">
         <!-- Logo -->
         <div class="logo-log">
-            <a href="trang-chu-candi.jsp"><img src="assets/img/logo/logo.png" alt=""></a>
+            <a href="trang-chu-candi.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
         </div>
         <div class="form">
             <h2 class="form-heading in">Chào mừng bạn đến với TopViecLam</h2>

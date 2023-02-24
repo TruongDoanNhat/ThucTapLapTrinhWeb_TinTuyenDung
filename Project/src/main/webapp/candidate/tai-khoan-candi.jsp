@@ -18,21 +18,21 @@
     <title>Tài khoản</title>
     <meta name=" description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/flaticon.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/price_rangs.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/slicknav.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/nice-select.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/tai-khoan.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/price_rangs.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/slicknav.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/tai-khoan.css">
 </head>
 <body>
 <div id="preloader-active">
@@ -40,7 +40,7 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="assets/img/logo/logo.png" alt="">
+                <img src="../assets/img/logo/logo.png" alt="">
             </div>
         </div>
     </div>
@@ -76,7 +76,7 @@
                                         <label data-v-c4f347a8="" class="col-form-label mr-2"></label>
                                         <div data-v-2a31697a="" data-v-c4f347a8="" class="mr-2  avatar">
 <%--                                            <c:if test="${sessionScope.account.img == null}">--%>
-                                                <img src="admin/images/user.png">
+                                                <img src="../admin/images/user.png">
 <%--                                            </c:if>--%>
 <%--                                            <c:if test="${sessionScope.account.img != null}">--%>
 <%--                                                <img src="${sessionScope.account.img}">--%>
@@ -195,38 +195,38 @@
 <!-- JS here -->
 
 <!-- All JS Custom Plugins Link Here here -->
-<script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <!-- Jquery, Popper, Bootstrap -->
-<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="../assets/js/popper.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
 <!-- Jquery Mobile Menu -->
-<script src="assets/js/jquery.slicknav.min.js"></script>
+<script src="../assets/js/jquery.slicknav.min.js"></script>
 
 <!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/slick.min.js"></script>
-<script src="assets/js/price_rangs.js"></script>
+<script src="../assets/js/owl.carousel.min.js"></script>
+<script src="../assets/js/slick.min.js"></script>
+<script src="../assets/js/price_rangs.js"></script>
 
 <!-- One Page, Animated-HeadLin -->
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/animated.headline.js"></script>
-<script src="assets/js/jquery.magnific-popup.js"></script>
+<script src="../assets/js/wow.min.js"></script>
+<script src="../assets/js/animated.headline.js"></script>
+<script src="../assets/js/jquery.magnific-popup.js"></script>
 
 <!-- Scrollup, nice-select, sticky -->
-<script src="assets/js/jquery.scrollUp.min.js"></script>
-<script src="assets/js/jquery.nice-select.min.js"></script>
-<script src="assets/js/jquery.sticky.js"></script>
+<script src="../assets/js/jquery.scrollUp.min.js"></script>
+<script src="../assets/js/jquery.nice-select.min.js"></script>
+<script src="../assets/js/jquery.sticky.js"></script>
 
 <!-- contact js -->
-<script src="assets/js/contact.js"></script>
-<script src="assets/js/jquery.form.js"></script>
-<script src="assets/js/jquery.validate.min.js"></script>
-<script src="assets/js/mail-script.js"></script>
-<script src="assets/js/jquery.ajaxchimp.min.js"></script>
+<script src="../assets/js/contact.js"></script>
+<script src="../assets/js/jquery.form.js"></script>
+<script src="../assets/js/jquery.validate.min.js"></script>
+<script src="../assets/js/mail-script.js"></script>
+<script src="../assets/js/jquery.ajaxchimp.min.js"></script>
 
 <!-- Jquery Plugins, main Jquery -->
-<script src="assets/js/plugins.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="../assets/js/plugins.js"></script>
+<script src="../assets/js/main.js"></script>
 
 </html>

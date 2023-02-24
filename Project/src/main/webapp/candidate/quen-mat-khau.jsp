@@ -11,19 +11,19 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Quên mật khẩu</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
 </head>
 
 <body>
 <section>
     <div class="img-bg">
-        <img src="assets/img/log_in/img3.jpg" alt="">
+        <img src="../assets/img/log_in/img3.jpg" alt="">
     </div>
 
     <div class="noi-dung">
         <!-- Logo -->
         <div class="logo-log">
-            <a href="dang-nhap-candi.jsp"><img src="assets/img/logo/logo.png" alt=""></a>
+            <a href="dang-nhap-candi.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
         </div>
         <!-- Form -->
         <div class="form">
