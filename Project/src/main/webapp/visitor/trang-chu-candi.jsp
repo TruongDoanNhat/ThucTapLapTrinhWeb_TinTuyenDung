@@ -1,8 +1,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
-<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 31/12/2022
@@ -91,7 +92,7 @@
     </div>
     <!-- slider Area End-->
     <!-- Our Services Start -->
-<%--    lỗi từ 94 - 218 --%>
+    <%--    lỗi từ 94 - 218 --%>
     <div class="our-services section-pad-t30">
         <div class="container">
             <!-- Section Tittle -->
@@ -105,10 +106,11 @@
             </div>
             <div class="row d-flex">
 
-                <% DAOPost dp = new DAOPost();
-//                    ArrayList<Category> categoryList = (ArrayList<Category>) request.getAttribute("categoryList");
-                    for (Category c : dp.getCategoryAll()) {
-                %>
+
+                <%
+                    // ArrayList<Category> categoryList = (ArrayList<Category>) request.getAttribute("categoryList");
+                    DAOPost dp = new DAOPost();
+                    for (Category c : dp.getCategoryAll()) { %>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
