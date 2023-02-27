@@ -40,6 +40,26 @@ public class DAOAccount {
     public void update(String name, String email, String phone) {
         String query = "update account set name = ? , email = ? , phone = ? where user_name = ?";
     }
+    public boolean username(String user_name) {
+        String query = "select * from account where user_name = ?";
+        List<Account> listAccount = JDBIConnector.get().withHandle(handle -> handle.createQuery(query)
+                .bind(0, user_name)
+                .mapToBean(Account.class).list());
+        for (Account account : listAccount) {
+            if (account.getUsername().equals(user_name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void updatePassword(String username, String password) {
+        String query = "UPDATE account set password = ? WHERE user_name = ?";
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate(query)
+                        .bind(0, password)
+                        .bind(1, username)
+                        .execute());
+    }
 
     public List<Account> getListAccount() {
         List<Account> listAccount = new ArrayList<Account>();

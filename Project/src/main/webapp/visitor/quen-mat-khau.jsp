@@ -28,7 +28,7 @@
         <!-- Form -->
         <div class="form">
             <h2 class="in">Quên mật khẩu </h2>
-            <form action="ResetPassword" method="post">
+            <form action="<%=request.getContextPath()%>/ResetPassword" method="post">
                 <%
                     if (message != null) {
                 %>
