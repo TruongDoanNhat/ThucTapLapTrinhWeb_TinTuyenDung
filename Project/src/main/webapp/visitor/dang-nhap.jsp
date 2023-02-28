@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<%--    <meta name="viewport" content="width=device-width, initial-scale=1">--%>
+    <%--    <meta name="viewport" content="width=device-width, initial-scale=1">--%>
     <title>Đăng nhập</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome-all.min.css">
@@ -46,27 +46,29 @@
             <%
                 }
             %>
-            <form action="Login" method="post">
+            <form action="<%=request.getContextPath()%>/Login" method="post">
                 <div class="input-form">
                     <span>Tài khoản</span>
-                    <input id="id"  name="username" autofocus onkeyup="daoNutDN()" style="width: 95%" type="text"
+                    <input id="id" name="username" autofocus onkeyup="daoNutDN()" style="width: 95%" type="text"
                            placeholder="Tài khoản">
                 </div>
                 <div class="input-form">
                     <span>Mật khẩu</span>
-                    <input id="pass" name="password" onkeyup="daoNutDN()" autocomplete="new-password" type="password" style="width: 95%"
+                    <input id="pass" name="password" onkeyup="daoNutDN()" autocomplete="new-password" type="password"
+                           style="width: 95%"
                            placeholder="Nhập mật khẩu">
                     <i class="fa fa-eye" onclick="daoTT()" style="position: relative; left: -40px;cursor: pointer;"></i>
                 </div>
                 <div class="nho-dang-nhap">
-                    <label><input type="checkbox" > Nhớ Đăng Nhập</label>
+                    <label><input type="checkbox"> Nhớ Đăng Nhập</label>
                 </div>
                 <div class="input-form">
                     <input type="submit" name="btndangnhap_candi" style="width: 95%" id="btndangnhap" value="Đăng Nhập">
                 </div>
                 <div class="container_swap">
 
-                    <div class="div_left"><p>Bạn chưa có tài khoản? <a class="in" href="dang-ky-candi.jsp"> Đăng ký ngay</a>
+                    <div class="div_left"><p>Bạn chưa có tài khoản? <a class="in" href="dang-ky-candi.jsp"> Đăng ký
+                        ngay</a>
                     </p>
                     </div>
 

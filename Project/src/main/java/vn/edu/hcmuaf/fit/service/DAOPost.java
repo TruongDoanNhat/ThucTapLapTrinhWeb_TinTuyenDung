@@ -33,7 +33,7 @@ public class DAOPost {
     }
 
     public List<Post> getPostAll() {
-        String query = "select * from post";
+        String query = "select * from post ";
         List<Post> listPost = null;
         listPost = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
@@ -41,6 +41,17 @@ public class DAOPost {
                     .stream().collect(Collectors.toList());
         });
         return listPost;
+    }
+    public List<Category> getCategoryAll() {
+        String query = "select * from category";
+        List<Category> listCategory  = null;
+        listCategory = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapToBean(Category.class)
+                    .stream().collect(Collectors.toList());
+        });
+
+        return listCategory;
     }
     public List<Post> getPostAllTop5() {
         String query = "SELECT * FROM post LIMIT 3;";
@@ -52,6 +63,7 @@ public class DAOPost {
         });
         return listPost;
     }
+
     public int getPostofCategoryByID(String categoryID) {
         String query = "select * from post where categoryID = ?";
         List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
@@ -74,20 +86,7 @@ public class DAOPost {
         return listPost;
     }
 
-    public List<Category> getCategoryAll() {
-        String query = "select * from category";
-        List<Category> listCategory = null;
-        try {
-            listCategory = JDBIConnector.get().withHandle(handle -> {
-                return handle.createQuery(query)
-                        .mapToBean(Category.class)
-                        .stream().collect(Collectors.toList());
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return listCategory;
-    }
+
 
     public String getCompanyName(String companyID) {
         String rs = null;
@@ -145,8 +144,9 @@ public class DAOPost {
 
     public static void main(String[] args) {
         DAOPost p = new DAOPost();
-        for (Post post : p.getPostAllTop5()) {
-            System.out.println(post.toString());
+//        p.getPostofCategoryByID("cg01");
+        for (Category c : p.getCategoryAll()) {
+            System.out.println(c.toString());
         }
     }
 

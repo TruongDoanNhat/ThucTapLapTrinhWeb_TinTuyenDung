@@ -27,7 +27,7 @@
     <div class="noi-dung">
         <!-- Logo -->
         <div class="logo-log">
-            <a href="dang-nhap-candi.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
+            <a href="dang-nhap.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
         </div>
         <!-- Form -->
         <div class="form">

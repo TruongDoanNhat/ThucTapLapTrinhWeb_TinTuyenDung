@@ -1,8 +1,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
-<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 31/12/2022
@@ -32,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/themify-icons.css">
 </head>
+
 <body>
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
@@ -44,14 +46,13 @@
     </div>
 </div>
 <jsp:include page="header-candi.jsp"></jsp:include>
-
 <main>
     <!-- slider Area Start-->
     <div class="slider-area ">
         <!-- Mobile Menu -->
         <div class="slider-active">
             <div class="single-slider slider-height d-flex align-items-center"
-                 data-background="assets/img/hero/h3_hero.jpg">
+                 data-background="../assets/img/hero/h3_hero.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="hero__caption" style="padding-left: 270px; ">
@@ -67,18 +68,17 @@
                                     <input type="text" placeholder="Tìm kiếm việc làm, công ty">
                                 </div>
                                 <div class="select-form">
-                                    <div class="select-itms">
-                                        <select name="select" id="select1">
-                                            <option value="">Hồ Chí Minh</option>
-                                            <option value="">Hà Nội</option>
-                                            <option value="">Đà Nẵng</option>
-                                            <option value="">Cần Thơ</option>
-                                            <option value="">Vũng Tàu</option>
-                                            <option value="">Quảng Nam</option>
-                                            <option value="">Hải Phòng</option>
-                                            <option value="">Long An</option>
-                                        </select>
-                                    </div>
+                                    <select name="select" id="select1" style=" margin-top: 20px; text-transform: none;
+                                     height: 30px;width: 99%;  border: none; appearance: none;">
+                                        <option value="">Hồ Chí Minh</option>
+                                        <option value="">Hà Nội</option>
+                                        <option value="">Đà Nẵng</option>
+                                        <option value="">Cần Thơ</option>
+                                        <option value="">Vũng Tàu</option>
+                                        <option value="">Quảng Nam</option>
+                                        <option value="">Hải Phòng</option>
+                                        <option value="">Long An</option>
+                                    </select>
                                 </div>
                                 <div class="search-form">
                                     <a href="#">Tìm việc</a>
@@ -92,6 +92,7 @@
     </div>
     <!-- slider Area End-->
     <!-- Our Services Start -->
+    <%--    lỗi từ 94 - 218 --%>
     <div class="our-services section-pad-t30">
         <div class="container">
             <!-- Section Tittle -->
@@ -105,10 +106,11 @@
             </div>
             <div class="row d-flex">
 
-                <% DAOPost dp = new DAOPost();
-//                    ArrayList<Category> categoryList = (ArrayList<Category>) request.getAttribute("categoryList");
-                    for (Category c : dp.getCategoryAll()) {
-                %>
+
+                <%
+                    // ArrayList<Category> categoryList = (ArrayList<Category>) request.getAttribute("categoryList");
+                    DAOPost dp = new DAOPost();
+                    for (Category c : dp.getCategoryAll()) { %>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
@@ -223,7 +225,7 @@
                     <div class="cv-caption text-center">
                         <span><b class="tittle"> NỔI BẬT</b></span>
                         <p class="pera2">Nộp CV để chớp lấy cơ hội việc làm mơ ước</p>
-                        <a href="candi-ung-tuyen.jsp" class="border-btn2 border-btn4">Tải CV của bạn</a>
+                        <a href="../candidate/candi-ung-tuyen.jsp" class="border-btn2 border-btn4">Tải CV của bạn</a>
                     </div>
                 </div>
             </div>

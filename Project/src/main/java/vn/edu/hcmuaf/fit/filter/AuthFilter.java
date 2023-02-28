@@ -27,7 +27,6 @@ public class AuthFilter implements Filter {
         String url = request.getRequestURI();
         Account account = UtilSession.getInstance().getValue(request, "account");
         if (url.startsWith("/admin")) {
-            System.out.println("ok1");
             if (account != null) {
                 if (account.getRole() == 0) {
                     chain.doFilter(servletRequest, servletResponse);
@@ -39,7 +38,7 @@ public class AuthFilter implements Filter {
             } else {
                 response.sendRedirect(request.getContextPath() + "/Login?action=login-admin");
             }
-        } else if (url.startsWith("/busi")) {
+        } else if (url.startsWith("/business")) {
             if (account != null) {
                 if (account.getRole() == 2) {
                     chain.doFilter(servletRequest, servletResponse);
@@ -49,7 +48,7 @@ public class AuthFilter implements Filter {
             } else {
                 response.sendRedirect(request.getContextPath() + "/Login?action=login-busi");
             }
-        } else if (url.startsWith("/candi")) {
+        } else if (url.startsWith("/candidate")) {
             if (account != null) {
                 if (account.getRole() == 1) {
                     chain.doFilter(servletRequest, servletResponse);
@@ -58,10 +57,7 @@ public class AuthFilter implements Filter {
                 response.sendRedirect(request.getContextPath() + "/Login?action=login-candi");
             }
         } else {
-            System.out.println(url.toString());
-            System.out.println("ok2");
             chain.doFilter(servletRequest, servletResponse);
-
         }
 
     }

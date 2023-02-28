@@ -23,12 +23,12 @@
     <div class="noi-dung">
         <!-- Logo -->
         <div class="logo-log">
-            <a href="dang-nhap-candi.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
+            <a href="dang-nhap.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
         </div>
         <!-- Form -->
         <div class="form">
             <h2 class="in">Quên mật khẩu </h2>
-            <form action="ResetPassword" method="post">
+            <form action="<%=request.getContextPath()%>/ResetPassword" method="post">
                 <%
                     if (message != null) {
                 %>
@@ -69,7 +69,7 @@
                                     bảo mật</a> của chúng tôi</p>
                         </div>
                         <div>
-                            <div class="left"><a class="in" href="dang-nhap-candi.jsp">Quay lại đăng nhập</a></div>
+                            <div class="left"><a class="in" href="dang-nhap.jsp">Quay lại đăng nhập</a></div>
                             <div class="right"><a class="in" href="dang-ky-candi.jsp">Đăng ký tài khoản mới</a></div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@ public class SignUp extends HttpServlet {
         String name = request.getParameter("hoten");
         String user_name = request.getParameter("user_name");
         String password = request.getParameter("password");
-        password = Util.maHoaMatKhau(password);
+        password = Util.encryptionPassword(password);
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String s = request.getParameter("gen");
@@ -30,7 +30,7 @@ public class SignUp extends HttpServlet {
         int role = UtilControl.setRole("btndangky_candi", "btndangky_busi", request);
         if (role == 1) {
             if (d.registerCandi(user_name, password, role, name, email, date)) {
-                UtilControl.send(role, "Admin-dang-nhap.jsp", "dang-nhap-candi.jsp", "busi-dang-nhap.jsp", response);
+                response.sendRedirect("/visitor/dang-nhap.jsp");
             } else {
                 String message = d.getMessage();
                 request.setAttribute("message", message);
@@ -38,7 +38,7 @@ public class SignUp extends HttpServlet {
             }
         } else if (role == 0) {
             if (d.registerAdmin(user_name, password, email, role, date)) {
-                UtilControl.send(role, "Admin-dang-nhap.jsp", "dang-nhap-candi.jsp", "busi-dang-nhap.jsp", response);
+                response.sendRedirect("/visitor/dang-nhap.jsp");
             } else {
                 String message = d.getMessage();
                 request.setAttribute("message", message);
@@ -46,7 +46,7 @@ public class SignUp extends HttpServlet {
             }
         } else {
             if (d.register(user_name, password, role, name, email, phone, gen, companyName, location, description, img, date)) {
-                UtilControl.send(role, "Admin-dang-nhap.jsp", "dang-nhap-candi.jsp", "busi-dang-nhap.jsp", response);
+                response.sendRedirect("/visitor/dang-nhap.jsp");
             } else {
                 String message = d.getMessage();
                 request.setAttribute("message", message);

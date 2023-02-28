@@ -165,7 +165,7 @@
 <%--                            ${postDetails.getDeadline().toString()}--%>
                         </ul>
                         <div class="apply-btn2">
-                            <a href="candi-viec-lam-da-ung-tuyen.jsp" class="btn">Nộp đơn</a>
+                            <a href="../candidate/candi-viec-lam-da-ung-tuyen.jsp" class="btn">Nộp đơn</a>
                         </div>
                     </div>
                     <div class="post-details4  mb-50">

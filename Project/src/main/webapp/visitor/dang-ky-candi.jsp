@@ -28,7 +28,7 @@
         </div>
         <div class="form">
             <h2 class="form-heading in">Chào mừng bạn đến với TopViecLam</h2>
-            <form action="SignUp" method="post">
+            <form action="<%=request.getContextPath()%>/SignUp" method="post">
                 <%
                     if (message != null) {
                 %>
@@ -72,9 +72,9 @@
                 <div class="input-form">
                     <input type="submit" name="btndangky_candi" style="width: 95%" id="btndangky" value="Đăng Ký">
                 </div>
-                <div class=" đfffb">
+                <div class="">
                     <div class="input-form">
-                        <p>Bạn đã có tài khoản? <a class="in" href="dang-nhap-candi.jsp">Đăng nhập ngay</a></p>
+                        <p>Bạn đã có tài khoản? <a class="in" href="dang-nhap.jsp">Đăng nhập ngay</a></p>
                     </div>
                 </div>
             </form>

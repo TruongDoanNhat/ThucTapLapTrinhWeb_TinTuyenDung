@@ -28,11 +28,11 @@ public class AccountServlet extends HttpServlet {
             account.setPhone(phone);
             account.setEmail(email);
             account.setGen(gen);
-            request.getRequestDispatcher("tai-khoan-candi.jsp").forward(request, response);
+            request.getRequestDispatcher("candi-tai-khoan.jsp").forward(request, response);
             DAOAccount d = new DAOAccount();
             d.updateAccountCandi(account.getUsername(), account.getName(), account.getPhone(), account.getEmail(), account.getGen());
         }else{
-            request.getRequestDispatcher("dang-nhap-candi.jsp").forward(request, response);
+            request.getRequestDispatcher("dang-nhap.jsp").forward(request, response);
         }
 
     }
