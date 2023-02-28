@@ -55,7 +55,7 @@
                 </div>
                 <div class="input-form">
                     <span>Mật khẩu</span>
-                    <input id="pass" name="password" onkeyup="daoNutDN()" type="password" class="input"
+                    <input id="pass" name="password" onkeyup="daoNutDN()" onkeyup="checkPassword()" type="password" class="input"
                            data-type="password"
                            placeholder="Nhập mật khẩu">
                 </div>
@@ -104,9 +104,20 @@
             document.getElementById("btndangky").disabled = true;
         }else{
             document.getElementById("pass-again").style.borderColor = '#607d8b';
+        }
 
+        // Kiểm tra điều kiện mật khẩu phải có 1 số, 1 chữ in, 1 ký tự đặc biệt
+        var p = document.getElementById("pass").value;
+        const regexp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+
+        if(regexp.test(p)) {
+            document.getElementById("pass").style.borderColor = '#607d8b';
+        }else {
+            document.getElementById("pass").style.borderColor = 'red';
+            document.getElementById("btndangky").disabled = true;
         }
     }
 </script>
+
 
 </html>
