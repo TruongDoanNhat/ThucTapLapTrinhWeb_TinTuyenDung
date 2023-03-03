@@ -59,7 +59,8 @@
                            data-type="password"
                            placeholder="Nhập mật khẩu">
                 </div>
-                <h5 style='color: Red;'> Mật khẩu phải có ít nhất 8 ký tự, bao gồm 1 ký tự đặc biệt, 1 chữ in, 1 chữ thường</h5>
+                <h5 style='color: Red;'> Mật khẩu phải có ít nhất 8 ký tự, bao gồm 1 ký tự đặc biệt, 1 chữ in, 1 chữ
+                    thường</h5>
                 <div class="input-form">
                     <span>Xác nhận mật khẩu</span>
                     <input id="pass-again" name="password-again" onkeyup="daoNutDN()" type="password" class="input"
@@ -99,8 +100,7 @@
         const regexp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
 
 
-
-        if (n.length == 0 && e.length ==0 && u.length == 0 && p.length == 0 && pa == 0) {
+        if (n.length == 0 && e.length == 0 && u.length == 0 && p.length == 0 && pa == 0) {
 
             document.getElementById("btndangky").disabled = true;
         } else {
@@ -128,6 +128,5 @@
 
     }
 </script>
-
 
 </html>
