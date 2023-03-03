@@ -55,10 +55,11 @@
                 </div>
                 <div class="input-form">
                     <span>Mật khẩu</span>
-                    <input id="pass" name="password" onkeyup="daoNutDN()" onkeyup="checkPassword()" type="password" class="input"
+                    <input id="pass" name="password" onkeyup="daoNutDN()" type="password" class="input"
                            data-type="password"
                            placeholder="Nhập mật khẩu">
                 </div>
+                <h5 style='color: Red;'> Mật khẩu phải có ít nhất 8 ký tự, bao gồm 1 ký tự đặc biệt, 1 chữ in, 1 chữ thường</h5>
                 <div class="input-form">
                     <span>Xác nhận mật khẩu</span>
                     <input id="pass-again" name="password-again" onkeyup="daoNutDN()" type="password" class="input"
@@ -84,9 +85,7 @@
 </section>
 
 </body>
-<script>
-    document.getElementById("btndangky").disabled = true;
-</script>
+
 <script>
     function daoNutDN() {
         var n = document.getElementById("name").value;
@@ -94,28 +93,39 @@
         var u = document.getElementById("id").value;
         var p = document.getElementById("pass").value;
         var pa = document.getElementById("pass-again").value;
-        if (n.length > 0 && e.length > 0 && u.length > 0 && p.length > 0 && pa > 0) {
-            document.getElementById("btndangky").disabled = false;
-        } else {
-            document.getElementById("btndangky").disabled = true;
-        }
-        if (pa > 0 && pa != p) {
-            document.getElementById("pass-again").style.borderColor = 'red';
-            document.getElementById("btndangky").disabled = true;
-        }else{
-            document.getElementById("pass-again").style.borderColor = '#607d8b';
-        }
 
-        // Kiểm tra điều kiện mật khẩu phải có 1 số, 1 chữ in, 1 ký tự đặc biệt
+        // Kiểm tra điều kiện mật khẩu phải có ít nhất 8 ký tự, 1 số, 1 chữ in, 1 ký tự đặc biệt
         var p = document.getElementById("pass").value;
         const regexp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
 
-        if(regexp.test(p)) {
+
+
+        if (n.length == 0 && e.length ==0 && u.length == 0 && p.length == 0 && pa == 0) {
+
+            document.getElementById("btndangky").disabled = true;
+        } else {
+            document.getElementById("btndangky").disabled = false;
+        }
+
+        if (regexp.test(p)) {
             document.getElementById("pass").style.borderColor = '#607d8b';
-        }else {
+            document.getElementById("btndangky").disabled = false;
+        } else if (p == 0) {
+            document.getElementById("pass").style.borderColor = '#607d8b';
+            document.getElementById("btndangky").disabled = true;
+        } else {
             document.getElementById("pass").style.borderColor = 'red';
             document.getElementById("btndangky").disabled = true;
         }
+
+        if (pa > 0 && pa != p) {
+            document.getElementById("pass-again").style.borderColor = 'red'
+            document.getElementById("btndangky").disabled = true;
+        } else {
+            document.getElementById("pass-again").style.borderColor = '#607d8b';
+            document.getElementById("btndangky").disabled = false;
+        }
+
     }
 </script>
 
