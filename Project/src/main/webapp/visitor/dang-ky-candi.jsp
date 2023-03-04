@@ -6,15 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
-<%
-    String message = (String) request.getAttribute("message");
-%>
+<% String message = (String) request.getAttribute("message"); %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <%--    <meta name="viewport" content="width=device-width, initial-scale=1">--%>
     <title>Đăng ký</title>
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome-all.min.css">
 </head>
 <body>
 <section>
@@ -55,9 +54,10 @@
                 </div>
                 <div class="input-form">
                     <span>Mật khẩu</span>
-                    <input id="pass" name="password" onkeyup="daoNutDN()" type="password" class="input"
-                           data-type="password"
-                           placeholder="Nhập mật khẩu">
+                    <input id="pass" name="password" onkeyup="daoNutDN()" type="password"  class="input"
+                            data-type="password" style="..."
+                           placeholder="Nhập mật khẩu" >
+<%--                    <i class="fa fa-eye" onclick="daoTT()" style="position: relative; left: 550px;cursor: pointer;"></i>--%>
                 </div>
                 <h5 style='color: Red;'> Mật khẩu phải có ít nhất 8 ký tự, bao gồm 1 ký tự đặc biệt, 1 chữ in, 1 chữ thường</h5>
                 <div class="input-form">
@@ -65,6 +65,8 @@
                     <input id="pass-again" name="password-again" onkeyup="daoNutDN()" type="password" class="input"
                            data-type="password"
                            placeholder="Nhập lại mật khẩu ">
+<%--                    <i class="fa fa-eye" onclick="daoTT()" style="position: relative; left: -40px;cursor: pointer;"></i>--%>
+
                 </div>
                 <div class="input-form">
                     <p>Bằng việc đăng ký tài khoản, bạn đã đồng ý với <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính
@@ -100,8 +102,8 @@
 
 
 
-        if (n.length == 0 && e.length ==0 && u.length == 0 && p.length == 0 && pa == 0) {
 
+        if (n.length == 0 || e.length ==0 || u.length == 0 || p.length == 0 || pa.length == 0) {
             document.getElementById("btndangky").disabled = true;
         } else {
             document.getElementById("btndangky").disabled = false;
@@ -128,6 +130,12 @@
 
     }
 </script>
+<%--<script>--%>
+<%--    function daoTT() {--%>
+<%--        var p = document.getElementById("pass").value;--%>
+<%--        p.type = (p.type === "password") ? "text" : "password";--%>
 
+<%--    }--%>
+<%--</script>--%>
 
 </html>
