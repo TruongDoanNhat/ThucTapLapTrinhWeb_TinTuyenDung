@@ -17,20 +17,23 @@ public class Account implements Serializable {
     private Date create_date;
     private Date update_date;
 
+    private int status;
+
     public Account() {
 
     }
 
-    public Account(String user_name, String password, String email, int role) {
+    public Account(String user_name, String password, String email, int role, int status) {
         this.user_name = user_name;
         this.password = password;
         this.email = email;
         this.role = role;
+        this.status = status;
     }
 
     public Account(String user_name, String password, int role,
                    String email, String name, String phone, int gen, String fileCV, String companyID,
-                   Date create_date, Date update_date) {
+                   Date create_date, Date update_date, int status) {
         this.user_name = user_name;
         this.password = password;
         this.role = role;
@@ -42,6 +45,15 @@ public class Account implements Serializable {
         this.companyID = companyID;
         this.create_date = create_date;
         this.update_date = update_date;
+        this.status = status;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getUsername() {
@@ -135,7 +147,6 @@ public class Account implements Serializable {
     @Override
     public String toString() {
         return "Account{" +
-
                 "user_name='" + user_name + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
@@ -147,6 +158,7 @@ public class Account implements Serializable {
                 ", companyID='" + companyID + '\'' +
                 ", create_date=" + create_date +
                 ", update_date=" + update_date +
+                ", status=" + status +
                 '}';
     }
 }
