@@ -37,24 +37,24 @@
                 %>
                 <div class="input-form">
                     <span>Họ và tên</span>
-                    <input id="name" name="hoten" autofocus onkeyup="daoNutDN()" type="text" class="input"
+                    <input id="name" name="hoten" autofocus onkeyup="daoNutDN(), checkPass()"  type="text" class="input"
                            data-type="text"
                            placeholder="Nhập họ và tên của bạn">
                 </div>
                 <div class="input-form">
                     <span>Email</span>
-                    <input id="email" name="email" onkeyup="daoNutDN()" type="email" class="input"
+                    <input id="email" name="email" onkeyup="daoNutDN(), checkPass()" type="email" class="input"
                            data-type="email"
                            placeholder="abc@gmail.com">
                 </div>
                 <div class="input-form">
                     <span>Tên tài khoản</span>
-                    <input id="id" name="user_name" onkeyup="daoNutDN()" type="text" class="input" data-type="text"
+                    <input id="id" name="user_name" onkeyup="daoNutDN(), checkPass()" type="text" class="input" data-type="text"
                            placeholder="Nhập tên tài khoản">
                 </div>
                 <div class="input-form">
                     <span>Mật khẩu</span>
-                    <input id="pass" name="password" onkeyup="daoNutDN()" type="password"  class="input"
+                    <input id="pass" name="password" onkeyup="daoNutDN(), checkPass()" type="password"  class="input"
                             data-type="password" style="..."
                            placeholder="Nhập mật khẩu" >
 <%--                    <i class="fa fa-eye" onclick="daoTT()" style="position: relative; left: 550px;cursor: pointer;"></i>--%>
@@ -62,7 +62,7 @@
                 <h5 style='color: Red;'> Mật khẩu phải có ít nhất 8 ký tự, bao gồm 1 ký tự đặc biệt, 1 chữ in, 1 chữ thường</h5>
                 <div class="input-form">
                     <span>Xác nhận mật khẩu</span>
-                    <input id="pass-again" name="password-again" onkeyup="daoNutDN()" type="password" class="input"
+                    <input id="pass-again" name="password-again" onkeyup="daoNutDN(), checkPass()" type="password" class="input"
                            data-type="password"
                            placeholder="Nhập lại mật khẩu ">
 <%--                    <i class="fa fa-eye" onclick="daoTT()" style="position: relative; left: -40px;cursor: pointer;"></i>--%>
@@ -89,6 +89,8 @@
 </body>
 
 <script>
+    document.getElementById("btndangky").disabled = true;
+
     function daoNutDN() {
         var n = document.getElementById("name").value;
         var e = document.getElementById("email").value;
@@ -96,22 +98,24 @@
         var p = document.getElementById("pass").value;
         var pa = document.getElementById("pass-again").value;
 
-        // Kiểm tra điều kiện mật khẩu phải có ít nhất 8 ký tự, 1 số, 1 chữ in, 1 ký tự đặc biệt
-        var p = document.getElementById("pass").value;
-        const regexp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
-
-
-
-
-        if (n.length == 0 || e.length ==0 || u.length == 0 || p.length == 0 || pa.length == 0) {
-            document.getElementById("btndangky").disabled = true;
-        } else {
+        if (n.length > 0 && e.length > 0 && u.length > 0 && p.length > 0 && pa > 0) {
             document.getElementById("btndangky").disabled = false;
+        } else {
+            document.getElementById("btndangky").disabled = true;
         }
+    }
+</script>
 
-        if (regexp.test(p)) {
+<script>
+    function checkPass() {
+        var p = document.getElementById("pass").value;
+        var pa = document.getElementById("pass-again").value;
+        // Kiểm tra điều kiện mật khẩu phải có ít nhất 8 ký tự, 1 số, 1 chữ in, 1 ký tự đặc biệt
+        const regexp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+        if (regexp.test(p) && pa == p) {
             document.getElementById("pass").style.borderColor = '#607d8b';
             document.getElementById("btndangky").disabled = false;
+            document.getElementById("pass-again").style.borderColor = '#607d8b'
         } else if (p == 0) {
             document.getElementById("pass").style.borderColor = '#607d8b';
             document.getElementById("btndangky").disabled = true;
@@ -120,22 +124,13 @@
             document.getElementById("btndangky").disabled = true;
         }
 
-        if (pa > 0 && pa != p) {
+        if (pa != p) {
             document.getElementById("pass-again").style.borderColor = 'red'
             document.getElementById("btndangky").disabled = true;
-        } else {
-            document.getElementById("pass-again").style.borderColor = '#607d8b';
-            document.getElementById("btndangky").disabled = false;
         }
-
     }
 </script>
-<%--<script>--%>
-<%--    function daoTT() {--%>
-<%--        var p = document.getElementById("pass").value;--%>
-<%--        p.type = (p.type === "password") ? "text" : "password";--%>
 
-<%--    }--%>
-<%--</script>--%>
+
 
 </html>
