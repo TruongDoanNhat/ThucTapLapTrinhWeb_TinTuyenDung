@@ -15,7 +15,7 @@
     <%--    <link rel="stylesheet" type="text/css" href="business/assets/css/sigin-business.css">--%>
 </head>
 <style>
-    <%@include file="assets/css/sigin-business.css"%>
+    <%@include file="../business/assets/css/sigin-business.css"%>
 </style>
 <body>
 <div id="__nuxt">
@@ -28,7 +28,6 @@
                             <div data-v-9281c350="" class="back" style="cursor: text">
                                 <a data-v-9281c350="" href="#"
                                    class="text-decoration-none text-white">
-                                    <span>Quay lại</span>
                                 </a>
                             </div>
                         </div>
@@ -69,13 +68,13 @@
                     </div>
                     <div data-v-9281c350="" class=" register-form position-relative width-80 margin-left-160"
                          style="padding-left: 50px">
-                        <form data-v-9281c350="" action="SignUp" method="post" role="presentation">
+                        <form data-v-9281c350="" action="<%=request.getContextPath()%>/SignUp" method="post" role="presentation">
                             <div data-v-9281c350="" class="mb-3"><span data-v-9281c350="" class="font-weight-bold">TÀI KHOẢN</span>
                                 <div data-v-9281c350="" class="underline"></div>
                                 <%
                                     if (message != null) {
                                 %>
-                                <jsp:include page="../visitor/error.jsp"></jsp:include>
+                                <jsp:include page="error.jsp"></jsp:include>
                                 <%
                                     }
                                 %>
@@ -263,7 +262,7 @@
                                        class="text-danger text-decoration-none">
                                         &nbsp;Điều khoản dịch vụ&nbsp;
                                     </a>
-                                    của TopCV.
+                                    của Topvieclam.
                                 </label>
                             </div>
                             <div data-v-9281c350="" class="text-center mb-0 mt-4 action-container">

@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.Util.Util;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
+import vn.edu.hcmuaf.fit.service.MailService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -28,32 +29,46 @@ public class SignUp extends HttpServlet {
         String img = null;
         Date date = new Date();
         int role = UtilControl.setRole("btndangky_candi", "btndangky_busi", request);
-        if (role == 1) {
-            if (d.registerCandi(user_name, password, role, name, email, date)) {
-                response.sendRedirect("/visitor/dang-nhap.jsp");
+        String action = request.getParameter("action");
+        if(user_name != null){
+            if (role == 1) {
+                if (d.registerCandi(user_name, password, role, name, email, date, 0)) {
+                    response.sendRedirect("/visitor/dang-nhap.jsp");
+                } else {
+                    String message = d.getMessage();
+                    request.setAttribute("message", message);
+                    UtilControl.forward(role, "dang-ky-Admin.jsp", "dang-ky-candi.jsp", "dang-ky-busi.jsp", request, response);
+                }
+            } else if (role == 0) {
+                if (d.registerAdmin(user_name, password, email, role, date, 0)) {
+                    response.sendRedirect("/visitor/dang-nhap.jsp");
+                } else {
+                    String message = d.getMessage();
+                    request.setAttribute("message", message);
+                    UtilControl.forward(role, "dang-ky-Admin.jsp", "dang-ky-candi.jsp", "dang-ky-busi.jsp", request, response);
+                }
             } else {
-                String message = d.getMessage();
-                request.setAttribute("message", message);
-                UtilControl.forward(role, "dang-ky-Admin.jsp", "dang-ky-candi.jsp", "dang-ky-busi.jsp", request, response);
-            }
-        } else if (role == 0) {
-            if (d.registerAdmin(user_name, password, email, role, date)) {
-                response.sendRedirect("/visitor/dang-nhap.jsp");
-            } else {
-                String message = d.getMessage();
-                request.setAttribute("message", message);
-                UtilControl.forward(role, "dang-ky-Admin.jsp", "dang-ky-candi.jsp", "dang-ky-busi.jsp", request, response);
-            }
-        } else {
-            if (d.register(user_name, password, role, name, email, phone, gen, companyName, location, description, img, date)) {
-                response.sendRedirect("/visitor/dang-nhap.jsp");
-            } else {
-                String message = d.getMessage();
-                request.setAttribute("message", message);
-                UtilControl.forward(role, "dang-ky-Admin.jsp", "dang-ky-candi.jsp", "dang-ky-busi.jsp", request, response);
+                if (d.register(user_name, password, role, name, email, phone, gen, companyName, location, description, img, date, 0)) {
+                    response.sendRedirect("/visitor/dang-nhap.jsp");
+                } else {
+                    String message = d.getMessage();
+                    request.setAttribute("message", message);
+                    UtilControl.forward(role, "dang-ky-Admin.jsp", "dang-ky-candi.jsp", "dang-ky-busi.jsp", request, response);
+                }
             }
         }
+        if (action == null) {
+            String subject = "Email Verification";
+            String content = "Click the link to verify your email: " + request.getRequestURL() + "?action=daxacthuc&u=" + user_name + "&e=" + email;
+            MailService.sendMail(email, subject, content);
+        } else if (action.equals("daxacthuc")) {
+            d.xacThucEmail(request.getParameter("u"), request.getParameter("e"));
+            response.sendRedirect("/visitor/index.jsp");
+        }
+
+
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
