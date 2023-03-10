@@ -26,7 +26,8 @@ fileCV TEXT,
 createDate DATE not NULL,
 updateDate DATE,
 status TINYINT not NULL,
-role TINYINT not NULL
+role TINYINT not NULL,
+type TINIINT not NULL
 );
 DROP TABLE  iF EXISTS category;
 CREATE TABLE category(
