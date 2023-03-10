@@ -59,7 +59,7 @@
                                     <a href='<c:url value="/Login?action=login-candi"/>' class="btn head-btn2">Đăng
                                         nhập</a>
                                 </c:if>
-                                <a href="busi-dang-nhap.jsp" class="btn head-btn1">Nhà tuyển dụng</a>
+                                <a href="dang-nhap.jsp" class="btn head-btn1">Nhà tuyển dụng</a>
                                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
 
                                     <c:if test="${sessionScope.account != null}">

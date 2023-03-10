@@ -41,14 +41,13 @@ public class Login extends HttpServlet {
                     break;
             }
         } else {
-            if (checkAccount) {
+            if (checkAccount && d.getAccount().getStatus() == 1) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("account", (Account) d.getAccount());
                 UtilControl.send(d.getAccount().getRole(), "/admin/Admin-trang-chu.jsp", "/visitor/trang-chu-candi.jsp", "/business/busi-trang-chu.jsp", response);
             } else {
                 request.setAttribute("message", message);
-//                UtilControl.forward(role, "Admin-dang-nhap.jsp", "dang-nhap.jsp", "busi-dang-nhap.jsp", request, response);
-                UtilControl.forward("/visitor/dang-nhap.jsp",request, response);
+                UtilControl.forward("/visitor/dang-nhap.jsp", request, response);
             }
         }
     }
