@@ -19,13 +19,6 @@ public class HomeServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-//        DAOAccount d = new DAOAccount();
-//        int role = UtilControl.setRole("btndangnhap_candi", "btndangnhap_busi", request);
-//        String user = request.getParameter("username");
-//        String pass = request.getParameter("password");
-//        String message = d.getMessage();
-//        boolean checkAccount = d.checkAccount(user, pass, role);
-
         DAOPost p = new DAOPost();
         String action = request.getParameter("action");
         if (action != null) {
@@ -41,7 +34,7 @@ public class HomeServlet extends HttpServlet {
         } else {
             request.setAttribute("listPAT5", p.getPostAllTop5());
             request.setAttribute("categoryList", p.getCategoryAll());
-            UtilControl.send(r, "Admin-trang-chu.jsp", "trang-chu-candi.jsp", "busi-trang-chu.jsp", response);
+            UtilControl.send(r, "/admin/Admin-trang-chu.jsp", "/visitor/trang-chu-candi.jsp", "/business/busi-trang-chu.jsp", response);
 
         }
 
