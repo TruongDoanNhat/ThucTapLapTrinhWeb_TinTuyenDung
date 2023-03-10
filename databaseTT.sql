@@ -9,7 +9,6 @@ CREATE TABLE company(
 id INT AUTO_INCREMENT PRIMARY KEY,
 imageId VARCHAR(128) REFERENCES image(id),
 name TEXT,
-email TEXT not NULL,
 phone TEXT,
 address TEXT,
 description MEDIUMTEXT,
@@ -18,16 +17,17 @@ createDate DATE not NULL
 DROP TABLE IF EXISTS account;
 CREATE TABLE account(
 id INT AUTO_INCREMENT PRIMARY KEY,
-companyId VARCHAR(128) REFERENCES company(id),
+companyId INT REFERENCES company(id),
 email TEXT not NULL,
 username VARCHAR(128) not NULL,
 password VARCHAR(128) not NULL,
+name TEXT,
 fileCV TEXT,
-createDate DATE not NULL,
-updateDate DATE,
-status TINYINT not NULL,
+type TINYINT not NULL,
 role TINYINT not NULL,
-type TINIINT not NULL
+status TINYINT not NULL,
+createDate DATE not NULL,
+updateDate DATE
 );
 DROP TABLE  iF EXISTS category;
 CREATE TABLE category(
