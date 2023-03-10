@@ -69,8 +69,10 @@
                                     bảo mật</a> của chúng tôi</p>
                         </div>
                         <div>
-                            <div class="left"><a class="in" href="dang-nhap.jsp">Quay lại đăng nhập</a></div>
-                            <div class="right"><a class="in" href="dang-ky-candi.jsp">Đăng ký tài khoản mới</a></div>
+                            <div class="left">Quay lại<a class="in" href="dang-nhap.jsp"> Đăng nhập</a></div>
+                            <div class="right">
+                                <p>Đăng ký <a class="in" href="dang-ky-busi.jsp">Doanh nghiệp</a>/<a class="in" href="dang-ky-candi.jsp">Người ứng tuyển</a>
+                            </div>
                         </div>
                     </div>
                 </div>

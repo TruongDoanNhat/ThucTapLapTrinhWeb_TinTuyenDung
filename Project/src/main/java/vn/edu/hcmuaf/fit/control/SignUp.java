@@ -30,14 +30,14 @@ public class SignUp extends HttpServlet {
         Date date = new Date();
         int role = UtilControl.setRole("btndangky_candi", "btndangky_busi", request);
         String action = request.getParameter("action");
-        if(user_name != null){
+        if (user_name != null) {
             if (role == 1) {
                 if (d.registerCandi(user_name, password, role, name, email, date, 0)) {
                     response.sendRedirect("/visitor/dang-nhap.jsp");
                 } else {
                     String message = d.getMessage();
                     request.setAttribute("message", message);
-                    UtilControl.forward(role, "dang-ky-Admin.jsp", "dang-ky-candi.jsp", "dang-ky-busi.jsp", request, response);
+                    UtilControl.forward(role, "visitor/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
                 }
             } else if (role == 0) {
                 if (d.registerAdmin(user_name, password, email, role, date, 0)) {
@@ -45,7 +45,7 @@ public class SignUp extends HttpServlet {
                 } else {
                     String message = d.getMessage();
                     request.setAttribute("message", message);
-                    UtilControl.forward(role, "dang-ky-Admin.jsp", "dang-ky-candi.jsp", "dang-ky-busi.jsp", request, response);
+                    UtilControl.forward(role, "visitor/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
                 }
             } else {
                 if (d.register(user_name, password, role, name, email, phone, gen, companyName, location, description, img, date, 0)) {
@@ -53,7 +53,7 @@ public class SignUp extends HttpServlet {
                 } else {
                     String message = d.getMessage();
                     request.setAttribute("message", message);
-                    UtilControl.forward(role, "dang-ky-Admin.jsp", "dang-ky-candi.jsp", "dang-ky-busi.jsp", request, response);
+                    UtilControl.forward(role, "visitor/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
                 }
             }
         }
@@ -65,8 +65,6 @@ public class SignUp extends HttpServlet {
             d.xacThucEmail(request.getParameter("u"), request.getParameter("e"));
             response.sendRedirect("/visitor/index.jsp");
         }
-
-
     }
 
 

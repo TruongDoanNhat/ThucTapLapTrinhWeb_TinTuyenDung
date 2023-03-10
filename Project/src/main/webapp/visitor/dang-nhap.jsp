@@ -67,8 +67,8 @@
                 </div>
                 <div class="container_swap">
 
-                    <div class="div_left"><p>Bạn chưa có tài khoản? <a class="in" href="dang-ky-candi.jsp"> Đăng ký
-                        ngay</a>
+                    <div class="div_left">
+                        <p>Đăng ký cho <a class="in" href="dang-ky-busi.jsp">Doanh nghiệp</a>/<a class="in" href="dang-ky-candi.jsp">Người ứng tuyển</a>
                     </p>
                     </div>
 

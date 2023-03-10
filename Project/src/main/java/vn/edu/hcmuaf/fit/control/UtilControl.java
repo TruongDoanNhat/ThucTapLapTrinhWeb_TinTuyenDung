@@ -7,7 +7,6 @@ import java.io.IOException;
 
 public class UtilControl {
 
-
     public static void send(int role, String urlAdmin, String urlCandi, String urlBusi, HttpServletResponse response) throws IOException {
         if (role == 0)
             response.sendRedirect(urlAdmin);
