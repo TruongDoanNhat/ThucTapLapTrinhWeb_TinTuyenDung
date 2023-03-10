@@ -112,10 +112,14 @@
         var pa = document.getElementById("pass-again").value;
         // Kiểm tra điều kiện mật khẩu phải có ít nhất 8 ký tự, 1 số, 1 chữ in, 1 ký tự đặc biệt
         const regexp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
-        if (regexp.test(p) && pa == p) {
+        if (regexp.test(p)) {
+            if(pa == p) {
+                document.getElementById("btndangky").disabled = false;
+                document.getElementById("pass-again").style.borderColor = '#607d8b'
+            }
             document.getElementById("pass").style.borderColor = '#607d8b';
             document.getElementById("btndangky").disabled = false;
-            document.getElementById("pass-again").style.borderColor = '#607d8b'
+
         } else if (p == 0) {
             document.getElementById("pass").style.borderColor = '#607d8b';
             document.getElementById("btndangky").disabled = true;
