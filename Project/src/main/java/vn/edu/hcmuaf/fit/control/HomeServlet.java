@@ -1,17 +1,18 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
-import vn.edu.hcmuaf.fit.service.DAOAccount;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "HomeServlet", value = {"/Home", "/Logout"})
+@WebServlet(name = "HomeServlet", value = {"/Home"})
 public class HomeServlet extends HttpServlet {
-    private int r = 0;
+    private int r = 1;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -20,24 +21,13 @@ public class HomeServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         DAOPost p = new DAOPost();
-        String action = request.getParameter("action");
-        if (action != null) {
-            switch (action) {
-                case "logout":
-                    Account account = (Account) request.getSession().getAttribute("account");
-                    r = account.getRole();
-                    UtilSession.getInstance().removeValue(request, "account");
-                    action = null;
-                    response.sendRedirect("/Home");
-                    break;
-            }
-        } else {
-            request.setAttribute("listPAT5", p.getPostAllTop5());
-            request.setAttribute("categoryList", p.getCategoryAll());
+        request.setAttribute("listPAT5", p.getPostAllTop5());
+        request.setAttribute("categoryList", p.getCategoryAll());
+        Account account = UtilSession.getInstance().getValue(request, "account");
+        if (account != null) {
+            r = account.getRole();
             UtilControl.send(r, "/admin/Admin-trang-chu.jsp", "/visitor/trang-chu-candi.jsp", "/business/busi-trang-chu.jsp", response);
-
         }
-
     }
 
     @Override

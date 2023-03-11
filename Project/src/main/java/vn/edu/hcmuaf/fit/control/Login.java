@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static vn.edu.hcmuaf.fit.control.UtilControl.*;
-
-@WebServlet(name = "Login", value = {"/Login"})
+@WebServlet(name = "Login", value = {"/Login", "/Logout"})
 public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,14 +28,12 @@ public class Login extends HttpServlet {
         String action = request.getParameter("action");
         if (action != null) {
             switch (action) {
-                case "login-candi":
+                case "login":
                     request.getRequestDispatcher("/visitor/dang-nhap.jsp").forward(request, response);
                     break;
-                case "login-busi":
-                    request.getRequestDispatcher("/visitor/dang-nhap.jsp").forward(request, response);
-                    break;
-                case "login-admin":
-                    request.getRequestDispatcher("/visitor/dang-nhap.jsp").forward(request, response);
+                case "logout":
+                    UtilSession.getInstance().removeValue(request, "account");
+                    response.sendRedirect("/visitor/trang-chu-candi.jsp");
                     break;
             }
         } else {

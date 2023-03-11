@@ -5,79 +5,52 @@ import java.util.Date;
 
 public class Account implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String user_name;
-    private String password;
-    private int role;
+    private int id;
+    private String companyId;
     private String email;
+    private String username;
+    private String password;
     private String name;
-    private String phone;
-    private int gen;
     private String fileCV;
-    private String companyID;
+    private int type;
+    private int role;
+    private int status;
     private Date create_date;
     private Date update_date;
-
-    private int status;
 
     public Account() {
 
     }
 
-    public Account(String user_name, String password, String email, int role, int status) {
-        this.user_name = user_name;
-        this.password = password;
+    public Account(int id, String companyId, String email, String username, String password, String name, String fileCV, int type, int role, int status, Date create_date, Date update_date) {
+        this.id = id;
+        this.companyId = companyId;
         this.email = email;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.fileCV = fileCV;
+        this.type = type;
         this.role = role;
         this.status = status;
-    }
-
-    public Account(String user_name, String password, int role,
-                   String email, String name, String phone, int gen, String fileCV, String companyID,
-                   Date create_date, Date update_date, int status) {
-        this.user_name = user_name;
-        this.password = password;
-        this.role = role;
-        this.email = email;
-        this.name = name;
-        this.phone = phone;
-        this.gen = gen;
-        this.fileCV = fileCV;
-        this.companyID = companyID;
         this.create_date = create_date;
         this.update_date = update_date;
-        this.status = status;
     }
 
-    public int getStatus() {
-        return status;
+    public int getId() {
+        return id;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getUsername() {
-        return user_name;
+    public String getCompanyId() {
+        return companyId;
     }
 
-    public void setUsername(String username) {
-        this.user_name = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     public String getEmail() {
@@ -88,28 +61,28 @@ public class Account implements Serializable {
         this.email = email;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public int getGen() {
-        return gen;
-    }
-
-    public void setGen(int gen) {
-        this.gen = gen;
     }
 
     public String getFileCV() {
@@ -120,12 +93,28 @@ public class Account implements Serializable {
         this.fileCV = fileCV;
     }
 
-    public String getCompanyID() {
-        return companyID;
+    public int getType() {
+        return type;
     }
 
-    public void setCompanyID(String companyID) {
-        this.companyID = companyID;
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Date getCreate_date() {
@@ -146,19 +135,6 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "Account{" +
-                "user_name='" + user_name + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", gen=" + gen +
-                ", fileCV='" + fileCV + '\'' +
-                ", companyID='" + companyID + '\'' +
-                ", create_date=" + create_date +
-                ", update_date=" + update_date +
-                ", status=" + status +
-                '}';
+        return "Account{" + "id=" + id + ", companyId='" + companyId + '\'' + ", email='" + email + '\'' + ", username='" + username + '\'' + ", password='" + password + '\'' + ", name='" + name + '\'' + ", fileCV='" + fileCV + '\'' + ", type=" + type + ", role=" + role + ", status=" + status + ", create_date=" + create_date + ", update_date=" + update_date + '}';
     }
 }

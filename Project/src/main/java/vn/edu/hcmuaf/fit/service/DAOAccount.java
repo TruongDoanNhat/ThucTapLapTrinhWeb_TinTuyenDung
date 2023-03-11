@@ -2,31 +2,14 @@ package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Account;
-import vn.edu.hcmuaf.fit.model.Address;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 public class DAOAccount {
     private String message = "error!";
     private Account account = null;
-    private boolean isAdmin = false;
-    private boolean isBusi = false;
-    private boolean isCandi = false;
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public boolean isBusi() {
-        return isBusi;
-    }
-
-    public boolean isCandi() {
-        return isCandi;
-    }
 
     public String getMessage() {
         return message;
@@ -34,28 +17,36 @@ public class DAOAccount {
 
     public Account getAccount() {
         return account;
-
     }
 
-    public void update(String name, String email, String phone) {
-        String query = "update account set name = ? , email = ? , phone = ? where user_name = ?";
-    }
-
-    public boolean username(String user_name) {
-        String query = "select * from account where user_name = ?";
+    // Kiểm tra tên tài khoản có tồn tài trong hệ thống?
+    public boolean username(String username) {
+        String query = "select * from account where username = ?";
         List<Account> listAccount = JDBIConnector.get().withHandle(handle -> handle.createQuery(query)
-                .bind(0, user_name)
+                .bind(0, username)
                 .mapToBean(Account.class).list());
-        for (Account account : listAccount) {
-            if (account.getUsername().equals(user_name)) {
-                return true;
-            }
+        return listAccount.size() > 0 ? true : false;
+    }
+
+    // Kiểm tra tài khoản
+    public boolean checkAccount(String username, String password) {
+        String query = "select * from account where  username = ? and password = ?";
+        List<Account> listAccount = JDBIConnector.get().withHandle(handle -> handle.createQuery(query)
+                .bind(0, username)
+                .bind(1, password)
+                .mapToBean(Account.class).list());
+        if (listAccount.size() > 0) {
+            this.account = listAccount.get(0);
+            return true;
+        } else {
+            message = "Sai tài khoản hoặc mật khẩu";
         }
         return false;
     }
 
+    // đổi mật khẩu cho tài khoản đã tồn tại trong hệ thống
     public void updatePassword(String username, String password) {
-        String query = "UPDATE account set password = ? WHERE user_name = ?";
+        String query = "UPDATE account set password = ? WHERE username = ?";
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate(query)
                         .bind(0, password)
@@ -63,6 +54,7 @@ public class DAOAccount {
                         .execute());
     }
 
+    // lấy danh sách tài khoản
     public List<Account> getListAccount() {
         List<Account> listAccount = new ArrayList<Account>();
         String query = "select * from account";
@@ -70,60 +62,49 @@ public class DAOAccount {
         return listAccount;
     }
 
-    public boolean checkAccount(String user_name, String password) {
-        String query = "select * from account where  user_name = ? and password = ?";
+    // kiểm tra username và email
+    public boolean checkEmail(String username, String email) {
+        String query = "select * from account where username = ? and email = ?";
         List<Account> listAccount = JDBIConnector.get().withHandle(handle -> handle.createQuery(query)
-                .bind(0, user_name)
-                .bind(1, password)
+                .bind(0, username)
+                .bind(1, email)
                 .mapToBean(Account.class).list());
-        for (Account account : listAccount) {
-            if (account.getUsername().equals(user_name) && account.getPassword().equals(password)) {
-                this.account = account;
-                return true;
-            }
-        }
-        message = "Sai tài khoản hoặc mật khẩu";
-        return false;
+        return listAccount.size() > 0 ? true : false;
     }
 
-    public boolean checkEmail(String user_name, String email) {
-        String query = "select * from account where user_name = ?";
+    //  kiểm tra email nhập vào có tồn tại trong hệ thống không
+    public boolean checkEmail(String email) {
+        String query = "select * from account where email = ?";
         List<Account> listAccount = JDBIConnector.get().withHandle(handle -> handle.createQuery(query)
-                .bind(0, user_name)
+                .bind(0, email)
                 .mapToBean(Account.class).list());
-        for (Account account : listAccount) {
-            if (account.getUsername().equals(user_name) && account.getEmail().equals(email)) {
-                this.account = account;
-                return true;
-            }
-        }
-        return false;
+        return listAccount.size() > 0 ? true : false;
     }
 
-    public String getPassword(String user_name, String email) {
-        if (checkEmail(user_name, email)) {
+    public String getPassword(String username, String email) {
+        if (checkEmail(username, email)) {
             return account.getPassword();
         }
         return null;
     }
 
-    public boolean registerCandi(String user_name, String password, int role, String name, String email, Date create_date, int status) {
-        String queryAccount = "INSERT INTO account (user_name,password,role,email,name,phone,gen,fileCV,companyID,create_date,update_date,status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-        if (!checkUsernameExists(user_name)) {
+    // tạo tài khoản cho candidate
+    public boolean registerCandi(String email, String username, String password, String name, int type, int role, int status, Date createDate) {
+        String queryAccount = "INSERT INTO account (companyID,email,username,password,name,fileCV,type,role,status,createDate,updateDate) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        if (!checkUsernameExists(username) && !checkEmail(email)) {
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(queryAccount)
-                            .bind(0, user_name)
-                            .bind(1, password)
-                            .bind(2, role)
-                            .bind(3, email)
+                            .bind(0, (Integer) null)
+                            .bind(1, email)
+                            .bind(2, username)
+                            .bind(3, password)
                             .bind(4, name)
                             .bind(5, (String) null)
-                            .bind(6, (String) null)
-                            .bind(7, (String) null)
-                            .bind(8, (String) null)
-                            .bind(9, create_date)
+                            .bind(6, type)
+                            .bind(7, role)
+                            .bind(8, status)
+                            .bind(9, createDate)
                             .bind(10, (Date) null)
-                            .bind(11, status)
                             .execute()
             );
             return true;
@@ -131,12 +112,12 @@ public class DAOAccount {
         return false;
     }
 
-    public boolean registerAdmin(String user_name, String password, String email, int role, Date create_date, int status) {
-        String queryAccount = "INSERT INTO account (user_name,password,role,email,name,phone,gen,fileCV,companyID,create_date,update_date, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-        if (!checkUsernameExists(user_name)) {
+    public boolean registerAdmin(String username, String password, String email, int role, Date createDate, int status) {
+        String queryAccount = "INSERT INTO account (username,password,role,email,name,phone,gen,fileCV,companyID,createDate,updateDate, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        if (!checkUsernameExists(username) && !checkEmail(email)) {
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(queryAccount)
-                            .bind(0, user_name)
+                            .bind(0, username)
                             .bind(1, password)
                             .bind(2, role)
                             .bind(3, email)
@@ -145,7 +126,7 @@ public class DAOAccount {
                             .bind(6, (String) null)
                             .bind(7, (String) null)
                             .bind(8, (String) null)
-                            .bind(9, create_date)
+                            .bind(9, createDate)
                             .bind(10, (Date) null)
                             .bind(11, status)
                             .execute()
@@ -155,47 +136,38 @@ public class DAOAccount {
         return false;
     }
 
-    public boolean register(String user_name, String password, int role, String name, String email, String phone, int gen,
-                            String companyName, String location, String description, String img, Date create_date, int status) {
-        DAOAddress daoAddress = new DAOAddress();
-        DAOCompany daoCompany = new DAOCompany();
-        String addressID = "a0" + daoAddress.getSize();
-        String companyID = "c0" + daoCompany.getSize();
-        String queryAddress = "INSERT INTO address (addressID,location) VALUES (?,?)";
-        String queryCompany = "INSERT INTO company (companyID,name,addressID,description,img) VALUES (?,?,?,?,?)";
-        String queryAccount = "INSERT INTO account (user_name,password,role,email,name,phone,gen,fileCV,companyID,create_date,update_date,status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-        if (!checkUsernameExists(user_name)) {
-
-            JDBIConnector.get().withHandle(handle ->
-                    handle.createUpdate(queryAddress)
-                            .bind(0, addressID)
-                            .bind(1, location)
-                            .execute()
-            );
+    // tạo tài khoản cho business
+    public boolean registerBusi(String username, String password, int role, String name, String email, String phone, int type, int status,
+                                String companyName, String address,
+                                String description, Date createDate) {
+        String queryCompany = "INSERT INTO company (imageId,name,phone,address,description,createDate) VALUES (?,?,?,?,?,?)";
+        int idCompany = DAOCompany.companyList().size();
+        String queryAccount = "INSERT INTO account (companyID,email,username,password,name,fileCV,type,role,status,createDate,updateDate) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        if (!checkUsernameExists(username) && !checkEmail(email)) {
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(queryCompany)
-                            .bind(0, companyID)
+                            .bind(0, (Integer) null)
                             .bind(1, companyName)
-                            .bind(2, addressID)
-                            .bind(3, description)
-                            .bind(4, img)
+                            .bind(2, phone)
+                            .bind(3, address)
+                            .bind(4, description)
+                            .bind(5, createDate)
                             .execute()
             );
 
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(queryAccount)
-                            .bind(0, user_name)
-                            .bind(1, password)
-                            .bind(2, role)
-                            .bind(3, email)
+                            .bind(0, idCompany)
+                            .bind(1, email)
+                            .bind(2, username)
+                            .bind(3, password)
                             .bind(4, name)
-                            .bind(5, phone)
-                            .bind(6, gen)
-                            .bind(7, (String) null)
-                            .bind(8, companyID)
-                            .bind(9, create_date)
+                            .bind(5, (String) null)
+                            .bind(6, type)
+                            .bind(7, role)
+                            .bind(8, status)
+                            .bind(9, createDate)
                             .bind(10, (Date) null)
-                            .bind(11, status)
                             .execute()
             );
             return true;
@@ -203,18 +175,15 @@ public class DAOAccount {
         return false;
     }
 
-    public void updateAccountCandi(String user_name, String name, String phone, String email, int gen) {
-        String query = "update account set name = ?, email = ?, phone = ? , gen = ?, update_date = ? where user_name=?";
-        Date update_date = new Date();
+    public void updateAccountCandi(String username, String name) {
+        String query = "update account set name = ? updateDate = ? where username=?";
+        Date updateDate = new Date();
         try {
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(query)
                             .bind(0, name)
-                            .bind(1, email)
-                            .bind(2, phone)
-                            .bind(3, gen)
-                            .bind(4, user_name)
-                            .bind(5, update_date)
+                            .bind(1, username)
+                            .bind(2, updateDate)
                             .execute()
             );
         } catch (Exception e) {
@@ -223,11 +192,11 @@ public class DAOAccount {
     }
 
 
-    public boolean checkUsernameExists(String user_name) {
-        String query = "select * from account where user_name = ?";
+    public boolean checkUsernameExists(String username) {
+        String query = "select * from account where username = ?";
         List<Account> listAccount = JDBIConnector.get().withHandle(
                 handle -> handle.createQuery(query)
-                        .bind(0, user_name).mapToBean(Account.class).list());
+                        .bind(0, username).mapToBean(Account.class).list());
         if (listAccount.size() > 0) {
             return true;
         }
@@ -242,19 +211,19 @@ public class DAOAccount {
     public static void main(String[] args) {
         DAOAccount dao = new DAOAccount();
         List<Account> l = dao.getListAccount();
-        System.out.println(dao.register("bussi", "123", 2, "Nguyeen", "2012@gmail.com", "025", 2, "ABC", "CBA", "asdas", null, new Date(), 0));
+        System.out.println((dao.registerBusi("Bui", "123", 2, "name","20130340@st.hcmuaf.edu.vn", "1111444777",  0,0,"companyName", "address", "description", new Date())));
 //        dao.registerCandi_Admin("abc", "111", "abc@gmail.com", 2);
 //        System.out.println(dao.checkAccount("admin@gmail.com", "321"));
 //        dao.registerBusi("abc2", "1112", null,"abc@gmail.com", null,0,null,1);
 
     }
 
-    public boolean xacThucEmail(String user_name, String email) {
-        if (checkUsernameExists(user_name)) {
-            String query = "UPDATE account set status = 1 WHERE user_name = ? and email = ?";
+    public boolean xacThucEmail(String username, String email) {
+        if (checkUsernameExists(username)) {
+            String query = "UPDATE account set status = 1 WHERE username = ? and email = ?";
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(query)
-                            .bind(0, user_name)
+                            .bind(0, username)
                             .bind(1, email)
                             .execute());
             return true;

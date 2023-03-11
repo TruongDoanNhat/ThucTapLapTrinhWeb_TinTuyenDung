@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -67,12 +68,12 @@
                 </div>
                 <div class="container_swap">
 
-                    <div class="div_left"><p>Bạn chưa có tài khoản? <a class="in" href="dang-ky-candi.jsp"> Đăng ký
-                        ngay</a>
+                    <div class="div_left">
+                        <p>Đăng ký cho <a class="in" href='<c:url value="/SignUp?action=business"/>'>Doanh nghiệp</a>/<a class="in" href='<c:url value="/SignUp?action=candidate"/>'>Người ứng tuyển</a>
                     </p>
                     </div>
 
-                    <div class="div_right"><a class="in" href="quen-mat-khau.jsp">Quên mật khẩu</a></div>
+                    <div class="div_right"><a class="in" href='<c:url value="/ResetPassword?action=forgotPassword"/>'>Quên mật khẩu</a></div>
 
                 </div>
             </form>

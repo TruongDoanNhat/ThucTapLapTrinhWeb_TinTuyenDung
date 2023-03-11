@@ -55,11 +55,11 @@
                             <!-- Header-btn -->
                             <div class="header-btn d-none f-right d-lg-block">
                                 <c:if test="${sessionScope.account == null}">
-                                    <a href="dang-ky-candi.jsp" class="btn head-btn2">Đăng kí</a>
-                                    <a href='<c:url value="/Login?action=login-candi"/>' class="btn head-btn2">Đăng
+                                    <a href='<c:url value="/SignUp?action=candidate"/>' class="btn head-btn2">Đăng kí</a>
+                                    <a href='<c:url value="/Login?action=login"/>' class="btn head-btn2">Đăng
                                         nhập</a>
                                 </c:if>
-                                <a href="dang-nhap.jsp" class="btn head-btn1">Nhà tuyển dụng</a>
+                                <a href='<c:url value="/Login?action=login"/>' class="btn head-btn1">Nhà tuyển dụng</a>
                                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
 
                                     <c:if test="${sessionScope.account != null}">
@@ -70,7 +70,7 @@
 
                                         <ul class="" style="">
                                             <li class="" style="">
-                                                <a class="" href='<c:url value="/Home?action=logout"/>'>
+                                                <a class="" href='<c:url value="/Logout?action=logout"/>'>
                                                     Đăng xuất</a></li>
                                         </ul>
                                     </c:if>

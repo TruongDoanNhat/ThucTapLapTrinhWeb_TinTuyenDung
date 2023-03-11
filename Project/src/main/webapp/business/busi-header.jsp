@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -64,7 +65,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4">
                         <li class="mb-2 font-weight-bold" style="text-align: center"><a
-                                href='<c:url value="/Home?action=logout"/>'> Đăng xuất</a></li>
+                                href='<c:url value="/Logout?action=logout"/>'> Đăng xuất</a></li>
                     </ul>
                     <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
                         aria-labelledby="dropdownMenuButton">

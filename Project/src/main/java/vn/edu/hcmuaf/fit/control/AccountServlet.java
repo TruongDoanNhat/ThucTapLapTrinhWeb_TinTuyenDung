@@ -16,23 +16,15 @@ public class AccountServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String s = request.getParameter("gen");
-        String img = null;
-        int gen = (s != null) ? (s.equals("Nam") ? 1 : 2) : 0;
 
         Account account = (Account) request.getSession().getAttribute("account");
         if (account != null) {
             account.setName(name);
-            account.setPhone(phone);
-            account.setEmail(email);
-            account.setGen(gen);
             request.getRequestDispatcher("candi-tai-khoan.jsp").forward(request, response);
             DAOAccount d = new DAOAccount();
-            d.updateAccountCandi(account.getUsername(), account.getName(), account.getPhone(), account.getEmail(), account.getGen());
+            d.updateAccountCandi(account.getUsername(), account.getName());
         }else{
-            request.getRequestDispatcher("dang-nhap.jsp").forward(request, response);
+            request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
         }
 
     }
