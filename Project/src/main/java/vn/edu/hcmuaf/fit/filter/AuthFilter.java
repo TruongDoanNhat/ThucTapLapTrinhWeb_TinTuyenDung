@@ -26,35 +26,38 @@ public class AuthFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String url = request.getRequestURI();
         Account account = UtilSession.getInstance().getValue(request, "account");
+        int role;
         if (url.startsWith("/admin")) {
             if (account != null) {
-                if (account.getRole() == 0) {
+                role = account.getRole();
+                if (role == 0) {
                     chain.doFilter(servletRequest, servletResponse);
-                } else if (account.getRole() == 1) {
-                    response.sendRedirect(request.getContextPath() + "/Login?action=login-admin");
                 } else {
-                    response.sendRedirect(request.getContextPath() + "/Login?action=login-admin");
+                    response.sendRedirect(request.getContextPath() + "/Login?action=login");
                 }
             } else {
-                response.sendRedirect(request.getContextPath() + "/Login?action=login-admin");
+                response.sendRedirect(request.getContextPath() + "/Login?action=login");
             }
         } else if (url.startsWith("/business")) {
             if (account != null) {
-                if (account.getRole() == 2) {
+                role = account.getRole();
+
+                if (role == 2 || role == 1) {
                     chain.doFilter(servletRequest, servletResponse);
-                } else if (account.getRole() == 1) {
-                    response.sendRedirect(request.getContextPath() + "/Login?action=login-busi");
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/Login?action=login");
                 }
             } else {
-                response.sendRedirect(request.getContextPath() + "/Login?action=login-busi");
+                response.sendRedirect(request.getContextPath() + "/Login?action=login");
             }
         } else if (url.startsWith("/candidate")) {
             if (account != null) {
-                if (account.getRole() == 1) {
+                role = account.getRole();
+                if (role == 1) {
                     chain.doFilter(servletRequest, servletResponse);
                 }
             } else {
-                response.sendRedirect(request.getContextPath() + "/Login?action=login-candi");
+                response.sendRedirect(request.getContextPath() + "/Login?action=login");
             }
         } else {
             chain.doFilter(servletRequest, servletResponse);

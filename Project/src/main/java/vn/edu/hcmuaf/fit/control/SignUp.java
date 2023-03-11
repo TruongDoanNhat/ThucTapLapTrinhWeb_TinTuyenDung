@@ -31,6 +31,8 @@ public class SignUp extends HttpServlet {
         Date date = new Date();
         int role = UtilControl.setRole("btndangky_candi", "btndangky_busi", request);
         String action = request.getParameter("action");
+
+
         if (user_name != null) {
             if (role == 1) {
                 if (d.registerCandi(email, user_name, password, name, type, role, 0, date)) {
@@ -49,7 +51,7 @@ public class SignUp extends HttpServlet {
                     UtilControl.forward(role, "visitor/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
                 }
             } else {
-                if (d.registerBusi(user_name, password, role, name,email, phone,  type,0,companyName, address, description, date)) {
+                if (d.registerBusi(user_name, password, role, name, email, phone, type, 0, companyName, address, description, date)) {
                     response.sendRedirect("/visitor/dang-nhap.jsp");
                 } else {
                     String message = d.getMessage();
@@ -62,9 +64,21 @@ public class SignUp extends HttpServlet {
             String subject = "Email Verification";
             String content = "Click the link to verify your email: " + request.getRequestURL() + "?action=daxacthuc&u=" + user_name + "&e=" + email;
             MailService.sendMail(email, subject, content);
-        } else if (action.equals("daxacthuc")) {
-            d.xacThucEmail(request.getParameter("u"), request.getParameter("e"));
-            response.sendRedirect("/visitor/index.jsp");
+        } else {
+            switch (action) {
+                case "candidate":
+                    UtilControl.forward("visitor/dang-ky-candi.jsp", request, response);
+                    break;
+                case "business":
+                    UtilControl.forward("visitor/dang-ky-busi.jsp", request, response);
+                    break;
+                case "admin":
+                    UtilControl.forward("visitor/dang-ky-admin.jsp", request, response);
+                    break;
+                case "daxacthuc":
+                    d.xacThucEmail(request.getParameter("u"), request.getParameter("e"));
+                    response.sendRedirect("/visitor/index.jsp");
+            }
         }
     }
 

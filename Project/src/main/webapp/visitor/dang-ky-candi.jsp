@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -77,7 +78,7 @@
                 </div>
                 <div class="">
                     <div class="input-form">
-                        <p>Bạn đã có tài khoản? <a class="in" href="dang-nhap.jsp">Đăng nhập ngay</a></p>
+                        <p>Bạn đã có tài khoản? <a class="in" href='<c:url value="/Login?action=login"/>' >Đăng nhập ngay</a></p>
                     </div>
                 </div>
             </form>

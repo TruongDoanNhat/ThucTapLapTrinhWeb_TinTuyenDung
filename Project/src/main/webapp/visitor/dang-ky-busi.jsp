@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -59,7 +60,7 @@
                                 <div data-v-9281c350="" class="py-2" style="margin-top: 15px">
                                     <a data-v-9281c350="" href="#" class="text-muted text-decoration-none">Đã
                                         có tài khoản?</a>
-                                    <a data-v-9281c350="" href="#" class="text-primary text-decoration-none">
+                                    <a data-v-9281c350="" href='<c:url value="/Login?action=login"/>'  class="text-primary text-decoration-none">
                                         Đăng nhập ngay
                                     </a></div>
                             </div>

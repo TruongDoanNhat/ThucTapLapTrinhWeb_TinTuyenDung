@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Account" %><%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -69,9 +70,9 @@
                                     bảo mật</a> của chúng tôi</p>
                         </div>
                         <div>
-                            <div class="left">Quay lại<a class="in" href="dang-nhap.jsp"> Đăng nhập</a></div>
+                            <div class="left">Quay lại<a class="in" href='<c:url value="/Login?action=login"/>'> Đăng nhập</a></div>
                             <div class="right">
-                                <p>Đăng ký <a class="in" href="dang-ky-busi.jsp">Doanh nghiệp</a>/<a class="in" href="dang-ky-candi.jsp">Người ứng tuyển</a>
+                                <p>Đăng ký <a class="in" href='<c:url value="/SignUp?action=business"/>'>Doanh nghiệp</a>/<a class="in" href='<c:url value="/SignUp?action=candidate"/>'>Người ứng tuyển</a>
                             </div>
                         </div>
                     </div>
