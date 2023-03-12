@@ -86,7 +86,7 @@
                                             <div data-v-8c64d55c="" class="ml-auto position-relative">
                                                 <input data-v-8c64d55c="" id="id" name="user_name" type="text"
                                                        placeholder="Tên đăng nhập"
-                                                       onkeyup="daoNutDN()" autofocus
+                                                       onkeyup="daoNutDN(), checkPass()" autofocus
                                                        class="form-control">
                                             </div>
                                         </div>
@@ -97,7 +97,7 @@
                                     <div data-v-9281c350="" class="col-form-input">
                                         <div data-v-8c64d55c="" data-v-9281c350="">
                                             <div data-v-8c64d55c="" class="ml-auto position-relative">
-                                                <input id="email" name="email" type="email" onkeyup="daoNutDN()"
+                                                <input id="email" name="email" type="email" onkeyup="daoNutDN(), checkPass()"
                                                        class="form-control"
                                                        placeholder="exc@company.com"
                                                 >
@@ -117,7 +117,7 @@
                                     <div data-v-9281c350="" class="col-form-input">
                                         <div data-v-8c64d55c="" data-v-9281c350="">
                                             <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                                <input id="pass" name="password" type="password" onkeyup="daoNutDN()"
+                                                <input id="pass" name="password" type="password" onkeyup="daoNutDN(), checkPass()"
                                                        placeholder="Mật khẩu (từ 6 đến 25 ký tự)"
                                                        class="form-control">
                                             </div>
@@ -131,7 +131,7 @@
                                         <div data-v-8c64d55c="" data-v-9281c350="">
                                             <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
                                                 <input id="pass-again" name="password-again"
-                                                       type="password" onkeyup="daoNutDN()"
+                                                       type="password" onkeyup="daoNutDN(), checkPass()"
                                                        placeholder="Nhập lại mật khẩu"
                                                        class="form-control">
                                             </div>
@@ -190,7 +190,7 @@
                                 <div data-v-9281c350="" class="col-form-input">
                                     <div data-v-8c64d55c="" data-v-9281c350="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <!----> <!----> <input data-v-8c64d55c="" type="text" name="companyName"
+                                            <!----> <!----> <input data-v-8c64d55c="" type="text" id="company-name" name="companyName"
                                                                    placeholder="Tên công ty"
                                                                    class="form-control"> <!----></div> <!----></div>
                                 </div>
@@ -253,11 +253,11 @@
                             <div data-v-9281c350="" class="form-group form-check">
                                 <div data-v-9281c350="" class="custom-control custom-checkbox form-check-input my-0"
                                      type="checkbox">
-                                    <input id="dieukhoan" onclick="daoNutDN()" type="checkbox"
+                                    <input id="dieukhoan" onclick="daoNutDN(), checkPass()" type="checkbox"
                                            class="custom-control-input" value="false">
                                     <%--                                    <label for="dieukhoan" class="custom-control-label"></label>--%>
                                 </div>
-                                <label for="dieukhoan" onclick="daoNutDN()" class="form-check-label">
+                                <label for="dieukhoan" onclick="daoNutDN(), checkPass()" class="form-check-label">
                                     Tôi đồng ý với
                                     <a data-v-9281c350="" href="#"
                                        class="text-danger text-decoration-none">
@@ -327,39 +327,68 @@
         </div>
     </div>
 </div>
+
 <script>
     document.getElementById("btndangky").disabled = true;
-</script>
-<script>
     function daoNutDN() {
         var e = document.getElementById("email").value;
         var u = document.getElementById("id").value;
         var p = document.getElementById("pass").value;
         var pa = document.getElementById("pass-again").value;
-        var d = document.getElementById("dieukhoan").checked;
+        // var cn = document.getElementById("company-name").value;
 
 
-        if (e.length > 0 && u.length > 0 && p.length > 0 && pa.length > 0) {
-            if (pa != p) {
-                document.getElementById("pass-again").style.borderColor = 'red';
-                document.getElementById("btndangky").disabled = true;
-                document.getElementById("btndangky").style.cursor = 'not-allowed';
-            } else {
-                document.getElementById("pass-again").style.borderColor = '#f1f3f4';
-                document.getElementById("btndangky").disabled = false;
-                document.getElementById("btndangky").style.cursor = 'pointer';
-            }
+        if (e.length > 0 && u.length > 0 && p.length > 0 && pa.length > 0 ) {
+            document.getElementById("btndangky").disabled = false;
+            document.getElementById("btndangky").style.cursor = 'pointer';
+
         } else {
             document.getElementById("btndangky").disabled = true;
             document.getElementById("btndangky").style.cursor = 'not-allowed';
         }
+
+
+    }
+</script>
+<script>
+    function checkPass() {
+        var p = document.getElementById("pass").value;
+        var pa = document.getElementById("pass-again").value;
+        var d = document.getElementById("dieukhoan").checked;
+        // Kiểm tra điều kiện mật khẩu phải có ít nhất 8 ký tự, 1 số, 1 chữ in, 1 ký tự đặc biệt
+        const regexp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+        if (regexp.test(p)) {
+            if(pa == p) {
+                document.getElementById("btndangky").disabled = false;
+                document.getElementById("btndangky").style.cursor = 'pointer';
+                document.getElementById("pass-again").style.borderColor = '#607d8b'
+            }
+            document.getElementById("pass").style.borderColor = '#607d8b';
+            document.getElementById("btndangky").style.cursor = 'pointer';
+            document.getElementById("btndangky").disabled = false;
+
+        } else if (p == 0) {
+            document.getElementById("pass").style.borderColor = '#607d8b';
+            document.getElementById("btndangky").disabled = true;
+            document.getElementById("btndangky").style.cursor = 'not-allowed';
+        } else {
+            document.getElementById("pass").style.borderColor = 'red';
+            document.getElementById("btndangky").disabled = true;
+            document.getElementById("btndangky").style.cursor = 'not-allowed';
+        }
+
+        if (pa != p) {
+            document.getElementById("pass-again").style.borderColor = 'red'
+            document.getElementById("btndangky").disabled = true;
+            document.getElementById("btndangky").style.cursor = 'not-allowed';
+        }
+
         if (d === false) {
             document.getElementById("btndangky").disabled = true;
             document.getElementById("btndangky").style.cursor = 'not-allowed';
         }
     }
 </script>
-
 
 </body>
 
