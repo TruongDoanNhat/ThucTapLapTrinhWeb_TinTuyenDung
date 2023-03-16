@@ -121,7 +121,7 @@
                                 <a href="/Category?action=<%=c.getCategoryID()%>"><%=c.getName()%>
                                 </a>
                             </h5>
-                            <span>(<%=dp.getPostofCategoryByID(c.getCategoryID())%>)</span>
+                            <span>(<%=dp.getPostofCategoryByID(c.getCategoryID().size())%>)</span>
                         </div>
                     </div>
                 </div>

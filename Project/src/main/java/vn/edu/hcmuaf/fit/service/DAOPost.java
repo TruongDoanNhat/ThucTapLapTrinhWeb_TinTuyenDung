@@ -64,18 +64,8 @@ public class DAOPost {
         return listPost;
     }
 
-    public int getPostofCategoryByID(String categoryID) {
-        String query = "select * from post where categoryID = ?";
-        List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query)
-                    .bind(0, categoryID)
-                    .mapToBean(Post.class)
-                    .stream().collect(Collectors.toList());
-        });
-        return listPost.size();
-    }
 
-    public List<Post> getPostofCategory(String categoryID) {
+    public List<Post> getPostofCategoryByID(String categoryID) {
         String query = "select * from post where categoryID = ?";
         List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
