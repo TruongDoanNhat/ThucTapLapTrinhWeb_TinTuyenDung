@@ -1,11 +1,12 @@
 package vn.edu.hcmuaf.fit.control;
 
-import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "Post", value = {"/Post", "/Category"})
@@ -19,7 +20,7 @@ public class PostServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action != null) {
-            request.setAttribute("listPOC", p.getPostofCategory(action));
+            request.setAttribute("listPOC", p.getPostofCategoryByID(action));
 //            request.getRequestDispatcher("danh-sach-viec-lam-candi.jsp").forward(request, response);
         } else {
             request.setAttribute("listPOC", p.getPostAll());

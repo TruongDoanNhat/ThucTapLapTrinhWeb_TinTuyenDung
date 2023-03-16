@@ -5,16 +5,14 @@ import java.util.Date;
 
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String categoryID;
+    private String id;
     private String name;
     private Date create_date;
-    private Date update_date;
 
-    public Category(String categoryID, String name, Date create_date, Date update_date) {
-        this.categoryID = categoryID;
+    public Category(String id, String name, Date create_date) {
+        this.id = id;
         this.name = name;
         this.create_date = create_date;
-        this.update_date = update_date;
     }
 
     public Category() {
@@ -24,19 +22,18 @@ public class Category implements Serializable {
     @Override
     public String toString() {
         return "Category{" +
-                "categoryID='" + categoryID + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", create_date=" + create_date +
-                ", update_date=" + update_date +
                 '}';
     }
 
-    public String getCategoryID() {
-        return categoryID;
+    public String getid() {
+        return id;
     }
 
-    public void setCategoryID(String categoryID) {
-        this.categoryID = categoryID;
+    public void setid(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -53,14 +50,6 @@ public class Category implements Serializable {
 
     public void setCreate_date(Date create_date) {
         this.create_date = create_date;
-    }
-
-    public Date getUpdate_date() {
-        return update_date;
-    }
-
-    public void setUpdate_date(Date update_date) {
-        this.update_date = update_date;
     }
 }
 
