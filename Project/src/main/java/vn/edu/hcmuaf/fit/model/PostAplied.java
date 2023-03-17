@@ -1,51 +1,76 @@
 package vn.edu.hcmuaf.fit.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class PostAplied implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String postID;
-    private String user_name;
-    private String applied_date;
+    private int id;
+    private int accountId;
+    private int postId;
+    private String fileCV;
+    private Date createDate;
 
-    public PostAplied(String postID, String user_name, String applied_date) {
-        this.postID = postID;
-        this.user_name = user_name;
-        this.applied_date = applied_date;
-    }
     public PostAplied(){
 
     }
-    public String getPostID() {
-        return postID;
+
+    public PostAplied(int id, int accountId, int postId, String fileCV, Date createDate) {
+        this.id = id;
+        this.accountId = accountId;
+        this.postId = postId;
+        this.fileCV = fileCV;
+        this.createDate = createDate;
     }
 
-    public void setPostID(String postID) {
-        this.postID = postID;
+    public int getId() {
+        return id;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public String getApplied_date() {
-        return applied_date;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
-    public void setApplied_date(String applied_date) {
-        this.applied_date = applied_date;
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
+    }
+
+    public String getFileCV() {
+        return fileCV;
+    }
+
+    public void setFileCV(String fileCV) {
+        this.fileCV = fileCV;
+    }
+
+    public java.util.Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(java.util.Date createDate) {
+        this.createDate = createDate;
     }
 
     @Override
     public String toString() {
         return "PostAplied{" +
-                "postID='" + postID + '\'' +
-                ", user_name='" + user_name + '\'' +
-                ", applied_date='" + applied_date + '\'' +
+                "id=" + id +
+                ", accountId=" + accountId +
+                ", postId=" + postId +
+                ", fileCV='" + fileCV + '\'' +
+                ", createDate=" + createDate +
                 '}';
     }
 }

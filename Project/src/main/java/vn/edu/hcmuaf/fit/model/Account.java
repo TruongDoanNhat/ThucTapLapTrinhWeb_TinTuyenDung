@@ -6,12 +6,11 @@ import java.util.Date;
 public class Account implements Serializable {
     private static final long serialVersionUID = 1L;
     private int id;
-    private String companyId;
+    private int companyId;
     private String email;
     private String username;
     private String password;
     private String name;
-    private String fileCV;
     private int type;
     private int role;
     private int status;
@@ -22,14 +21,13 @@ public class Account implements Serializable {
 
     }
 
-    public Account(int id, String companyId, String email, String username, String password, String name, String fileCV, int type, int role, int status, Date create_date, Date update_date) {
+    public Account(int id, int companyId, String email, String username, String password, String name, int type, int role, int status, Date create_date, Date update_date) {
         this.id = id;
         this.companyId = companyId;
         this.email = email;
         this.username = username;
         this.password = password;
         this.name = name;
-        this.fileCV = fileCV;
         this.type = type;
         this.role = role;
         this.status = status;
@@ -45,11 +43,11 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public String getCompanyId() {
+    public int getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(String companyId) {
+    public void setCompanyId(int companyId) {
         this.companyId = companyId;
     }
 
@@ -83,14 +81,6 @@ public class Account implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getFileCV() {
-        return fileCV;
-    }
-
-    public void setFileCV(String fileCV) {
-        this.fileCV = fileCV;
     }
 
     public int getType() {
@@ -135,6 +125,6 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "Account{" + "id=" + id + ", companyId='" + companyId + '\'' + ", email='" + email + '\'' + ", username='" + username + '\'' + ", password='" + password + '\'' + ", name='" + name + '\'' + ", fileCV='" + fileCV + '\'' + ", type=" + type + ", role=" + role + ", status=" + status + ", create_date=" + create_date + ", update_date=" + update_date + '}';
+        return "Account{" + "id=" + id + ", companyId='" + companyId + '\'' + ", email='" + email + '\'' + ", username='" + username + '\'' + ", password='" + password + '\'' + ", name='" + name + '\'' + ", type=" + type + ", role=" + role + ", status=" + status + ", create_date=" + create_date + ", update_date=" + update_date + '}';
     }
 }

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 @WebServlet(name = "Post", value = {"/Post", "/Category"})
 public class PostServlet extends HttpServlet {
@@ -18,6 +20,25 @@ public class PostServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         DAOPost p = new DAOPost();
         String action = request.getParameter("action");
+
+        String tittle = request.getParameter("tittle");
+        String rank = request.getParameter("rank");
+        String category = request.getParameter("category").toString();
+        String type = request.getParameter("type");
+        String address = request.getParameter("address");
+        String salary = request.getParameter("salary");
+        String quantity = request.getParameter("quantity");
+        String gen = request.getParameter("gen");
+        String description = request.getParameter("description");
+        String requests = request.getParameter("requests");
+        String rights = request.getParameter("rights");
+        String file = request.getParameter("file");
+        try {
+            java.util.Date endDate = new java.text.SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("endDate"));
+        } catch (java.text.ParseException e) {
+            throw new RuntimeException(e);
+        }
+
 
         if (action != null) {
             request.setAttribute("listPOC", p.getPostofCategoryByID(action));

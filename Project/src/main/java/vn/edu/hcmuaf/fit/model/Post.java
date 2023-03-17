@@ -5,69 +5,71 @@ import java.util.Date;
 
 public class Post implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String postID;
-    private String categoryID;
-    private String user_name;
+    private int id;
+    private int categoryId;
+    private int accountId;
     private String title;
+    private String quanity;
+
     private String salary;
-    private String type_job;
-    private String position;
+    private String address;
+    private String type;
+    private String rank;
+    private String gen;
     private String description;
+    private String rights;
     private String request;
-    private String benifit;
-    private int is_active;
-    private String price;
-    private Date create_date;
-    private Date update_date;
-    private Date deadline;
+    private int status;
+    private Date createDate;
+    private Date endDate;
 
     public Post() {
 
     }
 
-    public Post(String postID, String categoryID, String user_name, String title,
-                String salary, String type_job, String position, String description,
-                String request, String benifit, int is_active, String price,
-                Date create_date, Date update_date, Date deadline) {
-        this.postID = postID;
-        this.categoryID = categoryID;
-        this.user_name = user_name;
+    public Post(int id, int categoryId, int accountId, String title, String quanity, String salary,
+                String address, String type, String rank, String gen, String description, String rights,
+                String request, int status, java.util.Date createDate, java.util.Date endDate) {
+        this.id = id;
+        this.categoryId = categoryId;
+        this.accountId = accountId;
         this.title = title;
+        this.quanity = quanity;
         this.salary = salary;
-        this.type_job = type_job;
-        this.position = position;
+        this.address = address;
+        this.type = type;
+        this.rank = rank;
+        this.gen = gen;
         this.description = description;
+        this.rights = rights;
         this.request = request;
-        this.benifit = benifit;
-        this.is_active = is_active;
-        this.price = price;
-        this.create_date = create_date;
-        this.update_date = update_date;
-        this.deadline = deadline;
+        this.status = status;
+        this.createDate = createDate;
+        this.endDate = endDate;
     }
 
-    public String getPostID() {
-        return postID;
+    public int getId() {
+        return id;
     }
 
-    public void setPostID(String postID) {
-        this.postID = postID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCategoryID() {
-        return categoryID;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryID(String categoryID) {
-        this.categoryID = categoryID;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public String getTitle() {
@@ -78,6 +80,14 @@ public class Post implements Serializable {
         this.title = title;
     }
 
+    public String getQuanity() {
+        return quanity;
+    }
+
+    public void setQuanity(String quanity) {
+        this.quanity = quanity;
+    }
+
     public String getSalary() {
         return salary;
     }
@@ -86,20 +96,36 @@ public class Post implements Serializable {
         this.salary = salary;
     }
 
-    public String getType_job() {
-        return type_job;
+    public String getAddress() {
+        return address;
     }
 
-    public void setType_job(String type_job) {
-        this.type_job = type_job;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getPosition() {
-        return position;
+    public String getType() {
+        return type;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public String getGen() {
+        return gen;
+    }
+
+    public void setGen(String gen) {
+        this.gen = gen;
     }
 
     public String getDescription() {
@@ -110,6 +136,14 @@ public class Post implements Serializable {
         this.description = description;
     }
 
+    public String getRights() {
+        return rights;
+    }
+
+    public void setRights(String rights) {
+        this.rights = rights;
+    }
+
     public String getRequest() {
         return request;
     }
@@ -118,72 +152,49 @@ public class Post implements Serializable {
         this.request = request;
     }
 
-    public String getBenifit() {
-        return benifit;
+    public int getStatus() {
+        return status;
     }
 
-    public void setBenifit(String benifit) {
-        this.benifit = benifit;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public int getIs_active() {
-        return is_active;
+    public java.util.Date getCreateDate() {
+        return createDate;
     }
 
-    public void setIs_active(int is_active) {
-        this.is_active = is_active;
+    public void setCreateDate(java.util.Date createDate) {
+        this.createDate = createDate;
     }
 
-    public String getPrice() {
-        return price;
+    public java.util.Date getEndDate() {
+        return endDate;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public Date getCreate_date() {
-        return create_date;
-    }
-
-    public void setCreate_date(Date create_date) {
-        this.create_date = create_date;
-    }
-
-    public Date getUpdate_date() {
-        return update_date;
-    }
-
-    public void setUpdate_date(Date update_date) {
-        this.update_date = update_date;
-    }
-
-    public Date getDeadline() {
-        return deadline;
-    }
-
-    public void setDeadline(Date deadline) {
-        this.deadline = deadline;
+    public void setEndDate(java.util.Date endDate) {
+        this.endDate = endDate;
     }
 
     @Override
     public String toString() {
-        return  "Post{" +
-                "postID='" + postID + '\'' +
-                ", categoryID='" + categoryID + '\'' +
-                ", user_name='" + user_name + '\'' +
+        return "Post{" +
+                "id=" + id +
+                ", categoryId=" + categoryId +
+                ", accountId=" + accountId +
                 ", title='" + title + '\'' +
+                ", quanity='" + quanity + '\'' +
                 ", salary='" + salary + '\'' +
-                ", type_job='" + type_job + '\'' +
-                ", position='" + position + '\'' +
+                ", address='" + address + '\'' +
+                ", type='" + type + '\'' +
+                ", rank='" + rank + '\'' +
+                ", gen='" + gen + '\'' +
                 ", description='" + description + '\'' +
+                ", rights='" + rights + '\'' +
                 ", request='" + request + '\'' +
-                ", benifit='" + benifit + '\'' +
-                ", is_active=" + is_active +
-                ", price='" + price + '\'' +
-                ", create_date=" + create_date +
-                ", update_date=" + update_date +
-                ", deadline=" + deadline +
+                ", status=" + status +
+                ", createDate=" + createDate +
+                ", endDate=" + endDate +
                 '}';
     }
 }
