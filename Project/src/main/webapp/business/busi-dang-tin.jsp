@@ -191,7 +191,14 @@
                 <div class="module-body">
                     <br/>
 
-                    <form class="form-horizontal row-fluid">
+                    <form  action="<%=request.getContextPath()%>/Login" method="post" class="form-horizontal row-fluid">
+                        <div class="control-group">
+                            <label class="control-label">Tiêu đề</label>
+                            <div class="controls">
+                                <input type="text" id="tittle" placeholder="Nhập tiêu đề."
+                                       class="span8">
+                            </div>
+                        </div>
                         <div class="control-group">
                             <label class="control-label" for="basicinput">Chức vụ</label>
                             <div class="controls">
@@ -209,19 +216,6 @@
                                     <option value="Category 1">Công nghệ phần mềm</option>
                                     <option value="Category 3">Mạng</option>
                                     <option value="Category 4">Hệ thống thông tin</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Ngành nghề</label>
-                            <div class="controls">
-                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
-                                    <option value="">Vui lòng chọn..</option>
-                                    <option value="Category 1"> Lập trình</option>
-                                    <option value="Category 2"> Kiểm thử phần mềm</option>
-                                    <option value="Category 3"> Quản trị mạng</option>
-                                    <option value="Category 4"> Phân tích dữ liêệu</option>
                                 </select>
                             </div>
                         </div>
@@ -290,7 +284,7 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Thông tin công ty</label>
+                            <label class="control-label" for="basicinput">Quyền lợi</label>
                             <div class="controls">
                                 <textarea class="span8a" rows="5"></textarea>
                             </div>

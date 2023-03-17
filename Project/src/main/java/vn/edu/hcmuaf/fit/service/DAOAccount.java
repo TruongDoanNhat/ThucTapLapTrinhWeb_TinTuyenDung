@@ -90,7 +90,7 @@ public class DAOAccount {
 
     // tạo tài khoản cho candidate
     public boolean registerCandi(String email, String username, String password, String name, int type, int role, int status, Date createDate) {
-        String queryAccount = "INSERT INTO account (companyID,email,username,password,name,fileCV,type,role,status,createDate,updateDate) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        String queryAccount = "INSERT INTO account (companyID,email,username,password,name,type,role,status,createDate,updateDate) VALUES (?,?,?,?,?,?,?,?,?,?)";
         if (!checkUsernameExists(username) && !checkEmail(email)) {
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(queryAccount)
@@ -99,12 +99,11 @@ public class DAOAccount {
                             .bind(2, username)
                             .bind(3, password)
                             .bind(4, name)
-                            .bind(5, (String) null)
-                            .bind(6, type)
-                            .bind(7, role)
-                            .bind(8, status)
-                            .bind(9, createDate)
-                            .bind(10, (Date) null)
+                            .bind(5, type)
+                            .bind(6, role)
+                            .bind(7, status)
+                            .bind(8, createDate)
+                            .bind(9, (Date) null)
                             .execute()
             );
             return true;
@@ -113,22 +112,20 @@ public class DAOAccount {
     }
 
     public boolean registerAdmin(String username, String password, String email, int role, Date createDate, int status) {
-        String queryAccount = "INSERT INTO account (username,password,role,email,name,phone,gen,fileCV,companyID,createDate,updateDate, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String queryAccount = "INSERT INTO account (companyID,email,username,password,name,type,role,status,createDate,updateDate) VALUES (?,?,?,?,?,?,?,?,?,?)";
         if (!checkUsernameExists(username) && !checkEmail(email)) {
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(queryAccount)
-                            .bind(0, username)
-                            .bind(1, password)
-                            .bind(2, role)
-                            .bind(3, email)
+                            .bind(0, (String) null)
+                            .bind(1, email)
+                            .bind(2, username)
+                            .bind(3, password)
                             .bind(4, (String) null)
                             .bind(5, (String) null)
-                            .bind(6, (String) null)
-                            .bind(7, (String) null)
-                            .bind(8, (String) null)
-                            .bind(9, createDate)
-                            .bind(10, (Date) null)
-                            .bind(11, status)
+                            .bind(6, role)
+                            .bind(7, status)
+                            .bind(8, createDate)
+                            .bind(9, (Date) null)
                             .execute()
             );
             return true;
@@ -140,9 +137,9 @@ public class DAOAccount {
     public boolean registerBusi(String username, String password, int role, String name, String email, String phone, int type, int status,
                                 String companyName, String address,
                                 String description, Date createDate) {
-        String queryCompany = "INSERT INTO company (imageId,name,phone,address,description,createDate) VALUES (?,?,?,?,?,?)";
-        int idCompany = DAOCompany.companyList().size();
-        String queryAccount = "INSERT INTO account (companyID,email,username,password,name,fileCV,type,role,status,createDate,updateDate) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        String queryCompany = "INSERT INTO company (imageId,name,phone,address,description,createDate,updateDate) VALUES (?,?,?,?,?,?,?)";
+        int idCompany = DAOCompany.companyList().size() + 1;
+        String queryAccount = "INSERT INTO account (companyID,email,username,password,name,type,role,status,createDate,updateDate) VALUES (?,?,?,?,?,?,?,?,?,?)";
         if (!checkUsernameExists(username) && !checkEmail(email)) {
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(queryCompany)
@@ -152,6 +149,7 @@ public class DAOAccount {
                             .bind(3, address)
                             .bind(4, description)
                             .bind(5, createDate)
+                            .bind(6, (Date) null)
                             .execute()
             );
 
@@ -162,12 +160,11 @@ public class DAOAccount {
                             .bind(2, username)
                             .bind(3, password)
                             .bind(4, name)
-                            .bind(5, (String) null)
-                            .bind(6, type)
-                            .bind(7, role)
-                            .bind(8, status)
-                            .bind(9, createDate)
-                            .bind(10, (Date) null)
+                            .bind(5, type)
+                            .bind(6, role)
+                            .bind(7, status)
+                            .bind(8, createDate)
+                            .bind(9, (Date) null)
                             .execute()
             );
             return true;
@@ -211,7 +208,7 @@ public class DAOAccount {
     public static void main(String[] args) {
         DAOAccount dao = new DAOAccount();
         List<Account> l = dao.getListAccount();
-        System.out.println((dao.registerBusi("Bui", "123", 2, "name","20130340@st.hcmuaf.edu.vn", "1111444777",  0,0,"companyName", "address", "description", new Date())));
+        System.out.println((dao.registerBusi("Bui", "123", 2, "name", "20130340@st.hcmuaf.edu.vn", "1111444777", 0, 0, "companyName", "address", "description", new Date())));
 //        dao.registerCandi_Admin("abc", "111", "abc@gmail.com", 2);
 //        System.out.println(dao.checkAccount("admin@gmail.com", "321"));
 //        dao.registerBusi("abc2", "1112", null,"abc@gmail.com", null,0,null,1);

@@ -4,7 +4,7 @@ id INT  AUTO_INCREMENT PRIMARY KEY,
 url TEXT,
 type VARCHAR(16),
 createDate Date NOT NULL,
-updateDate DATE NOT NULL
+updateDate DATE
 );
 DROP TABLE  IF EXISTS company;
 CREATE TABLE company(
@@ -15,7 +15,7 @@ phone TEXT,
 address TEXT,
 description MEDIUMTEXT,
 createDate DATE not NULL,
-updateDate DATE NOT NULL
+updateDate DATE
 );
 DROP TABLE IF EXISTS account;
 CREATE TABLE account(
@@ -35,7 +35,7 @@ DROP TABLE  iF EXISTS category;
 CREATE TABLE category(
 id INT AUTO_INCREMENT PRIMARY KEY,
 name TEXT,
-createDate DATE
+createDate DATE NOT NULL
 );
 DROP TABLE  iF EXISTS post;
 CREATE TABLE post(
@@ -43,7 +43,7 @@ id INT AUTO_INCREMENT PRIMARY KEY,
 categoryId int REFERENCES category(id),
 accountId int REFERENCES account(id),
 tittle TEXT,
-quanity VARCHAR(128),
+quantity VARCHAR(128),
 salary TINYTEXT,
 address MEDIUMTEXT,
 type VARCHAR(128),
@@ -53,9 +53,8 @@ description TEXT,
 rights TEXT,
 request TEXT,
 status VARCHAR(16),
-createDate DATE,
-endDate DATE
-
+createDate DATE NOT NULL,
+endDate DATE not NULL
 );
 DROP TABLE  iF EXISTS postApplied;
 CREATE TABLE postApplied(
@@ -69,5 +68,5 @@ DROP TABLE  iF EXISTS bill;
 create table bill(
 id INT AUTO_INCREMENT PRIMARY KEY,
 postId int not NULL REFERENCES post(id),
-createDate DATE
+createDate DATE not NULL
 );
