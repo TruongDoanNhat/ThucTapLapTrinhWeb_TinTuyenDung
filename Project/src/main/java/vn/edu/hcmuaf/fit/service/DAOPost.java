@@ -5,6 +5,7 @@ import vn.edu.hcmuaf.fit.model.Category;
 import vn.edu.hcmuaf.fit.model.Company;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.model.PostAplied;
+import vn.edu.hcmuaf.fit.control.UtilSession;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,13 +16,54 @@ import java.util.stream.Collectors;
 public class DAOPost {
     private String message = "error!";
 
+    public Date getDateNow() {
+        return new Date();
+    }
+
+    public int getCategoryId(String name) {
+        String query = "select id from category where name = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, name)
+                    .mapTo(Integer.class)
+                    .one();
+        });
+    }
+
+    public void insertPost(String category, String tittle, String quantity, String salary, String address, String type, String rank, String gen, String description, String rights, String request, String status, Date endDate) {
+        int categoryId = getCategoryId(category);
+        int accountId = DAOAccount.getAccount().getId();
+        String query = "INSERT INTO `post` (`categoryId`, `accountId`, `tittle`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`," +
+                " `description`, `rights`, `request`, `status`, `createDate`, `endDate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate(query)
+                        .bind(0, categoryId)
+                        .bind(1, accountId)
+                        .bind(2, tittle)
+                        .bind(3, quantity)
+                        .bind(4, salary)
+                        .bind(5, address)
+                        .bind(6, type)
+                        .bind(7, rank)
+                        .bind(8, gen)
+                        .bind(9, description)
+                        .bind(10, rights)
+                        .bind(11, request)
+                        .bind(12, status)
+                        .bind(13, getDateNow())
+                        .bind(14, endDate)
+                        .execute()
+        );
+
+    }
+
     public String getListPost_applied() {
         String query = "select * from post_applied";
         List<PostAplied> listApplied = null;
         return getListPost_applied();
     }
 
-    public Post getPostDetails(String postID) {
+    public Object getPostDetails(String postID) {
         String query = "select * from post where postID = ?";
         List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
@@ -42,9 +84,10 @@ public class DAOPost {
         });
         return listPost;
     }
+
     public List<Category> getCategoryAll() {
         String query = "select * from category";
-        List<Category> listCategory  = null;
+        List<Category> listCategory = null;
         listCategory = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
                     .mapToBean(Category.class)
@@ -53,6 +96,7 @@ public class DAOPost {
 
         return listCategory;
     }
+
     public List<Post> getPostAllTop5() {
         String query = "SELECT * FROM post LIMIT 3;";
         List<Post> listPost = null;
@@ -65,17 +109,16 @@ public class DAOPost {
     }
 
 
-    public List<Post> getPostofCategoryByID(String categoryID) {
-        String query = "select * from post where categoryID = ?";
+    public List<Post> getPostofCategoryByID(int categoryId) {
+        String query = "select * from post where categoryId = ?";
         List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
-                    .bind(0, categoryID)
+                    .bind(0, categoryId)
                     .mapToBean(Post.class)
                     .stream().collect(Collectors.toList());
         });
         return listPost;
     }
-
 
 
     public String getCompanyName(String companyID) {
@@ -134,10 +177,8 @@ public class DAOPost {
 
     public static void main(String[] args) {
         DAOPost p = new DAOPost();
-//        p.getPostofCategoryByID("cg01");
-        for (Category c : p.getCategoryAll()) {
-            System.out.println(c.toString());
-        }
+//        System.out.println(p.getCategoryId("Kinh Doanh"));
+
     }
 
 }

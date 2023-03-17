@@ -5,11 +5,11 @@ import java.util.Date;
 
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String id;
+    private int id;
     private String name;
     private Date create_date;
 
-    public Category(String id, String name, Date create_date) {
+    public Category(int id, String name, Date create_date) {
         this.id = id;
         this.name = name;
         this.create_date = create_date;
@@ -28,11 +28,11 @@ public class Category implements Serializable {
                 '}';
     }
 
-    public String getid() {
+    public int getid() {
         return id;
     }
 
-    public void setid(String id) {
+    public void setid(int id) {
         this.id = id;
     }
 

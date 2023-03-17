@@ -116,12 +116,12 @@
                         <div class="services-ion">
                             <span class="flaticon-cms "></span>
                         </div>
-                        <div class="<%=c.getCategoryID()%>">
+                        <div class="<%=c.getid()%>">
                             <h5>
-                                <a href="/Category?action=<%=c.getCategoryID()%>"><%=c.getName()%>
+                                <a href="/Category?action=<%=c.getid()%>"><%=c.getName()%>
                                 </a>
                             </h5>
-                            <span>(<%=dp.getPostofCategoryByID(c.getCategoryID().size())%>)</span>
+                            <span>(<%=dp.getPostofCategoryByID(c.getid()).size()%>)</span>
                         </div>
                     </div>
                 </div>

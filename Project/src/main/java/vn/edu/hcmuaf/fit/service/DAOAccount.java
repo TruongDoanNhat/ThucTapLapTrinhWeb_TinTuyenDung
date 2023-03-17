@@ -9,13 +9,13 @@ import java.util.List;
 
 public class DAOAccount {
     private String message = "error!";
-    private Account account = null;
+    private static Account account = null;
 
     public String getMessage() {
         return message;
     }
 
-    public Account getAccount() {
+    public static Account getAccount() {
         return account;
     }
 
