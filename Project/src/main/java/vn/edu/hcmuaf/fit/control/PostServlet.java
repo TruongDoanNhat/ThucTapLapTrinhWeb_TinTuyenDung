@@ -21,9 +21,11 @@ public class PostServlet extends HttpServlet {
         DAOPost p = new DAOPost();
         String action = request.getParameter("action");
 
+//      switch (action) {
+//            case "dangtin":
         String tittle = request.getParameter("tittle");
         String rank = request.getParameter("rank");
-        String category = request.getParameter("category").toString();
+        String category = request.getParameter("category");
         String type = request.getParameter("type");
         String address = request.getParameter("address");
         String salary = request.getParameter("salary");
@@ -33,15 +35,19 @@ public class PostServlet extends HttpServlet {
         String requests = request.getParameter("requests");
         String rights = request.getParameter("rights");
         String file = request.getParameter("file");
+        Date endDate;
         try {
-            java.util.Date endDate = new java.text.SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("endDate"));
+            endDate = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("endDate"));
         } catch (java.text.ParseException e) {
             throw new RuntimeException(e);
         }
+        p.insertPost(category, tittle, quantity, salary, address, type, rank, gen,
+                description, rights, requests, "0", endDate);
+
 
 
         if (action != null) {
-            request.setAttribute("listPOC", p.getPostofCategoryByID(action));
+            request.setAttribute("listPOC", p.getPostofCategoryByID(Integer.valueOf(action)));
 //            request.getRequestDispatcher("danh-sach-viec-lam-candi.jsp").forward(request, response);
         } else {
             request.setAttribute("listPOC", p.getPostAll());
@@ -53,6 +59,10 @@ public class PostServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
+
+    }
+
+    public static void main(String[] args) {
 
     }
 }

@@ -191,114 +191,119 @@
                 <div class="module-body">
                     <br/>
 
-                    <form  action="<%=request.getContextPath()%>/Login" method="post" class="form-horizontal row-fluid">
+                    <form action="<%=request.getContextPath()%>/Post" method="post" class="form-horizontal row-fluid">
                         <div class="control-group">
                             <label class="control-label">Tiêu đề</label>
                             <div class="controls">
-                                <input type="text" id="tittle" placeholder="Nhập tiêu đề."
+                                <input type="text" id="tittle" name="tittle" placeholder="Nhập tiêu đề."
                                        class="span8">
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Chức vụ</label>
+                            <label class="control-label">Chức vụ</label>
                             <div class="controls">
-                                <input type="text" id="basicinput" placeholder="Nhập chức vụ."
+                                <input type="text" id="rank" name="rank" placeholder="Nhập chức vụ."
                                        class="span8">
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Lĩnh vực</label>
+                            <label class="control-label">Lĩnh vực</label>
                             <div class="controls">
-                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
+                                <select tabindex="1" id="category" name="category" data-placeholder="Vui lòng chọn.."
+                                        class="span8">
                                     <option value="">Vui lòng chọn..</option>
-                                    <option value="Category 1">Trí tuệ nhân tạo</option>
-                                    <option value="Category 1">Công nghệ phần mềm</option>
-                                    <option value="Category 3">Mạng</option>
-                                    <option value="Category 4">Hệ thống thông tin</option>
+                                    <option value="Trí tuệ nhân tạo">Trí tuệ nhân tạo</option>
+                                    <option value="Công nghệ phần mềm">Công nghệ phần mềm</option>
+                                    <option value="Mạng">Mạng</option>
+                                    <option value="Hệ thống thông tin">Hệ thống thông tin</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Hình thức công việc</label>
+                            <label class="control-label">Hình thức công việc</label>
                             <div class="controls">
-                                <select tabindex="1" data-placeholder="Vui lòng chọn.." class="span8">
+                                <select tabindex="1" id="type" name="type" data-placeholder="Vui lòng chọn.."
+                                        class="span8">
                                     <option value="">Vui lòng chọn..</option>
-                                    <option value="Category 1">Toàn thời gian</option>
-                                    <option value="Category 2">Bán thời gian</option>
-                                    <option value="Category 3">Hợp đồng</option>
-                                    <option value="Category 4">Kỳ thực tập</option>
+                                    <option value="Toàn thời gian">Toàn thời gian</option>
+                                    <option value="Bán thời gian">Bán thời gian</option>
+                                    <option value="Hợp đồng">Hợp đồng</option>
+                                    <option value="Kỳ thực tập">Kỳ thực tập</option>
                                 </select>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Địa điểm làm việc</label>
+                            <label class="control-label">Địa điểm làm việc</label>
                             <div class="controls">
-                                <input type="text" placeholder=""
+                                <input type="text" name="address" placeholder="Quận/Huyện/Thành phố"
                                        class="span8">
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Mức lương</label>
+                            <label class="control-label">Mức lương</label>
                             <div class="controls">
                                 <div class="input-append">
-                                    <input type="text" placeholder="10.000.000 VND" class="span8">
+                                    <input type="text" name="salary" placeholder="10.000.000 VND" class="span8">
                                 </div>
                                 <span class="help-inline">(Thỏa thuận : 0 VND)</span>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Số lượng tuyển</label>
+                            <label class="control-label">Số lượng tuyển</label>
                             <div class="controls">
                                 <div class="input-prepend">
-                                    <input class="span8" type="text" placeholder="">
+                                    <input class="span8" name="quantity" type="text" placeholder="">
                                     <span class="help-inline">
-
                                             <label class="checkbox inline">
-                                                <input type="checkbox" value="">
+                                                <input type="checkbox" id="gen1" name="gen" onclick="checkGen()"
+                                                       value="Nam">
                                                 Nam
                                             </label>
                                             <label class="checkbox inline">
-                                                <input type="checkbox" value="">
+                                                <input type="checkbox" id="gen2" name="gen" value="Nữ"
+                                                       onclick="checkGen()">
                                                 Nữ
                                             </label>
                                             <label class="checkbox inline">
-                                                <input type="checkbox" value="">
+                                                <input type="checkbox" id="gen3" name="gen" onclick
+                                                        ="checkGen()"
+                                                       value="Không yêu cầu">
                                                 Không yêu cầu
                                             </label>
-                                                </span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Mô tả công việc</label>
+                            <label class="control-label">Mô tả công việc</label>
                             <div class="controls">
-                                <textarea class="span8a" rows="5"></textarea>
+                                <textarea class="span8a" name="description" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Yêu cầu</label>
+                            <label class="control-label">Yêu cầu</label>
                             <div class="controls">
-                                <textarea class="span8a" rows="5"></textarea>
+                                <textarea class="span8a" name="requests" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Quyền lợi</label>
+                            <label class="control-label">Quyền lợi</label>
                             <div class="controls">
-                                <textarea class="span8a" rows="5"></textarea>
+                                <textarea class="span8a" name="rights" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Hình ảnh</label>
+                            <label class="control-label">Hình ảnh</label>
                             <div class="controls">
-                                <input class="input-file" type="file" name="file_cv" id="file">
+                                <input class="input-file" id="file" name="file" type="file">
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="basicinput">Hết hạn nộp hồ sơ</label>
+                            <label class="control-label">Hết hạn nộp hồ sơ</label>
                             <div class="controls">
-                                <input type="date" name="date_cv" id="date">
+                                <input type="date" id="date" name="endDate">
                             </div>
                         </div>
                         <div class="control-group">
@@ -321,4 +326,28 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+<script>
+    function checkGen() {
+        var gen1 = document.getElementById("gen1");
+        var gen2 = document.getElementById("gen2");
+        var gen3 = document.getElementById("gen3");
+        if(!gen1.checked && !gen2.checked && !gen3.checked){
+            gen1.disabled = false;
+            gen2.disabled = false;
+            gen3.disabled = false;
+        }
+        if (gen3.checked) {
+            gen1.disabled = true;
+            gen2.disabled = true;
+        }
+        if (gen1.checked) {
+            gen2.disabled = true;
+            gen3.disabled = true;
+        }
+        if (gen2.checked) {
+            gen1.disabled = true;
+            gen3.disabled = true;
+        }
+    }
+</script>
 </html>
