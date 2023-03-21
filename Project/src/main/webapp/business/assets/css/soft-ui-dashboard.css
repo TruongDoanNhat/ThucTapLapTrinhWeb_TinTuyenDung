@@ -5681,6 +5681,33 @@ fieldset:disabled .btn {
     top: -1px;
 }
 
+.alerts {
+    position: absolute;
+    top: 120px;
+    right: 30px;
+    width: 400px;
+    min-height: 300px;
+}
+
+.alert-success {
+    position: relative;
+    border: none !important;
+    --bs-alert-color: #345609;
+    --bs-alert-bg: #e6f7d0;
+    --bs-alert-border-color: #daf3b9;
+}
+
+.alert-success .alert-link {
+    color: #2a4507;
+}
+
+.copy {
+    margin-left: 60px;
+    padding-left: 20px;
+    border-left: 1px solid rgba(255, 255, 255, .3);
+    line-height: 1.2;
+}
+
 .alert {
     --bs-alert-bg: transparent;
     --bs-alert-padding-x: 1rem;
@@ -5739,15 +5766,6 @@ fieldset:disabled .btn {
     color: #3f4652;
 }
 
-.alert-success {
-    --bs-alert-color: #345609;
-    --bs-alert-bg: #e6f7d0;
-    --bs-alert-border-color: #daf3b9;
-}
-
-.alert-success .alert-link {
-    color: #2a4507;
-}
 
 .alert-info {
     --bs-alert-color: #0e748b;
@@ -8939,6 +8957,7 @@ fieldset:disabled .btn {
 .w-100 {
     width: 100% !important;
 }
+
 .w-1001 {
     width: 30% !important;
     margin-right: 20px;
@@ -20188,20 +20207,21 @@ fieldset:disabled .btn {
 .alert-warning {
     background-image: linear-gradient(310deg, #f53939 0%, #fac60b 100%);
 }
+
 .al {
-  padding:15px;
-  margin-bottom:20px;
-  position: relative;
-  /*padding: 0.75rem 1.25rem;*/
-  /*margin-bottom: 1rem;*/
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
+    padding: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    /*padding: 0.75rem 1.25rem;*/
+    /*margin-bottom: 1rem;*/
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
 }
 
 .alert-danger {
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
 }
 
 .alert-light {
@@ -20469,8 +20489,8 @@ fieldset:disabled .btn {
 
 .btn-primary:hover,
 .btn.bg-gradient-primary:hover {
-  background-color: #cb0c9f;
-  border-color: #cb0c9f;
+    background-color: #cb0c9f;
+    border-color: #cb0c9f;
 }
 
 .btn-primary .btn.bg-outline-primary,
@@ -26917,10 +26937,8 @@ i {
     font-size: 30px;
     vertical-align: middle;
 
-&
-:last-of-type {
-    margin-left: 25px;
 }
 
-}
+:last-of-type {
+    margin-left: 25px;
 }

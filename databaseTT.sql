@@ -42,7 +42,7 @@ CREATE TABLE post(
 id INT AUTO_INCREMENT PRIMARY KEY,
 categoryId int REFERENCES category(id),
 accountId int REFERENCES account(id),
-tittle TEXT,
+title TEXT,
 quantity VARCHAR(128),
 salary TINYTEXT,
 address MEDIUMTEXT,
@@ -52,7 +52,7 @@ gen VARCHAR(128),
 description TEXT,
 rights TEXT,
 request TEXT,
-status VARCHAR(16),
+status TINYINT not NULL,
 createDate DATE NOT NULL,
 endDate DATE not NULL
 );

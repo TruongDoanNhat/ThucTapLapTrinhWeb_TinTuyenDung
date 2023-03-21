@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -5,30 +6,27 @@
   Time: 6:01 SA
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
-    <link rel="icon" type="image/png" href="../assets/img/logo/logo.png">
-    <link rel="stylesheet" href="business/assets/css/login.css">
-    <title>
-        Giỏ hàng
-    </title>
+    <link rel="icon" type="image/png" href="/business/assets/img/logo/logo.png">
+    <title>Giỏ hàng</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="/business/assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="/business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="/business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
-    <!--     <link rel="stylesheet" href="../assets/css/style.css">-->
-    <link rel="stylesheet" href="assets/css/gio-hang.css">
-    <link rel="stylesheet" href="assets/css/thanh-toan.css">
+    <%--    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>--%>
+    <link id="pagestyle" href="/business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/business/assets/css/gio-hang.css">
+    <link rel="stylesheet" href="/business/assets/css/thanh-toan.css">
 
 
 </head>
@@ -191,6 +189,9 @@
     <div id="wrapper">
         <!--    div class="container-fluid py-4">-->
         <form class="bg0 p-t-75 p-b-85">
+            <div class="module-head-giohang" style="">
+                <h3>Giỏ hàng</h3>
+            </div>
             <div class="container">
                 <!--                <div class="row">-->
                 <div class="col-lg-10 col-xl-7 m-lr-auto">
@@ -198,7 +199,7 @@
                     <div class="m-l-25 m-r--38 m-lr-0-xl">
 
                         <div class="wrap-table-shopping-cart">
-                            <div class="scrollbar" id="style-1">
+                            <div class="scrollbar">
                                 <div class="force-overflow">
                                     <table class="table-shopping-cart">
                                         <tbody>
@@ -207,128 +208,66 @@
                                             <th class="column-2">Giá tiền</th>
                                             <th class="column-5">Thao tác</th>
                                         </tr>
-
-                                        <tr class="table_row">
-                                            <td class="column-1">
-                                                <div class="check">
-                                                    <input class="checkbox" type="checkbox">
-
-                                                    <div class="d-flex magin-top flex-column">
-                                                        <h6 class="mb-3 text-sm">Lập trình game</h6>
-                                                        <span class="mb-2 text-xs">Vị trí: <span
-                                                                class="text-dark ms-sm-2 font-weight-bold">Giám đốc</span></span>
-                                                        <span class="mb-2 text-xs">Địa chỉ: <span
-                                                                class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
-                                                        <span class="mb-2 text-xs">Mức lương: <span
-                                                                class="text-dark font-weight-bold ms-sm-2">10.000.000 VND</span></span>
-                                                        <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                                                class="text-dark font-weight-bold ms-sm-2">02/11/2002</span></span>
+                                        <c:forEach var="p" items="${postList}">
+                                            <tr class="table_row">
+                                                <td class="column-1">
+                                                    <div class="check">
+                                                        <input class="checkbox" type="checkbox" id="choosePaid"
+                                                               name="choosePaid" onclick="countPaid()" value="${p.id}">
+                                                        <div class="d-flex magin-top flex-column">
+                                                            <a href="/Post?action=details&id=${p.id}">
+                                                                <h6 class="mb-3 text-sm">${p.title}</h6>
+                                                            </a>
+                                                            <span class="mb-2 text-xs">Vị trí: <span
+                                                                    class="text-dark ms-sm-2 font-weight-bold">${p.rank}</span></span>
+                                                            <span class="mb-2 text-xs">Địa chỉ: <span
+                                                                    class="text-dark ms-sm-2 font-weight-bold">${p.address}</span></span>
+                                                            <span class="mb-2 text-xs">Mức lương: <span
+                                                                    class="text-dark font-weight-bold ms-sm-2">${p.salary} VND</span></span>
+                                                            <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
+                                                                    class="text-dark font-weight-bold ms-sm-2">${p.createDate}</span></span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="column-2">36.00 đ</td>
-
-                                            <td class=" column-5"><a
-                                                    class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                    href="javascript:;"><i class="far fa-trash-alt me-2"></i>Xóa</a>
-                                            </td>
-                                        </tr>
-                                        <tr class="table_row">
-                                            <td class="column-1">
-                                                <div class="check">
-                                                    <input class="checkbox" type="checkbox">
-
-                                                    <div class="d-flex magin-top flex-column">
-                                                        <h6 class="mb-3 text-sm">Lập trình game</h6>
-                                                        <span class="mb-2 text-xs">Vị trí: <span
-                                                                class="text-dark ms-sm-2 font-weight-bold">Giám đốc</span></span>
-                                                        <span class="mb-2 text-xs">Địa chỉ: <span
-                                                                class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
-                                                        <span class="mb-2 text-xs">Mức lương: <span
-                                                                class="text-dark font-weight-bold ms-sm-2">10.000.000 VND</span></span>
-                                                        <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                                                class="text-dark font-weight-bold ms-sm-2">02/11/2002</span></span>
-                                                    </div>
-                                                </div>
-                                                <!--                                    </div>-->
-                                                <!--                                </div>-->
-                                                <!--                            </div>-->
-                                                <!--                        </div>-->
-                                            </td>
-                                            <td class="column-2">36.00 đ</td>
-
-                                            <td class=" column-5"><a
-                                                    class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                    href=""><i class="far fa-trash-alt me-2"></i>Xóa</a>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="table_row">
-                                            <td class="column-1">
-                                                <div class="check">
-                                                    <input class="checkbox" type="checkbox">
-
-                                                    <div class="d-flex magin-top flex-column">
-                                                        <h6 class="mb-3 text-sm">Lập trình game</h6>
-                                                        <span class="mb-2 text-xs">Vị trí: <span
-                                                                class="text-dark ms-sm-2 font-weight-bold">Giám đốc</span></span>
-                                                        <span class="mb-2 text-xs">Địa chỉ: <span
-                                                                class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
-                                                        <span class="mb-2 text-xs">Mức lương: <span
-                                                                class="text-dark font-weight-bold ms-sm-2">10.000.000 VND</span></span>
-                                                        <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                                                class="text-dark font-weight-bold ms-sm-2">02/11/2002</span></span>
-                                                    </div>
-                                                </div>
-                                                <!--                                    </div>-->
-                                                <!--                                </div>-->
-                                                <!--                            </div>-->
-                                                <!--                        </div>-->
-                                            </td>
-                                            <td class="column-2">36.00 đ</td>
-
-                                            <td class=" column-5"><a
-                                                    class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                    href="javascript:;"><i class="far fa-trash-alt me-2"></i>Xóa</a>
-                                            </td>
-                                        </tr>
-
-
+                                                </td>
+                                                <td class="column-2">36.00 đ</td>
+                                                <td class=" column-5"><a
+                                                        class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                        href="javascript:;"><i class="far fa-trash-alt me-2"></i>Xóa</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                         </tbody>
-
                                     </table>
-
                                 </div>
                             </div>
 
                         </div>
-                        <table class="table-shopping-cart shadow1" style="border-left-style: groove; border-right-style: groove;>
-                                <tbody>
+                        <table class="table-shopping-cart shadow1"
+                               style="border-left-style: groove; border-right-style: groove;">
+                            <tbody>
+                            <tr class="">
+                                <td class="column-11 ">
+                                    <div class="check">
+                                        <input class="checkbox" type="checkbox">
+                                        <!--<a style="position: relative">Xóa tất cả</a>-->
+                                        <a class="btn btn-link text-danger text-dark px-3 mb-0"
+                                           href="javascript:;" id="chooseAll" onclick="chooseAll()"> Chọn tất
+                                            cả </a>
+                                        (${p.size()})
+                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                           href="javascript:;">Xóa</a>
+                                    </div>
+                                </td>
+                                <td class="column-22"> Tổng thanh toán (<span id="sum">0</span> bài viết): 0 VND</td>
 
-                                <tr class="
-                        ">
-                        <td class="column-11 ">
-                            <div class="check">
-                                <input class="checkbox" type="checkbox">
-                                <!--<a style="position: relative">Xóa tất cả</a>-->
-                                <a class="btn btn-link text-danger text-dark px-3 mb-0"
-                                   href="javascript:;">Chọn tất cả (2) </a>
-                                <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                   href="javascript:;">Xóa</a>
-                            </div>
-                        </td>
-                        <td class="column-22"> Tổng thanh toán (3 bài viết):đ0</td>
-
-                        <td class="column-55">
-                            <input data-v-c4f347a8="" type="text" name="avatar" class="d-none1">
-                            <button type="button" id="btn1">
-                                Thanh toán
-                            </button>
-                        </td>
-                        </tr>
-
-
-                        </tbody>
+                                <td class="column-55">
+                                    <input data-v-c4f347a8="" type="text" name="avatar" class="d-none1">
+                                    <button type="button" id="btn1">
+                                        Thanh toán
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
 
                         </table>
 
@@ -596,5 +535,24 @@
         // Add class .show
         modal_container.classList.add('show');
     });
+
+    function countPaid() {
+        const check = document.getElementById("choosePaid");
+        var count = 0;
+        if (check.checked) {
+            count = count + 1;
+        }
+        return document.getElementById('sum').innerHTML = count;
+    }
+
+    function chooseAll() {
+        const checkAll = document.getElementById("chooseAll");
+        const check = document.getElementById("choosePaid");
+        if (checkAll.checked) {
+            check.checked = true
+        } else {
+            check.checked = false;
+        }
+    }
 </script>
 </html>

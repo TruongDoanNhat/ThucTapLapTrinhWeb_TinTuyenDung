@@ -1,20 +1,42 @@
 package vn.edu.hcmuaf.fit.model;
 
 import java.io.Serializable;
+import java.util.Date;
+
 
 public class Image implements Serializable {
     private static final long serialVersionUID = 1L;
     private int id;
     private String url;
     private int type;
+    private Date createDate;
+    private Date updateDate;
 
     public Image() {
     }
 
-    public Image(int id, String url, int type) {
+    public Image(int id, String url, int type, Date createDate, Date updateDate) {
         this.id = id;
         this.url = url;
         this.type = type;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public int getId() {
@@ -47,6 +69,8 @@ public class Image implements Serializable {
                 "id=" + id +
                 ", url='" + url + '\'' +
                 ", type=" + type +
+                ", createDate=" + createDate +
+                ", updateDate=" + updateDate +
                 '}';
     }
 }

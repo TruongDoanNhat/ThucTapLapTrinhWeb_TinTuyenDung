@@ -20,6 +20,19 @@ public class DAOPost {
         return new Date();
     }
 
+    // lấy danh sách bài viết theo trạng thái
+    public List<Post> getPost(int idBusi, int status) {
+        String query = "select * from post where accountId = ? and status = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, idBusi)
+                    .bind(1, status)
+                    .mapToBean(Post.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
+    //Lấy id category theo tên
     public int getCategoryId(String name) {
         String query = "select id from category where name = ?";
         return JDBIConnector.get().withHandle(handle -> {
@@ -30,7 +43,9 @@ public class DAOPost {
         });
     }
 
-    public void insertPost(String category, String tittle, String quantity, String salary, String address, String type, String rank, String gen, String description, String rights, String request, String status, Date endDate) {
+    // thêm bài viết vào csdl
+    public boolean insertPost(String category, String tittle, String quantity, String salary, String address, String type,
+                              String rank, String gen, String description, String rights, String request, int status, Date endDate) {
         int categoryId = getCategoryId(category);
         int accountId = DAOAccount.getAccount().getId();
         String query = "INSERT INTO `post` (`categoryId`, `accountId`, `tittle`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`," +
@@ -54,7 +69,7 @@ public class DAOPost {
                         .bind(14, endDate)
                         .execute()
         );
-
+        return true;
     }
 
     public String getListPost_applied() {

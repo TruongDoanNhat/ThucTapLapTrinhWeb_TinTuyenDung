@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -5,25 +6,25 @@
   Time: 5:55 SA
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<% String message = (String) request.getAttribute("message"); %>
 <html>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../business/assets/img/logo/logo.png" rel="stylesheet">
     <link rel="icon" type="image/png" href="../assets/img/logo/logo.png">
     <title>Đăng tin</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/nucleo-icons.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/nucleo-svg.css"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/soft-ui-dashboard.css?v=1.0.6"/>
 
 </head>
 <body class="g-sidenav-show  bg-gray-100">
@@ -180,7 +181,6 @@
     <!-- Navbar -->
     <jsp:include page="busi-header.jsp"></jsp:include>
     <!-- End Navbar -->
-
     <div class="">
         <div class="content">
 
@@ -190,12 +190,12 @@
                 </div>
                 <div class="module-body">
                     <br/>
-
-                    <form action="<%=request.getContextPath()%>/Post" method="post" class="form-horizontal row-fluid">
+                    <form action="<%=request.getContextPath()%>/Post?action=dangtin" method="post"
+                          class="form-horizontal row-fluid">
                         <div class="control-group">
                             <label class="control-label">Tiêu đề</label>
                             <div class="controls">
-                                <input type="text" id="tittle" name="tittle" placeholder="Nhập tiêu đề."
+                                <input type="text" id="title" name="title" placeholder="Nhập tiêu đề."
                                        class="span8">
                             </div>
                         </div>
@@ -327,11 +327,13 @@
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 <script>
+
+
     function checkGen() {
         var gen1 = document.getElementById("gen1");
         var gen2 = document.getElementById("gen2");
         var gen3 = document.getElementById("gen3");
-        if(!gen1.checked && !gen2.checked && !gen3.checked){
+        if (!gen1.checked && !gen2.checked && !gen3.checked) {
             gen1.disabled = false;
             gen2.disabled = false;
             gen3.disabled = false;
@@ -349,5 +351,15 @@
             gen3.disabled = true;
         }
     }
+
+    $('.close').on('click', function () {
+        var alertBox = $(this).parent();
+        alertBox.removeClass('bounceInRight');
+        alertBox.addClass('bounceOutRight');
+        alertBox.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+            alertBox.hide();
+        });
+    });
+
 </script>
 </html>
