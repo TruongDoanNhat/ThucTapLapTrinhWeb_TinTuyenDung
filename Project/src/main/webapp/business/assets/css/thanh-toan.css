@@ -68,13 +68,13 @@ body {
     color: #FFF!important;
 }
 
-.container {
-    margin-top: 50px;
-}
+/*.container {*/
+/*    margin-top: 50px;*/
+/*}*/
 
 #Checkout {
     z-index: 100001;
-    background: ;
+    background: #00b14f;
     width: 50%;
     min-width: 300px;
     height: 100%;

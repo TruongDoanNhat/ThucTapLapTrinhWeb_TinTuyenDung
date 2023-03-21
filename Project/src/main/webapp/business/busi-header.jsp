@@ -1,3 +1,7 @@
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
+<%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,7 +11,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<% DAOPost dp = new DAOPost();%>
 <html>
 <head>
     <title></title>
@@ -47,12 +51,12 @@
             <ul class="navbar-nav  justify-content-end">
                 <!--           st         -->
                 <i class="nav-item  pe-2 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-body p-0" style="margin-right: 15px;"
-                       data-bs-toggle="dropdown" aria-expanded="false">
+                    <%--                    <a href="../business/busi-gio-hang.jsp" class="nav-link text-body" style="margin-right: 15px;">--%>
+                    <a href='<c:url value="/Post?action=giohang"/>' class="nav-link text-body"
+                       style="margin-right: 15px;">
                         <i class="fa fa-shopping-cart  " style="width: 20px; padding-left: 7px;"></i>
                         <span class=" d-sm-inline d-none font-weight-bold text-sm"
-                              style="margin-right: 10px"> (5) </span>
-
+                              style="margin-right: 10px"> (<%=dp.getPost(UtilSession.getInstance().getValue(request, "account").getId(), 0).size()%>) </span>
                     </a>
 
                 </i>
@@ -148,7 +152,7 @@
                                     <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
                                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                                              xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        >
                                             <title>credit-card</title>
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF"

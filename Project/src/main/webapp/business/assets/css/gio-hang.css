@@ -541,6 +541,15 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 /*---------------------------------------------*/
+.module-head-giohang{
+    color: #767676;
+    background-color: #f6f6f6;
+    border-color: #e9e9e9;
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
 .wrap-search-header input {
     font-family: Poppins-ExtraLight;
     font-size: 50px;

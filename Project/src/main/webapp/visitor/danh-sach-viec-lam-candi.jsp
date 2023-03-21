@@ -264,8 +264,8 @@
                                                     </h4>
                                                 </a>
                                                 <ul>
-<%--                                                                                                         <li> ${dp.getAddressByCompanyID()}--%>
-<%--                                                                                                         </li>--%>
+<%--                    <li> ${dp.getAddressByCompanyID()}--%>
+<%--     </li>--%>
                                                     <li>
 <%--                                                        <i class="fas fa-map-marker-alt"></i>--%>
                                                         ${dp.getCompanyNameByUsername(p.getUser_name())}
