@@ -297,7 +297,8 @@
                         <div class="control-group">
                             <label class="control-label">Hình ảnh</label>
                             <div class="controls">
-                                <input class="input-file" id="file" name="file" type="file">
+                                <input id="image" name="image" type="file" accept="image/*" onchange="previewImage(this);">
+                                <img id="image-preview" src="#" alt="Hình ảnh được chọn" style="display: none;">
                             </div>
                         </div>
                         <div class="control-group">
@@ -327,7 +328,22 @@
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 <script>
-
+    function previewImage(input) {
+        // lấy thẻ <img> được sử dụng để hiển thị hình ảnh được chọn.
+        var preview = document.getElementById('image-preview');
+        // kiểm tra xem người dùng đã chọn tập tin hình ảnh chưa. Nếu có, tiếp tục xử lý.
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            // xử lý sự kiện khi tập tin hình ảnh được đọc thành công
+            reader.onload = function (e) {
+                // e.target.result chứa đường dẫn URL của hình ảnh được đọc.
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            // đọc tập tin hình ảnh và chuyển đổi nó thành một URL dạng base64.
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
     function checkGen() {
         var gen1 = document.getElementById("gen1");
@@ -360,6 +376,7 @@
             alertBox.hide();
         });
     });
+
 
 </script>
 </html>
