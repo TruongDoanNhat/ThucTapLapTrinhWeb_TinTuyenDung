@@ -298,7 +298,7 @@
                             <label class="control-label">Hình ảnh</label>
                             <div class="controls">
                                 <input id="image" name="image" type="file" accept="image/*" onchange="previewImage(this);">
-                                <img id="image-preview" src="#" alt="Hình ảnh được chọn" style="display: none;">
+                                <img id="image-preview" src="#" alt="Hình ảnh được chọn" style="display: none;max-width: 300px; max-height: 300px;object-fit: contain;">
                             </div>
                         </div>
                         <div class="control-group">
