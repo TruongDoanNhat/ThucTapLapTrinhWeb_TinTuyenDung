@@ -195,9 +195,7 @@
             <div class="container">
                 <!--                <div class="row">-->
                 <div class="col-lg-10 col-xl-7 m-lr-auto">
-
                     <div class="m-l-25 m-r--38 m-lr-0-xl">
-
                         <div class="wrap-table-shopping-cart">
                             <div class="scrollbar">
                                 <div class="force-overflow">
@@ -212,8 +210,21 @@
                                             <tr class="table_row">
                                                 <td class="column-1">
                                                     <div class="check">
-                                                        <input class="checkbox" type="checkbox" id="choosePaid"
-                                                               name="choosePaid" onclick="countPaid()" value="${p.id}">
+                                                        <input class="checkbox" type="checkbox" onclick="
+                                                        if (this.checked) {
+                                                        alert(this.checked);
+                                                        count++;
+                                                        } else {
+                                                        alert(this.checked)
+                                                        if (count > 0) {
+                                                        count--;
+                                                        } else {
+                                                        count = 0;
+                                                        }
+                                                        }
+                                                        document.getElementById('selected').textContent = count;"
+                                                               id="choosePaid" name="choosePaid" value="${p.id}">
+                                                            <%--      chọn checkbox--%>
                                                         <div class="d-flex magin-top flex-column">
                                                             <a href="/Post?action=details&id=${p.id}">
                                                                 <h6 class="mb-3 text-sm">${p.title}</h6>
@@ -248,18 +259,19 @@
                             <tr class="">
                                 <td class="column-11 ">
                                     <div class="check">
-                                        <input class="checkbox" type="checkbox">
+                                        <input class="checkbox-all" type="checkbox"
+                                               id="select-all"> <%--  chọn tất cả--%>
                                         <!--<a style="position: relative">Xóa tất cả</a>-->
                                         <a class="btn btn-link text-danger text-dark px-3 mb-0"
-                                           href="javascript:;" id="chooseAll" onclick="chooseAll()"> Chọn tất
-                                            cả </a>
-                                        (${p.size()})
+                                           href="javascript:;"> Chọn tất cả </a>(${p.size()})
+
                                         <a class="btn btn-link text-danger text-gradient px-3 mb-0"
                                            href="javascript:;">Xóa</a>
                                     </div>
                                 </td>
-                                <td class="column-22"> Tổng thanh toán (<span id="sum">0</span> bài viết): 0 VND</td>
-
+                                <td class="column-22"> Tổng thanh toán (<span id="selected">0</span> bài viết): 0 VND
+                                </td>
+                                <%--                       tong thanh toan --%>
                                 <td class="column-55">
                                     <input data-v-c4f347a8="" type="text" name="avatar" class="d-none1">
                                     <button type="button" id="btn1">
@@ -268,9 +280,7 @@
                                 </td>
                             </tr>
                             </tbody>
-
                         </table>
-
                     </div>
                 </div>
             </div>
@@ -535,24 +545,86 @@
         // Add class .show
         modal_container.classList.add('show');
     });
+    var count = 0;
 
-    function countPaid() {
-        const check = document.getElementById("choosePaid");
-        var count = 0;
-        if (check.checked) {
-            count = count + 1;
-        }
-        return document.getElementById('sum').innerHTML = count;
+    function check(checked = true) {
+        const checkboxes = document.querySelectorAll('.checkbox');
+        checkboxes.forEach((checkbox) => {
+            checkbox.checked = checked;
+        });
+        count = checkboxes.length;
     }
 
-    function chooseAll() {
-        const checkAll = document.getElementById("chooseAll");
-        const check = document.getElementById("choosePaid");
-        if (checkAll.checked) {
-            check.checked = true
+    // function count2() {
+    //     const checkboxes = document.querySelectorAll('.checkbox');
+    //     count = checkboxes.length;
+    //     document.getElementById('selected').textContent = count;
+    // }
+
+    function count1() {
+        if (this.checked) {
+            alert(this.checked + "+")
+            count++;
         } else {
-            check.checked = false;
+            alert(this.checked + "-")
+            if (count > 0) {
+                count--;
+            } else {
+                count = 0;
+            }
         }
+        document.getElementById('selected').textContent = count;
     }
+
+    function checkAll() {
+        check();
+        document.getElementById('selected').textContent = count;
+        this.onclick = uncheckAll;
+    }
+
+    function uncheckAll() {
+        check(false);
+        count = 0;
+        document.getElementById('selected').textContent = count;
+        this.onclick = checkAll;
+    }
+
+    const btn = document.querySelector('#select-all');
+    btn.onclick = checkAll;
+    // const box = document.getElementById('choosePaid');
+    // box.onclick =count1();
+
+    // var box = document.getElementById("choosePaid")
+    // var checkboxes = document.querySelectorAll('.checkbox');
+    // var count = 0;
+    // document.getElementById('select-all').onclick = function () {
+    //     alert("hello: " + checkboxes.length);
+    //     for (const checkbox of checkboxes) {
+    //         // checkbox.checked = this.checked;
+    //         if (count === checkboxes.length) {
+    //             count = 0;
+    //             this.checked = checked;
+    //             document.getElementById("selected").innerHTML = count;
+    //         }
+    //
+    //         if (checkbox.checked == false) {
+    //             count++;
+    //             this.checked = checked;
+    //             document.getElementById("selected").innerHTML = count;
+    //             alert("count:" + count);
+    //         }
+    //     }
+    // }
+    // for (var i = 0; i < checkboxes.length; i++) {
+    //     checkboxes[i].addEventListener('click', function () {
+    //         if (this.checked) {
+    //             count++;
+    //         } else {
+    //             count = 0;
+    //         }
+    //         document.getElementById("selected").innerHTML = count;
+    //     })
+    // }
+
 </script>
 </html>
