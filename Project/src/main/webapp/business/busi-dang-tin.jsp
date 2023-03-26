@@ -195,14 +195,14 @@
                         <div class="control-group">
                             <label class="control-label">Tiêu đề</label>
                             <div class="controls">
-                                <input type="text" id="title" name="title" placeholder="Nhập tiêu đề."
+                                <input type="text" id="title" name="title" onkeyup="checkBulletinBoard()" placeholder="Nhập tiêu đề."
                                        class="span8">
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Chức vụ</label>
                             <div class="controls">
-                                <input type="text" id="rank" name="rank" placeholder="Nhập chức vụ."
+                                <input type="text" id="rank" name="rank" onkeyup="checkBulletinBoard()" placeholder="Nhập chức vụ."
                                        class="span8">
                             </div>
                         </div>
@@ -210,7 +210,7 @@
                         <div class="control-group">
                             <label class="control-label">Lĩnh vực</label>
                             <div class="controls">
-                                <select tabindex="1" id="category" name="category" data-placeholder="Vui lòng chọn.."
+                                <select tabindex="1" id="category" name="category" onkeyup="checkBulletinBoard()" data-placeholder="Vui lòng chọn.."
                                         class="span8">
                                     <option value="">Vui lòng chọn..</option>
                                     <option value="Trí tuệ nhân tạo">Trí tuệ nhân tạo</option>
@@ -224,7 +224,7 @@
                         <div class="control-group">
                             <label class="control-label">Hình thức công việc</label>
                             <div class="controls">
-                                <select tabindex="1" id="type" name="type" data-placeholder="Vui lòng chọn.."
+                                <select tabindex="1" id="typetype" onkeyup="checkBulletinBoard()" name="type" data-placeholder="Vui lòng chọn.."
                                         class="span8">
                                     <option value="">Vui lòng chọn..</option>
                                     <option value="Toàn thời gian">Toàn thời gian</option>
@@ -237,7 +237,7 @@
                         <div class="control-group">
                             <label class="control-label">Địa điểm làm việc</label>
                             <div class="controls">
-                                <input type="text" name="address" placeholder="Quận/Huyện/Thành phố"
+                                <input type="text" name="address" id="address" onkeyup="checkBulletinBoard()" placeholder="Quận/Huyện/Thành phố"
                                        class="span8">
                             </div>
                         </div>
@@ -245,7 +245,7 @@
                             <label class="control-label">Mức lương</label>
                             <div class="controls">
                                 <div class="input-append">
-                                    <input type="text" name="salary" placeholder="10.000.000 VND" class="span8">
+                                    <input type="text" name="salary" id="salary" placeholder="10.000.000 VND" onkeyup="checkBulletinBoard()" class="span8">
                                 </div>
                                 <span class="help-inline">(Thỏa thuận : 0 VND)</span>
                             </div>
@@ -279,32 +279,32 @@
                         <div class="control-group">
                             <label class="control-label">Mô tả công việc</label>
                             <div class="controls">
-                                <textarea class="span8a" name="description" rows="5"></textarea>
+                                <textarea class="span8a" id="mtcv" name="description" onkeyup="checkBulletinBoard()" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Yêu cầu</label>
                             <div class="controls">
-                                <textarea class="span8a" name="requests" rows="5"></textarea>
+                                <textarea class="span8a" id="yc" name="requests" onkeyup="checkBulletinBoard()" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Quyền lợi</label>
                             <div class="controls">
-                                <textarea class="span8a" name="rights" rows="5"></textarea>
+                                <textarea class="span8a" id="ql" name="rights" onkeyup="checkBulletinBoard()" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Hình ảnh</label>
                             <div class="controls">
-                                <input id="image" name="image" type="file" accept="image/*" onchange="previewImage(this);">
+                                <input id="image" name="image" type="file" accept="image/*" onkeyup="checkBulletinBoard()" onchange="previewImage(this);">
                                 <img id="image-preview" src="#" alt="Hình ảnh được chọn" style="display: none;max-width: 300px; max-height: 300px;object-fit: contain;">
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Hết hạn nộp hồ sơ</label>
                             <div class="controls">
-                                <input type="date" id="date" name="endDate">
+                                <input type="date" id="date" onkeyup="checkBulletinBoard()" name="endDate">
                             </div>
                         </div>
                         <div class="control-group">
@@ -328,6 +328,7 @@
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 <script>
+    document.getElementById("dang").disabled = true;
     function previewImage(input) {
         // lấy thẻ <img> được sử dụng để hiển thị hình ảnh được chọn.
         var preview = document.getElementById('image-preview');
@@ -378,22 +379,26 @@
     });
 
     // Kiểm tra thông tin trong bảng đăng tin
-    // document.getElementById("dang").disabled = true;
-    // function checkBulletinBoard() {
-    //     var t = document.getElementById("title").value;
-    //     var r = document.getElementById("rank").value;
-    //     var type = document.getElementById("type").value;
-    //     var c = document.getElementById("category").value;
-    //     var d = document.getElementById("date").value;
-    //     var i = document.getElementById("image").value;
-    //
-    //     if(t.length > 0 && r.length > 0 && type.length ){
-    //         document.getElementById("dang").disabled = false;
-    //     }else {
-    //         document.getElementById("dang").disabled = true;
-    //     }
-    //
-    // }
+    function checkBulletinBoard() {
+        var t = document.getElementById("title").value;
+        var r = document.getElementById("rank").value;
+        var mtcv = document.getElementById("mtcv").value;
+        var yc = document.getElementById("yc").value;
+        var ql = document.getElementById("ql").value;
+        var a = document.getElementById("address").value;
+        var s = document.getElementById("salary").value;
+        // var type = document.getElementById("type").value;
+        // var c = document.getElementById("category").value;
+        // var d = document.getElementById("date").value;
+        // var i = document.getElementById("image").value;
+
+        if(t.length > 0 && r.length > 0 && mtcv.length > 0 && yc.length > 0 && ql.length > 0 && s.length > 0 && a.length > 0 ){
+            document.getElementById("dang").disabled = false;
+        }else {
+            document.getElementById("dang").disabled = true;
+        }
+
+    }
 
 
 </script>
