@@ -309,7 +309,7 @@
                         </div>
                         <div class="control-group">
                             <div class="controls">
-                                <button type="submit" class="btn">Đăng</button>
+                                <button type="submit" id="dang" class="btn">Đăng</button>
                             </div>
                         </div>
                     </form>
@@ -376,6 +376,24 @@
             alertBox.hide();
         });
     });
+
+    // Kiểm tra thông tin trong bảng đăng tin
+    // document.getElementById("dang").disabled = true;
+    // function checkBulletinBoard() {
+    //     var t = document.getElementById("title").value;
+    //     var r = document.getElementById("rank").value;
+    //     var type = document.getElementById("type").value;
+    //     var c = document.getElementById("category").value;
+    //     var d = document.getElementById("date").value;
+    //     var i = document.getElementById("image").value;
+    //
+    //     if(t.length > 0 && r.length > 0 && type.length ){
+    //         document.getElementById("dang").disabled = false;
+    //     }else {
+    //         document.getElementById("dang").disabled = true;
+    //     }
+    //
+    // }
 
 
 </script>
