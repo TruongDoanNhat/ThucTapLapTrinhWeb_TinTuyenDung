@@ -31,7 +31,15 @@ public class DAOPost {
                     .stream().collect(Collectors.toList());
         });
     }
-
+    // update trạng thái cho bài viết
+    public void updateStatusPost(Integer id, int status) {
+        String query = "UPDATE post set status = ? WHERE id = ?";
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate(query)
+                        .bind(0, status)
+                        .bind(1, id)
+                        .execute());
+    }
     //Lấy id category theo tên
     public int getCategoryId(String name) {
         String query = "select id from category where name = ?";
