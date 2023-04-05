@@ -316,6 +316,7 @@
                                                 <div class='thin dense'><span id="vat">0</span> VND</div>
                                                 <div class="thin dense p5" style="color: #0b0b0b"><span
                                                         id="pay">0</span> VND</div>
+
                                             </span>
                                         </div>
                                     </div>
@@ -345,7 +346,7 @@
                                         <div class="cc-field">
                                             <div class="cc-title">Credit Card Number
                                             </div>
-                                            <input type="text" class="input cc-txt text-validated"
+                                            <input type="text" name = "numAccount" class="input cc-txt text-validated"
                                                    value="4542 9931 9292 2293"/>
                                         </div>
                                     </div>
@@ -412,6 +413,9 @@
                                             <div class="cc-title">Name on Card
                                             </div>
                                             <input type="text" class="input cc-txt"/>
+                                            <div class="cc-title">Số tiền
+                                            </div>
+                                            <input type="text" id = "pay2" name="pay2" readonly style="width: auto" class="input cc-txt"/>
                                         </div>
                                     </div>
 
@@ -584,6 +588,7 @@
     function pay() {
         thanhtien = sum + tienthue;
         document.getElementById('pay').textContent = thanhtien;
+        document.getElementById('pay2').value = thanhtien;
     }
 
     function checkAll() {
@@ -604,4 +609,5 @@
     btn.onclick = checkAll;
 
 </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>

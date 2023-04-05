@@ -31,13 +31,13 @@ public class DAOPost {
                     .stream().collect(Collectors.toList());
         });
     }
-    // update trạng thái cho bài viết
-    public void updateStatusPost(Integer id, int status) {
+    // update trạng thái cho bài viết và thêm idBill
+    public void updatePost(Integer idPost, int status, int idBill) {
         String query = "UPDATE post set status = ? WHERE id = ?";
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate(query)
                         .bind(0, status)
-                        .bind(1, id)
+                        .bind(1, idPost)
                         .execute());
     }
     //Lấy id category theo tên
@@ -52,17 +52,17 @@ public class DAOPost {
     }
 
     // thêm bài viết vào csdl
-    public boolean insertPost(String category, String tittle, String quantity, String salary, String address, String type,
+    public boolean insertPost(String category, String title, String quantity, String salary, String address, String type,
                               String rank, String gen, String description, String rights, String request, int status, Date endDate) {
         int categoryId = getCategoryId(category);
         int accountId = DAOAccount.getAccount().getId();
-        String query = "INSERT INTO `post` (`categoryId`, `accountId`, `tittle`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`," +
-                " `description`, `rights`, `request`, `status`, `createDate`, `endDate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO `post` (`categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`," +
+                " `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate(query)
                         .bind(0, categoryId)
                         .bind(1, accountId)
-                        .bind(2, tittle)
+                        .bind(2, title)
                         .bind(3, quantity)
                         .bind(4, salary)
                         .bind(5, address)
@@ -75,6 +75,7 @@ public class DAOPost {
                         .bind(12, status)
                         .bind(13, getDateNow())
                         .bind(14, endDate)
+                        .bind(15, (String) null)
                         .execute()
         );
         return true;
