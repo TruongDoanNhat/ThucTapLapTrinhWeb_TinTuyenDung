@@ -1,3 +1,6 @@
+<%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
+<%@ page import="java.util.HashMap" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,6 +10,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<% int price = 30000;
+    double vat = 0.05;
+    List<Post> postLis = (List) request.getAttribute("postList");
+    HashMap<Integer, Integer> cart = new HashMap<>();
+%>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -15,7 +23,7 @@
     <link rel="icon" type="image/png" href="/business/assets/img/logo/logo.png">
     <title>Giỏ hàng</title>
     <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <%--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>--%>
     <!-- Nucleo Icons -->
     <link href="/business/assets/css/nucleo-icons.css" rel="stylesheet"/>
     <link href="/business/assets/css/nucleo-svg.css" rel="stylesheet"/>
@@ -27,7 +35,7 @@
     <link id="pagestyle" href="/business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/business/assets/css/gio-hang.css">
     <link rel="stylesheet" href="/business/assets/css/thanh-toan.css">
-
+    <link rel="stylesheet" href="/business/assets/css/thanh-toan2.css">
 
 </head>
 <body class="g-sidenav-show  bg-gray-100">
@@ -51,7 +59,7 @@
                 <a class="nav-link" href="busi-trang-chu.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                             xmlns="http://www.w3.org/2000/svg">
                             <title>shop </title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -75,7 +83,7 @@
                 <a class="nav-link" href="busi-quan-li-cv.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                             xmlns="http://www.w3.org/2000/svg">
                             <title>office</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -98,7 +106,7 @@
                 <a class="nav-link " href="busi-tin-tuyen-dung.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                             xmlns="http://www.w3.org/2000/svg">
                             <title>credit-card</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -135,7 +143,7 @@
                 <a class="nav-link " href="busi-tai-khoan.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                             xmlns="http://www.w3.org/2000/svg">
                             <title>customer-support</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -188,7 +196,7 @@
 
     <div id="wrapper">
         <!--    div class="container-fluid py-4">-->
-        <form class="bg0 p-t-75 p-b-85">
+        <form action="<%=request.getContextPath()%>/Pay" method="post" class="bg0 p-t-75 p-b-85">
             <div class="module-head-giohang" style="">
                 <h3>Giỏ hàng</h3>
             </div>
@@ -206,16 +214,19 @@
                                             <th class="column-2">Giá tiền</th>
                                             <th class="column-5">Thao tác</th>
                                         </tr>
-                                        <c:forEach var="p" items="${postList}">
-                                            <tr class="table_row">
-                                                <td class="column-1">
-                                                    <div class="check">
-                                                        <input class="checkbox" type="checkbox" onclick="
+                                        <% for (Post p : postLis) {
+                                            cart.put(p.getId(), 0);
+                                            request.setAttribute("cart", cart);
+                                        %>
+                                        <tr class="table_row">
+                                            <td class="column-1">
+                                                <div class="check">
+                                                    <input id="choosePaid" name="choose" value="<%=p.getId()%>"
+                                                           class="checkbox" type="checkbox" onchange="sumBill()"
+                                                           onclick="
                                                         if (this.checked) {
-                                                        alert(this.checked);
                                                         count++;
                                                         } else {
-                                                        alert(this.checked)
                                                         if (count > 0) {
                                                         count--;
                                                         } else {
@@ -223,30 +234,32 @@
                                                         }
                                                         }
                                                         document.getElementById('selected').textContent = count;"
-                                                               id="choosePaid" name="choosePaid" value="${p.id}">
-                                                            <%--      chọn checkbox--%>
-                                                        <div class="d-flex magin-top flex-column">
-                                                            <a href="/Post?action=details&id=${p.id}">
-                                                                <h6 class="mb-3 text-sm">${p.title}</h6>
-                                                            </a>
-                                                            <span class="mb-2 text-xs">Vị trí: <span
-                                                                    class="text-dark ms-sm-2 font-weight-bold">${p.rank}</span></span>
-                                                            <span class="mb-2 text-xs">Địa chỉ: <span
-                                                                    class="text-dark ms-sm-2 font-weight-bold">${p.address}</span></span>
-                                                            <span class="mb-2 text-xs">Mức lương: <span
-                                                                    class="text-dark font-weight-bold ms-sm-2">${p.salary} VND</span></span>
-                                                            <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                                                    class="text-dark font-weight-bold ms-sm-2">${p.createDate}</span></span>
-                                                        </div>
+                                                    >
+                                                    <%--      chọn checkbox--%>
+                                                    <div class="d-flex magin-top flex-column">
+                                                        <a href="/Post?action=details&id=<%=p.getId()%>">
+                                                            <h6 class="mb-3 text-sm"><%=p.getTitle()%>
+                                                            </h6>
+                                                        </a>
+                                                        <span class="mb-2 text-xs">Vị trí: <span
+                                                                class="text-dark ms-sm-2 font-weight-bold"><%=p.getRank()%></span></span>
+                                                        <span class="mb-2 text-xs">Địa chỉ: <span
+                                                                class="text-dark ms-sm-2 font-weight-bold"><%=p.getAddress()%></span></span>
+                                                        <span class="mb-2 text-xs">Mức lương: <span
+                                                                class="text-dark font-weight-bold ms-sm-2"><%=p.getStatus()%> VND</span></span>
+                                                        <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
+                                                                class="text-dark font-weight-bold ms-sm-2"><%=p.getCreateDate()%></span></span>
                                                     </div>
-                                                </td>
-                                                <td class="column-2">36.00 đ</td>
-                                                <td class=" column-5"><a
-                                                        class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                        href="javascript:;"><i class="far fa-trash-alt me-2"></i>Xóa</a>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
+                                                </div>
+                                            </td>
+                                            <td class="column-2">36.00 đ</td>
+                                            <td class=" column-5"><a
+                                                    class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                    href=""><i class="far fa-trash-alt me-2"></i>Xóa</a>
+                                            </td>
+                                        </tr>
+                                        <%}%>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -260,21 +273,17 @@
                                 <td class="column-11 ">
                                     <div class="check">
                                         <input class="checkbox-all" type="checkbox"
-                                               id="select-all"> <%--  chọn tất cả--%>
-                                        <!--<a style="position: relative">Xóa tất cả</a>-->
-                                        <a class="btn btn-link text-danger text-dark px-3 mb-0"
-                                           href="javascript:;"> Chọn tất cả </a>(${p.size()})
-
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                           href="javascript:;">Xóa</a>
+                                               id="select-all" onchange="sumBill()"> <%--  chọn tất cả--%>
+                                        <span class="text-danger text-dark mb-0" style="width: 130px"
+                                        > Chọn tất cả (<%=postLis.size()%>) </span>
                                     </div>
                                 </td>
-                                <td class="column-22"> Tổng thanh toán (<span id="selected">0</span> bài viết): 0 VND
+                                <td class="column-22"> Tổng thanh toán (<span id="selected">0</span> bài viết): <span
+                                        id="sumBill"></span> VND
                                 </td>
-                                <%--                       tong thanh toan --%>
-                                <td class="column-55">
-                                    <input data-v-c4f347a8="" type="text" name="avatar" class="d-none1">
-                                    <button type="button" id="btn1">
+                                <%--  tong thanh toan --%>
+                                <td class="column-22">
+                                    <button type="button" id="btn1" onclick="vat(),pay()">
                                         Thanh toán
                                     </button>
                                 </td>
@@ -284,152 +293,140 @@
                     </div>
                 </div>
             </div>
-            <!--    Modal-->
-
-            <!--                Thanh toán-->
             <div id="modal-container">
                 <div id="modal">
-                    <div class='window'>
-                        <div class="wrap-table-shopping-cart2">
-                            <div class="scrollbar2" id="style-1">
-                                <table class="table-shopping-cart2">
-                                    <tbody>
-                                    <tr class="table_row">
-                                        <td class="column-15">
-                                            <div class="check1">
-                                                <div class="d-flex magin-top flex-column">
-                                                    <h6 class="mb-3 text-sm">Lập trình game</h6>
-                                                    <br><span class="mb-2 text-xs">Vị trí: <span
-                                                        class="text-dark ms-sm-2 font-weight-bold">Giám đốc</span></span>
-                                                    <br><span class="mb-2 text-xs">Địa chỉ: <span
-                                                        class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
-                                                    <br><span class="mb-2 text-xs">Mức lương: <span
-                                                        class="text-dark font-weight-bold ms-sm-2">10.000.000 VND</span></span>
-                                                    <br><span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                                        class="text-dark font-weight-bold ms-sm-2">02/11/2002</span></span>
-                                                </div>
+                    <div class="tab_container">
+                        <a class="close1" id="close"></a>
+                        <input id="tab4" type="radio" name="tabs" checked style="display:none">
+                        <label for="tab4">
+                            <span>Thanh toán</span>
+                        </label>
+                        <section id="content4" class="tab-content">
+                            <form action="" method="post">
+                                <div class="pymt-radio" style="background: whitesmoke;">
+                                    <div class="row-payment-method payment-row-last">
+                                        <div class="">
+                                            <span class="vat">
+                                                <div class="thin dense">Thành tiền</div>
+                                                <div class="thin dense">Thuế VAT(19%)</div>
+                                                <div class="thin dense p5" style="color: #0b0b0b">Tổng tiền</div>
+                                            </span>
+                                            <span class="money">
+                                                <div class="thin dense"><span id="sumBill2">0</span> VND</div>
+                                                <div class='thin dense'><span id="vat">0</span> VND</div>
+                                                <div class="thin dense p5" style="color: #0b0b0b"><span
+                                                        id="pay">0</span> VND</div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pymt-radio">
+                                    <div class="row-payment-method payment-row-last">
+                                        <div class="select-txt hr">
+                                            <p class="pymt-type-name">Credit Card</p>
+                                            <p class="pymt-type-desc">Safe money transfer using your bank account. Safe
+                                                payment online. Credit card needed. Visa, Maestro, Discover, American
+                                                Express</p>
+                                        </div>
+                                        <div class="select-logo">
+                                            <div class="select-logo-sub logo-spacer">
+                                                <img src="https://www.dropbox.com/s/by52qpmkmcro92l/logo-visa.png?raw=1"
+                                                     alt="Visa"/>
                                             </div>
-                                        </td>
-                                        <td class="column-25">36.00 VND</td>
-                                    </tr>
-                                    <tr class="table_row">
-                                        <td class="column-15">
-                                            <div class="check">
-                                                <div class="d-flex magin-top flex-column">
-                                                    <h6 class="mb-3 text-sm">Lập trình game</h6>
-                                                    <br> <span class="mb-2 text-xs">Vị trí: <span
-                                                        class="text-dark ms-sm-2 font-weight-bold">Giám đốc</span></span>
-                                                    <br><span class="mb-2 text-xs">Địa chỉ: <span
-                                                        class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
-                                                    <br><span class="mb-2 text-xs">Mức lương: <span
-                                                        class="text-dark font-weight-bold ms-sm-2">10.000.000 VND</span></span>
-                                                    <br><span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                                        class="text-dark font-weight-bold ms-sm-2">02/11/2002</span></span>
-                                                </div>
+                                            <div class="select-logo-sub">
+                                                <img src="https://www.dropbox.com/s/6f5dorw54xomw7p/logo-mastercard.png?raw=1"
+                                                     alt="MasterCard"/></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-cc">
+                                    <div class="row-cc">
+                                        <div class="cc-field">
+                                            <div class="cc-title">Credit Card Number
                                             </div>
-                                            <!--                                    </div>-->
-                                            <!--                                </div>-->
-                                            <!--                            </div>-->
-                                            <!--                        </div>-->
-                                        </td>
-                                        <td class="column-25">36.00 VND</td>
-
-                                    </tr>
-
-                                    <tr class="table_row">
-                                        <td class="column-15">
-                                            <div class="check">
-
-                                                <div class="d-flex magin-top flex-column">
-                                                    <h6 class="mb-3 text-sm">Lập trình game</h6>
-                                                    <br> <span class="mb-2 text-xs">Vị trí: <span
-                                                        class="text-dark ms-sm-2 font-weight-bold">Giám đốc</span></span>
-                                                    <br><span class="mb-2 text-xs">Địa chỉ: <span
-                                                        class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
-                                                    <br><span class="mb-2 text-xs">Mức lương: <span
-                                                        class="text-dark font-weight-bold ms-sm-2">10.000.000 VND</span></span>
-                                                    <br><span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                                        class="text-dark font-weight-bold ms-sm-2">02/11/2002</span></span>
-                                                </div>
+                                            <input type="text" class="input cc-txt text-validated"
+                                                   value="4542 9931 9292 2293"/>
+                                        </div>
+                                    </div>
+                                    <div class="row-cc">
+                                        <div class="cc-field">
+                                            <div class="cc-title">Expiry Date
                                             </div>
-                                            <!--                                    </div>-->
-                                            <!--                                </div>-->
-                                            <!--                            </div>-->
-                                            <!--                        </div>-->
-                                        </td>
-                                        <td class="column-25">36.00 VND</td>
-
-                                    </tr>
-
-
-                                    </tbody>
-                                </table>
-
-
-                            </div>
-                            <div class='total'>
-                <span class="vat">
-                    <div class="thin dense">Thuế VAT(19%)</div>
-                    <div class="thin dense">Giảm giá</div>
-                    <div class="thin dense p5">Tổng tiền</div>
-                </span>
-                                <span class="money">
-                    <div class="thin dense">68.75 VND</div>
-                    <div class='thin dense'>4.95 VND</div>
-                    <div class="thin dense p5">435.55 VND</div>
-                </span>
-                            </div>
-                        </div>
-                        <div class='credit-info'>
-                            <div class='credit-info-content'>
-                                <table class='half-input-table'>
-                                    <tr>
-                                        <td style="color: white">Chọn card của bạn:</td>
-                                        <td>
-                                            <div class='dropdown'>
-
-                                                <select name="select1" id=""
-                                                        class="col-form-label text-dark multiselect__tags col-form-input"
-                                                        style="width: 100% ;background: #4488dd">
-                                                    <option value="1">ACB</option>
-                                                    <option value="2">BIDV</option>
-                                                    <option value="3">OCB</option>
-                                                </select>
+                                            <select class="input cc-ddl">
+                                                <option selected>01</option>
+                                                <option>02</option>
+                                                <option>03</option>
+                                                <option>04</option>
+                                                <option>05</option>
+                                                <option>06</option>
+                                                <option>07</option>
+                                                <option>08</option>
+                                                <option>09</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                            </select>
+                                            <select class="input cc-ddl">
+                                                <option>01</option>
+                                                <option>02</option>
+                                                <option>03</option>
+                                                <option>04</option>
+                                                <option>05</option>
+                                                <option>06</option>
+                                                <option>07</option>
+                                                <option>08</option>
+                                                <option>09</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                                <option>13</option>
+                                                <option>14</option>
+                                                <option>15</option>
+                                                <option selected>16</option>
+                                                <option>17</option>
+                                                <option>18</option>
+                                                <option>19</option>
+                                                <option>20</option>
+                                                <option>21</option>
+                                                <option>22</option>
+                                                <option>23</option>
+                                                <option>24</option>
+                                                <option>25</option>
+                                                <option>26</option>
+                                                <option>27</option>
+                                                <option>28</option>
+                                                <option>29</option>
+                                                <option>30</option>
+                                                <option>31</option>
+                                            </select>
+                                        </div>
+                                        <div class="cc-field">
+                                            <div class="cc-title">CVV Code<span class="numberCircle">?</span>
                                             </div>
+                                            <input type="text" class="input cc-txt"/>
+                                        </div>
+                                    </div>
+                                    <div class="row-cc">
+                                        <div class="cc-field">
+                                            <div class="cc-title">Name on Card
+                                            </div>
+                                            <input type="text" class="input cc-txt"/>
+                                        </div>
+                                    </div>
 
-                                        </td>
-                                    </tr>
-                                </table>
-                                <img src='assets/img/logos/logo-acb-inkythuatso.png' height='80'
-                                     class='credit-card-image' id='credit-card-image'></img>
-                                <table class='half-input-table'>
-                                    <tr>
-                                        <td style="color: white"> Số tài khoản
-                                            <input class='input-field ' style="color: #0b0b0b"></input>
-                                        </td>
-                                        <td style="color: white"> Mật khẩu
-                                            <input class='input-field' style="color: #0b0b0b"></input>
-                                        </td>
-                                    </tr>
-                                </table>
-                                Số tiền
-                                <input class='input-field' style="color: #0b0b0b"></input>
-                                Nội dung giao dịch
-                                <input class='input-field' style="color: #0b0b0b"></input>
-
-                                <button class='pay-btn'>Thanh toán</button>
-
-                            </div>
-
-                        </div>
-
+                                </div>
+                                <div class="button-master-container">
+                                    <div class="button-container button-finish">
+                                        <button  class="pay-btn" type="submit">Thanh toán</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
                     </div>
                 </div>
             </div>
-            <!--                end Thanh toán-->
             <!--            end Modal-->
-
-
         </form>
     </div>
     </div>
@@ -519,10 +516,10 @@
 </div>
 </body>
 <!--   Core JS Files   -->
-<script src="assets/js/core/popper.min.js"></script>
-<script src="assets/js/core/bootstrap.min.js"></script>
-<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="/business/assets/js/core/popper.min.js"></script>
+<script src="/business/assets/js/core/bootstrap.min.js"></script>
+<script src="/business/assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="/business/assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
@@ -536,44 +533,57 @@
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+<script src="/business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 <!--Show-->
 <script>
+    // hiển thị trang thanh toán
     const btn_open = document.getElementById('btn1');
     const modal_container = document.getElementById('modal-container');
     btn_open.addEventListener('click', () => {
         // Add class .show
         modal_container.classList.add('show');
     });
-    var count = 0;
 
+    // tắt trang thanh toán
+    const btn_close = document.getElementById('close');
+    btn_close.addEventListener('click', () => {
+        // remove class .show
+        modal_container.classList.remove('show');
+    });
+    var count = 0; // đếm số bài viết được check
+    const checkboxes = document.querySelectorAll('.checkbox');
+
+    // check and uncheck
     function check(checked = true) {
-        const checkboxes = document.querySelectorAll('.checkbox');
         checkboxes.forEach((checkbox) => {
             checkbox.checked = checked;
         });
         count = checkboxes.length;
     }
 
-    // function count2() {
-    //     const checkboxes = document.querySelectorAll('.checkbox');
-    //     count = checkboxes.length;
-    //     document.getElementById('selected').textContent = count;
-    // }
+    // tổng tiền
+    var sum = 0;
 
-    function count1() {
-        if (this.checked) {
-            alert(this.checked + "+")
-            count++;
-        } else {
-            alert(this.checked + "-")
-            if (count > 0) {
-                count--;
-            } else {
-                count = 0;
-            }
-        }
-        document.getElementById('selected').textContent = count;
+    function sumBill() {
+        sum = count *<%=price%>;
+        document.getElementById('sumBill').textContent = sum;
+        document.getElementById('sumBill2').textContent = sum;
+    }
+
+    // thuế
+    var tienthue = 0;
+
+    function vat() {
+        tienthue = sum *<%=vat%>;
+        document.getElementById('vat').textContent = tienthue;
+    }
+
+    // thành tiền
+    var thanhtien = 0;
+
+    function pay() {
+        thanhtien = sum + tienthue;
+        document.getElementById('pay').textContent = thanhtien;
     }
 
     function checkAll() {
@@ -589,42 +599,9 @@
         this.onclick = checkAll;
     }
 
+    // check all
     const btn = document.querySelector('#select-all');
     btn.onclick = checkAll;
-    // const box = document.getElementById('choosePaid');
-    // box.onclick =count1();
-
-    // var box = document.getElementById("choosePaid")
-    // var checkboxes = document.querySelectorAll('.checkbox');
-    // var count = 0;
-    // document.getElementById('select-all').onclick = function () {
-    //     alert("hello: " + checkboxes.length);
-    //     for (const checkbox of checkboxes) {
-    //         // checkbox.checked = this.checked;
-    //         if (count === checkboxes.length) {
-    //             count = 0;
-    //             this.checked = checked;
-    //             document.getElementById("selected").innerHTML = count;
-    //         }
-    //
-    //         if (checkbox.checked == false) {
-    //             count++;
-    //             this.checked = checked;
-    //             document.getElementById("selected").innerHTML = count;
-    //             alert("count:" + count);
-    //         }
-    //     }
-    // }
-    // for (var i = 0; i < checkboxes.length; i++) {
-    //     checkboxes[i].addEventListener('click', function () {
-    //         if (this.checked) {
-    //             count++;
-    //         } else {
-    //             count = 0;
-    //         }
-    //         document.getElementById("selected").innerHTML = count;
-    //     })
-    // }
 
 </script>
 </html>
