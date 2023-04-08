@@ -1,3 +1,29 @@
+.close1 {
+    position: absolute;
+    top: 10px;
+    left: 800px;
+    width: 32px;
+    height: 2px;
+    opacity: 0.3;
+    cursor: pointer;
+}
+.close1:hover {
+    opacity: 1;
+}
+.close1:before, .close1:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+}
+.close1:before {
+    transform: rotate(45deg);
+}
+.close1:after {
+    transform: rotate(-45deg);
+}
 body {
     background: #FEF8F8;
 }
@@ -371,7 +397,8 @@ ul li:hover {
     color:#fff;
     cursor:pointer;
     position:absolute;
-    bottom:25px;
+    left: 20px;
+    bottom:10px;
     width:calc(100% - 50px);
     -webkit-transition:all .2s ease;
     transition:all .2s ease;
@@ -384,13 +411,13 @@ ul li:hover {
 }
 .vat{
     float:left;
-    margin-top: 20px;
-    margin-left: 30px;
+    /*margin-top: 20px;*/
+    margin-left: 215px;
 }
 .money{
     float:right;
-    margin-top: 20px;
-    margin-right: 30px;
+    /*margin-top: 20px;*/
+    margin-right: 260px;
 }
 .total {
 
@@ -661,8 +688,8 @@ body {
 
 #modal {
     position: relative;
-    left:420px;
-    top: 100px;
+    left:390px;
+    top: 0px;
 }
 
 #btn1{
@@ -672,5 +699,4 @@ body {
     margin-right: 20px;
     color: #fff;
     background: #cb0c9f;
-
 }

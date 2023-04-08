@@ -68,8 +68,8 @@ public class Login extends HttpServlet {
 
             // Chuyển hướng đến trang chủ (thay đổi đường dẫn phù hợp)
             if (checkAccount && d.getAccount().getStatus() == 1) {
-                HttpSession session = request.getSession(true);
-                session.setAttribute("account", (Account) d.getAccount());
+                    HttpSession session = request.getSession(true);
+                    session.setAttribute("account", (Account) d.getAccount());
                 UtilControl.send(d.getAccount().getRole(), "/admin/Admin-trang-chu.jsp", "/visitor/trang-chu-candi.jsp", "/business/busi-trang-chu.jsp", response);
             } else {
                 // Chuyển hướng lại trang đăng nhập nếu không xác thực được

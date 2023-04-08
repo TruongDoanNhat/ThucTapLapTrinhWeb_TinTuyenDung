@@ -67,7 +67,7 @@
                         <i class="fa fa-user me-sm-1"></i>
                         <span class=" d-sm-inline d-none font-weight-bold text-sm"> ${sessionScope.account.name} </span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4">
+                    <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4">
                         <li class="mb-2 font-weight-bold" style="text-align: center"><a
                                 href='<c:url value="/Logout?action=logout"/>'> Đăng xuất</a></li>
                     </ul>
