@@ -8,9 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DAOBill {
+    // Ngày hiện tại
     public Date getDateNow() {
         return new Date();
     }
+    // thêm bill vào database
     public boolean insertBill(String numAccount,String money) {
         String query = "INSERT INTO `bill` (numAccount,money,createDate) VALUES (?,?,?)";
         JDBIConnector.get().withHandle(handle ->
@@ -22,6 +24,7 @@ public class DAOBill {
         );
         return true;
     }
+    // lấy ra danh sách bill
     public List<Bill> getListBill(){
         String query = "select * from bill";
         return JDBIConnector.get().withHandle(handle -> {
