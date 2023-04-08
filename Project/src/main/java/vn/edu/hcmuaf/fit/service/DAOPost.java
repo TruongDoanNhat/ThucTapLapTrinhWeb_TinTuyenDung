@@ -57,7 +57,9 @@ public class DAOPost {
         int categoryId = getCategoryId(category);
         int accountId = DAOAccount.getAccount().getId();
         String query = "INSERT INTO `post` (`categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`," +
+
                 " `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate(query)
                         .bind(0, categoryId)
