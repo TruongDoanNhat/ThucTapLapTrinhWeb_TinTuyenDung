@@ -50,18 +50,18 @@
             <form action="<%=request.getContextPath()%>/Login" method="post">
                 <div class="input-form">
                     <span>Tài khoản</span>
-                    <input id="id" name="username" autofocus onkeyup="daoNutDN()" style="width: 95%" type="text"
-                           placeholder="Tài khoản">
+                    <input id="id" name="username" value="${cookie.username.value}" autofocus  onkeyup="daoNutDN()" style="width: 95%" type="text"
+                           placeholder="Tài khoản" >
                 </div>
                 <div class="input-form">
                     <span>Mật khẩu</span>
-                    <input id="pass" name="password" onkeyup="daoNutDN()" autocomplete="new-password" type="password"
+                    <input id="pass" name="password" value="${cookie.password.value}" onkeyup="daoNutDN()" autocomplete="new-password" type="password"
                            style="width: 95%"
                            placeholder="Nhập mật khẩu">
                     <i class="fa fa-eye" onclick="daoTT()" style="position: relative; left: -40px;cursor: pointer;"></i>
                 </div>
                 <div class="nho-dang-nhap">
-                    <label><input type="checkbox"> Nhớ Đăng Nhập</label>
+                    <label ><input type="checkbox" name="remember_me" id="remember_me" ${cookie.remember_me.value == 'true' ? 'checked' : ''}> Nhớ Đăng Nhập</label>
                 </div>
                 <div class="input-form">
                     <input type="submit" name="btndangnhap_candi" style="width: 95%" id="btndangnhap" value="Đăng Nhập">
