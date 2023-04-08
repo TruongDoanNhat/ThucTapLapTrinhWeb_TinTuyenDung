@@ -335,7 +335,7 @@
         var u = document.getElementById("id").value;
         var p = document.getElementById("pass").value;
         var pa = document.getElementById("pass-again").value;
-        // var cn = document.getElementById("company-name").value;
+
 
 
         if (e.length > 0 && u.length > 0 && p.length > 0 && pa.length > 0 ) {
