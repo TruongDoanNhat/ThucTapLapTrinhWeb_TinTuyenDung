@@ -6,24 +6,23 @@ import vn.edu.hcmuaf.fit.service.DAOAccount;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "Login", value = {"/Login", "/Logout"})
 public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String rememberMe = request.getParameter("remember_me");
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         DAOAccount d = new DAOAccount();
-        String user = request.getParameter("username");
-        String pass = request.getParameter("password");
-        pass = Util.encryptionPassword(pass);
-        boolean checkAccount = d.checkAccount(user, pass);
+        String passclone = password;
+        password = Util.encryptionPassword(password);
+        boolean checkAccount = d.checkAccount(username, password);
         String message = d.getMessage();
         String action = request.getParameter("action");
         if (action != null) {
@@ -37,11 +36,43 @@ public class Login extends HttpServlet {
                     break;
             }
         } else {
+
+
+            // Lưu cookies nếu người dùng chọn 'Remember me'
+            if (rememberMe != null && rememberMe.equals("on")) {
+                Cookie usernameCookie = new Cookie("username", username);
+                Cookie passwordCookie = new Cookie("password", passclone);
+                Cookie rememberMeCookie = new Cookie("remember_me", "true");
+
+                usernameCookie.setMaxAge(60 * 60 * 24 * 30); // 30 ngày
+                passwordCookie.setMaxAge(60 * 60 * 24 * 30); // 30 ngày
+                rememberMeCookie.setMaxAge(60 * 60 * 24 * 30); // 30 ngày
+
+                response.addCookie(usernameCookie);
+                response.addCookie(passwordCookie);
+                response.addCookie(rememberMeCookie);
+            } else {
+                // Xóa cookies nếu người dùng không chọn 'Remember me'
+                Cookie[] cookies = request.getCookies();
+                if (cookies != null) {
+                    for (Cookie cookie : cookies) {
+                        if (cookie.getName().equals("username") || cookie.getName().equals("password")
+                                || cookie.getName().equals("remember_me")) {
+                            cookie.setMaxAge(0);
+                            response.addCookie(cookie);
+                            System.out.println(cookie.getName());
+                        }
+                    }
+                }
+            }
+
+            // Chuyển hướng đến trang chủ (thay đổi đường dẫn phù hợp)
             if (checkAccount && d.getAccount().getStatus() == 1) {
                     HttpSession session = request.getSession(true);
                     session.setAttribute("account", (Account) d.getAccount());
                 UtilControl.send(d.getAccount().getRole(), "/admin/Admin-trang-chu.jsp", "/visitor/trang-chu-candi.jsp", "/business/busi-trang-chu.jsp", response);
             } else {
+                // Chuyển hướng lại trang đăng nhập nếu không xác thực được
                 request.setAttribute("message", message);
                 UtilControl.forward("/visitor/dang-nhap.jsp", request, response);
             }
@@ -52,4 +83,5 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
+
 }
