@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -42,12 +43,11 @@ public class PostServlet extends HttpServlet {
                 String requests = request.getParameter("requests");
                 String rights = request.getParameter("rights");
                 String file = request.getParameter("file");
-                Date endDate = new Date();
-                try {
-                    endDate = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("endDate"));
-                } catch (java.text.ParseException e) {
-                    UtilControl.forward("error.jsp", request, response);
-                }
+                Date createDate = new Date(); // lấy ngày hiện tại
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(createDate);
+                calendar.add(Calendar.MONTH, 1);
+                Date endDate = calendar.getTime(); // thêm một tháng
                 p.insertPost(category, title, quantity, salary, address, type, rank, gen,
                         description, rights, requests, status_unpaid, endDate);
                 response.sendRedirect("business/busi-gio-hang.jsp");

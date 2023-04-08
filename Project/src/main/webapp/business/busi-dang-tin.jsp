@@ -302,12 +302,6 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">Hết hạn nộp hồ sơ</label>
-                            <div class="controls">
-                                <input type="date" id="date" onkeyup="checkBulletinBoard()" name="endDate">
-                            </div>
-                        </div>
-                        <div class="control-group">
                             <div class="controls">
                                 <button type="submit" id="dang" class="btn">Đăng</button>
                             </div>
