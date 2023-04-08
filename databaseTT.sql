@@ -54,7 +54,8 @@ rights TEXT,
 request TEXT,
 status TINYINT not NULL,
 createDate DATE NOT NULL,
-endDate DATE not NULL
+endDate DATE not NULL,
+billId INT REFERENCES bill(id)
 );
 DROP TABLE  iF EXISTS postApplied;
 CREATE TABLE postApplied(
@@ -67,6 +68,7 @@ createDate DATE not NULL
 DROP TABLE  iF EXISTS bill;
 create table bill(
 id INT AUTO_INCREMENT PRIMARY KEY,
-postId int not NULL REFERENCES post(id),
+numAccount TEXT,
+money TEXT,
 createDate DATE not NULL
 );

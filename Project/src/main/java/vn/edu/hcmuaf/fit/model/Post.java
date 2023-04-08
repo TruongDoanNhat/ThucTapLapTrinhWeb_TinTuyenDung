@@ -22,14 +22,14 @@ public class Post implements Serializable {
     private int status;
     private Date createDate;
     private Date endDate;
-
+    private int billId;
     public Post() {
 
     }
 
     public Post(int id, int categoryId, int accountId, String title, String quanity, String salary,
                 String address, String type, String rank, String gen, String description, String rights,
-                String request, int status, java.util.Date createDate, java.util.Date endDate) {
+                String request, int status, java.util.Date createDate, java.util.Date endDate, int billId) {
         this.id = id;
         this.categoryId = categoryId;
         this.accountId = accountId;
@@ -46,6 +46,15 @@ public class Post implements Serializable {
         this.status = status;
         this.createDate = createDate;
         this.endDate = endDate;
+        this.billId = billId;
+    }
+
+    public int getBillId() {
+        return billId;
+    }
+
+    public void setBillId(int billId) {
+        this.billId = billId;
     }
 
     public int getId() {
@@ -195,6 +204,7 @@ public class Post implements Serializable {
                 ", status=" + status +
                 ", createDate=" + createDate +
                 ", endDate=" + endDate +
+                ", billId=" + billId +
                 '}';
     }
 }
