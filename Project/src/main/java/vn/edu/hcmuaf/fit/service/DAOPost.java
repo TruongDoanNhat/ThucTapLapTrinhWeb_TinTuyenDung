@@ -31,7 +31,15 @@ public class DAOPost {
                     .stream().collect(Collectors.toList());
         });
     }
-
+    // update trạng thái cho bài viết và thêm idBill
+    public void updatePost(Integer idPost, int status, int idBill) {
+        String query = "UPDATE post set status = ? WHERE id = ?";
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate(query)
+                        .bind(0, status)
+                        .bind(1, idPost)
+                        .execute());
+    }
     //Lấy id category theo tên
     public int getCategoryId(String name) {
         String query = "select id from category where name = ?";
@@ -49,7 +57,9 @@ public class DAOPost {
         int categoryId = getCategoryId(category);
         int accountId = DAOAccount.getAccount().getId();
         String query = "INSERT INTO `post` (`categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`," +
-                " `description`, `rights`, `request`, `status`, `createDate`, `endDate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                " `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate(query)
                         .bind(0, categoryId)
@@ -67,6 +77,7 @@ public class DAOPost {
                         .bind(12, status)
                         .bind(13, getDateNow())
                         .bind(14, endDate)
+                        .bind(15, (String) null)
                         .execute()
         );
         return true;

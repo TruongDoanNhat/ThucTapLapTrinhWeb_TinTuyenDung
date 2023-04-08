@@ -50,7 +50,7 @@ public class PostServlet extends HttpServlet {
                 }
                 p.insertPost(category, title, quantity, salary, address, type, rank, gen,
                         description, rights, requests, status_unpaid, endDate);
-                response.sendRedirect("business/busi-gio-hang.jsp");
+                response.sendRedirect("/Post?action=giohang");
                 break;
             case "giohang":
                 int id = UtilSession.getInstance().getValue(request, "account").getId();
