@@ -224,7 +224,7 @@
                                         <div data-v-c4f347a8="">
                                             <div data-v-ea13fd1a="" data-v-c4f347a8="" class="file-upload mt-2 d-none1"
                                                  type="file" name="avatar">
-                                                <div data-v-ea13fd1a="" class="mx-4">
+                                                <%--@declare id="audio-file"--%><div data-v-ea13fd1a="" class="mx-4">
                                                     <span data-v-ea13fd1a="" class="text-muted">
                                                         <span data-v-ea13fd1a="">Chọn hoặc kéo file vào đây</span>
                                                     </span>
