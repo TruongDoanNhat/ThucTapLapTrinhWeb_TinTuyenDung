@@ -77,24 +77,22 @@
         <div class="card">
           <div class="card-header">
             <h5 class="mb-0">Quản lý bài đăng</h5>
+            <form class="navbar-search pull-left input-append" action="#">
+              <input type="text" style="height:30px" class="span3" placeholder="Tìm kiếm theo tên, chức vụ">
+              <button class="btn" type="button">
+                <i class="icon-search"></i>
+              </button>
+
+              <button class="btn btn-small" style="outline: none">
+                <i class="icon-plus"></i>
+              </button>
+
+              <button class="btn btn-smalls" style="outline: none">
+                <i class="icon-trash"></i>
+              </button>
+
+            </form>
           </div>
-
-
-          <form class="navbar-search pull-left input-append" action="#">
-            <input type="text" style="height:30px" class="span3" placeholder="Tìm kiếm theo tên, chức vụ">
-            <button class="btn" type="button">
-              <i class="icon-search"></i>
-            </button>
-
-            <button class="btn btn-small" style="outline: none">
-              <i class="icon-plus"></i>
-            </button>
-
-            <button class="btn btn-smalls" style="outline: none">
-              <i class="icon-trash"></i>
-            </button>
-
-          </form>
           <div class="card-body">
             <div class="table-responsive">
               <table id="example" class="table table-striped table-bordered second"
@@ -112,6 +110,7 @@
                 </tr>
                 </thead>
                 <tbody>
+                // đã duyệt
                 <tr>
                   <td>1</td>
                   <td>Lập trình viên</td>
@@ -134,6 +133,7 @@
                     </div>
                   </td>
                 </tr>
+                // Khóa
                 <tr>
                   <td>2</td>
                   <td>Quản lý hệ thông nhân sự</td>
@@ -153,6 +153,7 @@
                     </div>
                   </td>
                 </tr>
+                // chưa duyệt
                 <tr>
                   <td>3</td>
                   <td>Kỹ thuật điện tử viễn thông</td>
@@ -161,82 +162,6 @@
                   <td>09/11/2022</td>
                   <td>Tp.Dĩ An, T.Bình Dương, Việt Nam</td>
                   <td class="col-yel">Chưa duyệt</td>
-                  <td>
-                    <div class="btn-group ml-auto">
-                      <button class="btn btn-sm btn-outline-light" style="outline: none">
-                        <i class="icon-lock"></i>
-                      </button>
-                      <button class="btn btn-sm btn-outline-light" style="outline: none">
-                        <i class="icon-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Thiết kế và chế tạo cơ khí</td>
-                  <td>Nhân viên</td>
-                  <td> 5 </td>
-                  <td>10/11/2022</td>
-                  <td>Ba Đình, Hà Nội, Việt Nam</td>
-                  <td class="col-yel">Chưa duyệt</td>
-                  <td>
-                    <div class="btn-group ml-auto">
-                      <button class="btn btn-sm btn-outline-light" style="outline: none">
-                        <i class="icon-lock"></i>
-                      </button>
-                      <button class="btn btn-sm btn-outline-light" style="outline: none">
-                        <i class="icon-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Java Developer</td>
-                  <td>Trưởng nhóm</td>
-                  <td> 1</td>
-                  <td>12/11/2022</td>
-                  <td>Quận1, Tp.HCM, Việt Nam</td>
-                  <td class="col-blue">Đã duyệt</td>
-                  <td>
-                    <div class="btn-group ml-auto">
-                      <button class="btn btn-sm btn-outline-light" style="outline: none">
-                        <i class="icon-lock"></i>
-                      </button>
-                      <button class="btn btn-sm btn-outline-light" style="outline: none">
-                        <i class="icon-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Thợ hồ</td>
-                  <td>Công nhân</td>
-                  <td>7</td>
-                  <td>8/11/2022</td>
-                  <td>Quận Tân Bình, Tp.HCM, Việt Nam</td>
-                  <td class="col-red">Ngừng tuyển</td>
-                  <td>
-                    <div class="btn-group ml-auto">
-                      <button class="btn btn-sm btn-outline-light" style="outline: none">
-                        <i class="icon-lock"></i>
-                      </button>
-                      <button class="btn btn-sm btn-outline-light" style="outline: none">
-                        <i class="icon-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Lập trình viên PHP</td>
-                  <td>Trưởng nhóm</td>
-                  <td> 1</td>
-                  <td>15/11/2022</td>
-                  <td>Hai Bà Trưng, Hà Nội, Việt Nam</td>
-                  <td class="col-blue">Đã duyệt</td>
                   <td>
                     <div class="btn-group ml-auto">
                       <button class="btn btn-sm btn-outline-light" style="outline: none">

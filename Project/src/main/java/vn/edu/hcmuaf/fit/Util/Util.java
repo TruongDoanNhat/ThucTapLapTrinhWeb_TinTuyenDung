@@ -30,6 +30,6 @@ public class Util {
 
 
     public static void main(String[] args) {
-        System.out.println(randomPassword());
+        System.out.println(encryptionPassword("@Test123"));
     }
 }

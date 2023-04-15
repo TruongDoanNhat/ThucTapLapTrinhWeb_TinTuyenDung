@@ -18,12 +18,6 @@
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                 <i class="icon-reorder shaded"></i></a><a class="brand" href="Admin-trang-chu.jsp">Admin </a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
-                <!--                <form class="navbar-search pull-left input-append" action="#">-->
-                <!--                    <input type="text" class="span3">-->
-                <!--                    <button class="btn" type="button">-->
-                <!--                        <i class="icon-search"></i>-->
-                <!--                    </button>-->
-                <!--                </form>-->
                 <ul class="nav pull-right">
                     <ul class="nav nav-icons">
                         <!--                    <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>-->

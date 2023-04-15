@@ -8,6 +8,7 @@ import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 @WebFilter(filterName = "AuthenticationFilter")
 public class AuthFilter implements Filter {
@@ -26,6 +27,7 @@ public class AuthFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String url = request.getRequestURI();
         Account account = UtilSession.getInstance().getValue(request, "account");
+
         int role;
         if (url.startsWith("/admin")) {
             if (account != null) {
@@ -42,7 +44,7 @@ public class AuthFilter implements Filter {
             if (account != null) {
                 role = account.getRole();
 
-                if (role == 2 || role == 1) {
+                if (role == 2 || role == 0) {
                     chain.doFilter(servletRequest, servletResponse);
                 } else {
                     response.sendRedirect(request.getContextPath() + "/Login?action=login");
@@ -53,7 +55,7 @@ public class AuthFilter implements Filter {
         } else if (url.startsWith("/candidate")) {
             if (account != null) {
                 role = account.getRole();
-                if (role == 1) {
+                if (role == 1 || role == 0) {
                     chain.doFilter(servletRequest, servletResponse);
                 }
             } else {
