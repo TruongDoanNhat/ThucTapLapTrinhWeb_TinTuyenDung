@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +28,9 @@ public class PostServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         DAOPost p = new DAOPost();
+        List<Post> post = p.getPosts();
+        request.setAttribute("post", post);
+        UtilControl.forward("business/busi-tin-tuyen-dung.jsp",request,response);
         String action = request.getParameter("action");
         String message = "hello";
         switch (action) {
