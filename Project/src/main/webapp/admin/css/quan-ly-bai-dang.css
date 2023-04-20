@@ -1,5 +1,4 @@
 
-
 body {
     font-family: 'Open Sans', Arial, sans-serif;
     font-style: normal;
@@ -75,10 +74,12 @@ a:hover {
 }
 
 ol,
-ul {}
+ul {
+}
 
 ol li,
-ul li {}
+ul li {
+}
 
 .lead {
     font-size: 1.25rem;
@@ -87,17 +88,18 @@ ul li {}
 }
 
 
-
-
 /*-----------------------
 Fontawesome size
 -------------------------*/
 
-.fa-xl {}
+.fa-xl {
+}
 
-.fa-lg {}
+.fa-lg {
+}
 
-.fa-md {}
+.fa-md {
+}
 
 .fa-sm {
     font-size: 24px !important;
@@ -221,7 +223,7 @@ Fontawesome size
 
 .btn-outline-secondary:not(:disabled):not(.disabled).active,
 .btn-outline-secondary:not(:disabled):not(.disabled):active,
-.show>.btn-outline-secondary.dropdown-toggle {
+.show > .btn-outline-secondary.dropdown-toggle {
     color: #fff;
     background-color: #ff407b;
     border-color: #ff407b;
@@ -377,7 +379,8 @@ Fontawesome size
     padding: 5px 12px;
     font-size: 14px;
 }
-fa-trash-o:before{
+
+fa-trash-o:before {
     content: "\f013";
 }
 
@@ -436,22 +439,26 @@ btn-link
     border-bottom: 1px solid #e6e6f2;
 }
 
-.card-title {}
+.card-title {
+}
 
 .card-subtitle {
     font-size: 14px;
 }
 
-.card-body {}
+.card-body {
+}
 
-.card-text {}
+.card-text {
+}
 
 .card-footer {
     border-top: 1px solid #e6e6f2;
     background: #f6f6ff;
 }
 
-.card-link {}
+.card-link {
+}
 
 .toolbar {
     font-size: 18px;
@@ -462,11 +469,14 @@ btn-link
     line-height: 2;
 }
 
-.card-toolbar-tabs {}
+.card-toolbar-tabs {
+}
 
-.card-toolbar-tabs .nav.nav-pills {}
+.card-toolbar-tabs .nav.nav-pills {
+}
 
-.card-toolbar-tabs .nav.nav-pills .nav-item {}
+.card-toolbar-tabs .nav.nav-pills .nav-item {
+}
 
 .card-toolbar-tabs .nav.nav-pills .nav-item .nav-link {
     font-size: 14px;
@@ -474,7 +484,7 @@ btn-link
 }
 
 .card-toolbar-tabs .nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
+.nav-pills .show > .nav-link {
     color: #5969ff;
     background-color: transparent;
 }
@@ -657,9 +667,11 @@ btn-link
 
 /*------------------------- Card Navigation --------------------------*/
 
-.card-header-tabs {}
+.card-header-tabs {
+}
 
-.card-header-pills {}
+.card-header-pills {
+}
 
 .pills-regular .card-header-pills.nav.nav-pills .nav-item .nav-link.active {
     background-color: #5969ff;
@@ -697,8 +709,6 @@ btn-link
     border-top-left-radius: calc(.3rem - 1px);
     border-top-right-radius: calc(.3rem - 1px);
 }
-
-
 
 
 /*-----------------------
@@ -746,7 +756,8 @@ btn-link
 .table-hover tbody tr:hover {
     background-color: rgba(230, 230, 242, .5);
 }
-.table-striped tbody > tr:nth-child(odd) > td{
+
+.table-striped tbody > tr:nth-child(odd) > td {
     text-align: left;
 }
 
@@ -823,7 +834,7 @@ Patterns - reusable parts of our design
 
 -------------------------------- */
 
-@media only screen and (min-width:1170px) {
+@media only screen and (min-width: 1170px) {
     .cd-is-hidden {
         visibility: hidden;
     }
@@ -860,11 +871,12 @@ Vertical Timeline - by CodyHouse.co
     background: #dedee9;
 }
 
-@media only screen and (min-width:1170px) {
+@media only screen and (min-width: 1170px) {
     .cd-timeline {
         margin-top: 3em;
         margin-bottom: 3em;
     }
+
     .cd-timeline__container::before {
         left: 50%;
         margin-left: -2px;
@@ -891,7 +903,7 @@ Vertical Timeline - by CodyHouse.co
     margin-bottom: 0;
 }
 
-@media only screen and (min-width:1170px) {
+@media only screen and (min-width: 1170px) {
     .cd-timeline__block {
         margin: 4em 0;
     }
@@ -931,7 +943,7 @@ Vertical Timeline - by CodyHouse.co
     background: #ffc108;
 }
 
-@media only screen and (min-width:1170px) {
+@media only screen and (min-width: 1170px) {
     .cd-timeline__img {
         width: 60px;
         height: 60px;
@@ -941,6 +953,7 @@ Vertical Timeline - by CodyHouse.co
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
     }
+
     .cd-timeline__img.cd-timeline__img--bounce-in {
         visibility: visible;
         -webkit-animation: cd-bounce-1 0.6s;
@@ -1013,13 +1026,16 @@ Vertical Timeline - by CodyHouse.co
     border-right: 7px solid white;
 }
 
-.cd-timeline__content h2 {}
+.cd-timeline__content h2 {
+}
 
 .cd-timeline__content p,
 .cd-timeline__read-more,
-.cd-timeline__date {}
+.cd-timeline__date {
+}
 
-.cd-timeline__content p {}
+.cd-timeline__content p {
+}
 
 .cd-timeline__read-more,
 .cd-timeline__date {
@@ -1044,14 +1060,19 @@ Vertical Timeline - by CodyHouse.co
     opacity: .7;
 }
 
-@media only screen and (min-width:768px) {
-    .cd-timeline__content h2 {}
-    .cd-timeline__content p {}
+@media only screen and (min-width: 768px) {
+    .cd-timeline__content h2 {
+    }
+
+    .cd-timeline__content p {
+    }
+
     .cd-timeline__read-more,
-    .cd-timeline__date {}
+    .cd-timeline__date {
+    }
 }
 
-@media only screen and (min-width:1170px) {
+@media only screen and (min-width: 1170px) {
     .cd-timeline__content {
         margin-left: 0;
         padding: 1.6em;
@@ -1060,15 +1081,18 @@ Vertical Timeline - by CodyHouse.co
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
     }
+
     .cd-timeline__content::before {
         top: 24px;
         left: 100%;
         border-color: transparent;
         border-left-color: white;
     }
+
     .cd-timeline__read-more {
         float: left;
     }
+
     .cd-timeline__date {
         position: absolute;
         width: 100%;
@@ -1076,9 +1100,11 @@ Vertical Timeline - by CodyHouse.co
         top: 6px;
         font-size: 18px;
     }
+
     .cd-timeline__block:nth-child(even) .cd-timeline__content {
         float: right;
     }
+
     .cd-timeline__block:nth-child(even) .cd-timeline__content::before {
         top: 24px;
         left: auto;
@@ -1086,14 +1112,17 @@ Vertical Timeline - by CodyHouse.co
         border-color: transparent;
         border-right-color: white;
     }
+
     .cd-timeline__block:nth-child(even) .cd-timeline__read-more {
         float: right;
     }
+
     .cd-timeline__block:nth-child(even) .cd-timeline__date {
         left: auto;
         right: 122%;
         text-align: right;
     }
+
     .cd-timeline__content.cd-timeline__content--bounce-in {
         visibility: visible;
         -webkit-animation: cd-bounce-2 0.6s;
@@ -1101,7 +1130,7 @@ Vertical Timeline - by CodyHouse.co
     }
 }
 
-@media only screen and (min-width:1170px) {
+@media only screen and (min-width: 1170px) {
 
     /* inverse bounce effect on even content blocks */
     .cd-timeline__block:nth-child(even) .cd-timeline__content.cd-timeline__content--bounce-in {
@@ -1306,7 +1335,7 @@ Vertical Timeline - by CodyHouse.co
     border: 1px solid #d4d5d7;
 }
 
-.metric-value>sub {
+.metric-value > sub {
     bottom: 5px;
 }
 
@@ -1428,7 +1457,7 @@ Vertical Timeline - by CodyHouse.co
     box-shadow: 0 0 0 2px #fff;
 }
 
-.avatar-group .user-avatar+.user-avatar {
+.avatar-group .user-avatar + .user-avatar {
     display: inline-block;
     margin-left: -10px;
 }
@@ -1483,7 +1512,6 @@ Vertical Timeline - by CodyHouse.co
 }
 
 
-
 .btn-group,
 .btn-group-vertical {
     position: relative;
@@ -1494,10 +1522,16 @@ Vertical Timeline - by CodyHouse.co
 }
 
 
-@media only screen and (max-width:1400px) {.product-price{position: initial;}.product-slider {
-                                                                                 background-color: #fff;
-                                                                                 border-top-left-radius: 4px;
-                                                                                 padding: 131px 28px;}
+@media only screen and (max-width: 1400px) {
+    .product-price {
+        position: initial;
+    }
+
+    .product-slider {
+        background-color: #fff;
+        border-top-left-radius: 4px;
+        padding: 131px 28px;
+    }
 
     .influencer-profile-data .user-social-media {
         padding: 16px 56px;
@@ -1505,7 +1539,16 @@ Vertical Timeline - by CodyHouse.co
         border-right: 1px solid #e6e6f2;
     }
 }
-@media only screen and (max-width:1200px) {.product-price{position: initial;}.product-slider{padding: 131px 30px;}
+
+@media only screen and (max-width: 1200px) {
+    .product-price {
+        position: initial;
+    }
+
+    .product-slider {
+        padding: 131px 30px;
+    }
+
     /*--------- dashboard-influence -------- */
     .user-social-media {
         padding: 16px 45px;
@@ -1521,7 +1564,7 @@ Vertical Timeline - by CodyHouse.co
 
 /* Medium Devices, Desktops */
 
-@media only screen and (max-width:992px) {
+@media only screen and (max-width: 992px) {
 
     /*--------- dashboard-influence -------- */
     .user-social-media {
@@ -1537,23 +1580,27 @@ Vertical Timeline - by CodyHouse.co
 
 /* Small Devices, Tablets */
 
-@media only screen and (max-width:768px) {
+@media only screen and (max-width: 768px) {
     .dashboard-content {
         padding: 20px 20px 60px 20px;
     }
+
     .nav-left-sidebar .navbar a {
         color: #fff;
         font-size: 18px;
     }
+
     .nav-left-sidebar .navbar {
         padding: 14px;
     }
+
     .nav-left-sidebar {
         width: 100%;
         position: relative;
         top: 0px;
         right: 0px;
     }
+
     .dashboard-wrapper {
         margin-left: 0px;
     }
@@ -1562,6 +1609,7 @@ Vertical Timeline - by CodyHouse.co
     .dashboard-influence .card-footer-item {
         padding: 11px 54px;
     }
+
     .influencer-profile .tab-regular .nav.nav-tabs .nav-item .nav-link,
     .influencer-profile .tab-regular .nav.nav-pills .nav-item .nav-link {
         display: block;
@@ -1570,8 +1618,13 @@ Vertical Timeline - by CodyHouse.co
 
 
     /*--------- dashboard-product-single -------- */
-    .product-slider{padding: 131px 30px;}
-    .product-carousel .carousel-indicators{bottom: -30px;}
+    .product-slider {
+        padding: 131px 30px;
+    }
+
+    .product-carousel .carousel-indicators {
+        bottom: -30px;
+    }
 
     /*--------- dashboard-influence -------- */
     .user-social-media {
@@ -1588,32 +1641,42 @@ Vertical Timeline - by CodyHouse.co
 
 /* Extra Small Devices, Phones */
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width: 480px) {
     .dashboard-content {
         padding: 20px 20px 60px 20px;
     }
 
 
     /*--------- dashboard-product-single -------- */
-    .product-slider{padding: 30px 10px;}
-    .product-carousel .carousel-indicators{bottom: -30px;}
+    .product-slider {
+        padding: 30px 10px;
+    }
+
+    .product-carousel .carousel-indicators {
+        bottom: -30px;
+    }
+
     .simple-card .nav.nav-tabs .nav-item .nav-link {
-        padding: 17px 29px;}
+        padding: 17px 29px;
+    }
 }
 
 .col-xl-12 {
     width: 900px;
     margin-left: 350px;
 }
+
 /* Custom, iPhone Retina */
-@media only screen and (max-width:320px) {}
+@media only screen and (max-width: 320px) {
+}
 
 .pull-left {
-    float: left;
+    /*float: left;*/
     position: absolute;
-    right: 200px;
+    right: 250px;
     top: 85px;
 }
+
 .navbar-search {
     margin: 15px 0 0 0;
 }
@@ -1624,7 +1687,8 @@ Vertical Timeline - by CodyHouse.co
     background: #e6e7e8;
     outline: none;
 }
-.table-bordered thead:first-child tr:first-child th{
+
+.table-bordered thead:first-child tr:first-child th {
     text-align: center;
     font-size: 13px;
     font-family: Arial;
@@ -1632,24 +1696,26 @@ Vertical Timeline - by CodyHouse.co
 }
 
 /*Thêm bài đăng*/
-.input-append .btn{
+.input-append .btn {
     width: 30px;
     height: 29px;
 }
 
-button.btn.btn-small{
+button.btn.btn-small {
     width: 40px;
     height: 30px;
     position: absolute;
     margin-left: 20px;
     background: #e6e7e8;
 }
-.btn [class^="icon-"]{
+
+.btn [class^="icon-"] {
     position: absolute;
     right: 10px;
     bottom: 5px;
 }
-button.btn.btn-smalls{
+
+button.btn.btn-smalls {
     width: 40px;
     height: 30px;
     position: absolute;
@@ -1657,80 +1723,103 @@ button.btn.btn-smalls{
     background: #e6e7e8;
     outline: none;
 }
-.btn-smalls .icon-trash{
+
+.btn-smalls .icon-trash {
     margin-left: 5px;
 }
-.icon-lock{
+
+.icon-lock {
     position: absolute;
     left: 5px;
 }
-.icon-trash{
+
+.icon-trash {
     position: absolute;
     left: 3px;
 }
-.icon-pencil{
+
+.icon-pencil {
     position: absolute;
     left: 5px;
 }
-.col-blue{
+
+.col-blue {
     color: #03c003;
- }
-.col-red{
+}
+
+.col-red {
     color: red;
 }
-.col-yel{
+
+.col-yel {
     color: #9b9b0b;
 }
-.icon-lock{
+
+.icon-lock {
     color: #4040f1;
 }
-.icon-pencil{
+
+.icon-pencil {
     color: #4040f1;
 }
-.icon-trash{
+
+.icon-trash {
     color: red;
 }
-.icon-plus{
+
+.icon-plus {
     color: #ca07f5;
 }
-.table .stt{
-   padding-bottom: 20px;
-}
-.table .tcv{
+
+.table .stt {
     padding-bottom: 20px;
 }
-.table .cv{
+
+.table .tcv {
     padding-bottom: 20px;
 }
-.table .dc{
+
+.table .cv {
     padding-bottom: 20px;
 }
-.table .tt{
+
+.table .dc {
     padding-bottom: 20px;
 }
-select{
+
+.table .tt {
+    padding-bottom: 20px;
+}
+
+select {
     width: 120px;
     position: absolute;
     right: 530px;
     top: 100px;
 }
-.td{
+
+.td {
     width: 200px;
 }
-.ha{
+
+.ha {
     width: 50px;
 }
-.table .nd{
+
+.table .nd {
     padding-bottom: 20px;
 }
-.table .td{
+
+.table .td {
     padding-bottom: 20px;
 }
-.img{
+
+.img {
     width: 100px;
     height: 50px;
 }
-#123{
+
+#123 {
     width: 400px;
 }
 
@@ -1738,7 +1827,8 @@ input[type="text"], input {
     width: 500px;
     height: 30px;
 }
-.form-group textarea{
+
+.form-group textarea {
     width: 500px;
     height: 100px;
 }
@@ -1748,6 +1838,7 @@ input[type="text"], input {
     margin-right: -15px;
     margin-left: 15px;
 }
+
 .form-group {
     margin-bottom: 1rem;
 }

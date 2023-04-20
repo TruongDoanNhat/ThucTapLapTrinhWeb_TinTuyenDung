@@ -14,6 +14,17 @@ import java.util.Date;
 
 @WebServlet(name = "SignUp", value = "/SignUp")
 public class SignUp extends HttpServlet {
+    public static final int ROLE_ADMIN = 0;
+    public static final int ROLE_CANDIDATE = 1;
+    public static final int ROLE_BUSINESS = 2;
+    // trạng thái đăng kí mặc định chưa được xác nhận email
+    public static final int STATUS_DEFAULT = 0;
+    // tài khoản đăng kí bằng trang web
+    public static final int TYPE = 0;
+    // tài khoản đăng kí bên thứ 3
+    public static final int TYPE_GG = 1;
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DAOAccount d = new DAOAccount();
@@ -35,7 +46,7 @@ public class SignUp extends HttpServlet {
 
         if (user_name != null) {
             if (role == 1) {
-                if (d.registerCandi(email, user_name, password, name, type, role, 0, date)) {
+                if (d.registerCandi(email, user_name, password, name, TYPE, role, STATUS_DEFAULT, date)) {
                     response.sendRedirect("/visitor/dang-nhap.jsp");
                 } else {
                     String message = d.getMessage();
@@ -43,7 +54,7 @@ public class SignUp extends HttpServlet {
                     UtilControl.forward(role, "visitor/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
                 }
             } else if (role == 0) {
-                if (d.registerAdmin(user_name, password, email, role, date, 0)) {
+                if (d.registerAdmin(user_name, password, email, role, date, STATUS_DEFAULT)) {
                     response.sendRedirect("/visitor/dang-nhap.jsp");
                 } else {
                     String message = d.getMessage();
@@ -51,7 +62,7 @@ public class SignUp extends HttpServlet {
                     UtilControl.forward(role, "visitor/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
                 }
             } else {
-                if (d.registerBusi(user_name, password, role, name, email, phone, type, 0, companyName, address, description, date)) {
+                if (d.registerBusi(user_name, password, role, name, email, phone, TYPE, STATUS_DEFAULT, companyName, address, description, date)) {
                     response.sendRedirect("/visitor/dang-nhap.jsp");
                 } else {
                     String message = d.getMessage();
