@@ -82,9 +82,7 @@
     </div>
 </section>
 </body>
-<script>
-    document.getElementById("btndangnhap").disabled = true;
-</script>
+
 <script>
     function daoNutDN() {
         var u = document.getElementById("id").value;

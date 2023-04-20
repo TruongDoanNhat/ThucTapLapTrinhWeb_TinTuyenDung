@@ -95,7 +95,7 @@
                                     <div class="col-md-4 italic">
                                         <strong> Số lượng</strong>
 
-                                        </font></font></div>
+                                       </div>
                                     <div class="col-md-1 abc" style="padding-left:0px;padding-right:0px">
                                         <strong> Lượt truy cập</strong>
                                     </div>
@@ -118,7 +118,7 @@
 
                                         <strong> Số lượng còn lại : 8</strong>
 
-                                        </font></font></div>
+                                        </div>
                                     <div class="col-md-1 italic" style="padding-left:0px;padding-right:0px">
                                         <strong> 15 lượt truy cập</strong>
                                     </div>
@@ -139,7 +139,7 @@
 
                                         <strong> Số lượng còn lại : 5  </strong>
 
-                                        </font></font></div>
+                                        </div>
                                     <div class="col-md-1 italic" style="padding-left:0px;padding-right:0px">
                                         <strong> 20 lượt truy cập</strong>
                                     </div>
@@ -161,7 +161,7 @@
 
                                         <strong> Số lượng còn lại : 12  </strong>
 
-                                        </font></font></div>
+                                        </div>
                                     <div class="col-md-1 italic" style="padding-left:0px;padding-right:0px">
                                         <strong> 10 lượt truy cập</strong>
                                     </div>
@@ -183,7 +183,7 @@
 
                                         <strong> Số lượng còn lại : 10  </strong>
 
-                                        </font></font></div>
+                                        </div>
                                     <div class="col-md-1 italic" style="padding-left:0px;padding-right:0px">
                                         <strong> 30 lượt truy cập</strong>
                                     </div>
@@ -203,7 +203,7 @@
                                     </div>
                                     <div class="col-md-4 italic">
                                         <strong> Số lượng còn lại : 8  </strong>
-                                        </font></font></div>
+                                        </div>
                                     <div class="col-md-1 italic" style="padding-left:0px;padding-right:0px">
                                         <strong>20 lượt truy cập</strong>
                                     </div>
@@ -225,7 +225,7 @@
 
                                         <strong> Số lượng còn lại : 15  </strong>
 
-                                        </font></font></div>
+                                       </div>
                                     <div class="col-md-1 italic" style="padding-left:0px;padding-right:0px">
                                         <strong> 25 lượt truy cập</strong>
                                     </div>

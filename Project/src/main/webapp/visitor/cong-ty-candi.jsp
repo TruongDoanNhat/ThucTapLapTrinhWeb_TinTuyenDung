@@ -224,7 +224,7 @@
       </div>
     </div>
   </div>
-</section>
+<%--</section>--%>
 <!--================ Blog Area end =================-->
 <jsp:include page="footter-candi.jsp"></jsp:include>
 </body>
