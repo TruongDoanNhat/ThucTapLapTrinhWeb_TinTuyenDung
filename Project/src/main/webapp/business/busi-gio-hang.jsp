@@ -13,7 +13,6 @@
 <% int price = 30000;
     double vat = 0.05;
     List<Post> postLis = (List) request.getAttribute("postList");
-    HashMap<Integer, Integer> cart = new HashMap<>();
 %>
 <html>
 <head>
@@ -215,8 +214,6 @@
                                             <th class="column-5">Thao tác</th>
                                         </tr>
                                         <% for (Post p : postLis) {
-                                            cart.put(p.getId(), 0);
-                                            request.setAttribute("cart", cart);
                                         %>
                                         <tr class="table_row">
                                             <td class="column-1">
