@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
 <%@ page import="java.util.HashMap" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Price" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -10,31 +11,36 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<<<<<<< Updated upstream
 <% int price = 30000;
     double vat = 0.05;
     List<Post> postLis = (List) request.getAttribute("postList");
+=======
+<% List<Post> postLis = (List) request.getAttribute("postList");
+    Price price = (Price) request.getAttribute("price");
+>>>>>>> Stashed changes
 %>
 <html>
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="/business/assets/img/logo/logo.png">
+    <link rel="icon" type="image/png" href="business/assets/img/logo/logo.png">
     <title>Giỏ hàng</title>
     <!--     Fonts and icons     -->
-    <%--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>--%>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="/business/assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="/business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="/business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
     <%--    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>--%>
-    <link id="pagestyle" href="/business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/business/assets/css/gio-hang.css">
-    <link rel="stylesheet" href="/business/assets/css/thanh-toan.css">
-    <link rel="stylesheet" href="/business/assets/css/thanh-toan2.css">
+    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="business/assets/css/gio-hang.css">
+    <link rel="stylesheet" href="business/assets/css/thanh-toan.css">
+    <link rel="stylesheet" href="business/assets/css/thanh-toan2.css">
 
 </head>
 <body class="g-sidenav-show  bg-gray-100">
@@ -249,7 +255,8 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="column-2">36.00 đ</td>
+                                            <td class="column-2"><%=price.getPrice() + " " + price.getCurrent()%>
+                                            </td>
                                             <td class=" column-5"><a
                                                     class="btn btn-link text-danger text-gradient px-3 mb-0"
                                                     href=""><i class="far fa-trash-alt me-2"></i>Xóa</a>
@@ -276,7 +283,7 @@
                                     </div>
                                 </td>
                                 <td class="column-22"> Tổng thanh toán (<span id="selected">0</span> bài viết): <span
-                                        id="sumBill"></span> VND
+                                        id="sumBill"></span> <%=price.getCurrent()%>
                                 </td>
                                 <%--  tong thanh toan --%>
                                 <td class="column-22">
@@ -309,10 +316,11 @@
                                                 <div class="thin dense p5" style="color: #0b0b0b">Tổng tiền</div>
                                             </span>
                                             <span class="money">
-                                                <div class="thin dense"><span id="sumBill2">0</span> VND</div>
-                                                <div class='thin dense'><span id="vat">0</span> VND</div>
+                                                <div class="thin dense"><span
+                                                        id="sumBill2">0</span> <%= price.getCurrent()%></div>
+                                                <div class='thin dense'><span id="vat">0</span> <%= price.getCurrent()%></div>
                                                 <div class="thin dense p5" style="color: #0b0b0b"><span
-                                                        id="pay">0</span> VND</div>
+                                                        id="pay">0</span> <%= price.getCurrent()%></div>
 
                                             </span>
                                         </div>
@@ -341,15 +349,15 @@
                                 <div class="form-cc">
                                     <div class="row-cc">
                                         <div class="cc-field">
-                                            <div class="cc-title">Credit Card Number
+                                            <div class="cc-title"> Mã thẻ
                                             </div>
-                                            <input type="text" name = "numAccount" class="input cc-txt text-validated"
-                                                   value="4542 9931 9292 2293"/>
+                                            <input type="text" name="numAccount" class="input cc-txt text-validated"
+                                                   placeholder="0000 0000 0000 0000"/>
                                         </div>
                                     </div>
                                     <div class="row-cc">
                                         <div class="cc-field">
-                                            <div class="cc-title">Expiry Date
+                                            <div class="cc-title">Ngày hết hạn
                                             </div>
                                             <select class="input cc-ddl">
                                                 <option selected>01</option>
@@ -400,26 +408,27 @@
                                             </select>
                                         </div>
                                         <div class="cc-field">
-                                            <div class="cc-title">CVV Code<span class="numberCircle">?</span>
+                                            <div class="cc-title">Mã CVV <span class="numberCircle">?</span>
                                             </div>
                                             <input type="text" class="input cc-txt"/>
                                         </div>
                                     </div>
                                     <div class="row-cc">
                                         <div class="cc-field">
-                                            <div class="cc-title">Name on Card
+                                            <div class="cc-title">Họ và tên trên thẻ
                                             </div>
                                             <input type="text" class="input cc-txt"/>
                                             <div class="cc-title">Số tiền
                                             </div>
-                                            <input type="text" id = "pay2" name="pay2" readonly style="width: auto" class="input cc-txt"/>
+                                            <input type="text" id="pay2" name="pay2" readonly style="width: auto"
+                                                   class="input cc-txt"/>
                                         </div>
                                     </div>
 
                                 </div>
                                 <div class="button-master-container">
                                     <div class="button-container button-finish">
-                                        <button  class="pay-btn" type="submit">Thanh toán</button>
+                                        <button class="pay-btn" type="submit">Thanh toán</button>
                                     </div>
                                 </div>
                             </form>
@@ -566,7 +575,7 @@
     var sum = 0;
 
     function sumBill() {
-        sum = count *<%=price%>;
+        sum = count *<%=price.getPrice()%>;
         document.getElementById('sumBill').textContent = sum;
         document.getElementById('sumBill2').textContent = sum;
     }
@@ -575,7 +584,7 @@
     var tienthue = 0;
 
     function vat() {
-        tienthue = sum *<%=vat%>;
+        tienthue = sum *<%=price.getVat()%>;
         document.getElementById('vat').textContent = tienthue;
     }
 

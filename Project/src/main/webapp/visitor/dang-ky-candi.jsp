@@ -13,18 +13,23 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <%--    <meta name="viewport" content="width=device-width, initial-scale=1">--%>
     <title>Đăng ký</title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome-all.min.css">
 </head>
+<style>
+    <%@include file="../assets/css/login.css"%>
+    <%@include file="../assets/css/fontawesome-all.min.css"%>
+</style>
 <body>
 <section>
     <div class="img-bg">
-        <img src="../assets/img/log_in/img2.jpg" alt="">
+        <img src="<%=request.getContextPath()%>/assets/img/log_in/img2.jpg" alt="hinhanh">
     </div>
     <div class="noi-dung">
         <!-- Logo -->
         <div class="logo-log">
-            <a href="trang-chu-candi.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
+            <a href="trang-chu-candi.jsp">
+                <img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt="logo">
+
+            </a>
         </div>
         <div class="form">
             <h2 class="form-heading in">Chào mừng bạn đến với TopViecLam</h2>
@@ -38,7 +43,7 @@
                 %>
                 <div class="input-form">
                     <span>Họ và tên</span>
-                    <input id="name" name="hoten" autofocus onkeyup="daoNutDN(), checkPass()"  type="text" class="input"
+                    <input id="name" name="hoten" autofocus onkeyup="daoNutDN(), checkPass()" type="text" class="input"
                            data-type="text"
                            placeholder="Nhập họ và tên của bạn">
                 </div>
@@ -50,23 +55,26 @@
                 </div>
                 <div class="input-form">
                     <span>Tên tài khoản</span>
-                    <input id="id" name="user_name" onkeyup="daoNutDN(), checkPass()" type="text" class="input" data-type="text"
+                    <input id="id" name="user_name" onkeyup="daoNutDN(), checkPass()" type="text" class="input"
+                           data-type="text"
                            placeholder="Nhập tên tài khoản">
                 </div>
                 <div class="input-form">
                     <span>Mật khẩu</span>
-                    <input id="pass" name="password" onkeyup="daoNutDN(), checkPass()" type="password"  class="input"
-                            data-type="password" style="..."
-                           placeholder="Nhập mật khẩu" >
-<%--                    <i class="fa fa-eye" onclick="daoTT()" style="position: relative; left: 550px;cursor: pointer;"></i>--%>
+                    <input id="pass" name="password" onkeyup="daoNutDN(), checkPass()" type="password" class="input"
+                           data-type="password" style="..."
+                           placeholder="Nhập mật khẩu">
+                    <%--                    <i class="fa fa-eye" onclick="daoTT()" style="position: relative; left: 550px;cursor: pointer;"></i>--%>
                 </div>
-                <h5 style='color: Red;'> Mật khẩu phải có ít nhất 8 ký tự, bao gồm 1 ký tự đặc biệt, 1 chữ in, 1 chữ thường</h5>
+                <h5 style='color: Red;'> Mật khẩu phải có ít nhất 8 ký tự, bao gồm 1 ký tự đặc biệt, 1 chữ in, 1 chữ
+                    thường</h5>
                 <div class="input-form">
                     <span>Xác nhận mật khẩu</span>
-                    <input id="pass-again" name="password-again" onkeyup="daoNutDN(), checkPass()" type="password" class="input"
+                    <input id="pass-again" name="password-again" onkeyup="daoNutDN(), checkPass()" type="password"
+                           class="input"
                            data-type="password"
                            placeholder="Nhập lại mật khẩu ">
-<%--                    <i class="fa fa-eye" onclick="daoTT()" style="position: relative; left: -40px;cursor: pointer;"></i>--%>
+                    <%--                    <i class="fa fa-eye" onclick="daoTT()" style="position: relative; left: -40px;cursor: pointer;"></i>--%>
 
                 </div>
                 <div class="input-form">
@@ -78,7 +86,8 @@
                 </div>
                 <div class="">
                     <div class="input-form">
-                        <p>Bạn đã có tài khoản? <a class="in" href='<c:url value="/Login?action=login"/>' >Đăng nhập ngay</a></p>
+                        <p>Bạn đã có tài khoản? <a class="in" href='<c:url value="/Login?action=login"/>'>Đăng nhập
+                            ngay</a></p>
                     </div>
                 </div>
             </form>
@@ -114,7 +123,7 @@
         // Kiểm tra điều kiện mật khẩu phải có ít nhất 8 ký tự, 1 số, 1 chữ in, 1 ký tự đặc biệt
         const regexp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
         if (regexp.test(p)) {
-            if(pa == p) {
+            if (pa == p) {
                 document.getElementById("btndangky").disabled = false;
                 document.getElementById("pass-again").style.borderColor = '#607d8b'
             }
@@ -135,7 +144,6 @@
         }
     }
 </script>
-
 
 
 </html>
