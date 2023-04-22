@@ -221,31 +221,31 @@
                 </a>
               </li>
               <li>
-                <a href="danh-sach-viec-lam-candi.jsp"" class="d-flex">
+                <a href="danh-sach-viec-lam-candi.jsp" class="d-flex">
                   <p>Chuyên viên tư vấn mảng tuyển dụng</p>
                   <p>(5)</p>
                 </a>
               </li>
               <li>
-                <a href="danh-sach-viec-lam-candi.jsp"" class="d-flex">
+                <a href="danh-sach-viec-lam-candi.jsp" class="d-flex">
                   <p>Java Developer</p>
                   <p>(3)</p>
                 </a>
               </li>
               <li>
-                <a href="danh-sach-viec-lam-candi.jsp"" class="d-flex">
+                <a href="danh-sach-viec-lam-candi.jsp" class="d-flex">
                   <p>Fullstack Developer</p>
                   <p>(11)</p>
                 </a>
               </li>
               <li>
-                <a href="danh-sach-viec-lam-candi.jsp"" class="d-flex">
+                <a href="danh-sach-viec-lam-candi.jsp" class="d-flex">
                   <p>Lập trình viên PHP</p>
                   <p>(12)</p>
                 </a>
               </li>
               <li>
-                <a href="danh-sach-viec-lam-candi.jsp"" class="d-flex">
+                <a href="danh-sach-viec-lam-candi.jsp" class="d-flex">
                   <p>Nhân Viên Lập Trình .Net Developer </p>
                   <p>(9)</p>
                 </a>
