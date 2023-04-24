@@ -1,6 +1,8 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Post;
+import vn.edu.hcmuaf.fit.model.Price;
+import vn.edu.hcmuaf.fit.service.DAOBill;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 
 import javax.servlet.ServletException;
@@ -27,6 +29,7 @@ public class PostServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         DAOPost p = new DAOPost();
+        DAOBill daoBill = new DAOBill();
         String action = request.getParameter("action");
         String message = "hello";
         switch (action) {
@@ -54,10 +57,11 @@ public class PostServlet extends HttpServlet {
                 break;
             case "giohang":
                 int id = UtilSession.getInstance().getValue(request, "account").getId();
+                Price price = daoBill.getPrice().get();
                 List<Post> posts = p.getPost(id, status_unpaid);
                 request.setAttribute("postList", posts);
-//              response.sendRedirect("business/busi-gio-hang.jsp");
-                UtilControl.forward("business/busi-gio-hang.jsp",request,response);
+                request.setAttribute("price", price);
+                UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 break;
         }
 

@@ -2,9 +2,11 @@ package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Bill;
+import vn.edu.hcmuaf.fit.model.Price;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class DAOBill {
@@ -12,8 +14,9 @@ public class DAOBill {
     public Date getDateNow() {
         return new Date();
     }
+
     // thêm bill vào database
-    public boolean insertBill(String numAccount,String money) {
+    public boolean insertBill(String numAccount, String money) {
         String query = "INSERT INTO `bill` (numAccount,money,createDate) VALUES (?,?,?)";
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate(query)
@@ -24,13 +27,29 @@ public class DAOBill {
         );
         return true;
     }
+
     // lấy ra danh sách bill
-    public List<Bill> getListBill(){
+    public List<Bill> getListBill() {
         String query = "select * from bill";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
                     .mapToBean(Bill.class)
                     .stream().collect(Collectors.toList());
         });
+    }
+
+    // lay du lieu cua bang price moi nhat
+    public Optional<Price> getPrice() {
+        String query = "SELECT * FROM price ORDER BY createDate DESC LIMIT 1";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapToBean(Price.class)
+                    .stream().findFirst();
+        });
+    }
+
+    public static void main(String[] args) {
+        DAOBill d = new DAOBill();
+        System.out.println(d.getPrice());
     }
 }
