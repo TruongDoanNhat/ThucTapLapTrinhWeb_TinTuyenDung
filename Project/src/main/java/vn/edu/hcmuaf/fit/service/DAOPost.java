@@ -27,10 +27,11 @@ public class DAOPost{
         return new Date();
     }
 
-    public List<Post> getPosts() {
-        String query = "select * from post";
+    public List<Post> getPostIdBusi(int idBusi) {
+        String query = "select * from post where accountId = ? ";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
+                    .bind(0, idBusi)
                     .mapToBean(Post.class)
                     .stream().collect(Collectors.toList());
         });

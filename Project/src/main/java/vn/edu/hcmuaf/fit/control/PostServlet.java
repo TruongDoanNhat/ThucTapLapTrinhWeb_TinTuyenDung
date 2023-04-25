@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
+import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 
@@ -22,17 +23,18 @@ public class PostServlet extends HttpServlet {
     public static final int status_approve = 2;
     public static final int status_remove = 3;
 
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         DAOPost p = new DAOPost();
-        List<Post> post = p.getPosts();
-        request.setAttribute("post", post);
-        UtilControl.forward("business/busi-tin-tuyen-dung.jsp",request,response);
         String action = request.getParameter("action");
         String message = "hello";
+        Account account = UtilSession.getInstance().getValue(request, "account");
+
         switch (action) {
             case "dangtin":
                 String title = request.getParameter("title");
@@ -57,12 +59,15 @@ public class PostServlet extends HttpServlet {
                 response.sendRedirect("/Post?action=giohang");
                 break;
             case "giohang":
-                int id = UtilSession.getInstance().getValue(request, "account").getId();
-                List<Post> posts = p.getPost(id, status_unpaid);
+                List<Post> posts = p.getPost(account.getId(), status_unpaid);
                 request.setAttribute("postList", posts);
 //              response.sendRedirect("business/busi-gio-hang.jsp");
                 UtilControl.forward("business/busi-gio-hang.jsp",request,response);
                 break;
+            case "tintuyendung":
+                List<Post> post = p.getPostIdBusi(account.getId());
+                request.setAttribute("post", post);
+                UtilControl.forward("business/busi-tin-tuyen-dung.jsp",request,response);
         }
 
 //        if (action != null) {
