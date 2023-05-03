@@ -376,7 +376,7 @@ Fontawesome size
 }
 
 .btn-sm {
-    padding: 5px 12px;
+    padding: 14px 12px;
     font-size: 14px;
 }
 
@@ -1743,14 +1743,13 @@ button.btn.btn-smalls {
     left: 5px;
 }
 
-.col-blue {
-    color: #03c003;
-}
 
 .col-red {
     color: red;
 }
-
+.col-grey{
+    color: black;
+}
 .col-yel {
     color: #9b9b0b;
 }
@@ -1771,23 +1770,7 @@ button.btn.btn-smalls {
     color: #ca07f5;
 }
 
-.table .stt {
-    padding-bottom: 20px;
-}
-
-.table .tcv {
-    padding-bottom: 20px;
-}
-
-.table .cv {
-    padding-bottom: 20px;
-}
-
-.table .dc {
-    padding-bottom: 20px;
-}
-
-.table .tt {
+.table .pb-20 {
     padding-bottom: 20px;
 }
 

@@ -25,10 +25,18 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        String url = request.getRequestURI();
+//        String url = request.getServletPath();
+        String u = request.getRequestURI();
+        if (request.getAttribute("javax.servlet.forward.request_uri") != null) {
+            u = (String) request.getAttribute("javax.servlet.forward.request_uri");
+        }
+        int index = u.indexOf("/");
+        String url = u;
+        if (index != -1) {
+            url = u.substring(u.indexOf("/", 1));
+        }
         Account account = UtilSession.getInstance().getValue(request, "account");
-
-        int role;
+        int role = 0;
         if (url.startsWith("/admin")) {
             if (account != null) {
                 role = account.getRole();
@@ -43,7 +51,6 @@ public class AuthFilter implements Filter {
         } else if (url.startsWith("/business")) {
             if (account != null) {
                 role = account.getRole();
-
                 if (role == 2 || role == 0) {
                     chain.doFilter(servletRequest, servletResponse);
                 } else {
@@ -57,6 +64,8 @@ public class AuthFilter implements Filter {
                 role = account.getRole();
                 if (role == 1 || role == 0) {
                     chain.doFilter(servletRequest, servletResponse);
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/Login?action=login");
                 }
             } else {
                 response.sendRedirect(request.getContextPath() + "/Login?action=login");
@@ -64,6 +73,5 @@ public class AuthFilter implements Filter {
         } else {
             chain.doFilter(servletRequest, servletResponse);
         }
-
     }
 }
