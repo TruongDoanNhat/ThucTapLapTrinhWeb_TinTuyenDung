@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -25,8 +24,6 @@ public class PostServlet extends HttpServlet {
     public static final int status_approve = 2;
     public static final int status_remove = 3;
 
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -37,7 +34,6 @@ public class PostServlet extends HttpServlet {
         String action = request.getParameter("action");
         String message = "hello";
         Account account = UtilSession.getInstance().getValue(request, "account");
-
         switch (action) {
             case "dangtin":
                 String title = request.getParameter("title");
@@ -62,7 +58,7 @@ public class PostServlet extends HttpServlet {
                 response.sendRedirect("/Post?action=giohang");
                 break;
             case "giohang":
-                int id = UtilSession.getInstance().getValue(request, "account").getId();
+                int id = account.getId();
                 Price price = daoBill.getPrice().get();
                 List<Post> posts = p.getPost(id, status_unpaid);
                 request.setAttribute("postList", posts);
