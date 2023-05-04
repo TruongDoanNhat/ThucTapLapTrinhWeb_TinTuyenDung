@@ -31,17 +31,15 @@ public class Pay extends HttpServlet {
                 } catch (Exception e) {
                     status = "failed";
                     request.setAttribute("status", status);
-                    UtilControl.forward("/business/busi-gio-hang.jsp", request, response);
+                    UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 }
             }
-            response.sendRedirect("/business/busi-trang-chu.jsp");
+            response.sendRedirect("business/busi-trang-chu.jsp");
         } else {
             status = "failed";
             request.setAttribute("status", status);
-            UtilControl.forward("/business/busi-gio-hang.jsp", request, response);
+            UtilControl.forward("business/busi-gio-hang.jsp", request, response);
         }
-
-
     }
 
     @Override

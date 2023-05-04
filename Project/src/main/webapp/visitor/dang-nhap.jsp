@@ -13,19 +13,24 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <%--    <meta name="viewport" content="width=device-width, initial-scale=1">--%>
     <title>Đăng nhập</title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome-all.min.css">
 </head>
+<style>
+    <%@include file="../assets/css/login.css"%>
+</style>
 <body>
 <section>
     <div class="img-bg">
-        <img src="../assets/img/log_in/img2.jpg" alt="">
+        <%--        <img src="../assets/img/log_in/img2.jpg" alt="">--%>
+        <img src="<%=request.getContextPath()%>/assets/img/log_in/img2.jpg" alt="hinhanh">
     </div>
 
     <div class="noi-dung">
         <!-- Logo -->
         <div class="logo-log">
-            <a href="#"><img src="../assets/img/logo/logo.png" alt=""></a>
+
+            <a href="#">
+                <img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt="logo">
+            </a>
         </div>
         <div class="form">
             <h2 class="in">Chào mừng bạn trở lại </h2>
@@ -50,18 +55,25 @@
             <form action="<%=request.getContextPath()%>/Login" method="post">
                 <div class="input-form">
                     <span>Tài khoản</span>
-                    <input id="id" name="username" value="${cookie.username.value}" autofocus  onkeyup="daoNutDN()" style="width: 95%" type="text"
-                           placeholder="Tài khoản" >
+                    <input id="id" name="username" value="${cookie.username.value}" autofocus onkeyup="daoNutDN()"
+                           style="width: 95%" type="text"
+                           placeholder="Tài khoản">
                 </div>
                 <div class="input-form">
                     <span>Mật khẩu</span>
-                    <input id="pass" name="password" value="${cookie.password.value}" onkeyup="daoNutDN()" autocomplete="new-password" type="password"
-                           style="width: 95%"
-                           placeholder="Nhập mật khẩu">
-                    <i class="fa fa-eye" onclick="daoTT()" style="position: relative; left: -40px;cursor: pointer;"></i>
+                    <label> <input id="pass" name="password" value="${cookie.password.value}" onkeyup="daoNutDN()"
+                                   autocomplete="new-password" type="password"
+                                   style="width: 95%"
+                                   placeholder="Nhập mật khẩu">
+                        <i class="eye gg-eye" onclick="daoTT()" ></i>
+                        </input>
+                    </label>
+
+
                 </div>
                 <div class="nho-dang-nhap">
-                    <label ><input type="checkbox" name="remember_me" id="remember_me" ${cookie.remember_me.value == 'true' ? 'checked' : ''}> Nhớ Đăng Nhập</label>
+                    <label><input type="checkbox" name="remember_me"
+                                  id="remember_me" ${cookie.remember_me.value == 'true' ? 'checked' : ''}> Nhớ Đăng Nhập</label>
                 </div>
                 <div class="input-form">
                     <input type="submit" name="btndangnhap_candi" style="width: 95%" id="btndangnhap" value="Đăng Nhập">
@@ -69,11 +81,13 @@
                 <div class="container_swap">
 
                     <div class="div_left">
-                        <p>Đăng ký cho <a class="in" href='<c:url value="/SignUp?action=business"/>'>Doanh nghiệp</a>/<a class="in" href='<c:url value="/SignUp?action=candidate"/>'>Người ứng tuyển</a>
-                    </p>
+                        <p>Đăng ký cho <a class="in" href='<c:url value="/SignUp?action=business"/>'>Doanh nghiệp</a>/<a
+                                class="in" href='<c:url value="/SignUp?action=candidate"/>'>Người ứng tuyển</a>
+                        </p>
                     </div>
 
-                    <div class="div_right"><a class="in" href='<c:url value="/ResetPassword?action=forgotPassword"/>'>Quên mật khẩu</a></div>
+                    <div class="div_right"><a class="in" href='<c:url value="/ResetPassword?action=forgotPassword"/>'>Quên
+                        mật khẩu</a></div>
 
                 </div>
             </form>
