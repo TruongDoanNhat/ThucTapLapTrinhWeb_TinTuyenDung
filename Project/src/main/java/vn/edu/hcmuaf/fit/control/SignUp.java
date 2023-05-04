@@ -46,24 +46,39 @@ public class SignUp extends HttpServlet {
 
         if (user_name != null) {
             if (role == 1) {
+<<<<<<< Updated upstream
                 if (d.registerCandi(email, user_name, password, name, TYPE, role, STATUS_DEFAULT, date)) {
                     response.sendRedirect("/visitor/dang-nhap.jsp");
+=======
+                if (d.registerCandi(email, user_name, password, name, type, role, 0, date)) {
+                    response.sendRedirect("visitor/dang-nhap.jsp");
+>>>>>>> Stashed changes
                 } else {
                     String message = d.getMessage();
                     request.setAttribute("message", message);
                     UtilControl.forward(role, "visitor/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
                 }
             } else if (role == 0) {
+<<<<<<< Updated upstream
                 if (d.registerAdmin(user_name, password, email, role, date, STATUS_DEFAULT)) {
                     response.sendRedirect("/visitor/dang-nhap.jsp");
+=======
+                if (d.registerAdmin(user_name, password, email, role, date, 0)) {
+                    response.sendRedirect("visitor/dang-nhap.jsp");
+>>>>>>> Stashed changes
                 } else {
                     String message = d.getMessage();
                     request.setAttribute("message", message);
                     UtilControl.forward(role, "visitor/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
                 }
             } else {
+<<<<<<< Updated upstream
                 if (d.registerBusi(user_name, password, role, name, email, phone, TYPE, STATUS_DEFAULT, companyName, address, description, date)) {
                     response.sendRedirect("/visitor/dang-nhap.jsp");
+=======
+                if (d.registerBusi(user_name, password, role, name, email, phone, type, 0, companyName, address, description, date)) {
+                    response.sendRedirect("visitor/dang-nhap.jsp");
+>>>>>>> Stashed changes
                 } else {
                     String message = d.getMessage();
                     request.setAttribute("message", message);
@@ -88,7 +103,7 @@ public class SignUp extends HttpServlet {
                     break;
                 case "daxacthuc":
                     d.xacThucEmail(request.getParameter("u"), request.getParameter("e"));
-                    response.sendRedirect("/visitor/index.jsp");
+                    response.sendRedirect("visitor/index.jsp");
             }
         }
     }

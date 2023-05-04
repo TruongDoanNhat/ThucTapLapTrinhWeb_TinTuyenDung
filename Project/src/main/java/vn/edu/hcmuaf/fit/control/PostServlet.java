@@ -2,6 +2,8 @@ package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.model.Post;
+import vn.edu.hcmuaf.fit.model.Price;
+import vn.edu.hcmuaf.fit.service.DAOBill;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 
 import javax.servlet.ServletException;
@@ -31,6 +33,7 @@ public class PostServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         DAOPost p = new DAOPost();
+        DAOBill daoBill = new DAOBill();
         String action = request.getParameter("action");
         String message = "hello";
         Account account = UtilSession.getInstance().getValue(request, "account");
@@ -59,10 +62,12 @@ public class PostServlet extends HttpServlet {
                 response.sendRedirect("/Post?action=giohang");
                 break;
             case "giohang":
-                List<Post> posts = p.getPost(account.getId(), status_unpaid);
+                int id = UtilSession.getInstance().getValue(request, "account").getId();
+                Price price = daoBill.getPrice().get();
+                List<Post> posts = p.getPost(id, status_unpaid);
                 request.setAttribute("postList", posts);
-//              response.sendRedirect("business/busi-gio-hang.jsp");
-                UtilControl.forward("business/busi-gio-hang.jsp",request,response);
+                request.setAttribute("price", price);
+                UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 break;
             case "tintuyendung":
                 List<Post> post = p.getPostIdBusi(account.getId());

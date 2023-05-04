@@ -28,31 +28,30 @@ public class Login extends HttpServlet {
         if (action != null) {
             switch (action) {
                 case "login":
-                    request.getRequestDispatcher("/visitor/dang-nhap.jsp").forward(request, response);
+                    request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
                     break;
                 case "logout":
                     UtilSession.getInstance().removeValue(request, "account");
-                    response.sendRedirect("/visitor/trang-chu-candi.jsp");
+                    response.sendRedirect("visitor/trang-chu-candi.jsp");
                     break;
             }
         } else {
 
-
-            // Lưu cookies nếu người dùng chọn 'Remember me'
+            // Luu cookies neu nguoi dung chon 'Remember me'
             if (rememberMe != null && rememberMe.equals("on")) {
                 Cookie usernameCookie = new Cookie("username", username);
                 Cookie passwordCookie = new Cookie("password", passclone);
                 Cookie rememberMeCookie = new Cookie("remember_me", "true");
 
-                usernameCookie.setMaxAge(60 * 60 * 24 * 30); // 30 ngày
-                passwordCookie.setMaxAge(60 * 60 * 24 * 30); // 30 ngày
-                rememberMeCookie.setMaxAge(60 * 60 * 24 * 30); // 30 ngày
+                usernameCookie.setMaxAge(60 * 60 * 24 * 30); // 30 ngay
+                passwordCookie.setMaxAge(60 * 60 * 24 * 30); // 30 ngay
+                rememberMeCookie.setMaxAge(60 * 60 * 24 * 30); // 30 ngay
 
                 response.addCookie(usernameCookie);
                 response.addCookie(passwordCookie);
                 response.addCookie(rememberMeCookie);
             } else {
-                // Xóa cookies nếu người dùng không chọn 'Remember me'
+//                Xoa cookies neu nguoi dung khong chon 'Remember me'
                 Cookie[] cookies = request.getCookies();
                 if (cookies != null) {
                     for (Cookie cookie : cookies) {
@@ -66,15 +65,16 @@ public class Login extends HttpServlet {
                 }
             }
 
-            // Chuyển hướng đến trang chủ (thay đổi đường dẫn phù hợp)
+            // Chuyen huong đen trang chu (thay doi duong dan phu hop)
+            //
             if (checkAccount && d.getAccount().getStatus() == 1) {
                     HttpSession session = request.getSession(true);
                     session.setAttribute("account", (Account) d.getAccount());
-                UtilControl.send(d.getAccount().getRole(), "/admin/Admin-trang-chu.jsp", "/visitor/trang-chu-candi.jsp", "/business/busi-trang-chu.jsp", response);
+                UtilControl.send(d.getAccount().getRole(), "admin/Admin-trang-chu.jsp", "visitor/trang-chu-candi.jsp", "business/busi-trang-chu.jsp", response);
             } else {
-                // Chuyển hướng lại trang đăng nhập nếu không xác thực được
+                // chuyen huong lai trang dang nhap neu khong xac thuc duoc
                 request.setAttribute("message", message);
-                UtilControl.forward("/visitor/dang-nhap.jsp", request, response);
+                UtilControl.forward("visitor/dang-nhap.jsp", request, response);
             }
         }
     }
