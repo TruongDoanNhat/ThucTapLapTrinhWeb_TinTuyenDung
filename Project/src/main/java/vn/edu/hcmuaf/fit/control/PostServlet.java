@@ -29,8 +29,10 @@ public class PostServlet extends HttpServlet {
         DAOBill daoBill = new DAOBill();
         String message = "hello";
         Account account = UtilSession.getInstance().getValue(request, "account");
+
         String action = request.getParameter("action");
         String idManager = request.getParameter("id");
+
 
         switch (action) {
             case "dangtin":
@@ -55,13 +57,16 @@ public class PostServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/Post?action=giohang");
                 break;
             case "giohang":
+
                 int id = UtilSession.getInstance().getValue(request, "account").getId();
                 Price price = daoBill.getPrice();
                 List<Post> posts = p.getPost(id, Post.status_unpaid);
+
                 request.setAttribute("postList", posts);
                 request.setAttribute("price", price);
                 UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 break;
+
             case "quanlybaidang":
                 List<Post> postAll = p.getPostAll();
                 request.setAttribute("postAll", postAll);
@@ -104,6 +109,7 @@ public class PostServlet extends HttpServlet {
                 p.deletePost(Integer.valueOf(idManager));
                 UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
+
         }
 
 //        if (action != null) {
