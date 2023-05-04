@@ -11,14 +11,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
-<<<<<<< Updated upstream
-<% int price = 30000;
-    double vat = 0.05;
-    List<Post> postLis = (List) request.getAttribute("postList");
-=======
 <% List<Post> postLis = (List) request.getAttribute("postList");
     Price price = (Price) request.getAttribute("price");
->>>>>>> Stashed changes
 %>
 <html>
 <head>
@@ -28,7 +22,7 @@
     <link rel="icon" type="image/png" href="business/assets/img/logo/logo.png">
     <title>Giỏ hàng</title>
     <!--     Fonts and icons     -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
     <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
     <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
@@ -52,7 +46,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="busi-trang-chu.jsp">
-            <img src="../assets/img/logo/logo.png">
+            <img src="assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -201,7 +195,7 @@
 
     <div id="wrapper">
         <!--    div class="container-fluid py-4">-->
-        <form action="<%=request.getContextPath()%>/Pay" method="post" class="bg0 p-t-75 p-b-85">
+        <form action="<%=request.getContextPath()%>/Pay?action=thanhtoan" method="post" class="bg0 p-t-75 p-b-85">
             <div class="module-head-giohang" style="">
                 <h3>Giỏ hàng</h3>
             </div>
@@ -249,7 +243,7 @@
                                                         <span class="mb-2 text-xs">Địa chỉ: <span
                                                                 class="text-dark ms-sm-2 font-weight-bold"><%=p.getAddress()%></span></span>
                                                         <span class="mb-2 text-xs">Mức lương: <span
-                                                                class="text-dark font-weight-bold ms-sm-2"><%=p.getStatus()%> VND</span></span>
+                                                                class="text-dark font-weight-bold ms-sm-2"><%=p.getSalary()%> VND</span></span>
                                                         <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
                                                                 class="text-dark font-weight-bold ms-sm-2"><%=p.getCreateDate()%></span></span>
                                                     </div>
@@ -259,7 +253,8 @@
                                             </td>
                                             <td class=" column-5"><a
                                                     class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                    href=""><i class="far fa-trash-alt me-2"></i>Xóa</a>
+                                                    href="<%=request.getContextPath()%>/Pay?action=xoa&id=<%=p.getId()%>"><i
+                                                    class="far fa-trash-alt me-2"></i>Xóa</a>
                                             </td>
                                         </tr>
                                         <%}%>
@@ -329,7 +324,7 @@
                                 <div class="pymt-radio">
                                     <div class="row-payment-method payment-row-last">
                                         <div class="select-txt hr">
-                                            <p class="pymt-type-name">Credit Card</p>
+                                            <p class="pymt-type-name" style="margin-bottom: 0px;">Credit Card</p>
                                             <p class="pymt-type-desc">Safe money transfer using your bank account. Safe
                                                 payment online. Credit card needed. Visa, Maestro, Discover, American
                                                 Express</p>
@@ -526,10 +521,10 @@
 </div>
 </body>
 <!--   Core JS Files   -->
-<script src="/business/assets/js/core/popper.min.js"></script>
-<script src="/business/assets/js/core/bootstrap.min.js"></script>
-<script src="/business/assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="/business/assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="business/assets/js/core/popper.min.js"></script>
+<script src="business/assets/js/core/bootstrap.min.js"></script>
+<script src="business/assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="business/assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
@@ -543,7 +538,7 @@
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="/business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+<script src="business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 <!--Show-->
 <script>
     // hiển thị trang thanh toán

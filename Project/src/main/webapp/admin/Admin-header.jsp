@@ -21,10 +21,11 @@
                 <ul class="nav pull-right">
                     <ul class="nav nav-icons">
                         <!--                    <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>-->
-                        <li><a href="../visitor/trang-chu-candi.jsp"><i class="icon-eye-open"></i></a></li>
+                        <li><a href="visitor/trang-chu-candi.jsp"><i class="icon-eye-open"></i></a></li>
                         <li><a href=""><i class="icon-bell "></i></a>
                             <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4">
-                                <li class="mb-2 font-weight-bold" style="text-align: center"><a href="#"> Đăng xuất</a>
+                                <li class="mb-2 font-weight-bold" style="text-align: center"><a
+                                        href="Login?action=logout"> Đăng xuất</a>
                                 </li>
                             </ul>
                         </li>
@@ -38,7 +39,7 @@
                         </ul>
                     </li>
                     <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="images/user.png" class="nav-avatar"/>
+                        <img src="<%=request.getContextPath()%>/admin/images/user.png" class="nav-avatar"/>
                         <c:if test="${sessionScope.account == null}">
                             <span>User</span>
                         </c:if>
@@ -53,7 +54,7 @@
                             <li><a href="#">Cài đặt tài khoản</a></li>
 
                             <li class="divider"></li>
-                            <li><a href='<c:url value="/Home?action=logout"/>'>Đăng xuất</a></li>
+                            <li><a href='<c:url value="/Logout?action=logout"/>'>Đăng xuất</a></li>
                         </ul>
                     </li>
                 </ul>
