@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -12,23 +13,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
     <link rel="icon" type="image/png" href="../assets/img/logo/logo.png">
-    <link type="text/css" href="css/theme.css" rel="stylesheet">
+
     <title>
         Tin tuyển dụng
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
+
     <!-- CSS Files -->
-    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
+    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
 
 </head>
+
 <body class="g-sidenav-show  bg-gray-100">
+
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
        id="sidenav-main">
     <!--    logo -->
@@ -190,67 +193,27 @@
                     </div>
                     <div class="card-body pt-4 p-3">
                         <ul class="list-group">
+                        <c:forEach items="${post}" var="p">
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a href="chi-tiet-tin-tuyen-dung-busi.jsp">
-                                        <h6 class="mb-3 text-sm">Nhân viên kế toán</h6>
+                                        <h6 class="mb-3 text-sm">${p.title}</h6>
                                     </a>
-                                    <span class="mb-2 text-xs">Vị trí: <span class="text-dark ms-sm-2 font-weight-bold">Nhân viên</span></span>
+                                    <span class="mb-2 text-xs">Vị trí: <span class="text-dark ms-sm-2 font-weight-bold">${p.rank}</span></span>
                                     <span class="mb-2 text-xs">Địa chỉ: <span
-                                            class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
+                                            class="text-dark ms-sm-2 font-weight-bold">${p.address}</span></span>
                                     <span class="mb-2 text-xs">Mức lương: <span
-                                            class="text-dark font-weight-bold ms-sm-2">20.000.000 VND</span></span>
+                                            class="text-dark font-weight-bold ms-sm-2">${p.salary}</span></span>
                                     <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                            class="text-dark font-weight-bold ms-sm-2">03/01/2023</span></span>
+                                            class="text-dark font-weight-bold ms-sm-2">${p.createDate}</span></span>
                                 </div>
-                                <%--                                <div class="ms-auto text-end">--%>
-                                <%--                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>--%>
-                                <%--                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>--%>
-                                <%--                                </div>--%>
                                 <div class="ms-auto text-end">
                                     <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
                                             class="fas fa-pencil-alt1 text-dark me-2" aria-hidden="true"></i>Ngừng tuyển
                                         dụng</a>
-                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                            class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                                 </div>
                             </li>
-                            <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-3 text-sm">Nhân viên tư vật - mua hàng</h6>
-                                    <span class="mb-2 text-xs">Vị trí: <span class="text-dark ms-sm-2 font-weight-bold">Nhân viên</span></span>
-                                    <span class="mb-2 text-xs">Địa chỉ: <span
-                                            class="text-dark ms-sm-2 font-weight-bold">Xuân trung, Hà Nội</span></span>
-                                    <span class="mb-2 text-xs">Mức lương: <span
-                                            class="text-dark font-weight-bold ms-sm-2">15.000.000 VND</span></span>
-                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                            class="text-dark font-weight-bold ms-sm-2">02/01/2023</span></span>
-                                </div>
-                                <div class="ms-auto text-end">
-                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
-                                            class="far fa-trash-alt me-2"></i>Delete</a>
-                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                            class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-3 text-sm">Lập trình game</h6>
-                                    <span class="mb-2 text-xs">Vị trí: <span class="text-dark ms-sm-2 font-weight-bold">Giám đốc</span></span>
-                                    <span class="mb-2 text-xs">Địa chỉ: <span
-                                            class="text-dark ms-sm-2 font-weight-bold">Q2, TPHCM</span></span>
-                                    <span class="mb-2 text-xs">Mức lương: <span
-                                            class="text-dark font-weight-bold ms-sm-2">10.000.000 VND</span></span>
-                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                            class="text-dark font-weight-bold ms-sm-2">01/01/2023</span></span>
-                                </div>
-                                <div class="ms-auto text-end">
-                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
-                                            class="far fa-trash-alt me-2"></i>Delete</a>
-                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                            class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                                </div>
-                            </li>
+                        </c:forEach>
                         </ul>
                     </div>
                 </div>
