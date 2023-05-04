@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
+import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.model.Price;
 import vn.edu.hcmuaf.fit.service.DAOBill;
@@ -32,6 +33,7 @@ public class PostServlet extends HttpServlet {
         DAOBill daoBill = new DAOBill();
         String action = request.getParameter("action");
         String message = "hello";
+        Account account = UtilSession.getInstance().getValue(request, "account");
         switch (action) {
             case "dangtin":
                 String title = request.getParameter("title");
@@ -56,13 +58,17 @@ public class PostServlet extends HttpServlet {
                 response.sendRedirect("/Post?action=giohang");
                 break;
             case "giohang":
-                int id = UtilSession.getInstance().getValue(request, "account").getId();
+                int id = account.getId();
                 Price price = daoBill.getPrice().get();
                 List<Post> posts = p.getPost(id, status_unpaid);
                 request.setAttribute("postList", posts);
                 request.setAttribute("price", price);
                 UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 break;
+            case "tintuyendung":
+                List<Post> post = p.getPostIdBusi(account.getId());
+                request.setAttribute("post", post);
+                UtilControl.forward("business/busi-tin-tuyen-dung.jsp",request,response);
         }
 
 //        if (action != null) {
