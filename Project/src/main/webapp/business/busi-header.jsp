@@ -38,9 +38,9 @@
                     <a class="btn btn-outline-primary btn-sm mb-0 me-3"
                        href="<%=request.getContextPath()%>/business/busi-dang-tin.jsp">Đăng tin</a>
                     <a class="btn btn-outline-primary btn-sm mb-0 me-3"
-                       href="<%=request.getContextPath()%>/business/busi-quan-li-cv.jsp">Xem CV</a>
+                       href="busi-quan-li-cv.jsp">Xem CV</a>
                     <a class="btn btn-outline-primary btn-sm mb-0 me-3"
-                       href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp">Trợ giúp</a>
+                       href="busi-tro-giup.jsp">Trợ giúp</a>
                 </li>
 
                 </li>
