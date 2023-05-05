@@ -21,6 +21,13 @@ public class Account implements Serializable {
 
     }
 
+    public Account(String email, String name, int role, int status) {
+        this.email = email;
+        this.name = name;
+        this.role = role;
+        this.status = status;
+    }
+
     public Account(int id, int companyId, String email, String username, String password, String name, int type, int role, int status, Date create_date, Date update_date) {
         this.id = id;
         this.companyId = companyId;
