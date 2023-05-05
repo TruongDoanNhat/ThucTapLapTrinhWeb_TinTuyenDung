@@ -193,29 +193,27 @@
                     </div>
                     <div class="card-body pt-4 p-3">
                         <ul class="list-group">
-                            <c:forEach items="${post}" var="p">
-                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                    <div class="d-flex flex-column">
-                                        <a href="chi-tiet-tin-tuyen-dung-busi.jsp">
-                                            <h6 class="mb-3 text-sm">${p.title}</h6>
-                                        </a>
-                                        <span class="mb-2 text-xs">Vị trí: <span
-                                                class="text-dark ms-sm-2 font-weight-bold">${p.rank}</span></span>
-                                        <span class="mb-2 text-xs">Địa chỉ: <span
-                                                class="text-dark ms-sm-2 font-weight-bold">${p.address}</span></span>
-                                        <span class="mb-2 text-xs">Mức lương: <span
-                                                class="text-dark font-weight-bold ms-sm-2">${p.salary}</span></span>
-                                        <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                                class="text-dark font-weight-bold ms-sm-2">${p.createDate}</span></span>
-                                    </div>
-                                    <div class="ms-auto text-end">
-                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                class="fas fa-pencil-alt1 text-dark me-2" aria-hidden="true"></i>Ngừng
-                                            tuyển
-                                            dụng</a>
-                                    </div>
-                                </li>
-                            </c:forEach>
+                        <c:forEach items="${post}" var="p">
+                            <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                                <div class="d-flex flex-column">
+                                    <a href="chi-tiet-tin-tuyen-dung-busi.jsp">
+                                        <h6 class="mb-3 text-sm">${p.title}</h6>
+                                    </a>
+                                    <span class="mb-2 text-xs">Vị trí: <span class="text-dark ms-sm-2 font-weight-bold">${p.rank}</span></span>
+                                    <span class="mb-2 text-xs">Địa chỉ: <span
+                                            class="text-dark ms-sm-2 font-weight-bold">${p.address}</span></span>
+                                    <span class="mb-2 text-xs">Mức lương: <span
+                                            class="text-dark font-weight-bold ms-sm-2">${p.salary}</span></span>
+                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
+                                            class="text-dark font-weight-bold ms-sm-2">${p.createDate}</span></span>
+                                </div>
+                                <div class="ms-auto text-end">
+                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                            class="fas fa-pencil-alt1 text-dark me-2" aria-hidden="true"></i>Ngừng tuyển
+                                        dụng</a>
+                                </div>
+                            </li>
+                        </c:forEach>
                         </ul>
                     </div>
                 </div>
