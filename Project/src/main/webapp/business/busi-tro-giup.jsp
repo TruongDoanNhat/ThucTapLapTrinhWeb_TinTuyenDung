@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Admin
-  Date: 06/01/2023
-  Time: 8:16 SA
+  User: letha
+  Date: 05/05/2023
+  Time: 11:29 SA
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,30 +12,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
     <link rel="icon" type="image/png" href="../assets/img/logo/logo.png">
-    <title>
-        Tài khoản
-    </title>
+    <title>Trợ giúp</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-icons.css" type="text/css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" type="text/css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" type="text/css" rel="stylesheet"/>
     <!-- CSS Files -->
+    <link type="text/css" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="business/assets/css/tro-giup.css">
 
-    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="g-sidenav-show bg-gray-100">
+
+<body class="g-sidenav-show  bg-gray-100">
+<!--  start nav left -->
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
        id="sidenav-main">
     <!--    logo -->
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="<%=request.getContextPath()%>/business/busi-trang-chu.jsp">
+        <a class="navbar-brand m-0" href="<%=request.getContextPath()%>/business/busi-trang-chu.jsp" >
             <img src="../assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
@@ -92,7 +93,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="<%=request.getContextPath()%>/Post?action=tintuyendung">
+                <a class="nav-link "  href="<%=request.getContextPath()%>/Post?action=tintuyendung">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -118,7 +119,7 @@
                 <a class="nav-link  " href="<%=request.getContextPath()%>/business/busi-thong-bao-he-thong.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 
-                        <i class=" fa fa-bell cursor-pointer text-dark"></i>
+                        <i  class=" fa fa-bell cursor-pointer text-dark"></i>
 
                     </div>
                     <span class="nav-link-text ms-1">Thông báo hệ thống</span>
@@ -129,7 +130,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Trang tài khoản</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link  active " href="<%=request.getContextPath()%>/business/busi-tai-khoan.jsp">
+                <a class="nav-link   " href="<%=request.getContextPath()%>/business/busi-tai-khoan.jsp">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -159,7 +160,7 @@
     <div class="sidenav-footer mx-3 ">
         <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
             <div class="full-background"
-                 style="background-image: url('../business/assets/img/curved-images/white-curved.jpg')"></div>
+                 style="background-image: url('/business/assets/img/curved-images/white-curved.jpg')"></div>
             <div class="card-body text-start p-3 w-100">
                 <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
                     <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true"
@@ -168,7 +169,7 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp"  class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>
@@ -176,153 +177,96 @@
            href="<%=request.getContextPath()%>/business/busi-cap-nhat-thong-tin-xac-thuc.jsp">Nâng cấp tài khoản</a>
     </div>
 </aside>
-<div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+<!--  end nav left -->
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <jsp:include page="busi-header.jsp"></jsp:include>
     <!-- End Navbar -->
 
-    <div class="container-fluid">
-        <div class="page-header min-height-300 border-radius-xl mt-4"
-             style="background-image: url('../business/assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
-            <span class="mask bg-gradient-primary opacity-6"></span>
-        </div>
-        <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
-            <div class="row gx-4">
-                <div class="col-auto">
-                    <div class="avatar avatar-xl position-relative">
-                        <img src="assets/img/bruce-mars.jpg" alt="profile_image"
-                             class="w-100 border-radius-lg shadow-sm">
+    <!-- start tư vấn   -->
+    <div class="help-container">
+        <div data-v-7dd9989e="" class="help-box show">
+            <div data-v-7dd9989e="" class="header">
+                <div data-v-7dd9989e="" class="greeting flex-m mb-1">
+                    <div data-v-7dd9989e="" class="circle mr-2 flex-cm"><i data-v-7dd9989e="" class="fas fa-life-ring"></i>
+                    </div>
+                    <div data-v-7dd9989e="">Xin chào </div>
+                </div>
+                <div data-v-7dd9989e="" class="small-text mt-2">
+                    Chúng tôi rất sẵn lòng được hỗ trợ bạn. Vui lòng liên hệ theo thông tin bên dưới để nhận trợ giúp.
+                </div>
+            </div>
+            <div data-v-7dd9989e="" class="content w-100">
+                <div data-v-7dd9989e="" class="item-helper">
+                    <div data-v-7dd9989e="" class="title mb-1">Tư vấn tuyển dụng</div>
+                    <div data-v-7dd9989e="" class="text-muted small-text mb-3">Nhân viên tư vấn đang trực tuyến sẵn sàng hỗ
+                        trợ
+                    </div>
+                    <div data-v-7dd9989e="" class="flex-m mb-3">
+                        <div data-v-2a31697a="" data-v-7dd9989e="" class="mr-2 avatar"
+                             style="width: 32px; height: 32px; flex: 0 0 32px; "></div>
+                        <div data-v-7dd9989e="" class="helper-name">Lê Thị Trường Giang</div>
+                    </div>
+                    <div data-v-7dd9989e="" class="flex-sb contact">
+                        <div data-v-7dd9989e="" class="flex-m contact-item"><i data-v-7dd9989e=""
+                                                                               class="fas fa-phone circle contact-icon flex-cm mr-2"></i>
+                            <a data-v-7dd9989e="" href="tel:0969 958 738" class="text-decoration-none">
+                                0969 958 738
+                            </a></div>
+                        <div data-v-7dd9989e="" class="flex-m contact-item contact-email"><i data-v-7dd9989e=""
+                                                                                             class="fas fa-envelope circle contact-icon1 flex-cm mr-2"></i>
+                            <a data-v-7dd9989e="" title="giangltt1@gmail.com" href="mailto:giangltt1@gmail.com"
+                               class="text-decoration-none">
+                                giangltt1@gmail.com
+                            </a></div>
                     </div>
                 </div>
-                <div class="col-auto my-auto">
-                    <div class="h-100">
-                        <h5 class="mb-1">
-                            Lê Hửu Phước
-                        </h5>
-                        <p class="mb-0 font-weight-bold text-sm">
-                            ID: 123 | 0258700668 | email@st.hcmuaf.edu.vn
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-                    <div class="nav-wrapper position-relative end-0">
-                        <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link mb-0 px-0 py-1 active " href="<%=request.getContextPath()%>/business/busi-doi-mat-khau.jsp">
-                                    <svg class="text-dark" width="10px" height="16px" viewBox="0 0 40 40" version="1.1"
-                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <title>settings</title>
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF"
-                                               fill-rule="nonzero">
-                                                <g transform="translate(1716.000000, 291.000000)">
-                                                    <g transform="translate(304.000000, 151.000000)">
-                                                        <polygon class="color-background" opacity="0.596981957"
-                                                                 points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667">
-                                                        </polygon>
-                                                        <path class="color-background"
-                                                              d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"
-                                                              opacity="0.596981957"></path>
-                                                        <path class="color-background"
-                                                              d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z">
-                                                        </path>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                    <span class="ms-1"> Đổi mật khẩu </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                            </li>
-                        </ul>
+                <div data-v-7dd9989e="" class="help-scroll">
+                    <div data-v-7dd9989e="" class="item-helper">
+                        <div data-v-7dd9989e="" class="title mb-3">Hotline CSKH &amp; Khiếu nại dịch vụ</div>
+                        <div data-v-7dd9989e="" class="d-flex align-items-center justify-content-between row">
+                            <div data-v-7dd9989e="" class="d-flex align-items-center small-text channel-item col">
+                                <div data-v-7dd9989e=""
+                                     class="channel-item-icon d-flex align-items-center justify-content-center mr-2"><i
+                                        data-v-7dd9989e="" class="fas fa-phone"></i></div>
+                                <a data-v-7dd9989e="" href="tel:(024)71079799"
+                                   class="text-muted text-decoration-none">
+                                    (024)71079799
+                                </a></div>
+                            <div data-v-7dd9989e="" class="d-flex align-items-center small-text channel-item col">
+                                <div data-v-7dd9989e=""
+                                     class="channel-item-icon d-flex align-items-center justify-content-center mr-2"><i
+                                        data-v-7dd9989e="" class="fas fa-phone"></i></div>
+                                <a data-v-7dd9989e="" href="tel:0862691929" class="text-muted text-decoration-none">
+                                    0862691929
+                                </a></div>
+                        </div>
+                        <div data-v-7dd9989e="" class="d-flex align-items-center justify-content-between mt-3 row">
+                            <div data-v-7dd9989e="" class="d-flex align-items-center small-text channel-item col">
+                                <div data-v-7dd9989e=""
+                                     class="channel-item-icon d-flex align-items-center justify-content-center mr-2"><i
+                                        data-v-7dd9989e="" class="fas fa-envelope"></i></div>
+                                <a data-v-7dd9989e="" href="mailto:cskh@gmail.com" class="text-muted text-decoration-none">
+                                    cskh@gmail.com
+                                </a></div>
+                            <div data-v-7dd9989e="" class="d-flex align-items-center small-text channel-item col">
+                                <div data-v-7dd9989e=""
+                                     class="channel-item-icon d-flex align-items-center justify-content-center mr-2"><i
+                                        data-v-7dd9989e="" class="fas fa-comment"></i></div>
+                                <a data-v-7dd9989e="" href="https://www.facebook.com/topcvbiz"
+                                   class="text-muted text-decoration-none">
+                                    Chat
+                                </a></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid py-4">
-        <div class="row my-4">
-            <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-                <div class="card">
-                    <div class="card-header pb-0">
-                        <div class="row">
-                            <div class="col-lg-6 col-7">
-                            </div>
-                            <div class="col-lg-6 col-5 my-auto text-end">
-                                <!--                                <div class="dropdown float-lg-end pe-4">-->
-                                <!--                                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown"-->
-                                <!--                                       aria-expanded="false">-->
-                                <!--                                        <i class="fa fa-ellipsis-v text-secondary"></i>-->
-                                <!--                                    </a>-->
-                                <!--                                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">-->
-                                <!--                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a>-->
-                                <!--                                        </li>-->
-                                <!--                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Another-->
-                                <!--                                            action</a></li>-->
-                                <!--                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else-->
-                                <!--                                            here</a></li>-->
-                                <!--                                    </ul>-->
-                                <!--                                </div>-->
-                            </div>
-                            <div><b> Tài khoản xác thực: </b> <span class="col-blue bold"> Cấp 1/5 </span></div>
-                            <div>
-                                <div>
-                    <span>
-                     <b> Nâng cấp tài khoản: </b>
-                    </span>
-                                    Để đạt
-                                    <span class="col-blue"> cấp 2/5</span>
-                                    , quý khách cần
-                                    <span class="col-blue"> xác thực số điện thoại </span>
-                                </div>
-                                <div>
-                    <span>
-                      <b> Quyền lợi: </b>
-                    </span>
-                                    Khi đạt
-                                    <span class="col-blue"> cấp 2/5, </span>
-                                    nhà tuyển dụng có 30 lượt tìm kiếm CV và 10 lượt xem CV từ công cụ tìm kiếm CV ứng
-                                    viên
-                                </div>
-                            </div>
-                            <div>
-                                <button class=" btn bg-blue col-white" style="margin-top: 15px"> Cập nhật thông tin xác
-                                    thực
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body px-0 pb-2">
-                        <div class="table-responsive">
+    <!--End tư vấn -->
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
+</main>
 </body>
-<!--   Core JS Files   -->
-<script src="assets/js/core/popper.min.js"></script>
-<script src="assets/js/core/bootstrap.min.js"></script>
-<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
-<script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
-        }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-</script>
-<!-- Github buttons -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 
 </html>
+
