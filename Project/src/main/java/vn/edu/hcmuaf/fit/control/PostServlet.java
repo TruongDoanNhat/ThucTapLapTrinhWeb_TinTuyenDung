@@ -67,7 +67,7 @@ public class PostServlet extends HttpServlet {
             case "tintuyendung":
                 List<Post> post = p.getPostIdBusi(account.getId());
                 request.setAttribute("post", post);
-                UtilControl.forward("business/busi-tin-tuyen-dung.jsp",request,response);
+                UtilControl.forward("business/busi-tin-tuyen-dung.jsp", request, response);
                 break;
             case "quanlybaidang":
                 postAll = p.getPostAll();
@@ -112,10 +112,6 @@ public class PostServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

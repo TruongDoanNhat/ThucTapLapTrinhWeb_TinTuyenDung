@@ -3,7 +3,7 @@ package vn.edu.hcmuaf.fit.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class PostAplied implements Serializable {
+public class PostApplied implements Serializable {
     private static final long serialVersionUID = 1L;
     private int id;
     private int accountId;
@@ -11,11 +11,11 @@ public class PostAplied implements Serializable {
     private String fileCV;
     private Date createDate;
 
-    public PostAplied(){
+    public PostApplied(){
 
     }
 
-    public PostAplied(int id, int accountId, int postId, String fileCV, Date createDate) {
+    public PostApplied(int id, int accountId, int postId, String fileCV, Date createDate) {
         this.id = id;
         this.accountId = accountId;
         this.postId = postId;
