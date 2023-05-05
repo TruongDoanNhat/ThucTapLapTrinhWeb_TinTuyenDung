@@ -1,40 +1,23 @@
 package vn.edu.hcmuaf.fit.service;
 
-import org.jdbi.v3.core.Handle;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Category;
 import vn.edu.hcmuaf.fit.model.Company;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.model.PostAplied;
+import vn.edu.hcmuaf.fit.control.UtilSession;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-
-public class DAOPost{
+public class DAOPost {
     private String message = "error!";
 
     public Date getDateNow() {
         return new Date();
-    }
-
-    public List<Post> getPostIdBusi(int idBusi) {
-        String query = "select * from post where accountId = ? ";
-        return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query)
-                    .bind(0, idBusi)
-                    .mapToBean(Post.class)
-                    .stream().collect(Collectors.toList());
-        });
     }
 
     // lấy danh sách bài viết theo trạng thái
@@ -216,8 +199,6 @@ public class DAOPost{
         }
         return getDaysDiff;
     }
-
-
 
 
     public static void main(String[] args) {
