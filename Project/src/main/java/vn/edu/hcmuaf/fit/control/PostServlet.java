@@ -64,6 +64,11 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("price", price);
                 UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 break;
+            case "tintuyendung":
+                List<Post> post = p.getPostIdBusi(account.getId());
+                request.setAttribute("post", post);
+                UtilControl.forward("business/busi-tin-tuyen-dung.jsp",request,response);
+                break;
             case "quanlybaidang":
                 postAll = p.getPostAll();
                 request.setAttribute("postAll", postAll);
