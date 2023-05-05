@@ -224,7 +224,7 @@
                         <div class="control-group">
                             <label class="control-label">Hình thức công việc</label>
                             <div class="controls">
-                                <select tabindex="1" id="typetype" onkeyup="checkBulletinBoard()" name="type" data-placeholder="Vui lòng chọn.."
+                                <select tabindex="1" id="type" onkeyup="checkBulletinBoard()" name="type" data-placeholder="Vui lòng chọn.."
                                         class="span8">
                                     <option value="">Vui lòng chọn..</option>
                                     <option value="Toàn thời gian">Toàn thời gian</option>

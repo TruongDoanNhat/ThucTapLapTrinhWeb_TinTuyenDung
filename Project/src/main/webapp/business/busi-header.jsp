@@ -36,7 +36,7 @@
                 <li class="nav-item d-flex align-items-center">
                     <!--button-->
                     <a class="btn btn-outline-primary btn-sm mb-0 me-3"
-                       href="busi-dang-tin.jsp">Đăng tin</a>
+                       href="<%=request.getContextPath()%>/business/busi-dang-tin.jsp">Đăng tin</a>
                     <a class="btn btn-outline-primary btn-sm mb-0 me-3"
                        href="busi-quan-li-cv.jsp">Xem CV</a>
                     <a class="btn btn-outline-primary btn-sm mb-0 me-3"
