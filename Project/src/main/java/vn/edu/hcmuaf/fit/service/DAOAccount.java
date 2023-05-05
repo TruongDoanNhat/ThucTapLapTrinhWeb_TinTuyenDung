@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.service;
 
+import vn.edu.hcmuaf.fit.bean.UserGoogle;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Account;
 
@@ -205,15 +206,6 @@ public class DAOAccount {
         System.out.println("hee");
     }
 
-    public static void main(String[] args) {
-        DAOAccount dao = new DAOAccount();
-        List<Account> l = dao.getListAccount();
-        System.out.println((dao.registerBusi("Bui", "123", 2, "name", "20130340@st.hcmuaf.edu.vn", "1111444777", 0, 0, "companyName", "address", "description", new Date())));
-//        dao.registerCandi_Admin("abc", "111", "abc@gmail.com", 2);
-//        System.out.println(dao.checkAccount("admin@gmail.com", "321"));
-//        dao.registerBusi("abc2", "1112", null,"abc@gmail.com", null,0,null,1);
-
-    }
 
     public boolean xacThucEmail(String username, String email) {
         if (checkUsernameExists(username)) {
@@ -226,6 +218,23 @@ public class DAOAccount {
             return true;
         }
         return false;
+
+    }
+
+    public void castAccountGG(UserGoogle userGoogle) {
+        String emailGG = userGoogle.getEmail();
+        String[] arrOfStr = emailGG.split("@");
+        this.account = new Account(emailGG, arrOfStr[0], 1, 1);
+    }
+
+    public static void main(String[] args) {
+//        DAOAccount dao = new DAOAccount();
+//        List<Account> l = dao.getListAccount();
+//        System.out.println((dao.registerBusi("Bui", "123", 2, "name", "20130340@st.hcmuaf.edu.vn", "1111444777", 0, 0, "companyName", "address", "description", new Date())));
+
+//        dao.registerCandi_Admin("abc", "111", "abc@gmail.com", 2);
+//        System.out.println(dao.checkAccount("admin@gmail.com", "321"));
+//        dao.registerBusi("abc2", "1112", null,"abc@gmail.com", null,0,null,1);
 
     }
 }
