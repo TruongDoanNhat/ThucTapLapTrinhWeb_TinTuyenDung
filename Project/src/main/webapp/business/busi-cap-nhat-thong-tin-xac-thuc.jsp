@@ -93,7 +93,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="busi-tin-tuyen-dung.jsp">
+                <a class="nav-link" href="<%=request.getContextPath()%>/Post?action=tintuyendung">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -169,7 +169,7 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="tro-giup-busi.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="busi-tro-giup.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>
@@ -221,7 +221,7 @@
                                         <div data-v-c4f347a8="">
                                             <div data-v-ea13fd1a="" data-v-c4f347a8="" class="file-upload mt-2 d-none1"
                                                  type="file" name="avatar">
-                                                <div data-v-ea13fd1a="" class="mx-4">
+                                                <%--@declare id="audio-file"--%><div data-v-ea13fd1a="" class="mx-4">
                                                     <span data-v-ea13fd1a="" class="text-muted">
                                                         <span data-v-ea13fd1a="">Chọn hoặc kéo file vào đây</span>
                                                     </span>
@@ -240,7 +240,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--                                avt end-->
+                                <!--     avt end-->
                                 <div data-v-c4f347a8="" class="form-group col-md-6">
                                     <label data-v-c4f347a8="" class="col-form-label">Email:
                                         20130348@st.hcmuaf.edu.vn</label>
