@@ -39,15 +39,17 @@ public class DAOBill {
     }
 
     // lay du lieu cua bang price moi nhat
-    public Price getPrice() {
+    public Optional<Price> getPrice() {
         String query = "SELECT * FROM price ORDER BY createDate DESC LIMIT 1";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
                     .mapToBean(Price.class)
-                    .stream().findFirst().get();
+                    .stream().findFirst();
         });
     }
 
     public static void main(String[] args) {
+        DAOBill d = new DAOBill();
+        System.out.println(d.getPrice());
     }
 }

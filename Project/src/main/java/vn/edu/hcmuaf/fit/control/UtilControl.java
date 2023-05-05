@@ -1,38 +1,11 @@
 package vn.edu.hcmuaf.fit.control;
 
-import vn.edu.hcmuaf.fit.model.Account;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class UtilControl {
-
-
-    public static void phanQuyenServletAdmin1(Account account, String linkIn, String linkOut, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (account != null) {
-            if (account.getRole() == 0) {
-                UtilControl.forward(linkIn, request, response);
-            } else {
-                response.sendRedirect(request.getContextPath() + linkOut);
-            }
-        } else {
-            response.sendRedirect(request.getContextPath() + linkOut);
-        }
-    }
-
-    public static void phanQuyenServletAdmin2(Account account, String linkIn, String linkOut, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (account != null) {
-            if (account.getRole() == 0) {
-                response.sendRedirect(linkIn);
-            } else {
-                response.sendRedirect(request.getContextPath() + linkOut);
-            }
-        } else {
-            response.sendRedirect(request.getContextPath() + linkOut);
-        }
-    }
 
     public static void send(int role, String urlAdmin, String urlCandi, String urlBusi, HttpServletResponse response) throws IOException {
         if (role == 0)

@@ -190,7 +190,7 @@ label:hover {
     display: table;
     width: 100%;
     text-align: left;
-    padding: 0px 0px 1px 30px;
+    padding: 0px 0px 30px 30px;
 }
 .row-cc {
     display: table;
@@ -234,7 +234,7 @@ label:hover {
     padding-bottom: 8px;
 }
 .cc-field {
-    padding-top: 5px;
+    padding-top: 15px;
     padding-right: 30px;
     display: table-cell;
 }

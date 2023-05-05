@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -32,7 +31,7 @@
                 <div class="sidebar">
                     <ul class="widget widget-menu unstyled">
                         <li>
-                            <a href="Admin-trang-chu.jsp">
+                            <a href="trang-chu.html">
                                 <i class="menu-icon icon-dashboard"></i> Bảng điều khiển
                             </a>
                         </li>
@@ -41,11 +40,7 @@
                         </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                         </i> Quản lý </a>
                             <ul id="togglePages" class=" collapse unstyled">
-                                <li>
-                                    <a href='<c:url value="/PostManager?action=quanlybaidang"/>'>
-                                        <i class="icon-inbox"></i> Quản lý bài đăng
-                                    </a>
-                                </li>
+                                <li><a href=""><i class="icon-inbox"></i> Quản lý bài đăng </a></li>
                                 <li><a href=""><i class="icon-inbox"></i> Quản lý đơn ứng tuyển </a></li>
                                 <li><a href=""><i class="icon-inbox"></i> Quản lý người dùng</a></li>
                             </ul>
@@ -56,6 +51,7 @@
                                 <i class="menu-icon icon-tasks"></i> Báo cáo - thống kê
                             </a>
                         </li>
+
 
 
                         <li><a class="collapsed" data-toggle="collapse" href="#togglePages2"><i
