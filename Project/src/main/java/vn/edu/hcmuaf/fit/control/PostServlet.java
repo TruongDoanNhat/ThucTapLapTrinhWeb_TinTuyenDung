@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
+import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.model.Price;
 import vn.edu.hcmuaf.fit.service.DAOBill;
@@ -11,17 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "Post", value = {"/Post", "/Category"})
+@WebServlet(name = "Post", value = {"/PostManager", "/Post", "/Category"})
 public class PostServlet extends HttpServlet {
-    public static final int status_unpaid = 0;
-    public static final int status_paided = 1;
-    public static final int status_approve = 2;
-    public static final int status_remove = 3;
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,8 +27,13 @@ public class PostServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         DAOPost p = new DAOPost();
         DAOBill daoBill = new DAOBill();
-        String action = request.getParameter("action");
         String message = "hello";
+        Account account = UtilSession.getInstance().getValue(request, "account");
+        String action = request.getParameter("action");
+        String idManager = request.getParameter("id");
+        String keywords = request.getParameter("keywords");
+        String status = request.getParameter("status");
+        List<Post> postAll;
         switch (action) {
             case "dangtin":
                 String title = request.getParameter("title");
@@ -51,17 +53,44 @@ public class PostServlet extends HttpServlet {
                 calendar.setTime(createDate);
                 calendar.add(Calendar.MONTH, 1);
                 Date endDate = calendar.getTime(); // thêm một tháng
-                p.insertPost(category, title, quantity, salary, address, type, rank, gen,
-                        description, rights, requests, status_unpaid, endDate);
-                response.sendRedirect("/Post?action=giohang");
+                p.insertPost(category, title, quantity, salary, address, type, rank, gen, description, rights, requests, Post.status_unpaid, endDate);
+                response.sendRedirect(request.getContextPath() + "/Post?action=giohang");
                 break;
             case "giohang":
                 int id = UtilSession.getInstance().getValue(request, "account").getId();
-                Price price = daoBill.getPrice().get();
-                List<Post> posts = p.getPost(id, status_unpaid);
+                Price price = daoBill.getPrice();
+                List<Post> posts = p.getPost(id, Post.status_unpaid);
                 request.setAttribute("postList", posts);
                 request.setAttribute("price", price);
                 UtilControl.forward("business/busi-gio-hang.jsp", request, response);
+                break;
+            case "quanlybaidang":
+                postAll = p.getPostAll();
+                request.setAttribute("postAll", postAll);
+                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
+                break;
+            case "search":
+                postAll = status.equals("0") ? p.getPostSearch(keywords) : p.getPostSearch(keywords, status);
+                request.setAttribute("postAll", postAll);
+                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
+                break;
+            case "approve":
+                p.updatePost(Integer.valueOf(idManager), Post.status_approve);
+                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
+                break;
+            case "remove":
+                p.updatePost(Integer.valueOf(idManager), Post.status_unpaid);
+                // (chưa làm) trả lại thông báo cho business
+                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
+                break;
+            case "lock":
+                p.updatePost(Integer.valueOf(idManager), Post.status_lock);
+                // (chưa làm) trả lại thông báo cho business
+                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
+                break;
+            case "delete":
+                p.deletePost(Integer.valueOf(idManager));
+                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
         }
 

@@ -5,12 +5,16 @@ import java.util.Date;
 
 public class Post implements Serializable {
     private static final long serialVersionUID = 1L;
+    public static final int status_unpaid = 0; // chua thanh toan
+    public static final int status_paided = 1;// da thanh toan
+    public static final int status_approve = 2; //  duyet
+    public static final int status_lock = 3; //  khoa
+    public static final int status_Outdate = 4; // het han
     private int id;
     private int categoryId;
     private int accountId;
     private String title;
     private String quanity;
-
     private String salary;
     private String address;
     private String type;
@@ -23,13 +27,15 @@ public class Post implements Serializable {
     private Date createDate;
     private Date endDate;
     private int billId;
+    private int priceId;
+
     public Post() {
 
     }
 
     public Post(int id, int categoryId, int accountId, String title, String quanity, String salary,
                 String address, String type, String rank, String gen, String description, String rights,
-                String request, int status, java.util.Date createDate, java.util.Date endDate, int billId) {
+                String request, int status, java.util.Date createDate, java.util.Date endDate, int billId, int priceId) {
         this.id = id;
         this.categoryId = categoryId;
         this.accountId = accountId;
@@ -47,6 +53,15 @@ public class Post implements Serializable {
         this.createDate = createDate;
         this.endDate = endDate;
         this.billId = billId;
+        this.priceId = priceId;
+    }
+
+    public int getPriceId() {
+        return priceId;
+    }
+
+    public void setPriceId(int priceId) {
+        this.priceId = priceId;
     }
 
     public int getBillId() {
@@ -205,6 +220,7 @@ public class Post implements Serializable {
                 ", createDate=" + createDate +
                 ", endDate=" + endDate +
                 ", billId=" + billId +
+                ", priceId=" + priceId +
                 '}';
     }
 }

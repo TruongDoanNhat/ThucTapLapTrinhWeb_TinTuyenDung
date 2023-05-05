@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
+import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.service.DAOBill;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 
@@ -22,23 +23,33 @@ public class Pay extends HttpServlet {
         String numAccount = request.getParameter("numAccount");
         String pay = request.getParameter("pay2");
         String status = "";
-        // đẩy csdl vào bill
-        if (db.insertBill(numAccount, pay)) {
-            // đổi trạng thái cho post và thêm id của bill vào post
-            for (String p : post) {
-                try {
-                    dp.updatePost(Integer.valueOf(p), PostServlet.status_paided, db.getListBill().size());
-                } catch (Exception e) {
+        String action = request.getParameter("action");
+        String id = request.getParameter("id");
+        switch (action) {
+            case "thanhtoan":
+                // đẩy csdl vào bill
+                if (db.insertBill(numAccount, pay)) {
+                    // đổi trạng thái cho post và thêm id của bill vào post
+                    for (String p : post) {
+                        try {
+                            dp.updatePost(Integer.valueOf(p), Post.status_paided, db.getListBill().size());
+                        } catch (Exception e) {
+                            status = "failed";
+                            request.setAttribute("status", status);
+                            UtilControl.forward("business/busi-gio-hang.jsp", request, response);
+                        }
+                    }
+                    response.sendRedirect("business/busi-trang-chu.jsp");
+                } else {
                     status = "failed";
                     request.setAttribute("status", status);
                     UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 }
-            }
-            response.sendRedirect("business/busi-trang-chu.jsp");
-        } else {
-            status = "failed";
-            request.setAttribute("status", status);
-            UtilControl.forward("business/busi-gio-hang.jsp", request, response);
+                break;
+            case "xoa":
+                dp.deletePost(Integer.valueOf(id));
+                response.sendRedirect("Post?action=giohang");
+                break;
         }
     }
 
