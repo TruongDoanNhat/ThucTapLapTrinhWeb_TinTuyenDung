@@ -21,6 +21,16 @@ public class DAOPost {
         return new Date();
     }
 
+    public List<Post> getPostIdBusi(int idBusi) {
+        String query = "select * from post where accountId = ? ";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, idBusi)
+                    .mapToBean(Post.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
     // lấy danh sách bài viết theo trạng thái
     public List<Post> getPost(int idBusi, int status) {
         String query = "select * from post where accountId = ? and status = ?";
