@@ -38,9 +38,9 @@ CREATE TABLE `account`  (
 -- ----------------------------
 -- Records of account
 -- ----------------------------
-INSERT INTO `account` VALUES (1, 1, '20130340@st.hcmuaf.edu.vn', 'busi', 's2t085INWPYloRMPvg5QKEtGClI=', 'Nguen', 0, 2, 1, '2023-04-05', NULL);
-INSERT INTO `account` VALUES (2, NULL, '20130340@st.hcmuaf.edu.vn', 'admin', 's2t085INWPYloRMPvg5QKEtGClI=', 'ADMIN', 0, 0, 1, '2023-04-09', NULL);
-INSERT INTO `account` VALUES (3, NULL, '20130340@st.hcmuaf.edu.vn', 'candi', 's2t085INWPYloRMPvg5QKEtGClI=', 'candi', 0, 1, 1, '2023-04-09', NULL);
+INSERT INTO `account` VALUES (1, 1, '20130340@st.hcmuaf.edu.vn', 'busi', 's2t085INWPYloRMPvg5QKEtGClI=', 'Nguyen', 0, 2, 1, '2023-04-05', NULL);
+INSERT INTO `account` VALUES (2, NULL, '20130348@st.hcmuaf.edu.vn', 'admin', 's2t085INWPYloRMPvg5QKEtGClI=', 'ADMIN', 0, 0, 1, '2023-04-09', NULL);
+INSERT INTO `account` VALUES (3, NULL, '20130342@st.hcmuaf.edu.vn', 'candi', 's2t085INWPYloRMPvg5QKEtGClI=', 'candi', 0, 1, 1, '2023-04-09', NULL);
 INSERT INTO `account` VALUES (4, NULL, 'pho.02.112002@gmail.com', 'candi2', 's2t085INWPYloRMPvg5QKEtGClI=', 'Nguyen Dinh Nguyen', 0, 1, 1, '2023-04-18', NULL);
 
 -- ----------------------------
@@ -159,21 +159,22 @@ INSERT INTO `post` VALUES (5, 2, 1, 'Lập Trình Viên ', '52', '0', '- Đà N�
 INSERT INTO `post` VALUES (6, 4, 1, 'Emv Payment Card Junior ( Salary Ranges Is From 800-2000 Usd/Month Net) - Remote - HN And HCM', '52', '800 - 2,000 USD', 'Hà Nội', 'Hợp đồng', 'Nhân viên', 'Nam', '- Working time: From 8.00 am to 17.30 pm, from Monday to Friday, 5 working days a week (for lunch break from 11.30 to 13.00)\r\n\r\n- Implement host message\r\n\r\n- Encrypt/Decrypt message format.\r\n\r\n- Handle logic flow of host based on specs', '• Attractive salary based on experience level (negotiation).\r\n\r\n• Onboard opportunity\r\n\r\n•  Working directly with foreign partner/colleague\r\n\r\n• Working time flexible\r\n\r\n• Long term project (minimum 1 year)\r\n\r\n• Work an excellent working environment with friendly coworkers\r\n\r\n• Provided necessary equipment\r\n\r\n• Working at HCM Center or HN', '- Has at least 1 year experience about EMV development programing.\r\n\r\n- Contact, contactless or swipe of the following card brands: Visa, Mastercard, Amex, JCB, Union Pay, Discover.\r\n\r\n- Has at least 1 year experience in C/C++/Java/C# programing with modular code practises.\r\n\r\n- Has strong knowledge in understanding EMV L2.\r\n\r\n- Has strong knowledge in EMV terminal hardware SDKs for Ingenico, Verifone, Pax or others\r\n\r\n- Can work remote fulltime (priority) or part time but at least 30 hours/week\r\n\r\n- Has English communication skill (speak & writing)\r\n\r\n- Able to work with different person at time zone GMT +7 when required.', 3, '2023-05-03', '2023-06-03', 4, 2);
 
 -- ----------------------------
--- Table structure for postapplied
+-- Table structure for postApplied
 -- ----------------------------
-DROP TABLE IF EXISTS `postapplied`;
-CREATE TABLE `postapplied`  (
+DROP TABLE IF EXISTS `postApplied`;
+CREATE TABLE `postApplied`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `accountId` int NOT NULL,
+  `accountEmail` TEXT NOT NULL,
   `postId` int NOT NULL,
   `fileCV` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `createDate` date NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of postapplied
+-- Records of postApplied
 -- ----------------------------
+
 
 -- ----------------------------
 -- Table structure for price

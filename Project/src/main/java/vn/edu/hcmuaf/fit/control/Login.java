@@ -36,7 +36,6 @@ public class Login extends HttpServlet {
                     break;
             }
         } else {
-
             // Luu cookies neu nguoi dung chon 'Remember me'
             if (rememberMe != null && rememberMe.equals("on")) {
                 Cookie usernameCookie = new Cookie("username", username);
