@@ -52,7 +52,7 @@
         <!-- Mobile Menu -->
         <div class="slider-active">
             <div class="single-slider slider-height d-flex align-items-center"
-                 data-background="assets/img/hero/h3_hero.jpg">
+                 data-background="../assets/img/hero/h3_hero.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="hero__caption" style="padding-left: 270px; ">
