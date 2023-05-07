@@ -16,7 +16,7 @@ public class LoginGoogle extends HttpServlet{
         String code = request.getParameter("code");
 
         if (code == null || code.isEmpty()) {
-            request.setAttribute("error", "Đăng nhập thất bại!");
+            request.setAttribute("error", "Login failed!");
             request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request,response);
         } else {
 
