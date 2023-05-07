@@ -5,10 +5,10 @@ import vn.edu.hcmuaf.fit.model.Category;
 import vn.edu.hcmuaf.fit.model.Company;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.model.PostAplied;
-import vn.edu.hcmuaf.fit.control.UtilSession;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,15 +21,26 @@ public class DAOPost {
         return new Date();
     }
 
-    public List<Post> getPostIdBusi(int idBusi) {
-        String query = "select * from post where accountId = ? ";
+    public int getTotalPost() {
+        String query = "SELECT COUNT(*) FROM post";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapTo(Integer.class)
+                    .one();
+        });
+    }
+
+    public List<Post> getPostIdBusi(int idBusi, int trang) {
+        String query = "select * from post where accountId = ?  LIMIT 3 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
                     .bind(0, idBusi)
+                    .bind(1, (trang - 1) * 3)
                     .mapToBean(Post.class)
                     .stream().collect(Collectors.toList());
         });
     }
+
 
     // lấy danh sách bài viết theo trạng thái
     public List<Post> getPost(int idBusi, int status) {

@@ -169,7 +169,8 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp"
+                       class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>
@@ -191,6 +192,7 @@
                     </div>
                     <div class="card-body pt-4 p-3">
                         <ul class="list-group">
+                            <!-- Hiển thị danh sách bài viết -->
                             <c:forEach items="${post}" var="p">
                                 <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                     <div class="d-flex flex-column">
@@ -214,6 +216,12 @@
                                     </div>
                                 </li>
                             </c:forEach>
+                            <div style="margin: 0 auto;">
+                            <!-- Hiển thị nút phân trang -->
+                            <c:forEach begin="1" end="${sosp}" var="a">
+                                <li class="arrow d-inline-block"><a href="Post?action=tintuyendung&trang=${a}">${a}</a></li>
+                            </c:forEach>
+                            </div>
                         </ul>
                     </div>
                 </div>
