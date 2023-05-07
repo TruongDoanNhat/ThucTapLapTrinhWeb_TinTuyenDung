@@ -1,12 +1,13 @@
 package vn.edu.hcmuaf.fit.properties.google;
 
-import java.io.IOException;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import vn.edu.hcmuaf.fit.bean.UserGoogle;
+
+import java.io.IOException;
 
 public class GoogleUtils {
     public static String getToken(final String code) throws ClientProtocolException, IOException {

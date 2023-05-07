@@ -122,7 +122,7 @@ public class DAOAccount {
                             .bind(2, username)
                             .bind(3, password)
                             .bind(4, (String) null)
-                            .bind(5, (String) null)
+                            .bind(5, 0)
                             .bind(6, role)
                             .bind(7, status)
                             .bind(8, createDate)
