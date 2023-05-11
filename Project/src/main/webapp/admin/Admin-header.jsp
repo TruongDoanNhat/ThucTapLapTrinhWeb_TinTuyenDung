@@ -16,12 +16,13 @@
     <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                <i class="icon-reorder shaded"></i></a><a class="brand" href="Admin-trang-chu.jsp">Admin </a>
+                <i class="icon-reorder shaded"></i></a><a class="brand"
+                                                          href="<%=request.getContextPath()%>/admin/Admin-trang-chu.jsp">Admin </a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
                 <ul class="nav pull-right">
                     <ul class="nav nav-icons">
                         <!--                    <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>-->
-                        <li><a href="visitor/trang-chu-candi.jsp"><i class="icon-eye-open"></i></a></li>
+                        <li><a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp"><i class="icon-eye-open"></i></a></li>
                         <li><a href=""><i class="icon-bell "></i></a>
                             <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4">
                                 <li class="mb-2 font-weight-bold" style="text-align: center"><a

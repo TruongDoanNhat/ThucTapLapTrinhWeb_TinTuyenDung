@@ -1,7 +1,9 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.Util.Util;
+import vn.edu.hcmuaf.fit.bean.UserGoogle;
 import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.properties.google.GoogleUtils;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
 
 import javax.servlet.ServletException;
@@ -23,6 +25,7 @@ public class Login extends HttpServlet {
         String passclone = password;
         password = Util.encryptionPassword(password);
         boolean checkAccount = d.checkAccount(username, password);
+
         String message = d.getMessage();
         String action = request.getParameter("action");
         if (action != null) {
@@ -34,9 +37,16 @@ public class Login extends HttpServlet {
                     UtilSession.getInstance().removeValue(request, "account");
                     response.sendRedirect("visitor/trang-chu-candi.jsp");
                     break;
+                case "google":
+                    String code = request.getParameter("code");
+                    String accessToken = GoogleUtils.getToken(code);
+                    UserGoogle userGoogle = GoogleUtils.getUserInfo(accessToken);
+                    d.castAccountGG(userGoogle);
+                    UtilSession.getInstance().putValue(request, "account", (Account) d.getAccount());
+                    response.sendRedirect("visitor/trang-chu-candi.jsp");
+                    break;
             }
         } else {
-
             // Luu cookies neu nguoi dung chon 'Remember me'
             if (rememberMe != null && rememberMe.equals("on")) {
                 Cookie usernameCookie = new Cookie("username", username);
@@ -68,9 +78,14 @@ public class Login extends HttpServlet {
             // Chuyen huong đen trang chu (thay doi duong dan phu hop)
             //
             if (checkAccount && d.getAccount().getStatus() == 1) {
-                    HttpSession session = request.getSession(true);
-                    session.setAttribute("account", (Account) d.getAccount());
-                UtilControl.send(d.getAccount().getRole(), "admin/Admin-trang-chu.jsp", "visitor/trang-chu-candi.jsp", "business/busi-trang-chu.jsp", response);
+                UtilSession.getInstance().putValue(request, "account", (Account) d.getAccount());
+                String url = UtilSession.getInstance().getValue2(request, "url");
+                if (url.isEmpty()) {
+                    UtilControl.send(d.getAccount().getRole(), "admin/Admin-trang-chu.jsp", "visitor/trang-chu-candi.jsp", "business/busi-trang-chu.jsp", response);
+                } else {
+                    response.sendRedirect(url);
+                    UtilSession.getInstance().removeValue(request, "url");
+                }
             } else {
                 // chuyen huong lai trang dang nhap neu khong xac thuc duoc
                 request.setAttribute("message", message);

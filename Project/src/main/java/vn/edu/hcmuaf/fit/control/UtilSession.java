@@ -23,6 +23,10 @@ public class UtilSession {
         return (Account) request.getSession().getAttribute(key);
     }
 
+    public String getValue2(HttpServletRequest request, String key) {
+        return (String) request.getSession().getAttribute(key);
+    }
+
     public void removeValue(HttpServletRequest request, String key) {
         request.getSession().removeAttribute(key);
     }
@@ -30,5 +34,9 @@ public class UtilSession {
     public void putValue(HttpServletRequest request, String key, Account value) {
         request.getSession().setAttribute(key, value);
 
+    }
+
+    public void putValue(HttpServletRequest request, String key, String value) {
+        request.getSession().setAttribute(key, value);
     }
 }
