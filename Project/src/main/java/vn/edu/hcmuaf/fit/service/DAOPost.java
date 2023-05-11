@@ -4,7 +4,7 @@ import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Category;
 import vn.edu.hcmuaf.fit.model.Company;
 import vn.edu.hcmuaf.fit.model.Post;
-import vn.edu.hcmuaf.fit.model.PostAplied;
+import vn.edu.hcmuaf.fit.model.PostApplied;
 
 
 import java.text.DateFormat;
@@ -22,10 +22,16 @@ public class DAOPost {
         return new Date();
     }
 
-    public int getTotalPost() {
-        String query = "SELECT COUNT(*) FROM post";
+    public String castDate() {
+        DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return simpleDateFormat.format(getDateNow());
+    }
+
+    public int getTotalPost(int idBusi) {
+        String query = "SELECT COUNT(*) FROM post where accountId = ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
+                    .bind(0, idBusi)
                     .mapTo(Integer.class)
                     .one();
         });
