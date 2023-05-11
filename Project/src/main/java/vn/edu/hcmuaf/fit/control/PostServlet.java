@@ -70,7 +70,7 @@ public class PostServlet extends HttpServlet {
                     trang = "1";
                 }
                 int t = Integer.parseInt(trang);
-                int dem = p.getTotalPost();
+                int dem = p.getTotalPost(account.getId());
                 int sosp = dem/3;
                 if(dem%3 !=0) {
                     sosp++;

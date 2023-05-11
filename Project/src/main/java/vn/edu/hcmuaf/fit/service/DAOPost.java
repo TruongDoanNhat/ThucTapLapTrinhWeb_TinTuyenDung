@@ -21,10 +21,11 @@ public class DAOPost {
         return new Date();
     }
 
-    public int getTotalPost() {
-        String query = "SELECT COUNT(*) FROM post";
+    public int getTotalPost(int idBusi) {
+        String query = "SELECT COUNT(*) FROM post where accountId = ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
+                    .bind(0, idBusi)
                     .mapTo(Integer.class)
                     .one();
         });
