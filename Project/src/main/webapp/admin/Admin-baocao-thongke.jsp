@@ -32,52 +32,56 @@
     <div class="container">
         <div class="row">
             <div class="span3">
-
                 <div class="sidebar">
                     <ul class="widget widget-menu unstyled">
-                        <li class="active"><a href="trang-chu.html"><i class="menu-icon icon-dashboard"></i> Bảng điều
-                            khiển
-                        </a></li>
+                        <li>
+                            <a href="<%=request.getContextPath()%>/admin/Admin-trang-chu.jsp">
+                                <i class="menu-icon icon-dashboard"></i> Bảng điều khiển
+                            </a>
+                        </li>
                         <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i
                                 class="menu-icon icon-cogs">
                         </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                         </i> Quản lý </a>
                             <ul id="togglePages" class=" collapse unstyled">
-                                <li><a href=""><i class="icon-inbox"></i> Quản lý bài đăng </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Quản lý đơn ứng tuyển </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Quản lý người dùng</a></li>
+                                <li>
+                                    <a href='<c:url value="/PostManager?action=quanlybaidang"/>'>
+                                        <i class="icon-inbox"></i> Quản lý bài đăng
+                                    </a>
+                                </li>
+                                <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-doanh-thu.jsp"><i
+                                        class="icon-inbox"></i> Quản lý doanh thu</a></li>
+                                <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-nguoi-dung.jsp"><i
+                                        class="icon-inbox"></i> Quản lý người dùng</a></li>
                             </ul>
                         </li>
 
-
                         <li>
-                            <a href="baocao-thongke-Admin.jsp">
+                            <a href="<%=request.getContextPath()%>/admin/Admin-baocao-thongke.jsp">
                                 <i class="menu-icon icon-tasks"></i> Báo cáo - thống kê
                             </a>
                         </li>
-
-
                         <li><a class="collapsed" data-toggle="collapse" href="#togglePages2"><i
                                 class="menu-icon icon-cog">
                         </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                         </i> Cài đặt giao diện </a>
                             <ul id="togglePages2" class="collapse unstyled">
-                                <li><a href=""><i class="icon-inbox"></i> Màu sắc </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Hình ảnh </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Tin tức </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Liên hệ </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Giới thiệu </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Quảng cáo </a></li>
+                                <%--                                <li><a href=""><i class="icon-inbox"></i> Màu sắc </a></li>--%>
+                                <%--                                <li><a href=""><i class="icon-inbox"></i> Hình ảnh </a></li>--%>
+                                <li><a href="<%=request.getContextPath()%>/admin/Admin-tin-tuc.jsp"><i
+                                        class="icon-inbox"></i> Tin tức </a></li>
+                                <li><a href="<%=request.getContextPath()%>/admin/Admin-chinh-sua-lien-he.jsp"><i
+                                        class="icon-inbox"></i> Liên hệ </a></li>
+                                <%--                                <li><a href=""><i class="icon-inbox"></i> Giới thiệu </a></li>--%>
+                                <%--                                <li><a href=""><i class="icon-inbox"></i> Quảng cáo </a></li>--%>
                             </ul>
                         </li>
                     </ul>
                     <ul class="widget widget-menu unstyled">
-
-                        <li><a href="#"><i class="menu-icon icon-signout"></i> Đăng xuất </a></li>
+                        <li><a href="'<c:url value="/Logout?action=logout"/>'"><i class="menu-icon icon-signout"></i>
+                            Đăng xuất </a></li>
                     </ul>
-
                 </div>
-
                 <!--/.sidebar-->
             </div>
             <!--/.span3-->

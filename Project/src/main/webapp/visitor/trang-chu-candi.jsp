@@ -108,7 +108,6 @@
 
 
                 <%
-                    // ArrayList<Category> categoryList = (ArrayList<Category>) request.getAttribute("categoryList");
                     DAOPost dp = new DAOPost();
                     for (Category c : dp.getCategoryAll()) { %>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">

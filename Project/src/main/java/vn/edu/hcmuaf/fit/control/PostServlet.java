@@ -121,8 +121,4 @@ public class PostServlet extends HttpServlet {
         doGet(request, response);
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

@@ -6,6 +6,7 @@ import vn.edu.hcmuaf.fit.model.Company;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.model.PostAplied;
 
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -64,6 +65,7 @@ public class DAOPost {
                     .stream().collect(Collectors.toList());
         });
     }
+
     public List<Post> getPostSearch(String keywords) {
         String query = "select * from post where title LIKE ?";
         return JDBIConnector.get().withHandle(handle -> {
@@ -73,6 +75,7 @@ public class DAOPost {
                     .stream().collect(Collectors.toList());
         });
     }
+
     // xoa post
     public void deletePost(Integer idPost) {
         String query = "DELETE FROM post WHERE id=?;";
@@ -148,7 +151,7 @@ public class DAOPost {
 
     public String getListPost_applied() {
         String query = "select * from post_applied";
-        List<PostAplied> listApplied = null;
+        List<PostApplied> listApplied = null;
         return getListPost_applied();
     }
 
@@ -236,10 +239,40 @@ public class DAOPost {
         return companies.get(0).getName();
     }
 
+    public List<Post> getPostNew() {
+        String query = "select * from post where status = ? and createDate = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, Post.status_paided)
+                    .bind(1, castDate())
+                    .mapToBean(Post.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
+    public List<PostApplied> getPostApplied(String emailAccount) {
+        String query = "select * from postApplied where email = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, emailAccount)
+                    .mapToBean(PostApplied.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
+    public List<PostApplied> getPostAllApplied() {
+        String query = "select * from postApplied";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapToBean(PostApplied.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
     //ngày hiện tại - ngày tạo
     public long dateToCreate(Date dateCreate) {
         Date date = new Date();
-        DateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
         long getDaysDiff = 0;
         try {
             long getDiff = date.getTime() - dateCreate.getTime();
@@ -266,8 +299,6 @@ public class DAOPost {
 
     public static void main(String[] args) {
         DAOPost p = new DAOPost();
-        System.out.println(p.getPostSearch("Lập", "Tất cả"));
-
     }
 
 }

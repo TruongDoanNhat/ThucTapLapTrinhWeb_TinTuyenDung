@@ -17,13 +17,13 @@ public class AccountServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
 
-        Account account = (Account) request.getSession().getAttribute("account");
+        Account account = (Account) UtilSession.getInstance().getValue(request, "account");
         if (account != null) {
             account.setName(name);
             request.getRequestDispatcher("candi-tai-khoan.jsp").forward(request, response);
             DAOAccount d = new DAOAccount();
             d.updateAccountCandi(account.getUsername(), account.getName());
-        }else{
+        } else {
             request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
         }
 
