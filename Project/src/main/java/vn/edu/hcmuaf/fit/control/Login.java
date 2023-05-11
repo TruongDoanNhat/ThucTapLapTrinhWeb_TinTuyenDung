@@ -80,7 +80,7 @@ public class Login extends HttpServlet {
             if (checkAccount && d.getAccount().getStatus() == 1) {
                 UtilSession.getInstance().putValue(request, "account", (Account) d.getAccount());
                 String url = UtilSession.getInstance().getValue2(request, "url");
-                if (url.isEmpty()) {
+                if (url == null) {
                     UtilControl.send(d.getAccount().getRole(), "admin/Admin-trang-chu.jsp", "visitor/trang-chu-candi.jsp", "business/busi-trang-chu.jsp", response);
                 } else {
                     response.sendRedirect(url);
