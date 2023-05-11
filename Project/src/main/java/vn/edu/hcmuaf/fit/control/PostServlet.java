@@ -65,14 +65,21 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 break;
             case "tintuyendung":
-                List<Post> post = p.getPostIdBusi(account.getId());
+                String trang = request.getParameter("trang");
+                if(trang == null) {
+                    trang = "1";
+                }
+                int t = Integer.parseInt(trang);
+                int dem = p.getTotalPost();
+                int sosp = dem/3;
+                if(dem%3 !=0) {
+                    sosp++;
+                }
+                List<Post> post = p.getPostIdBusi(account.getId(), t);
                 request.setAttribute("post", post);
-                UtilControl.forward("business/busi-tin-tuyen-dung.jsp", request, response);
-                break;
-            case "quanlybaidang":
-                postAll = p.getPostAll();
-                request.setAttribute("postAll", postAll);
-                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
+                request.setAttribute("sosp", sosp);
+                request.setAttribute("trang", t);
+                UtilControl.forward("business/busi-tin-tuyen-dung.jsp",request,response);
                 break;
             case "search":
                 postAll = status.equals("0") ? p.getPostSearch(keywords) : p.getPostSearch(keywords, status);
