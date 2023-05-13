@@ -66,7 +66,7 @@
                     <div class="empty">
                         <img src="https://www.topcv.vn/v4/image/empty.png" alt="Empty">
                         <p>Bạn chưa lưu công việc nào!</p>
-                        <a href="https://www.topcv.vn/viec-lam" class="btn-seatch-job btn-primary-hover">Tìm việc ngay</a>
+                        <a href="<%=request.getContextPath()%>/visitor/danh-sach-viec-lam-candi.jsp" class="btn-seatch-job btn-primary-hover">Tìm việc ngay</a>
                     </div>
                 </div>
             </div>

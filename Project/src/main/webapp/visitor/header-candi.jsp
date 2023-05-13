@@ -30,23 +30,24 @@
                             <div class="main-menu">
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
-                                        <li><a href="trang-chu-candi.jsp">Trang chủ</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp">Trang chủ</a></li>
                                         <li><a href="/Post">Việc làm </a>
                                             <ul class="submenu">
                                                 <li><a href="/Post">Tìm việc làm </a></li>
-                                                <li><a href="../candidate/candi-viec-lam-da-ung-tuyen.jsp">Việc làm đã ứng tuyển</a>
+                                                <li><a href="<%=request.getContextPath()%>/candidate/candi-viec-lam-da-ung-tuyen.jsp">Việc làm đã ứng tuyển</a>
                                                 </li>
-                                                <li><a href="../candidate/candi-viec-lam-da-luu.jsp">Việc làm đã lưu</a></li>
+                                                <li><a href="<%=request.getContextPath()%>/candidate/candi-viec-lam-da-luu.jsp">Việc làm đã lưu</a>
+                                                </li>
                                             </ul>
                                         </li>
-                                        <li><a href="Recruitment">Ứng tuyển</a></li>
-                                        <li><a href="Company">Công ty</a>
+                                        <li><a href="<%=request.getContextPath()%>/candidate/candi-ung-tuyen.jsp">Ứng tuyển</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/visitor/cong-ty-candi.jsp">Công ty</a>
                                         </li>
                                         <li><a>Trang</a>
                                             <ul class="submenu" id="action">
-                                                <li><a href="PageBlog" target="action">Tin tức</a></li>
-                                                <li><a href="PageContact" target="action">Liên hệ</a></li>
-                                                <li><a href="PageAbout" target="action">Về Chúng tôi</a></li>
+                                                <li><a href="<%=request.getContextPath()%>/visitor/tin-tuc-candi.jsp" target="action">Tin tức</a></li>
+                                                <li><a href="<%=request.getContextPath()%>/visitor/lien-he-candi.jsp" target="action">Liên hệ</a></li>
+                                                <li><a href="<%=request.getContextPath()%>/visitor/ve-chung-toi-candi.jsp" target="action">Về Chúng tôi</a></li>
                                             </ul>
                                         </li>
                                     </ul>

@@ -21,13 +21,13 @@
 <body>
 <section>
   <div class="img-bg">
-    <img src="assets/img/log_in/img.png" alt="">
+    <img src="<%=request.getContextPath()%>/assets/img/log_in/img3.jpg" alt="hinhanh">
   </div>
 
   <div class="noi-dung">
     <!-- Logo -->
     <div class="logo-log">
-      <a href="dang-nhap.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
+      <a href="dang-nhap.jsp"><img src="../assets/img/logo/logo.png" alt="logo"></a>
     </div>
     <!-- Form -->
     <div class="form">
