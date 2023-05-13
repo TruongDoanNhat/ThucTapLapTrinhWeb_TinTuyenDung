@@ -1,4 +1,4 @@
-ă1111111111111111111111111111111111111111111111111111111111111111111111111111<%@ page import="vn.edu.hcmuaf.fit.model.Account" %><%--
+<%@ page import="vn.edu.hcmuaf.fit.model.Account" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 03/01/2023
@@ -21,7 +21,7 @@
 <body>
 <section>
     <div class="img-bg">
-        <img src="assets/img/log_in/img.png" alt="">
+        <img src="<%=request.getContextPath()%>/assets/img/log_in/img3.jpg" alt="hinhanh">
     </div>
 
     <div class="noi-dung">
