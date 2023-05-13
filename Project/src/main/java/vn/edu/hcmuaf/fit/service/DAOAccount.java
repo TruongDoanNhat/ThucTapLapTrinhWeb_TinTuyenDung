@@ -31,6 +31,8 @@ public class DAOAccount {
 
     // Kiểm tra tài khoản
     public boolean checkAccount(String username, String password) {
+        System.out.println(username);
+        System.out.println(password);
         String query = "select * from account where  username = ? and password = ?";
         List<Account> listAccount = JDBIConnector.get().withHandle(handle -> handle.createQuery(query)
                 .bind(0, username)
@@ -122,7 +124,7 @@ public class DAOAccount {
                             .bind(2, username)
                             .bind(3, password)
                             .bind(4, (String) null)
-                            .bind(5, (String) null)
+                            .bind(5, 0)
                             .bind(6, role)
                             .bind(7, status)
                             .bind(8, createDate)
@@ -228,12 +230,13 @@ public class DAOAccount {
     }
 
     public static void main(String[] args) {
-//        DAOAccount dao = new DAOAccount();
+        DAOAccount dao = new DAOAccount();
 //        List<Account> l = dao.getListAccount();
 //        System.out.println((dao.registerBusi("Bui", "123", 2, "name", "20130340@st.hcmuaf.edu.vn", "1111444777", 0, 0, "companyName", "address", "description", new Date())));
 
 //        dao.registerCandi_Admin("abc", "111", "abc@gmail.com", 2);
-//        System.out.println(dao.checkAccount("admin@gmail.com", "321"));
+//        System.out.println(dao.checkAccount("candi", "s2t085INWPYloRMPvg5QKEtGClI="));
+//        System.out.println(dao.account);
 //        dao.registerBusi("abc2", "1112", null,"abc@gmail.com", null,0,null,1);
 
     }

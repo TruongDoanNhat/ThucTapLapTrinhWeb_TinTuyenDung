@@ -190,6 +190,9 @@
                 <div data-v-7dd9989e="" class="greeting flex-m mb-1">
                     <div data-v-7dd9989e="" class="circle mr-2 flex-cm"><i data-v-7dd9989e="" class="fas fa-life-ring"></i>
                     </div>
+                    </br>
+                    </br>
+                    </br>
                     <div data-v-7dd9989e="">Xin chào </div>
                 </div>
                 <div data-v-7dd9989e="" class="small-text mt-2">
@@ -205,22 +208,27 @@
                     <div data-v-7dd9989e="" class="flex-m mb-3">
                         <div data-v-2a31697a="" data-v-7dd9989e="" class="mr-2 avatar"
                              style="width: 32px; height: 32px; flex: 0 0 32px; "></div>
-                        <div data-v-7dd9989e="" class="helper-name">Lê Thị Trường Giang</div>
+                        <div data-v-7dd9989e="" class="helper-name">Lê Thành Nghĩa</div>
                     </div>
                     <div data-v-7dd9989e="" class="flex-sb contact">
                         <div data-v-7dd9989e="" class="flex-m contact-item"><i data-v-7dd9989e=""
                                                                                class="fas fa-phone circle contact-icon flex-cm mr-2"></i>
-                            <a data-v-7dd9989e="" href="tel:0969 958 738" class="text-decoration-none">
-                                0969 958 738
+                            <a data-v-7dd9989e="" href="tel:0964967743" class="text-decoration-none">
+                                0964967743
                             </a></div>
                         <div data-v-7dd9989e="" class="flex-m contact-item contact-email"><i data-v-7dd9989e=""
                                                                                              class="fas fa-envelope circle contact-icon1 flex-cm mr-2"></i>
-                            <a data-v-7dd9989e="" title="giangltt1@gmail.com" href="mailto:giangltt1@gmail.com"
+                            <a data-v-7dd9989e="" title="lethanhnghia0938@gmail.com" href="mailto:lethanhnghia0938@gmail.com"
                                class="text-decoration-none">
-                                giangltt1@gmail.com
+                                lethanhnghia0938@gmail.com
                             </a></div>
                     </div>
                 </div>
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
                 <div data-v-7dd9989e="" class="help-scroll">
                     <div data-v-7dd9989e="" class="item-helper">
                         <div data-v-7dd9989e="" class="title mb-3">Hotline CSKH &amp; Khiếu nại dịch vụ</div>
@@ -253,7 +261,7 @@
                                 <div data-v-7dd9989e=""
                                      class="channel-item-icon d-flex align-items-center justify-content-center mr-2"><i
                                         data-v-7dd9989e="" class="fas fa-comment"></i></div>
-                                <a data-v-7dd9989e="" href="https://www.facebook.com/topcvbiz"
+                                <a data-v-7dd9989e="" href="https://www.facebook.com/profile.php?id=100092272399230"
                                    class="text-muted text-decoration-none">
                                     Chat
                                 </a></div>

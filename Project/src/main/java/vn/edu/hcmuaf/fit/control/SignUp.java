@@ -51,7 +51,7 @@ public class SignUp extends HttpServlet {
                 } else {
                     String message = d.getMessage();
                     request.setAttribute("message", message);
-                    UtilControl.forward(role, "visitor/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
+                    UtilControl.forward(role, "admin/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
                 }
             } else if (role == 0) {
                 if (d.registerAdmin(user_name, password, email, role, date, 0)) {
@@ -59,7 +59,7 @@ public class SignUp extends HttpServlet {
                 } else {
                     String message = d.getMessage();
                     request.setAttribute("message", message);
-                    UtilControl.forward(role, "visitor/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
+                    UtilControl.forward(role, "admin/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
                 }
             } else {
                 if (d.registerBusi(user_name, password, role, name, email, phone, type, 0, companyName, address, description, date)) {
@@ -67,7 +67,7 @@ public class SignUp extends HttpServlet {
                 } else {
                     String message = d.getMessage();
                     request.setAttribute("message", message);
-                    UtilControl.forward(role, "visitor/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
+                    UtilControl.forward(role, "admin/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
                 }
             }
         }

@@ -88,7 +88,7 @@
 
                     <div class="div_right"><a class="in" href='<c:url value="/ResetPassword?action=forgotPassword"/>'>Quên
                         mật khẩu</a></div>
-                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/Project_war/login-google&response_type=code
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://10.201.1.123.com/lab/login-google&response_type=code
     &client_id=409704598015-0rsgi03bpf78q59ddtbnmmhfk21f0ovv.apps.googleusercontent.com&approval_prompt=force">
                         <button type="button" class="btnSociallogingg">Google+</button>
                     </a>

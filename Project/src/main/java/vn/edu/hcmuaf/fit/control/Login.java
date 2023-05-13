@@ -42,13 +42,11 @@ public class Login extends HttpServlet {
                     String accessToken = GoogleUtils.getToken(code);
                     UserGoogle userGoogle = GoogleUtils.getUserInfo(accessToken);
                     d.castAccountGG(userGoogle);
-                    HttpSession session = request.getSession(true);
-                    session.setAttribute("account", d.getAccount());
+                    UtilSession.getInstance().putValue(request, "account", (Account) d.getAccount());
                     response.sendRedirect("visitor/trang-chu-candi.jsp");
                     break;
             }
         } else {
-
             // Luu cookies neu nguoi dung chon 'Remember me'
             if (rememberMe != null && rememberMe.equals("on")) {
                 Cookie usernameCookie = new Cookie("username", username);
@@ -80,9 +78,14 @@ public class Login extends HttpServlet {
             // Chuyen huong đen trang chu (thay doi duong dan phu hop)
             //
             if (checkAccount && d.getAccount().getStatus() == 1) {
-                HttpSession session = request.getSession(true);
-                session.setAttribute("account", (Account) d.getAccount());
-                UtilControl.send(d.getAccount().getRole(), "admin/Admin-trang-chu.jsp", "visitor/trang-chu-candi.jsp", "business/busi-trang-chu.jsp", response);
+                UtilSession.getInstance().putValue(request, "account", (Account) d.getAccount());
+                String url = UtilSession.getInstance().getValue2(request, "url");
+                if (url == null) {
+                    UtilControl.send(d.getAccount().getRole(), "admin/Admin-trang-chu.jsp", "visitor/trang-chu-candi.jsp", "business/busi-trang-chu.jsp", response);
+                } else {
+                    response.sendRedirect(url);
+                    UtilSession.getInstance().removeValue(request, "url");
+                }
             } else {
                 // chuyen huong lai trang dang nhap neu khong xac thuc duoc
                 request.setAttribute("message", message);

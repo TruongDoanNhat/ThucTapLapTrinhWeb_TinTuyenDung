@@ -4,11 +4,12 @@ import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Category;
 import vn.edu.hcmuaf.fit.model.Company;
 import vn.edu.hcmuaf.fit.model.Post;
-import vn.edu.hcmuaf.fit.model.PostAplied;
-import vn.edu.hcmuaf.fit.control.UtilSession;
+import vn.edu.hcmuaf.fit.model.PostApplied;
+
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,15 +22,32 @@ public class DAOPost {
         return new Date();
     }
 
-    public List<Post> getPostIdBusi(int idBusi) {
-        String query = "select * from post where accountId = ? ";
+    public String castDate() {
+        DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return simpleDateFormat.format(getDateNow());
+    }
+
+    public int getTotalPost(int idBusi) {
+        String query = "SELECT COUNT(*) FROM post where accountId = ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
                     .bind(0, idBusi)
+                    .mapTo(Integer.class)
+                    .one();
+        });
+    }
+
+    public List<Post> getPostIdBusi(int idBusi, int trang) {
+        String query = "select * from post where accountId = ?  LIMIT 3 OFFSET ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, idBusi)
+                    .bind(1, (trang - 1) * 3)
                     .mapToBean(Post.class)
                     .stream().collect(Collectors.toList());
         });
     }
+
 
     // lấy danh sách bài viết theo trạng thái
     public List<Post> getPost(int idBusi, int status) {
@@ -53,6 +71,7 @@ public class DAOPost {
                     .stream().collect(Collectors.toList());
         });
     }
+
     public List<Post> getPostSearch(String keywords) {
         String query = "select * from post where title LIKE ?";
         return JDBIConnector.get().withHandle(handle -> {
@@ -62,6 +81,7 @@ public class DAOPost {
                     .stream().collect(Collectors.toList());
         });
     }
+
     // xoa post
     public void deletePost(Integer idPost) {
         String query = "DELETE FROM post WHERE id=?;";
@@ -137,7 +157,7 @@ public class DAOPost {
 
     public String getListPost_applied() {
         String query = "select * from post_applied";
-        List<PostAplied> listApplied = null;
+        List<PostApplied> listApplied = null;
         return getListPost_applied();
     }
 
@@ -225,10 +245,40 @@ public class DAOPost {
         return companies.get(0).getName();
     }
 
+    public List<Post> getPostNew() {
+        String query = "select * from post where status = ? and createDate = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, Post.status_paided)
+                    .bind(1, castDate())
+                    .mapToBean(Post.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
+    public List<PostApplied> getPostApplied(String emailAccount) {
+        String query = "select * from postApplied where email = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, emailAccount)
+                    .mapToBean(PostApplied.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
+    public List<PostApplied> getPostAllApplied() {
+        String query = "select * from postApplied";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapToBean(PostApplied.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
     //ngày hiện tại - ngày tạo
     public long dateToCreate(Date dateCreate) {
         Date date = new Date();
-        DateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
         long getDaysDiff = 0;
         try {
             long getDiff = date.getTime() - dateCreate.getTime();
@@ -255,8 +305,6 @@ public class DAOPost {
 
     public static void main(String[] args) {
         DAOPost p = new DAOPost();
-        System.out.println(p.getPostSearch("Lập", "Tất cả"));
-
     }
 
 }

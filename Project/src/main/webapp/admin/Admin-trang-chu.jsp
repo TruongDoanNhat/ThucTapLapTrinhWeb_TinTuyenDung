@@ -1,3 +1,5 @@
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOBill" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,6 +9,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% DAOPost daoPost = new DAOPost();
+    DAOBill daoBill = new DAOBill();
+%>
 <html>
 <head>
     <head>
@@ -28,11 +33,10 @@
     <div class="container">
         <div class="row">
             <div class="span3">
-
                 <div class="sidebar">
                     <ul class="widget widget-menu unstyled">
                         <li>
-                            <a href="Admin-trang-chu.jsp">
+                            <a href="<%=request.getContextPath()%>/admin/Admin-trang-chu.jsp">
                                 <i class="menu-icon icon-dashboard"></i> Bảng điều khiển
                             </a>
                         </li>
@@ -46,39 +50,39 @@
                                         <i class="icon-inbox"></i> Quản lý bài đăng
                                     </a>
                                 </li>
-                                <li><a href=""><i class="icon-inbox"></i> Quản lý đơn ứng tuyển </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Quản lý người dùng</a></li>
+                                <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-doanh-thu.jsp"><i
+                                        class="icon-inbox"></i> Quản lý doanh thu</a></li>
+                                <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-nguoi-dung.jsp"><i
+                                        class="icon-inbox"></i> Quản lý người dùng</a></li>
                             </ul>
                         </li>
 
                         <li>
-                            <a href="Admin-baocao-thongke.jsp">
+                            <a href="<%=request.getContextPath()%>/admin/Admin-baocao-thongke.jsp">
                                 <i class="menu-icon icon-tasks"></i> Báo cáo - thống kê
                             </a>
                         </li>
-
-
                         <li><a class="collapsed" data-toggle="collapse" href="#togglePages2"><i
                                 class="menu-icon icon-cog">
                         </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                         </i> Cài đặt giao diện </a>
                             <ul id="togglePages2" class="collapse unstyled">
-                                <li><a href=""><i class="icon-inbox"></i> Màu sắc </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Hình ảnh </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Tin tức </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Liên hệ </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Giới thiệu </a></li>
-                                <li><a href=""><i class="icon-inbox"></i> Quảng cáo </a></li>
+                                <%--                                <li><a href=""><i class="icon-inbox"></i> Màu sắc </a></li>--%>
+                                <%--                                <li><a href=""><i class="icon-inbox"></i> Hình ảnh </a></li>--%>
+                                <li><a href="<%=request.getContextPath()%>/admin/Admin-tin-tuc.jsp"><i
+                                        class="icon-inbox"></i> Tin tức </a></li>
+                                <li><a href="<%=request.getContextPath()%>/admin/Admin-chinh-sua-lien-he.jsp"><i
+                                        class="icon-inbox"></i> Liên hệ </a></li>
+                                <%--                                <li><a href=""><i class="icon-inbox"></i> Giới thiệu </a></li>--%>
+                                <%--                                <li><a href=""><i class="icon-inbox"></i> Quảng cáo </a></li>--%>
                             </ul>
                         </li>
                     </ul>
                     <ul class="widget widget-menu unstyled">
-
-                        <li><a href="#"><i class="menu-icon icon-signout"></i> Đăng xuất </a></li>
+                        <li><a href="'<c:url value="/Logout?action=logout"/>'"><i class="menu-icon icon-signout"></i>
+                            Đăng xuất </a></li>
                     </ul>
-
                 </div>
-
                 <!--/.sidebar-->
             </div>
             <!--/.span3-->
@@ -86,12 +90,18 @@
                 <div class="content">
                     <div class="btn-controls">
                         <div class="btn-box-row row-fluid">
-                            <a href="#" class="btn-box big span4"><i class=" menu-icon icon-bullhorn"></i><b>10</b>
+                            <a class="btn-box big span4"><i
+                                    class=" menu-icon icon-bullhorn"></i><b><%=daoPost.getPostNew().size()%>
+                            </b>
                                 <p class="text-muted"> Bài đăng mới</p>
-                            </a><a href="#" class="btn-box big span4"><i class="icon-group"></i><b>76</b>
+                            </a><a class="btn-box big span4"><i
+                                class="icon-group"></i><b><%=daoPost.getPostAllApplied().size()%>
+                        </b>
                             <p class="text-muted">
                                 Đơn ứng tuyển mới </p>
-                        </a><a href="#" class="btn-box big span4"><i class="menu-icon icon-paste"></i><b>100</b>
+                        </a><a class="btn-box big span4"><i
+                                class="menu-icon icon-paste"></i><b><%=daoBill.getSumBillByMonth()%> VND
+                        </b>
                             <p class="text-muted">
                                 Doanh thu </p>
                         </a>

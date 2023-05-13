@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -32,12 +33,9 @@
             </a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
                 <ul class="nav pull-right">
-                    <li><a href="Admin-dang-nhap.jsp">
+                    <li><a href='<c:url value="/Login?action=login"/>'>
                         Đăng nhập
                     </a></li>
-<%--                    <li><a href="../quen-mat-khau-Admin.jsp">--%>
-<%--                        Quên mật khẩu?--%>
-<%--                    </a></li>--%>
                 </ul>
             </div><!-- /.nav-collapse -->
         </div>
@@ -55,7 +53,7 @@
         %>
         <div class="row">
             <div class="module module-login span4 offset4">
-                <form action="SignUp" method="post" class="form-vertical">
+                <form action="<%=request.getContextPath()%>/SignUp" method="post" class="form-vertical">
                     <div class="module-head">
                         <h3>Đăng ký</h3>
                     </div>
