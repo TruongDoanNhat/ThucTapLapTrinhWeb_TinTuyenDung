@@ -1,4 +1,4 @@
-<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -8,7 +8,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% DAOPost dp = new DAOPost(); %>
+<% Post post2 = (Post) request.getAttribute("post2");
+%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -20,12 +21,12 @@
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrapost.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../assets/css/slicknav.css">
     <link rel="stylesheet" href="../assets/css/price_rangs.css">
     <link rel="stylesheet" href="../assets/css/animate.min.css">
-    <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="../assets/css/magnific-popupost.css">
     <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="../assets/css/themify-icons.css">
     <link rel="stylesheet" href="../assets/css/slick.css">
@@ -48,17 +49,20 @@
 <!-- Preloader Start -->
 <jsp:include page="header-candi.jsp"></jsp:include>
 <main>
-    <%--    <c:forEach var="p" items="${listPOC}">--%>
+
+    <%--    <c:forEach items="post2" var="post2">--%>
+
     <!-- Breadcrumb Start-->
 
     <div class="ctn-breadcrumb-detail">
         <a href="/Home" class="text-highlight bold">Trang chủ</a> <i class="fa-solid fa-angle-right"></i>
         <a href="/Post" class="text-highlight bold">Việc làm</a> <i class="fa-solid fa-angle-right"></i>
-        <span class="text-dark-blue">${postDetails.getTitle()}</span>
+        <span class="text-dark-blue"><%=post2.getTitle()%></span>
     </div>
     <!-- Breadcrumb End -->
     <!-- job post company Start -->
     <div class="job-post-company pt-120 pb-120">
+
         <div class="container">
             <div class="row justify-content-between">
                 <!-- Left Content -->
@@ -70,12 +74,11 @@
                                 <a href="#"><img src="../assets/img/icon/job-list1.png" alt=""></a>
                             </div>
                             <div class="job-tittle">
-                                <h4>${postDetails.getTitle()}</h4>
+                                <h4><%=post2.getTitle()%></h4>
                                 </a>
                                 <ul>
-<%--                                    <li> ${dp.getCompanyByUsername(postDetails.getUser_name()).getName()}</li>--%>
-                                    <li><i class="fas fa-map-marker-alt"></i>Q9, HCM</li>
-                                    <li>${postDetails.getSalary()} VNĐ</li>
+                                    <li><i class="fas fa-map-marker-alt"></i><%=post2.getAddress()%></li>
+                                    <li><%=post2.getSalary()%> VNĐ</li>
                                 </ul>
                             </div>
                         </div>
@@ -97,20 +100,11 @@
                             </div>
                             <!-- tab end -->
                             <br>
-
-
                             <!-- Small Section Tittle -->
                             <div id="t" class="small-section-tittle">
                                 <h4>Mô tả công việc</h4>
                             </div>
-
-                            <p>– Làm việc theo sự phân công của trưởng nhóm / quản lý dự án, phối hợp giữa các nhóm
-                                để
-                                phát triển sản.</p>
-                            <p>– Tham gia các công đoạn tìm hiểu yêu cầu, phân tích, thiết kế, nghiên cứu công nghệ
-                                khi
-                                được phân công.</p>
-                            <p>– Nghiên cứu công nghệ và phát triển sản phẩm.</p>
+                            <%=post2.getDescription()%>
                         </div>
                         <div class="post-details2  mb-50">
                             <!-- Small Section Tittle -->
@@ -118,17 +112,7 @@
                                 <h4>Yêu cầu ứng viên</h4>
                             </div>
                             <ul>
-                                <li> Lập trình các loại ngôn ngữ ( C#,Python, Nodejs, ReactJs......), CSDL MSSQL
-                                    Server
-                                    (2008, 2012).
-                                </li>
-                                <li>Kinh nghiệm tối thiểu 1 năm trở lên.</li>
-                                <li>Ưu tiên người có kinh nghiệm làm việc trên hãng phầm mềm thứ ba: Mycrosoft
-                                    Visual
-                                    Studio.
-                                </li>
-                                <li>Có khả năng phân tích và thiết kế database.</li>
-                                <li>Có các kỹ năng giao tiếp, sáng tạo và quan tâm đến trải nghiệm người dùng.</li>
+                                <%=post2.getRequest()%>
                             </ul>
                         </div>
                         <div id="v" class="post-details2  mb-50">
@@ -137,13 +121,7 @@
                                 <h4>Quyền lợi</h4>
                             </div>
                             <ul>
-                                <li>Lương: Lương cứng + thưởng dự án.</li>
-                                <li>Làm việc trong môi trường năng động, chuyên nghiệp có nhiều cơ hội thăng tiến.
-                                </li>
-                                <li>Cung cấp trang thiết bị đầy đủ để phục vụ công việc.</li>
-                                <li>Được đóng BHXH, BHYT, BHTN.</li>
-                                <li>Được hưởng các chính sách phúc lợi theo quy định của công ty.</li>
-                                <li>Được đào tạo, nâng cao nghiệp vụ thường xuyên.</li>
+                                <%=post2.getRights()%>
                             </ul>
                         </div>
                     </div>
@@ -157,12 +135,11 @@
                             <h4>Tổng quan về công việc</h4>
                         </div>
                         <ul>
-                            <li>Chức vụ : <span>${postDetails.getPosition()}</span></li>
-                            <li>Hình thức làm việc : <span>${postDetails.getType_job()}</span></li>
-                            <li>Địa điểm : <span>Hồ Chí Minh</span></li>
-                            <li>Mức lương : <span>${postDetails.getSalary()} VNĐ</span></li>
-                            <li>Hạn nộp hồ sơ : <span> 03/11/2020 </span></li>
-<%--                            ${postDetails.getDeadline().toString()}--%>
+                            <li>Chức vụ : <span><%=post2.getRank()%></span></li>
+                            <li>Hình thức làm việc : <span><%=post2.getType()%></span></li>
+                            <li>Địa điểm : <span><%=post2.getAddress()%></span></li>
+                            <li>Mức lương : <span><%=post2.getSalary()%>  VNĐ</span></li>
+                            <li>Hạn nộp hồ sơ : <span> <%=post2.getEndDate()%> </span></li>
                         </ul>
                         <div class="apply-btn2">
                             <a href="../candidate/candi-viec-lam-da-ung-tuyen.jsp" class="btn">Nộp đơn</a>
@@ -192,7 +169,6 @@
         </div>
     </div>
     <!-- job post company End -->
-    <%--    </c:forEach>--%>
 </main>
 <jsp:include page="footter-candi.jsp"></jsp:include>
 </body>
@@ -203,7 +179,7 @@
 <!-- Jquery, Popper, Bootstrap -->
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="../assets/js/popper.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/bootstrapost.min.js"></script>
 <!-- Jquery Mobile Menu -->
 <script src="../assets/js/jquery.slicknav.min.js"></script>
 
@@ -214,10 +190,10 @@
 <!-- One Page, Animated-HeadLin -->
 <script src="../assets/js/wow.min.js"></script>
 <script src="../assets/js/animated.headline.js"></script>
-<script src="../assets/js/jquery.magnific-popup.js"></script>
+<script src="../assets/js/jquery.magnific-popupost.js"></script>
 
 <!-- Scrollup, nice-select, sticky -->
-<script src="../assets/js/jquery.scrollUp.min.js"></script>
+<script src="../assets/js/jquery.scrollUpost.min.js"></script>
 <script src="../assets/js/jquery.nice-select.min.js"></script>
 <script src="../assets/js/jquery.sticky.js"></script>
 
@@ -226,7 +202,7 @@
 <script src="../assets/js/jquery.form.js"></script>
 <script src="../assets/js/jquery.validate.min.js"></script>
 <script src="../assets/js/mail-script.js"></script>
-<script src="../assets/js/jquery.ajaxchimp.min.js"></script>
+<script src="../assets/js/jquery.ajaxchimpost.min.js"></script>
 
 <!-- Jquery Plugins, main Jquery -->
 <script src="../assets/js/plugins.js"></script>
