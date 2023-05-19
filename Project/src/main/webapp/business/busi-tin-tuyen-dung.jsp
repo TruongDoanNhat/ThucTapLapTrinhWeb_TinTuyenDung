@@ -1,3 +1,4 @@
+<%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,12 +8,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="business/assets/img/logo/logo.png">
-    <link rel="icon" type="image/png" href="../assets/img/logo/logo.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<%=request.getContextPath()%>/business/assets/img/logo/logo.png">
+    <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/assets/img/logo/logo.png">
 
     <title>
         Tin tuyển dụng
@@ -20,20 +22,14 @@
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="../business/assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="../business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/business/assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link id="pagestyle" href="../business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
-
+    <link id="pagestyle" href="<%=request.getContextPath()%>/business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
 </head>
-<style>
-<%--    <%@include file="../business/assets/css/nucleo-icons.css"%>--%>
-<%--    <%@include file="../business/assets/css/nucleo-svg.css"%>--%>
-<%--    <%@include file="../business/assets/css/soft-ui-dashboard.css"%>--%>
-</style>
+
 <body class="g-sidenav-show  bg-gray-100">
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
        id="sidenav-main">

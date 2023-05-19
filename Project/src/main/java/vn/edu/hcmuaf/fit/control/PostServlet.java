@@ -79,8 +79,7 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("post", post);
                 request.setAttribute("sosp", sosp);
                 request.setAttribute("trang", t);
-//                UtilControl.forward("business/busi-tin-tuyen-dung.jsp",request,response);
-                UtilControl.phanQuyenServletBusi2(account, "business/busi-tin-tuyen-dung.jsp", "/Login?action=login", request, response);
+                UtilControl.phanQuyenServletBusi1(account, "business/busi-tin-tuyen-dung.jsp", "/Login?action=login", request, response);
                 break;
             case "xemthongtinvieclam":
                 String id2 = request.getParameter("id");
