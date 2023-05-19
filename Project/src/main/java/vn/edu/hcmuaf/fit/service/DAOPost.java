@@ -27,7 +27,7 @@ public class DAOPost {
         return simpleDateFormat.format(getDateNow());
     }
 
-    public int getTotalPost(int idBusi) {
+    public int getTotalPostBusi(int idBusi) {
         String query = "SELECT COUNT(*) FROM post where accountId = ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
@@ -48,6 +48,15 @@ public class DAOPost {
         });
     }
 
+    public Post getPostDetail(int idPost) {
+        String query = "select * from post where id = ? ";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, idPost)
+                    .mapToBean(Post.class)
+                    .stream().findFirst().get();
+        });
+    }
 
     // lấy danh sách bài viết theo trạng thái
     public List<Post> getPost(int idBusi, int status) {
@@ -155,11 +164,6 @@ public class DAOPost {
         return true;
     }
 
-    public String getListPost_applied() {
-        String query = "select * from post_applied";
-        List<PostApplied> listApplied = null;
-        return getListPost_applied();
-    }
 
     public Object getPostDetails(String postID) {
         String query = "select * from post where postID = ?";

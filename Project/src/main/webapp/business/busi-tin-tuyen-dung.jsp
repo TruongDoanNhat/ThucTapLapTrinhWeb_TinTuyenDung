@@ -20,15 +20,20 @@
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="../business/assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="../business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
+    <link id="pagestyle" href="../business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
 
 </head>
+<style>
+<%--    <%@include file="../business/assets/css/nucleo-icons.css"%>--%>
+<%--    <%@include file="../business/assets/css/nucleo-svg.css"%>--%>
+<%--    <%@include file="../business/assets/css/soft-ui-dashboard.css"%>--%>
+</style>
 <body class="g-sidenav-show  bg-gray-100">
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
        id="sidenav-main">
@@ -196,7 +201,7 @@
                             <c:forEach items="${post}" var="p">
                                 <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                     <div class="d-flex flex-column">
-                                        <a href="chi-tiet-tin-tuyen-dung-busi.jsp">
+                                        <a class="nav-link" href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=${p.id}">
                                             <h6 class="mb-3 text-sm">${p.title}</h6>
                                         </a>
                                         <span class="mb-2 text-xs">Vị trí: <span
@@ -210,9 +215,7 @@
                                     </div>
                                     <div class="ms-auto text-end">
                                         <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                class="fas fa-pencil-alt1 text-dark me-2" aria-hidden="true"></i>Ngừng
-                                            tuyển
-                                            dụng</a>
+                                                class="fas fa-pencil-alt1 text-dark me-2" aria-hidden="true"></i>Trạng Thái</a>
                                     </div>
                                 </li>
                             </c:forEach>
@@ -247,7 +250,7 @@
                                     <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
                                         <i class="fas fa-arrow-down"></i></button>
                                     <div class="d-flex flex-column">
-                                        <a href="chi-tiet-tin-tuyen-dung-busi.jsp">
+                                        <a href="<%=request.getContextPath()%>/visitor/thong-tin-viec-lam-candi.jsp">
                                             <h6 class="mb-1 text-dark text-sm">Phát triển phần mềm</h6>
                                         </a>
                                         <span class="text-xs">03/01/2023, at 12:30 AM</span>
@@ -278,7 +281,7 @@
                                     <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
                                         <i class="fas fa-arrow-up"></i></button>
                                     <div class="d-flex flex-column">
-                                        <a href="chi-tiet-tin-tuyen-dung-busi.jsp">
+                                        <a href="<%=request.getContextPath()%>/visitor/thong-tin-viec-lam-candi.jsp">
                                             <h6 class="mb-1 text-dark text-sm">AI</h6>
                                         </a>
                                         <span class="text-xs">01/01/2023, at 11:30 AM</span>

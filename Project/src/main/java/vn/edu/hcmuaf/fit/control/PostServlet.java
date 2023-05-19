@@ -70,7 +70,7 @@ public class PostServlet extends HttpServlet {
                     trang = "1";
                 }
                 int t = Integer.parseInt(trang);
-                int dem = p.getTotalPost(account.getId());
+                int dem = p.getTotalPostBusi(account.getId());
                 int sosp = dem/3;
                 if(dem%3 !=0) {
                     sosp++;
@@ -79,7 +79,17 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("post", post);
                 request.setAttribute("sosp", sosp);
                 request.setAttribute("trang", t);
-                UtilControl.forward("business/busi-tin-tuyen-dung.jsp",request,response);
+//                UtilControl.forward("business/busi-tin-tuyen-dung.jsp",request,response);
+                UtilControl.phanQuyenServletBusi2(account, "business/busi-tin-tuyen-dung.jsp", "/Login?action=login", request, response);
+                break;
+            case "xemthongtinvieclam":
+                String id2 = request.getParameter("id");
+                int idPost = Integer.parseInt(id2);
+                Post post2 = p.getPostDetail(idPost);
+                request.setAttribute("post2", post2);
+                UtilControl.forward("visitor/thong-tin-viec-lam-candi.jsp", request, response);
+//                response.sendRedirect("visitor/trang-chu-candi.jsp");
+
                 break;
             case "search":
                 postAll = status.equals("0") ? p.getPostSearch(keywords) : p.getPostSearch(keywords, status);
