@@ -113,6 +113,11 @@ public class PostServlet extends HttpServlet {
                 p.deletePost(Integer.valueOf(idManager));
                 UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
+            case "quanlybaidang":
+                postAll = p.getPostAll();
+                request.setAttribute("postAll", postAll);
+                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
+                break;
         }
 
 //        if (action != null) {

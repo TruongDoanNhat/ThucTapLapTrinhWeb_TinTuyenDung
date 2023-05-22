@@ -1,10 +1,19 @@
 package vn.edu.hcmuaf.fit.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.sql.Date;
 
 public class Account implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    public static final int ADMIN = 0;
+    public static final int CANDIDATE = 1;
+    public static final int BUSINESS = 2;
+    public static final int ACTIVATED = 1;
+    public static final int LOCK = 2;
     private int id;
     private int companyId;
     private String email;
@@ -14,8 +23,8 @@ public class Account implements Serializable {
     private int type;
     private int role;
     private int status;
-    private Date create_date;
-    private Date update_date;
+    private Date createDate;
+    private Date updateDate;
 
     public Account() {
 
@@ -38,8 +47,8 @@ public class Account implements Serializable {
         this.type = type;
         this.role = role;
         this.status = status;
-        this.create_date = create_date;
-        this.update_date = update_date;
+        this.createDate = create_date;
+        this.updateDate = update_date;
     }
 
     public int getId() {
@@ -114,24 +123,48 @@ public class Account implements Serializable {
         this.status = status;
     }
 
-    public Date getCreate_date() {
-        return create_date;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreate_date(Date create_date) {
-        this.create_date = create_date;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
-    public Date getUpdate_date() {
-        return update_date;
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
-    public void setUpdate_date(Date update_date) {
-        this.update_date = update_date;
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
 
     @Override
     public String toString() {
-        return "Account{" + "id=" + id + ", companyId='" + companyId + '\'' + ", email='" + email + '\'' + ", username='" + username + '\'' + ", password='" + password + '\'' + ", name='" + name + '\'' + ", type=" + type + ", role=" + role + ", status=" + status + ", create_date=" + create_date + ", update_date=" + update_date + '}';
+        return "Account{" + "id=" + id + ", companyId='" + companyId + '\'' + ", email='" + email + '\'' + ", username='" + username + '\'' + ", password='" + password + '\'' + ", name='" + name + '\'' + ", type=" + type + ", role=" + role + ", status=" + status + ", create_date=" + createDate + ", update_date=" + updateDate + '}';
+    }
+
+    public String getNameRole(int role) {
+        if (role == ADMIN) {
+            return "ADMIN";
+        }
+        if (role == CANDIDATE) {
+            return "CANDIDATE";
+        }
+        return "BUSINESS";
+    }
+
+    public String getNameStatus(int status) {
+        if (status == ACTIVATED) {
+            return "ACTIVATED";
+        }
+        if (status == LOCK) {
+            return "LOCK";
+        }
+        return "NOT ACTIVATED";
+    }
+
+    public static void main(String[] args) {
+
     }
 }

@@ -14,4 +14,11 @@ public class DAOCompany {
                 .mapToBean(Company.class).list());
         return companyList;
     }
+
+    public Company getCompany(int idCompany) {
+        String query = "select * from company where id = (select companyId from account WHERE companyId = ?);";
+        return JDBIConnector.get().withHandle(handle -> handle.createQuery(query)
+                .bind(0, idCompany)
+                .mapToBean(Company.class).stream().findFirst().get());
+    }
 }

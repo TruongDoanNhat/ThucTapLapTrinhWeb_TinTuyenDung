@@ -22,7 +22,8 @@
                 <ul class="nav pull-right">
                     <ul class="nav nav-icons">
                         <!--                    <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>-->
-                        <li><a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp"><i class="icon-eye-open"></i></a></li>
+                        <li><a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp"><i
+                                class="icon-eye-open"></i></a></li>
                         <li><a href=""><i class="icon-bell "></i></a>
                             <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4">
                                 <li class="mb-2 font-weight-bold" style="text-align: center"><a
@@ -55,7 +56,8 @@
                             <li><a href="#">Cài đặt tài khoản</a></li>
 
                             <li class="divider"></li>
-                            <li><a href='<c:url value="/Logout?action=logout"/>'>Đăng xuất</a></li>
+                            <li><a href='<c:url value="/Logout?action=logout"></c:url>'> Đăng xuất</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

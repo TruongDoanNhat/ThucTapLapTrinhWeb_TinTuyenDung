@@ -1,4 +1,7 @@
-<%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOAccount" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Account" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCompany" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 06/01/2023
@@ -6,6 +9,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% DAOAccount daoAccount = new DAOAccount();
+    DAOCompany daoCompany = new DAOCompany();
+%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -106,149 +112,66 @@
                                 <tr>
                                     <th>STT</th>
                                     <th>Tên người dùng</th>
-                                    <th>Đối tượng</th>
-                                    <th>Số điện thoại</th>
                                     <th>Email</th>
-                                    <th>Chức năng</th>
+                                    <th>Đối tượng</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ngày tạo</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <% for (Account account : daoAccount.getAllAccount()) {
+                                    int role = account.getRole();
+                                %>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Lê Hữu Phước</td>
-                                    <td>Doanh nghiệp</td>
-                                    <td>0384748409</td>
-                                    <td>lhphuoc602@gmail.com</td>
+                                    <td><%=account.getId()%>
+                                    </td>
+                                    <td><%=account.getName()%>
+                                    </td>
+                                    <td><%=account.getEmail()%>
+                                    </td>
+                                    <%
+                                        if (role == 2) {%>
+                                    <td>
+                                        <a style="font-weight: bold" href="<%=request.getContextPath()%>/CompanyManager?action=detailsCompany&id=<%=account.getCompanyId()%>"><%=account.getNameRole(role)%>
+                                        </a>
+                                        <br>
+                                        <span>Công ty: <%=daoCompany.getCompany(account.getCompanyId()).getName()%></span>
+                                    </td>
+                                    <% } else {%>
+                                    <td><%=account.getNameRole(role)%>
+                                    </td>
+                                    <% } %>
+                                    <td><%=account.getNameStatus(account.getStatus())%>
+                                    </td>
+                                    <td>
+                                        <%=account.getCreateDate()%>
+                                    </td>
                                     <td>
                                         <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
+                                            <% if(account.getStatus() == Account.LOCK){%>
+                                            <a href="<%=request.getContextPath()%>/AccountManager?action=unlock&id=<%=account.getId()%>"
+                                            class="btn btn-sm btn-outline-light"
+                                            style="padding-left: 20px;outline: none; background: red">
+                                            <i class="icon-lock"></i>
+                                            </a>
+                                            <%} else{%>
+                                            <a href="<%=request.getContextPath()%>/AccountManager?action=lock&id=<%=account.getId()%>"
+                                               class="btn btn-sm btn-outline-light"
+                                               style="padding-left: 20px;outline: none">
+                                                <i class="icon-lock"></i>
+                                            </a>
+                                            <%}%>
+<%--                                            <button class="btn btn-sm btn-outline-light" style="outline: none">--%>
+<%--                                                <i class="icon-pencil"></i>--%>
+<%--                                            </button>--%>
+<%--                                            <button class="btn btn-sm btn-outline-light" style="outline: none">--%>
+<%--                                                <i class="icon-trash"></i>--%>
+<%--                                            </button>--%>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Trương Đoàn Nhất</td>
-                                    <td>Doanh nghiệp</td>
-                                    <td>0346966814</td>
-                                    <td>tdnhat2011@gmail.com</td>
-                                    <td>
-                                        <div class="btn-group ml-auto" >
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nguyễn Đình Nguyên</td>
-                                    <td>Người ứng tuyển</td>
-                                    <td>0937087259</td>
-                                    <td>ndn1123@gmail.com</td>
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Hồ Yến Nhi</td>
-                                    <td>Người ứng tuyển</td>
-                                    <td>0249995354</td>
-                                    <td>yennhi241@gmail.com</td>
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Lê Thị Hoa Hồng</td>
-                                    <td>Doanh nghiệp</td>
-                                    <td>0981845655</td>
-                                    <td>lthoahong111@gmail.com</td>
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Hoàng Văn Thụ</td>
-                                    <td>Người ứng tuyển</td>
-                                    <td>0254888737</td>
-                                    <td>hvthu0606@gmail.com</td>
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td>Nguyễn Thị Kim Cúc</td>
-                                    <td>Daonh nghiệp</td>
-                                    <td>0562608743</td>
-                                    <td>ntkcuc@gmail.com</td>
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td>Lê Thị Bưởi</td>
-                                    <td>Người ứng tuyển</td>
-                                    <td>0988070515</td>
-                                    <td>ltbuoi0612@gmail.com</td>
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <% } %>
                                 </tbody>
                             </table>
                         </div>

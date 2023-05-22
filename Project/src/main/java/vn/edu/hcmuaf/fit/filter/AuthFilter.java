@@ -40,7 +40,7 @@ public class AuthFilter implements Filter {
         if (index != -1) {
             url = u.substring(u.indexOf("/", 1));
         }
-        if (!url.startsWith("/Login")&& url.startsWith("/candidate") && url.startsWith("/business") && url.startsWith("/Admin") && account == null && urlSession == null) {
+        if (!url.startsWith("/Login") && (url.startsWith("/candidate") || url.startsWith("/business") || url.startsWith("/admin")) && account == null && urlSession == null) {
             UtilSession.getInstance().putValue(request, "url", u);
         }
         int role = 0;
