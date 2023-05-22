@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.model.Company;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.model.Price;
 import vn.edu.hcmuaf.fit.service.DAOBill;
@@ -86,9 +87,11 @@ public class PostServlet extends HttpServlet {
                 int idPost = Integer.parseInt(id2);
                 Post post2 = p.getPostDetail(idPost);
                 request.setAttribute("post2", post2);
-                UtilControl.forward("visitor/thong-tin-viec-lam-candi.jsp", request, response);
-//                response.sendRedirect("visitor/trang-chu-candi.jsp");
-
+                Company company = p.getCompanyFromPost(idPost);
+                request.setAttribute("company", company);
+                Account account1 = p.getAccountFromPost(idPost);
+                request.setAttribute("account1", account1);
+                UtilControl.phanQuyenServletBusi1(account, "visitor/thong-tin-viec-lam-candi.jsp", "/Login?action=login", request, response);
                 break;
             case "search":
                 postAll = status.equals("0") ? p.getPostSearch(keywords) : p.getPostSearch(keywords, status);

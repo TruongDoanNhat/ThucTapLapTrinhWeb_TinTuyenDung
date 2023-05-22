@@ -6,6 +6,7 @@ public class Company implements Serializable {
     private static final long serialVersionUID = 1L;
     private String companyID;
     private String name;
+    private String phone;
     private String description;
     private String addressID;
     private String img;
@@ -14,9 +15,10 @@ public class Company implements Serializable {
 
     }
 
-    public Company(String companyID, String name, String addressID, String description, String img) {
+    public Company(String companyID, String name,String phone, String addressID, String description, String img) {
         this.companyID = companyID;
         this.name = name;
+        this.phone = phone;
         this.addressID = addressID;
         this.description = description;
         this.img = img;
@@ -36,6 +38,14 @@ public class Company implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getDescription() {
@@ -67,9 +77,10 @@ public class Company implements Serializable {
         return "Company{" +
                 "companyID='" + companyID + '\'' +
                 ", name='" + name + '\'' +
-                ", img='" + img + '\'' +
-                ", location='" + addressID + '\'' +
+                ", phone='" + phone + '\'' +
                 ", description='" + description + '\'' +
+                ", addressID='" + addressID + '\'' +
+                ", img='" + img + '\'' +
                 '}';
     }
 }
