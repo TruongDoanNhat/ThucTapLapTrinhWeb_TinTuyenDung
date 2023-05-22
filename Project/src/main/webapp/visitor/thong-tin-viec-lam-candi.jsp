@@ -8,8 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Post post2 = (Post) request.getAttribute("post2");
-%>
+<% Post post2 = (Post) request.getAttribute("post2");%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -18,21 +17,21 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="assets/css/bootstrapost.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../assets/css/slicknav.css">
-    <link rel="stylesheet" href="../assets/css/price_rangs.css">
-    <link rel="stylesheet" href="../assets/css/animate.min.css">
-    <link rel="stylesheet" href="../assets/css/magnific-popupost.css">
-    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="../assets/css/themify-icons.css">
-    <link rel="stylesheet" href="../assets/css/slick.css">
-    <link rel="stylesheet" href="../assets/css/nice-select.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrapost.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/slicknav.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/price_rangs.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/animate.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/magnific-popupost.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/slick.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/nice-select.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/style.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/responsive.css">
 </head>
 <body>
 <!-- Preloader Start -->
@@ -41,7 +40,7 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="../assets/img/logo/logo.png" alt="">
+                <img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt="">
             </div>
         </div>
     </div>
@@ -71,7 +70,7 @@
                     <div class="single-job-items mb-50">
                         <div class="job-items">
                             <div class="company-img company-img-details">
-                                <a href="#"><img src="../assets/img/icon/job-list1.png" alt=""></a>
+                                <a href="#"><img src="<%=request.getContextPath()%>/assets/img/icon/job-list1.png" alt=""></a>
                             </div>
                             <div class="job-tittle">
                                 <h4><%=post2.getTitle()%></h4>
@@ -142,7 +141,7 @@
                             <li>Hạn nộp hồ sơ : <span> <%=post2.getEndDate()%> </span></li>
                         </ul>
                         <div class="apply-btn2">
-                            <a href="../candidate/candi-viec-lam-da-ung-tuyen.jsp" class="btn">Nộp đơn</a>
+                            <a href="<%=request.getContextPath()%>/candidate/candi-viec-lam-da-ung-tuyen.jsp" class="btn">Nộp đơn</a>
                         </div>
                     </div>
                     <div class="post-details4  mb-50">
@@ -175,36 +174,36 @@
 <!-- JS here -->
 
 <!-- All JS Custom Plugins Link Here here -->
-<script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <!-- Jquery, Popper, Bootstrap -->
-<script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="../assets/js/popper.min.js"></script>
-<script src="../assets/js/bootstrapost.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/popper.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrapost.min.js"></script>
 <!-- Jquery Mobile Menu -->
-<script src="../assets/js/jquery.slicknav.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.slicknav.min.js"></script>
 
 <!-- Jquery Slick , Owl-Carousel Range -->
-<script src="../assets/js/owl.carousel.min.js"></script>
-<script src="../assets/js/slick.min.js"></script>
-<script src="../assets/js/price_rangs.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/owl.carousel.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/slick.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/price_rangs.js"></script>
 <!-- One Page, Animated-HeadLin -->
-<script src="../assets/js/wow.min.js"></script>
-<script src="../assets/js/animated.headline.js"></script>
-<script src="../assets/js/jquery.magnific-popupost.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/wow.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/animated.headline.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.magnific-popupost.js"></script>
 
 <!-- Scrollup, nice-select, sticky -->
-<script src="../assets/js/jquery.scrollUpost.min.js"></script>
-<script src="../assets/js/jquery.nice-select.min.js"></script>
-<script src="../assets/js/jquery.sticky.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.scrollUpost.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.nice-select.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.sticky.js"></script>
 
 <!-- contact js -->
-<script src="../assets/js/contact.js"></script>
-<script src="../assets/js/jquery.form.js"></script>
-<script src="../assets/js/jquery.validate.min.js"></script>
-<script src="../assets/js/mail-script.js"></script>
-<script src="../assets/js/jquery.ajaxchimpost.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/contact.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.form.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/mail-script.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.ajaxchimpost.min.js"></script>
 
 <!-- Jquery Plugins, main Jquery -->
-<script src="../assets/js/plugins.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/plugins.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/main.js"></script>
 </html>
