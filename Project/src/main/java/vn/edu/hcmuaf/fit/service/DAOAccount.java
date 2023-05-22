@@ -3,10 +3,13 @@ package vn.edu.hcmuaf.fit.service;
 import vn.edu.hcmuaf.fit.bean.UserGoogle;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.model.Post;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DAOAccount {
     private String message = "error!";
@@ -177,13 +180,13 @@ public class DAOAccount {
 
     public void updateAccountCandi(String username, String name) {
         String query = "update account set name = ? updateDate = ? where username=?";
-        Date updateDate = new Date();
+        Date updateDate = Date.valueOf(LocalDate.now());;
         try {
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(query)
                             .bind(0, name)
-                            .bind(1, username)
-                            .bind(2, updateDate)
+                            .bind(1, updateDate)
+                            .bind(2, username)
                             .execute()
             );
         } catch (Exception e) {
@@ -203,11 +206,6 @@ public class DAOAccount {
         message = "Tài khoản đã tồn tại";
         return false;
     }
-
-    public void test() {
-        System.out.println("hee");
-    }
-
 
     public boolean xacThucEmail(String username, String email) {
         if (checkUsernameExists(username)) {
@@ -229,15 +227,15 @@ public class DAOAccount {
         this.account = new Account(emailGG, arrOfStr[0], 1, 1);
     }
 
+    public List<Account> getAllAccount() {
+        String query = "select * from account";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapToBean(Account.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
     public static void main(String[] args) {
-        DAOAccount dao = new DAOAccount();
-//        List<Account> l = dao.getListAccount();
-//        System.out.println((dao.registerBusi("Bui", "123", 2, "name", "20130340@st.hcmuaf.edu.vn", "1111444777", 0, 0, "companyName", "address", "description", new Date())));
-
-//        dao.registerCandi_Admin("abc", "111", "abc@gmail.com", 2);
-//        System.out.println(dao.checkAccount("candi", "s2t085INWPYloRMPvg5QKEtGClI="));
-//        System.out.println(dao.account);
-//        dao.registerBusi("abc2", "1112", null,"abc@gmail.com", null,0,null,1);
-
     }
 }
