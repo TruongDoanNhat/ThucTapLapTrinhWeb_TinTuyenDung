@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "Account", value = {"/AccountManager", "/Account"})
 public class AccountServlet extends HttpServlet {
@@ -19,14 +20,11 @@ public class AccountServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         String username = request.getParameter("username");
+        String role = request.getParameter("role");
+        String keywords = request.getParameter("keywords");
         Account account = UtilSession.getInstance().getValue(request, "account");
+        List<Account> listAccount;
         DAOAccount d = new DAOAccount();
-        switch (action) {
-            case "accountManager":
-                request.setAttribute("listAccount", d.getAllAccount());
-
-                break;
-        }
         if (action == null) {
             String name = request.getParameter("name");
             if (account != null) {
@@ -38,17 +36,27 @@ public class AccountServlet extends HttpServlet {
             }
         }
         switch (action) {
+            case "accountManager":
+                listAccount = d.getAllAccount();
+                request.setAttribute("listAccount", listAccount);
+                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
+                break;
             case "lock":
                 if (!(DAOAccount.getAccountQuery(username).getType() == 2)) {
                     d.updateStatusAccount(username, Account.LOCK);
-                    UtilControl.phanQuyenServletAdmin2(account, "admin/Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
-                }else{
+                    UtilControl.phanQuyenServletAdmin2(account, "AccountManager?action=accountManager", "/Login?action=login", request, response);
+                } else {
                     response.sendRedirect("visitor/error.jsp");
                 }
                 break;
             case "unlock":
                 d.updateStatusAccount(username, Account.ACTIVATED);
-                UtilControl.phanQuyenServletAdmin2(account, "admin/Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
+                UtilControl.phanQuyenServletAdmin2(account, "AccountManager?action=accountManager", "/Login?action=login", request, response);
+                break;
+            case "search":
+                listAccount = role.equals("3") ? d.getAccountSearch(keywords) : d.getAccountSearch(keywords, role);
+                request.setAttribute("listAccount", listAccount);
+                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
                 break;
         }
 
