@@ -12,7 +12,7 @@ public class UtilControl {
 
     public static void phanQuyenServletAdmin1(Account account, String linkIn, String linkOut, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (account != null) {
-            if (account.getRole() == 0) {
+            if (account.getRole() == 0 && account.getStatus() == 1) {
                 UtilControl.forward(linkIn, request, response);
             } else {
                 response.sendRedirect(request.getContextPath() + linkOut);
@@ -24,9 +24,10 @@ public class UtilControl {
 
     public static void phanQuyenServletAdmin2(Account account, String linkIn, String linkOut, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (account != null) {
-            if (account.getRole() == 0) {
+            if (account.getRole() == 0 && account.getStatus() == 1) {
                 response.sendRedirect(linkIn);
             } else {
+
                 response.sendRedirect(request.getContextPath() + linkOut);
             }
         } else {
