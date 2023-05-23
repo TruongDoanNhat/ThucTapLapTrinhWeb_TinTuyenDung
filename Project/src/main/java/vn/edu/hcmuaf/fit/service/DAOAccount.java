@@ -268,4 +268,26 @@ public class DAOAccount {
             e.printStackTrace();
         }
     }
+
+    public List<Account> getAccountSearch(String keywords) {
+        String query = "select * from account where name LIKE ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, "%" + keywords + "%")
+                    .mapToBean(Account.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
+    public List<Account> getAccountSearch(String keywords, String role) {
+        String query = "select * from account where name LIKE ? and role = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, "%" + keywords + "%")
+                    .bind(1, role)
+                    .mapToBean(Account.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
 }

@@ -89,7 +89,7 @@
                         <button class="btn" type="submit">
                             <i class="icon-search"></i>
                         </button>
-                        <a href="admin/dang-ky-Admin.jsp" class="holder"
+                        <a href="#" class="holder"
                            style="right: -165px; top:5px; position: absolute; outline: none">
                             <i class="icon-plus"></i>
                         </a>

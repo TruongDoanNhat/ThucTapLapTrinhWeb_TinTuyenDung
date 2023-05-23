@@ -109,7 +109,7 @@
                                 <option value="3">Khóa</option>
                                 <option value="4">Hết hạn</option>
                             </select>
-                            <span class="info">Đăng tin</span>
+<%--                            <span class="info">Đăng tin</span>--%>
                         </form>
 
                     </div>
