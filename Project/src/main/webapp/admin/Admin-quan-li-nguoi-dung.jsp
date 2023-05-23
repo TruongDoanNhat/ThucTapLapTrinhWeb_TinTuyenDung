@@ -89,7 +89,8 @@
                     <div class="card-header">
                         <h5 class="mb-0">Quản lý người dùng</h5>
                     </div>
-                    <form class="navbar-search pull-left input-append" action="#">
+                    <form class="navbar-search pull-left input-append"
+                          action="<%=request.getContextPath()%>/PostManager?action=search" method="post">
                         <input type="text" class="span3" placeholder="Tìm kiếm theo tên, chức vụ">
                         <button class="btn" type="button">
                             <i class="icon-search"></i>
@@ -150,13 +151,13 @@
                                     <td>
                                         <div class="btn-group ml-auto">
                                             <% if(account.getStatus() == Account.LOCK){%>
-                                            <a href="<%=request.getContextPath()%>/AccountManager?action=unlock&id=<%=account.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/AccountManager?action=unlock&username=<%=account.getUsername()%>"
                                             class="btn btn-sm btn-outline-light"
-                                            style="padding-left: 20px;outline: none; background: red">
+                                            style="padding-left: 20px;outline: none; background: #c27d86">
                                             <i class="icon-lock"></i>
                                             </a>
                                             <%} else{%>
-                                            <a href="<%=request.getContextPath()%>/AccountManager?action=lock&id=<%=account.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/AccountManager?action=lock&username=<%=account.getUsername()%>"
                                                class="btn btn-sm btn-outline-light"
                                                style="padding-left: 20px;outline: none">
                                                 <i class="icon-lock"></i>

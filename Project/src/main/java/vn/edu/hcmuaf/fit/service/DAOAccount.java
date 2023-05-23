@@ -3,17 +3,18 @@ package vn.edu.hcmuaf.fit.service;
 import vn.edu.hcmuaf.fit.bean.UserGoogle;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Account;
-import vn.edu.hcmuaf.fit.model.Post;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class DAOAccount {
     private String message = "error!";
     private static Account account = null;
+    private Date updateDate = Date.valueOf(LocalDate.now());
+    ;
 
     public String getMessage() {
         return message;
@@ -180,7 +181,6 @@ public class DAOAccount {
 
     public void updateAccountCandi(String username, String name) {
         String query = "update account set name = ? updateDate = ? where username=?";
-        Date updateDate = Date.valueOf(LocalDate.now());;
         try {
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(query)
@@ -237,5 +237,35 @@ public class DAOAccount {
     }
 
     public static void main(String[] args) {
+    }
+
+    public static Account getAccountQuery(String username) {
+        String query = "select * from account where username = ?";
+        return JDBIConnector.get().withHandle(handle -> handle.createQuery(query)
+                .bind(0, username)
+                .mapToBean(Account.class).stream().findFirst().get());
+    }
+
+
+    public static boolean checkStatus(String username, int status) {
+        if (status == getAccountQuery(username).getStatus()) {
+            return true;
+        }
+        return false;
+    }
+
+    public void updateStatusAccount(String username, int lock) {
+        String query = "update account set status = ?, updateDate = ? where username=?";
+        try {
+            JDBIConnector.get().withHandle(handle ->
+                    handle.createUpdate(query)
+                            .bind(0, lock)
+                            .bind(1, updateDate)
+                            .bind(2, username)
+                            .execute()
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

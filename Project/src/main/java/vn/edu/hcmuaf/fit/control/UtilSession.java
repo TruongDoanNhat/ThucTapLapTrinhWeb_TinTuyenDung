@@ -33,7 +33,6 @@ public class UtilSession {
 
     public void putValue(HttpServletRequest request, String key, Account value) {
         request.getSession().setAttribute(key, value);
-
     }
 
     public void putValue(HttpServletRequest request, String key, String value) {
