@@ -117,7 +117,22 @@ CREATE TABLE `company`  (
 -- ----------------------------
 -- Records of company
 -- ----------------------------
-INSERT INTO `company` VALUES (1, NULL, 'A', '12333', 'q9', 'abc', '2023-04-05', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (1, NULL, 'Zuhlke Engineering Vietnam', '0902 123 456', 'Số 10, đường Hoàng Diệu, phường Bến Nghé, quận 1, TP. Hồ Chí Minh', 'Công ty tự xây dựng chương trình “Great To Work” internal, nhân viên sẽ feedback ẩn danh để mọi người có thể feedback chân thật nhất, công ty rất coi trọng con người. Trang thiết bị được cung cấp đầy đủ: MacBook Pro, Apple keyboard,...', '2023-04-05', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (2, NULL, 'NFQ Asia', '0915 987 654', 'Tầng 5, tòa nhà Indochina Plaza Hanoi, số 241 Xuân Thủy, phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội', 'Thời gian làm việc linh động, thoải mái, có thể làm ở office hoặc work from home thoải mái. Được làm việc thường xuyên với khách hàng châu Âu nên khả năng giao tiếp tiếng Anh của mình ngày càng có tiến bộ vượt bậc. Sếp và đồng nghiệp ai...', '2023-05-07', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (3, NULL, 'Orient Software Development Corp.', '0988 456 789', 'Số 128, đường Lê Lợi, phường Vĩnh Trại, thành phố Lạng Sơn, tỉnh Lạng Sơn', 'Môi trường làm việc năng động, mọi người hòa đồng, hỗ trợ nhiệt tình nhau. Thời gian làm việc linh hoạt. Có trang bị điểm tâm sáng cho nhân viên. Chiều nào cũng có ăn trái cây. Trà, cafe, bánh, kẹo phủ đầy pantry. Đa số dự án ko OT, nếu...\r\n', '2023-05-07', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (4, NULL, 'Coc Coc', '0973 321 654', 'Số 56, đường Lý Thường Kiệt, phường Tân An, thành phố Buôn Ma Thuột, tỉnh Đắk Lắk', 'Ở Cốc Cốc thì tuyệt vời nhất là con người, gần như không có khoảng cách giữa CEO, Leader và nhân viên cho tới các cô Maid ( ít công ty có các cô Maid riêng như ở đây ). Cụ thể thì tôi có thể gặp mặt và bắt chuyện với CEO, Leader của mình...\r\n.', '2023-05-07', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (5, NULL, 'Tyme', '0962 654 321', 'Số 123, đường Hùng Vương, phường Đoàn Kết, thành phố Phan Rang-Tháp Chàm, tỉnh Ninh Thuận', 'Công ty có chế độ lương và thưởng tốt, khá cảnh trạnh trên thị trường. Có review performance hàng năng cùng với nhiều chế độ đãi ngộ, chăm sóc sức khoẻ của nhân viên và gia đình (premium health care), nhiều ngày phép năm, off ngày sinh...\r\n', '2023-05-07', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (6, NULL, 'Niteco Vietnam Co., Ltd', '0947 987 654\r\n', 'Số 321, đường Nguyễn Công Trứ, phường An Thới, thành phố Rạch Giá, tỉnh Kiên Giang', 'Công việc: Các dự án của công ty đa dạng, mỗi dự án đều có những thách thức để học hỏi (quan trọng nhất là không OT nhiều). Đồng nghiệp: dễ mến và có chuyên môn giỏi nên môi trường làm việc vui vẻ không drama. Training: Làm ở Niteco..', '2023-05-22', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (7, NULL, 'Absolute Software (Vietnam) Ltd', '0936 456 789', 'Số 6, đường Trần Văn Điểm, phường 13, quận 5, TP. Hồ Chí Minh', 'Bạn bè thường hỏi thăm mình ở Absolute như thế nào? mình thường ví von, giống như nhà ít con vậy. Nếu bạn ở nhà đông con thì dù ba mẹ có thương thì sự chăm lo cũng có hạn, nhưng nhà ít con thì khác, tất cả các thành viên trong gia đình...\r\n', '2023-05-22', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (8, NULL, 'Buymed', '0936 456 789', 'Số 47, đường Lê Duẩn, phường Lộc Vượng, thành phố Nam Định, tỉnh Nam Định', 'Team rất trẻ, nhiều nhiệt huyết và năng động. Công ty phát triển nhanh, công việc và các dự án tiềm năng, được tạo nhiều cơ hội và có thể học hỏi công nghệ: NextJS, Golang, ReactNative / Flutter... Nhiều hoạt động từ câu lạc bộ thể thao...', '2023-05-22', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (9, NULL, 'Samsung Electronics HCMC CE Complex', '0898 654 321', 'Số 789, đường Trần Hưng Đạo, phường Hưng Đạo, thành phố Thái Bình, tỉnh Thái Bình', 'Samsung Electronics HCMC CE Complex', '2023-05-22', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (10, NULL, 'Teko Vietnam', '0887 987 654\r\n', 'Số 15, đường Nguyễn Văn Cừ, phường Xuân Phú, thành phố Tam Kỳ, tỉnh Quảng Nam', 'Môi trường làm việc: Mọi thứ đều tốt, văn phòng đẹp, đãi ngộ đầy đủ, bảo hiểm full lương + cho người thân, pantry luôn có đồ ăn sáng, ăn xế, hỗ trợ quay cơm trưa. Ngày phép nếu không dùng hết được giữ sang năm tiếp theo. Đồng nghiệp hoà...', '2023-05-22', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (11, NULL, 'Netcompany', '0876 456 789', 'Số 52, đường Hùng Vương, phường Trần Phú, thành phố Hà Giang, tỉnh Hà Giang', 'Văn phòng đẹp. Môi trường quốc tế, phần lớn làm việc chung với Poland và Denmark. Lương cao hơn so với mặt bằng chung. Có ăn trưa, friday bar nhậu nhẹt, đua xe Go-kart và tổ chức sinh nhật, ăn uống no nê, tăng cân vù vù. Có hỗ trợ học và...\r\n', '2023-05-22', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (12, NULL, 'Positive Thinking Company', '0865 321 654', 'Số 99, đường Trần Phú, phường Xuân Hà, thành phố Sơn La, tỉnh Sơn La', 'Văn phòng đẹp và được design theo tiêu chuẩn hiện đại hướng đến tính tiện nghi và hiệu suất cao trong công việc. Lương thưởng và phúc lợi tốt (như Hybrid working model và sẽ cung cấp laptop/ màn hình xịn). Nhân viên luôn được support...', '2023-05-22', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (13, NULL, 'LG Electronics Development Vietnam (LGEDV)', '0854 654 321', 'Số 77, đường Lê Lai, phường Phan Chu Trinh, thành phố Quy Nhơn, tỉnh Bình Định', 'Các benefit khá ổn. Công việc ổn định, làm việc với KH nước ngoài (Mỹ, Đức, Hàn, Trung). Sếp thoải mái, tâm lý. Có budget ăn uống, chơi bời hàng tháng. Event cũng khá hay ho (Men day, Thi ăn kem, Xem phim) Được tính lương OT theo...', '2023-05-22', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (14, NULL, 'KMS Technology', '0843 987 654', 'Số 210, đường Lê Hồng Phong, phường Tào Xuyên, thành phố Nha Trang, tỉnhKhánh Hòa', 'Các chính sách của công ty hỗ trợ rất nhiều cho nhân viên, giờ giấc làm việc thỏa mái, hỗ trợ chi phí học tập trên các nền tảng udemy, quan tâm tới nhân viên thông qua các event, lễ, tết, ... Dự án đa dạng trên nhiều lĩnh vực, áp dụng...', '2023-05-22', NULL);
+INSERT INTO `company` (`id`, `imageId`, `name`, `phone`, `address`, `description`, `createDate`, `updateDate`) VALUES (15, NULL, 'NashTech', '0843 987 654', 'Số 43, đường Hoàng Văn Thụ, phường Vĩnh Trung, thành phố Đà Nẵng, tỉnh Đà Nẵng', 'Văn phòng đẹp, môi trường tốt, được sự giúp đỡ nhiệt tình từ các anh/chị mentor cũng như cấp trên. CÓ định hướng phát triển nghề nghiệp rõ ràng, có các khóa nâng cao skill bản thân. OT được trả lương đầy đủ, nhưng mà hầu như không có OT', '2023-05-22', NULL);
+
 
 -- ----------------------------
 -- Table structure for image
@@ -165,23 +180,6 @@ CREATE TABLE `post`  (
 -- ----------------------------
 -- Records of post
 -- ----------------------------
-
--- ----------------------------
--- Table structure for postApplied
--- ----------------------------
-DROP TABLE IF EXISTS `postApplied`;
-CREATE TABLE `postApplied`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `accountEmail` TEXT NOT NULL,
-  `postId` int NOT NULL,
-  `fileCV` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `createDate` date NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of postApplied
--- ----------------------------
 INSERT INTO `post` (`id`, `categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`, `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`, `priceId`) VALUES (1, 1, 1, 'Lập Trình Viên AI', '3', '1000000', 'Thành Phố Hồ Chí Minh', 'Toàn thời gian', 'Nhân viên', 'Không yêu cầu', '・Chi tiết công việc sẽ trao đổi trong buổi phỏng vấn.', '- Thưởng cuối năm', 'Phải có:\r\n\r\n_ Kĩ năng giao tiếp:\r\n\r\n• Tiếng Nhật: tương đương N3 trở lên, giao tiếp tốt.\r\n\r\n• Năng động trong giao tiếp.\r\n\r\n_ Yêu cầu kỹ thuật:\r\n\r\n• Có kinh nghiệm hoặc kiến thức làm các dự án sử dụng: Ruby on Rails hoặc PHP (Laravel)\r\n\r\n• Có thể cùng giải quyết các câu hỏi khó cùng nhóm.\r\n\r\n• Không bao giờ bỏ cuộc.', 1, '2023-04-21', '2023-05-21', 10, 0);
 INSERT INTO `post` (`id`, `categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`, `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`, `priceId`) VALUES (2, 3, 1, 'Quản lý mạng', '', '1000000', 'Thành Phố Hồ Chí Minh', 'Toàn thời gian', 'Nhân viên', 'Không yêu cầu', '・Chi tiết công việc sẽ trao đổi trong buổi phỏng vấn.', '・Thử thách công nghệ mới', 'Phải có:\r\n\r\n_ Kĩ năng giao tiếp:\r\n\r\n• Tiếng Nhật: tương đương N3 trở lên, giao tiếp tốt.\r\n\r\n• Năng động trong giao tiếp.\r\n\r\n_ Yêu cầu kỹ thuật:\r\n\r\n• Có kinh nghiệm hoặc kiến thức làm các dự án sử dụng: Ruby on Rails hoặc PHP (Laravel)\r\n\r\n• Có thể cùng giải quyết các câu hỏi khó cùng nhóm.\r\n\r\n• Không bao giờ bỏ cuộc.', 0, '2023-05-04', '2023-06-04', NULL, 0);
 INSERT INTO `post` (`id`, `categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`, `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`, `priceId`) VALUES (3, 4, 1, 'Quản lý hệ thống', '1', '1000000', 'Thành Phố Hồ Chí Minh', 'Hợp đồng', 'senior', 'Nữ', '・Chi tiết công việc sẽ trao đổi trong buổi phỏng vấn.', '• Working at HCM Center or HN', 'Có 2 năm kinh nghiệm', 0, '2023-05-04', '2023-06-04', NULL, 0);
@@ -227,6 +225,23 @@ INSERT INTO `post` (`id`, `categoryId`, `accountId`, `title`, `quantity`, `salar
 INSERT INTO `post` (`id`, `categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`, `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`, `priceId`) VALUES (43, 1, 7, ' Machine Learning Engineer', '1', '25000000', 'Thành Phố Hồ Chí Minh', 'Toàn thời gian', 'Leader', 'Không yêu cầu', '・Chi tiết công việc sẽ trao đổi trong buổi phỏng vấn.', '• Working at HCM Center or HN', 'Có 2 năm kinh nghiệm', 0, '2023-05-07', '2023-06-07', NULL, 0);
 INSERT INTO `post` (`id`, `categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`, `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`, `priceId`) VALUES (44, 5, 8, 'Big Data Analyst', '1', '25000000', 'Đà Nẵng', 'Kỳ thực tập', 'Junior', 'Không yêu cầu', '・Chi tiết công việc sẽ trao đổi trong buổi phỏng vấn.', '- Được đóng bảo hiểm đầy đủ theo quy định của pháp luật.\r\n- Được hưởng các chế độ phúc lợi như bảo hiểm sức khỏe, bảo hiểm tai nạn, phụ cấp ăn trưa...\r\n- Được đóng BHXH, BHYT, BHTN, Bảo hiểm thất nghiệp theo', 'Không yêu cầu', 0, '2023-05-07', '2023-06-07', NULL, 0);
 INSERT INTO `post` (`id`, `categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`, `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`, `priceId`) VALUES (45, 2, 10, ' Software Development Specialist', '1', '25000000', 'Thành Phố Hồ Chí Minh', 'Toàn thời gian', 'senior', 'Không yêu cầu', '・Chi tiết công việc sẽ trao đổi trong buổi phỏng vấn.', '• Working at HCM Center or HN', 'Có 2 năm kinh nghiệm', 0, '2023-05-07', '2023-06-07', NULL, 2);
+-- ----------------------------
+-- Table structure for postApplied
+-- ----------------------------
+DROP TABLE IF EXISTS `postApplied`;
+CREATE TABLE `postApplied`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `accountEmail` TEXT NOT NULL,
+  `postId` int NOT NULL,
+  `fileCV` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `createDate` date NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of postApplied
+-- ----------------------------
+
 
 -- ----------------------------
 -- Table structure for price
