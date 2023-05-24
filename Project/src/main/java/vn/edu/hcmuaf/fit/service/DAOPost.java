@@ -1,10 +1,7 @@
 package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
-import vn.edu.hcmuaf.fit.model.Category;
-import vn.edu.hcmuaf.fit.model.Company;
-import vn.edu.hcmuaf.fit.model.Post;
-import vn.edu.hcmuaf.fit.model.PostApplied;
+import vn.edu.hcmuaf.fit.model.*;
 
 
 import java.text.DateFormat;
@@ -13,6 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.jdbi.v3.core.internal.IterableLike.stream;
 
 public class DAOPost {
     private DAOBill daoBill = new DAOBill();
@@ -55,6 +54,32 @@ public class DAOPost {
                     .bind(0, idPost)
                     .mapToBean(Post.class)
                     .stream().findFirst().get();
+        });
+    }
+
+    public Company getCompanyFromPost(int idPost) {
+        String query = "SELECT c.* FROM company c " +
+                "JOIN account a ON c.id = a.companyId " +
+                "JOIN post p ON a.id = p.accountId " +
+                "WHERE p.id = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, idPost)
+                    .mapToBean(Company.class)
+                .stream().findFirst().orElse(null);
+        });
+    }
+
+    public Account getAccountFromPost(int idPost) {
+        String query = "SELECT a.* FROM account a " +
+                "JOIN company c ON c.id = a.companyId " +
+                "JOIN post p ON a.id = p.accountId " +
+                "WHERE p.id = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, idPost)
+                    .mapToBean(Account.class)
+                    .stream().findFirst().orElse(null);
         });
     }
 

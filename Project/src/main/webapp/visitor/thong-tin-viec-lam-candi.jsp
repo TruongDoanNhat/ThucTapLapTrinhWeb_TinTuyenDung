@@ -1,4 +1,6 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Company" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Account" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -9,6 +11,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% Post post2 = (Post) request.getAttribute("post2");%>
+<% Company company = (Company) request.getAttribute("company");%>
+<% Account account1 = (Account) request.getAttribute("account1");%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -149,18 +153,12 @@
                         <div class="small-section-tittle">
                             <h4><a href="#">Thông tin công ty</a></h4>
                         </div>
-                        <span>Công ty TNHH Công nghệ và Truyền thông</span>
-                        <p>Được thành lâp vào tháng 3 năm 2006 với tiền thân là một đội chuyên gia phần mềm và giải
-                            pháp
-                            viễn thông có kinh nghiệm từ Hàn Quốc. Chúng tôi đang từng bước đạt được uy tín và niềm
-                            tin
-                            từ khách hàng với những sản phẩm công nghệ hiện đại và phù hợp với các doanh nghiệp
-                            trong
-                            nước và các đối tác nước ngoài như Hàn Quốc , Nhật Bản , Trung Quốc</p>
+                        <span><%=company.getName()%></span>
+                        <p><%=company.getDescription()%></p>
                         <ul>
-                            <li>Tên: <span>Công ty TNHH công nghệ và truyền thông </span></li>
-                            <li>Web : <span>CNvsTT.com</span></li>
-                            <li>Email: <span>CNvsTT@gmail.com</span></li>
+                            <li>Tên: <span><%=company.getName()%> </span></li>
+                            <li>Phone : <span><%=company.getPhone()%></span></li>
+                            <li>Email: <span><%=account1.getEmail()%></span></li>
                         </ul>
                     </div>
                 </div>
