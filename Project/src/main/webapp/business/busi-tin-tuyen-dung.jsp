@@ -203,7 +203,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=${p.id}">
+                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
                                     </a>
                                     <span class="mb-2 text-xs">Vị trí: <span
@@ -227,7 +227,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=${p.id}">
+                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
                                     </a>
                                     <span class="mb-2 text-xs">Vị trí: <span
@@ -250,7 +250,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=${p.id}">
+                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
                                     </a>
                                     <span class="mb-2 text-xs">Vị trí: <span
@@ -274,7 +274,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=${p.id}">
+                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
                                     </a>
                                     <span class="mb-2 text-xs">Vị trí: <span
@@ -297,7 +297,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=${p.id}">
+                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
                                     </a>
                                     <span class="mb-2 text-xs">Vị trí: <span
