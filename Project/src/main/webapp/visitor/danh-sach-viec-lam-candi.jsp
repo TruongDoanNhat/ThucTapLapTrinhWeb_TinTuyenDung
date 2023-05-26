@@ -1,7 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
-<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %><%--
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
+<%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 05/01/2023
@@ -18,21 +20,21 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../assets/css/price_rangs.css">
-    <link rel="stylesheet" href="../assets/css/flaticon.css">
-    <link rel="stylesheet" href="../assets/css/slicknav.css">
-    <link rel="stylesheet" href="../assets/css/animate.min.css">
-    <link rel="stylesheet" href="../assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="../assets/css/themify-icons.css">
-    <link rel="stylesheet" href="../assets/css/slick.css">
-    <link rel="stylesheet" href="../assets/css/nice-select.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/price_rangs.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/flaticon.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/slicknav.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/animate.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/slick.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/nice-select.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/style.css">
 </head>
 <body>
 <!-- Preloader Start -->
@@ -41,7 +43,7 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="../assets/img/logo/logo.png" alt="">
+                <img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt="">
             </div>
         </div>
     </div>
@@ -251,40 +253,43 @@
 
                             <div class="container">
 
-                                <c:forEach var="p" items="${listPOC}">
-                                    <div class="single-job-items mb-30">
-                                        <div class="job-items">
-                                            <div class="company-img">
-                                                <a href="/Post_details?id=${p.postID}"><img
-                                                        src="../assets/img/icon/job-list1.png" alt=""></a>
-                                            </div>
-                                            <div class="job-tittle job-tittle2">
-                                                <a href="/Post_details?id=${p.postID}">
-                                                    <h4>${p.getTitle()}
-                                                    </h4>
-                                                </a>
-                                                <ul>
-<%--                    <li> ${dp.getAddressByCompanyID()}--%>
-<%--     </li>--%>
-                                                    <li>
-<%--                                                        <i class="fas fa-map-marker-alt"></i>--%>
-                                                        ${dp.getCompanyNameByUsername(p.getUser_name())}
-                                                    </li>
-                                                    <li>${p.getSalary()} VNĐ</li>
-                                                </ul>
-                                            </div>
+                                <%
+                                    //                                 List<Post> poc = (List<Post>) request.getAttribute("listPOC");
+                                    List<Post> post = (List<Post>) request.getAttribute("listJob");
+//                                    List<Post> post = poc == null ? poc : listAll;
+                                    for (Post p : post) {
+                                %>
+                                <div class="single-job-items mb-30">
+                                    <div class="job-items">
+                                        <div class="company-img">
+                                            <a href="/Post_details?id=<%=p.getId()%>"><img
+                                                    src="../assets/img/icon/job-list1.png" alt=""></a>
                                         </div>
-                                        <div class="items-link items-link2 f-right">
-                                            <a href="/Post_details?id=${p.postID}">
-                                                    ${p.getType_job()}
+                                        <div class="job-tittle job-tittle2">
+                                            <a href="/Post_details?id=<%=p.getId()%>">
+                                                <h4><%=p.getTitle()%>
+                                                </h4>
                                             </a>
-                                            <span>
-                                                    ${dp.dateToCreate(p.getCreate_date())}
-                                            </span>
+                                            <ul>
+                                                <%--                    <li> ${dp.getAddressByCompanyID()}--%>
+                                                <%--     </li>--%>
+                                                <li>
+                                                    <%--         <i class="fas fa-map-marker-alt"></i>--%>
+                                                </li>
+                                                <li><%=p.getSalary()%> VNĐ</li>
+                                            </ul>
                                         </div>
                                     </div>
-                                </c:forEach>
-
+                                    <div class="items-link items-link2 f-right">
+                                        <a href="/Post_details?id=<%=p.getId()%>">
+                                            <%=p.getType()%>
+                                        </a>
+                                        <span>
+                                            <%=dp.dateToCreate(p.getCreateDate())%> ngày trước
+                                        </span>
+                                    </div>
+                                </div>
+                                <% } %>
                             </div>
                         </div>
                     </section>
@@ -322,37 +327,37 @@
 <!-- JS here -->
 
 <!-- All JS Custom Plugins Link Here here -->
-<script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <!-- Jquery, Popper, Bootstrap -->
-<script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="../assets/js/popper.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/popper.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
 <!-- Jquery Mobile Menu -->
-<script src="../assets/js/jquery.slicknav.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.slicknav.min.js"></script>
 
 <!-- Jquery Slick , Owl-Carousel Range -->
-<script src="../assets/js/owl.carousel.min.js"></script>
-<script src="../assets/js/slick.min.js"></script>
-<script src="../assets/js/price_rangs.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/owl.carousel.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/slick.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/price_rangs.js"></script>
 <!-- One Page, Animated-HeadLin -->
-<script src="../assets/js/wow.min.js"></script>
-<script src="../assets/js/animated.headline.js"></script>
-<script src="../assets/js/jquery.magnific-popup.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/wow.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/animated.headline.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.magnific-popup.js"></script>
 
 <!-- Scrollup, nice-select, sticky -->
-<script src="../assets/js/jquery.scrollUp.min.js"></script>
-<script src="../assets/js/jquery.nice-select.min.js"></script>
-<script src="../assets/js/jquery.sticky.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.scrollUp.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.nice-select.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.sticky.js"></script>
 
 <!-- contact js -->
-<script src="../assets/js/contact.js"></script>
-<script src="../assets/js/jquery.form.js"></script>
-<script src="../assets/js/jquery.validate.min.js"></script>
-<script src="../assets/js/mail-script.js"></script>
-<script src="../assets/js/jquery.ajaxchimp.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/contact.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.form.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/mail-script.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.ajaxchimp.min.js"></script>
 
 <!-- Jquery Plugins, main Jquery -->
-<script src="../assets/js/plugins.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/plugins.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/main.js"></script>
 
 </html>
