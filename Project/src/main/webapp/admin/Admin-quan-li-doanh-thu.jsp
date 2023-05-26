@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -85,17 +86,16 @@
                     </div>
                     <form class="navbar-search pull-left input-append" action="#">
                         <input type="text" style="height:30px" class="span3" placeholder="Tìm kiếm theo tên, chức vụ">
-                        <button class="btn" type="button">
+                        <button class="btn" type="submit">
                             <i class="icon-search"></i>
                         </button>
-
-                        <button class="btn btn-small" style="outline: none">
+                        <a href="#" class="holder"
+                           style="right: -165px; top:5px; position: absolute; outline: none">
                             <i class="icon-plus"></i>
-                        </button>
-
-                        <button class="btn btn-smalls" style="outline: none">
-                            <i class="icon-trash"></i>
-                        </button>
+                        </a>
+<%--                        <button class="btn btn-smalls" style="outline: none">--%>
+<%--                            <i class="icon-trash"></i>--%>
+<%--                        </button>--%>
 
                     </form>
                     <div class="card-body">

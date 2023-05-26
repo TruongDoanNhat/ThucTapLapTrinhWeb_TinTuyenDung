@@ -52,7 +52,7 @@
                                 </li>
                                 <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-doanh-thu.jsp"><i
                                         class="icon-inbox"></i> Quản lý doanh thu</a></li>
-                                <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-nguoi-dung.jsp"><i
+                                <li><a href="<%=request.getContextPath()%>/AccountManager?action=accountManager"><i
                                         class="icon-inbox"></i> Quản lý người dùng</a></li>
                             </ul>
                         </li>

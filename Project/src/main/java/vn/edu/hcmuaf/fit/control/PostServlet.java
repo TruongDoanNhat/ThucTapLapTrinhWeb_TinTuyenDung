@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.model.Company;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.model.Price;
 import vn.edu.hcmuaf.fit.service.DAOBill;
@@ -70,7 +71,7 @@ public class PostServlet extends HttpServlet {
                     trang = "1";
                 }
                 int t = Integer.parseInt(trang);
-                int dem = p.getTotalPost(account.getId());
+                int dem = p.getTotalPostBusi(account.getId());
                 int sosp = dem/3;
                 if(dem%3 !=0) {
                     sosp++;
@@ -79,7 +80,18 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("post", post);
                 request.setAttribute("sosp", sosp);
                 request.setAttribute("trang", t);
-                UtilControl.forward("business/busi-tin-tuyen-dung.jsp",request,response);
+                UtilControl.phanQuyenServletBusi1(account, "business/busi-tin-tuyen-dung.jsp", "/Login?action=login", request, response);
+                break;
+            case "xemthongtinvieclam":
+                String id2 = request.getParameter("id");
+                int idPost = Integer.parseInt(id2);
+                Post post2 = p.getPostDetail(idPost);
+                request.setAttribute("post2", post2);
+                Company company = p.getCompanyFromPost(idPost);
+                request.setAttribute("company", company);
+                Account account1 = p.getAccountFromPost(idPost);
+                request.setAttribute("account1", account1);
+                UtilControl.phanQuyenServletBusi1(account, "visitor/thong-tin-viec-lam-candi.jsp", "/Login?action=login", request, response);
                 break;
             case "search":
                 postAll = status.equals("0") ? p.getPostSearch(keywords) : p.getPostSearch(keywords, status);
@@ -113,6 +125,11 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
 
                break;
+            case "quanlybaidang":
+                postAll = p.getPostAll();
+                request.setAttribute("postAll", postAll);
+                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
+                break;
         }
 
 //        if (action != null) {

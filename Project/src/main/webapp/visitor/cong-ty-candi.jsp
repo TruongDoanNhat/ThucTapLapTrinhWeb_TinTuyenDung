@@ -16,13 +16,13 @@
   <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
   <!-- CSS here -->
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/bootstrapost.min.css">
   <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
   <link rel="stylesheet" href="../assets/css/price_rangs.css">
   <link rel="stylesheet" href="../assets/css/flaticon.css">
   <link rel="stylesheet" href="../assets/css/slicknav.css">
   <link rel="stylesheet" href="../assets/css/animate.min.css">
-  <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="../assets/css/magnific-popupost.css">
   <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css">
   <link rel="stylesheet" href="../assets/css/themify-icons.css">
   <link rel="stylesheet" href="../assets/css/slick.css">
@@ -235,7 +235,7 @@
 <!-- Jquery, Popper, Bootstrap -->
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="../assets/js/popper.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/bootstrapost.min.js"></script>
 <!-- Jquery Mobile Menu -->
 <script src="../assets/js/jquery.slicknav.min.js"></script>
 
@@ -246,10 +246,10 @@
 <!-- One Page, Animated-HeadLin -->
 <script src="../assets/js/wow.min.js"></script>
 <script src="../assets/js/animated.headline.js"></script>
-<script src="../assets/js/jquery.magnific-popup.js"></script>
+<script src="../assets/js/jquery.magnific-popupost.js"></script>
 
 <!-- Scrollup, nice-select, sticky -->
-<script src="../assets/js/jquery.scrollUp.min.js"></script>
+<script src="../assets/js/jquery.scrollUpost.min.js"></script>
 <script src="../assets/js/jquery.nice-select.min.js"></script>
 <script src="../assets/js/jquery.sticky.js"></script>
 
@@ -258,7 +258,7 @@
 <script src="../assets/js/jquery.form.js"></script>
 <script src="../assets/js/jquery.validate.min.js"></script>
 <script src="../assets/js/mail-script.js"></script>
-<script src="../assets/js/jquery.ajaxchimp.min.js"></script>
+<script src="../assets/js/jquery.ajaxchimpost.min.js"></script>
 
 <!-- Jquery Plugins, main Jquery -->
 <script src="../assets/js/plugins.js"></script>

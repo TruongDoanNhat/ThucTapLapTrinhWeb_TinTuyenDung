@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
 
 @WebServlet(name = "SignUp", value = "/SignUp")
 public class SignUp extends HttpServlet {
@@ -39,7 +40,7 @@ public class SignUp extends HttpServlet {
         String description = request.getParameter("description");
         int type = 0;
         String img = null;
-        Date date = new Date();
+        Date date = Date.valueOf(LocalDate.now());
         int role = UtilControl.setRole("btndangky_candi", "btndangky_busi", request);
         String action = request.getParameter("action");
 

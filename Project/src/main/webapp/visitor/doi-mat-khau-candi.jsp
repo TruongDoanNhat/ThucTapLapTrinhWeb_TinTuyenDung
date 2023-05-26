@@ -16,12 +16,12 @@
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrapost.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/slicknav.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/price_rangs.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/magnific-popupost.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome-all.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/themify-icons.css">
