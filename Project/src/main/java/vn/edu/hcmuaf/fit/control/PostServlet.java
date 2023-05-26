@@ -35,6 +35,11 @@ public class PostServlet extends HttpServlet {
         String keywords = request.getParameter("keywords");
         String status = request.getParameter("status");
         List<Post> postAll;
+        String trang = request.getParameter("trang");
+        if(trang == null) {
+            trang = "1";
+        }
+        int t = Integer.parseInt(trang);
         switch (action) {
             case "dangtin":
                 String title = request.getParameter("title");
@@ -66,11 +71,6 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 break;
             case "tintuyendung":
-                String trang = request.getParameter("trang");
-                if(trang == null) {
-                    trang = "1";
-                }
-                int t = Integer.parseInt(trang);
                 int dem = p.getTotalPostBusi(account.getId());
                 int sosp = dem/3;
                 if(dem%3 !=0) {
@@ -117,8 +117,15 @@ public class PostServlet extends HttpServlet {
                 UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
             case "quanlybaidang":
-                postAll = p.getPostAll();
-                request.setAttribute("postAll", postAll);
+                int dem2 = p.getTotalPostPaid();
+                int sobd = dem2/5;
+                if(dem2%5 !=0) {
+                    sobd++;
+                }
+                List<Post> post3 = p.getPostAll(t);
+                request.setAttribute("postAll", post3);
+                request.setAttribute("sobd", sobd);
+                request.setAttribute("trang", t);
                 UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
                 break;
         }

@@ -268,6 +268,12 @@
                         </div>
                     </div>
                 </div>
+                <div style="margin: 0 auto; text-align: center;">
+                    <!-- Hiển thị nút phân trang -->
+                    <c:forEach begin="1" end="${sobd}" var="trang">
+                        <a href="Post?action=quanlybaidang&trang=${trang}" class="btn btn-link">${trang}</a>
+                    </c:forEach>
+                </div>
             </div>
             <!-- ============================================================== -->
             <!-- end data table  -->

@@ -11,8 +11,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.jdbi.v3.core.internal.IterableLike.stream;
-
 public class DAOPost {
     private DAOBill daoBill = new DAOBill();
     private String message = "error!";
@@ -201,16 +199,28 @@ public class DAOPost {
         return listPost.get(0);
     }
 
-    public List<Post> getPostAll() {
-        List<Post> listPost = null;
-        String query = "select * from post ";
-        listPost = JDBIConnector.get().withHandle(handle -> {
+    public List<Post> getPostAll(int trang) {
+        String query = "SELECT * FROM post WHERE status <> 0 LIMIT 5 OFFSET ?";
+        return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
+                    .bind(0, (trang - 1) * 5)
                     .mapToBean(Post.class)
-                    .stream().collect(Collectors.toList());
+                    .stream()
+                    .collect(Collectors.toList());
         });
-        return listPost;
     }
+
+
+    public int getTotalPostPaid() {
+        String query = "SELECT COUNT(*) FROM post WHERE status <> 0";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapTo(Integer.class)
+                    .one();
+        });
+    }
+
+
 
     public List<Category> getCategoryAll() {
         String query = "select * from category";
