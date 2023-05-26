@@ -270,8 +270,8 @@
                 </div>
                 <div style="margin: 0 auto; text-align: center;">
                     <!-- Hiển thị nút phân trang -->
-                    <c:forEach begin="1" end="${sobd}" var="trang">
-                        <a href="Post?action=quanlybaidang&trang=${trang}" class="btn btn-link">${trang}</a>
+                    <c:forEach begin="1" end="${sobd}" var="t">
+                        <a href="Post?action=quanlybaidang&trang=${t}" class="btn btn-link">${t}</a>
                     </c:forEach>
                 </div>
             </div>
