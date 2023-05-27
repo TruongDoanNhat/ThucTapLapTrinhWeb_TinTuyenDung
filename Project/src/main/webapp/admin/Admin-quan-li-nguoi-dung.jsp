@@ -190,6 +190,12 @@
                         </div>
                     </div>
                 </div>
+                <div style="margin: 0 auto; text-align: center;">
+                    <!-- Hiển thị nút phân trang -->
+                    <c:forEach begin="1" end="${soAccount}" var="t">
+                        <a href="Account?action=accountManager&trang=${t}" class="btn btn-link">${t}</a>
+                    </c:forEach>
+                </div>
             </div>
             <!-- ============================================================== -->
             <!-- end data table  -->

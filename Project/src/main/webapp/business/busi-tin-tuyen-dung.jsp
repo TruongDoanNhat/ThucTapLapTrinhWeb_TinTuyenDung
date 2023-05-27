@@ -1,4 +1,5 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -8,7 +9,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<% List<Post> post = (List<Post>) request.getAttribute("post"); %>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -27,7 +28,8 @@
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- CSS Files -->
-    <link id="pagestyle" href="<%=request.getContextPath()%>/business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
+    <link id="pagestyle" href="<%=request.getContextPath()%>/business/assets/css/soft-ui-dashboard.css"
+          rel="stylesheet"/>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -194,32 +196,135 @@
                     <div class="card-body pt-4 p-3">
                         <ul class="list-group">
                             <!-- Hiển thị danh sách bài viết -->
-                            <c:forEach items="${post}" var="p">
-                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                    <div class="d-flex flex-column">
-                                        <a class="nav-link" href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=${p.id}">
-                                            <h6 class="mb-3 text-sm">${p.title}</h6>
-                                        </a>
-                                        <span class="mb-2 text-xs">Vị trí: <span
-                                                class="text-dark ms-sm-2 font-weight-bold">${p.rank}</span></span>
-                                        <span class="mb-2 text-xs">Địa chỉ: <span
-                                                class="text-dark ms-sm-2 font-weight-bold">${p.address}</span></span>
-                                        <span class="mb-2 text-xs">Mức lương: <span
-                                                class="text-dark font-weight-bold ms-sm-2">${p.salary}</span></span>
-                                        <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
-                                                class="text-dark font-weight-bold ms-sm-2">${p.createDate}</span></span>
-                                    </div>
-                                    <div class="ms-auto text-end">
-                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                class="fas fa-pencil-alt1 text-dark me-2" aria-hidden="true"></i>Trạng Thái</a>
-                                    </div>
-                                </li>
-                            </c:forEach>
+                            <% for (Post p : post) {
+                                switch (p.getStatus()) {
+                                    case 0:
+                            %>
+                            <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                                <div class="d-flex flex-column">
+                                    <a class="nav-link"
+                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
+                                    </a>
+                                    <span class="mb-2 text-xs">Vị trí: <span
+                                            class="text-dark ms-sm-2 font-weight-bold"><%=p.getRank()%></span></span>
+                                    <span class="mb-2 text-xs">Địa chỉ: <span
+                                            class="text-dark ms-sm-2 font-weight-bold"><%=p.getAddress()%></span></span>
+                                    <span class="mb-2 text-xs">Mức lương: <span
+                                            class="text-dark font-weight-bold ms-sm-2"><%=p.getSalary()%></span></span>
+                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
+                                            class="text-dark font-weight-bold ms-sm-2"><%=p.getCreateDate()%></span></span>
+                                </div>
+                                <div class="ms-auto text-end">
+                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                             aria-hidden="true"></i>Chưa thanh
+                                        toán</a>
+                                </div>
+                                <%
+                                        break;
+                                    case 1:
+                                %>
+                            <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                                <div class="d-flex flex-column">
+                                    <a class="nav-link"
+                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
+                                    </a>
+                                    <span class="mb-2 text-xs">Vị trí: <span
+                                            class="text-dark ms-sm-2 font-weight-bold"><%=p.getRank()%></span></span>
+                                    <span class="mb-2 text-xs">Địa chỉ: <span
+                                            class="text-dark ms-sm-2 font-weight-bold"><%=p.getAddress()%></span></span>
+                                    <span class="mb-2 text-xs">Mức lương: <span
+                                            class="text-dark font-weight-bold ms-sm-2"><%=p.getSalary()%></span></span>
+                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
+                                            class="text-dark font-weight-bold ms-sm-2"><%=p.getCreateDate()%></span></span>
+                                </div>
+                                <div class="ms-auto text-end">
+                                    <a class="col-yel" href="javascript:;"><i
+                                             aria-hidden="true"></i>Chưa duyệt</a>
+                                </div>
+                                <%
+                                        break;
+                                    case 2:
+                                %>
+                            <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                                <div class="d-flex flex-column">
+                                    <a class="nav-link"
+                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
+                                    </a>
+                                    <span class="mb-2 text-xs">Vị trí: <span
+                                            class="text-dark ms-sm-2 font-weight-bold"><%=p.getRank()%></span></span>
+                                    <span class="mb-2 text-xs">Địa chỉ: <span
+                                            class="text-dark ms-sm-2 font-weight-bold"><%=p.getAddress()%></span></span>
+                                    <span class="mb-2 text-xs">Mức lương: <span
+                                            class="text-dark font-weight-bold ms-sm-2"><%=p.getSalary()%></span></span>
+                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
+                                            class="text-dark font-weight-bold ms-sm-2"><%=p.getCreateDate()%></span></span>
+                                </div>
+                                <div class="ms-auto text-end">
+                                    <a class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold" ><i
+                                             aria-hidden="true"></i>Đã
+                                        duyệt</a>
+                                </div>
+                                <%
+                                        break;
+                                    case 3:
+                                %>
+                            <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                                <div class="d-flex flex-column">
+                                    <a class="nav-link"
+                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
+                                    </a>
+                                    <span class="mb-2 text-xs">Vị trí: <span
+                                            class="text-dark ms-sm-2 font-weight-bold"><%=p.getRank()%></span></span>
+                                    <span class="mb-2 text-xs">Địa chỉ: <span
+                                            class="text-dark ms-sm-2 font-weight-bold"><%=p.getAddress()%></span></span>
+                                    <span class="mb-2 text-xs">Mức lương: <span
+                                            class="text-dark font-weight-bold ms-sm-2"><%=p.getSalary()%></span></span>
+                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
+                                            class="text-dark font-weight-bold ms-sm-2"><%=p.getCreateDate()%></span></span>
+                                </div>
+                                <div class="ms-auto text-end">
+                                    <a class="col-grey" href="javascript:;"><i
+                                            class="fas fa-pencil-alt1 text-dark me-2" aria-hidden="true"></i>Khóa</a>
+                                </div>
+                                <%
+                                        break;
+                                    case 4:
+                                %>
+                            <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                                <div class="d-flex flex-column">
+                                    <a class="nav-link"
+                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
+                                    </a>
+                                    <span class="mb-2 text-xs">Vị trí: <span
+                                            class="text-dark ms-sm-2 font-weight-bold"><%=p.getRank()%></span></span>
+                                    <span class="mb-2 text-xs">Địa chỉ: <span
+                                            class="text-dark ms-sm-2 font-weight-bold"><%=p.getAddress()%></span></span>
+                                    <span class="mb-2 text-xs">Mức lương: <span
+                                            class="text-dark font-weight-bold ms-sm-2"><%=p.getSalary()%></span></span>
+                                    <span class="text-xs"><b>Ngày đăng tuyển:</b> <span
+                                            class="text-dark font-weight-bold ms-sm-2"><%=p.getCreateDate()%></span></span>
+                                </div>
+                                <div class="ms-auto text-end">
+                                    <a class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold" href="javascript:;"><i
+                                             aria-hidden="true"></i>Hết
+                                        hạng</a>
+                                </div>
+                                <%
+                                        }
+                                    }%>
+                            </li>
+
                             <div style="margin: 0 auto;">
-                            <!-- Hiển thị nút phân trang -->
-                            <c:forEach begin="1" end="${sosp}" var="a">
-                                <li class="arrow d-inline-block"><a href="Post?action=tintuyendung&trang=${a}">${a}</a></li>
-                            </c:forEach>
+                                <!-- Hiển thị nút phân trang -->
+                                <c:forEach begin="1" end="${sosp}" var="a">
+                                    <li class="arrow d-inline-block"><a
+                                            href="Post?action=tintuyendung&trang=${a}">${a}</a></li>
+                                </c:forEach>
                             </div>
                         </ul>
                     </div>

@@ -37,7 +37,19 @@ public class AccountServlet extends HttpServlet {
         }
         switch (action) {
             case "accountManager":
-                listAccount = d.getAllAccount();
+                String trang = request.getParameter("trang");
+                if(trang == null) {
+                    trang = "1";
+                }
+                int t = Integer.parseInt(trang);
+                int dem = d.getTotalAccount();
+                int soAccount = dem/5;
+                if(dem%5 !=0) {
+                    soAccount++;
+                }
+                listAccount = d.getAllAccount(t);
+                request.setAttribute("soAccount", soAccount);
+                request.setAttribute("t", t);
                 request.setAttribute("listAccount", listAccount);
                 UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
                 break;
