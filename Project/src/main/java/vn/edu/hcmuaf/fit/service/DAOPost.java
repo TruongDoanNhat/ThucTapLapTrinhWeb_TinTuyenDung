@@ -209,7 +209,16 @@ public class DAOPost {
                     .collect(Collectors.toList());
         });
     }
-
+    public List<Post> getPostApprove() {
+        String query = "select * from post where status = ?";
+        List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0,Post.status_approve)
+                    .mapToBean(Post.class)
+                    .stream()
+                    .collect(Collectors.toList());
+        });
+    }
 
     public int getTotalPostPaid() {
         String query = "SELECT COUNT(*) FROM post WHERE status <> 0";
@@ -272,9 +281,8 @@ public class DAOPost {
 
     public Company getCompanyByUsername(String username) {
         String rs = null;
-        String query = "select * from company where companyID = (select companyID from account where user_name = ?)";
-        List<Company> companies = JDBIConnector.get().withHandle(handle -> handle.createQuery(query).bind(0, username).mapToBean(Company.class).list());
-        return companies.get(0);
+        String query = "select * from company where id = (select companyId from account where username = ?)";
+        return JDBIConnector.get().withHandle(handle -> handle.createQuery(query).bind(0, username).mapToBean(Company.class).stream().findFirst().get());
     }
 
     public String getAddressByCompanyID(String companyID) {

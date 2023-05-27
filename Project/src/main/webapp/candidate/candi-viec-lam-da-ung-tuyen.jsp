@@ -72,7 +72,7 @@
                                     </p>
                                 </div>
                                 <div class="btn-action">
-                                    <a href="/Post" target="_blank"
+                                    <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" target="_blank"
                                        class="btn btn-primary btn-primary-hover">Tìm việc ngay</a>
                                 </div>
                             </div>
@@ -236,7 +236,7 @@
 
                         </div>
                         <div class="text-center">
-                            <a href="/Post" target="_blank" class="btn btn-suggestion-more btn-primary-hover">
+                            <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" target="_blank" class="btn btn-suggestion-more btn-primary-hover">
                                 Xem tất cả việc làm phù hợp
                             </a>
                         </div>

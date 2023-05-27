@@ -18,20 +18,21 @@
     <title>Trang chủ</title>
     <meta name=" description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrapost.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/flaticon.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/price_rangs.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/slicknav.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/price_rangs.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/slicknav.css">
     <!--    <link rel="stylesheet" href="../assets/css/animate.min.css">-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/magnific-popupost.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/slick.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/nice-select.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/nice-select.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/themify-icons.css">
+
 </head>
 
 <body>
@@ -40,7 +41,7 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="../assets/img/logo/logo.png" alt="">
+                <img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt="">
             </div>
         </div>
     </div>
@@ -52,7 +53,7 @@
         <!-- Mobile Menu -->
         <div class="slider-active">
             <div class="single-slider slider-height d-flex align-items-center"
-                 data-background="assets/img/hero/h3_hero.jpg">
+                 data-background="<%=request.getContextPath()%>/assets/img/hero/h3_hero.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="hero__caption" style="padding-left: 270px; ">
@@ -209,7 +210,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="browse-btn2 text-center mt-50">
-                        <a href="/Post" class="border-btn2">Xem thêm</a>
+                        <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" class="border-btn2">Xem thêm</a>
                     </div>
                 </div>
             </div>
