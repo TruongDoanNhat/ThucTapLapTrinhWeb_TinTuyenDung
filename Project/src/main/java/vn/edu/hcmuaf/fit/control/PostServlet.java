@@ -116,6 +116,15 @@ public class PostServlet extends HttpServlet {
                 p.deletePost(Integer.valueOf(idManager));
                 UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
+            case "danhsanhvieclam":
+//                lay danh sách việc làm
+                List<Post> postAll1 = p.getPostAll();
+//                gáng danh sách việc làm
+                request.setAttribute("listJob", postAll1);
+//                hiển thị
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
+
+               break;
             case "quanlybaidang":
                 postAll = p.getPostAll();
                 request.setAttribute("postAll", postAll);
