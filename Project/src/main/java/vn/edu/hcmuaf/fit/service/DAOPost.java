@@ -218,6 +218,7 @@ public class DAOPost {
                     .stream()
                     .collect(Collectors.toList());
         });
+        return listPost;
     }
 
     public int getTotalPostPaid() {

@@ -118,7 +118,7 @@ public class PostServlet extends HttpServlet {
                 break;
             case "danhsanhvieclam":
 //                lay danh sách việc làm
-                List<Post> postAll1 = p.getPostAll();
+                List<Post> postAll1 = p.getPostAll(t);
 //                gáng danh sách việc làm
                 request.setAttribute("listJob", postAll1);
 //                hiển thị
