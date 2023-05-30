@@ -1,9 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
-import vn.edu.hcmuaf.fit.model.Account;
-import vn.edu.hcmuaf.fit.model.Company;
-import vn.edu.hcmuaf.fit.model.Post;
-import vn.edu.hcmuaf.fit.model.Price;
+import vn.edu.hcmuaf.fit.model.*;
 import vn.edu.hcmuaf.fit.service.DAOBill;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 
@@ -130,15 +127,22 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("postAll", postAll);
                 UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
                 break;
+            case "category":
+                request.setAttribute("listPOC", p.getPostofCategoryByID(Integer.valueOf(idManager)));
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
+                break;
+            case "vieclamdaungtuyen":
+                if (account!=null){
+                    List<Post> postApplied1 = p.getPostApplied(account.getEmail());
+                    request.setAttribute("jobApplied",postApplied1);
+                }
+                UtilControl.phanQuyenServletCandi1(account,"candidate/candi-viec-lam-da-ung-tuyen.jsp","/Login?action=login",request,response);
+                break;
         }
 
-//        if (action != null) {
-//            request.setAttribute("listPOC", p.getPostofCategoryByID(Integer.valueOf(action)));
-////            request.getRequestDispatcher("danh-sach-viec-lam-candi.jsp").forward(request, response);
-//        } else {
-//            request.setAttribute("listPOC", p.getPostAll());
-//        }
-//        request.getRequestDispatcher("danh-sach-viec-lam-candi.jsp").forward(request, response);
+
+
+
 
     }
 

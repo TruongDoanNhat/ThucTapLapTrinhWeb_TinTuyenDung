@@ -14,6 +14,8 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+  <%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
+  <%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
 
   <!-- CSS here -->
   <link rel="stylesheet" href="../assets/css/bootstrapost.min.css">
@@ -143,42 +145,49 @@
           <aside class="single_sidebar_widget post_category_widget">
             <h4 class="widget_title">Việc làm</h4>
             <ul class="list cat-list">
+              <%
+                DAOPost dp = new DAOPost();
+                for (Category c : dp.getCategoryAll()) { %>
               <li>
-                <a href="#" class="d-flex">
-                  <p>Lập trình viên </p>
-                  <p>(17)</p>
-                </a>
+                <div class="<%=c.getid()%>">
+                  <h5>
+                    <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getid()%>&name=<%=c.getName()%>"><%=c.getName()%>"
+                    </a>
+                  </h5>
+                  <span>(<%=dp.getPostofCategoryByID(c.getid()).size()%>)</span>
+                </div>
               </li>
               <li>
-                <a href="#" class="d-flex">
-                  <p>Chuyên viên tư vấn mảng tuyển dụng</p>
-                  <p>(5)</p>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="d-flex">
-                  <p>Java Developer</p>
-                  <p>(3)</p>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="d-flex">
-                  <p>Fullstack Developer</p>
-                  <p>(11)</p>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="d-flex">
-                  <p>Lập trình viên PHP</p>
-                  <p>(12)</p>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="d-flex">
-                  <p>Nhân viên Lập trình.NetDeveloper</p>
-                  <p>(9)</p>
-                </a>
-              </li>
+<%--                <a href="#" class="d-flex">--%>
+<%--                  <p>Chuyên viên tư vấn mảng tuyển dụng</p>--%>
+<%--                  <p>(5)</p>--%>
+<%--                </a>--%>
+<%--              </li>--%>
+<%--              <li>--%>
+<%--                <a href="#" class="d-flex">--%>
+<%--                  <p>Java Developer</p>--%>
+<%--                  <p>(3)</p>--%>
+<%--                </a>--%>
+<%--              </li>--%>
+<%--              <li>--%>
+<%--                <a href="#" class="d-flex">--%>
+<%--                  <p>Fullstack Developer</p>--%>
+<%--                  <p>(11)</p>--%>
+<%--                </a>--%>
+<%--              </li>--%>
+<%--              <li>--%>
+<%--                <a href="#" class="d-flex">--%>
+<%--                  <p>Lập trình viên PHP</p>--%>
+<%--                  <p>(12)</p>--%>
+<%--                </a>--%>
+<%--              </li>--%>
+<%--              <li>--%>
+<%--                <a href="#" class="d-flex">--%>
+<%--                  <p>Nhân viên Lập trình.NetDeveloper</p>--%>
+<%--                  <p>(9)</p>--%>
+<%--                </a>--%>
+<%--              </li>--%>
+              <% }%>
             </ul>
           </aside>
           <aside class="single_sidebar_widget popular_post_widget">

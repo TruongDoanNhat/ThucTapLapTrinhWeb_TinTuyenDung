@@ -34,7 +34,7 @@
                                         <li><a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam">Việc làm </a>
                                             <ul class="submenu">
                                                 <li><a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam">Tìm việc làm </a></li>
-                                                <li><a href="<%=request.getContextPath()%>/candidate/candi-viec-lam-da-ung-tuyen.jsp">Việc làm đã ứng tuyển</a>
+                                                <li><a href="<%=request.getContextPath()%>/Post?action=vieclamdaungtuyen">Việc làm đã ứng tuyển</a>
                                                 </li>
                                                 <li><a href="<%=request.getContextPath()%>/candidate/candi-viec-lam-da-luu.jsp">Việc làm đã lưu</a>
                                                 </li>

@@ -1,3 +1,9 @@
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
+<%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -6,6 +12,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%  DAOPost daoPost = new DAOPost();%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -145,42 +152,17 @@
                     <aside class="single_sidebar_widget post_category_widget">
                         <h4 class="widget_title">Việc làm</h4>
                         <ul class="list cat-list">
+                            <%
+                                for (Category c : daoPost.getCategoryAll()) { %>
                             <li>
-                                <a href="danh-sach-viec-lam-candi.jsp" class="d-flex">
-                                    <p>Lập trình viên </p>
-                                    <p>(17)</p>
+                                <a href="" class="d-flex">
+                                    <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getid()%>&name=<%=c.getName()%>"><%=c.getName()%>
+                                    </a>
+                                    <p>(<%=daoPost.getPostofCategoryByID(c.getid()).size()%>)</p>
                                 </a>
                             </li>
-                            <li>
-                                <a href="danh-sach-viec-lam-candi.jsp" class="d-flex">
-                                    <p>Chuyên viên tư vấn mảng tuyển dụng</p>
-                                    <p>(5)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="danh-sach-viec-lam-candi.jsp" class="d-flex">
-                                    <p>Java Developer</p>
-                                    <p>(3)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="danh-sach-viec-lam-candi.jsp" class="d-flex">
-                                    <p>Fullstack Developer</p>
-                                    <p>(11)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="danh-sach-viec-lam-candi.jsp" class="d-flex">
-                                    <p>Lập trình viên PHP</p>
-                                    <p>(12)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="danh-sach-viec-lam-candi.jsp" class="d-flex">
-                                    <p>Nhân viên Lập trình.NetDeveloper</p>
-                                    <p>(9)</p>
-                                </a>
-                            </li>
+                            <%}%>
+
                         </ul>
                     </aside>
                     <aside class="single_sidebar_widget popular_post_widget">

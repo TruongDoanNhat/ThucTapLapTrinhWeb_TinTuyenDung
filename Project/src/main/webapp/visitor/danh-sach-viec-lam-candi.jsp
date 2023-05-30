@@ -256,19 +256,19 @@
                             <div class="container">
 
                                 <%
-                                    //                                 List<Post> poc = (List<Post>) request.getAttribute("listPOC");
-                                    List<Post> post = (List<Post>) request.getAttribute("listJob");
-//                                    List<Post> post = poc == null ? poc : listAll;
+                                    List<Post> poc = (List<Post>) request.getAttribute("listPOC");
+                                    List<Post> listAll = (List<Post>) request.getAttribute("listJob");
+                                    List<Post> post = poc != null ? poc : listAll;
                                     for (Post p : post) {
                                 %>
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="/Post_details?id=<%=p.getId()%>"><img
-                                                    src="../assets/img/icon/job-list1.png" alt=""></a>
+                                            <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>"><img
+                                                    src="<%=request.getContextPath()%>/assets/img/icon/job-list1.png" alt="ảnh không được hiển thị"></a>
                                         </div>
                                         <div class="job-tittle job-tittle2">
-                                            <a href="/Post_details?id=<%=p.getId()%>">
+                                            <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                                 <h4><%=p.getTitle()%>
                                                 </h4>
                                             </a>
@@ -286,9 +286,11 @@
                                         <a href="/Post_details?id=<%=p.getId()%>">
                                             <%=p.getType()%>
                                         </a>
-                                        <span>
-                                            <%=dp.dateToCreate(p.getCreateDate())%> ngày trước
-                                        </span>
+                                        <%if (dp.dateToCreate(p.getCreateDate()) > 0) { %>
+                                        <span><%=dp.dateToCreate(p.getCreateDate())%> ngày trước</span>
+                                        <% } else { %>
+                                        <span>Mới nhất</span>
+                                        <% } %>
                                     </div>
                                 </div>
                                 <% } %>
