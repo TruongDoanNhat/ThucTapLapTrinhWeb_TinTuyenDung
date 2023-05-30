@@ -227,12 +227,21 @@ public class DAOAccount {
         this.account = new Account(emailGG, arrOfStr[0], 1, 1);
     }
 
-    public List<Account> getAllAccount() {
-        String query = "select * from account";
+    public List<Account> getAllAccount(int trang) {
+        String query = "select * from account LIMIT 5 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
+                    .bind(0, (trang - 1) * 5)
                     .mapToBean(Account.class)
                     .stream().collect(Collectors.toList());
+        });
+    }
+    public int getTotalAccount() {
+        String query = "SELECT COUNT(*) FROM account";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapTo(Integer.class)
+                    .one();
         });
     }
 

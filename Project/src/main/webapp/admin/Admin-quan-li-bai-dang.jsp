@@ -14,12 +14,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | Việc làm mới</title>
-    <link type="text/css" href="admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="admin/bootstrap/css/bootstrap-responsive.min.css"
+    <link type="text/css" href="<%=request.getContextPath()%>/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="<%=request.getContextPath()%>/admin/bootstrap/css/bootstrap-responsive.min.css"
           rel="stylesheet">
-    <link type="text/css" href="admin/css/theme.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="admin/css/quan-ly-bai-dang.css">
-    <link type="text/css" href="admin/images/icons/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href="<%=request.getContextPath()%>/admin/css/theme.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/admin/css/quan-ly-bai-dang.css">
+    <link type="text/css" href="<%=request.getContextPath()%>/admin/images/icons/css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
           rel='stylesheet'>
 </head>
@@ -268,6 +268,12 @@
                         </div>
                     </div>
                 </div>
+                <div style="margin: 0 auto; text-align: center;">
+                    <!-- Hiển thị nút phân trang -->
+                    <c:forEach begin="1" end="${sobd}" var="t">
+                        <a href="Post?action=quanlybaidang&trang=${t}" class="btn btn-link">${t}</a>
+                    </c:forEach>
+                </div>
             </div>
             <!-- ============================================================== -->
             <!-- end data table  -->
@@ -285,12 +291,12 @@
 </div>
 <!--/.wrapper-->
 </body>
-<script src="admin/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="admin/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-<script src="admin/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="admin/scripts/flot/jquery.flot.js" type="text/javascript"></script>
-<script src="admin/scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
-<script src="admin/scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
-<script src="admin/scripts/common.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/scripts/flot/jquery.flot.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/scripts/common.js" type="text/javascript"></script>
 
 </html>
