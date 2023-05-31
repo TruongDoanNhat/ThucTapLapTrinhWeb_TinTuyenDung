@@ -137,18 +137,29 @@
                         <div class="small-section-tittle">
                             <h4>Tổng quan về công việc</h4>
                         </div>
-                        <ul>
-                            <li>Chức vụ : <span><%=post2.getRank()%></span></li>
-                            <li>Hình thức làm việc : <span><%=post2.getType()%></span></li>
-                            <li>Địa điểm : <span><%=post2.getAddress()%></span></li>
-                            <li>Mức lương : <span><%=post2.getSalary()%>  VNĐ</span></li>
-                            <li>Hạn nộp hồ sơ : <span> <%=post2.getEndDate()%> </span></li>
+                        <ul class="post-details4">
+                            <li>Chức vụ: <span><%=post2.getRank()%></span></li>
+                            <li>Hình thức làm việc: <span><%=post2.getType()%></span></li>
+                            <li>Địa điểm: <span><%=post2.getAddress()%></span></li>
+                            <li>Mức lương: <span><%=post2.getSalary()%> VNĐ</span></li>
+                            <li>Hạn nộp hồ sơ: <span><%=post2.getEndDate()%></span></li>
                         </ul>
+
                         <div class="apply-btn2">
-                            <a href="<%=request.getContextPath()%>/candidate/candi-viec-lam-da-ung-tuyen.jsp" class="btn">Nộp đơn</a>
+                            <a href="#" class="btn" onclick="toggleForm()">Ứng Tuyển</a>
                         </div>
+                        <div id="hiddenForm" class="hidden-form-container">
+                            <!-- Form content goes here -->
+                            <form>
+                                <!-- Form fields -->
+                                <input type="file" name="fileToUpload">
+                                <div class="apply-btn2">
+                                <input class="btn" type="submit" value="Nộp CV">
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
-                    <div class="post-details4  mb-50">
                         <!-- Small Section Tittle -->
                         <div class="small-section-tittle">
                             <h4><a href="#">Thông tin công ty</a></h4>
@@ -168,6 +179,21 @@
     <!-- job post company End -->
 </main>
 <jsp:include page="footter-candi.jsp"></jsp:include>
+<script>
+    function toggleForm() {
+        var hiddenForm = document.getElementById("hiddenForm");
+        var applyButton = document.getElementsByClassName("apply-btn2")[0];
+
+        if (hiddenForm.classList.contains("active")) {
+            hiddenForm.classList.remove("active");
+            applyButton.style.display = "inline-block";
+        } else {
+            hiddenForm.classList.add("active");
+            applyButton.style.display = "none";
+        }
+    }
+</script>
+
 </body>
 <!-- JS here -->
 
@@ -204,4 +230,54 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="<%=request.getContextPath()%>/assets/js/plugins.js"></script>
 <script src="<%=request.getContextPath()%>/assets/js/main.js"></script>
+<style>
+    .small-section-tittle {
+        margin-bottom: 20px;
+    }
+
+    .small-section-tittle h4 {
+        font-size: 18px;
+        margin: 0;
+        color: #333;
+    }
+
+    .post-details4 ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .post-details4 ul li {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .post-details4 ul li span {
+        font-weight: bold;
+    }
+
+    .hidden-form-container {
+        display: none;
+        margin-top: 10px;
+    }
+
+    .hidden-form-container.active {
+        display: block;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .hidden-form-container.active form {
+        margin: 0;
+    }
+
+    .hidden-form-container.active input[type="file"],
+    .hidden-form-container.active input[type="submit"] {
+        display: block;
+        margin-top: 10px;
+    }
+</style>
+
 </html>
