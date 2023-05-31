@@ -94,11 +94,6 @@
                                 <button class="btn" type="submit">
                                     <i class="icon-search"></i>
                                 </button>
-                                <a href="business/busi-dang-tin.jsp" class="holder"
-                                   style="right: -165px; top:5px; position: absolute; outline: none">
-                                    <i class="icon-plus"></i>
-                                </a>
-
                             </div>
 
                             <select tabindex="1" data-placeholder="Vui lòng chọn.." name="status"
@@ -109,9 +104,11 @@
                                 <option value="3">Khóa</option>
                                 <option value="4">Hết hạn</option>
                             </select>
-<%--                            <span class="info">Đăng tin</span>--%>
                         </form>
-
+                        <a href="<%=request.getContextPath()%>/business/busi-dang-tin.jsp" class="holder">
+                            <i class="icon-plus"></i>
+                            <span class="hov">Đăng tin </span>
+                        </a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -152,14 +149,16 @@
                                     <td>
                                         <div class="btn-group ml-auto">
                                             <a href="<%=request.getContextPath()%>/PostManager?action=approve&id=<%=p.getId()%>"
-                                               class="btn btn-sm btn-outline-light"
-                                               style="padding-left: 20px;outline: none">
+                                               class="btn btn-sm btn-outline-light holder2"
+                                               style="outline: none;padding-left: 20px;">
                                                 <i class="icon-check"></i>
+                                                <span class="hov">Duyệt</span>
                                             </a>
                                             <a href="<%=request.getContextPath()%>/PostManager?action=remove&id=<%=p.getId()%>"
-                                               class="btn btn-sm btn-outline-light"
-                                               style="padding-left: 20px;outline: none">
+                                               class="btn btn-sm btn-outline-light holder2"
+                                               style="outline: none">
                                                 <i class="icon-trash"></i>
+                                                <span class="hov">Xóa</span>
                                             </a>
                                         </div>
                                     </td>
@@ -186,9 +185,10 @@
                                     <td>
                                         <div class="btn-group ml-auto">
                                             <a href="<%=request.getContextPath()%>/PostManager?action=lock&id=<%=p.getId()%>"
-                                               class="btn btn-sm btn-outline-light"
-                                               style="padding-left: 20px;outline: none">
+                                               class="btn btn-sm btn-outline-light holder2"
+                                               style="outline: none">
                                                 <i class="icon-lock"></i>
+                                                <span class="hov">Khóa</span>
                                             </a>
                                             <%--                                            <button class="btn btn-sm btn-outline-light"--%>
                                             <%--                                                    style="padding-left: 20px; outline: none">--%>
@@ -219,14 +219,16 @@
                                     <td>
                                         <div class="btn-group ml-auto">
                                             <a href="<%=request.getContextPath()%>/PostManager?action=approve&id=<%=p.getId()%>"
-                                               class="btn btn-sm btn-outline-light"
-                                               style="padding-left: 20px;outline: none">
+                                               class="btn btn-sm btn-outline-light holder2"
+                                               style="outline: none; padding-left: 20px; ">
                                                 <i class="icon-check"></i>
+                                                <span class="hov">Duyệt</span>
                                             </a>
                                             <a href="<%=request.getContextPath()%>/PostManager?action=delete&id=<%=p.getId()%>"
-                                               class="btn btn-sm btn-outline-light"
-                                               style="padding-left: 20px;outline: none">
+                                               class="btn btn-sm btn-outline-light holder2"
+                                               style="outline: none">
                                                 <i class="icon-trash"></i>
+                                                <span class="hov">Xóa</span>
                                             </a>
                                         </div>
                                     </td>
@@ -253,9 +255,10 @@
                                     <td>
                                         <div class="btn-group ml-auto">
                                             <a href="<%=request.getContextPath()%>/PostManager?action=delete&id=<%=p.getId()%>"
-                                               class="btn btn-sm btn-outline-light"
-                                               style="padding-left: 20px;outline: none">
+                                               class="btn btn-sm btn-outline-light holder2"
+                                               style="outline: none">
                                                 <i class="icon-trash"></i>
+                                                <span class="hov">Xóa</span>
                                             </a>
                                         </div>
                                     </td>
