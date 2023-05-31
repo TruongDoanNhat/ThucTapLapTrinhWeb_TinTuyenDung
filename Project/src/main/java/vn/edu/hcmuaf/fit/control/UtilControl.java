@@ -37,7 +37,7 @@ public class UtilControl {
 
     public static void phanQuyenServletBusi1(Account account, String linkIn, String linkOut, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (account != null) {
-            if (account.getRole() == 2 || account.getRole() == 0) {
+            if ((account.getRole() == 2 || account.getRole() == 0) && account.getStatus() == 1) {
                 UtilControl.forward(linkIn, request, response);
             } else {
                 response.sendRedirect(request.getContextPath() + linkOut);
@@ -49,7 +49,7 @@ public class UtilControl {
 
     public static void phanQuyenServletBusi2(Account account, String linkIn, String linkOut, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (account != null) {
-            if (account.getRole() == 2 || account.getRole() == 0) {
+            if ((account.getRole() == 2 || account.getRole() == 0) && account.getStatus() == 1) {
                 response.sendRedirect(linkIn);
             } else {
                 response.sendRedirect(request.getContextPath() + linkOut);
@@ -58,9 +58,10 @@ public class UtilControl {
             response.sendRedirect(request.getContextPath() + linkOut);
         }
     }
+
     public static void phanQuyenServletCandi1(Account account, String linkIn, String linkOut, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (account != null) {
-            if ((account.getRole() ==1|| account.getRole() == 0) && account.getStatus() == 1) {
+            if ((account.getRole() == 1 || account.getRole() == 0) && account.getStatus() == 1) {
                 UtilControl.forward(linkIn, request, response);
             } else {
 
@@ -70,9 +71,10 @@ public class UtilControl {
             response.sendRedirect(request.getContextPath() + linkOut);
         }
     }
+
     public static void phanQuyenServletCandi2(Account account, String linkIn, String linkOut, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (account != null) {
-            if ((account.getRole() ==1 || account.getRole() == 0)  && account.getStatus() == 1) {
+            if ((account.getRole() == 1 || account.getRole() == 0) && account.getStatus() == 1) {
                 response.sendRedirect(linkIn);
             } else {
 
@@ -82,6 +84,7 @@ public class UtilControl {
             response.sendRedirect(request.getContextPath() + linkOut);
         }
     }
+
     public static void send(int role, String urlAdmin, String urlCandi, String urlBusi, HttpServletResponse response) throws IOException {
         if (role == 0)
             response.sendRedirect(urlAdmin);
