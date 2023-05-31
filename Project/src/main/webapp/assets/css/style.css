@@ -628,7 +628,7 @@ hr {
     text-align: center;
     border-radius: 50%;
     line-height: 48px;
-    border: 2px solid transparent
+    border: 15px solid transparent
 }
 
 @media (max-width: 767px) {
