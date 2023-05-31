@@ -3,12 +3,8 @@ package vn.edu.hcmuaf.fit.service;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.*;
 
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -202,10 +198,11 @@ public class DAOPost {
     }
 
     public List<Post> getPostAll(int trang) {
-        String query = "SELECT * FROM post WHERE status <> 0 LIMIT 5 OFFSET ?";
+        String query = "SELECT * FROM post WHERE status <> ? LIMIT 5 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
-                    .bind(0, (trang - 1) * 5)
+                    .bind(0, Post.status_unpaid)
+                    .bind(1, (trang - 1) * 5)
                     .mapToBean(Post.class)
                     .stream()
                     .collect(Collectors.toList());

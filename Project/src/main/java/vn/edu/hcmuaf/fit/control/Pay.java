@@ -26,6 +26,9 @@ public class Pay extends HttpServlet {
         String action = request.getParameter("action");
         String id = request.getParameter("id");
         switch (action) {
+            case "quanlydoanhthu":
+
+                break;
             case "thanhtoan":
                 // đẩy csdl vào bill
                 if (db.insertBill(numAccount, pay)) {
