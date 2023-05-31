@@ -3,9 +3,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
 <%@ page import="java.util.List" %>
-<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %><%--
-<%--
-  User: Admin
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
+ <%-- User: Admin
   Date: 05/01/2023
   Time: 6:53 CH
   To change this template use File | Settings | File Templates.
@@ -66,7 +66,7 @@
                     <div class="empty">
                         <img src="https://www.topcv.vn/v4/image/empty.png" alt="Empty">
                         <p>Bạn chưa lưu công việc nào!</p>
-                        <a href="<%=request.getContextPath()%>/visitor/danh-sach-viec-lam-candi.jsp" class="btn-seatch-job btn-primary-hover">Tìm việc ngay</a>
+                        <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" class="btn-seatch-job btn-primary-hover">Tìm việc ngay</a>
                     </div>
                 </div>
             </div>
@@ -77,43 +77,16 @@
                     <aside class="single_sidebar_widget post_category_widget">
                         <h4 class="widget_title">Việc làm</h4>
                         <ul class="list cat-list">
+                                <%
+                                    for (Category c : daoPost.getCategoryAll()) { %>
                             <li>
                                 <a href="#" class="d-flex">
-                                    <p>Lập trình viên</p>
-                                    <p>(17)</p>
+                                    <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getid()%>&name=<%=c.getName()%>"><%=c.getName()%>
+                                    </a>
+                                    <p>(<%=daoPost.getPostofCategoryByID(c.getid()).size()%>)</p>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Chuyên viên tư vấn mảng tuyển dụng</p>
-                                    <p>(5)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Java Developer</p>
-                                    <p>(3)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Fullstack Developer</p>
-                                    <p>(11)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Lập trình viên PHP</p>
-                                    <p>(12)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Nhân Viên Lập Trình .Net Developer </p>
-                                    <p>(9)</p>
-                                </a>
-                            </li>
-                        </ul>
+                        <%}%>
                     </aside>
 
                     <aside class="single_sidebar_widget popular_post_widget">

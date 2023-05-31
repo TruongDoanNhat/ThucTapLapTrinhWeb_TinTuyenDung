@@ -1,9 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
-import vn.edu.hcmuaf.fit.model.Account;
-import vn.edu.hcmuaf.fit.model.Company;
-import vn.edu.hcmuaf.fit.model.Post;
-import vn.edu.hcmuaf.fit.model.Price;
+import vn.edu.hcmuaf.fit.model.*;
 import vn.edu.hcmuaf.fit.service.DAOBill;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 
@@ -35,6 +32,11 @@ public class PostServlet extends HttpServlet {
         String keywords = request.getParameter("keywords");
         String status = request.getParameter("status");
         List<Post> postAll;
+        String trang = request.getParameter("trang");
+        if(trang == null) {
+            trang = "1";
+        }
+        int t = Integer.parseInt(trang);
         switch (action) {
             case "dangtin":
                 String title = request.getParameter("title");
@@ -66,11 +68,6 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 break;
             case "tintuyendung":
-                String trang = request.getParameter("trang");
-                if(trang == null) {
-                    trang = "1";
-                }
-                int t = Integer.parseInt(trang);
                 int dem = p.getTotalPostBusi(account.getId());
                 int sosp = dem/3;
                 if(dem%3 !=0) {
@@ -116,20 +113,43 @@ public class PostServlet extends HttpServlet {
                 p.deletePost(Integer.valueOf(idManager));
                 UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
+            case "danhsanhvieclam":
+//                lay danh sách việc làm
+                List<Post> postAll1 = p.getPostAll(t);
+//                gáng danh sách việc làm
+                request.setAttribute("listJob", postAll1);
+//                hiển thị
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
+
+               break;
             case "quanlybaidang":
-                postAll = p.getPostAll();
-                request.setAttribute("postAll", postAll);
+                int dem2 = p.getTotalPostPaid();
+                int sobd = dem2/5;
+                if(dem2%5 !=0) {
+                    sobd++;
+                }
+                List<Post> post3 = p.getPostAll(t);
+                request.setAttribute("postAll", post3);
+                request.setAttribute("sobd", sobd);
+                request.setAttribute("trang", t);
                 UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
+                break;
+            case "category":
+                request.setAttribute("listPOC", p.getPostofCategoryByID(Integer.valueOf(idManager)));
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
+                break;
+            case "vieclamdaungtuyen":
+                if (account!=null){
+                    List<Post> postApplied1 = p.getPostApplied(account.getEmail());
+                    request.setAttribute("jobApplied",postApplied1);
+                }
+                UtilControl.phanQuyenServletCandi1(account,"candidate/candi-viec-lam-da-ung-tuyen.jsp","/Login?action=login",request,response);
                 break;
         }
 
-//        if (action != null) {
-//            request.setAttribute("listPOC", p.getPostofCategoryByID(Integer.valueOf(action)));
-////            request.getRequestDispatcher("danh-sach-viec-lam-candi.jsp").forward(request, response);
-//        } else {
-//            request.setAttribute("listPOC", p.getPostAll());
-//        }
-//        request.getRequestDispatcher("danh-sach-viec-lam-candi.jsp").forward(request, response);
+
+
+
 
     }
 

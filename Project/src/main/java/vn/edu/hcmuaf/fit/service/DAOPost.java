@@ -7,11 +7,11 @@ import vn.edu.hcmuaf.fit.model.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.jdbi.v3.core.internal.IterableLike.stream;
 
 public class DAOPost {
     private DAOBill daoBill = new DAOBill();
@@ -201,16 +201,38 @@ public class DAOPost {
         return listPost.get(0);
     }
 
-    public List<Post> getPostAll() {
-        List<Post> listPost = null;
-        String query = "select * from post ";
-        listPost = JDBIConnector.get().withHandle(handle -> {
+    public List<Post> getPostAll(int trang) {
+        String query = "SELECT * FROM post WHERE status <> 0 LIMIT 5 OFFSET ?";
+        return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
+                    .bind(0, (trang - 1) * 5)
                     .mapToBean(Post.class)
-                    .stream().collect(Collectors.toList());
+                    .stream()
+                    .collect(Collectors.toList());
+        });
+    }
+    public List<Post> getPostApprove() {
+        String query = "select * from post where status = ?";
+        List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0,Post.status_approve)
+                    .mapToBean(Post.class)
+                    .stream()
+                    .collect(Collectors.toList());
         });
         return listPost;
     }
+
+    public int getTotalPostPaid() {
+        String query = "SELECT COUNT(*) FROM post WHERE status <> 0";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapTo(Integer.class)
+                    .one();
+        });
+    }
+
+
 
     public List<Category> getCategoryAll() {
         String query = "select * from category";
@@ -235,6 +257,18 @@ public class DAOPost {
         return listPost;
     }
 
+
+
+    public List<Post> getPostCreateNew() {
+        String query = "SELECT * FROM post ORDER BY createDate DESC LIMIT 5;";
+        List<Post> listPost = null;
+        listPost = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapToBean(Post.class)
+                    .stream().collect(Collectors.toList());
+        });
+        return listPost;
+    }
 
     public List<Post> getPostofCategoryByID(int categoryId) {
         String query = "select * from post where categoryId = ?";
@@ -262,9 +296,8 @@ public class DAOPost {
 
     public Company getCompanyByUsername(String username) {
         String rs = null;
-        String query = "select * from company where companyID = (select companyID from account where user_name = ?)";
-        List<Company> companies = JDBIConnector.get().withHandle(handle -> handle.createQuery(query).bind(0, username).mapToBean(Company.class).list());
-        return companies.get(0);
+        String query = "select * from company where id = (select companyId from account where username = ?)";
+        return JDBIConnector.get().withHandle(handle -> handle.createQuery(query).bind(0, username).mapToBean(Company.class).stream().findFirst().get());
     }
 
     public String getAddressByCompanyID(String companyID) {
@@ -285,12 +318,12 @@ public class DAOPost {
         });
     }
 
-    public List<PostApplied> getPostApplied(String emailAccount) {
-        String query = "select * from postApplied where email = ?";
+    public List<Post> getPostApplied(String emailAccount) {
+        String query = "SELECT p.*  FROM postapplied pa JOIN account a ON pa.accountEmail=a.email JOIN post p ON pa.postId=p.id WHERE a.email=?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
                     .bind(0, emailAccount)
-                    .mapToBean(PostApplied.class)
+                    .mapToBean(Post.class)
                     .stream().collect(Collectors.toList());
         });
     }
@@ -330,6 +363,7 @@ public class DAOPost {
         }
         return getDaysDiff;
     }
+
 
 
     public static void main(String[] args) {

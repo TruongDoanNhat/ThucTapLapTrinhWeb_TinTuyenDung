@@ -53,13 +53,13 @@
 <jsp:include page="header-candi.jsp"></jsp:include>
 <main>
 
-    <%--    <c:forEach items="post2" var="post2">--%>
+<%--        <c:forEach items="post2" var="post2">--%>
 
     <!-- Breadcrumb Start-->
 
     <div class="ctn-breadcrumb-detail">
-        <a href="/Home" class="text-highlight bold">Trang chủ</a> <i class="fa-solid fa-angle-right"></i>
-        <a href="/Post" class="text-highlight bold">Việc làm</a> <i class="fa-solid fa-angle-right"></i>
+        <a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp" class="text-highlight bold">Trang chủ</a> <i class="fa-solid fa-angle-right"></i>
+        <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" class="text-highlight bold">Việc làm</a> <i class="fa-solid fa-angle-right"></i>
         <span class="text-dark-blue"><%=post2.getTitle()%></span>
     </div>
     <!-- Breadcrumb End -->

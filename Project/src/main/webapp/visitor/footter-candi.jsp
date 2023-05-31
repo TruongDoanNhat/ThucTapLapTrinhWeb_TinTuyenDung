@@ -17,7 +17,7 @@
         <div class="container">
             <!-- logo -->
             <div class="foot-logo">
-                <a href="trang-chu.html"><img src="assets//img/logo/logo2_footer.png" alt=""></a>
+                <a href="trang-chu.html"><img src="<%=request.getContextPath()%>/assets/img/logo/logo2_footer.png" alt=""></a>
             </div>
             <div class="row d-flex justify-content-between">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 padding-left">

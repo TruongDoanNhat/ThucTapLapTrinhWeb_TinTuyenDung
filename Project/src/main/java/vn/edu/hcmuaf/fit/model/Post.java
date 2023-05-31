@@ -223,5 +223,15 @@ public class Post implements Serializable {
                 ", priceId=" + priceId +
                 '}';
     }
+
+    private int daysSinceCreated;
+
+    public int getDaysSinceCreated() {
+        return daysSinceCreated;
+    }
+
+    public void setDaysSinceCreated(int daysSinceCreated) {
+        this.daysSinceCreated = daysSinceCreated;
+    }
 }
 
