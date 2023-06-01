@@ -7,15 +7,17 @@ public class Bill {
     private String numAccount;
     private String money;
     private Date createDate;
+    private int accountId;
 
     public Bill() {
     }
 
-    public Bill(int id, String numAccount, String money, Date createDate) {
+    public Bill(int id, String numAccount, String money, Date createDate, int accountId) {
         this.id = id;
         this.numAccount = numAccount;
         this.money = money;
         this.createDate = createDate;
+        this.accountId = accountId;
     }
 
     @Override
@@ -25,7 +27,16 @@ public class Bill {
                 ", numAccount='" + numAccount + '\'' +
                 ", money='" + money + '\'' +
                 ", createDate=" + createDate +
+                ", accountId=" + accountId +
                 '}';
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public int getId() {

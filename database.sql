@@ -63,23 +63,24 @@ CREATE TABLE `bill`  (
   `numAccount` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `money` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `createDate` date NOT NULL,
+  `accountId` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bill
 -- ----------------------------
-INSERT INTO `bill` VALUES (1, NULL, NULL, '2023-05-02');
-INSERT INTO `bill` VALUES (2, '11111', '36050', '2023-05-02');
-INSERT INTO `bill` VALUES (3, '', '72100', '2023-05-02');
-INSERT INTO `bill` VALUES (4, '', '36050', '2023-05-03');
-INSERT INTO `bill` VALUES (5, '', '36050', '2023-05-03');
-INSERT INTO `bill` VALUES (6, '', '36050', '2023-05-03');
-INSERT INTO `bill` VALUES (7, '', '36050', '2023-05-03');
-INSERT INTO `bill` VALUES (8, '', '36050', '2023-05-03');
-INSERT INTO `bill` VALUES (9, '', '36050', '2023-05-03');
-INSERT INTO `bill` VALUES (10, '', '150050', '2023-05-03');
-INSERT INTO `bill` VALUES (11, '', '85000', '2023-05-03');
+INSERT INTO `bill` VALUES (1, NULL, NULL, '2023-05-02',1);
+INSERT INTO `bill` VALUES (2, '11111', '36050', '2023-05-02',6);
+INSERT INTO `bill` VALUES (3, '', '72100', '2023-05-02',7);
+INSERT INTO `bill` VALUES (4, '', '36050', '2023-05-03',10);
+INSERT INTO `bill` VALUES (5, '', '36050', '2023-05-03',1);
+INSERT INTO `bill` VALUES (6, '', '36050', '2023-05-03',8);
+INSERT INTO `bill` VALUES (7, '', '36050', '2023-05-03',7);
+INSERT INTO `bill` VALUES (8, '', '36050', '2023-05-03',6);
+INSERT INTO `bill` VALUES (9, '', '36050', '2023-05-03',10);
+INSERT INTO `bill` VALUES (10, '', '150050', '2023-05-03',1);
+INSERT INTO `bill` VALUES (11, '', '85000', '2023-05-03',6);
 
 -- ----------------------------
 -- Table structure for category
