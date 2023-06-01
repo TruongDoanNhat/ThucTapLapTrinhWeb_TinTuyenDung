@@ -21,7 +21,7 @@
                     <div class="col-lg-3 col-md-2 padding-left">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="trang-chu-candi.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
+                            <a href="trang-chu-candi.jsp"><img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
@@ -32,15 +32,8 @@
                                     <ul id="navigation">
                                         <li><a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp">Trang chủ</a></li>
                                         <li><a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam">Việc làm </a>
-                                            <ul class="submenu">
-                                                <li><a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam">Tìm việc làm </a></li>
-                                                <li><a href="<%=request.getContextPath()%>/Post?action=vieclamdaungtuyen">Việc làm đã ứng tuyển</a>
-                                                </li>
-                                                <li><a href="<%=request.getContextPath()%>/candidate/candi-viec-lam-da-luu.jsp">Việc làm đã lưu</a>
-                                                </li>
-                                            </ul>
                                         </li>
-                                        <li><a href="<%=request.getContextPath()%>/candidate/candi-ung-tuyen.jsp">Ứng tuyển</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/Post?action=vieclamdaungtuyen">Đã ứng tuyển</a></li>
                                         <li><a href="<%=request.getContextPath()%>/visitor/cong-ty-candi.jsp">Công ty</a>
                                         </li>
                                         <li><a>Trang</a>
