@@ -24,13 +24,13 @@
 
     <!-- CSS here -->
 
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrapost.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/price_rangs.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/flaticon.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/slicknav.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/animate.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/magnific-popupost.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/themify-icons.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/slick.css">

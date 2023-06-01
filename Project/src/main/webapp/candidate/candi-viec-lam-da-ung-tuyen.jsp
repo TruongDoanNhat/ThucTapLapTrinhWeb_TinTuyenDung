@@ -40,9 +40,20 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/nice-select.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/price_rangs.css">
 </head>
 <body>
-
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
 <!--================Blog Area =================-->
 <jsp:include page="../visitor/header-candi.jsp"></jsp:include>
 
@@ -133,7 +144,7 @@
                                 Việc làm phù hợp với bạn
                             </div>
                             <%
-                                List<Post> listpost = daoPost.getPostAll()  ;
+                                List<Post> listpost = daoPost.getPostApprove()  ;
                                 for (Post p : listpost) {
                             %>
                             <div class="single-job-items mb-30">
