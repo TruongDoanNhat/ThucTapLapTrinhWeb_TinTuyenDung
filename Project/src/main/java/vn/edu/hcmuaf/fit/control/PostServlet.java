@@ -88,7 +88,7 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("company", company);
                 Account account1 = p.getAccountFromPost(idPost);
                 request.setAttribute("account1", account1);
-                UtilControl.phanQuyenServletBusi1(account, "visitor/thong-tin-viec-lam-candi.jsp", "/Login?action=login", request, response);
+                UtilControl.forward("visitor/thong-tin-viec-lam-candi.jsp", request, response);
                 break;
             case "search":
                 postAll = status.equals("0") ? p.getPostSearch(keywords) : p.getPostSearch(keywords, status);

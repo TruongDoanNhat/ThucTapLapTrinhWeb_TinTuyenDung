@@ -50,7 +50,7 @@
                                         <i class="icon-inbox"></i> Quản lý bài đăng
                                     </a>
                                 </li>
-                                <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-doanh-thu.jsp"><i
+                                <li><a href="<%=request.getContextPath()%>/Pay?action=quanlydoanhthu"><i
                                         class="icon-inbox"></i> Quản lý doanh thu</a></li>
                                 <li><a href="<%=request.getContextPath()%>/AccountManager?action=accountManager"><i
                                         class="icon-inbox"></i> Quản lý người dùng</a></li>

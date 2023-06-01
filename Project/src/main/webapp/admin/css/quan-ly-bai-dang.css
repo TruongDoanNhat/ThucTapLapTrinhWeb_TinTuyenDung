@@ -9,10 +9,29 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.holder:hover ~ .info {
-    display: block;
+.holder {
+    right: -866px;
+    top: -34px;
+    position: relative;
+    outline: none;
+}
+.holder2 {
+    position: relative;
+}
+.hov {
+    color: black;
+    width: 55px;
+    position: absolute;
+    bottom: -25px;
+    opacity: 0;
 }
 
+.holder:hover .hov {
+    opacity: 1;
+}
+.holder2:hover .hov {
+    opacity: 1;
+}
 h1,
 h2,
 h3,
@@ -681,17 +700,6 @@ btn-link
     background-color: #5969ff;
     color: #fff;
 }
-
-
-/* -----------------------
-2.4  General
--------------------------*/
-
-
-/*---------Tooltips----------*/
-
-
-/*--------- Popovers ----------------*/
 
 .popover {
     border: 1px solid rgb(230, 230, 242);

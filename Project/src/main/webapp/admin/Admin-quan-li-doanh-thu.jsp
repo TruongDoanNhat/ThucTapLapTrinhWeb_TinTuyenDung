@@ -82,21 +82,13 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mb-0">Quản lý ứng viên</h5>
+                        <h5 class="mb-0">Quản lý doanh thu</h5>
                     </div>
                     <form class="navbar-search pull-left input-append" action="#">
-                        <input type="text" style="height:30px" class="span3" placeholder="Tìm kiếm theo tên, chức vụ">
+                        <input type="text" style="height:30px" class="span3" placeholder="Tìm kiếm">
                         <button class="btn" type="submit">
                             <i class="icon-search"></i>
                         </button>
-                        <a href="#" class="holder"
-                           style="right: -165px; top:5px; position: absolute; outline: none">
-                            <i class="icon-plus"></i>
-                        </a>
-<%--                        <button class="btn btn-smalls" style="outline: none">--%>
-<%--                            <i class="icon-trash"></i>--%>
-<%--                        </button>--%>
-
                     </form>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -105,130 +97,32 @@
                                 <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Tên ứng viên</th>
-                                    <th>Ngày sinh</th>
-                                    <th>Giới tính</th>
-                                    <th>Công việc</th>
-                                    <th>Mô tả</th>
-                                    <th>Chức năng</th>
+                                    <th>Tên người dùng</th>
+                                    <th>Số tài khoản</th>
+                                    <th>Số bài đăng</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Ngày thanh toán</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>1</td>
                                     <td>Nguyễn Đình Nguyên</td>
-                                    <td>06/02/2002</td>
-                                    <td>Nam</td>
-                                    <td class="cv">Front-end</td>
-                                    <td class="mt">Tôi đang tìm kiếm một công việc với tư cách là nhà phát triển front-end để làm
-                                        việc trong các dự án thú vị và đầy thử thách
-                                    </td>
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Trương Đoàn Nhất</td>
-                                    <td>20/11/2000</td>
-                                    <td>Nam</td>
-                                    <td class="cv">Lập trình PHP</td>
-                                    <td class="mt">Tôi đang tìm kiếm một công việc với tư cách là lập trình viên PHP để làm việc
-                                        trong các dự án thú vị
-                                    </td>
-                                    <!--                                    <td>Quận 2, Tp.HCM, Việt Nam</td>-->
-                                    <!--                                    <td class="col-blue">Đã duyệt</td>-->
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Hồ Yến Nhi</td>
-                                    <td>11/09/2000</td>
-                                    <td>Nữ</td>
-                                    <td class="cv"> Quản lý hệ thống nhân sự</td>
-                                    <td class="mt">Tôi đang tìm kiếm một nhóm để thực hiện các dự án thú vị</td>
-                                    <!--                                    <td>Quận 2, Tp.HCM, Việt Nam</td>-->
-                                    <!--                                    <td class="col-blue">Đã duyệt</td>-->
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Lê Hữu Phước</td>
-                                    <td>24/12/2003</td>
-                                    <td>Nam</td>
-                                    <td class="cv">Thiết kế và chế tạo cơ khí</td>
-                                    <td class="mt">Tôi muốn tìm kiếm thêm nhóm để thiết kế và chế tạo máy móc</td>
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
+                                    <td>11233456</td>
                                     <td>5</td>
-                                    <td>Lê Thị Hoa Hồng</td>
-                                    <td>22/02/2002</td>
-                                    <td>Nữ</td>
-                                    <td class="cv"> Kỹ thuật điện tử viễn thông</td>
-                                    <td class="mt">Tôi muốn làm nhân viên kinh doanh dich vụ viễn thông</td>
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
+                                    <td class="cv">39000VND</td>
+                                    <td class="mt">22/03/99
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Nguyễn Thị Huệ</td>
-                                    <td>06/11/1999</td>
-                                    <td>Nữ</td>
-                                    <td class="cv">Luật</td>
-                                    <td class="mt">Tôi muốn làm luật sư để bào chữa hoặc biện hộ cho bị can</td>
-                                    <td>
-                                        <div class="btn-group ml-auto">
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-light" style="outline: none">
-                                                <i class="icon-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
+<%--                                    <td>--%>
+<%--                                        <div class="btn-group ml-auto">--%>
+<%--                                            <button class="btn btn-sm btn-outline-light" style="outline: none">--%>
+<%--                                                <i class="icon-pencil"></i>--%>
+<%--                                            </button>--%>
+<%--                                            <button class="btn btn-sm btn-outline-light" style="outline: none">--%>
+<%--                                                <i class="icon-trash"></i>--%>
+<%--                                            </button>--%>
+<%--                                        </div>--%>
+<%--                                    </td>--%>
                                 </tr>
                                 </tbody>
                             </table>
