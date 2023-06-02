@@ -8,7 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% List<Post> postAll = (List<Post>) request.getAttribute("postAll"); %>L
+<% List<Post> postAll = (List<Post>) request.getAttribute("postAll"); %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -87,7 +87,7 @@
                     <div class="card-header">
                         <h5 class="mb-0">Quản lý bài đăng</h5>
                         <form class="navbar-search pull-left input-append"
-                              action="<%=request.getContextPath()%>/PostManager?action=search" method="post">
+                              action="<%=request.getContextPath()%>/admin/PostManager?action=search" method="post">
                             <div style="right: 60px; position: absolute">
                                 <input name="keywords" type="text" style="height:30px" class="span3"
                                        placeholder="Tìm kiếm tên bài viết">
@@ -148,13 +148,13 @@
                                     <td class="col-yel">Chưa duyệt</td>
                                     <td>
                                         <div class="btn-group ml-auto">
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=approve&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=approve&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none;padding-left: 20px;">
                                                 <i class="icon-check"></i>
                                                 <span class="hov">Duyệt</span>
                                             </a>
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=remove&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=remove&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none">
                                                 <i class="icon-trash"></i>
@@ -184,7 +184,7 @@
                                     <td style="color: #1a9307">Đã duyệt</td>
                                     <td>
                                         <div class="btn-group ml-auto">
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=lock&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=lock&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none">
                                                 <i class="icon-lock"></i>
@@ -218,13 +218,13 @@
                                     <td class="col-grey">Khóa</td>
                                     <td>
                                         <div class="btn-group ml-auto">
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=approve&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=approve&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none; padding-left: 20px; ">
                                                 <i class="icon-check"></i>
                                                 <span class="hov">Duyệt</span>
                                             </a>
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=delete&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=delete&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none">
                                                 <i class="icon-trash"></i>
@@ -254,7 +254,7 @@
                                     <td class="col-red">Hết hạn</td>
                                     <td>
                                         <div class="btn-group ml-auto">
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=delete&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=delete&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none">
                                                 <i class="icon-trash"></i>
