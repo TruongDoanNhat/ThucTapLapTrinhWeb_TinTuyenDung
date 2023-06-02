@@ -132,8 +132,8 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("postAll", post3);
                 request.setAttribute("sobd", sobd);
                 request.setAttribute("trang", t);
-                UtilControl.forward("Admin-quan-li-bai-dang.jsp",request,response);
-//                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
+//                UtilControl.forward("Admin-quan-li-bai-dang.jsp",request,response);
+                UtilControl.phanQuyenServletAdmin1(account, "Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
                 break;
             case "category":
                 request.setAttribute("listPOC", p.getPostofCategoryByID(Integer.valueOf(idManager)));

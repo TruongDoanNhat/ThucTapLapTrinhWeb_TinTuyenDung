@@ -8,7 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% List<Post> postAll = (List<Post>) request.getAttribute("postAll"); %>L
+<% List<Post> postAll = (List<Post>) request.getAttribute("postAll"); %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -42,7 +42,7 @@
                         </i> Quản lý </a>
                             <ul id="togglePages" class=" collapse unstyled">
                                 <li>
-                                    <a href='<c:url value="/PostManager?action=quanlybaidang"/>'>
+                                    <a href='<c:url value="/admin/PostManager?action=quanlybaidang"/>'>
                                         <i class="icon-inbox"></i> Quản lý bài đăng
                                     </a>
                                 </li>
@@ -272,22 +272,28 @@
                     </div>
                 </div>
                 <%
-                    int t = (int) request.getAttribute("t");
-                    int soAccount = (int) request.getAttribute("soAccount");
+                    int t = (int) request.getAttribute("trang");
+                    int sobd = (int) request.getAttribute("sobd");
                 %>
 
                 <div style="margin: 0 auto; text-align: center;">
                     <!-- Hiển thị nút phân trang -->
-                    <% for (int pageNumber = t - 2; pageNumber <= t + 2; pageNumber++) { %>
-                    <% if (pageNumber >= 1 && pageNumber <= soAccount) { %>
-                    <% if (pageNumber == t) { %>
-                    <span class="current-page"><%= pageNumber %></span>
-                    <% } else { %>
-                    <a href="Post?action=quanlybaidang&trang=<%= pageNumber %>" class="btn btn-link"><%= pageNumber %></a>
+                    <% for (int pageNumber = t - 2; pageNumber <= t + 2; pageNumber++) { // Lặp qua 5 trang gần trang hiện tại (2 trang trước và 2 trang sau)
+                    %>
+                    <% if (pageNumber >= 1 && pageNumber <= sobd) { // Kiểm tra xem trang có nằm trong phạm vi từ 1 đến tổng số trang hay không
+                    %>
+                    <% if (pageNumber == t) { // Kiểm tra xem đây có phải là trang hiện tại hay không
+                    %>
+                    <span class="current-page"><%= pageNumber %></span> <!-- Hiển thị số trang hiện tại -->
+                    <% } else { // Nếu không phải là trang hiện tại
+                    %>
+                    <!-- Tạo liên kết đến trang khác -->
+                    <a href="PostManager?action=quanlybaidang&trang=<%= pageNumber %>" class="btn btn-link"><%= pageNumber %></a>
                     <% } %>
                     <% } %>
                     <% } %>
                 </div>
+
 
             </div>
             <!-- ============================================================== -->
