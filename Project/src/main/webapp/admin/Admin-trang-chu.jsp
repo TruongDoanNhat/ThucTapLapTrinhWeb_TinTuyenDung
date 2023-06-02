@@ -46,7 +46,7 @@
                         </i> Quản lý </a>
                             <ul id="togglePages" class=" collapse unstyled">
                                 <li>
-                                    <a href='<c:url value="/PostManager?action=quanlybaidang"/>'>
+                                    <a href="<%=request.getContextPath()%>/admin/PostManager?action=quanlybaidang">
                                         <i class="icon-inbox"></i> Quản lý bài đăng
                                     </a>
                                 </li>

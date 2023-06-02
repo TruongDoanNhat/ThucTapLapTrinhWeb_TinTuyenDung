@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "Post", value = {"/PostManager", "/Post", "/Category"})
+@WebServlet(name = "Post", value = {"/admin/PostManager", "/Post", "/Category"})
 public class PostServlet extends HttpServlet {
 
 
@@ -132,7 +132,8 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("postAll", post3);
                 request.setAttribute("sobd", sobd);
                 request.setAttribute("trang", t);
-                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
+                UtilControl.forward("Admin-quan-li-bai-dang.jsp",request,response);
+//                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
                 break;
             case "category":
                 request.setAttribute("listPOC", p.getPostofCategoryByID(Integer.valueOf(idManager)));
@@ -146,11 +147,6 @@ public class PostServlet extends HttpServlet {
                 UtilControl.phanQuyenServletCandi1(account,"candidate/candi-viec-lam-da-ung-tuyen.jsp","/Login?action=login",request,response);
                 break;
         }
-
-
-
-
-
     }
 
     @Override

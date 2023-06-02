@@ -26,28 +26,19 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        String u = request.getRequestURI();
-        if (request.getAttribute("javax.servlet.forward.request_uri") != null) {
-            u = (String) request.getAttribute("javax.servlet.forward.request_uri");
-        }
-        int index = u.indexOf("/");
-        String url = u;
-        String urlSession = UtilSession.getInstance().getValue2(request, "url");
+
         Account account = UtilSession.getInstance().getValue(request, "account");
-        if (account != null) {
-            if (!DAOAccount.checkStatus(account.getUsername(), account.getStatus())) {
-                account = null;
-                UtilSession.getInstance().removeValue(request, "account");
-            }
-        }
-        if (index != -1) {
-            url = u.substring(u.indexOf("/", 1));
-        }
-        if (!url.startsWith("/Login") && (url.startsWith("/candidate") || url.startsWith("/business") || url.startsWith("/admin")) && account == null && urlSession == null) {
-            UtilSession.getInstance().putValue(request, "url", u);
-        }
+        String action = request.getParameter("action");
         int role = 1;
         int status = 0;
+        String uri = request.getRequestURI();
+
+        if (request.getAttribute("javax.servlet.forward.request_uri") != null) {
+            uri = (String) request.getAttribute("javax.servlet.forward.request_uri");
+        }
+        String url = sessionUrl(account, uri, action, request); // phan quyen url
+        updateSessionAccount(account, request); // kiem tra trang thai tai khoan khi bi Admin xoa tai khoan
+
         if (url.startsWith("/admin")) {
             if (account != null) {
                 role = account.getRole();
@@ -88,4 +79,30 @@ public class AuthFilter implements Filter {
             chain.doFilter(servletRequest, servletResponse);
         }
     }
+
+    public String sessionUrl(Account account, String uri, String action, HttpServletRequest request) {
+        String rs = "";
+        int index = uri.indexOf("/");
+        if (index != -1) { // kiem tra ton tai cua /
+            rs = uri.substring(uri.indexOf("/", 1));
+        }
+        if (action != null) {
+            rs = rs + "?action=" + action;
+        }
+//        if (!url.startsWith("/Login") && (url.startsWith("/candidate") || url.startsWith("/business") || url.startsWith("/admin")) && account == null && urlSession == null) {
+        if (!rs.startsWith("/Login") && account == null) {
+            UtilSession.getInstance().putValue(request, "url", rs);
+        }
+        return rs;
+    }
+
+    public void updateSessionAccount(Account account, HttpServletRequest request) {
+        if (account != null) {
+            if (!DAOAccount.checkStatus(account.getUsername(), account.getStatus())) {
+                account = null;
+                UtilSession.getInstance().removeValue(request, "account");
+            }
+        }
+    }
+
 }
