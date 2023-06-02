@@ -8,7 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% List<Post> postAll = (List<Post>) request.getAttribute("postAll"); %>
+<% List<Post> postAll = (List<Post>) request.getAttribute("postAll"); %>L
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -271,12 +271,24 @@
                         </div>
                     </div>
                 </div>
+                <%
+                    int t = (int) request.getAttribute("t");
+                    int soAccount = (int) request.getAttribute("soAccount");
+                %>
+
                 <div style="margin: 0 auto; text-align: center;">
                     <!-- Hiển thị nút phân trang -->
-                    <c:forEach begin="1" end="${sobd}" var="t">
-                        <a href="Post?action=quanlybaidang&trang=${t}" class="btn btn-link">${t}</a>
-                    </c:forEach>
+                    <% for (int pageNumber = t - 2; pageNumber <= t + 2; pageNumber++) { %>
+                    <% if (pageNumber >= 1 && pageNumber <= soAccount) { %>
+                    <% if (pageNumber == t) { %>
+                    <span class="current-page"><%= pageNumber %></span>
+                    <% } else { %>
+                    <a href="Post?action=quanlybaidang&trang=<%= pageNumber %>" class="btn btn-link"><%= pageNumber %></a>
+                    <% } %>
+                    <% } %>
+                    <% } %>
                 </div>
+
             </div>
             <!-- ============================================================== -->
             <!-- end data table  -->
