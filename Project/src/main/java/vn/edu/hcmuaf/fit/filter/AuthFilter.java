@@ -29,6 +29,8 @@ public class AuthFilter implements Filter {
 
         Account account = UtilSession.getInstance().getValue(request, "account");
         String action = request.getParameter("action");
+        String id = request.getParameter("id");
+        String trang = request.getParameter("trang");
         int role = 1;
         int status = 0;
         String uri = request.getRequestURI();
@@ -36,7 +38,7 @@ public class AuthFilter implements Filter {
         if (request.getAttribute("javax.servlet.forward.request_uri") != null) {
             uri = (String) request.getAttribute("javax.servlet.forward.request_uri");
         }
-        String url = sessionUrl(account, uri, action, request); // phan quyen url
+        String url = sessionUrl(account, uri, action, id, trang, request); // phan quyen url
         updateSessionAccount(account, request); // kiem tra trang thai tai khoan khi bi Admin xoa tai khoan
 
         if (url.startsWith("/admin")) {
@@ -80,14 +82,20 @@ public class AuthFilter implements Filter {
         }
     }
 
-    public String sessionUrl(Account account, String uri, String action, HttpServletRequest request) {
+    public String sessionUrl(Account account, String uri, String action, String id, String trang, HttpServletRequest request) {
         String rs = "";
         int index = uri.indexOf("/");
         if (index != -1) { // kiem tra ton tai cua /
             rs = uri.substring(uri.indexOf("/", 1));
         }
         if (action != null) {
-            rs = rs + "?action=" + action;
+            rs += "?action=" + action;
+            if (trang != null) {
+                rs += "&trang=" + trang;
+            }
+            if (id != null) {
+                rs += "&id=" + id;
+            }
         }
 //        if (!url.startsWith("/Login") && (url.startsWith("/candidate") || url.startsWith("/business") || url.startsWith("/admin")) && account == null && urlSession == null) {
         if (!rs.startsWith("/Login") && account == null) {
