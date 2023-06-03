@@ -156,9 +156,9 @@
                                 for (Category c : daoPost.getCategoryAll()) { %>
                             <li>
                                 <a href="" class="d-flex">
-                                    <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getid()%>&name=<%=c.getName()%>"><%=c.getName()%>
+                                    <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%>
                                     </a>
-                                    <p>(<%=daoPost.getPostofCategoryByID(c.getid()).size()%>)</p>
+                                    <p>(<%=daoPost.getPostofCategoryByID(c.getId()).size()%>)</p>
                                 </a>
                             </li>
                             <%}%>

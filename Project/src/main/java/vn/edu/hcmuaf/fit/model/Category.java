@@ -1,38 +1,37 @@
 package vn.edu.hcmuaf.fit.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
     private int id;
     private String name;
-    private Date create_date;
-
-    public Category(int id, String name, Date create_date) {
-        this.id = id;
-        this.name = name;
-        this.create_date = create_date;
-    }
+    private Date createDate;
 
     public Category() {
+    }
 
+    public Category(int id, String name, Date createDate) {
+        this.id = id;
+        this.name = name;
+        this.createDate = createDate;
     }
 
     @Override
     public String toString() {
         return "Category{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
-                ", create_date=" + create_date +
+                ", createDate=" + createDate +
                 '}';
     }
 
-    public int getid() {
+    public int getId() {
         return id;
     }
 
-    public void setid(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -44,13 +43,12 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public Date getCreate_date() {
-        return create_date;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreate_date(Date create_date) {
-        this.create_date = create_date;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }
-
 

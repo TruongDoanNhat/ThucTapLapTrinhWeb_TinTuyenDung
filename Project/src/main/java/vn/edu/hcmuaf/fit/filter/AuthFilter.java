@@ -27,6 +27,10 @@ public class AuthFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         Account account = UtilSession.getInstance().getValue(request, "account");
         String action = request.getParameter("action");
         String id = request.getParameter("id");
