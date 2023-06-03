@@ -1,6 +1,8 @@
 package vn.edu.hcmuaf.fit.control;
 
+import com.mysql.cj.ServerVersion;
 import vn.edu.hcmuaf.fit.Util.Util;
+import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
 import vn.edu.hcmuaf.fit.service.MailService;
 
@@ -19,31 +21,32 @@ public class ResetPassword extends HttpServlet {
         DAOAccount d = new DAOAccount();
         String username = request.getParameter("username");
         String email = request.getParameter("email");
-        boolean emailExist = d.checkEmail(username, email);
+        Account getAccountResetPassword = d.getAccountResetPassword(username, email);
         String action = request.getParameter("action");
         switch (action) {
             case "forgotPassword":
-                UtilControl.forward("/visitor/quen-mat-khau.jsp", request, response);
+                if (getAccountResetPassword == null) {
+                    request.setAttribute("message", "Email không tồn tại! Vui lòng nhập lại email!");
+                    UtilControl.forward("/visitor/quen-mat-khau.jsp", request, response);
+                } else {
+                    String name = getAccountResetPassword.getName();
+                    String password = Util.randomPassword();
+                    String subject = " Reset password ";
+                    String content = "Hi " + name + ", We provide your password again: " + password;
+                    MailService.sendMail(email, subject, content);
+                    password = Util.encryptionPassword(password);
+                    d.updatePassword(username, password);
+                    response.sendRedirect(request.getContextPath()+"/Login?action=login");
+                }
                 break;
         }
-        if (!emailExist) {
-            request.setAttribute("message", "Email không tồn tại! Vui lòng nhập lại email!");
-            UtilControl.forward("/visitor/quen-mat-khau.jsp", request, response);
-        } else {
-            String name = d.getAccount().getName();
-            String password = Util.randomPassword();
-            String subject = " Reset password ";
-            String content = "Hi " + name + ", We provide your password again: " + password;
-            MailService.sendMail(email, subject, content);
-            password = Util.encryptionPassword(password);
-            d.updatePassword(username, password);
-            response.sendRedirect("/visitor/dang-nhap.jsp");
-        }
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
+
     }
 
 

@@ -14,22 +14,24 @@
     <title>Quên mật khẩu</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
 </head>
-
+<style>
+    <%@include file="../assets/css/login.css"%>
+</style>
 <body>
 <section>
     <div class="img-bg">
-        <img src="../assets/img/log_in/img3.jpg" alt="">
+        <img src="<%=request.getContextPath()%>/assets/img/log_in/img3.jpg" alt="">
     </div>
 
     <div class="noi-dung">
         <!-- Logo -->
         <div class="logo-log">
-            <a href="dang-nhap.jsp"><img src="../assets/img/logo/logo.png" alt=""></a>
+            <a href="dang-nhap.jsp"><img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt=""></a>
         </div>
         <!-- Form -->
         <div class="form">
             <h2 class="in">Quên mật khẩu </h2>
-            <form action="<%=request.getContextPath()%>/ResetPassword" method="post">
+            <form action="<%=request.getContextPath()%>/ResetPassword?action=forgotPassword" method="post">
                 <%
                     if (message != null) {
                 %>
