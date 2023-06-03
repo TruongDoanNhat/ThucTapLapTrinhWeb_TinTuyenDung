@@ -2,6 +2,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Company" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Account" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Admin

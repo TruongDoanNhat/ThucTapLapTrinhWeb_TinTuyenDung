@@ -79,7 +79,20 @@ public class DAOAccount {
                 .mapToBean(Account.class).list());
         return listAccount.size() > 0 ? true : false;
     }
+    public Account getAccountResetPassword(String username, String email) {
+        Account a;
+        String query = "select * from account where username = ? and email = ?";
+        try {
+            a = JDBIConnector.get().withHandle(handle -> handle.createQuery(query)
+                    .bind(0, username)
+                    .bind(1, email)
+                    .mapToBean(Account.class).stream().findFirst().get());
+        } catch (Exception e) {
+            a = null;
+        }
 
+        return a;
+    }
     //  kiểm tra email nhập vào có tồn tại trong hệ thống không
     public boolean checkEmail(String email) {
         String query = "select * from account where email = ?";
