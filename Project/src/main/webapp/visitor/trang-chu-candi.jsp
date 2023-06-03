@@ -110,7 +110,6 @@
             </div>
             <div class="row d-flex">
 
-
                 <%for (Category c : dp.getCategoryAll()) { %>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
@@ -133,12 +132,13 @@
                 </div>
                 <!-- More Btn -->
                 <!-- Section Button -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="browse-btn2 text-center mt-50">
-                            <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" class="border-btn2">Xem
-                                thêm</a>
-                        </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="browse-btn2 text-center mt-50">
+                        <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" class="border-btn2">Xem
+                            thêm</a>
                     </div>
                 </div>
             </div>
