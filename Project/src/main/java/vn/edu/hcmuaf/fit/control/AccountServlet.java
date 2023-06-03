@@ -26,16 +26,20 @@ public class AccountServlet extends HttpServlet {
         List<Account> listAccount;
         DAOAccount d = new DAOAccount();
         if (action == null) {
-            String name = request.getParameter("name");
-            if (account != null) {
-                account.setName(name);
-                d.updateAccountCandi(account.getUsername(), account.getName());
-                request.getRequestDispatcher("candi-tai-khoan.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
-            }
+
         }
         switch (action) {
+            case "updateAccount":
+                String name = request.getParameter("name");
+                if (account != null) {
+                    account.setName(name);
+                    d.updateAccountCandi(account.getUsername(), account.getName());
+                    response.sendRedirect(request.getContextPath()+"/candidate/candi-tai-khoan.jsp");
+//                    request.getRequestDispatcher().forward(request, response);
+                } else {
+                    request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
+                }
+                break;
             case "accountManager":
                 String trang = request.getParameter("trang");
                 if(trang == null) {
@@ -70,6 +74,7 @@ public class AccountServlet extends HttpServlet {
                 request.setAttribute("listAccount", listAccount);
                 UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
                 break;
+
         }
 
     }

@@ -5,6 +5,7 @@ import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Account;
 
 import java.sql.Date;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -180,7 +181,7 @@ public class DAOAccount {
     }
 
     public void updateAccountCandi(String username, String name) {
-        String query = "update account set name = ? updateDate = ? where username=?";
+        String query = "update account set name = ?, updateDate = ? where username = ?";
         try {
             JDBIConnector.get().withHandle(handle ->
                     handle.createUpdate(query)
@@ -245,8 +246,6 @@ public class DAOAccount {
         });
     }
 
-    public static void main(String[] args) {
-    }
 
     public static Account getAccountQuery(String username) {
         String query = "select * from account where username = ?";
@@ -299,4 +298,7 @@ public class DAOAccount {
         });
     }
 
+    public static void main(String[] args) {
+
+    }
 }
