@@ -1,35 +1,62 @@
 package vn.edu.hcmuaf.fit.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class Company implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String companyID;
+    private String id;
+    private String imageId;
     private String name;
     private String phone;
+    private String address;
     private String description;
-    private String addressID;
-    private String img;
+    private Date createDate;
+    private Date updateDate;
 
     public Company() {
 
     }
 
-    public Company(String companyID, String name,String phone, String addressID, String description, String img) {
-        this.companyID = companyID;
+    public Company(String id, String imageId, String name, String phone, String address, String description, Date createDate, Date updateDate) {
+        this.id = id;
+        this.imageId = imageId;
         this.name = name;
         this.phone = phone;
-        this.addressID = addressID;
+        this.address = address;
         this.description = description;
-        this.img = img;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
     }
 
-    public String getCompanyID() {
-        return companyID;
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id='" + id + '\'' +
+                ", imageId='" + imageId + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", description='" + description + '\'' +
+                ", createDate=" + createDate +
+                ", updateDate=" + updateDate +
+                '}';
     }
 
-    public void setCompanyID(String companyID) {
-        this.companyID = companyID;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 
     public String getName() {
@@ -48,6 +75,14 @@ public class Company implements Serializable {
         this.phone = phone;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -56,31 +91,19 @@ public class Company implements Serializable {
         this.description = description;
     }
 
-    public String getAddressID() {
-        return addressID;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setAddressID(String addressID) {
-        this.addressID = addressID;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
-    public String getImg() {
-        return img;
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    @Override
-    public String toString() {
-        return "Company{" +
-                "companyID='" + companyID + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", description='" + description + '\'' +
-                ", addressID='" + addressID + '\'' +
-                ", img='" + img + '\'' +
-                '}';
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
 }

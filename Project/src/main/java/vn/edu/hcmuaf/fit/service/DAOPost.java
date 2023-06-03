@@ -62,7 +62,7 @@ public class DAOPost {
             return handle.createQuery(query)
                     .bind(0, idPost)
                     .mapToBean(Company.class)
-                .stream().findFirst().orElse(null);
+                    .stream().findFirst().orElse(null);
         });
     }
 
@@ -142,21 +142,10 @@ public class DAOPost {
                         .execute());
     }
 
-    //Lấy id category theo tên
-    public int getCategoryId(String name) {
-        String query = "select id from category where name = ?";
-        return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query)
-                    .bind(0, name)
-                    .mapTo(Integer.class)
-                    .one();
-        });
-    }
 
     // thêm bài viết vào csdl
-    public boolean insertPost(String category, String title, String quantity, String salary, String address, String type,
+    public boolean insertPost(String categoryId, String title, String quantity, String salary, String address, String type,
                               String rank, String gen, String description, String rights, String request, int status, Date endDate) {
-        int categoryId = getCategoryId(category);
         int accountId = DAOAccount.getAccount().getId();
         String query = "INSERT INTO `post` (`categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`," +
                 " `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`,`priceId`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -208,11 +197,24 @@ public class DAOPost {
                     .collect(Collectors.toList());
         });
     }
+
+    //Lấy id category theo tên
+    public List<Category> getCategoryId(String name) {
+        String query = "SELECT * FROM category WHERE name = ?";
+        List<Category> list = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, name)
+                    .mapToBean(Category.class)
+                    .stream().collect(Collectors.toList());
+        });
+        return list;
+    }
+
     public List<Post> getPostApprove() {
         String query = "select * from post where status = ?";
         List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
-                    .bind(0,Post.status_approve)
+                    .bind(0, Post.status_approve)
                     .mapToBean(Post.class)
                     .stream()
                     .collect(Collectors.toList());
@@ -228,7 +230,6 @@ public class DAOPost {
                     .one();
         });
     }
-
 
 
     public List<Category> getCategoryAll() {
@@ -253,7 +254,6 @@ public class DAOPost {
         });
         return listPost;
     }
-
 
 
     public List<Post> getPostCreateNew() {
@@ -281,10 +281,15 @@ public class DAOPost {
 
     public String getCompanyName(String companyID) {
         String rs = null;
-        String query = "select * from company where companyID = ?";
-        List<Company> listCompany = JDBIConnector.get().withHandle(handle -> handle.createQuery(query).bind(0, companyID).mapToBean(Company.class).list());
+        String query = "select * from company where id = ?";
+        List<Company> listCompany = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, companyID)
+                    .mapToBean(Company.class)
+                    .stream().collect(Collectors.toList());
+        });
         for (Company c : listCompany) {
-            if (companyID.equals(c.getCompanyID())) {
+            if (companyID.equals(c.getId())) {
                 rs = c.getName();
             }
         }
@@ -362,9 +367,6 @@ public class DAOPost {
     }
 
 
-
     public static void main(String[] args) {
-        DAOPost p = new DAOPost();
     }
-
 }
