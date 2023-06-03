@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "Account", value = {"/AccountManager", "/Account"})
+@WebServlet(name = "Account", value = {"/admin/AccountManager", "/Account"})
 public class AccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -20,7 +20,7 @@ public class AccountServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         String username = request.getParameter("username");
-        String role = request.getParameter("role");
+        String role = request.getParameter("role") == null ? "3" : request.getParameter("role");
         String keywords = request.getParameter("keywords");
         Account account = UtilSession.getInstance().getValue(request, "account");
         List<Account> listAccount;
@@ -42,41 +42,44 @@ public class AccountServlet extends HttpServlet {
                 break;
             case "accountManager":
                 String trang = request.getParameter("trang");
-                if(trang == null) {
+                if (trang == null) {
                     trang = "1";
                 }
                 int t = Integer.parseInt(trang);
                 int dem = d.getTotalAccount();
-                int soAccount = dem/5;
-                if(dem%5 !=0) {
+                int soAccount = dem / 5;
+                if (dem % 5 != 0) {
                     soAccount++;
                 }
                 listAccount = d.getAllAccount(t);
                 request.setAttribute("soAccount", soAccount);
                 request.setAttribute("t", t);
                 request.setAttribute("listAccount", listAccount);
-                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
+                UtilControl.forward("Admin-quan-li-nguoi-dung.jsp", request, response);
+//                UtilControl.phanQuyenServletAdmin1(account, "Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
                 break;
             case "lock":
                 if (!(DAOAccount.getAccountQuery(username).getType() == 2)) {
                     d.updateStatusAccount(username, Account.LOCK);
-                    UtilControl.phanQuyenServletAdmin2(account, "AccountManager?action=accountManager", "/Login?action=login", request, response);
+                    response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");
+//                    UtilControl.phanQuyenServletAdmin2(account, "AccountManager?action=accountManager", "/Login?action=login", request, response);
                 } else {
                     response.sendRedirect("visitor/error.jsp");
                 }
                 break;
             case "unlock":
                 d.updateStatusAccount(username, Account.ACTIVATED);
-                UtilControl.phanQuyenServletAdmin2(account, "AccountManager?action=accountManager", "/Login?action=login", request, response);
+                response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");
+//                UtilControl.phanQuyenServletAdmin2(account, "AccountManager?action=accountManager", "/Login?action=login", request, response);
                 break;
             case "search":
                 listAccount = role.equals("3") ? d.getAccountSearch(keywords) : d.getAccountSearch(keywords, role);
                 request.setAttribute("listAccount", listAccount);
-                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
+                UtilControl.forward("Admin-quan-li-nguoi-dung.jsp", request, response);
+//                UtilControl.phanQuyenServletAdmin1(account, "Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
                 break;
 
         }
-
     }
 
     @Override

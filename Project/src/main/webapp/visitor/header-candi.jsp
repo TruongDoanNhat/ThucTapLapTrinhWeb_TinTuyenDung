@@ -53,7 +53,7 @@
                                     <a href='<c:url value="/Login?action=login"/>' class="btn head-btn2">Đăng
                                         nhập</a>
                                 </c:if>
-                                <a href='<c:url value="/Login?action=login"/>' class="btn head-btn1">Nhà tuyển dụng</a>
+                                <a href='<c:url value="/business/busi-trang-chu.jsp"/>' class="btn head-btn1">Nhà tuyển dụng</a>
                                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
 
                                     <c:if test="${sessionScope.account != null}">

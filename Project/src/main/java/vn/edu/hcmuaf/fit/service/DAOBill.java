@@ -17,13 +17,13 @@ public class DAOBill {
     }
 
     // thêm bill vào database
-    public boolean insertBill(String numAccount, String money) {
-        String query = "INSERT INTO `bill` (numAccount,money,createDate) VALUES (?,?,?)";
+    public boolean insertBill(String numAccount, String money,int accountId) {
+        String query = "INSERT INTO `bill` (numAccount,money,createDate,accountId) VALUES (?,?,now(),?)";
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate(query)
                         .bind(0, numAccount)
                         .bind(1, money)
-                        .bind(2, getDateNow())
+                        .bind(2, accountId)
                         .execute()
         );
         return true;

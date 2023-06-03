@@ -92,9 +92,9 @@
                         <h5 class="mb-0" style="font-size: 15px;">Quản lý người dùng</h5>
                     </div>
                     <form class="navbar-search pull-left input-append"
-                          action="<%=request.getContextPath()%>/AccountManager?action=search" method="post">
+                          action="<%=request.getContextPath()%>/admin/AccountManager?action=search" method="post">
                         <div style="right: 60px; position: absolute">
-                            <input type="text" class="span3"  name="keywords" placeholder="Tìm kiếm theo tên, chức vụ">
+                            <input type="text" class="span3" name="keywords" placeholder="Tìm kiếm theo tên, chức vụ">
                             <button class="btn" type="submit">
                                 <i class="icon-search"></i>
                             </button>
@@ -102,9 +102,6 @@
                                style="right: -165px; top:5px; position: absolute; outline: none">
                                 <i class="icon-plus"></i>
                             </a>
-                            <%--                        <button class="btn btn-smalls" style="outline: none">--%>
-                            <%--                            <i class="icon-trash"></i>--%>
-                            <%--                        </button>--%>
                         </div>
                         <select tabindex="1" data-placeholder="Vui lòng chọn.." name="role"
                                 style="right: -72px;top: 0px; width: 123px">
@@ -113,7 +110,6 @@
                             <option value="1">CANDIDATE</option>
                             <option value="2">BUSINESS</option>
                         </select>
-                        <%--                            <span class="info">Đăng tin</span>--%>
                     </form>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -163,13 +159,13 @@
                                     <td>
                                         <div class="btn-group ml-auto">
                                             <% if (account.getStatus() == Account.LOCK) {%>
-                                            <a href="<%=request.getContextPath()%>/AccountManager?action=unlock&username=<%=account.getUsername()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/AccountManager?action=unlock&username=<%=account.getUsername()%>"
                                                class="btn btn-sm btn-outline-light"
                                                style="padding-left: 20px;outline: none; background: #c27d86">
                                                 <i class="icon-lock"></i>
                                             </a>
                                             <%} else {%>
-                                            <a href="<%=request.getContextPath()%>/AccountManager?action=lock&username=<%=account.getUsername()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/AccountManager?action=lock&username=<%=account.getUsername()%>"
                                                class="btn btn-sm btn-outline-light"
                                                style="padding-left: 20px;outline: none">
                                                 <i class="icon-lock"></i>
@@ -193,7 +189,8 @@
                 <div style="margin: 0 auto; text-align: center;">
                     <!-- Hiển thị nút phân trang -->
                     <c:forEach begin="1" end="${soAccount}" var="t">
-                        <a href="Account?action=accountManager&trang=${t}" class="btn btn-link">${t}</a>
+                        <a href="<%=request.getContextPath()%>/admin/AccountManager?action=accountManager&trang=${t}"
+                           class="btn btn-link">${t}</a>
                     </c:forEach>
                 </div>
             </div>

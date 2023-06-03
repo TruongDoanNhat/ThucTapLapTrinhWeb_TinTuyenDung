@@ -46,13 +46,13 @@
                         </i> Quản lý </a>
                             <ul id="togglePages" class=" collapse unstyled">
                                 <li>
-                                    <a href='<c:url value="/PostManager?action=quanlybaidang"/>'>
+                                    <a href="<%=request.getContextPath()%>/admin/PostManager?action=quanlybaidang">
                                         <i class="icon-inbox"></i> Quản lý bài đăng
                                     </a>
                                 </li>
                                 <li><a href="<%=request.getContextPath()%>/Pay?action=quanlydoanhthu"><i
                                         class="icon-inbox"></i> Quản lý doanh thu</a></li>
-                                <li><a href="<%=request.getContextPath()%>/AccountManager?action=accountManager"><i
+                                <li><a href="<%=request.getContextPath()%>/admin/AccountManager?action=accountManager"><i
                                         class="icon-inbox"></i> Quản lý người dùng</a></li>
                             </ul>
                         </li>

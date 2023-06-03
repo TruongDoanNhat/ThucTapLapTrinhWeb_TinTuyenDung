@@ -79,11 +79,20 @@ public class Login extends HttpServlet {
             //
             if (checkAccount && d.getAccount().getStatus() == 1) {
                 UtilSession.getInstance().putValue(request, "account", (Account) d.getAccount());
+                Account account = UtilSession.getInstance().getValue(request, "account");
                 String url = UtilSession.getInstance().getValue2(request, "url");
                 if (url == null) {
                     UtilControl.send(d.getAccount().getRole(), "admin/Admin-trang-chu.jsp", "visitor/trang-chu-candi.jsp", "business/busi-trang-chu.jsp", response);
                 } else {
-                    response.sendRedirect(url);
+                    if (url.startsWith("/admin") && account.getRole() == 0) {
+                        response.sendRedirect(request.getContextPath() + url);
+                    } else if (url.startsWith("/business") && (account.getRole() == 2 || account.getRole() == 0)) {
+                        response.sendRedirect(request.getContextPath() + url);
+                    } else if (url.startsWith("/candidate") && (account.getRole() == 1 || account.getRole() == 0)) {
+                        response.sendRedirect(request.getContextPath() + url);
+                    } else {
+                        UtilControl.send(d.getAccount().getRole(), "admin/Admin-trang-chu.jsp", "visitor/trang-chu-candi.jsp", "business/busi-trang-chu.jsp", response);
+                    }
                     UtilSession.getInstance().removeValue(request, "url");
                 }
             } else {

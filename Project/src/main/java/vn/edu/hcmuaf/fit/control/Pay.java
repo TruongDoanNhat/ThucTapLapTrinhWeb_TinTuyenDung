@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
+import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.service.DAOBill;
 import vn.edu.hcmuaf.fit.service.DAOPost;
@@ -25,13 +26,14 @@ public class Pay extends HttpServlet {
         String status = "";
         String action = request.getParameter("action");
         String id = request.getParameter("id");
+        Account account = UtilSession.getInstance().getValue(request, "account");
         switch (action) {
             case "quanlydoanhthu":
 
                 break;
             case "thanhtoan":
                 // đẩy csdl vào bill
-                if (db.insertBill(numAccount, pay)) {
+                if (db.insertBill(numAccount, pay, account.getId())) {
                     // đổi trạng thái cho post và thêm id của bill vào post
                     for (String p : post) {
                         try {

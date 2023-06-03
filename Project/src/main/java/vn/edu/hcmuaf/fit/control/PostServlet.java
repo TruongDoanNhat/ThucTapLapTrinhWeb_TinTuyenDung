@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "Post", value = {"/PostManager", "/Post", "/Category"})
+@WebServlet(name = "Post", value = {"/admin/PostManager", "/Post", "/Category"})
 public class PostServlet extends HttpServlet {
 
 
@@ -30,10 +30,10 @@ public class PostServlet extends HttpServlet {
         String action = request.getParameter("action");
         String idManager = request.getParameter("id");
         String keywords = request.getParameter("keywords");
-        String status = request.getParameter("status");
-        List<Post> postAll;
+        String status = request.getParameter("status") == null ? "0" : request.getParameter("status");
         String trang = request.getParameter("trang");
-        if(trang == null) {
+        List<Post> postAll;
+        if (trang == null) {
             trang = "1";
         }
         int t = Integer.parseInt(trang);
@@ -69,8 +69,8 @@ public class PostServlet extends HttpServlet {
                 break;
             case "tintuyendung":
                 int dem = p.getTotalPostBusi(account.getId());
-                int sosp = dem/3;
-                if(dem%3 !=0) {
+                int sosp = dem / 3;
+                if (dem % 3 != 0) {
                     sosp++;
                 }
                 List<Post> post = p.getPostIdBusi(account.getId(), t);
@@ -93,25 +93,29 @@ public class PostServlet extends HttpServlet {
             case "search":
                 postAll = status.equals("0") ? p.getPostSearch(keywords) : p.getPostSearch(keywords, status);
                 request.setAttribute("postAll", postAll);
-                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
+                UtilControl.forward("Admin-quan-li-bai-dang.jsp", request, response);
                 break;
             case "approve":
                 p.updatePost(Integer.valueOf(idManager), Post.status_approve);
-                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
+                response.sendRedirect(request.getContextPath()+"/admin/PostManager?action=quanlybaidang");
+//                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
             case "remove":
                 p.updatePost(Integer.valueOf(idManager), Post.status_unpaid);
                 // (chưa làm) trả lại thông báo cho business
-                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
+                response.sendRedirect(request.getContextPath()+"/admin/PostManager?action=quanlybaidang");
+//                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
             case "lock":
                 p.updatePost(Integer.valueOf(idManager), Post.status_lock);
                 // (chưa làm) trả lại thông báo cho business
-                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
+                response.sendRedirect(request.getContextPath()+"/admin/PostManager?action=quanlybaidang");
+//                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
             case "delete":
                 p.deletePost(Integer.valueOf(idManager));
-                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
+                response.sendRedirect(request.getContextPath()+"/admin/PostManager?action=quanlybaidang");
+//                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
             case "danhsanhvieclam":
 //                lay danh sách việc làm
@@ -119,38 +123,34 @@ public class PostServlet extends HttpServlet {
 //                gáng danh sách việc làm
                 request.setAttribute("listJob", postAll1);
 //                hiển thị
-                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
 
-               break;
+                break;
             case "quanlybaidang":
                 int dem2 = p.getTotalPostPaid();
-                int sobd = dem2/5;
-                if(dem2%5 !=0) {
+                int sobd = dem2 / 5;
+                if (dem2 % 5 != 0) {
                     sobd++;
                 }
                 List<Post> post3 = p.getPostAll(t);
                 request.setAttribute("postAll", post3);
                 request.setAttribute("sobd", sobd);
                 request.setAttribute("trang", t);
-                UtilControl.phanQuyenServletAdmin1(account, "admin/Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
+//                UtilControl.forward("Admin-quan-li-bai-dang.jsp",request,response);
+                UtilControl.phanQuyenServletAdmin1(account, "Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
                 break;
             case "category":
                 request.setAttribute("listPOC", p.getPostofCategoryByID(Integer.valueOf(idManager)));
-                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
             case "vieclamdaungtuyen":
-                if (account!=null){
+                if (account != null) {
                     List<Post> postApplied1 = p.getPostApplied(account.getEmail());
-                    request.setAttribute("jobApplied",postApplied1);
+                    request.setAttribute("jobApplied", postApplied1);
                 }
-                UtilControl.phanQuyenServletCandi1(account,"candidate/candi-viec-lam-da-ung-tuyen.jsp","/Login?action=login",request,response);
+                UtilControl.phanQuyenServletCandi1(account, "candidate/candi-viec-lam-da-ung-tuyen.jsp", "/Login?action=login", request, response);
                 break;
         }
-
-
-
-
-
     }
 
     @Override

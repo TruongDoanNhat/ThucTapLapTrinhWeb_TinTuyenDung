@@ -42,7 +42,7 @@
                         </i> Quản lý </a>
                             <ul id="togglePages" class=" collapse unstyled">
                                 <li>
-                                    <a href='<c:url value="/PostManager?action=quanlybaidang"/>'>
+                                    <a href='<c:url value="/admin/PostManager?action=quanlybaidang"/>'>
                                         <i class="icon-inbox"></i> Quản lý bài đăng
                                     </a>
                                 </li>
@@ -87,7 +87,7 @@
                     <div class="card-header">
                         <h5 class="mb-0">Quản lý bài đăng</h5>
                         <form class="navbar-search pull-left input-append"
-                              action="<%=request.getContextPath()%>/PostManager?action=search" method="post">
+                              action="<%=request.getContextPath()%>/admin/PostManager?action=search" method="post">
                             <div style="right: 60px; position: absolute">
                                 <input name="keywords" type="text" style="height:30px" class="span3"
                                        placeholder="Tìm kiếm tên bài viết">
@@ -148,13 +148,13 @@
                                     <td class="col-yel">Chưa duyệt</td>
                                     <td>
                                         <div class="btn-group ml-auto">
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=approve&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=approve&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none;padding-left: 20px;">
                                                 <i class="icon-check"></i>
                                                 <span class="hov">Duyệt</span>
                                             </a>
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=remove&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=remove&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none">
                                                 <i class="icon-trash"></i>
@@ -184,7 +184,7 @@
                                     <td style="color: #1a9307">Đã duyệt</td>
                                     <td>
                                         <div class="btn-group ml-auto">
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=lock&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=lock&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none">
                                                 <i class="icon-lock"></i>
@@ -218,13 +218,13 @@
                                     <td class="col-grey">Khóa</td>
                                     <td>
                                         <div class="btn-group ml-auto">
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=approve&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=approve&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none; padding-left: 20px; ">
                                                 <i class="icon-check"></i>
                                                 <span class="hov">Duyệt</span>
                                             </a>
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=delete&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=delete&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none">
                                                 <i class="icon-trash"></i>
@@ -254,7 +254,7 @@
                                     <td class="col-red">Hết hạn</td>
                                     <td>
                                         <div class="btn-group ml-auto">
-                                            <a href="<%=request.getContextPath()%>/PostManager?action=delete&id=<%=p.getId()%>"
+                                            <a href="<%=request.getContextPath()%>/admin/PostManager?action=delete&id=<%=p.getId()%>"
                                                class="btn btn-sm btn-outline-light holder2"
                                                style="outline: none">
                                                 <i class="icon-trash"></i>
@@ -271,12 +271,30 @@
                         </div>
                     </div>
                 </div>
+                <%
+                    int t = (int) request.getAttribute("trang");
+                    int sobd = (int) request.getAttribute("sobd");
+                %>
+
                 <div style="margin: 0 auto; text-align: center;">
                     <!-- Hiển thị nút phân trang -->
-                    <c:forEach begin="1" end="${sobd}" var="t">
-                        <a href="Post?action=quanlybaidang&trang=${t}" class="btn btn-link">${t}</a>
-                    </c:forEach>
+                    <% for (int pageNumber = t - 2; pageNumber <= t + 2; pageNumber++) { // Lặp qua 5 trang gần trang hiện tại (2 trang trước và 2 trang sau)
+                    %>
+                    <% if (pageNumber >= 1 && pageNumber <= sobd) { // Kiểm tra xem trang có nằm trong phạm vi từ 1 đến tổng số trang hay không
+                    %>
+                    <% if (pageNumber == t) { // Kiểm tra xem đây có phải là trang hiện tại hay không
+                    %>
+                    <span class="current-page"><%= pageNumber %></span> <!-- Hiển thị số trang hiện tại -->
+                    <% } else { // Nếu không phải là trang hiện tại
+                    %>
+                    <!-- Tạo liên kết đến trang khác -->
+                    <a href="PostManager?action=quanlybaidang&trang=<%= pageNumber %>" class="btn btn-link"><%= pageNumber %></a>
+                    <% } %>
+                    <% } %>
+                    <% } %>
                 </div>
+
+
             </div>
             <!-- ============================================================== -->
             <!-- end data table  -->
