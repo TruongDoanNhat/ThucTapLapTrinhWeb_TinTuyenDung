@@ -171,12 +171,6 @@
                                                 <i class="icon-lock"></i>
                                             </a>
                                             <%}%>
-                                            <%--                                            <button class="btn btn-sm btn-outline-light" style="outline: none">--%>
-                                            <%--                                                <i class="icon-pencil"></i>--%>
-                                            <%--                                            </button>--%>
-                                            <%--                                            <button class="btn btn-sm btn-outline-light" style="outline: none">--%>
-                                            <%--                                                <i class="icon-trash"></i>--%>
-                                            <%--                                            </button>--%>
                                         </div>
                                     </td>
                                 </tr>

@@ -1,38 +1,43 @@
-package vn.edu.hcmuaf.fit.model;
+package vn.edu.hcmuaf.fit.service.modelQuanLy;
 
 import java.util.Date;
 
-public class Bill {
-    public static final int STATUS_NOT_SEEN = 0;
-    public static final int STATUS_SEEN = 1;
+
+public class QuanLyDoanhThu {
     private int id;
     private String numAccount;
     private String money;
     private Date createDate;
     private int accountId;
     private int status;
+    private String name;
+    private int soBai;
 
-    public Bill() {
+    public QuanLyDoanhThu() {
     }
 
-    public Bill(int id, String numAccount, String money, Date createDate, int accountId, int status) {
+    public QuanLyDoanhThu(int id, String numAccount, String money, Date createDate, int accountId, int status, String name, int soBai) {
         this.id = id;
         this.numAccount = numAccount;
         this.money = money;
         this.createDate = createDate;
         this.accountId = accountId;
         this.status = status;
+        this.name = name;
+        this.soBai = soBai;
     }
 
     @Override
     public String toString() {
-        return "Bill{" +
+        return "QuanLyDoanhThu{" +
                 "id=" + id +
                 ", numAccount='" + numAccount + '\'' +
                 ", money='" + money + '\'' +
                 ", createDate=" + createDate +
                 ", accountId=" + accountId +
                 ", status=" + status +
+                ", name='" + name + '\'' +
+                ", soBai=" + soBai +
                 '}';
     }
 
@@ -82,5 +87,21 @@ public class Bill {
 
     public void setAccountId(int accountId) {
         this.accountId = accountId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSoBai() {
+        return soBai;
+    }
+
+    public void setSoBai(int soBai) {
+        this.soBai = soBai;
     }
 }
