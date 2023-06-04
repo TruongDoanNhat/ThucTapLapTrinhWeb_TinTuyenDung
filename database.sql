@@ -44,11 +44,11 @@ INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (3, NULL, '20130340@st.hcmuaf.edu.vn', 'candi', 's2t085INWPYloRMPvg5QKEtGClI=', 'candi', 0, 1, 1, '2023-04-09', NULL);
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (4, NULL, 'pho.02.112002@gmail.com', 'candi2', 's2t085INWPYloRMPvg5QKEtGClI=', 'Nguyen Dinh Nguyen', 0, 1, 1, '2023-04-18', NULL);
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (5, NULL, 'alexander25xyz@gmail.com', 'cadi3', 's2t085INWPYloRMPvg5QKEtGClI=', 'Alex', 0, 1, 1, '2023-05-22', NULL);
-INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (6, 2, 'lethanhnghia0938@gmail.com', 'busi2', 's2t085INWPYloRMPvg5QKEtGClI=', '', 0, 2, 1, '2023-05-07', NULL);
+INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (6, 2, 'lethanhnghia0938@gmail.com', 'busi2', 's2t085INWPYloRMPvg5QKEtGClI=', 'Sancho', 0, 2, 1, '2023-05-07', NULL);
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (7, 3, 'k46cntt2020@gmail.com', 'busi3', 's2t085INWPYloRMPvg5QKEtGClI=', 'Hung', 0, 2, 1, '2023-05-22', NULL);
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (8, 4, 'noah252ltn@gmail.com', 'busi4', 's2t085INWPYloRMPvg5QKEtGClI=', 'Tien', 0, 2, 1, '2023-05-22', NULL);
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (9, NULL, 'alexanderray25n@gmail.com', 'candi4', 's2t085INWPYloRMPvg5QKEtGClI=', 'Vuong', 0, 1, 1, '2023-05-22', NULL);
-INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (10, 2, 'bachvocamki@gmail.com', 'busi5', 's2t085INWPYloRMPvg5QKEtGClI=', 'Hoa', 0, 2, 1, '2023-05-22', NULL);
+INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (10, 5, 'bachvocamki@gmail.com', 'busi5', 's2t085INWPYloRMPvg5QKEtGClI=', 'Hoa', 0, 2, 1, '2023-05-22', NULL);
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (11, NULL, 'sonic76922@gmail.com', 'candi5', 's2t085INWPYloRMPvg5QKEtGClI=', 'Lam', 0, 1, 1, '2023-05-22', NULL);
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (12, NULL, 'kato25w@gmail.com', 'candi6', 's2t085INWPYloRMPvg5QKEtGClI=', 'Tue', 0, 1, 1, '2023-05-22', NULL);
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (13, NULL, 'Letuyet0853@gmail.com', 'candi7', 's2t085INWPYloRMPvg5QKEtGClI=', 'Tuyet', 0, 1, 1, '2023-05-22', NULL);
@@ -64,23 +64,24 @@ CREATE TABLE `bill`  (
   `money` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `createDate` date NOT NULL,
   `accountId` int NULL DEFAULT NULL,
+	`status` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bill
 -- ----------------------------
-INSERT INTO `bill` VALUES (1, NULL, NULL, '2023-05-02',1);
-INSERT INTO `bill` VALUES (2, '11111', '36050', '2023-05-02',6);
-INSERT INTO `bill` VALUES (3, '', '72100', '2023-05-02',7);
-INSERT INTO `bill` VALUES (4, '', '36050', '2023-05-03',10);
-INSERT INTO `bill` VALUES (5, '', '36050', '2023-05-03',1);
-INSERT INTO `bill` VALUES (6, '', '36050', '2023-05-03',8);
-INSERT INTO `bill` VALUES (7, '', '36050', '2023-05-03',7);
-INSERT INTO `bill` VALUES (8, '', '36050', '2023-05-03',6);
-INSERT INTO `bill` VALUES (9, '', '36050', '2023-05-03',10);
-INSERT INTO `bill` VALUES (10, '', '150050', '2023-05-03',1);
-INSERT INTO `bill` VALUES (11, '', '85000', '2023-05-03',6);
+INSERT INTO `bill` VALUES (1, '122221', '58050', '2023-06-02',1,1);
+INSERT INTO `bill` VALUES (2, '11111', '36050', '2023-05-02',6,1);
+INSERT INTO `bill` VALUES (3, '13331', '72100', '2023-05-02',7,0);
+INSERT INTO `bill` VALUES (4, '11555', '36050', '2023-06-03',10,0);
+INSERT INTO `bill` VALUES (5, '15555671', '36050', '2023-05-03',1,0);
+INSERT INTO `bill` VALUES (6, '12342651', '36050', '2023-05-03',8,1);
+INSERT INTO `bill` VALUES (7, '2352672', '36050', '2023-05-03',7,0);
+INSERT INTO `bill` VALUES (8, '252723324', '36050', '2023-06-03',6,1);
+INSERT INTO `bill` VALUES (9, '77345333', '36050', '2023-05-03',10,0);
+INSERT INTO `bill` VALUES (10, '888546', '150050', '2023-05-03',1,0);
+INSERT INTO `bill` VALUES (11, '232333554', '85000', '2023-06-03',6,0);
 
 -- ----------------------------
 -- Table structure for category

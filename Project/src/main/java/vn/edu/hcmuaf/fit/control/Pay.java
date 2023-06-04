@@ -4,13 +4,15 @@ import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.service.DAOBill;
 import vn.edu.hcmuaf.fit.service.DAOPost;
+import vn.edu.hcmuaf.fit.service.modelQuanLy.QuanLyDoanhThu;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "Pay", value = "/Pay")
+@WebServlet(name = "Pay", value = {"/admin/Pay", "/Pay"})
 public class Pay extends HttpServlet {
     DAOPost dp = new DAOPost();
     DAOBill db = new DAOBill();
@@ -26,10 +28,27 @@ public class Pay extends HttpServlet {
         String status = "";
         String action = request.getParameter("action");
         String id = request.getParameter("id");
+        String keywords = request.getParameter("keywords");
+        String statusSearch = request.getParameter("statusSearch") == null ? "3" : request.getParameter("statusSearch");
         Account account = UtilSession.getInstance().getValue(request, "account");
         switch (action) {
             case "quanlydoanhthu":
-
+                List<QuanLyDoanhThu> list;
+                if ((statusSearch.equals("3")) && ((keywords == null) || (keywords == ""))) {
+                    list = db.getQuanliDoanhThu();
+                } else {
+                    String month = (keywords == null || keywords == "") ? "" : keywords.split("-")[1].substring(1);
+                    String year = (keywords == null || keywords == "") ? "" : keywords.split("-")[0];
+                    list = db.getQuanliDoanhThuSearch(month, year, statusSearch);
+                    if (statusSearch.equals("3")) {
+                        list = db.getQuanliDoanhThuSearch(month, year);
+                    }
+                    if (keywords.equals("")) {
+                        list = db.getQuanliDoanhThuSearch(statusSearch);
+                    }
+                }
+                request.setAttribute("listDoanhThu", list);
+                UtilControl.forward("Admin-quan-li-doanh-thu.jsp", request, response);
                 break;
             case "thanhtoan":
                 // đẩy csdl vào bill
