@@ -100,7 +100,7 @@ public class PostServlet extends HttpServlet {
                 }
 
                 request.setAttribute("post", postAll);
-                request.setAttribute("sosp", soBaiViet);
+                request.setAttribute("sobv", soBaiViet);
                 request.setAttribute("trang", t);
                 UtilControl.forward("busi-tin-tuyen-dung.jsp", request, response);
 //                UtilControl.phanQuyenServletBusi1(account, "/busi-tin-tuyen-dung.jsp", "/Login?action=login", request, response);
@@ -114,7 +114,7 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("company", company);
                 Account account1 = p.getAccountFromPost(idPost);
                 request.setAttribute("account1", account1);
-                UtilControl.forward("visitor/thong-tin-viec-lam-candi.jsp", request, response);
+                UtilControl.forward("/visitor/thong-tin-viec-lam-candi.jsp", request, response);
                 break;
             case "search":
                 postAll = status.equals("0") ? p.getPostSearch(keywords) : p.getPostSearch(keywords, status);
