@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%  List<Post> post = (List<Post>) request.getAttribute("post");
     String billId = (String) request.getAttribute("billId");
-    int soBaiViet = (Integer) request.getAttribute("sosp");
+    int soBaiViet = (Integer) request.getAttribute("sobv");
 %>
 <html>
 <head>
@@ -99,7 +99,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="<%=request.getContextPath()%>/Post?action=tintuyendung">
+                <a class="nav-link active" href="Post?action=tintuyendung">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -206,7 +206,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                       href="Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%>
                                         </h6>
                                     </a>
@@ -231,7 +231,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                       href="Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%>
                                         </h6>
                                     </a>
@@ -255,7 +255,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                       href="Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%>
                                         </h6>
                                     </a>
@@ -280,7 +280,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                       href="Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%>
                                         </h6>
                                     </a>
@@ -304,7 +304,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                       href="Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%>
                                         </h6>
                                     </a>
