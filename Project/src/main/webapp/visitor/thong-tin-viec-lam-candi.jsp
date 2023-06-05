@@ -145,7 +145,7 @@
                             <li>Mức lương: <span><%=post2.getSalary()%> VNĐ</span></li>
                             <li>Hạn nộp hồ sơ: <span><%=post2.getEndDate()%></span></li>
                         </ul>
-
+                        <% if(account1.getRole() == 1 ) { %>
                         <div class="apply-btn2">
                             <a href="#" class="btn" onclick="toggleForm()">Ứng Tuyển</a>
                         </div>
@@ -155,10 +155,13 @@
                                 <!-- Form fields -->
                                 <input type="file" name="fileToUpload">
                                 <div class="apply-btn2">
-                                <input class="btn" type="submit" value="Nộp CV">
+                                    <input class="btn" type="submit" value="Nộp CV">
                                 </div>
                             </form>
                         </div>
+                        <% } else { %>
+                        <!-- Không có nút ứng tuyển -->
+                        <% } %>
 
                     </div>
                         <!-- Small Section Tittle -->
