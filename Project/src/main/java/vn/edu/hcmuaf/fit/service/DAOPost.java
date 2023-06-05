@@ -43,6 +43,36 @@ public class DAOPost {
         });
     }
 
+    public List<Post> getPostIdBill(String billID, int trang) {
+        String query = "select * from post where billId = ?  LIMIT 3 OFFSET ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, billID)
+                    .bind(1, (trang - 1) * 3)
+                    .mapToBean(Post.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+
+    public int getTotalPostIdBill(String billID) {
+        String query = "SELECT COUNT(*) FROM post where billId = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, billID)
+                    .mapTo(Integer.class)
+                    .one();
+        });
+    }
+
+    public void updateBill(String billID, int status) {
+        String query = "UPDATE bill set status = ? WHERE id = ?";
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate(query)
+                        .bind(0, status)
+                        .bind(1, billID)
+                        .execute());
+    }
+
     public Post getPostDetail(int idPost) {
         String query = "select * from post where id = ? ";
         return JDBIConnector.get().withHandle(handle -> {
@@ -368,5 +398,6 @@ public class DAOPost {
 
 
     public static void main(String[] args) {
+
     }
 }

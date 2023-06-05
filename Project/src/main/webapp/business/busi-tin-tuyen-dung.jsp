@@ -9,7 +9,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% List<Post> post = (List<Post>) request.getAttribute("post"); %>
+<%  List<Post> post = (List<Post>) request.getAttribute("post");
+    String billId = (String) request.getAttribute("billId");
+    int soBaiViet = (Integer) request.getAttribute("sosp");
+%>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -204,7 +207,8 @@
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
                                        href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
+                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%>
+                                        </h6>
                                     </a>
                                     <span class="mb-2 text-xs">Vị trí: <span
                                             class="text-dark ms-sm-2 font-weight-bold"><%=p.getRank()%></span></span>
@@ -217,10 +221,10 @@
                                 </div>
                                 <div class="ms-auto text-end">
                                     <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                             aria-hidden="true"></i>Chưa thanh
+                                            aria-hidden="true"></i>Chưa thanh
                                         toán</a>
                                 </div>
-                                <%
+                                    <%
                                         break;
                                     case 1:
                                 %>
@@ -228,7 +232,8 @@
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
                                        href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
+                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%>
+                                        </h6>
                                     </a>
                                     <span class="mb-2 text-xs">Vị trí: <span
                                             class="text-dark ms-sm-2 font-weight-bold"><%=p.getRank()%></span></span>
@@ -241,9 +246,9 @@
                                 </div>
                                 <div class="ms-auto text-end">
                                     <a class="col-yel" href="javascript:;"><i
-                                             aria-hidden="true"></i>Chưa duyệt</a>
+                                            aria-hidden="true"></i>Chưa duyệt</a>
                                 </div>
-                                <%
+                                    <%
                                         break;
                                     case 2:
                                 %>
@@ -251,7 +256,8 @@
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
                                        href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
+                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%>
+                                        </h6>
                                     </a>
                                     <span class="mb-2 text-xs">Vị trí: <span
                                             class="text-dark ms-sm-2 font-weight-bold"><%=p.getRank()%></span></span>
@@ -263,11 +269,11 @@
                                             class="text-dark font-weight-bold ms-sm-2"><%=p.getCreateDate()%></span></span>
                                 </div>
                                 <div class="ms-auto text-end">
-                                    <a class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold" ><i
-                                             aria-hidden="true"></i>Đã
+                                    <a class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold"><i
+                                            aria-hidden="true"></i>Đã
                                         duyệt</a>
                                 </div>
-                                <%
+                                    <%
                                         break;
                                     case 3:
                                 %>
@@ -275,7 +281,8 @@
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
                                        href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
+                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%>
+                                        </h6>
                                     </a>
                                     <span class="mb-2 text-xs">Vị trí: <span
                                             class="text-dark ms-sm-2 font-weight-bold"><%=p.getRank()%></span></span>
@@ -290,7 +297,7 @@
                                     <a class="col-grey" href="javascript:;"><i
                                             class="fas fa-pencil-alt1 text-dark me-2" aria-hidden="true"></i>Khóa</a>
                                 </div>
-                                <%
+                                    <%
                                         break;
                                     case 4:
                                 %>
@@ -298,7 +305,8 @@
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
                                        href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%></h6>
+                                        <h6 class="mb-3 text-sm"><%=p.getTitle()%>
+                                        </h6>
                                     </a>
                                     <span class="mb-2 text-xs">Vị trí: <span
                                             class="text-dark ms-sm-2 font-weight-bold"><%=p.getRank()%></span></span>
@@ -310,8 +318,9 @@
                                             class="text-dark font-weight-bold ms-sm-2"><%=p.getCreateDate()%></span></span>
                                 </div>
                                 <div class="ms-auto text-end">
-                                    <a class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold" href="javascript:;"><i
-                                             aria-hidden="true"></i>Hết
+                                    <a class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold"
+                                       href="javascript:;"><i
+                                            aria-hidden="true"></i>Hết
                                         hạng</a>
                                 </div>
                                 <%
@@ -321,10 +330,21 @@
 
                             <div style="margin: 0 auto;">
                                 <!-- Hiển thị nút phân trang -->
-                                <c:forEach begin="1" end="${sosp}" var="a">
-                                    <li class="arrow d-inline-block"><a
-                                            href="Post?action=tintuyendung&trang=${a}">${a}</a></li>
-                                </c:forEach>
+                                <%--                                <c:forEach begin="1" end="${sosp}" var="a">--%>
+                                <% for (int i = 1; i <= soBaiViet; i++) {%>
+                                <li class="arrow d-inline-block">
+                                    <% if (billId != null) { %>
+                                    <!-- if condition -->
+                                    <a href="Post?action=tintuyendung&billID=<%=billId%>&trang=<%=i%>"><%=i%>
+                                    </a>
+                                    <!-- else condition -->
+                                    <%} else {%>
+                                    <a href="Post?action=tintuyendung&trang=<%=i%>"><%=i%>
+                                    </a>
+                                    <%}%>
+                                </li>
+                                <%}%>
+                                <%--                                </c:forEach>--%>
                             </div>
                         </ul>
                     </div>
