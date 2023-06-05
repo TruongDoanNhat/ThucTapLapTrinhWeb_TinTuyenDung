@@ -14,25 +14,32 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "Post", value = {"/admin/PostManager", "/Post", "/Category"})
+@WebServlet(name = "Post", value = {"/admin/PostManager", "/business/Post", "/Category"})
 public class PostServlet extends HttpServlet {
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+
         DAOPost p = new DAOPost();
         DAOBill daoBill = new DAOBill();
-        String message = "hello";
+
         Account account = UtilSession.getInstance().getValue(request, "account");
+        String url2 = UtilSession.getInstance().getValue2(request, "url2");
+
+        List<Post> postAll;
+
         String action = request.getParameter("action");
         String idManager = request.getParameter("id");
+        String billID = request.getParameter("billID");
         String keywords = request.getParameter("keywords");
         String status = request.getParameter("status") == null ? "0" : request.getParameter("status");
         String trang = request.getParameter("trang");
-        List<Post> postAll;
+        int tongBaiViet;
+        int soBaiViet;
+
         if (trang == null) {
             trang = "1";
         }
@@ -68,16 +75,35 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 break;
             case "tintuyendung":
-                int dem = p.getTotalPostBusi(account.getId());
-                int sosp = dem / 3;
-                if (dem % 3 != 0) {
-                    sosp++;
+                tongBaiViet = p.getTotalPostBusi(account.getId());
+                soBaiViet = tongBaiViet / 3;
+                if (tongBaiViet % 3 != 0) {
+                    soBaiViet++;
                 }
-                List<Post> post = p.getPostIdBusi(account.getId(), t);
-                request.setAttribute("post", post);
-                request.setAttribute("sosp", sosp);
+                postAll = p.getPostIdBusi(account.getId(), t);
+
+                if (billID != null) {
+                    tongBaiViet = p.getTotalPostIdBill(billID);
+                    soBaiViet = tongBaiViet / 3;
+                    if (tongBaiViet % 3 != 0) {
+                        soBaiViet++;
+                    }
+                    postAll = p.getPostIdBill(billID, t);
+                    p.updateBill(billID, Bill.STATUS_SEEN);
+                    request.setAttribute("billId", billID);
+                    if (!trang.equals("1") || url2 == null) {
+                        UtilSession.getInstance().putValue(request, "url2", "/admin/Pay?action=quanlydoanhthu");
+                    } else {
+                        UtilSession.getInstance().removeValue(request, "url2");
+                    }
+
+                }
+
+                request.setAttribute("post", postAll);
+                request.setAttribute("sosp", soBaiViet);
                 request.setAttribute("trang", t);
-                UtilControl.phanQuyenServletBusi1(account, "business/busi-tin-tuyen-dung.jsp", "/Login?action=login", request, response);
+                UtilControl.forward("busi-tin-tuyen-dung.jsp", request, response);
+//                UtilControl.phanQuyenServletBusi1(account, "/busi-tin-tuyen-dung.jsp", "/Login?action=login", request, response);
                 break;
             case "xemthongtinvieclam":
                 String id2 = request.getParameter("id");
@@ -97,24 +123,24 @@ public class PostServlet extends HttpServlet {
                 break;
             case "approve":
                 p.updatePost(Integer.valueOf(idManager), Post.status_approve);
-                response.sendRedirect(request.getContextPath()+"/admin/PostManager?action=quanlybaidang");
+                response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
 //                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
             case "remove":
                 p.updatePost(Integer.valueOf(idManager), Post.status_unpaid);
                 // (chưa làm) trả lại thông báo cho business
-                response.sendRedirect(request.getContextPath()+"/admin/PostManager?action=quanlybaidang");
+                response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
 //                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
             case "lock":
                 p.updatePost(Integer.valueOf(idManager), Post.status_lock);
                 // (chưa làm) trả lại thông báo cho business
-                response.sendRedirect(request.getContextPath()+"/admin/PostManager?action=quanlybaidang");
+                response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
 //                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
             case "delete":
                 p.deletePost(Integer.valueOf(idManager));
-                response.sendRedirect(request.getContextPath()+"/admin/PostManager?action=quanlybaidang");
+                response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
 //                UtilControl.phanQuyenServletAdmin2(account, "PostManager?action=quanlybaidang", "/Login?action=login", request, response);
                 break;
             case "danhsanhvieclam":
@@ -124,7 +150,6 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("listJob", postAll1);
 //                hiển thị
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
-
                 break;
             case "quanlybaidang":
                 int dem2 = p.getTotalPostPaid();

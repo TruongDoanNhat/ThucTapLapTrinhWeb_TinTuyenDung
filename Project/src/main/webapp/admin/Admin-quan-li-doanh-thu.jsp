@@ -139,11 +139,13 @@
                                     <td class="mt">
                                         <div class="btn-group ml-auto" style="width: 10px">
                                             <% if (doanhThu.getStatus() == 1) { %>
-                                            <a class="btn btn-sm btn-outline-light" style="outline: none">
+                                            <a href="<%=request.getContextPath()%>/business/Post?action=tintuyendung&billID=<%=doanhThu.getId()%>"
+                                               class="btn btn-sm btn-outline-light" style="outline: none">
                                                 <i class="icon-eye-open" style="right: 5px;"></i>
                                             </a>
                                             <% } else { %>
-                                            <a class="btn btn-sm btn-outline-light"
+                                            <a href="<%=request.getContextPath()%>/business/Post?action=tintuyendung&billID=<%=doanhThu.getId()%>"
+                                               class="btn btn-sm btn-outline-light"
                                                style="outline: none;background: #8ff118;">
                                                 <i class="icon-eye-open" style="right: 5px;"></i>
                                             </a>
