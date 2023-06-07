@@ -64,7 +64,7 @@ public class PostServlet extends HttpServlet {
                 calendar.add(Calendar.MONTH, 1);
                 Date endDate = calendar.getTime(); // thêm một tháng
                 p.insertPost(category, title, quantity, salary, address, type, rank, gen, description, rights, requests, Post.status_unpaid, endDate);
-                response.sendRedirect(request.getContextPath() + "/Post?action=giohang");
+                response.sendRedirect(request.getContextPath() + "/business/Post?action=giohang");
                 break;
             case "giohang":
                 int id = UtilSession.getInstance().getValue(request, "account").getId();
@@ -72,7 +72,7 @@ public class PostServlet extends HttpServlet {
                 List<Post> posts = p.getPost(id, Post.status_unpaid);
                 request.setAttribute("postList", posts);
                 request.setAttribute("price", price);
-                UtilControl.forward("business/busi-gio-hang.jsp", request, response);
+                UtilControl.forward("busi-gio-hang.jsp", request, response);
                 break;
             case "tintuyendung":
                 tongBaiViet = p.getTotalPostBusi(account.getId());
@@ -161,8 +161,8 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("postAll", post3);
                 request.setAttribute("sobd", sobd);
                 request.setAttribute("trang", t);
-//                UtilControl.forward("Admin-quan-li-bai-dang.jsp",request,response);
-                UtilControl.phanQuyenServletAdmin1(account, "Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
+                UtilControl.forward("Admin-quan-li-bai-dang.jsp",request,response);
+//                UtilControl.phanQuyenServletAdmin1(account, "Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
                 break;
             case "category":
                 request.setAttribute("listPOC", p.getPostofCategoryByID(Integer.valueOf(idManager)));
