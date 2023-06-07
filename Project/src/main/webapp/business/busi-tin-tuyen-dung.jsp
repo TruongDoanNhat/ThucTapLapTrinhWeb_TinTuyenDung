@@ -99,7 +99,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="Post?action=tintuyendung">
+                <a class="nav-link active" href="<%=request.getContextPath()%>/business/Post?action=tintuyendung">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -206,7 +206,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                       href="<%=request.getContextPath()%>/business/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%>
                                         </h6>
                                     </a>
@@ -231,7 +231,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                       href="<%=request.getContextPath()%>/business/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%>
                                         </h6>
                                     </a>
@@ -255,7 +255,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                       href="<%=request.getContextPath()%>/business/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%>
                                         </h6>
                                     </a>
@@ -280,7 +280,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                       href="<%=request.getContextPath()%>/business/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%>
                                         </h6>
                                     </a>
@@ -304,7 +304,7 @@
                             <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                 <div class="d-flex flex-column">
                                     <a class="nav-link"
-                                       href="Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                       href="<%=request.getContextPath()%>/business/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h6 class="mb-3 text-sm"><%=p.getTitle()%>
                                         </h6>
                                     </a>
@@ -335,11 +335,11 @@
                                 <li class="arrow d-inline-block">
                                     <% if (billId != null) { %>
                                     <!-- if condition -->
-                                    <a href="Post?action=tintuyendung&billID=<%=billId%>&trang=<%=i%>"><%=i%>
+                                    <a href="<%=request.getContextPath()%>/business/Post?action=tintuyendung&billID=<%=billId%>&trang=<%=i%>"><%=i%>
                                     </a>
                                     <!-- else condition -->
                                     <%} else {%>
-                                    <a href="Post?action=tintuyendung&trang=<%=i%>"><%=i%>
+                                    <a href="<%=request.getContextPath()%>/business/Post?action=tintuyendung&trang=<%=i%>"><%=i%>
                                     </a>
                                     <%}%>
                                 </li>

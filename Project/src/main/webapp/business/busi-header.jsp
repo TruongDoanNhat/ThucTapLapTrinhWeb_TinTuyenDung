@@ -52,7 +52,7 @@
                 <!--           st         -->
                 <i class="nav-item  pe-2 d-flex align-items-center">
                     <%--                    <a href="../business/busi-gio-hang.jsp" class="nav-link text-body" style="margin-right: 15px;">--%>
-                    <a href='<c:url value="/Post?action=giohang"/>' class="nav-link text-body"
+                    <a href="<%=request.getContextPath()%>/business/Post?action=giohang" class="nav-link text-body"
                        style="margin-right: 15px;">
                         <i class="fa fa-shopping-cart  " style="width: 20px; padding-left: 7px;"></i>
                         <span class=" d-sm-inline d-none font-weight-bold text-sm"
