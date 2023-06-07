@@ -9,9 +9,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%  List<Post> post = (List<Post>) request.getAttribute("post");
+<% List<Post> post = (List<Post>) request.getAttribute("post");
     String billId = (String) request.getAttribute("billId");
-    int soBaiViet = (Integer) request.getAttribute("sobv");
 %>
 <html>
 <head>
@@ -328,23 +327,44 @@
                                     }%>
                             </li>
 
-                            <div style="margin: 0 auto;">
-                                <!-- Hiển thị nút phân trang -->
-                                <%--                                <c:forEach begin="1" end="${sosp}" var="a">--%>
-                                <% for (int i = 1; i <= soBaiViet; i++) {%>
-                                <li class="arrow d-inline-block">
-                                    <% if (billId != null) { %>
-                                    <!-- if condition -->
-                                    <a href="<%=request.getContextPath()%>/business/Post?action=tintuyendung&billID=<%=billId%>&trang=<%=i%>"><%=i%>
-                                    </a>
-                                    <!-- else condition -->
-                                    <%} else {%>
-                                    <a href="<%=request.getContextPath()%>/business/Post?action=tintuyendung&trang=<%=i%>"><%=i%>
-                                    </a>
-                                    <%}%>
-                                </li>
+                            <%
+                                int t = (int) request.getAttribute("trang");
+                                int sobv = (int) request.getAttribute("sobv");
+                            %>
+
+                            <!-- Hiển thị nút phân trang -->
+                            <%--                                <c:forEach begin="1" end="${sosp}" var="a">--%>
+                                <% for (int i = 1; i <= sobv; i++) {%>
+                            <li class="arrow d-inline-block">
+                                <% if (billId != null) { %>
+                                <!-- if condition -->
+                                <a href="<%=request.getContextPath()%>/business/Post?action=tintuyendung&billID=<%=billId%>&trang=<%=i%>"><%=i%>
+                                </a>
+                                <!-- else condition -->
+                                <%} else {%>
+                                <a href="<%=request.getContextPath()%>/business/Post?action=tintuyendung&trang=<%=i%>"><%=i%>
+                                </a>
                                 <%}%>
-                                <%--                                </c:forEach>--%>
+                            </li>
+                                <%}%>
+                            <%--                                </c:forEach>--%>
+                    </div>
+
+                            <div style="margin: 0 auto; text-align: center;">
+                                <% for (int i = 1; i <= sobv; i++) { %>
+                                <% if (i >= t - 2 && i <= t + 2) { %>
+                                <% if (i == t) { %>
+                                <span class="current-page"><%= i %></span>
+                                <% } else { %>
+                                <a href="<%= request.getContextPath() %>/business/Post?action=tintuyendung
+                                        <% if (billId != null) { %>
+                                        &billID=<%= billId %>
+                                        <% } %>&trang=<%= i %>"
+                                   class="btn btn-link"><%= i %>
+                                </a>
+                                <% } %>
+                                <% } %>
+                                <% } %>
                             </div>
                         </ul>
                     </div>
