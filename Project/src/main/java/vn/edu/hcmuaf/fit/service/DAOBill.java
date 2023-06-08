@@ -4,10 +4,9 @@ import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Bill;
 import vn.edu.hcmuaf.fit.model.Price;
 import vn.edu.hcmuaf.fit.service.modelQuanLy.QuanLyDoanhThu;
+import vn.edu.hcmuaf.fit.service.modelQuanLy.QuanLyThongKe;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class DAOBill {
@@ -88,6 +87,30 @@ public class DAOBill {
         return getInts(rs, query);
     }
 
+    public int[] doanhThuNam(String nam) {
+        int[] rs = new int[12];
+        String query = "SELECT MONTH(createDate) month , SUM(money) total" +
+                " FROM bill" +
+                " WHERE YEAR(createDate) = ? " +
+                "   GROUP BY MONTH(createDate)";
+        List<QuanLyThongKe> list = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, nam)
+                    .mapToBean(QuanLyThongKe.class)
+                    .collect(Collectors.toList());
+        });
+        for (int i = 0; i < 12; ++i) {
+            rs[i] = 0;
+            for (int j = 0; j < list.size(); j++) {
+                if (i == list.get(j).getMonth()) {
+                    rs[i - 1] = list.get(j).getTotal();
+                    break;
+                }
+            }
+        }
+        return rs;
+    }
+
     private int[] getInts(int[] rs, String query) {
         List<Integer> list = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).mapTo(Long.class).map(l -> l.intValue()).stream().collect(Collectors.toList());
@@ -161,8 +184,8 @@ public class DAOBill {
 
     public static void main(String[] args) {
         DAOBill d = new DAOBill();
-        for (int l : d.doanhThuTuan()) {
-            System.out.println(l);
+        for (int i : d.doanhThuNam("2023")) {
+            System.out.println(i);
         }
     }
 }
