@@ -8,8 +8,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% DAOPost daoPost = new DAOPost();
-    DAOBill daoBill = new DAOBill();
+<% int[] doanhThuNam = (int[]) request.getAttribute("doanhThuNam");
+    int[] doanhThuNamTruoc = (int[]) request.getAttribute("doanhThuNamTruoc");
+    int[] baiVietNam = (int[]) request.getAttribute("baiVietNam");
+
 %>
 <html>
 <head>
@@ -97,7 +99,7 @@
                         <div style="display: flex">
                             <div style="float: left"> Năm
                                 <input style="height:30px; width: 130px;" type="number" min="2020" max="" id="inputTime"
-                                       value="" class="span3" name="keywords"/>
+                                       value="" class="span3" name="year"/>
                                 <script>
                                     var now = new Date();
                                     var maxDate = now.getFullYear();
@@ -192,14 +194,17 @@
         type: 'line',
 
         data: {
-            labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'CN'],
+            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3',
+                'Tháng 4', 'Tháng 5', 'Tháng 6',
+                'Tháng 7', 'Tháng 8', 'Tháng 9',
+                'Tháng 10', 'Tháng 11', 'Tháng 12'],
             datasets: [{
                 label: 'Doanh thu tuần này',
                 fill: false,
                 backgroundColor: window.chartColors.green,
                 borderColor: window.chartColors.green,
                 data: [
-                    <% for(int i : daoBill.doanhThuTuan()){%>
+                    <% for(int i : doanhThuNam){%>
                     <%=i%>,
                     <%}%>
                 ],
@@ -210,7 +215,7 @@
                 backgroundColor: window.chartColors.gray,
                 borderColor: window.chartColors.gray,
                 data: [
-                    <% for(int i : daoBill.doanhThuTuanTruoc()){%>
+                    <% for(int i : doanhThuNamTruoc){%>
                     <%=i%>,
                     <%}%>
                 ],
@@ -300,7 +305,10 @@
         type: 'bar',
 
         data: {
-            labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'CN'],
+            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3',
+                'Tháng 4', 'Tháng 5', 'Tháng 6',
+                'Tháng 7', 'Tháng 8', 'Tháng 9',
+                'Tháng 10', 'Tháng 11', 'Tháng 12'],
             datasets: [{
                 label: 'Bài viết',
                 backgroundColor: window.chartColors.green,
@@ -308,7 +316,7 @@
                 borderWidth: 1,
                 maxBarThickness: 16,
                 data: [
-                    <% for(int i : daoPost.getTotalPostWeek()){%>
+                    <% for(int i : baiVietNam){%>
                     <%=i%>,
                     <%}%>
                 ]

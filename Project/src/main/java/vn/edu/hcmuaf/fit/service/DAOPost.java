@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.*;
+import vn.edu.hcmuaf.fit.service.modelQuanLy.QuanLyThongKe;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -239,6 +240,29 @@ public class DAOPost {
         });
     }
 
+    public int[] baiVietNam(String nam) {
+        int[] rs = new int[12];
+        String query = "SELECT MONTH(createDate) month , COUNT(id) total FROM post\n" +
+                " WHERE YEAR(createDate) = ?\n" +
+                "   GROUP BY MONTH(createDate)";
+        List<QuanLyThongKe> list = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, nam)
+                    .mapToBean(QuanLyThongKe.class)
+                    .collect(Collectors.toList());
+        });
+        for (int i = 0; i < 12; ++i) {
+            rs[i] = 0;
+            for (int j = 0; j < list.size(); j++) {
+                if (i == list.get(j).getMonth()) {
+                    rs[i - 1] = list.get(j).getTotal();
+                    break;
+                }
+            }
+        }
+        return rs;
+    }
+
     public int[] getTotalPostWeek() {
         int[] rs = new int[7];
         String query = " SELECT IFNULL(total,0) total  \n" + "FROM (  \n" + " SELECT 'Monday' AS day UNION   \n" + " SELECT 'Tuesday' UNION   \n" + " SELECT 'Wednesday' UNION  \n" + " SELECT 'Thursday' UNION  \n" + " SELECT 'Friday' UNION  \n" + " SELECT 'Saturday' UNION   \n" + " SELECT 'Sunday') d   \n" + "LEFT JOIN (SELECT DAYNAME(createDate) day, COUNT(id) total FROM post\n" + "WHERE createDate >= CURDATE() - INTERVAL WEEKDAY(CURDATE()) + 7 DAY AND createDate <= CURDATE()    \n" + " GROUP BY day) p ON d.day = p.day\n" + "ORDER BY FIND_IN_SET(d.day,'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday')  ";
@@ -299,7 +323,7 @@ public class DAOPost {
 
     public static void main(String[] args) {
         DAOPost d = new DAOPost();
-        for (int l : d.getTotalPostWeek()) {
+        for (int l : d.baiVietNam("2023")) {
             System.out.println(l);
         }
     }
