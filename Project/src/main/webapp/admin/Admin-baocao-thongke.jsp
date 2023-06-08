@@ -11,6 +11,7 @@
 <% int[] doanhThuNam = (int[]) request.getAttribute("doanhThuNam");
     int[] doanhThuNamTruoc = (int[]) request.getAttribute("doanhThuNamTruoc");
     int[] baiVietNam = (int[]) request.getAttribute("baiVietNam");
+    String year = request.getAttribute("year").toString();
 
 %>
 <html>
@@ -99,12 +100,11 @@
                         <div style="display: flex">
                             <div style="float: left"> Năm
                                 <input style="height:30px; width: 130px;" type="number" min="2020" max="" id="inputTime"
-                                       value="" class="span3" name="year"/>
+                                       value="<%=year%>" class="span3" name="year"/>
                                 <script>
                                     var now = new Date();
                                     var maxDate = now.getFullYear();
                                     document.getElementById("inputTime").setAttribute("max", maxDate);
-                                    document.getElementById("inputTime").setAttribute("value", maxDate);
                                 </script>
                             </div>
                             <div class="float-md-right" style="float: right; margin-left: 5px">
@@ -199,7 +199,7 @@
                 'Tháng 7', 'Tháng 8', 'Tháng 9',
                 'Tháng 10', 'Tháng 11', 'Tháng 12'],
             datasets: [{
-                label: 'Doanh thu tuần này',
+                label: 'Doanh thu <%=year%>',
                 fill: false,
                 backgroundColor: window.chartColors.green,
                 borderColor: window.chartColors.green,
@@ -210,7 +210,7 @@
                 ],
                 // data:data_line,
             }, {
-                label: 'Doanh thu tuần trước',
+                label: 'Doanh thu  <%=Integer.valueOf(year)-1%>',
                 borderDash: [3, 5],
                 backgroundColor: window.chartColors.gray,
                 borderColor: window.chartColors.gray,
@@ -310,7 +310,7 @@
                 'Tháng 7', 'Tháng 8', 'Tháng 9',
                 'Tháng 10', 'Tháng 11', 'Tháng 12'],
             datasets: [{
-                label: 'Bài viết',
+                label: 'Bài đăng',
                 backgroundColor: window.chartColors.green,
                 borderColor: window.chartColors.green,
                 borderWidth: 1,
@@ -331,7 +331,7 @@
             },
             title: {
                 display: true,
-                text: 'Bài viết'
+                text: 'Bài đăng'
             },
             tooltips: {
                 mode: 'index',

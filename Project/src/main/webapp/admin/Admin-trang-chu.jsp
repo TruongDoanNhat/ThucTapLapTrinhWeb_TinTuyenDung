@@ -65,7 +65,7 @@
                         <div class="module-head">
                             <h3>Thống kê</h3>
                             <div class="float-md-right">
-                                <a href="<%=request.getContextPath()%>/admin/Admin-baocao-thongke.jsp" class="btn"
+                                <a href="<%=request.getContextPath()%>/admin/Statistics?action=adminThongke" class="btn"
                                    style="background: darkgrey; position: absolute; bottom: 100px; right: 200px;">
                                     Tạo thống kê
                                 </a>
@@ -259,7 +259,7 @@
         data: {
             labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'CN'],
             datasets: [{
-                label: 'Bài viết',
+                label: 'Bài đăng',
                 backgroundColor: window.chartColors.green,
                 borderColor: window.chartColors.green,
                 borderWidth: 1,
