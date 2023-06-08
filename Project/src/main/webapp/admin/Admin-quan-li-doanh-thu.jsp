@@ -1,6 +1,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.service.modelQuanLy.QuanLyDoanhThu" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="com.google.gson.Gson" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -10,7 +11,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% List<QuanLyDoanhThu> listDoanhThu = (List<QuanLyDoanhThu>) request.getAttribute("listDoanhThu");%>
+<% List<QuanLyDoanhThu> listDoanhThu = (List<QuanLyDoanhThu>) request.getAttribute("listDoanhThu");
+    Gson gson = new Gson();
+    String json = gson.toJson(listDoanhThu);
+%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -43,8 +47,7 @@
                         </i> Quản lý </a>
                             <ul id="togglePages" class=" collapse unstyled">
                                 <li>
-                                    <a href='<c:url value="/PostManager?action=quanlybaidang"/>'>
-                                        <i class="icon-inbox"></i> Quản lý bài đăng
+                                    <i class="icon-inbox"></i> Quản lý bài đăng
                                     </a>
                                 </li>
                                 <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-doanh-thu.jsp"><i
@@ -88,6 +91,9 @@
                     <div class="card-header">
                         <h5 class="mb-0">Quản lý doanh thu</h5>
                     </div>
+                    <button class="btn" onclick="exportToExcel('doanhthu', 'Doanh thu')">
+                      Xuất file Excel
+                    </button>
                     <form class="navbar-search pull-left input-append"
                           action="<%=request.getContextPath()%>/admin/Pay?action=quanlydoanhthu" method="post">
                         <%--                        <input type="text" style="height:30px" class="span3" name="keywords" placeholder="Tìm kiếm">--%>
@@ -179,6 +185,25 @@
 </div>
 <!--/.wrapper-->
 </body>
+<script>
+    var myData = <%=json%>;
+
+    function exportToExcel(fileName, sheetName) {
+        if (myData.length === 0) {
+            console.error('Chưa có data');
+            return;
+        }
+        // console.log('exportToExcel', myData);
+
+        let wb;
+        const ws = XLSX.utils.json_to_sheet(myData);
+        // console.log('ws', ws);
+        wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, sheetName);
+        console.log('wb', wb);
+        XLSX.writeFile(wb, fileName + `.xlsx`);
+    }
+</script>
 <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -186,5 +211,5 @@
 <script src="scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
 <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
 <script src="scripts/common.js" type="text/javascript"></script>
-
+<script src="scripts/xlsx.full.min.js" type="text/javascript"></script>
 </html>
