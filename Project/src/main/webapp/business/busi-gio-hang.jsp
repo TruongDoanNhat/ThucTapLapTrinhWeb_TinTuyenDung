@@ -19,22 +19,22 @@
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="business/assets/img/logo/logo.png">
+    <link rel="icon" type="image/png" href="assets/img/logo/logo.png">
     <title>Giỏ hàng</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
     <%--    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>--%>
-    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="business/assets/css/gio-hang.css">
-    <link rel="stylesheet" href="business/assets/css/thanh-toan.css">
-    <link rel="stylesheet" href="business/assets/css/thanh-toan2.css">
+    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/gio-hang.css">
+    <link rel="stylesheet" href="assets/css/thanh-toan.css">
+    <link rel="stylesheet" href="assets/css/thanh-toan2.css">
 
 </head>
 <body class="g-sidenav-show  bg-gray-100">

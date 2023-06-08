@@ -72,7 +72,7 @@ public class PostServlet extends HttpServlet {
                 List<Post> posts = p.getPost(id, Post.status_unpaid);
                 request.setAttribute("postList", posts);
                 request.setAttribute("price", price);
-                UtilControl.forward("business/busi-gio-hang.jsp", request, response);
+                UtilControl.forward("busi-gio-hang.jsp", request, response);
                 break;
             case "tintuyendung":
                 tongBaiViet = p.getTotalPostBusi(account.getId());
