@@ -41,17 +41,32 @@
                 <i class="menu-icon icon-tasks"></i> Báo cáo - thống kê
             </a>
         </li>
-        <li><a class="collapsed" data-toggle="collapse" href="#togglePages2"><i
-                class="menu-icon icon-cog">
-        </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-        </i> Cài đặt giao diện </a>
+        <li>
+            <a href="<%=request.getContextPath()%>/admin/Update?action=update">
+                <i class="menu-icon icon-hand-up"></i> Cập nhật
+            </a>
+        </li>
+        <li>
+            <a class="collapsed" data-toggle="collapse" href="#togglePages2">
+                <i class="menu-icon icon-cog"></i>
+                <i class="icon-chevron-down pull-right"></i>
+                <i class="icon-chevron-up pull-right"></i>
+                Cài đặt giao diện
+            </a>
             <ul id="togglePages2" class="collapse unstyled">
                 <%--                                <li><a href=""><i class="icon-inbox"></i> Màu sắc </a></li>--%>
-                <%--                                <li><a href=""><i class="icon-inbox"></i> Hình ảnh </a></li>--%>
-                <li><a href="<%=request.getContextPath()%>/admin/Admin-tin-tuc.jsp"><i
-                        class="icon-inbox"></i> Tin tức </a></li>
-                <li><a href="<%=request.getContextPath()%>/admin/Admin-chinh-sua-lien-he.jsp"><i
-                        class="icon-inbox"></i> Liên hệ </a></li>
+                <li>
+                    <a href="<%=request.getContextPath()%>/admin/Admin-tin-tuc.jsp">
+                        <i class="icon-inbox"></i>
+                        Tin tức
+                    </a>
+                </li>
+                <li>
+                    <a href="<%=request.getContextPath()%>/admin/Update?action=contact">
+                        <i class="icon-inbox"></i>
+                        Liên hệ
+                    </a>
+                </li>
                 <%--                                <li><a href=""><i class="icon-inbox"></i> Giới thiệu </a></li>--%>
                 <%--                                <li><a href=""><i class="icon-inbox"></i> Quảng cáo </a></li>--%>
             </ul>

@@ -3,6 +3,7 @@ package vn.edu.hcmuaf.fit.control;
 import vn.edu.hcmuaf.fit.model.*;
 import vn.edu.hcmuaf.fit.service.DAOBill;
 import vn.edu.hcmuaf.fit.service.DAOPost;
+import vn.edu.hcmuaf.fit.service.DAOPrice;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -68,7 +69,7 @@ public class PostServlet extends HttpServlet {
                 break;
             case "giohang":
                 int id = UtilSession.getInstance().getValue(request, "account").getId();
-                Price price = daoBill.getPrice();
+                Price price = DAOPrice.getInstance().getPrice();
                 List<Post> posts = p.getPost(id, Post.status_unpaid);
                 request.setAttribute("postList", posts);
                 request.setAttribute("price", price);
@@ -161,7 +162,7 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("postAll", post3);
                 request.setAttribute("sobd", sobd);
                 request.setAttribute("trang", t);
-                UtilControl.forward("Admin-quan-li-bai-dang.jsp",request,response);
+                UtilControl.forward("Admin-quan-li-bai-dang.jsp", request, response);
 //                UtilControl.phanQuyenServletAdmin1(account, "Admin-quan-li-bai-dang.jsp", "/Login?action=login", request, response);
                 break;
             case "category":

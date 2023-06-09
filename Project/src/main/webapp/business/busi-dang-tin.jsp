@@ -1,6 +1,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCategory" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -11,8 +12,7 @@
 --%>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <% String message = (String) request.getAttribute("message");
-    DAOPost daoPost = new DAOPost();
-    List<Category> listCategory = daoPost.getCategoryAll();
+    List<Category> listCategory = DAOCategory.getInstance().getCategoryAll();
 %>
 <html>
 <head>
@@ -276,7 +276,7 @@
                                             </label>
                                             <label class="checkbox inline">
                                                 <input type="radio" id="gen2" name="gen" value="Nữ"
-                                                       >
+                                                >
                                                 Nữ
                                             </label>
                                             <label class="checkbox inline">
@@ -357,7 +357,6 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-
 
 
     // Kiểm tra thông tin trong bảng đăng tin

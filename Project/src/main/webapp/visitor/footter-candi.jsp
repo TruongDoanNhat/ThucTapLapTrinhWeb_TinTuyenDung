@@ -1,4 +1,5 @@
-<%--
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOContact" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Contact" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 31/12/2022
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% Contact contact = DAOContact.getInstance().getContact();%>
 <html>
 <head>
     <title></title>
@@ -17,13 +19,15 @@
         <div class="container">
             <!-- logo -->
             <div class="foot-logo">
-                <a href="trang-chu.html"><img src="<%=request.getContextPath()%>/assets/img/logo/logo2_footer.png" alt=""></a>
+                <a href="trang-chu.html"><img src="<%=request.getContextPath()%>/assets/img/logo/logo2_footer.png"
+                                              alt=""></a>
             </div>
             <div class="row d-flex justify-content-between">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 padding-left">
                     <div class="single-footer-caption mb-50">
                         <div class="footer-tittle">
-                            <h4>Về TopVieclam</h4>
+                            <h4>Về <%=contact.getName()%>
+                            </h4>
                             <ul>
                                 <li><a href="ve-chung-toi.html">Giới thiệu</a></li>
                                 <li><a href="tin-tuc.html">Góc báo chí</a></li>
@@ -40,10 +44,13 @@
                             <h4>Thông tin liên hệ</h4>
                             <ul>
                                 <li>
-                                    <p>Địa chỉ: Đại học Nông Lâm, khu phố 6, phường Linh Trung, tp Thủ Đức. </p>
+                                    <p>Địa chỉ: <%=contact.getAddress()%>
+                                    </p>
                                 </li>
-                                <li><p>Điện thoại: 19009090 </p></li>
-                                <li><a href="#">Email: mssv@hcmuaf.edu.vn </a></li>
+                                <li><p>Điện thoại: <%=contact.getPhone()%>
+                                </p></li>
+                                <li><a href="#">Email: <%=contact.getEmail()%>
+                                </a></li>
                             </ul>
                         </div>
 
@@ -91,8 +98,7 @@
                     <div class="col-xl-10 col-lg-10 ">
                         <div class="footer-copy-right">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy; Công ty cổ phần 3 thành viên N^3 Group VN
-                                <script>document.write(new Date().getFullYear());</script>
+                                Copyright &copy; Công ty cổ phần <%=contact.getName()%>
                                 </a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
