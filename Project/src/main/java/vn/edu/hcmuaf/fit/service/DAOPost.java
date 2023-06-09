@@ -121,9 +121,9 @@ public class DAOPost {
     // thêm bài viết vào csdl
     public boolean insertPost(String categoryId, String title, String quantity, String salary, String address, String type, String rank, String gen, String description, String rights, String request, int status, Date endDate) {
         int accountId = DAOAccount.getAccount().getId();
-        String query = "INSERT INTO `post` (`categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`," + " `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`,`priceId`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO `post` (`categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`," + " `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        JDBIConnector.get().withHandle(handle -> handle.createUpdate(query).bind(0, categoryId).bind(1, accountId).bind(2, title).bind(3, quantity).bind(4, salary).bind(5, address).bind(6, type).bind(7, rank).bind(8, gen).bind(9, description).bind(10, rights).bind(11, request).bind(12, status).bind(13, getDateNow()).bind(14, endDate).bind(15, (String) null).bind(16, daoBill.getPrice().getId()).execute());
+        JDBIConnector.get().withHandle(handle -> handle.createUpdate(query).bind(0, categoryId).bind(1, accountId).bind(2, title).bind(3, quantity).bind(4, salary).bind(5, address).bind(6, type).bind(7, rank).bind(8, gen).bind(9, description).bind(10, rights).bind(11, request).bind(12, status).bind(13, getDateNow()).bind(14, endDate).bind(15, (String) null).execute());
         return true;
     }
 
@@ -143,14 +143,6 @@ public class DAOPost {
         });
     }
 
-    //Lấy id category theo tên
-    public List<Category> getCategoryId(String name) {
-        String query = "SELECT * FROM category WHERE name = ?";
-        List<Category> list = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, name).mapToBean(Category.class).stream().collect(Collectors.toList());
-        });
-        return list;
-    }
 
     public List<Post> getPostApprove() {
         String query = "select * from post where status = ?";
@@ -165,17 +157,6 @@ public class DAOPost {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).mapTo(Integer.class).one();
         });
-    }
-
-
-    public List<Category> getCategoryAll() {
-        String query = "select * from category";
-        List<Category> listCategory = null;
-        listCategory = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).mapToBean(Category.class).stream().collect(Collectors.toList());
-        });
-
-        return listCategory;
     }
 
     public List<Post> getPostAllTop5() {
