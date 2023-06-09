@@ -333,23 +333,6 @@
                             %>
 
                             <!-- Hiển thị nút phân trang -->
-                            <%--                                <c:forEach begin="1" end="${sosp}" var="a">--%>
-                                <% for (int i = 1; i <= sobv; i++) {%>
-                            <li class="arrow d-inline-block">
-                                <% if (billId != null) { %>
-                                <!-- if condition -->
-                                <a href="<%=request.getContextPath()%>/business/Post?action=tintuyendung&billID=<%=billId%>&trang=<%=i%>"><%=i%>
-                                </a>
-                                <!-- else condition -->
-                                <%} else {%>
-                                <a href="<%=request.getContextPath()%>/business/Post?action=tintuyendung&trang=<%=i%>"><%=i%>
-                                </a>
-                                <%}%>
-                            </li>
-                                <%}%>
-                            <%--                                </c:forEach>--%>
-                    </div>
-
                             <div style="margin: 0 auto; text-align: center;">
                                 <% for (int i = 1; i <= sobv; i++) { %>
                                 <% if (i >= t - 2 && i <= t + 2) { %>
