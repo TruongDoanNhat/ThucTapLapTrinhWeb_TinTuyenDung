@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
+import vn.edu.hcmuaf.fit.model.CV;
 import vn.edu.hcmuaf.fit.service.DAOCV;
 
 import javax.servlet.ServletException;
@@ -8,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "CV", value = {"/cadidate/CV", "/CV"})
+@WebServlet(name = "CV", value = {"/candidate/CV"})
 public class CVServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,6 +36,13 @@ public class CVServlet extends HttpServlet {
                 String exp = request.getParameter("exp");
                 String lv = request.getParameter("lv");
                 cv.insertCV(title, name, rank, email, phone, gen, address, salary, skill, interest,exp,lv);
+                response.sendRedirect(request.getContextPath() + "/candidate/CV?action=quanlycv");
+                break;
+            case "quanlycv" :
+                int id = UtilSession.getInstance().getValue(request, "account").getId();
+                List<CV> cvs = cv.getCV(id);
+                request.setAttribute("cvList", cvs);
+                UtilControl.forward("candi-quan-ly-cv.jsp", request, response);
                 break;
         }
     }
