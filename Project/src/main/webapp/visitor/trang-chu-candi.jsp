@@ -5,6 +5,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Company" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCategory" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -13,7 +14,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%DAOPost dp = new DAOPost();%>
+<%
+    DAOPost dp = new DAOPost();
+    List<Category> category = DAOCategory.getInstance().getCategoryAll();
+%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -28,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/flaticon.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/price_rangs.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/slicknav.css">
-<%--       <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/animate.min.css">--%>
+    <%--       <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/animate.min.css">--%>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/magnific-popupost.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/fontawesome-all.min.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/slick.css">
@@ -110,7 +114,7 @@
             </div>
             <div class="row d-flex">
 
-                <%for (Category c : dp.getCategoryAll()) { %>
+                <%for (Category c : category) { %>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
@@ -145,14 +149,16 @@
         </div>
         <!-- Our Services End -->
         <!-- Online CV Area Start -->
-        <div class="online-cv cv-bg section-overly pt-90 pb-120" data-background="<%=request.getContextPath()%>/assets/img/gallery/cv_bg.jpg">
+        <div class="online-cv cv-bg section-overly pt-90 pb-120"
+             data-background="<%=request.getContextPath()%>/assets/img/gallery/cv_bg.jpg">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-10">
                         <div class="cv-caption text-center">
                             <span><b class="tittle"> NỔI BẬT</b></span>
                             <p class="pera2">Nộp CV để chớp lấy cơ hội việc làm mơ ước</p>
-                            <a href="<%=request.getContextPath()%>/candidate/candi-ung-tuyen.jsp" class="border-btn2 border-btn4">Tải CV của
+                            <a href="<%=request.getContextPath()%>/candidate/candi-ung-tuyen.jsp"
+                               class="border-btn2 border-btn4">Tải CV của
                                 bạn</a>
                         </div>
                     </div>
@@ -218,7 +224,8 @@
         </section>
         <!-- Featured_job_end -->
         <!-- How  Apply Process Start-->
-        <div class="apply-process-area apply-bg pt-150 pb-150" data-background="<%=request.getContextPath()%>/assets/img/gallery/how-applybg.png">
+        <div class="apply-process-area apply-bg pt-150 pb-150"
+             data-background="<%=request.getContextPath()%>/assets/img/gallery/how-applybg.png">
             <div class="container">
                 <!-- Section Tittle -->
                 <div class="row">

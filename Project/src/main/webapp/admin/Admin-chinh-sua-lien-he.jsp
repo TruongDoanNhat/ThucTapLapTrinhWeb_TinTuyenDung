@@ -86,8 +86,8 @@
             <!--/.span3-->
             <div class="span9">
                 <div class="content">
-                    <h4> Chỉnh sửa trang liên hệ </h4>
-                    <form action="<%=request.getContextPath()%>/admin/Contact?action=changeContact" method="post">
+                    <h4> Chỉnh sửa thông tin liên hệ </h4>
+                    <form action="<%=request.getContextPath()%>/admin/Update?action=changeContact" method="post">
                         <label> Tên công ty </label>
                         <input class="" style="height: auto;" type="text" name="name" placeholder="Nhập tên công ty"
                                value="<%=contact.getName()%>">
