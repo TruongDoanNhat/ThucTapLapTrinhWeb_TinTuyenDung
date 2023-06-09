@@ -1,4 +1,5 @@
-<%--
+<%@ page import="vn.edu.hcmuaf.fit.model.Contact" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOContact" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 06/01/2023
@@ -6,20 +7,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% Contact contact = (Contact) request.getAttribute("contact");
+%>
 <html>
 <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin | Cài đặt giao diện</title>
-        <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link type="text/css" href="css/theme.css" rel="stylesheet">
-        <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
-              rel='stylesheet'>
-        <link rel="stylesheet" href="admin/css/chart.css">
-        <script src="scripts/chart.js"></script>
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Cài đặt giao diện</title>
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" href="css/theme.css" rel="stylesheet">
+    <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+          rel='stylesheet'>
+    <link rel="stylesheet" href="admin/css/chart.css">
+    <script src="scripts/chart.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 </head>
 <body>
 <jsp:include page="Admin-header.jsp"></jsp:include>
@@ -84,15 +87,23 @@
             <div class="span9">
                 <div class="content">
                     <h4> Chỉnh sửa trang liên hệ </h4>
-                    <label> Địa chỉ: </label>
-                    <input class="" type="text" name="phuong-tp" placeholder="Phường, quận, thành phố">
-                    <input class="" type="text" name="khupho" placeholder="Số nhà, khu phố">
-                    <label> Hotline: </label>
-                    <input class="" type="text" name="hotline" placeholder="Nhập hotline">
-                    <input class="" type="text" name="khunggio" placeholder="Thời gian làm việc">
-                    <label> Email </label>
-                    <input class="" type="email" name="phuong-tp" placeholder="">
-
+                    <form action="<%=request.getContextPath()%>/admin/Contact?action=changeContact" method="post">
+                        <label> Tên công ty </label>
+                        <input class="" style="height: auto;" type="text" name="name" placeholder="Nhập tên công ty"
+                               value="<%=contact.getName()%>">
+                        <label> Địa chỉ: </label>
+                        <input class="" style="height: auto;" type="text" name="address" placeholder="Nhập địa chỉ"
+                               value="<%=contact.getAddress()%>">
+                        <label> Hotline: </label>
+                        <input style="height: auto;"
+                               type="number" name="phone" placeholder="Nhập hotline" value="<%=contact.getPhone()%>">
+                        <label> Email </label>
+                        <input class="" style="height: auto;" type="email" name="email" placeholder="example@gmail.com"
+                               value="<%=contact.getEmail()%>">
+                        <button type="submit" style="height: auto" class="btn">
+                            Lưu
+                        </button>
+                    </form>
                 </div>
 
             </div>
