@@ -50,7 +50,7 @@
                 <%--                                <li><a href=""><i class="icon-inbox"></i> Hình ảnh </a></li>--%>
                 <li><a href="<%=request.getContextPath()%>/admin/Admin-tin-tuc.jsp"><i
                         class="icon-inbox"></i> Tin tức </a></li>
-                <li><a href="<%=request.getContextPath()%>/admin/Admin-chinh-sua-lien-he.jsp"><i
+                <li><a href="<%=request.getContextPath()%>/admin/Contact?action=contact"><i
                         class="icon-inbox"></i> Liên hệ </a></li>
                 <%--                                <li><a href=""><i class="icon-inbox"></i> Giới thiệu </a></li>--%>
                 <%--                                <li><a href=""><i class="icon-inbox"></i> Quảng cáo </a></li>--%>
