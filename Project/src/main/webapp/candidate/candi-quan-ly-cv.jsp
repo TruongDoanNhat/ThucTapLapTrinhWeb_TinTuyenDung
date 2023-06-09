@@ -1,6 +1,5 @@
-<%@ page import="vn.edu.hcmuaf.fit.model.Account" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.CV" %>
 <%@ page import="java.util.List" %>
-<%@ page import="vn.edu.hcmuaf.fit.service.DAOAccount" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -10,7 +9,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
-
+<% List<CV> cvs = (List<CV>) request.getAttribute("cvList"); %>
 
 <html>
 <head>
@@ -57,11 +56,13 @@
                        class="list-group-item list-group-item-action border-0 bg-none">
                         <i data-v-61ae721f="" class="fa mr-2 fa-lock"></i> Đổi mật khẩu
                     </a>
-                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/candi-tai-khoan.jsp" aria-current="page"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/candi-tai-khoan.jsp"
+                       aria-current="page"
                        class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-white">
                         <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Thông tin cá nhân
                     </a>
-                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/candi-tao-cv.jsp" aria-current="page"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/candi-tao-cv.jsp"
+                       aria-current="page"
                        class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-white">
                         <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Tạo CV
                     </a>
@@ -74,87 +75,43 @@
             </div>
             <div data-v-c4f347a8="" class="bg-white w-100 rounded">
                 <!--               form -->
-                <form action="<%=request.getContextPath()%>/Account?action=updateAccount" method="post">
-                    <div data-v-c4f347a8="" class="">
-                        <div data-v-c4f347a8="" class="card-header bg-white" style="border: none; box-shadow: none">
-                            <h5> Thông tin cá nhân</h5>
-                        </div>
-                        <div data-v-c4f347a8="" class="card-body setting-form">
-                            <div data-v-c4f347a8="" class="row">
-                                <!--                                avt-->
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <div data-v-c4f347a8="" class="d-flex align-items-center">
-                                        <label data-v-c4f347a8="" class="col-form-label mr-2"></label>
-                                        <div data-v-2a31697a="" data-v-c4f347a8="" class="mr-2  avatar">
-                                            <%--                                            <img src="<%=request.getContextPath()%>/admin/images/user.png">
-                                            <%--
-
-
-                                            <%--                                                <form modelAttribute="modelClass" action="save" method="POST" enctype="multipart/form-data">--%>
-<%--                                                    <div class="form-group">--%>
-<%--                                                        <label for="img" class="btn head-btn1"--%>
-<%--                                                               style="margin: 10px 60px; background: #0e90d2"> Đổi avatar</label>--%>
-<%--                                                        <input type="file" id="img" path="productLandscapeImage" class="form-control" name="productLandscapeImage" title="Image"--%>
-<%--                                                               style="margin: 10px 50px; visibility: hidden; cursor: pointer; color: orangered"--%>
-<%--                                                               value=""/>--%>
-<%--                                                    </div>--%>
-<%--                                                </form>--%>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--
-                                                          avt end-->
-
-
-
-                            <% Account account = (Account) session.getAttribute("account");%>
-                                <div data-v-c4f347a8="" class="row " style="width: 49%">
-                                    <div data-v-c4f347a8="" class="form-group col-md-6">
-                                        <div data-v-c4f347a8="" class="d-flex justify-content-between">
-                                            <label data-v-c4f347a8="">Email</label>
-
-                                        </div>
-                                        <div class="">
-                                            <input id="email" name="email" placeholder="Nhập email"
-                                                   class="form-control hidden-spin-button"
-                                                   value="<%=account.getEmail()%>">
-<%--                                            --%>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="row" style="display: flex">
+                    <div class="col-md-7 mt-4">
+                        <div class="card">
+                            <div class="card-header pb-0 px-3">
+                                <h6 class="mb-0"> Quản lý CV </h6>
                             </div>
-                            <div data-v-c4f347a8="" class="row">
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8="">Họ và tên</label>
-                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
-                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input id="name" name="name" type="text"
-                                                   placeholder="Nhập họ và tên" autocomplete="true"
-                                                   class="form-control" value="<%=account.getName()%>">
-                                        </div>
+                            <ul class="list-group">
+                                <% for (CV cv : cvs) { %>
+                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg" style="box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px; margin-top: 5px;
+            margin-bottom: 5px;">
+                                    <div class="d-flex flex-column">
+                                        <a class="nav-link"
+                                           href="#">
+                                            <h6 class="mb-3 text-sm"> <%=cv.getTitle()%>
+                                            </h6>
+                                        </a>
+                                        <span class="mb-2 text-xs">Vị trí: <span
+                                                class="text-dark ms-sm-2 font-weight-bold"><%=cv.getRank()%></span></span>
+                                        <span class="mb-2 text-xs">Địa chỉ: <span
+                                                class="text-dark ms-sm-2 font-weight-bold"><%=cv.getAddress()%></span></span>
+                                        <span class="mb-2 text-xs">Mức lương: <span
+                                                class="text-dark font-weight-bold ms-sm-2"><%=cv.getSalary()%></span></span>
+                                        <span class="text-xs"><b>Ngày tạo:</b> <span
+                                                class="text-dark font-weight-bold ms-sm-2"><%=cv.getCreateDate()%></span></span>
                                     </div>
-                                </div>
-
-                            </div>
-<%--                            <form action="update" method="post">--%>
-                            <div data-v-c4f347a8="" class="form-group mb-0">
-                                <a data-v-c4f347a8="" href="/app/dashboard" class="btn head-btn1"
-                                   style="background: crimson">Hủy</a>
-                                <button id="btn" name="btn" type="submit" class="btn head-btn1"
-                                        style="background: #0e90d2">
-                                    Lưu
-                                </button>
-                            </div>
-<%--                            </form>--%>
-
+                                </li>
+                                <% } %>
+                            </ul>
+                            <!--                end form-->
                         </div>
                     </div>
-                </form>
-                <!--                end form-->
+                </div>
             </div>
         </div>
     </div>
+
 </main>
 <jsp:include page="../visitor/footter-candi.jsp"></jsp:include>
 
