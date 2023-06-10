@@ -349,7 +349,7 @@ CREATE TABLE `cv`
     `id`          int     NOT NULL AUTO_INCREMENT,
     `title`       text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
     `accountId`   int NULL DEFAULT NULL,
-    `name`        text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+    `name`        text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
     `rank`        varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
     `email`      text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
     `phone`      tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -359,7 +359,7 @@ CREATE TABLE `cv`
     `skill` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
     `interest`      text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
     `exp`     text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-    `lv`     text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+    `lv`     text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
     `createDate`  date    NOT NULL,
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
