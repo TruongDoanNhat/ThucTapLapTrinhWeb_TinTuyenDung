@@ -3,8 +3,10 @@ package vn.edu.hcmuaf.fit.control;
 import vn.edu.hcmuaf.fit.Util.Util;
 import vn.edu.hcmuaf.fit.bean.UserGoogle;
 import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.model.Log;
 import vn.edu.hcmuaf.fit.properties.google.GoogleUtils;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
+import vn.edu.hcmuaf.fit.service.DAOLog;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +28,11 @@ public class Login extends HttpServlet {
         password = Util.encryptionPassword(password);
         boolean checkAccount = d.checkAccount(username, password);
 
-        String message = d.getMessage();
+        HttpSession session = request.getSession();
+        Integer countLogin = (Integer) session.getAttribute("countLogin");
+        String userNameAttempts = (String) session.getAttribute("userNameAttempts");
+        System.out.println(userNameAttempts + "?");
+        String message = "Đăng nhập thất bại. Tài khoản hoặc mật khẩu không đúng";
         String action = request.getParameter("action");
         if (action != null) {
             switch (action) {
@@ -42,7 +48,7 @@ public class Login extends HttpServlet {
                     String accessToken = GoogleUtils.getToken(code);
                     UserGoogle userGoogle = GoogleUtils.getUserInfo(accessToken);
                     d.castAccountGG(userGoogle);
-                    UtilSession.getInstance().putValue(request, "account", (Account) d.getAccount());
+                    UtilSession.getInstance().putAccountSession(request, "account", (Account) d.getAccount());
                     response.sendRedirect("visitor/trang-chu-candi.jsp");
                     break;
             }
@@ -69,18 +75,17 @@ public class Login extends HttpServlet {
                                 || cookie.getName().equals("remember_me")) {
                             cookie.setMaxAge(0);
                             response.addCookie(cookie);
-                            System.out.println(cookie.getName());
+//                            System.out.println(cookie.getName());
                         }
                     }
                 }
             }
 
             // Chuyen huong đen trang chu (thay doi duong dan phu hop)
-            //
             if (checkAccount && d.getAccount().getStatus() == 1) {
-                UtilSession.getInstance().putValue(request, "account", (Account) d.getAccount());
+                UtilSession.getInstance().putAccountSession(request, "account", (Account) d.getAccount());
                 Account account = UtilSession.getInstance().getValue(request, "account");
-                String url = UtilSession.getInstance().getValue2(request, "url");
+                String url = UtilSession.getInstance().getUrlSession(request, "url");
                 if (url == null) {
                     UtilControl.send(d.getAccount().getRole(), "admin/Admin-trang-chu.jsp", "visitor/trang-chu-candi.jsp", "business/busi-trang-chu.jsp", response);
                 } else {
@@ -94,8 +99,21 @@ public class Login extends HttpServlet {
                         UtilControl.send(d.getAccount().getRole(), "admin/Admin-trang-chu.jsp", "visitor/trang-chu-candi.jsp", "business/busi-trang-chu.jsp", response);
                     }
                     UtilSession.getInstance().removeValue(request, "url");
+                    if (countLogin != null && userNameAttempts != null) {
+                        session.removeAttribute("countLogin");
+                        session.removeAttribute("userNameAttempts");
+                    }
                 }
             } else {
+                if (countLogin == null && userNameAttempts == null) {
+                    session.setAttribute("countLogin", 0);
+                    session.setAttribute("userNameAttempts", username);
+                } else if (countLogin >= 2 && userNameAttempts.equals(username)) { // case 2: login attempts >= 3
+                    DAOLog.getInstance().insert(Log.DANGER, -1, String.valueOf(request.getRequestURL()), "Tài khoản " + username + "đang cố gắng đăng nhập ", 0);
+                    message = "Tài khoản tạm thời bị khóa. Vui lòng đăng nhập lại sau!";
+                } else {
+                    session.setAttribute("countLogin", countLogin + 1);
+                }
                 // chuyen huong lai trang dang nhap neu khong xac thuc duoc
                 request.setAttribute("message", message);
                 UtilControl.forward("visitor/dang-nhap.jsp", request, response);

@@ -16,22 +16,15 @@
 %>
 <html>
 <head>
-    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin | Báo cáo - Thống kê</title>
         <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="css/theme.css" rel="stylesheet">
         <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
               rel='stylesheet'>
-        <link rel="stylesheet" href="admin/css/chart.css">
         <script src="scripts/chart.js"></script>
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    </head>
-
-
 </head>
 <body>
 <jsp:include page="Admin-header.jsp"></jsp:include>
@@ -40,56 +33,7 @@
     <div class="container">
         <div class="row">
             <div class="span3">
-                <div class="sidebar">
-                    <ul class="widget widget-menu unstyled">
-                        <li>
-                            <a href="<%=request.getContextPath()%>/admin/Admin-trang-chu.jsp">
-                                <i class="menu-icon icon-dashboard"></i> Bảng điều khiển
-                            </a>
-                        </li>
-                        <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i
-                                class="menu-icon icon-cogs">
-                        </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                        </i> Quản lý </a>
-                            <ul id="togglePages" class=" collapse unstyled">
-                                <li>
-                                    <a href='<c:url value="/PostManager?action=quanlybaidang"/>'>
-                                        <i class="icon-inbox"></i> Quản lý bài đăng
-                                    </a>
-                                </li>
-                                <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-doanh-thu.jsp"><i
-                                        class="icon-inbox"></i> Quản lý doanh thu</a></li>
-                                <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-nguoi-dung.jsp"><i
-                                        class="icon-inbox"></i> Quản lý người dùng</a></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="<%=request.getContextPath()%>/admin/Admin-baocao-thongke.jsp">
-                                <i class="menu-icon icon-tasks"></i> Báo cáo - thống kê
-                            </a>
-                        </li>
-                        <li><a class="collapsed" data-toggle="collapse" href="#togglePages2"><i
-                                class="menu-icon icon-cog">
-                        </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                        </i> Cài đặt giao diện </a>
-                            <ul id="togglePages2" class="collapse unstyled">
-                                <%--                                <li><a href=""><i class="icon-inbox"></i> Màu sắc </a></li>--%>
-                                <%--                                <li><a href=""><i class="icon-inbox"></i> Hình ảnh </a></li>--%>
-                                <li><a href="<%=request.getContextPath()%>/admin/Admin-tin-tuc.jsp"><i
-                                        class="icon-inbox"></i> Tin tức </a></li>
-                                <li><a href="<%=request.getContextPath()%>/admin/Admin-chinh-sua-lien-he.jsp"><i
-                                        class="icon-inbox"></i> Liên hệ </a></li>
-                                <%--                                <li><a href=""><i class="icon-inbox"></i> Giới thiệu </a></li>--%>
-                                <%--                                <li><a href=""><i class="icon-inbox"></i> Quảng cáo </a></li>--%>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="widget widget-menu unstyled">
-                        <li><a href="'<c:url value="/Logout?action=logout"/>'"><i class="menu-icon icon-signout"></i>
-                            Đăng xuất </a></li>
-                    </ul>
-                </div>
+                <jsp:include page="Admin-sidebar.jsp"></jsp:include>
                 <!--/.sidebar-->
             </div>
             <!--/.span3-->
@@ -175,24 +119,19 @@
 <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="scripts/common.js" type="text/javascript"></script>
 <%--bieu do--%>
 <script src="scripts/flot/chart.min.js"></script>
 <script>
     'use strict';
-
     /* Chart.js docs: https://www.chartjs.org/ */
-
     window.chartColors = {
         green: '#75c181',
         gray: '#a9b5c9',
         text: '#252930',
         border: '#e7e9ed'
     };
-
     var lineChartConfig = {
         type: 'line',
-
         data: {
             labels: ['Tháng 1', 'Tháng 2', 'Tháng 3',
                 'Tháng 4', 'Tháng 5', 'Tháng 6',
@@ -225,17 +164,14 @@
         options: {
             responsive: true,
             aspectRatio: 1.5,
-
             legend: {
                 display: true,
                 position: 'bottom',
                 align: 'end',
             },
-
             title: {
                 display: true,
                 text: 'Doanh thu',
-
             },
             tooltips: {
                 mode: 'index',
@@ -249,7 +185,6 @@
                 backgroundColor: '#fff',
                 bodyFontColor: window.chartColors.text,
                 titleFontColor: window.chartColors.text,
-
                 callbacks: {
                     //Ref: https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
                     label: function (tooltipItem, data) {
@@ -260,7 +195,6 @@
                         }
                     }
                 },
-
             },
             hover: {
                 mode: 'nearest',
@@ -275,7 +209,6 @@
                     },
                     scaleLabel: {
                         display: false,
-
                     }
                 }],
                 yAxes: [{
@@ -297,13 +230,9 @@
             }
         }
     };
-
-
     // Chart.js Bar Chart Example
-
     var barChartConfig = {
         type: 'bar',
-
         data: {
             labels: ['Tháng 1', 'Tháng 2', 'Tháng 3',
                 'Tháng 4', 'Tháng 5', 'Tháng 6',
@@ -345,7 +274,6 @@
                 backgroundColor: '#fff',
                 bodyFontColor: window.chartColors.text,
                 titleFontColor: window.chartColors.text,
-
             },
             scales: {
                 xAxes: [{
@@ -354,7 +282,6 @@
                         drawBorder: false,
                         color: window.chartColors.border,
                     },
-
                 }],
                 yAxes: [{
                     display: true,
@@ -362,30 +289,17 @@
                         drawBorder: false,
                         color: window.chartColors.borders,
                     },
-
-
                 }]
             }
-
         }
     }
-
-
     // Generate charts on load
     window.addEventListener('load', function () {
-
         var lineChart = document.getElementById('canvas-linechart').getContext('2d');
         window.myLine = new Chart(lineChart, lineChartConfig);
-
         var barChart = document.getElementById('canvas-barchart').getContext('2d');
         window.myBar = new Chart(barChart, barChartConfig);
-
-
     });
-
-
 </script>
-
 </body>
-
 </html>
