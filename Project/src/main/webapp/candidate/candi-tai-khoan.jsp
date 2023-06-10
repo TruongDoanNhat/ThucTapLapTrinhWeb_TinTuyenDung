@@ -65,7 +65,7 @@
                        class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-white">
                         <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Tạo CV
                     </a>
-                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/CV?action=taocv"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/CV?action=quanlycv"
                        aria-current="page"
                        class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-white">
                         <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Quản lý CV
