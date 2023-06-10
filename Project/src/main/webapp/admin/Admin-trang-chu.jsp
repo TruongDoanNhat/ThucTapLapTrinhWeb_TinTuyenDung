@@ -23,7 +23,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | Bảng điều khiển</title>
     <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="css/theme.css" rel="stylesheet">
     <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
@@ -44,34 +43,29 @@
                 <div class="content">
                     <div class="btn-controls">
                         <div class="btn-box-row row-fluid">
-                            <a class="btn-box big span4"><i
-                                    class=" menu-icon icon-bullhorn"></i><b><%=daoPost.getPostNew().size()%>
+                            <a class="btn-box big span4">
+                                <i class=" menu-icon icon-bullhorn"></i><b><%=daoPost.getPostNew().size()%>
                             </b>
-                                <p class="text-muted"> Bài đăng mới</p>
-                            </a><a class="btn-box big span4"><i
-                                class="icon-group"></i><b><%=daoAccount.getListAccount().size()%>
-                        </b>
-                            <p class="text-muted">
-                                Tổng số tài khoản trong hệ thống </p>
-                        </a><a class="btn-box big span4"><i
-                                class="menu-icon icon-paste"></i><b><%=daoBill.getSumBillByMonth()%> VND
-                        </b>
-                            <p class="text-muted">
-                                Doanh thu </p>
-                        </a>
+                                <p class="text-muted"> Bài đăng mới</p></a>
+                            <a class="btn-box big span4">
+                                <i class="icon-group"></i><b><%=daoAccount.getListAccount().size()%>
+                            </b>
+                                <p class="text-muted">Tổng số tài khoản trong hệ thống </p></a>
+                            <a class="btn-box big span4">
+                                <i class="menu-icon icon-paste"></i><b><%=daoBill.getSumBillByMonth()%> VND
+                            </b>
+                                <p class="text-muted">Doanh thu </p>
+                            </a>
                         </div>
                     </div>
                     <div class="module">
                         <div class="module-head">
-                            <h3>Thống kê</h3>
+                            <h3>Thống kê theo tuần</h3>
                             <div class="float-md-right">
                                 <a href="<%=request.getContextPath()%>/admin/Statistics?action=adminThongke" class="btn"
-                                   style="background: darkgrey; position: absolute; bottom: 100px; right: 200px;">
-                                    Tạo thống kê
-                                </a>
+                                   style="background: darkgrey; position: absolute; bottom: 100px; right: 200px;">Tạo thống kê</a>
                             </div>
                         </div>
-
                         <div class="module-body" style="display: flex">
                             <div class="col-12 col-lg-6" style="flex: 0 0 auto;width: 50%;">
                                 <div class="app-card app-card-chart h-100 shadow-sm">
@@ -121,16 +115,9 @@
     </div>
     <!--/.content-->
 </div>
-<!--/.span9-->
-</div>
-</div>
-<!--/.container-->
-</div>
-<!--/.wrapper-->
 <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="scripts/common.js" type="text/javascript"></script>
 <%--bieu do--%>
 <script src="scripts/flot/chart.min.js"></script>
 <script>
