@@ -44,7 +44,6 @@ public class SignUp extends HttpServlet {
         int role = UtilControl.setRole("btndangky_candi", "btndangky_busi", request);
         String action = request.getParameter("action");
 
-
         if (user_name != null) {
             if (role == 1) {
                 if (d.registerCandi(email, user_name, password, name, type, role, 0, date)) {

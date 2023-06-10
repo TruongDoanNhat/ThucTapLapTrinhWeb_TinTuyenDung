@@ -46,7 +46,7 @@
                                                   font-size: 1rem;
                                                   font-weight: 400;
                                                   line-height: 1.5;">
-                    <b> ERROR! </b> Đăng nhập thất bại. Tài khoản hoặc mật khẩu không đúng
+                    <b> ERROR! </b> <%=message%>
                 </label>
             </div>
             <%
@@ -65,7 +65,7 @@
                                    autocomplete="new-password" type="password"
                                    style="width: 95%"
                                    placeholder="Nhập mật khẩu">
-                        <i class="eye gg-eye" onclick="daoTT()" ></i>
+                        <i class="eye gg-eye" onclick="daoTT()"></i>
                         </input>
                     </label>
 

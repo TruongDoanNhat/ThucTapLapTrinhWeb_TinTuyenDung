@@ -100,7 +100,7 @@ public class DAOPost {
     }
 
     // xoa post
-    public void deletePost(Integer idPost) {
+    public void deletePost(String idPost) {
         String query = "DELETE FROM post WHERE id=?;";
         JDBIConnector.get().withHandle(handle -> handle.createUpdate(query).bind(0, idPost).execute());
     }
