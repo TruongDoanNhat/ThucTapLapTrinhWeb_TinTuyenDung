@@ -16,67 +16,60 @@
     <ul class="widget widget-menu unstyled">
         <li>
             <a href="<%=request.getContextPath()%>/admin/Admin-trang-chu.jsp">
-                <i class="menu-icon icon-dashboard"></i> Bảng điều khiển
-            </a>
+                <i class="menu-icon icon-dashboard"></i> Bảng điều khiển</a>
         </li>
-        <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i
-                class="menu-icon icon-cogs">
-        </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-        </i> Quản lý </a>
+        <li>
+            <a class="collapsed" data-toggle="collapse" href="#togglePages">
+                <i class="menu-icon icon-cogs"></i>
+                <i class="icon-chevron-down pull-right"></i>
+                <i class="icon-chevron-up pull-right"></i> Quản lý</a>
             <ul id="togglePages" class=" collapse unstyled">
                 <li>
                     <a href="<%=request.getContextPath()%>/admin/PostManager?action=quanlybaidang">
-                        <i class="icon-inbox"></i> Quản lý bài đăng
-                    </a>
+                        <i class="icon-inbox"></i> Quản lý bài đăng</a>
                 </li>
-                <li><a href="<%=request.getContextPath()%>/admin/Pay?action=quanlydoanhthu"><i
-                        class="icon-inbox"></i> Quản lý doanh thu</a></li>
-                <li><a href="<%=request.getContextPath()%>/admin/AccountManager?action=accountManager"><i
-                        class="icon-inbox"></i> Quản lý người dùng</a></li>
+                <li>
+                    <a href="<%=request.getContextPath()%>/admin/Pay?action=quanlydoanhthu">
+                        <i class="icon-inbox"></i> Quản lý doanh thu</a>
+                </li>
+                <li>
+                    <a href="<%=request.getContextPath()%>/admin/AccountManager?action=accountManager">
+                        <i class="icon-inbox"></i> Quản lý người dùng</a>
+                </li>
             </ul>
         </li>
 
         <li>
             <a href="<%=request.getContextPath()%>/admin/Statistics?action=adminThongke">
-                <i class="menu-icon icon-tasks"></i> Báo cáo - thống kê
-            </a>
+                <i class="menu-icon icon-tasks"></i> Báo cáo - thống kê</a>
         </li>
         <li>
             <a href="<%=request.getContextPath()%>/admin/Update?action=update">
-                <i class="menu-icon icon-hand-up"></i> Cập nhật
-            </a>
+                <i class="menu-icon icon-hand-up"></i> Cập nhật</a>
         </li>
         <li>
             <a class="collapsed" data-toggle="collapse" href="#togglePages2">
                 <i class="menu-icon icon-cog"></i>
                 <i class="icon-chevron-down pull-right"></i>
                 <i class="icon-chevron-up pull-right"></i>
-                Cài đặt giao diện
-            </a>
+                Cài đặt giao diện</a>
             <ul id="togglePages2" class="collapse unstyled">
                 <%--                                <li><a href=""><i class="icon-inbox"></i> Màu sắc </a></li>--%>
                 <li>
                     <a href="<%=request.getContextPath()%>/admin/Admin-tin-tuc.jsp">
-                        <i class="icon-inbox"></i>
-                        Tin tức
-                    </a>
+                        <i class="icon-inbox"></i>Tin tức</a>
                 </li>
                 <li>
                     <a href="<%=request.getContextPath()%>/admin/Update?action=contact">
-                        <i class="icon-inbox"></i>
-                        Liên hệ
-                    </a>
+                        <i class="icon-inbox"></i>Liên hệ</a>
                 </li>
-                <%--                                <li><a href=""><i class="icon-inbox"></i> Giới thiệu </a></li>--%>
-                <%--                                <li><a href=""><i class="icon-inbox"></i> Quảng cáo </a></li>--%>
             </ul>
         </li>
     </ul>
     <ul class="widget widget-menu unstyled">
         <li>
-            <a href='<c:url value="/Logout?action=logout"/>'>
-                <i class="menu-icon icon-signout"></i>Đăng xuất
-            </a>
+            <a href="<%=request.getContextPath()%>/Logout?action=logout"/>
+            <i class="menu-icon icon-signout"></i>Đăng xuất</a>
         </li>
     </ul>
 </div>

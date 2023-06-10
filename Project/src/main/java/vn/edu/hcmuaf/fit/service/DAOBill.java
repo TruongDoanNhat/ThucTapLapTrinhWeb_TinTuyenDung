@@ -10,15 +10,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class DAOBill {
-    private List<String[]> list = null;
-
     // Ngày hiện tại
     public Date getDateNow() {
         return new Date();
     }
 
     // doanh thu tuần này
-
     public int[] doanhThuTuan() {
         int[] rs = new int[7];
         String query = "SELECT IFNULL(SUM(b.money), 0) total FROM (\n" +

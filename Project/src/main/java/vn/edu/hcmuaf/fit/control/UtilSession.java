@@ -23,7 +23,7 @@ public class UtilSession {
         return (Account) request.getSession().getAttribute(key);
     }
 
-    public String getValue2(HttpServletRequest request, String key) {
+    public String getUrlSession(HttpServletRequest request, String key) {
         return (String) request.getSession().getAttribute(key);
     }
 
@@ -31,11 +31,11 @@ public class UtilSession {
         request.getSession().removeAttribute(key);
     }
 
-    public void putValue(HttpServletRequest request, String key, Account value) {
+    public void putAccountSession(HttpServletRequest request, String key, Account value) {
         request.getSession().setAttribute(key, value);
     }
 
-    public void putValue(HttpServletRequest request, String key, String value) {
+    public void putUrlSession(HttpServletRequest request, String key, String value) {
         request.getSession().setAttribute(key, value);
     }
 }

@@ -21,15 +21,9 @@
             <div class="nav-collapse collapse navbar-inverse-collapse">
                 <ul class="nav pull-right">
                     <ul class="nav nav-icons">
-                        <!--                    <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>-->
                         <li><a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp"><i
                                 class="icon-eye-open"></i></a></li>
                         <li><a href=""><i class="icon-bell "></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4">
-                                <li class="mb-2 font-weight-bold" style="text-align: center"><a
-                                        href="Login?action=logout"> Đăng xuất</a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Cài đặt giao diện
@@ -48,13 +42,8 @@
                         <c:if test="${sessionScope.account != null}">
                             <span> Xin chào ${sessionScope.account.username}</span>
                         </c:if>
-
                         <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Trang cá nhân</a></li>
-                            <li><a href="#">Chỉnh sửa trang cá nhân</a></li>
-                            <li><a href="#">Cài đặt tài khoản</a></li>
-
                             <li class="divider"></li>
                             <li><a href='<c:url value="/Logout?action=logout"></c:url>'> Đăng xuất</a>
                             </li>

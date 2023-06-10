@@ -1,7 +1,10 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.model.Log;
+import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
+import vn.edu.hcmuaf.fit.service.DAOLog;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,17 +28,13 @@ public class AccountServlet extends HttpServlet {
         Account account = UtilSession.getInstance().getValue(request, "account");
         List<Account> listAccount;
         DAOAccount d = new DAOAccount();
-        if (action == null) {
-
-        }
         switch (action) {
             case "updateAccount":
                 String name = request.getParameter("name");
                 if (account != null) {
                     account.setName(name);
                     d.updateAccountCandi(account.getUsername(), account.getName());
-                    response.sendRedirect(request.getContextPath()+"/candidate/candi-tai-khoan.jsp");
-//                    request.getRequestDispatcher().forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/candidate/candi-tai-khoan.jsp");
                 } else {
                     request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
                 }
@@ -56,29 +55,34 @@ public class AccountServlet extends HttpServlet {
                 request.setAttribute("t", t);
                 request.setAttribute("listAccount", listAccount);
                 UtilControl.forward("Admin-quan-li-nguoi-dung.jsp", request, response);
-//                UtilControl.phanQuyenServletAdmin1(account, "Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
                 break;
             case "lock":
                 if (!(DAOAccount.getAccountQuery(username).getType() == 2)) {
                     d.updateStatusAccount(username, Account.LOCK);
                     response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");
-//                    UtilControl.phanQuyenServletAdmin2(account, "AccountManager?action=accountManager", "/Login?action=login", request, response);
                 } else {
                     response.sendRedirect("visitor/error.jsp");
                 }
+                DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
+                        String.valueOf(request.getRequestURL()),
+                        (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã khóa tài khoản " + username, 0);
                 break;
             case "unlock":
+                DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
+                        String.valueOf(request.getRequestURL()),
+                        (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã mở khóa tài khoản " + username, 0);
                 d.updateStatusAccount(username, Account.ACTIVATED);
                 response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");
-//                UtilControl.phanQuyenServletAdmin2(account, "AccountManager?action=accountManager", "/Login?action=login", request, response);
                 break;
             case "search":
+                if (!keywords.matches("\b")) {
+                    DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
+                            String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
+                }
                 listAccount = role.equals("3") ? d.getAccountSearch(keywords) : d.getAccountSearch(keywords, role);
                 request.setAttribute("listAccount", listAccount);
                 UtilControl.forward("Admin-quan-li-nguoi-dung.jsp", request, response);
-//                UtilControl.phanQuyenServletAdmin1(account, "Admin-quan-li-nguoi-dung.jsp", "/Login?action=login", request, response);
                 break;
-
         }
     }
 

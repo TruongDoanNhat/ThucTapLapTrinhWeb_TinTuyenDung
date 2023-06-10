@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Log extends AbBean implements Serializable {
+public class Log implements Serializable {
     private int id;
     private int level;
     private int userId;
@@ -122,12 +122,4 @@ public class Log extends AbBean implements Serializable {
         this.status = status;
     }
 
-    @Override
-    public boolean insert(Jdbi db) {
-        Integer i = db.withHandle(handle ->
-                handle.execute("Insert INTO log (`level`, `userId`,`src`,`content`,`createDate`,`status`) VALUES (?,?,?,?,NOW(),?)",
-                        this.level, getUserId() == -1 ? null : getUserId(), this.src, this.content, this.status)
-        );
-        return i == 1;
-    }
 }

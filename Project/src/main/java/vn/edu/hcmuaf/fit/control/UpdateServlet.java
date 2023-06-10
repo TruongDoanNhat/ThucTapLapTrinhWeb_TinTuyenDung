@@ -1,11 +1,10 @@
 package vn.edu.hcmuaf.fit.control;
 
+import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.model.Contact;
+import vn.edu.hcmuaf.fit.model.Log;
 import vn.edu.hcmuaf.fit.model.Price;
-import vn.edu.hcmuaf.fit.service.DAOCategory;
-import vn.edu.hcmuaf.fit.service.DAOContact;
-import vn.edu.hcmuaf.fit.service.DAOPost;
-import vn.edu.hcmuaf.fit.service.DAOPrice;
+import vn.edu.hcmuaf.fit.service.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -23,6 +22,8 @@ public class UpdateServlet extends HttpServlet {
         String action = request.getParameter("action");
         Contact contact = DAOContact.getInstance().getContact();
         Price price = DAOPrice.getInstance().getPrice();
+        Account account = UtilSession.getInstance().getValue(request, "account");
+        String content = "";
 
         switch (action) {
             case "changeContact":
@@ -31,6 +32,7 @@ public class UpdateServlet extends HttpServlet {
                 String phone = request.getParameter("phone");
                 String email = request.getParameter("email");
                 DAOContact.getInstance().updateContact(name, address, phone, email);
+                content = "thông tin liên hệ";
                 response.sendRedirect(request.getContextPath() + "/admin/Update?action=contact");
                 break;
             case "contact":
@@ -41,6 +43,7 @@ public class UpdateServlet extends HttpServlet {
                 String money = request.getParameter("money");
                 String vat = request.getParameter("vat");
                 String category = request.getParameter("addCategory");
+                content = "giá tiền và thuế";
                 if (category != null) {
                     DAOCategory.getInstance().insertCategory(category);
                 }
@@ -53,6 +56,12 @@ public class UpdateServlet extends HttpServlet {
                 UtilControl.forward("Admin-chinh-sua.jsp", request, response);
                 break;
         }
+        if (!content.equals(""))
+            DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
+                    String.valueOf(request.getRequestURL()),
+                    (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh")
+                            + " đã cập nhật " + content, 0);
+
     }
 
     @Override

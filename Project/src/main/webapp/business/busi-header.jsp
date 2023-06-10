@@ -69,13 +69,13 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4">
                         <% if (UtilSession.getInstance().getValue(request, "account").getRole() == 0) {%>
-                        <% if (UtilSession.getInstance().getValue2(request, "url2") == null) {%>
+                        <% if (UtilSession.getInstance().getUrlSession(request, "url2") == null) {%>
                         <li class="mb-2 font-weight-bold" style="text-align: center">
                             <a href="<%=request.getContextPath()%>/admin/Admin-trang-chu.jsp">Trang chủ admin</a>
                         </li>
                         <%} else {%>
                         <li class="mb-2 font-weight-bold" style="text-align: center">
-                            <a href="<%=request.getContextPath()%>/<%=UtilSession.getInstance().getValue2(request,"url2")%>">Trở
+                            <a href="<%=request.getContextPath()%>/<%=UtilSession.getInstance().getUrlSession(request,"url2")%>">Trở
                                 về trang admin</a>
                         </li>
                         <% UtilSession.getInstance().removeValue(request, "url2");
