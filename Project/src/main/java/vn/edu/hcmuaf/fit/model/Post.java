@@ -27,7 +27,6 @@ public class Post implements Serializable {
     private Date createDate;
     private Date endDate;
     private int billId;
-    private int priceId;
 
     public Post() {
 
@@ -35,7 +34,7 @@ public class Post implements Serializable {
 
     public Post(int id, int categoryId, int accountId, String title, String quanity, String salary,
                 String address, String type, String rank, String gen, String description, String rights,
-                String request, int status, java.util.Date createDate, java.util.Date endDate, int billId, int priceId) {
+                String request, int status, java.util.Date createDate, java.util.Date endDate, int billId) {
         this.id = id;
         this.categoryId = categoryId;
         this.accountId = accountId;
@@ -53,15 +52,6 @@ public class Post implements Serializable {
         this.createDate = createDate;
         this.endDate = endDate;
         this.billId = billId;
-        this.priceId = priceId;
-    }
-
-    public int getPriceId() {
-        return priceId;
-    }
-
-    public void setPriceId(int priceId) {
-        this.priceId = priceId;
     }
 
     public int getBillId() {
@@ -220,18 +210,7 @@ public class Post implements Serializable {
                 ", createDate=" + createDate +
                 ", endDate=" + endDate +
                 ", billId=" + billId +
-                ", priceId=" + priceId +
                 '}';
-    }
-
-    private int daysSinceCreated;
-
-    public int getDaysSinceCreated() {
-        return daysSinceCreated;
-    }
-
-    public void setDaysSinceCreated(int daysSinceCreated) {
-        this.daysSinceCreated = daysSinceCreated;
     }
 }
 

@@ -1,16 +1,20 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.model.Log;
 import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.service.DAOBill;
+import vn.edu.hcmuaf.fit.service.DAOLog;
 import vn.edu.hcmuaf.fit.service.DAOPost;
+import vn.edu.hcmuaf.fit.service.modelQuanLy.QuanLyDoanhThu;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "Pay", value = "/Pay")
+@WebServlet(name = "Pay", value = {"/admin/Pay", "/Pay"})
 public class Pay extends HttpServlet {
     DAOPost dp = new DAOPost();
     DAOBill db = new DAOBill();
@@ -26,10 +30,27 @@ public class Pay extends HttpServlet {
         String status = "";
         String action = request.getParameter("action");
         String id = request.getParameter("id");
+        String keywords = request.getParameter("keywords");
+        String statusSearch = request.getParameter("statusSearch") == null ? "3" : request.getParameter("statusSearch");
         Account account = UtilSession.getInstance().getValue(request, "account");
         switch (action) {
             case "quanlydoanhthu":
-
+                List<QuanLyDoanhThu> list;
+                if ((statusSearch.equals("3")) && ((keywords == null) || (keywords == ""))) {
+                    list = db.getQuanliDoanhThu();
+                } else {
+                    String month = (keywords == null || keywords == "") ? "" : keywords.split("-")[1].substring(1);
+                    String year = (keywords == null || keywords == "") ? "" : keywords.split("-")[0];
+                    list = db.getQuanliDoanhThuSearch(month, year, statusSearch);
+                    if (statusSearch.equals("3")) {
+                        list = db.getQuanliDoanhThuSearch(month, year);
+                    }
+                    if (keywords.equals("")) {
+                        list = db.getQuanliDoanhThuSearch(statusSearch);
+                    }
+                }
+                request.setAttribute("listDoanhThu", list);
+                UtilControl.forward("Admin-quan-li-doanh-thu.jsp", request, response);
                 break;
             case "thanhtoan":
                 // đẩy csdl vào bill
@@ -38,6 +59,11 @@ public class Pay extends HttpServlet {
                     for (String p : post) {
                         try {
                             dp.updatePost(Integer.valueOf(p), Post.status_paided, db.getListBill().size());
+                            DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
+                                    String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã thanh toán tổng số tiền: " + pay, 0);
+                            DAOLog.getInstance().insert(Log.INFO, account != null ? account.getId() : -1,
+                                    "", "Đã thanh toán tổng số tiền: " + pay + ". Mọi thắc mắc vui lòng liên hệ chúng tôi qua email ", 1);
+
                         } catch (Exception e) {
                             status = "failed";
                             request.setAttribute("status", status);
@@ -45,14 +71,10 @@ public class Pay extends HttpServlet {
                         }
                     }
                     response.sendRedirect("business/busi-trang-chu.jsp");
-                } else {
-                    status = "failed";
-                    request.setAttribute("status", status);
-                    UtilControl.forward("business/busi-gio-hang.jsp", request, response);
                 }
                 break;
             case "xoa":
-                dp.deletePost(Integer.valueOf(id));
+                dp.deletePost(id);
                 response.sendRedirect("Post?action=giohang");
                 break;
         }

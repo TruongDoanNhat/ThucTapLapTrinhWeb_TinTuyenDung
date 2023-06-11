@@ -1,6 +1,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCategory" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -11,8 +12,7 @@
 --%>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <% String message = (String) request.getAttribute("message");
-    DAOPost daoPost = new DAOPost();
-    List<Category> listCategory = daoPost.getCategoryAll();
+    List<Category> listCategory = DAOCategory.getInstance().getCategoryAll();
 %>
 <html>
 <head>
@@ -98,7 +98,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="<%=request.getContextPath()%>/Post?action=tintuyendung">
+                <a class="nav-link active" href="<%=request.getContextPath()%>Post?action=tintuyendung">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -197,7 +197,7 @@
                 </div>
                 <div class="module-body">
                     <br/>
-                    <form action="<%=request.getContextPath()%>/Post?action=dangtin" method="post"
+                    <form action="<%=request.getContextPath()%>/business/Post?action=dangtin" method="post"
                           class="form-horizontal row-fluid">
                         <div class="control-group">
                             <label class="control-label">Tiêu đề</label>
@@ -270,18 +270,17 @@
                                     <input class="span8" name="quantity" type="text" placeholder="">
                                     <span class="help-inline">
                                             <label class="checkbox inline">
-                                                <input type="checkbox" id="gen1" name="gen" onclick="checkGen()"
+                                                <input type="radio" id="gen1" name="gen"
                                                        value="Nam">
                                                 Nam
                                             </label>
                                             <label class="checkbox inline">
-                                                <input type="checkbox" id="gen2" name="gen" value="Nữ"
-                                                       onclick="checkGen()">
+                                                <input type="radio" id="gen2" name="gen" value="Nữ"
+                                                >
                                                 Nữ
                                             </label>
                                             <label class="checkbox inline">
-                                                <input type="checkbox" id="gen3" name="gen" onclick
-                                                        ="checkGen()"
+                                                <input type="radio" id="gen3" name="gen"
                                                        value="Không yêu cầu">
                                                 Không yêu cầu
                                             </label>
@@ -359,37 +358,6 @@
         }
     }
 
-    function checkGen() {
-        var gen1 = document.getElementById("gen1");
-        var gen2 = document.getElementById("gen2");
-        var gen3 = document.getElementById("gen3");
-        if (!gen1.checked && !gen2.checked && !gen3.checked) {
-            gen1.disabled = false;
-            gen2.disabled = false;
-            gen3.disabled = false;
-        }
-        if (gen3.checked) {
-            gen1.disabled = true;
-            gen2.disabled = true;
-        }
-        if (gen1.checked) {
-            gen2.disabled = true;
-            gen3.disabled = true;
-        }
-        if (gen2.checked) {
-            gen1.disabled = true;
-            gen3.disabled = true;
-        }
-    }
-
-    $('.close').on('click', function () {
-        var alertBox = $(this).parent();
-        alertBox.removeClass('bounceInRight');
-        alertBox.addClass('bounceOutRight');
-        alertBox.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-            alertBox.hide();
-        });
-    });
 
     // Kiểm tra thông tin trong bảng đăng tin
     function checkBulletinBoard() {

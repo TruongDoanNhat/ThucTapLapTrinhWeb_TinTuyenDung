@@ -3,21 +3,25 @@ package vn.edu.hcmuaf.fit.model;
 import java.util.Date;
 
 public class Bill {
+    public static final int STATUS_NOT_SEEN = 0;
+    public static final int STATUS_SEEN = 1;
     private int id;
     private String numAccount;
     private String money;
     private Date createDate;
     private int accountId;
+    private int status;
 
     public Bill() {
     }
 
-    public Bill(int id, String numAccount, String money, Date createDate, int accountId) {
+    public Bill(int id, String numAccount, String money, Date createDate, int accountId, int status) {
         this.id = id;
         this.numAccount = numAccount;
         this.money = money;
         this.createDate = createDate;
         this.accountId = accountId;
+        this.status = status;
     }
 
     @Override
@@ -28,15 +32,16 @@ public class Bill {
                 ", money='" + money + '\'' +
                 ", createDate=" + createDate +
                 ", accountId=" + accountId +
+                ", status=" + status +
                 '}';
     }
 
-    public int getAccountId() {
-        return accountId;
+    public int getStatus() {
+        return status;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public int getId() {
@@ -69,5 +74,13 @@ public class Bill {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 }

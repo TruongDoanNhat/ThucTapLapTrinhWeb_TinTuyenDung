@@ -19,8 +19,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | Nguời dùng</title>
     <link type="text/css" href="<%=request.getContextPath()%>/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="<%=request.getContextPath()%>/admin/bootstrap/css/bootstrap-responsive.min.css"
-          rel="stylesheet">
     <link type="text/css" href="<%=request.getContextPath()%>/admin/css/theme.css" rel="stylesheet">
     <link type="text/css" href="<%=request.getContextPath()%>/admin/images/icons/css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
@@ -33,56 +31,7 @@
     <div class="container">
         <div class="row">
             <div class="span3">
-                <div class="sidebar">
-                    <ul class="widget widget-menu unstyled">
-                        <li>
-                            <a href="<%=request.getContextPath()%>/admin/Admin-trang-chu.jsp">
-                                <i class="menu-icon icon-dashboard"></i> Bảng điều khiển
-                            </a>
-                        </li>
-                        <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i
-                                class="menu-icon icon-cogs">
-                        </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                        </i> Quản lý </a>
-                            <ul id="togglePages" class=" collapse unstyled">
-                                <li>
-                                    <a href='<c:url value="/PostManager?action=quanlybaidang"/>'>
-                                        <i class="icon-inbox"></i> Quản lý bài đăng
-                                    </a>
-                                </li>
-                                <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-doanh-thu.jsp"><i
-                                        class="icon-inbox"></i> Quản lý doanh thu</a></li>
-                                <li><a href="<%=request.getContextPath()%>/admin/Admin-quan-li-nguoi-dung.jsp"><i
-                                        class="icon-inbox"></i> Quản lý người dùng</a></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="<%=request.getContextPath()%>/admin/Admin-baocao-thongke.jsp">
-                                <i class="menu-icon icon-tasks"></i> Báo cáo - thống kê
-                            </a>
-                        </li>
-                        <li><a class="collapsed" data-toggle="collapse" href="#togglePages2"><i
-                                class="menu-icon icon-cog">
-                        </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                        </i> Cài đặt giao diện </a>
-                            <ul id="togglePages2" class="collapse unstyled">
-                                <%--                                <li><a href=""><i class="icon-inbox"></i> Màu sắc </a></li>--%>
-                                <%--                                <li><a href=""><i class="icon-inbox"></i> Hình ảnh </a></li>--%>
-                                <li><a href="<%=request.getContextPath()%>/admin/Admin-tin-tuc.jsp"><i
-                                        class="icon-inbox"></i> Tin tức </a></li>
-                                <li><a href="<%=request.getContextPath()%>/admin/Admin-chinh-sua-lien-he.jsp"><i
-                                        class="icon-inbox"></i> Liên hệ </a></li>
-                                <%--                                <li><a href=""><i class="icon-inbox"></i> Giới thiệu </a></li>--%>
-                                <%--                                <li><a href=""><i class="icon-inbox"></i> Quảng cáo </a></li>--%>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="widget widget-menu unstyled">
-                        <li><a href="'<c:url value="/Logout?action=logout"/>'"><i class="menu-icon icon-signout"></i>
-                            Đăng xuất </a></li>
-                    </ul>
-                </div>
+                <jsp:include page="Admin-sidebar.jsp"></jsp:include>
                 <!--/.sidebar-->
             </div>
             <!--/.span3-->
@@ -171,12 +120,6 @@
                                                 <i class="icon-lock"></i>
                                             </a>
                                             <%}%>
-                                            <%--                                            <button class="btn btn-sm btn-outline-light" style="outline: none">--%>
-                                            <%--                                                <i class="icon-pencil"></i>--%>
-                                            <%--                                            </button>--%>
-                                            <%--                                            <button class="btn btn-sm btn-outline-light" style="outline: none">--%>
-                                            <%--                                                <i class="icon-trash"></i>--%>
-                                            <%--                                            </button>--%>
                                         </div>
                                     </td>
                                 </tr>
@@ -201,23 +144,10 @@
     </div>
 
 </div>
-<!--/.content-->
-</div>
-<!--/.span9-->
-</div>
-</div>
-<!--/.container-->
-</div>
 <!--/.wrapper-->
 </body>
 <script src="<%=request.getContextPath()%>/admin/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/admin/scripts/jquery-ui-1.10.1.custom.min.js"
         type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/admin/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/admin/scripts/flot/jquery.flot.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/admin/scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/admin/scripts/datatables/jquery.dataTables.js"
-        type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/admin/scripts/common.js" type="text/javascript"></script>
-
 </html>

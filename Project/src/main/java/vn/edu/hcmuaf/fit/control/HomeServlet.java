@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.service.DAOCategory;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 
 import javax.servlet.ServletException;
@@ -22,7 +23,7 @@ public class HomeServlet extends HttpServlet {
 
         DAOPost p = new DAOPost();
         request.setAttribute("listPAT5", p.getPostAllTop5());
-        request.setAttribute("categoryList", p.getCategoryAll());
+        request.setAttribute("categoryList", DAOCategory.getInstance().getCategoryAll());
         Account account = UtilSession.getInstance().getValue(request, "account");
         if (account != null) {
             r = account.getRole();

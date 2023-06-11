@@ -4,6 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCategory" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -12,7 +13,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%  DAOPost daoPost = new DAOPost();%>
+<% DAOPost daoPost = new DAOPost();
+    List<Category> category = DAOCategory.getInstance().getCategoryAll();
+%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -153,7 +156,7 @@
                         <h4 class="widget_title">Việc làm</h4>
                         <ul class="list cat-list">
                             <%
-                                for (Category c : daoPost.getCategoryAll()) { %>
+                                for (Category c : category) { %>
                             <li>
                                 <a href="" class="d-flex">
                                     <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%>

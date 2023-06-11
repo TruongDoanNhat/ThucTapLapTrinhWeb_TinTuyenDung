@@ -19,22 +19,22 @@
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="business/assets/img/logo/logo.png">
+    <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/business/assets/img/logo/logo.png">
     <title>Giỏ hàng</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Nucleo Icons -->
-    <link href="business/assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/business/assets/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="business/assets/css/nucleo-svg.css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/business/assets/css/nucleo-svg.css" rel="stylesheet"/>
     <!-- CSS Files -->
     <%--    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet"/>--%>
-    <link id="pagestyle" href="business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="business/assets/css/gio-hang.css">
-    <link rel="stylesheet" href="business/assets/css/thanh-toan.css">
-    <link rel="stylesheet" href="business/assets/css/thanh-toan2.css">
+    <link id="pagestyle" href="<%=request.getContextPath()%>/business/assets/css/soft-ui-dashboard.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/business/assets/css/gio-hang.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/business/assets/css/thanh-toan.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/business/assets/css/thanh-toan2.css">
 
 </head>
 <body class="g-sidenav-show  bg-gray-100">
@@ -102,7 +102,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="<%=request.getContextPath()%>/Post?action=tintuyendung">
+                <a class="nav-link " href="<%=request.getContextPath()%>/business/Post?action=tintuyendung">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                              xmlns="http://www.w3.org/2000/svg">
@@ -169,7 +169,7 @@
     <div class="sidenav-footer mx-3 ">
         <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
             <div class="full-background"
-                 style="background-image: url('../business/assets/img/curved-images/white-curved.jpg')"></div>
+                 style="background-image: url('../<%=request.getContextPath()%>/business/assets/img/curved-images/white-curved.jpg')"></div>
             <div class="card-body text-start p-3 w-100">
                 <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
                     <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true"
@@ -521,10 +521,10 @@
 </div>
 </body>
 <!--   Core JS Files   -->
-<script src="business/assets/js/core/popper.min.js"></script>
-<script src="business/assets/js/core/bootstrap.min.js"></script>
-<script src="business/assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="business/assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="<%=request.getContextPath()%>/business/assets/js/core/popper.min.js"></script>
+<script src="<%=request.getContextPath()%>/business/assets/js/core/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/business/assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="<%=request.getContextPath()%>/business/assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
@@ -538,7 +538,7 @@
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+<script src="<%=request.getContextPath()%>/business/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 <!--Show-->
 <script>
     // hiển thị trang thanh toán

@@ -103,7 +103,7 @@ public class AuthFilter implements Filter {
         }
 //        if (!url.startsWith("/Login") && (url.startsWith("/candidate") || url.startsWith("/business") || url.startsWith("/admin")) && account == null && urlSession == null) {
         if (!rs.startsWith("/Login") && account == null) {
-            UtilSession.getInstance().putValue(request, "url", rs);
+            UtilSession.getInstance().putUrlSession(request, "url", rs);
         }
         return rs;
     }

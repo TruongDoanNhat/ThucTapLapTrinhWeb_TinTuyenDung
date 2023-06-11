@@ -52,7 +52,7 @@
                 <!--           st         -->
                 <i class="nav-item  pe-2 d-flex align-items-center">
                     <%--                    <a href="../business/busi-gio-hang.jsp" class="nav-link text-body" style="margin-right: 15px;">--%>
-                    <a href='<c:url value="/Post?action=giohang"/>' class="nav-link text-body"
+                    <a href="<%=request.getContextPath()%>/business/Post?action=giohang" class="nav-link text-body"
                        style="margin-right: 15px;">
                         <i class="fa fa-shopping-cart  " style="width: 20px; padding-left: 7px;"></i>
                         <span class=" d-sm-inline d-none font-weight-bold text-sm"
@@ -68,8 +68,22 @@
                         <span class=" d-sm-inline d-none font-weight-bold text-sm"> ${sessionScope.account.name} </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4">
-                        <li class="mb-2 font-weight-bold" style="text-align: center"><a
-                                href='<c:url value="/Logout?action=logout"/>'> Đăng xuất</a></li>
+                        <% if (UtilSession.getInstance().getValue(request, "account").getRole() == 0) {%>
+                        <% if (UtilSession.getInstance().getUrlSession(request, "url2") == null) {%>
+                        <li class="mb-2 font-weight-bold" style="text-align: center">
+                            <a href="<%=request.getContextPath()%>/admin/Admin-trang-chu.jsp">Trang chủ admin</a>
+                        </li>
+                        <%} else {%>
+                        <li class="mb-2 font-weight-bold" style="text-align: center">
+                            <a href="<%=request.getContextPath()%>/<%=UtilSession.getInstance().getUrlSession(request,"url2")%>">Trở
+                                về trang admin</a>
+                        </li>
+                        <% UtilSession.getInstance().removeValue(request, "url2");
+                        }%>
+                        <%}%>
+                        <li class=" mb-2 font-weight-bold" style="text-align: center">
+                            <a href='<c:url value="/Logout?action=logout"/>'> Đăng xuất</a>
+                        </li>
                     </ul>
                     <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
                         aria-labelledby="dropdownMenuButton">

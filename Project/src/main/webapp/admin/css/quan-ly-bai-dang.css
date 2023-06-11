@@ -9,15 +9,18 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+
 .holder {
     right: -866px;
     top: -34px;
     position: relative;
     outline: none;
 }
+
 .holder2 {
     position: relative;
 }
+
 .hov {
     color: black;
     width: 55px;
@@ -29,9 +32,11 @@ body {
 .holder:hover .hov {
     opacity: 1;
 }
+
 .holder2:hover .hov {
     opacity: 1;
 }
+
 h1,
 h2,
 h3,
