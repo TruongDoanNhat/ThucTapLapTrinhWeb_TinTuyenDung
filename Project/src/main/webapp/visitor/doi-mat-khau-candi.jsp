@@ -1,3 +1,4 @@
+<%@ page import="vn.edu.hcmuaf.fit.model.Account" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% String message = (String) request.getAttribute("message"); %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -13,22 +15,21 @@
     <title>Title</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrapost.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/slicknav.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/price_rangs.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/magnific-popupost.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/themify-icons.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/themify-icons.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/slick.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/nice-select.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrapost.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/price_rangs.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/slicknav.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/magnific-popupost.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/nice-select.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/tai-khoan.css">
 </head>
 <body>
 <!-- Preloader Start -->
@@ -37,7 +38,7 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="../assets/img/logo/logo.png" alt="">
+                <img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt="">
             </div>
         </div>
     </div>
@@ -48,11 +49,11 @@
         <div data-v-c4f347a8="" class="d-flex shadow-sm" >
             <div data-v-c4f347a8="">
                 <div data-v-61ae721f="" data-v-c4f347a8="" class="list-group1 rounded">
-                    <a data-v-61ae721f="" href="doi-mat-khau.html"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/visitor/doi-mat-khau-candi.jsp"
                        class="list-group-item list-group-item-action border-0  bg-white" >
                         <i data-v-61ae721f="" class="fa mr-2 fa-lock"></i> Đổi mật khẩu
                     </a>
-                    <a data-v-61ae721f="" href="tai-khoan.html" aria-current="page"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/candi-tai-khoan.jsp" aria-current="page"
                        class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-none">
                         <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Thông tin cá nhân
                     </a>
@@ -61,12 +62,12 @@
             </div>
             <div data-v-c4f347a8="" class="bg-white w-100 rounded" >
                 <!--               form -->
-                <form data-v-c4f347a8="" >
+                <form action="<%=request.getContextPath()%>/ResetPassword?action=changePassword" method="post">
                     <div data-v-c4f347a8="" class="">
                         <div data-v-c4f347a8="" class="card-header bg-white" style="border: none; box-shadow: none">
                             <h5> Đổi mật khẩu </h5>
                         </div>
-
+                        <% Account account = (Account) session.getAttribute("account");%>
                         <div data-v-c4f347a8="" class="card-body setting-form">
 
                             <div data-v-c4f347a8="" class="row">
@@ -74,7 +75,7 @@
                                     <label data-v-c4f347a8="">Nhập mật khẩu</label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" id="ncSqdCYZxB" type="text"
+                                            <input data-v-8c64d55c="" id="ncSqdCYZxB" type="password" name="oldPassword"
                                                    placeholder="Nhập mật khẩu hiện tại" autocomplete="true"
                                                    class="form-control">
                                         </div>
@@ -86,7 +87,7 @@
                                     <label data-v-c4f347a8="">Nhập mật khẩu mới</label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" type="text"
+                                            <input data-v-8c64d55c="" type="password" name="newPassword"
                                                    placeholder="Nhập mật khẩu mới" autocomplete="true"
                                                    class="form-control">
                                         </div>
@@ -98,7 +99,7 @@
                                     <label data-v-c4f347a8=""> Nhập lại mật khẩu </label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" type="text"
+                                            <input data-v-8c64d55c="" type="password" name="rpassword"
                                                    placeholder=" Nhập lại mật khẩu" autocomplete="true"
                                                    class="form-control">
                                         </div>
@@ -126,4 +127,38 @@
 <jsp:include page="footter-candi.jsp"></jsp:include>
 
 </body>
+<!-- All JS Custom Plugins Link Here here -->
+<script src="<%=request.getContextPath()%>/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="<%=request.getContextPath()%>/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/popper.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrapost.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="<%=request.getContextPath()%>/assets/js/jquery.slicknav.min.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="<%=request.getContextPath()%>/assets/js/owl.carousel.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/slick.min.js"></script>
+<script src="../assets/js/price_rangs.js"></script>
+
+<!-- One Page, Animated-HeadLin -->
+<script src="<%=request.getContextPath()%>/assets/js/wow.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/animated.headline.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.magnific-popupost.js"></script>
+
+<!-- Scrollup, nice-select, sticky -->
+<script src="<%=request.getContextPath()%>/assets/js/jquery.scrollUpost.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.nice-select.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.sticky.js"></script>
+
+<!-- contact js -->
+<script src="<%=request.getContextPath()%>/assets/js/contact.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.form.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/mail-script.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.ajaxchimpost.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="<%=request.getContextPath()%>/assets/js/plugins.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/main.js"></script>
 </html>

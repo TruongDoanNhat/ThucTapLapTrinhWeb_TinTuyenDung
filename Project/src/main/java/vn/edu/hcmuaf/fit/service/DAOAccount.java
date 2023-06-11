@@ -15,6 +15,9 @@ public class DAOAccount {
     private String message = "error!";
     private static Account account = null;
     private Date updateDate = Date.valueOf(LocalDate.now());
+
+
+
     ;
 
     public String getMessage() {
@@ -93,6 +96,7 @@ public class DAOAccount {
 
         return a;
     }
+
     //  kiểm tra email nhập vào có tồn tại trong hệ thống không
     public boolean checkEmail(String email) {
         String query = "select * from account where email = ?";
@@ -108,7 +112,6 @@ public class DAOAccount {
         }
         return null;
     }
-
     // tạo tài khoản cho candidate
     public boolean registerCandi(String email, String username, String password, String name, int type, int role, int status, Date createDate) {
         String queryAccount = "INSERT INTO account (companyID,email,username,password,name,type,role,status,createDate,updateDate) VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -310,6 +313,10 @@ public class DAOAccount {
                     .stream().collect(Collectors.toList());
         });
     }
+
+
+
+
 
     public static void main(String[] args) {
 
