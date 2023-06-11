@@ -289,7 +289,7 @@
                                     <!-- founder -->
                                     <div class="testimonial-founder  ">
                                         <div class="founder-img mb-30">
-                                            <img src="../assets/img/testmonial/testimonial-founder.png" alt="">
+                                            <img src="<%=request.getContextPath()%>/assets/img/testmonial/testimonial-founder.png" alt="">
                                             <span>Nguyễn Đình Nguyên</span>
                                             <p>Giám đốc sáng tạo</p>
                                         </div>
@@ -306,7 +306,7 @@
                                     <!-- founder -->
                                     <div class="testimonial-founder  ">
                                         <div class="founder-img mb-30">
-                                            <img src="../assets/img/testmonial/testimonial-founder.png" alt="">
+                                            <img src="<%=request.getContextPath()%>/assets/img/testmonial/testimonial-founder.png" alt="">
                                             <span>Trương Đoàn Nhất</span>
                                             <p>Giám đốc điều hành</p>
                                         </div>
@@ -323,7 +323,7 @@
                                     <!-- founder -->
                                     <div class="testimonial-founder  ">
                                         <div class="founder-img mb-30">
-                                            <img src="../assets/img/testmonial/testimonial-founder.png" alt="">
+                                            <img src="<%=request.getContextPath()%>/assets/img/testmonial/testimonial-founder.png" alt="">
                                             <span>Lê Hửu Phước</span>
                                             <p>Giám đốc dự án</p>
                                         </div>
@@ -407,7 +407,7 @@
                         <div class="home-blog-single mb-30">
                             <div class="blog-img-cap">
                                 <div class="blog-img">
-                                    <a href="tin-tuc-chi-tiet-candi.jsp"> <img src="../assets/img/blog/home-blog1.jpg">
+                                    <a href="tin-tuc-chi-tiet-candi.jsp"> <img src="<%=request.getContextPath()%>/assets/img/blog/home-blog1.jpg">
                                     </a>
                                     <!-- Blog date -->
                                     <div class="blog-date text-center">
@@ -429,7 +429,7 @@
                         <div class="home-blog-single mb-30">
                             <div class="blog-img-cap">
                                 <div class="blog-img">
-                                    <a href="tin-tuc-chi-tiet-candi.jsp"> <img src="../assets/img/blog/home-blog2.jpg"
+                                    <a href="tin-tuc-chi-tiet-candi.jsp"> <img src="<%=request.getContextPath()%>/assets/img/blog/home-blog2.jpg"
                                                                                alt=""></a>
                                     <!-- Blog date -->
                                     <div class="blog-date text-center">
@@ -458,37 +458,37 @@
 <!-- JS here -->
 
 <!-- All JS Custom Plugins Link Here here -->
-<script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <!-- Jquery, Popper, Bootstrap -->
-<script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="../assets/js/popper.min.js"></script>
-<script src="../assets/js/bootstrapost.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/popper.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrapost.min.js"></script>
 <!-- Jquery Mobile Menu -->
-<script src="../assets/js/jquery.slicknav.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.slicknav.min.js"></script>
 
 <!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="../assets/js/owl.carousel.min.js"></script>
-<script src="../assets/js/slick.min.js"></script>
-<script src="../assets/js/price_rangs.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/owl.carousel.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/slick.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/price_rangs.js"></script>
 
 <!-- One Page, Animated-HeadLin -->
-<script src="../assets/js/wow.min.js"></script>
-<script src="../assets/js/animated.headline.js"></script>
-<script src="../assets/js/jquery.magnific-popupost.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/wow.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/animated.headline.js"></script>
+<script src="../<%=request.getContextPath()%>/assets/js/jquery.magnific-popupost.js"></script>
 
 <!-- Scrollup, nice-select, sticky -->
-<script src="../assets/js/jquery.scrollUpost.min.js"></script>
-<script src="../assets/js/jquery.nice-select.min.js"></script>
-<script src="../assets/js/jquery.sticky.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.scrollUpost.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.nice-select.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.sticky.js"></script>
 
 <!-- contact js -->
-<script src="../assets/js/contact.js"></script>
-<script src="../assets/js/jquery.form.js"></script>
-<script src="../assets/js/jquery.validate.min.js"></script>
-<script src="../assets/js/mail-script.js"></script>
-<script src="../assets/js/jquery.ajaxchimpost.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/contact.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.form.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/mail-script.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.ajaxchimpost.min.js"></script>
 
 <!-- Jquery Plugins, main Jquery -->
-<script src="../assets/js/plugins.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/plugins.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/main.js"></script>
 </html>
