@@ -45,7 +45,7 @@ public class ResetPassword extends HttpServlet {
                     password = Util.encryptionPassword(password);
                     d.updatePassword(username, password);
                     response.sendRedirect(request.getContextPath() + "/Login?action=login");
-<<<<<<< HEAD
+
                 }
                 break;
             case "changePassword":
@@ -60,8 +60,7 @@ public class ResetPassword extends HttpServlet {
                 } else {
                     request.setAttribute("message", "Sai mật khẩu!");
                     UtilControl.forward("candidate/doi-mat-khau-candi.jsp", request, response);
-=======
->>>>>>> a4a533d02eaa942846873338169977395d7a4576
+
                 }
                 break;
         }
