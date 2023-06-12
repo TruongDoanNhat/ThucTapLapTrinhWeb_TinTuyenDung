@@ -96,7 +96,7 @@
                         <!-- single one -->
                         <div class="single-listing">
                             <div class="small-section-tittle2">
-                                <h4> Việc làm </h4>
+                                <h4> Danh mục </h4>
                             </div>
                             <!-- Select job items start -->
                             <div class="">
@@ -131,19 +131,11 @@
                         </div>
                         <!-- single two -->
                         <div class="single-listing">
-                            <div class="small-section-tittle2">
-                                <h4>Nơi làm việc</h4>
-                            </div>
+
                             <!-- Select job items start -->
-                            <div class="select-job-items2">
-                                <select name="select">
-                                    <option value="">Công ty</option>
-                                    <option value="">Tại nhà</option>
-                                </select>
-                            </div>
                             <!--  Select job items End-->
                             <!-- select-Categories start -->
-                            <div class="select-Categories pt-80 pb-50">
+                            <div class="select-Categories pt-80 pb-50" >
                                 <div class="small-section-tittle2">
                                     <h4>Kinh nghiệm</h4>
                                 </div>
@@ -169,35 +161,7 @@
                         <!-- single three -->
                         <div class="single-listing">
                             <!-- select-Categories start -->
-                            <div class="select-Categories pb-50">
-                                <div class="small-section-tittle2">
-                                    <h4>Thời gian đăng</h4>
-                                </div>
-                                <label class="container">1 Tháng trước
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Hôm nay
-                                    <input type="checkbox" checked="checked active">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">2 ngày qua
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">3 ngày qua
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">5 ngày qua
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">10 ngày qua
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+
                             <!-- select-Categories End -->
                         </div>
                         <div class="single-listing">
@@ -239,13 +203,7 @@
                                         <span>150 Việc làm được tìm thấy</span>
                                         <!-- Select job items start -->
                                         <div class="select-job-items">
-                                            <span>Sắp xếp theo</span>
-                                            <select name="select">
-                                                <option value="">Phù hợp nhất</option>
-                                                <option value="">Cập nhật gần nhất</option>
-                                                <option value="">Cần tuyển gấp</option>
-                                                <option value="">Việc mới đăng</option>
-                                            </select>
+
                                         </div>
                                         <!--  Select job items End-->
                                     </div>
@@ -256,9 +214,9 @@
                             <div class="container">
 
                                 <%
-                                    List<Post> poc = (List<Post>) request.getAttribute("listPOC");
-                                    List<Post> listAll = (List<Post>) request.getAttribute("listJob");
-                                    List<Post> post = poc != null ? poc : listAll;
+
+                                    List<Post> post = (List<Post>) request.getAttribute("postAll");
+
                                     for (Post p : post) {
                                 %>
                                 <div class="single-job-items mb-30">

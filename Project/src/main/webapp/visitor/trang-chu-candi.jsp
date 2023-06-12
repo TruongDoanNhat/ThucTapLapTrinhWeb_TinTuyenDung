@@ -71,25 +71,23 @@
                     <div class="row" style=" padding-bottom: 200px; padding-left: 140px;">
                         <div class="col-xl-8">
                             <!-- form -->
-                            <form action="Post" method="post" class="search-box">
+                            <form action="<%=request.getContextPath()%>/Post?action=timkiem" method="post" class="search-box">
                                 <div class="input-form">
-                                    <input type="text" placeholder="Tìm kiếm việc làm, công ty">
+                                    <input name="keywords" type="text" placeholder="Tìm kiếm việc làm">
                                 </div>
                                 <div class="select-form">
-                                    <select name="select" id="select1" style=" margin-top: 20px; text-transform: none;
-                                     height: 30px;width: 99%;  border: none; appearance: none;">
-                                        <option value="">Hồ Chí Minh</option>
-                                        <option value="">Hà Nội</option>
-                                        <option value="">Đà Nẵng</option>
-                                        <option value="">Cần Thơ</option>
-                                        <option value="">Vũng Tàu</option>
-                                        <option value="">Quảng Nam</option>
-                                        <option value="">Hải Phòng</option>
-                                        <option value="">Long An</option>
+                                    <%List<Category> listCategory = DAOCategory.getInstance().getCategoryAll();%>
+                                    <select  id="select1" style=" margin-top: 20px; text-transform: none;
+                                     height: 30px;width: 99%;  border: none; appearance: none;"data-placeholder="Chọn lĩnh vực" name="categoryId">
+                                        <option value="0">Tất cả</option>
+                                        <% for (Category c : listCategory) {%>
+                                        <option value="<%=c.getId()%>"><%=c.getName()%>
+                                        </option>
+                                        <% }%>
                                     </select>
                                 </div>
-                                <div class="search-form">
-                                    <a href="#">Tìm việc</a>
+                                <div class="search-form" >
+                                    <button class="btn" type="submit" style="padding: 35px 55px">Tìm việc</button>
                                 </div>
                             </form>
                         </div>
@@ -157,7 +155,7 @@
                         <div class="cv-caption text-center">
                             <span><b class="tittle"> NỔI BẬT</b></span>
                             <p class="pera2">Nộp CV để chớp lấy cơ hội việc làm mơ ước</p>
-                            <a href="<%=request.getContextPath()%>/candidate/candi-ung-tuyen.jsp"
+                            <a href="<%=request.getContextPath()%>/candidate/candi-tao-cv.jsp"
                                class="border-btn2 border-btn4">Tải CV của
                                 bạn</a>
                         </div>

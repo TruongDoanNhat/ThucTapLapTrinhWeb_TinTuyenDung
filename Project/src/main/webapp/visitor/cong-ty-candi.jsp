@@ -158,9 +158,7 @@
                             <li>
                                 <div class="<%=c.getId()%>">
                                     <h5>
-                                        <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%>
-                                            "
-                                        </a>
+                                        <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%></a>
                                     </h5>
                                     <span>(<%=dp.getPostofCategoryByID(c.getId()).size()%>)</span>
                                 </div>
@@ -241,7 +239,8 @@
                 </div>
             </div>
         </div>
-        <%--</section>--%>
+    </div>
+        </section>
         <!--================ Blog Area end =================-->
         <jsp:include page="footter-candi.jsp"></jsp:include>
 </body>
