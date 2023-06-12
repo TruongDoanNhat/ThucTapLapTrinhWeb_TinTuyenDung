@@ -334,21 +334,24 @@
 
                             <!-- Hiển thị nút phân trang -->
                             <div style="margin: 0 auto; text-align: center;">
-                                <% for (int i = 1; i <= sobv; i++) { %>
-                                <% if (i >= t - 2 && i <= t + 2) { %>
-                                <% if (i == t) { %>
+                                <% for (int i = 1; i <= sobv; i++) {
+                                    if (i >= t - 2 && i <= t + 2) {
+                                        if (i == t) { %>
                                 <span class="current-page"><%= i %></span>
                                 <% } else { %>
-                                <a href="<%= request.getContextPath() %>/business/Post?action=tintuyendung
-                                        <% if (billId != null) { %>
-                                        &billID=<%= billId %>
-                                        <% } %>&trang=<%= i %>"
-                                   class="btn btn-link"><%= i %>
-                                </a>
-                                <% } %>
-                                <% } %>
-                                <% } %>
+                                <%
+                                    String href = request.getContextPath() + "/business/Post?action=tintuyendung";
+                                    if (billId != null) {
+                                        href += "&billID=" + billId;
+                                    }
+                                    href += "&trang=" + i;
+                                %>
+                                <a href="<%= href %>" class="btn btn-link"><%= i %></a>
+                                <% }
+                                }
+                                } %>
                             </div>
+
                         </ul>
                     </div>
                 </div>
