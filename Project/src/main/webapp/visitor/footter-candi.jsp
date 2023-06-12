@@ -29,11 +29,11 @@
                             <h4>Về <%=contact.getName()%>
                             </h4>
                             <ul>
-                                <li><a href="ve-chung-toi.html">Giới thiệu</a></li>
-                                <li><a href="tin-tuc.html">Góc báo chí</a></li>
-                                <li><a href="lien-he.html">Liên hệ</a></li>
-                                <li><a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a></li>
-                                <li><a href="dieu-khoang-dich-vu.html">Điều khoản dịch vụ</a></li>
+                                <li><a href="<%=request.getContextPath()%>/visitor/ve-chung-toi-candi.jsp">Giới thiệu</a></li>
+                                <li><a href="<%=request.getContextPath()%>/visitor/tin-tuc-candi.jsp">Góc báo chí</a></li>
+                                <li><a href="<%=request.getContextPath()%>/visitor/lien-he-candi.jsp">Liên hệ</a></li>
+                                <li><a href="<%=request.getContextPath()%>/visitor/chinh-sach-bao-mat-candi.jsp">Chính sách bảo mật</a></li>
+                                <li><a href="<%=request.getContextPath()%>/visitor/dieu-khoan-dich-vu-candi.jsp">Điều khoản dịch vụ</a></li>
                             </ul>
                         </div>
                     </div>

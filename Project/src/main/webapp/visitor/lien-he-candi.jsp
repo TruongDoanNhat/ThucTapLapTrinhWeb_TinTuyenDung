@@ -39,7 +39,7 @@
     <div class="preloader-inner position-relative">
       <div class="preloader-circle"></div>
       <div class="preloader-img pere-text">
-        <img src="../assets/img/logo/logo.png" alt="">
+        <img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt="">
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@
 <!-- Hero Area Start-->
 
 <div class="slider-area ">
-  <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/about.jpg">
+  <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="<%=request.getContextPath()%>/assets/img/hero/about.jpg">
     <div class="container">
       <div class="row">
         <div class="col-xl-12">

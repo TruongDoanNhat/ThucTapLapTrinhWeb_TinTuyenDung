@@ -164,6 +164,11 @@ public class PostServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
                 break;
             case "danhsanhvieclam":
+                tongBaiViet = daoPost.getPostAllApproveSize();
+                soBaiViet = tongBaiViet / 3;
+                if (tongBaiViet % 3 != 0) {
+                    soBaiViet++;
+                }
                 List<Post> postAll1 = daoPost.getPostAllApprove(t);//lay danh sách việc làm
                 request.setAttribute("postAll", postAll1);// gáng danh sách việc làm
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
@@ -200,6 +205,7 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("postAll", postAll);
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
                 break;
+
         }
     }
 

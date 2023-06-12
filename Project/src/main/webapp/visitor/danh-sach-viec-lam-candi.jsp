@@ -11,7 +11,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% DAOPost dp = new DAOPost(); %>
+<% DAOPost dp = new DAOPost();
+    List<Post> post = (List<Post>) request.getAttribute("postAll");
+
+%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -19,7 +22,6 @@
     <title>Danh sách việc làm</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/assets/img/favicon.ico">
 
     <!-- CSS here -->
@@ -55,11 +57,9 @@
 <main>
 
     <!-- Hero Area Start-->
-
-
     <div class="slider-area ">
         <div class="single-slider section-overly slider-height2 d-flex align-items-center"
-             data-background="assets/img/hero/about.jpg">
+             data-background="<%=request.getContextPath()%>/assets/img/hero/about.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -83,10 +83,6 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="small-section-tittle2 mb-45">
-                                <!--                                <div class="ion"> <svg-->
-                                <!--                                        width="20px" height="12px">-->
-                                <!--                                </svg>-->
-                                <!--                                </div>-->
                                 <h4>Lọc việc làm</h4>
                             </div>
                         </div>
@@ -200,7 +196,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="count-job mb-35">
-                                        <span>150 Việc làm được tìm thấy</span>
+                                        <span><%=dp.getPostAllApproveSize()%> việc làm được tìm thấy</span>
                                         <!-- Select job items start -->
                                         <div class="select-job-items">
 
@@ -215,7 +211,6 @@
 
                                 <%
 
-                                    List<Post> post = (List<Post>) request.getAttribute("postAll");
 
                                     for (Post p : post) {
                                 %>

@@ -21,7 +21,7 @@
                     <div class="col-lg-3 col-md-2 padding-left">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="trang-chu-candi.jsp"><img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt=""></a>
+                            <a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp"><img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
@@ -33,8 +33,8 @@
                                         <li><a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp">Trang chủ</a></li>
                                         <li><a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam">Việc làm </a>
                                         </li>
-                                        <li><a href="<%=request.getContextPath()%>/Post?action=vieclamdaungtuyen">Đã ứng tuyển</a></li>
-                                        <li><a href="<%=request.getContextPath()%>/visitor/danh-sach-cong-ty-candi.jsp">Công ty</a>
+                                        <li><a href="<%=request.getContextPath()%>/candidate/Post?action=vieclamdaungtuyen">Đã ứng tuyển</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/visitor/cong-ty-candi.jsp">Công ty</a>
                                         </li>
                                         <li><a>Trang</a>
                                             <ul class="submenu" id="action">
