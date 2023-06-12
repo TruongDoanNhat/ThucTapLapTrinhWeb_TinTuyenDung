@@ -20,7 +20,7 @@
     <title> Công ty </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/assets/img/favicon.ico">
 
 
     <!-- CSS here -->
@@ -54,7 +54,7 @@
 <!-- Hero Area Start-->
 <div class="slider-area ">
     <div class="single-slider section-overly slider-height2 d-flex align-items-center"
-         data-background="assets/img/hero/about.jpg">
+         data-background="<%=request.getContextPath()%>/assets/img/hero/about.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -158,9 +158,7 @@
                             <li>
                                 <div class="<%=c.getId()%>">
                                     <h5>
-                                        <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%>
-                                            "
-                                        </a>
+                                        <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%></a>
                                     </h5>
                                     <span>(<%=dp.getPostofCategoryByID(c.getId()).size()%>)</span>
                                 </div>
@@ -241,7 +239,8 @@
                 </div>
             </div>
         </div>
-        <%--</section>--%>
+    </div>
+        </section>
         <!--================ Blog Area end =================-->
         <jsp:include page="footter-candi.jsp"></jsp:include>
 </body>

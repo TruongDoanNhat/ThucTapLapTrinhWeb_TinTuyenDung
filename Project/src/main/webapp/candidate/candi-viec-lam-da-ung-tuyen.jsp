@@ -78,11 +78,11 @@
                         <div class="single-job-items mb-30">
                             <div class="job-items">
                                 <div class="company-img">
-                                    <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>"><img
+                                    <a href="<%=request.getContextPath()%>/candidate/Post?action=xemthongtinvieclam&id=<%=p.getId()%>"><img
                                             src="<%=request.getContextPath()%>/assets/img/icon/job-list1.png" alt="ảnh không được hiển thị"></a>
                                 </div>
                                 <div class="job-tittle job-tittle2">
-                                    <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                    <a href="<%=request.getContextPath()%>/candidate/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                         <h4><%=p.getTitle()%>
                                         </h4>
                                     </a>
@@ -109,100 +109,100 @@
                         </div>
 
                         <% } else { %>
-                            <div class='empty-job'>
-                        <div class="box-group-body">
-                            <div class="empty-job">
-                                <div class="image-empty">
-                                    <img src="https://www.topcv.vn/v4/image/history-apply/empty.png" alt="empty apply">
-                                </div>
-                                <h3 class="title">Bạn chưa ứng tuyển công việc nào!</h3>
-                                <div class="caption">
-                                    <p>
-                                        Bạn chưa ứng tuyển công việc nào!
-                                    </p>
-                                    <p>
-                                        Bắt đầu sự nghiệp mơ ước với hàng nghìn việc làm chất lượng tại TopViecLam
-                                    </p>
-                                </div>
-                                <div class="btn-action">
-                                    <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" target="_blank"
-                                       class="btn btn-primary btn-primary-hover">Tìm việc ngay</a>
-                                </div>
-                            </div>
-                            <div class="feed-jobs">
-                            </div>
-                        </div>
-                        <% } %>
-                        <% } %>
-                        <div class="text-center">
-                        </div>
-                    </div>
-
-                    <div class="box-group">
-                        <div class="box-group-header">
-                            <div class="box-group-title mb-12px">
-                                Việc làm phù hợp với bạn
-                            </div>
-                            <%
-                                List<Post> listpost = daoPost.getPostApprove()  ;
-                                for (Post p : listpost) {
-                            %>
-                            <div class="single-job-items mb-30">
-                                <div class="job-items">
-                                    <div class="company-img">
-                                        <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>"><img
-                                                src="<%=request.getContextPath()%>/assets/img/icon/job-list1.png" alt="ảnh không được hiển thị"></a>
+                        <div class='empty-job'>
+                            <div class="box-group-body">
+                                <div class="empty-job">
+                                    <div class="image-empty">
+                                        <img src="https://www.topcv.vn/v4/image/history-apply/empty.png" alt="empty apply">
                                     </div>
-                                    <div class="job-tittle job-tittle2">
-                                        <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                            <h4><%=p.getTitle()%>
-                                            </h4>
-                                        </a>
-                                        <ul>
-                                            <%--                    <li> ${dp.getAddressByCompanyID()}--%>
-                                            <%--     </li>--%>
-                                            <li>
-                                                <%--         <i class="fas fa-map-marker-alt"></i>--%>
-                                            </li>
-                                            <li><%=p.getSalary()%> VNĐ</li>
-                                        </ul>
+                                    <h3 class="title">Bạn chưa ứng tuyển công việc nào!</h3>
+                                    <div class="caption">
+                                        <p>
+                                            Bạn chưa ứng tuyển công việc nào!
+                                        </p>
+                                        <p>
+                                            Bắt đầu sự nghiệp mơ ước với hàng nghìn việc làm chất lượng tại TopViecLam
+                                        </p>
+                                    </div>
+                                    <div class="btn-action">
+                                        <a href="<%=request.getContextPath()%>/candidate/Post?action=danhsanhvieclam" target="_blank"
+                                           class="btn btn-primary btn-primary-hover">Tìm việc ngay</a>
                                     </div>
                                 </div>
-                                <div class="items-link items-link2 f-right">
-                                    <a href="/Post_details?id=<%=p.getId()%>">
-                                        <%=p.getType()%>
-                                    </a>
-                                    <%if (daoPost.dateToCreate(p.getCreateDate()) > 0) { %>
-                                    <span><%=daoPost.dateToCreate(p.getCreateDate())%> ngày trước</span>
-                                    <% } else { %>
-                                    <span>Mới nhất</span>
-                                    <% } %>
+                                <div class="feed-jobs">
                                 </div>
                             </div>
                             <% } %>
-<%--                            <p>Để nhận được gợi ý việc làm chính xác hơn, hãy <a href=""--%>
-<%--                                                                                 class="text-highlight config-suggest-btn">tùy--%>
-<%--                                chỉnh cài đặt gợi ý việc làm</a>.</p>--%>
+                            <% } %>
+                            <div class="text-center">
+                            </div>
                         </div>
-                        <div class="box-group-body">
+
+                        <div class="box-group">
+                            <div class="box-group-header">
+                                <div class="box-group-title mb-12px">
+                                    Việc làm phù hợp với bạn
+                                </div>
+                                <%
+                                    List<Post> listpost = daoPost.getPostApprove()  ;
+                                    for (Post p : listpost) {
+                                %>
+                                <div class="single-job-items mb-30">
+                                    <div class="job-items">
+                                        <div class="company-img">
+                                            <a href="<%=request.getContextPath()%>/candidate/Post?action=xemthongtinvieclam&id=<%=p.getId()%>"><img
+                                                    src="<%=request.getContextPath()%>/assets/img/icon/job-list1.png" alt="ảnh không được hiển thị"></a>
+                                        </div>
+                                        <div class="job-tittle job-tittle2">
+                                            <a href="<%=request.getContextPath()%>/candidate/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                                <h4><%=p.getTitle()%>
+                                                </h4>
+                                            </a>
+                                            <ul>
+                                                <%--                    <li> ${dp.getAddressByCompanyID()}--%>
+                                                <%--     </li>--%>
+                                                <li>
+                                                    <%--         <i class="fas fa-map-marker-alt"></i>--%>
+                                                </li>
+                                                <li><%=p.getSalary()%> VNĐ</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="items-link items-link2 f-right">
+                                        <a href="/Post_details?id=<%=p.getId()%>">
+                                            <%=p.getType()%>
+                                        </a>
+                                        <%if (daoPost.dateToCreate(p.getCreateDate()) > 0) { %>
+                                        <span><%=daoPost.dateToCreate(p.getCreateDate())%> ngày trước</span>
+                                        <% } else { %>
+                                        <span>Mới nhất</span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <% } %>
+                                <%--                            <p>Để nhận được gợi ý việc làm chính xác hơn, hãy <a href=""--%>
+                                <%--                                                                                 class="text-highlight config-suggest-btn">tùy--%>
+                                <%--                                chỉnh cài đặt gợi ý việc làm</a>.</p>--%>
+                            </div>
+                            <div class="box-group-body">
 
 
-<%--                            <% } %>--%>
+                                <%--                            <% } %>--%>
 
 
-                        </div>
-                        <div class="text-center">
-                            <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" target="_blank" class="btn btn-suggestion-more btn-primary-hover">
-                                Xem tất cả
-                            </a>
+                            </div>
+                            <div class="text-center">
+                                <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" target="_blank" class="btn btn-suggestion-more btn-primary-hover">
+                                    Xem tất cả
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <!--================Blog Area =================-->
