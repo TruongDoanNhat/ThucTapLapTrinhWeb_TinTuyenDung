@@ -22,9 +22,12 @@ public class ResetPassword extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         DAOAccount d = new DAOAccount();
+        String oldPassword = request.getParameter("oldPassword");
+        String newPassword = request.getParameter("newPassword");
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         Account getAccountResetPassword = d.getAccountResetPassword(username, email);
+
         String action = request.getParameter("action");
         switch (action) {
             case "forgotPassword":
@@ -32,7 +35,7 @@ public class ResetPassword extends HttpServlet {
                         "", "Bạn vừa quên mật khẩu?", 1);
                 if (getAccountResetPassword == null) {
                     request.setAttribute("message", "Email không tồn tại! Vui lòng nhập lại email!");
-                    UtilControl.forward("/visitor/quen-mat-khau.jsp", request, response);
+                    UtilControl.forward("visitor/quen-mat-khau.jsp", request, response);
                 } else {
                     String name = getAccountResetPassword.getName();
                     String password = Util.randomPassword();
@@ -42,10 +45,25 @@ public class ResetPassword extends HttpServlet {
                     password = Util.encryptionPassword(password);
                     d.updatePassword(username, password);
                     response.sendRedirect(request.getContextPath() + "/Login?action=login");
+
+                }
+                break;
+            case "changePassword":
+                oldPassword = Util.encryptionPassword(oldPassword);
+                if (oldPassword.equals(UtilSession.getInstance().getValue(request, "account").getPassword())) {
+                    String newEncryptedPassword = Util.encryptionPassword(newPassword);
+                    DAOAccount.getAccount().setPassword(newEncryptedPassword);
+                    d.updatePassword(UtilSession.getInstance().getValue(request, "account").getUsername(), newEncryptedPassword);
+                    UtilSession.getInstance().getValue(request, "account").setPassword(newEncryptedPassword);
+                    request.setAttribute("message", "Đổi mật khẩu thành công!");
+                    response.sendRedirect("visitor/trang-chu-candi.jsp");
+                } else {
+                    request.setAttribute("message", "Sai mật khẩu!");
+                    UtilControl.forward("candidate/doi-mat-khau-candi.jsp", request, response);
+
                 }
                 break;
         }
-
     }
 
     @Override

@@ -81,35 +81,25 @@
                         </div>
                         <div data-v-c4f347a8="" class="card-body setting-form">
                             <div data-v-c4f347a8="" class="row">
-                                <!--                                avt-->
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <div data-v-c4f347a8="" class="d-flex align-items-center">
-                                        <label data-v-c4f347a8="" class="col-form-label mr-2"></label>
-                                        <div data-v-2a31697a="" data-v-c4f347a8="" class="mr-2  avatar">
-                                            <%--                                            <img src="<%=request.getContextPath()%>/admin/images/user.png">
-                                            <%--
-
-
-                                            <%--                                                <form modelAttribute="modelClass" action="save" method="POST" enctype="multipart/form-data">--%>
-<%--                                                    <div class="form-group">--%>
-<%--                                                        <label for="img" class="btn head-btn1"--%>
-<%--                                                               style="margin: 10px 60px; background: #0e90d2"> Đổi avatar</label>--%>
-<%--                                                        <input type="file" id="img" path="productLandscapeImage" class="form-control" name="productLandscapeImage" title="Image"--%>
-<%--                                                               style="margin: 10px 50px; visibility: hidden; cursor: pointer; color: orangered"--%>
-<%--                                                               value=""/>--%>
-<%--                                                    </div>--%>
-<%--                                                </form>--%>
-
-                                        </div>
-                                    </div>
-                                </div>
+                                <!--                                -->
                                 <!--
                                                           avt end-->
-
-
-
                             <% Account account = (Account) session.getAttribute("account");%>
-                                <div data-v-c4f347a8="" class="row " style="width: 49%">
+                                <div data-v-c4f347a8="" class="row" style="width: 60%">
+                                    <div data-v-c4f347a8="" class="form-group col-md-6">
+                                        <label data-v-c4f347a8="">Họ và tên</label>
+                                        <div data-v-8c64d55c="" data-v-c4f347a8="">
+                                            <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
+                                                <input id="name" name="name" type="text"
+                                                       placeholder="Nhập họ và tên" autocomplete="true"
+                                                       class="form-control" value="<%=account.getName()%>">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <%--                                            --%>
+                                <div data-v-c4f347a8="" class="row " style="width: 60%">
                                     <div data-v-c4f347a8="" class="form-group col-md-6">
                                         <div data-v-c4f347a8="" class="d-flex justify-content-between">
                                             <label data-v-c4f347a8="">Email</label>
@@ -118,20 +108,19 @@
                                         <div class="">
                                             <input id="email" name="email" placeholder="Nhập email"
                                                    class="form-control hidden-spin-button"
-                                                   value="<%=account.getEmail()%>">
+                                                   value="<%=account.getEmail()%>" disabled>
 <%--                                            --%>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div data-v-c4f347a8="" class="row">
+                            <div data-v-c4f347a8="" class="row" style="width: 60%">
                                 <div data-v-c4f347a8="" class="form-group col-md-6">
                                     <label data-v-c4f347a8="">Họ và tên</label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input id="name" name="name" type="text"
-                                                   placeholder="Nhập họ và tên" autocomplete="true"
-                                                   class="form-control" value="<%=account.getName()%>">
+                                            <input id="createdate" name="createdate"
+                                                   class="form-control" value="<%=account.getCreateDate()%>"disabled>
                                         </div>
                                     </div>
                                 </div>

@@ -2,7 +2,6 @@ package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.model.Log;
-import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
 import vn.edu.hcmuaf.fit.service.DAOLog;
 
