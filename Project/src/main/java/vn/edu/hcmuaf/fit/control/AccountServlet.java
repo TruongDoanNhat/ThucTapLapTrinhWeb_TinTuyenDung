@@ -23,10 +23,15 @@ public class AccountServlet extends HttpServlet {
         String action = request.getParameter("action");
         String username = request.getParameter("username");
         String role = request.getParameter("role") == null ? "3" : request.getParameter("role");
-        String keywords = request.getParameter("keywords");
+        String keywords = request.getParameter("keywords") == null ? "" : request.getParameter("keywords");
+        ;
         Account account = UtilSession.getInstance().getValue(request, "account");
         List<Account> listAccount;
         DAOAccount d = new DAOAccount();
+        int trang = Integer.parseInt(request.getParameter("trang") == null ? "1" : request.getParameter("trang"));
+        int tongTaiKhoan;
+        int tongSoTrang;
+
         switch (action) {
             case "updateAccount":
                 String name = request.getParameter("name");
@@ -39,19 +44,14 @@ public class AccountServlet extends HttpServlet {
                 }
                 break;
             case "accountManager":
-                String trang = request.getParameter("trang");
-                if (trang == null) {
-                    trang = "1";
+                tongTaiKhoan = d.getTotalAccount();
+                tongSoTrang = tongTaiKhoan / 5;
+                if (tongTaiKhoan % 5 != 0) {
+                    tongSoTrang++;
                 }
-                int t = Integer.parseInt(trang);
-                int dem = d.getTotalAccount();
-                int soAccount = dem / 5;
-                if (dem % 5 != 0) {
-                    soAccount++;
-                }
-                listAccount = d.getAllAccount(t);
-                request.setAttribute("soAccount", soAccount);
-                request.setAttribute("t", t);
+                listAccount = d.getAllAccount(trang);
+                request.setAttribute("tongSoTrang", tongSoTrang);
+                request.setAttribute("trang", trang);
                 request.setAttribute("listAccount", listAccount);
                 UtilControl.forward("Admin-quan-li-nguoi-dung.jsp", request, response);
                 break;
@@ -74,12 +74,20 @@ public class AccountServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");
                 break;
             case "search":
-                if (!keywords.matches("\b")) {
+                if (!keywords.matches("[\\w\\s]*")) {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
                             String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
                 }
-                listAccount = role.equals("3") ? d.getAccountSearch(keywords) : d.getAccountSearch(keywords, role);
+                tongTaiKhoan = role.equals("3") ? d.getAccountSearchSize(keywords) : d.getAccountSearchSize(keywords, role);
+                tongSoTrang = tongTaiKhoan / 5;
+                if (tongTaiKhoan % 5 != 0) {
+                    tongSoTrang++;
+                }
+                listAccount = role.equals("3") ? d.getAccountSearch(keywords, trang) : d.getAccountSearch(keywords, role, trang);
                 request.setAttribute("listAccount", listAccount);
+                request.setAttribute("tongSoTrang", tongSoTrang);
+                request.setAttribute("trang", trang);
+                request.setAttribute("role", role);
                 UtilControl.forward("Admin-quan-li-nguoi-dung.jsp", request, response);
                 break;
         }

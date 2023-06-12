@@ -2,11 +2,12 @@ package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Bill;
-import vn.edu.hcmuaf.fit.model.Price;
 import vn.edu.hcmuaf.fit.service.modelQuanLy.QuanLyDoanhThu;
 import vn.edu.hcmuaf.fit.service.modelQuanLy.QuanLyThongKe;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class DAOBill {
@@ -33,7 +34,7 @@ public class DAOBill {
                 " WHERE      \n" +
                 "     createDate BETWEEN CURDATE() - INTERVAL WEEKDAY(CURDATE()) DAY AND CURDATE()      \n" +
                 "   GROUP BY  \n" +
-                "     DATE(createDate)\n" +
+                "    bill.createDate\n" +
                 ") b ON d.day = b.day GROUP BY d.day  \n" +
                 "ORDER BY CASE d.day \n" +
                 "      WHEN 'Monday' THEN 1  \n" +
@@ -69,7 +70,7 @@ public class DAOBill {
                 "   WEEK(createDate, 1) =\n" +
                 "   WEEK(CURDATE() - INTERVAL 1 WEEK, 1)       \n" +
                 "GROUP BY    \n" +
-                "   DAYNAME(createDate)\n" +
+                "   bill.createDate\n" +
                 ") b ON d.day = b.day GROUP BY d.day  \n" +
                 "ORDER BY \n" +
                 " CASE d.day \n" +

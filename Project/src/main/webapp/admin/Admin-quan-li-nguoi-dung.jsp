@@ -129,12 +129,37 @@
                         </div>
                     </div>
                 </div>
+                <!-- Hiển thị nút phân trang -->
                 <div style="margin: 0 auto; text-align: center;">
-                    <!-- Hiển thị nút phân trang -->
-                    <c:forEach begin="1" end="${soAccount}" var="t">
-                        <a href="<%=request.getContextPath()%>/admin/AccountManager?action=accountManager&trang=${t}"
-                           class="btn btn-link">${t}</a>
-                    </c:forEach>
+                    <%
+                        if (request.getAttribute("trang") != null || request.getAttribute("tongSoTrang") != null) {
+                            int sobd = (int) request.getAttribute("tongSoTrang");
+                            int t = (int) request.getAttribute("trang");
+                            for (int pageNumber = t - 2; pageNumber <= t + 2; pageNumber++) { // Lặp qua 5 trang gần trang hiện tại (2 trang trước và 2 trang sau)
+                                if (pageNumber >= 1 && pageNumber <= sobd) { // Kiểm tra xem trang có nằm trong phạm vi từ 1 đến tổng số trang hay không
+                                    if (pageNumber == t) { // Kiểm tra xem đây có phải là trang hiện tại hay không
+                    %>
+                    <span class="current-page"><%= pageNumber %></span> <!-- Hiển thị số trang hiện tại -->
+                    <% } else { // Nếu không phải là trang hiện tại
+                        if (request.getAttribute("role") == null) {
+                    %>
+                    <!-- Tạo liên kết đến trang khác -->
+                    <a href="AccountManager?action=accountManager&trang=<%= pageNumber %>"
+                       class="btn btn-link"><%= pageNumber %>
+                    </a>
+                    <% } else {%>
+                    <a href="AccountManager?action=search&trang=<%= pageNumber %>&role=<%=request.getAttribute("role")%>"
+                       class="btn btn-link"><%= pageNumber %>
+                    </a>
+                    <% } %>
+                    <% } %>
+                    <% } %>
+                    <% } %>
+                    <% } %>
+                    <%--                    <c:forEach begin="1" end="${soAccount}" var="t">--%>
+                    <%--                        <a href="<%=request.getContextPath()%>/admin/AccountManager?action=accountManager&trang=${t}"--%>
+                    <%--                           class="btn btn-link">${t}</a>--%>
+                    <%--                    </c:forEach>--%>
                 </div>
             </div>
             <!-- ============================================================== -->

@@ -23,7 +23,7 @@
                     <ul class="nav nav-icons">
                         <li><a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp"><i
                                 class="icon-eye-open"></i></a></li>
-                        <li><a href=""><i class="icon-bell "></i></a>
+                        <li><a href="<%=request.getContextPath()%>/admin/Log?action=logManager"><i class="icon-bell "></i></a>
                         </li>
                     </ul>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Cài đặt giao diện

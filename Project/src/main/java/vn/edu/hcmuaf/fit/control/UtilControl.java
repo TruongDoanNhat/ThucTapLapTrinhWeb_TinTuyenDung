@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class UtilControl {
 
@@ -125,4 +127,15 @@ public class UtilControl {
         return 0;
     }
 
+    public static boolean dateToCreate(LocalDateTime dateCreate) {
+        LocalDateTime now = LocalDateTime.now();
+        long seconds = ChronoUnit.SECONDS.between(dateCreate, now);
+        return seconds <= 86400;
+    }
+
+    public static void main(String[] args) {
+        LocalDateTime dateTimeCreate = LocalDateTime.of(2023, 6, 11, 13, 6, 38);
+        System.out.println(ChronoUnit.SECONDS.between(dateTimeCreate, LocalDateTime.now()) < 86400);
+        System.out.println(UtilControl.dateToCreate(dateTimeCreate));
+    }
 }
