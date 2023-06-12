@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "Post", value = {"/admin/PostManager", "/business/Post", "/Category"})
+@WebServlet(name = "Post", value = {"/admin/PostManager", "/business/Post", "/Category" , "/Post" , "/candidate/Post"})
 public class PostServlet extends HttpServlet {
 
     @Override
@@ -33,6 +33,7 @@ public class PostServlet extends HttpServlet {
         String idManager = request.getParameter("id");
         String keywords = request.getParameter("keywords");
         String status = request.getParameter("status") == null ? "0" : request.getParameter("status");
+        String categoryId = request.getParameter("categoryId") == null ? "0" : request.getParameter("categoryId");
         String trang = request.getParameter("trang");
 
         int tongBaiViet;
@@ -163,8 +164,8 @@ public class PostServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
                 break;
             case "danhsanhvieclam":
-                List<Post> postAll1 = daoPost.getPostAll(t);//lay danh sách việc làm
-                request.setAttribute("listJob", postAll1);// gáng danh sách việc làm
+                List<Post> postAll1 = daoPost.getPostAllApprove(t);//lay danh sách việc làm
+                request.setAttribute("postAll", postAll1);// gáng danh sách việc làm
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
             case "quanlybaidang":
@@ -180,7 +181,7 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("Admin-quan-li-bai-dang.jsp", request, response);
                 break;
             case "category":
-                request.setAttribute("listPOC", daoPost.getPostofCategoryByID(Integer.valueOf(idManager)));
+                request.setAttribute("postAll", daoPost.getPostofCategoryByID(Integer.valueOf(idManager)));
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
             case "vieclamdaungtuyen":
@@ -188,7 +189,16 @@ public class PostServlet extends HttpServlet {
                     List<Post> postApplied1 = daoPost.getPostApplied(account.getEmail());
                     request.setAttribute("jobApplied", postApplied1);
                 }
-                UtilControl.phanQuyenServletCandi1(account, "candidate/candi-viec-lam-da-ung-tuyen.jsp", "/Login?action=login", request, response);
+                UtilControl.phanQuyenServletCandi1(account, "candi-viec-lam-da-ung-tuyen.jsp", "/Login?action=login", request, response);
+                break;
+            case "timkiem":
+                if(categoryId.equals("0")) {
+                    postAll = daoPost.getPostSearch(keywords);
+                } else {
+                    postAll = daoPost.getPostSearchCategory(keywords, categoryId);
+                }
+                request.setAttribute("postAll", postAll);
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
                 break;
         }
     }
