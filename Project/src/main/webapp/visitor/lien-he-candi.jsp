@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOContact" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Contact" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 05/01/2023
@@ -63,58 +65,28 @@
 <%--<form action="Page" method="post">--%>
 <section class="contact-section">
   <div class="container">
+    <%DAOContact dc = new DAOContact();
+      Contact contact = dc.getInstance().getContact();%>;
     <div class="row">
-      <div class="col-12">
-        <h2 class="contact-title">Điền thông tin</h2>
-      </div>
-      <div class="col-lg-8">
-        <form class="form-contact contact_form" action="../contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-          <div class="row">
-            <div class="col-12">
-              <div class="form-group">
-                <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder="Nhập tin nhắn"></textarea>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Nhập tên của bạn">
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="form-group">
-                <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Nhập chủ đề">
-              </div>
-            </div>
-          </div>
-          <div class="form-group mt-3">
-            <button type="submit" class="button button-contactForm boxed-btn">Gửi</button>
-          </div>
-        </form>
-      </div>
-      <div class="col-lg-3 offset-lg-1">
+      <div class="col-lg-3 offset-lg-1" style="margin-left: 40%">
         <div class="media contact-info">
           <span class="contact-info__icon"><i class="ti-home"></i></span>
           <div class="media-body">
-            <h3 style="width: 300px">Phường Linh Trung, thành phố Thủ Đức.</h3>
-            <p>ĐH Nông Lâm, khu phố 6</p>
+            <h3 style="width: 300px"><%=contact.getName()%></h3>
+            <p><%=contact.getAddress()%></p>
           </div>
         </div>
         <div class="media contact-info">
           <span class="contact-info__icon"><i class="ti-tablet"></i></span>
           <div class="media-body">
-            <h3>19009090</h3>
+            <h3><%=contact.getPhone()%></h3>
             <p>Từ 8h - 17h, thứ 2 - thứ 6</p>
           </div>
         </div>
         <div class="media contact-info">
           <span class="contact-info__icon"><i class="ti-email"></i></span>
           <div class="media-body">
-            <h3>hotro@hcmuaf.edu.vn</h3>
+            <h3><%=contact.getEmail()%></h3>
             <p>Gửi cho chúng tôi câu hỏi của bạn bất cứ lúc nào!</p>
           </div>
         </div>
