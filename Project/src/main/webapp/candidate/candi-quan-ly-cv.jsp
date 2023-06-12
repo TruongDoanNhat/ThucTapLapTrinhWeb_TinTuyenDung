@@ -88,7 +88,7 @@
             margin-bottom: 5px;">
                                     <div class="d-flex flex-column">
                                         <a class="nav-link"
-                                           href="<%=request.getContextPath()%>/candidate/candi-thong-tin-cv.jsp">
+                                           href="<%=request.getContextPath()%>/candidate/CV?action=xemcv">
                                             <h6 class="mb-3 text-sm"> <%=cv.getTitle()%>
                                             </h6>
                                         </a>

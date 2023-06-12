@@ -16,7 +16,7 @@ public class CV implements Serializable {
     private String address;
     private String salary;
     private String skill;
-    private String interest;
+    private String introduce;
     private String exp;
     private String lv;
     private Date createDate;
@@ -25,7 +25,7 @@ public class CV implements Serializable {
 
     }
 
-    public CV(int id, int accountId, String title, String name, String rank, String email, String phone, String gen, String address, String salary, String skill, String interest, String exp, String lv, Date createDate, int daysSinceCreated) {
+    public CV(int id, int accountId, String title, String name, String rank, String email, String phone, String gen, String address, String salary, String skill, String introduce, String exp, String lv, Date createDate, int daysSinceCreated) {
         this.id = id;
         this.accountId = accountId;
         this.title = title;
@@ -37,7 +37,7 @@ public class CV implements Serializable {
         this.address = address;
         this.salary = salary;
         this.skill = skill;
-        this.interest = interest;
+        this.introduce = introduce;
         this.exp = exp;
         this.lv = lv;
         this.createDate = createDate;
@@ -58,7 +58,7 @@ public class CV implements Serializable {
                 ", address='" + address + '\'' +
                 ", salary='" + salary + '\'' +
                 ", skill='" + skill + '\'' +
-                ", interest='" + interest + '\'' +
+                ", interest='" + introduce + '\'' +
                 ", exp='" + exp + '\'' +
                 ", lv='" + lv + '\'' +
                 ", createDate=" + createDate +
@@ -154,12 +154,12 @@ public class CV implements Serializable {
         this.skill = skill;
     }
 
-    public String getInterest() {
-        return interest;
+    public String getIntroduce() {
+        return introduce;
     }
 
-    public void setInterest(String interest) {
-        this.interest = interest;
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
     }
 
     public String getExp() {
