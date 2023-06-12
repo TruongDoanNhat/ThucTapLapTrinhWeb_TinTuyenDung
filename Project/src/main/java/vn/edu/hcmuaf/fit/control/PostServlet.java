@@ -44,8 +44,52 @@ public class PostServlet extends HttpServlet {
         int t = Integer.parseInt(trang);
 
         switch (action) {
-            // RESOLVE CANDIDATE
-            // RESOLVE BUSINESS
+            // ------------------------ RESOLVE CANDIDATE ------------------------
+            case "xemthongtinvieclam":
+                String id2 = request.getParameter("id");
+                int idPost = Integer.parseInt(id2);
+
+                Post post2 = daoPost.getPostDetail(idPost);
+                Company company = daoPost.getCompanyFromPost(idPost);
+                Account account1 = daoPost.getAccountFromPost(idPost);
+
+                request.setAttribute("post2", post2);
+                request.setAttribute("company", company);
+                request.setAttribute("account1", account1);
+
+                UtilControl.forward("/visitor/thong-tin-viec-lam-candi.jsp", request, response);
+                break;
+            case "danhsanhvieclam":
+                tongBaiViet = daoPost.getPostAllApproveSize();
+                soBaiViet = tongBaiViet / 3;
+                if (tongBaiViet % 3 != 0) {
+                    soBaiViet++;
+                }
+                List<Post> postAll1 = daoPost.getPostAllApprove(t);//lay danh sách việc làm
+                request.setAttribute("postAll", postAll1);// gáng danh sách việc làm
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
+                break;
+            case "category":
+                request.setAttribute("postAll", daoPost.getPostofCategoryByID(Integer.valueOf(idManager)));
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
+                break;
+            case "vieclamdaungtuyen":
+                if (account != null) {
+                    List<Post> postApplied1 = daoPost.getPostApplied(account.getEmail());
+                    request.setAttribute("jobApplied", postApplied1);
+                }
+                UtilControl.phanQuyenServletCandi1(account, "candi-viec-lam-da-ung-tuyen.jsp", "/Login?action=login", request, response);
+                break;
+            case "timkiem":
+                if(categoryId.equals("0")) {
+                    postAll = daoPost.getPostSearch(keywords, t);
+                } else {
+                    postAll = daoPost.getPostSearchCategory(keywords, categoryId);
+                }
+                request.setAttribute("postAll", postAll);
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
+                break;
+            // ------------------------ RESOLVE BUSINESS ------------------------
             case "dangtin":
                 String title = request.getParameter("title");
                 String rank = request.getParameter("rank");
@@ -105,51 +149,7 @@ public class PostServlet extends HttpServlet {
 
                 UtilControl.forward("busi-tin-tuyen-dung.jsp", request, response);
                 break;
-            case "xemthongtinvieclam":
-                String id2 = request.getParameter("id");
-                int idPost = Integer.parseInt(id2);
-
-                Post post2 = daoPost.getPostDetail(idPost);
-                Company company = daoPost.getCompanyFromPost(idPost);
-                Account account1 = daoPost.getAccountFromPost(idPost);
-
-                request.setAttribute("post2", post2);
-                request.setAttribute("company", company);
-                request.setAttribute("account1", account1);
-
-                UtilControl.forward("/visitor/thong-tin-viec-lam-candi.jsp", request, response);
-                break;
-            case "danhsanhvieclam":
-                tongBaiViet = daoPost.getPostAllApproveSize();
-                soBaiViet = tongBaiViet / 3;
-                if (tongBaiViet % 3 != 0) {
-                    soBaiViet++;
-                }
-                List<Post> postAll1 = daoPost.getPostAllApprove(t);//lay danh sách việc làm
-                request.setAttribute("postAll", postAll1);// gáng danh sách việc làm
-                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
-                break;
-            case "category":
-                request.setAttribute("postAll", daoPost.getPostofCategoryByID(Integer.valueOf(idManager)));
-                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
-                break;
-            case "vieclamdaungtuyen":
-                if (account != null) {
-                    List<Post> postApplied1 = daoPost.getPostApplied(account.getEmail());
-                    request.setAttribute("jobApplied", postApplied1);
-                }
-                UtilControl.phanQuyenServletCandi1(account, "candi-viec-lam-da-ung-tuyen.jsp", "/Login?action=login", request, response);
-                break;
-  	    case "timkiem":
-                if(categoryId.equals("0")) {
-                    postAll = daoPost.getPostSearch(keywords);
-                } else {
-                    postAll = daoPost.getPostSearchCategory(keywords, categoryId);
-                }
-                request.setAttribute("postAll", postAll);
-                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
-                break;
-                            ------------------------ RESOLVE ADMIN ------------------------
+//                            ------------------------ RESOLVE ADMIN ------------------------
             case "quanlybaidang":
                 tongBaiViet = daoPost.getTotalPostPaid();
                 soBaiViet = tongBaiViet / 5;

@@ -328,6 +328,7 @@
                             </li>
 
                             <%
+                                if (request.getAttribute("trang") != null || request.getAttribute("sobd") != null) {
                                 int t = (int) request.getAttribute("trang");
                                 int sobv = (int) request.getAttribute("sobv");
                             %>
@@ -349,7 +350,8 @@
                                 <a href="<%= href %>" class="btn btn-link"><%= i %></a>
                                 <% }
                                 }
-                                } %>
+                                }
+                                }%>
                             </div>
 
                         </ul>

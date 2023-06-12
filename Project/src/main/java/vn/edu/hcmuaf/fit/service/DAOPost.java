@@ -71,7 +71,7 @@ public class DAOPost {
     }
 
     public Account getAccountFromPost(int idPost) {
-        String query = "SELECT a.* FROM account a " + "JOIN company c ON c.id = a.companyId " + "JOIN post p ON a.id = p.accountId " + "WHERE p.id = ?";
+        String query = "SELECT a.* FROM account a " + "JOIN post p ON a.id = p.accountId " + "WHERE p.id = ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, idPost).mapToBean(Account.class).stream().findFirst().orElse(null);
         });
@@ -166,6 +166,8 @@ public class DAOPost {
         String query = "SELECT COUNT(*) FROM post WHERE status <> 0";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).mapTo(Integer.class).one();
+        });
+    }
     public int getPostAllApproveSize() {
         String query = "SELECT * FROM post WHERE status = ?";
         return JDBIConnector.get().withHandle(handle -> {

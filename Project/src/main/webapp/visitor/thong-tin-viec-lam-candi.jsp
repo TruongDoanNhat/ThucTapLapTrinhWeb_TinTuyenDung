@@ -1,6 +1,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Company" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Account" %>
+<%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--
@@ -145,7 +146,7 @@
                             <li>Mức lương: <span><%=post2.getSalary()%> VNĐ</span></li>
                             <li>Hạn nộp hồ sơ: <span><%=post2.getEndDate()%></span></li>
                         </ul>
-                        <% if(account1.getRole() == 1 ) { %>
+                        <% if(UtilSession.getInstance().getValue(request,"account").getRole() == 1) { %>
                         <div class="apply-btn2">
                             <a href="#" class="btn" onclick="toggleForm()">Ứng Tuyển</a>
                         </div>
@@ -159,10 +160,7 @@
                                 </div>
                             </form>
                         </div>
-                        <% } else { %>
-                        <!-- Không có nút ứng tuyển -->
                         <% } %>
-
                     </div>
                         <!-- Small Section Tittle -->
                         <div class="small-section-tittle">
