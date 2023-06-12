@@ -131,6 +131,13 @@
                                             </div>
                                         </div>
                                         <div class="control-group">
+                                        <label class="control-label">Giới thiệu bản thân</label>
+                                        <div class="controls">
+                                            <textarea class="span8" id="introduce" name="introduce"
+                                                      onkeyup="checkBulletinBoard()" rows="5"></textarea>
+                                        </div>
+                                         </div>
+                                        <div class="control-group">
                                             <label class="control-label">Nơi ở hiện tại</label>
                                             <div class="controls">
                                                 <input type="text" id="address" name="address"
@@ -151,13 +158,6 @@
                                             <label class="control-label">Các kỹ năng mềm</label>
                                             <div class="controls">
                                             <textarea class="span8" id="skill" name="skill"
-                                                      onkeyup="checkBulletinBoard()" rows="5"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label">Sở thích</label>
-                                            <div class="controls">
-                                            <textarea class="span8" id="interest" name="interest"
                                                       onkeyup="checkBulletinBoard()" rows="5"></textarea>
                                             </div>
                                         </div>

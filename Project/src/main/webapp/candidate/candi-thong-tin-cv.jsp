@@ -9,7 +9,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
-<% List<CV> cvs = (List<CV>) request.getAttribute("cvList"); %>
+<% CV cvs = (CV) request.getAttribute("cv"); %>
 
 <html>
 <head>
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/tai-khoan.css">
 </head>
-<body style ="background-color: #D5D5D5;
+<body style="background-color: #D5D5D5;
 font-family: system-ui;">
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
@@ -94,10 +94,11 @@ font-family: system-ui;">
     object-fit: cover;
     border-radius: 50%;">
                     </div>
-                    <div  >
+                    <div>
                         <h1 style="font-weight: 300;
     font-size: xxx-large;
-    margin:0px 0 5px ;">Thành Nghĩa</h1>
+    margin:0px 0 5px ;"><%=cvs.getName()%>
+                        </h1>
                         <div style="margin:0;
     font-weight: bold;
     letter-spacing: 3px;">Frond-End Developer
@@ -113,7 +114,7 @@ font-family: system-ui;">
     text-align: center;
     border-radius: 50%;
     font-size: small;
-    margin-right: 20px;">G</span> Nam
+    margin-right: 20px;">G</span> <%=cvs.getGen()%>
                             </li>
                             <li>
                 <span style="display: inline-block;
@@ -124,7 +125,7 @@ font-family: system-ui;">
     text-align: center;
     border-radius: 50%;
     font-size: small;
-    margin-right: 20px;">P</span> +84123456789
+    margin-right: 20px;">P</span> <%=cvs.getPhone()%>
                             </li>
                             <li>
                 <span style="display: inline-block;
@@ -135,151 +136,41 @@ font-family: system-ui;">
     text-align: center;
     border-radius: 50%;
     font-size: small;
-    margin-right: 20px;">E</span> hohoang.dev@gmail.com
+    margin-right: 20px;">E</span> <%=cvs.getEmail()%>
                             </li>
                         </ul>
                     </div>
-                    <div >
+                    <div>
                         <ul>
-                            <li>From <b>HCMC</b> - VietNam</li>
-                            <li>01/01/0101</li>
-                            <li>AAAA University</li>
+                            <li>From <%=cvs.getAddress()%>
+                            </li>
+                            <li>Vị trí ứng tuyển: <%=cvs.getRank()%>
+                            </li>
+                            <li>Mức lương mong muốn: <%=cvs.getSalary()%>
+                            </li>
                         </ul>
                     </div>
                     <div style="margin:20px 0 10px;">
-                        <h2>INTRODUCE MYSELT</h2>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eligendi omnis quasi dolores modi
-                        eius aliquam
-                        ipsum soluta, dolore tenetur excepturi praesentium porro alias itaque enim labore qui
-                        necessitatibus molestias
-                        hic cum deserunt ab! Illum sed eveniet distinctio, alias sunt repudiandae labore a dolorum
-                        tenetur? Harum
-                        deleniti mollitia odio neque.
+                        <h2>GIỚI THIỆU BẢN THÂN</h2>
+                        <%=cvs.getIntroduce()%>
                     </div>
                     <div style="margin:20px 0 10px;">
-                        <h2>EXPERIENCE</h2>
+                        <h2>KINH NGHIỆM LÀM VIỆC</h2>
 
                         <div style="margin:20px 0 10px;">
-                            <h4>Frond-end Developer</h4>
-                            <div >
-                                <span>2020 - 2022</span>
-                                <span>ABC D company</span>
-                            </div>
-                            <div >
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium officia
-                                nobis quas
-                                excepturi consectetur quidem quia est neque doloremque.
-                            </div>
+                            <%=cvs.getExp()%>
                         </div>
 
-                        <div style="margin:20px 0 10px;">
-                            <h4>Student</h4>
-                            <div class="time">
-                                <span>2015 - 2019</span>
-                                <span>ACDC University</span>
-                            </div>
-                            <div class="des">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium officia
-                                nobis quas
-                                excepturi consectetur quidem quia est neque doloremque.
-                            </div>
-                        </div>
-                        <h2 class="skills"  style="margin:20px 0 10px;">
-                            SKILLS
+                        <h2 class="skills" style="margin:20px 0 10px;">
+                            KỸ NĂNG
                         </h2>
-                        <ul>
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>Bootstrap</li>
-                            <li>Javascript</li>
-                            <li>PHP</li>
-                            <li>MySql</li>
-                            <li>Git</li>
-                            <li>Laravel</li>
-                        </ul>
+                        <%=cvs.getSkill()%>
 
                     </div>
                     <div class="project">
-                        <h2>PROJECTS</h2>
+                        <h2>TRÌNH ĐỘ HỌC VẤN</h2>
                         <div style="margin:20px 0 10px;">
-                            <h4>Website shopping</h4>
-                            <div >
-                                2020
-                            </div>
-                            <div class="web">
-                                www.lundevweb.com
-                            </div>
-                            <div class="location">
-                                Frond-end Developer
-                            </div>
-                            <div class="des">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consequatur amet sed, est
-                                eum facilis
-                                repellendus
-                                atque perspiciatis iste porro nobis autem explicabo expedita fugiat nostrum. Eveniet eum
-                                autem culpa!
-                                <ul>
-                                    <li>Lorem ipsum dolordolores.</li>
-                                    <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur,
-                                        dolores.
-                                    </li>
-                                    <li>Lorem ipsum dolor sit amet consectetur dolores.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div style="margin:20px 0 10px;">
-                            <h4>Website shopping</h4>
-                            <div class="time">
-                                2020
-                            </div>
-                            <div class="web">
-                                www.lundevweb.com
-                            </div>
-                            <div class="location">
-                                Frond-end Developer
-                            </div>
-                            <div class="des">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consequatur amet sed, est
-                                eum facilis
-                                repellendus
-                                atque perspiciatis iste porro nobis autem explicabo expedita fugiat nostrum. Eveniet eum
-                                autem culpa!
-                                <ul>
-                                    <li>Lorem ipsum dolordolores.</li>
-                                    <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur,
-                                        dolores.
-                                    </li>
-                                    <li>Lorem ipsum dolor sit amet consectetur dolores.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div style="margin:20px 0 10px;">
-                            <h4>Website shopping</h4>
-                            <div class="time">
-                                2020
-                            </div>
-                            <div class="web">
-                                www.lundevweb.com
-                            </div>
-                            <div class="location">
-                                Frond-end Developer
-                            </div>
-                            <div class="des">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consequatur amet sed, est
-                                eum facilis
-                                repellendus
-                                atque perspiciatis iste porro nobis autem explicabo expedita fugiat nostrum. Eveniet eum
-                                autem culpa!
-                                <ul>
-                                    <li>Lorem ipsum dolordolores.</li>
-                                    <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur,
-                                        dolores.
-                                    </li>
-                                    <li>Lorem ipsum dolor sit amet consectetur dolores.</li>
-                                </ul>
-                            </div>
+                            <%=cvs.getLv()%>
                         </div>
                     </div>
                 </div>
