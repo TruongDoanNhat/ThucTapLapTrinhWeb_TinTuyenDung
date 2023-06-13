@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "Post", value = {"/admin/PostManager", "/business/Post", "/Category" , "/Post" , "/candidate/Post"})
+@WebServlet(name = "Post", value = {"/admin/PostManager", "/business/Post", "/Category", "/Post", "/candidate/Post"})
 public class PostServlet extends HttpServlet {
 
     @Override
@@ -81,13 +81,13 @@ public class PostServlet extends HttpServlet {
                 UtilControl.phanQuyenServletCandi1(account, "candi-viec-lam-da-ung-tuyen.jsp", "/Login?action=login", request, response);
                 break;
             case "timkiem":
-                if(categoryId.equals("0")) {
+                if (categoryId.equals("0")) {
                     postAll = daoPost.getPostSearch(keywords, t);
                 } else {
                     postAll = daoPost.getPostSearchCategory(keywords, categoryId);
                 }
                 request.setAttribute("postAll", postAll);
-                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
             // ------------------------ RESOLVE BUSINESS ------------------------
             case "dangtin":
@@ -163,7 +163,7 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("Admin-quan-li-bai-dang.jsp", request, response);
                 break;
             case "search":
-                if (!keywords.matches("[\\w\\s]*")) {
+                if (!keywords.matches("[\\p{L}\\s]+")) {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
                             String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
                 }

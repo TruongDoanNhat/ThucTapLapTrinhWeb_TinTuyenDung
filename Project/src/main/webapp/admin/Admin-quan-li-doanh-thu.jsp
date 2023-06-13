@@ -12,8 +12,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% List<QuanLyDoanhThu> listDoanhThu = (List<QuanLyDoanhThu>) request.getAttribute("listDoanhThu");
+    List<QuanLyDoanhThu> listDoanhThuAll = (List<QuanLyDoanhThu>) request.getAttribute("listDoanhThuAll");
     Gson gson = new Gson();
-    String json = gson.toJson(listDoanhThu);
+    String json = gson.toJson(listDoanhThuAll);
 %>
 <html>
 <head>
@@ -43,7 +44,7 @@
                         <h5 class="mb-0">Quản lý doanh thu</h5>
                     </div>
                     <button class="btn" onclick="exportToExcel('doanhthu', 'Doanh thu')">
-                      Xuất file Excel
+                        Xuất file Excel
                     </button>
                     <form class="navbar-search pull-left input-append"
                           action="<%=request.getContextPath()%>/admin/Pay?action=quanlydoanhthu" method="post">
@@ -117,6 +118,33 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div style="margin: 0 auto; text-align: center;">
+                            <%
+                                if (request.getAttribute("trang") != null || request.getAttribute("tongSoTrang") != null) {
+                                    int sobd = (int) request.getAttribute("tongSoTrang");
+                                    int t = (int) request.getAttribute("trang");
+                                    for (int pageNumber = t - 2; pageNumber <= t + 2; pageNumber++) { // Lặp qua 5 trang gần trang hiện tại (2 trang trước và 2 trang sau)
+                                        if (pageNumber >= 1 && pageNumber <= sobd) { // Kiểm tra xem trang có nằm trong phạm vi từ 1 đến tổng số trang hay không
+                                            if (pageNumber == t) { // Kiểm tra xem đây có phải là trang hiện tại hay không
+                            %>
+                            <span class="current-page"><%= pageNumber %></span> <!-- Hiển thị số trang hiện tại -->
+                            <% } else { // Nếu không phải là trang hiện tại
+                                if (request.getAttribute("statusSearch") == null && request.getAttribute("keywords") == null) {
+                            %>
+                            <!-- Tạo liên kết đến trang khác -->
+                            <a href="Pay?action=quanlydoanhthu&trang=<%= pageNumber %>"
+                               class="btn btn-link"><%= pageNumber %>
+                            </a>
+                            <% } else {%>
+                            <a href="Pay?action=quanlydoanhthu&trang=<%= pageNumber %>&statusSearch=<%=request.getAttribute("statusSearch")%>&keywords=<%=request.getAttribute("keywords") == null ? "":request.getAttribute("keywords")%>"
+                               class="btn btn-link"><%= pageNumber %>
+                            </a>
+                            <% } %>
+                            <% } %>
+                            <% } %>
+                            <% } %>
+                            <% } %>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -131,6 +159,7 @@
 </body>
 <script>
     var myData = <%=json%>;
+
     function exportToExcel(fileName, sheetName) {
         if (myData.length === 0) {
             console.error('Chưa có data');
