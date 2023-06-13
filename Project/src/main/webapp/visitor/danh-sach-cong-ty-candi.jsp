@@ -1,4 +1,5 @@
-<%--
+<%@ page import="vn.edu.hcmuaf.fit.model.Company" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 05/01/2023
@@ -69,6 +70,7 @@
             <div class="row">
                 <div class="col-md-4 col-sm-6">
                     <div class="box-company item-hover">
+
                         <div class="company-banner">
                             <a href="https://www.topcv.vn/cong-ty/cong-ty-co-phan-dau-tu-giao-duc-va-phat-trien-nguon-luc-quoc-te-pasal/371.html">
                                 <div class="cover-wraper">
@@ -83,12 +85,13 @@
                         </div>
                         <div class="company-info">
                             <h3>
-                                <a href="https://www.topcv.vn/cong-ty/cong-ty-co-phan-dau-tu-giao-duc-va-phat-trien-nguon-luc-quoc-te-pasal/371.html" class="company-name" target="_blank">Công ty Cổ Phần Đầu tư Giáo dục Và Phát triển Nguồn Lực Quốc Tế Pasal</a>
+                                <a href="https://www.topcv.vn/cong-ty/cong-ty-co-phan-dau-tu-giao-duc-va-phat-trien-nguon-luc-quoc-te-pasal/371.html" class="company-name" target="_blank">CÔNG TY CỔ PHẦN CÂU LẠC BỘ</a>
                             </h3>
                             <div class="company-description">
                                 <p>" Tổ chức giáo dục Pasal là nơi hội tụ của những người trẻ chứa đựng khát khao thay đổi tiếng Anh và tư duy của thế hệ trẻ Việt Nam để thành công trên con đường sự nghiệp đầy năng động và thách thức sau này. Họ đã tìm ra “Đam mê” đích thực của mình với sự nghiệp đào tạo tiếng Anh và sẻ chia giá trị cho các..."</p>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">

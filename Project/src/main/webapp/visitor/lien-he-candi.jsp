@@ -64,30 +64,79 @@
 <!-- ================ contact section start ================= -->
 <%--<form action="Page" method="post">--%>
 <section class="contact-section">
-  <div class="container">
-    <%DAOContact dc = new DAOContact();
-      Contact contact = dc.getInstance().getContact();%>;
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1" style="margin-left: 40%">
-        <div class="media contact-info">
-          <span class="contact-info__icon"><i class="ti-home"></i></span>
-          <div class="media-body">
-            <h3 style="width: 300px"><%=contact.getName()%></h3>
-            <p><%=contact.getAddress()%></p>
+  <% Contact contact = DAOContact.getInstance().getContact();%>
+  <div class="help-container" style="padding-left: 10%">
+    <div data-v-7dd9989e="" class="help-box show">
+      <div data-v-7dd9989e="" class="header">
+        <div data-v-7dd9989e="" class="greeting flex-m mb-1">
+          <div data-v-7dd9989e="" class="circle mr-2 flex-cm"><i data-v-7dd9989e="" class="fas fa-life-ring"></i>
+          </div>
+          <div data-v-7dd9989e="">Xin chào </div>
+        </div>
+        <div data-v-7dd9989e="" class="small-text mt-2">
+          Chúng tôi là <%=contact.getName()%> rất sẵn lòng được hỗ trợ bạn. Vui lòng liên hệ theo thông tin bên dưới để nhận trợ giúp.
+        </div>
+      </div>
+      <div data-v-7dd9989e="" class="content w-100">
+        <div data-v-7dd9989e="" class="item-helper">
+          <div data-v-7dd9989e="" class="title mb-1">Tư vấn tuyển dụng</div>
+          <div data-v-7dd9989e="" class="text-muted small-text mb-3">Nhân viên tư vấn đang trực tuyến sẵn sàng hỗ
+            trợ
+          </div>
+          <div data-v-7dd9989e="" class="flex-m mb-3">
+            <div data-v-2a31697a="" data-v-7dd9989e="" class="mr-2 avatar"
+                 style="width: 32px; height: 22px; flex: 0 0 32px; "></div>
+          </div>
+          <div data-v-7dd9989e="" class="flex-sb contact">
+            <div data-v-7dd9989e="" class="flex-m contact-item"><i data-v-7dd9989e=""
+                                                                   class="fas fa-phone circle contact-icon flex-cm mr-2"></i>
+              <a data-v-7dd9989e="" href="" class="text-decoration-none">
+                <%=contact.getPhone()%>
+              </a></div>
+            <div data-v-7dd9989e="" class="flex-m contact-item contact-email"><i data-v-7dd9989e=""
+                                                                                 class="fas fa-envelope circle contact-icon1 flex-cm mr-2"></i>
+              <a data-v-7dd9989e="" title="topvieclam@gmail.com" href=""
+                 class="text-decoration-none">
+                <%=contact.getEmail()%>
+              </a></div>
           </div>
         </div>
-        <div class="media contact-info">
-          <span class="contact-info__icon"><i class="ti-tablet"></i></span>
-          <div class="media-body">
-            <h3><%=contact.getPhone()%></h3>
-            <p>Từ 8h - 17h, thứ 2 - thứ 6</p>
-          </div>
-        </div>
-        <div class="media contact-info">
-          <span class="contact-info__icon"><i class="ti-email"></i></span>
-          <div class="media-body">
-            <h3><%=contact.getEmail()%></h3>
-            <p>Gửi cho chúng tôi câu hỏi của bạn bất cứ lúc nào!</p>
+        </br>
+        </br>
+        <div data-v-7dd9989e="" class="help-scroll">
+          <div data-v-7dd9989e="" class="item-helper">
+            <div data-v-7dd9989e="" class="title mb-3">Hotline CSKH &amp; Khiếu nại dịch vụ</div>
+            <div data-v-7dd9989e="" class="d-flex align-items-center justify-content-between row">
+              <div data-v-7dd9989e="" class="d-flex align-items-center small-text channel-item col">
+                <div data-v-7dd9989e=""
+                     class="channel-item-icon d-flex align-items-center justify-content-center mr-2"><i
+                        data-v-7dd9989e="" class="fas fa-phone"></i></div>
+                <a data-v-7dd9989e="" href="tel:(024)71079799"
+                   class="text-muted text-decoration-none">
+                 +84 354033504
+                </a></div>
+              <div data-v-7dd9989e="" class="d-flex align-items-center small-text channel-item col">
+                <div data-v-7dd9989e=""
+                     class="channel-item-icon d-flex align-items-center justify-content-center mr-2"></div>
+               </div>
+            </div>
+            <div data-v-7dd9989e="" class="d-flex align-items-center justify-content-between mt-3 row">
+              <div data-v-7dd9989e="" class="d-flex align-items-center small-text channel-item col">
+                <div data-v-7dd9989e=""
+                     class="channel-item-icon d-flex align-items-center justify-content-center mr-2"><i
+                        data-v-7dd9989e="" class="fas fa-envelope"></i></div>
+                <a data-v-7dd9989e="" href="mailto:cskh@gmail.com" class="text-muted text-decoration-none">
+                20130348@st.hcmuaf.edu.vn
+                </a></div>
+              <div data-v-7dd9989e="" class="d-flex align-items-center small-text channel-item col">
+                <div data-v-7dd9989e=""
+                     class="channel-item-icon d-flex align-items-center justify-content-center mr-2"><i
+                        data-v-7dd9989e="" class="fas fa-comment"></i></div>
+                <a data-v-7dd9989e="" href="https://www.facebook.com/profile.php?id=100092272399230"
+                   class="text-muted text-decoration-none">
+                  Chat
+                </a></div>
+            </div>
           </div>
         </div>
       </div>
