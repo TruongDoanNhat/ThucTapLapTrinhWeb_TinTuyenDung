@@ -31,12 +31,13 @@ public class ResetPassword extends HttpServlet {
         String action = request.getParameter("action");
         switch (action) {
             case "forgotPassword":
-                DAOLog.getInstance().insert(Log.WARNING, getAccountResetPassword.getId(),
-                        "", "Bạn vừa quên mật khẩu?", 1);
+
                 if (getAccountResetPassword == null) {
                     request.setAttribute("message", "Email không tồn tại! Vui lòng nhập lại email!");
                     UtilControl.forward("visitor/quen-mat-khau.jsp", request, response);
                 } else {
+                    DAOLog.getInstance().insert(Log.WARNING, getAccountResetPassword.getId(),
+                            "", "Bạn vừa quên mật khẩu?", 1);
                     String name = getAccountResetPassword.getName();
                     String password = Util.randomPassword();
                     String subject = " Reset password ";
@@ -45,6 +46,7 @@ public class ResetPassword extends HttpServlet {
                     password = Util.encryptionPassword(password);
                     d.updatePassword(username, password);
                     response.sendRedirect(request.getContextPath() + "/Login?action=login");
+
 
                 }
                 break;
