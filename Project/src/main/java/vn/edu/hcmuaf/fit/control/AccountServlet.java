@@ -74,7 +74,7 @@ public class AccountServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");
                 break;
             case "search":
-                if (!keywords.matches("[\\w\\s]*")) {
+                if (!keywords.matches("[\\p{L}\\s]+")) {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
                             String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
                 }
