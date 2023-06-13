@@ -5,6 +5,8 @@
   Time: 7:37 CH
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCompany" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Company" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOCategory" %>
@@ -13,6 +15,9 @@
 <% DAOPost dp = new DAOPost();
     List<Category> category = DAOCategory.getInstance().getCategoryAll();
 %>
+<% DAOCompany daoCompany = new DAOCompany();
+List<Company> companyList = DAOCompany.getInstance().getCompany("");
+    Company company = (Company) request.getAttribute("company");%>;
 <html>
 <head>
     <meta charset="utf-8">
@@ -78,33 +83,10 @@
                              alt="Công ty Cổ Phần Đầu tư Giáo dục Và Phát triển Nguồn Lực Quốc Tế Pasal"
                              class="img-fluid"></div>
                     <div class="blog_details">
-                        <h2>Công ty cổ phần Giáo dục và Phát triển nguồn nhân lực quốc tế PASAL
+                        <h2><%=company.getName()%>
                         </h2>
                         <p class="excert">
-                            Công ty Cổ phần Đầu tư Giáo dục và Phát triển Nguồn lực Quốc tế PASAL được thành lập vào
-                            ngày 01/04/2015. Pasal là tổ chức đào tạo tiếng Anh duy nhất tại Việt Nam hợp tác ĐỘC QUYỀN
-                            với chuyên gia Paul Gruber (hệ thống Pronunciation Workshop) & TS A.J Hoge (hệ thống
-                            Effortless English) & chuyên gia Simon Corcoran (hệ thống IELTS).
-
-                            Tại Pasal, chúng tôi cam kết mang tới những giải pháp học uy tín và hiệu quả nhất thế giới -
-                            giúp bạn giao tiếp tiếng Anh trôi chảy từ 3-6 tháng Tổ chức giáo dục Pasal là nơi hội tụ của
-                            những người trẻ chứa đựng khát khao thay đổi tiếng Anh và tư duy của thế hệ trẻ Việt Nam để
-                            thành công trên con đường sự nghiệp đầy năng động và thách thức sau này. Họ đã tìm ra “Đam
-                            mê” đích thực của mình với sự nghiệp đào tạo tiếng Anh và sẻ chia giá trị cho các bạn Sinh
-                            viên Việt Nam với khát vọng to lớn về tương lai của đất nước và hình ảnh con người Việt Nam
-                            khắp bốn bể năm châu.
-
-                            Tầm nhìn Tổ chức giáo dục Pasal đặt ra mục tiêu sẽ trở thành tập đoàn giáo dục hàng đầu với
-                            sự hiện diện khắp Việt Nam và các nước Đông Nam Á Chúng tôi tin rằng với sức trẻ và sức bật
-                            mạnh mẽ của tuổi trẻ, các bạn có khả năng đưa đất nước của mình vươn xa hơn, cao hơn trên
-                            bản đồ thế giới. Để làm được điều đó, tiếng Anh là một trang bị không thể thiếu. Pasal xác
-                            định tầm nhìn như một đơn vị tiên phong mang đến trang bị tốt nhất, đồng thời truyền cảm
-                            hứng học tập và phát triển bản thân cho thế hệ nòng cốt trong tương lai.
-
-                            Sứ mệnh Sứ mệnh của Tổ chức Giáo dục Pasal đồng thời là tôn chỉ hành động xuyên suốt của
-                            chúng tôi chính là cung cấp các giải pháp giáo dục độc đáo, khác biệt và hiệu quả giúp giúp
-                            bạn tìm câu trả lời cho tất cả những câu hỏi nói trên và khơi nguồn đam mê tiếng Anh và tự
-                            tin giao tiếp trôi chảy sau 03-06 tháng học.
+                            <%=company.getDescription()%>
                         </p>
                     </div>
                 </div>

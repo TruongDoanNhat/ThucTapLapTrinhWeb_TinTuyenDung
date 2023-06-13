@@ -116,7 +116,7 @@
                             </div>
                             <div data-v-c4f347a8="" class="row" style="width: 60%">
                                 <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8="">Họ và tên</label>
+                                    <label data-v-c4f347a8="">Ngày tạo tài khoản</label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
                                             <input id="createdate" name="createdate"

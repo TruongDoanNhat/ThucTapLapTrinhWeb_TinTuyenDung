@@ -169,7 +169,7 @@
                                         </div>
                                     </div>
                                     <div class="items-link items-link2 f-right">
-                                        <a href="/Post_details?id=<%=p.getId()%>">
+                                        <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                             <%=p.getType()%>
                                         </a>
                                         <%if (daoPost.dateToCreate(p.getCreateDate()) > 0) { %>

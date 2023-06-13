@@ -59,7 +59,7 @@
     <!-- Hero Area Start-->
     <div class="slider-area ">
         <div class="single-slider section-overly slider-height2 d-flex align-items-center"
-             data-background="<%=request.getContextPath()%>/assets/img/hero/about.jpg">
+             data-background="<%=request.getContextPath()%>/assets/img/hero/about.jpg"style="background-image: url(<%=request.getContextPath()%>/assets/img/hero/about.jpg);">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -236,7 +236,7 @@
                                         </div>
                                     </div>
                                     <div class="items-link items-link2 f-right">
-                                        <a href="/Post_details?id=<%=p.getId()%>">
+                                        <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
                                             <%=p.getType()%>
                                         </a>
                                         <%if (dp.dateToCreate(p.getCreateDate()) > 0) { %>
