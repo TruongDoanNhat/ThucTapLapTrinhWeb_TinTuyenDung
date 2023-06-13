@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.*;
+import vn.edu.hcmuaf.fit.service.DAOCV;
 import vn.edu.hcmuaf.fit.service.DAOLog;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 import vn.edu.hcmuaf.fit.service.DAOPrice;
@@ -23,12 +24,12 @@ public class PostServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-
+        DAOCV cv = new DAOCV();
         DAOPost daoPost = new DAOPost();
         Account account = UtilSession.getInstance().getValue(request, "account");
         String url2 = UtilSession.getInstance().getUrlSession(request, "url2");
         List<Post> postAll;
-
+        int id = UtilSession.getInstance().getValue(request, "account").getId();
         String action = request.getParameter("action");
         String idManager = request.getParameter("id");
         String keywords = request.getParameter("keywords") == null ? "" : request.getParameter("keywords");
@@ -48,6 +49,9 @@ public class PostServlet extends HttpServlet {
             case "xemthongtinvieclam":
                 String id2 = request.getParameter("id");
                 int idPost = Integer.parseInt(id2);
+
+                List<CV> cvs3 = cv.getCV(id);
+                request.setAttribute("cvs", cvs3);
 
                 Post post2 = daoPost.getPostDetail(idPost);
                 Company company = daoPost.getCompanyFromPost(idPost);

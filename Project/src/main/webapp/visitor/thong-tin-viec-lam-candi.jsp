@@ -2,19 +2,16 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Company" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Account" %>
 <%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.CV" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 05/01/2023
-  Time: 2:59 CH
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% Post post2 = (Post) request.getAttribute("post2");%>
 <% Company company = (Company) request.getAttribute("company");%>
 <% Account account1 = (Account) request.getAttribute("account1");%>
+<% List<CV> cvs = (List<CV>) request.getAttribute("cvs");%>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -54,8 +51,6 @@
 <!-- Preloader Start -->
 <jsp:include page="header-candi.jsp"></jsp:include>
 <main>
-
-<%--        <c:forEach items="post2" var="post2">--%>
 
     <!-- Breadcrumb Start-->
 
@@ -154,7 +149,13 @@
                             <!-- Form content goes here -->
                             <form>
                                 <!-- Form fields -->
-                                <input type="file" name="fileToUpload">
+                                <% for (CV cv : cvs) { %>
+                                            <label class="checkbox inline">
+                                                <input type="radio" id="cv" name="cv">
+                                                <%=cv.getTitle()%>
+                                            </label>
+                            <br>
+                                <% } %>
                                 <div class="apply-btn2">
                                     <input class="btn" type="submit" value="Nộp CV">
                                 </div>
@@ -181,6 +182,7 @@
     <!-- job post company End -->
 </main>
 <jsp:include page="footter-candi.jsp"></jsp:include>
+
 <script>
     function toggleForm() {
         var hiddenForm = document.getElementById("hiddenForm");
@@ -192,9 +194,11 @@
         } else {
             hiddenForm.classList.add("active");
             applyButton.style.display = "none";
+            document.querySelector('input[name="cv"]:first-of-type').checked = true; // Chọn radio title đầu tiên
         }
     }
 </script>
+
 
 </body>
 <!-- JS here -->

@@ -74,43 +74,54 @@
                 </div>
             </div>
             <div data-v-c4f347a8="" class="bg-white w-100 rounded">
-                <!--               form -->
-                <div class="row" style="display: flex">
+                <div class="row" style="display: flex;">
                     <div class="col-md-7 mt-4">
                         <div class="card">
                             <div class="card-header pb-0 px-3">
-                                <h6 class="mb-0"> Quản lý CV </h6>
+                                <h6 class="mb-0" style="font-size: 30px;
+            color: #0b0b0b;">Quản lý CV</h6>
                             </div>
-                            <ul class="list-group">
+                            <ul class="list-group" style="list-style-type: none;
+            padding: 0;">
                                 <% for (CV cv : cvs) { %>
-                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg" style="box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 10px; margin-top: 5px;
-            margin-bottom: 5px;">
+                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg"
+                                    style="  background-color: #f8f9fa;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top:5px;
+            margin-bottom:5px;">
                                     <div class="d-flex flex-column">
                                         <a class="nav-link"
                                            href="<%=request.getContextPath()%>/candidate/CV?action=xemcv">
-                                            <h6 class="mb-3 text-sm"> <%=cv.getTitle()%>
+                                            <h6 class="mb-3 text-sm"><%=cv.getTitle()%>
                                             </h6>
                                         </a>
-                                        <span class="mb-2 text-xs">Vị trí: <span
-                                                class="text-dark ms-sm-2 font-weight-bold"><%=cv.getRank()%></span></span>
-                                        <span class="mb-2 text-xs">Địa chỉ: <span
-                                                class="text-dark ms-sm-2 font-weight-bold"><%=cv.getAddress()%></span></span>
-                                        <span class="mb-2 text-xs">Mức lương: <span
-                                                class="text-dark font-weight-bold ms-sm-2"><%=cv.getSalary()%></span></span>
-                                        <span class="text-xs"><b>Ngày tạo:</b> <span
-                                                class="text-dark font-weight-bold ms-sm-2"><%=cv.getCreateDate()%></span></span>
+                                        <span class="text-xs"><b>Ngày tạo:</b>
+                <span class="text-dark font-weight-bold ms-sm-2"><%=cv.getCreateDate()%></span>
+              </span>
                                     </div>
                                 </li>
                                 <% } %>
                             </ul>
-                            <!--                end form-->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <style>
+        .text-sm {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .text-xs {
+            font-size: 14px;
+            color: #888888;
+        }
+    </style>
 
 </main>
 <jsp:include page="../visitor/footter-candi.jsp"></jsp:include>
