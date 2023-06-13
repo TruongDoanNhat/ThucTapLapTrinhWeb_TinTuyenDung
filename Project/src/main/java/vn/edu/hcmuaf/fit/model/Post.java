@@ -14,7 +14,7 @@ public class Post implements Serializable {
     private int categoryId;
     private int accountId;
     private String title;
-    private String quanity;
+    private String quantity;
     private String salary;
     private String address;
     private String type;
@@ -32,14 +32,14 @@ public class Post implements Serializable {
 
     }
 
-    public Post(int id, int categoryId, int accountId, String title, String quanity, String salary,
+    public Post(int id, int categoryId, int accountId, String title, String quantity, String salary,
                 String address, String type, String rank, String gen, String description, String rights,
                 String request, int status, java.util.Date createDate, java.util.Date endDate, int billId) {
         this.id = id;
         this.categoryId = categoryId;
         this.accountId = accountId;
         this.title = title;
-        this.quanity = quanity;
+        this.quantity = quantity;
         this.salary = salary;
         this.address = address;
         this.type = type;
@@ -94,12 +94,12 @@ public class Post implements Serializable {
         this.title = title;
     }
 
-    public String getQuanity() {
-        return quanity;
+    public String getQuantity() {
+        return quantity;
     }
 
-    public void setQuanity(String quanity) {
-        this.quanity = quanity;
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
     public String getSalary() {
@@ -197,7 +197,7 @@ public class Post implements Serializable {
                 ", categoryId=" + categoryId +
                 ", accountId=" + accountId +
                 ", title='" + title + '\'' +
-                ", quanity='" + quanity + '\'' +
+                ", quantity='" + quantity + '\'' +
                 ", salary='" + salary + '\'' +
                 ", address='" + address + '\'' +
                 ", type='" + type + '\'' +

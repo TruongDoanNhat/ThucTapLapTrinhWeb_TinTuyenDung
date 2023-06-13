@@ -16,7 +16,7 @@
     <title>Admin | Quản Lý</title>
     <link type="text/css" href="<%=request.getContextPath()%>/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="<%=request.getContextPath()%>/admin/css/theme.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/admin/css/quan-ly-bai-dang.css">
+    <link type="text/css" href="<%=request.getContextPath()%>/admin/css/quan-ly-bai-dang.css" rel="stylesheet">
     <link type="text/css" href="<%=request.getContextPath()%>/admin/images/icons/css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
           rel='stylesheet'>
@@ -47,7 +47,8 @@
 
                             <select tabindex="1" data-placeholder="Vui lòng chọn.." name="status"
                                     style="right: -72px;top: 0px; width: 123px">
-                                <option selected="selected" value="0">Tất cả</option>
+                                <option selected="selected" value="0">Tất cả
+                                </option>
                                 <option value="1">Chưa duyệt</option>
                                 <option value="2">Đã duyệt</option>
                                 <option value="3">Khóa</option>
@@ -77,10 +78,7 @@
                                 </thead>
                                 <tbody>
                                 <% for (Post p : postAll) {
-                                    switch (p.getStatus()) {
-                                        case 1:
                                 %>
-                                <%--                 chưa duyệt--%>
                                 <tr>
                                     <td><%=p.getId()%>
                                     </td>
@@ -94,6 +92,11 @@
                                     </td>
                                     <td><%=p.getAddress()%>
                                     </td>
+                                    <%--                 chưa duyệt--%>
+                                    <%
+                                        switch (p.getStatus()) {
+                                            case 1:
+                                    %>
                                     <td class="col-yel">Chưa duyệt</td>
                                     <td>
                                         <div class="btn-group ml-auto">
@@ -111,25 +114,11 @@
                                             </a>
                                         </div>
                                     </td>
-                                </tr>
-                                <%--                 đã duyệt--%>
-                                <%
-                                        break;
-                                    case 2:
-                                %>
-                                <tr>
-                                    <td><%=p.getId()%>
-                                    </td>
-                                    <td><%=p.getTitle()%>
-                                    </td>
-                                    <td><%=p.getRank()%>
-                                    </td>
-                                    <td><%=p.getCreateDate()%>
-                                    </td>
-                                    <td><%=p.getEndDate()%>
-                                    </td>
-                                    <td><%=p.getAddress()%>
-                                    </td>
+                                    <%--                 đã duyệt--%>
+                                    <%
+                                            break;
+                                        case 2:
+                                    %>
                                     <td style="color: #1a9307">Đã duyệt</td>
                                     <td>
                                         <div class="btn-group ml-auto">
@@ -145,25 +134,11 @@
                                             <%--                                            </button>--%>
                                         </div>
                                     </td>
-                                </tr>
-                                <%
-                                        break;
-                                    case 3:
-                                %>
-                                <%--                  khóa --%>
-                                <tr>
-                                    <td><%=p.getId()%>
-                                    </td>
-                                    <td><%=p.getTitle()%>
-                                    </td>
-                                    <td><%=p.getRank()%>
-                                    </td>
-                                    <td><%=p.getCreateDate()%>
-                                    </td>
-                                    <td><%=p.getEndDate()%>
-                                    </td>
-                                    <td><%=p.getAddress()%>
-                                    </td>
+                                    <%
+                                            break;
+                                        case 3:
+                                    %>
+                                    <%--                  khóa --%>
                                     <td class="col-grey">Khóa</td>
                                     <td>
                                         <div class="btn-group ml-auto">
@@ -181,25 +156,12 @@
                                             </a>
                                         </div>
                                     </td>
-                                </tr>
-                                <%
-                                        break;
-                                    case 4:
-                                %>
-                                <%--               hết hạn --%>
-                                <tr>
-                                    <td><%=p.getId()%>
-                                    </td>
-                                    <td><%=p.getTitle()%>
-                                    </td>
-                                    <td><%=p.getRank()%>
-                                    </td>
-                                    <td><%=p.getCreateDate()%>
-                                    </td>
-                                    <td><%=p.getEndDate()%>
-                                    </td>
-                                    <td><%=p.getAddress()%>
-                                    </td>
+
+                                    <%
+                                            break;
+                                        case 4:
+                                    %>
+                                    <%--               hết hạn --%>
                                     <td class="col-red">Hết hạn</td>
                                     <td>
                                         <div class="btn-group ml-auto">
@@ -211,33 +173,41 @@
                                             </a>
                                         </div>
                                     </td>
+
+                                    <%
+                                            }
+                                        }%>
                                 </tr>
-                                <%
-                                        }
-                                    }%>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                <%
-                    int t = (int) request.getAttribute("trang");
-                    int sobd = (int) request.getAttribute("sobd");
-                %>
 
+                <!-- Hiển thị nút phân trang -->
                 <div style="margin: 0 auto; text-align: center;">
-                    <!-- Hiển thị nút phân trang -->
-                    <% for (int pageNumber = t - 2; pageNumber <= t + 2; pageNumber++) { // Lặp qua 5 trang gần trang hiện tại (2 trang trước và 2 trang sau)
-                    %>
-                    <% if (pageNumber >= 1 && pageNumber <= sobd) { // Kiểm tra xem trang có nằm trong phạm vi từ 1 đến tổng số trang hay không
-                    %>
-                    <% if (pageNumber == t) { // Kiểm tra xem đây có phải là trang hiện tại hay không
+                    <%
+                        if (request.getAttribute("trang") != null || request.getAttribute("sobd") != null) {
+                            int sobd = (int) request.getAttribute("sobd");
+                            int t = (int) request.getAttribute("trang");
+                            for (int pageNumber = t - 2; pageNumber <= t + 2; pageNumber++) { // Lặp qua 5 trang gần trang hiện tại (2 trang trước và 2 trang sau)
+                                if (pageNumber >= 1 && pageNumber <= sobd) { // Kiểm tra xem trang có nằm trong phạm vi từ 1 đến tổng số trang hay không
+                                    if (pageNumber == t) { // Kiểm tra xem đây có phải là trang hiện tại hay không
                     %>
                     <span class="current-page"><%= pageNumber %></span> <!-- Hiển thị số trang hiện tại -->
                     <% } else { // Nếu không phải là trang hiện tại
+                        if (request.getAttribute("status") == null) {
                     %>
                     <!-- Tạo liên kết đến trang khác -->
-                    <a href="PostManager?action=quanlybaidang&trang=<%= pageNumber %>" class="btn btn-link"><%= pageNumber %></a>
+                    <a href="PostManager?action=quanlybaidang&trang=<%= pageNumber %>"
+                       class="btn btn-link"><%= pageNumber %>
+                    </a>
+                    <% } else {%>
+                    <a href="PostManager?action=search&trang=<%= pageNumber %>&status=<%=request.getAttribute("status")%>"
+                       class="btn btn-link"><%= pageNumber %>
+                    </a>
+                    <% } %>
+                    <% } %>
                     <% } %>
                     <% } %>
                     <% } %>
@@ -255,6 +225,7 @@
 <!--/.content-->
 </body>
 <script src="<%=request.getContextPath()%>/admin/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/admin/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/scripts/jquery-ui-1.10.1.custom.min.js"
+        type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/admin/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 </html>

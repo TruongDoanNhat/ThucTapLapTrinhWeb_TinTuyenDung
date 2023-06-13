@@ -20,6 +20,7 @@ public class CVServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         DAOCV cv = new DAOCV();
         String action = request.getParameter("action");
+        int id = UtilSession.getInstance().getValue(request, "account").getId();
 
         switch (action) {
             case "taocv" :
@@ -32,17 +33,21 @@ public class CVServlet extends HttpServlet {
                 String address = request.getParameter("address");
                 String salary = request.getParameter("salary");
                 String skill = request.getParameter("skill");
-                String interest = request.getParameter("interest");
+                String introduce = request.getParameter("introduce");
                 String exp = request.getParameter("exp");
                 String lv = request.getParameter("lv");
-                cv.insertCV(title, name, rank, email, phone, gen, address, salary, skill, interest,exp,lv);
+                cv.insertCV(title, name, rank, email, phone, gen, address, salary, skill, introduce, exp, lv);
                 response.sendRedirect(request.getContextPath() + "/candidate/CV?action=quanlycv");
                 break;
             case "quanlycv" :
-                int id = UtilSession.getInstance().getValue(request, "account").getId();
                 List<CV> cvs = cv.getCV(id);
                 request.setAttribute("cvList", cvs);
                 UtilControl.forward("candi-quan-ly-cv.jsp", request, response);
+                break;
+            case "xemcv" :
+                CV cvs2 = cv.getDetailCV(id);
+                request.setAttribute("cv", cvs2);
+                UtilControl.forward("candi-thong-tin-cv.jsp", request, response);
                 break;
         }
     }

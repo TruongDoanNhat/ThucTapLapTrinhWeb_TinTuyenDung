@@ -12,9 +12,11 @@ body {
     background: #fff;
     color: #777
 }
-.bg{
+
+.bg {
     background: white;
 }
+
 h1, h2, h3, h4, h5, h6 {
     color: #333;
     margin-top: 0
@@ -2207,8 +2209,5 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 .td.cell-title {
     margin-top: 10px;
-
 }
-
-
 

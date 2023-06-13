@@ -1,9 +1,7 @@
 package vn.edu.hcmuaf.fit.model;
 
-import org.jdbi.v3.core.Jdbi;
-
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +11,7 @@ public class Log implements Serializable {
     private int userId;
     private String src;
     private String content;
-    private Date createDate;
+    private LocalDateTime createDate;
     private int status;
     static Map<Integer, String> levelMapping = new HashMap<>();
 
@@ -32,7 +30,7 @@ public class Log implements Serializable {
     public Log() {
     }
 
-    public Log(int level, int userId, String src, String content, Date createDate, int status) {
+    public Log(int level, int userId, String src, String content, LocalDateTime createDate, int status) {
         this.level = level;
         this.userId = userId;
         this.src = src;
@@ -106,11 +104,11 @@ public class Log implements Serializable {
         this.content = content;
     }
 
-    public Date getCreateDate() {
+    public LocalDateTime getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
 

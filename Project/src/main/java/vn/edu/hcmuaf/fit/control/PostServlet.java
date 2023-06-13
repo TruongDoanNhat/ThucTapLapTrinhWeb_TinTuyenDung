@@ -31,7 +31,7 @@ public class PostServlet extends HttpServlet {
 
         String action = request.getParameter("action");
         String idManager = request.getParameter("id");
-        String keywords = request.getParameter("keywords");
+        String keywords = request.getParameter("keywords") == null ? "" : request.getParameter("keywords");
         String status = request.getParameter("status") == null ? "0" : request.getParameter("status");
         String categoryId = request.getParameter("categoryId") == null ? "0" : request.getParameter("categoryId");
         String trang = request.getParameter("trang");
@@ -44,6 +44,52 @@ public class PostServlet extends HttpServlet {
         int t = Integer.parseInt(trang);
 
         switch (action) {
+            // ------------------------ RESOLVE CANDIDATE ------------------------
+            case "xemthongtinvieclam":
+                String id2 = request.getParameter("id");
+                int idPost = Integer.parseInt(id2);
+
+                Post post2 = daoPost.getPostDetail(idPost);
+                Company company = daoPost.getCompanyFromPost(idPost);
+                Account account1 = daoPost.getAccountFromPost(idPost);
+
+                request.setAttribute("post2", post2);
+                request.setAttribute("company", company);
+                request.setAttribute("account1", account1);
+
+                UtilControl.forward("/visitor/thong-tin-viec-lam-candi.jsp", request, response);
+                break;
+            case "danhsanhvieclam":
+                tongBaiViet = daoPost.getPostAllApproveSize();
+                soBaiViet = tongBaiViet / 3;
+                if (tongBaiViet % 3 != 0) {
+                    soBaiViet++;
+                }
+                List<Post> postAll1 = daoPost.getPostAllApprove(t);//lay danh sách việc làm
+                request.setAttribute("postAll", postAll1);// gáng danh sách việc làm
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
+                break;
+            case "category":
+                request.setAttribute("postAll", daoPost.getPostofCategoryByID(Integer.valueOf(idManager)));
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
+                break;
+            case "vieclamdaungtuyen":
+                if (account != null) {
+                    List<Post> postApplied1 = daoPost.getPostApplied(account.getEmail());
+                    request.setAttribute("jobApplied", postApplied1);
+                }
+                UtilControl.phanQuyenServletCandi1(account, "candi-viec-lam-da-ung-tuyen.jsp", "/Login?action=login", request, response);
+                break;
+            case "timkiem":
+                if(categoryId.equals("0")) {
+                    postAll = daoPost.getPostSearch(keywords, t);
+                } else {
+                    postAll = daoPost.getPostSearchCategory(keywords, categoryId);
+                }
+                request.setAttribute("postAll", postAll);
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
+                break;
+            // ------------------------ RESOLVE BUSINESS ------------------------
             case "dangtin":
                 String title = request.getParameter("title");
                 String rank = request.getParameter("rank");
@@ -103,30 +149,34 @@ public class PostServlet extends HttpServlet {
 
                 UtilControl.forward("busi-tin-tuyen-dung.jsp", request, response);
                 break;
-            case "xemthongtinvieclam":
-                String id2 = request.getParameter("id");
-                int idPost = Integer.parseInt(id2);
-
-                Post post2 = daoPost.getPostDetail(idPost);
-                Company company = daoPost.getCompanyFromPost(idPost);
-                Account account1 = daoPost.getAccountFromPost(idPost);
-
-                request.setAttribute("post2", post2);
-                request.setAttribute("company", company);
-                request.setAttribute("account1", account1);
-
-                UtilControl.forward("/visitor/thong-tin-viec-lam-candi.jsp", request, response);
+//                            ------------------------ RESOLVE ADMIN ------------------------
+            case "quanlybaidang":
+                tongBaiViet = daoPost.getTotalPostPaid();
+                soBaiViet = tongBaiViet / 5;
+                if (tongBaiViet % 5 != 0) {
+                    soBaiViet++;
+                }
+                postAll = daoPost.getPostAll(t);
+                request.setAttribute("postAll", postAll);
+                request.setAttribute("sobd", soBaiViet);
+                request.setAttribute("trang", t);
+                UtilControl.forward("Admin-quan-li-bai-dang.jsp", request, response);
                 break;
             case "search":
-                if (!keywords.matches("\b")) {
+                if (!keywords.matches("[\\w\\s]*")) {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
                             String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
                 }
-
-                postAll = status.equals("0") ? daoPost.getPostSearch(keywords) : daoPost.getPostSearch(keywords, status);
-
-                request.setAttribute("postAll", postAll);
-
+                tongBaiViet = status.equals("0") ? daoPost.getPostSearch(keywords) : daoPost.getPostSearchStatus(keywords, status);
+                soBaiViet = tongBaiViet / 5;
+                if (tongBaiViet % 5 != 0) {
+                    soBaiViet++;
+                }
+                List<Post> postAllSearch = status.equals("0") ? daoPost.getPostSearch(keywords, t) : daoPost.getPostSearchStatus(keywords, status, t);
+                request.setAttribute("postAll", postAllSearch);
+                request.setAttribute("sobd", soBaiViet);
+                request.setAttribute("trang", t);
+                request.setAttribute("status", status);
                 UtilControl.forward("Admin-quan-li-bai-dang.jsp", request, response);
                 break;
             case "approve":
@@ -135,16 +185,6 @@ public class PostServlet extends HttpServlet {
 
                 daoPost.updatePost(Integer.valueOf(idManager), Post.status_approve);
 
-                response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
-                break;
-            case "remove":
-                Post postRemove = daoPost.getPostDetail(Integer.valueOf(idManager));
-                DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
-                        String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " không duyệt bài viết có id: " + idManager, 0);
-                DAOLog.getInstance().insert(Log.INFO, postRemove.getAccountId(),
-                        "", "Bài viết không được duyệt (nội dung không hợp lệ): " + postRemove.getTitle() + ". Mọi thắc mắc vui lòng liên hệ chúng tôi qua email", 1);
-                daoPost.updatePost(Integer.valueOf(idManager), Post.status_approve);
-                daoPost.updatePost(Integer.valueOf(idManager), Post.status_unpaid);
                 response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
                 break;
             case "lock":
@@ -156,56 +196,21 @@ public class PostServlet extends HttpServlet {
                 daoPost.updatePost(Integer.valueOf(idManager), Post.status_lock);
                 response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
                 break;
+            case "remove":
+                Post postRemove = daoPost.getPostDetail(Integer.valueOf(idManager));
+                DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
+                        String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " không duyệt bài viết có id: " + idManager, 0);
+                DAOLog.getInstance().insert(Log.INFO, postRemove.getAccountId(),
+                        "", "Bài viết không được duyệt (nội dung không hợp lệ): " + postRemove.getTitle() + ". Mọi thắc mắc vui lòng liên hệ chúng tôi qua email", 1);
+                daoPost.updatePost(Integer.valueOf(idManager), Post.status_unpaid);
+                response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
+                break;
             case "delete":
-                Post postDelete = daoPost.getPostDetail(Integer.valueOf(idManager));
                 DAOLog.getInstance().insert(Log.DANGER, account != null ? account.getId() : -1,
                         String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " xóa bài viết có id: " + idManager, 0);
                 daoPost.deletePost(idManager);
                 response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
                 break;
-            case "danhsanhvieclam":
-                tongBaiViet = daoPost.getPostAllApproveSize();
-                soBaiViet = tongBaiViet / 3;
-                if (tongBaiViet % 3 != 0) {
-                    soBaiViet++;
-                }
-                List<Post> postAll1 = daoPost.getPostAllApprove(t);//lay danh sách việc làm
-                request.setAttribute("postAll", postAll1);// gáng danh sách việc làm
-                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
-                break;
-            case "quanlybaidang":
-                int dem2 = daoPost.getTotalPostPaid();
-                int sobd = dem2 / 5;
-                if (dem2 % 5 != 0) {
-                    sobd++;
-                }
-                List<Post> post3 = daoPost.getPostAll(t);
-                request.setAttribute("postAll", post3);
-                request.setAttribute("sobd", sobd);
-                request.setAttribute("trang", t);
-                UtilControl.forward("Admin-quan-li-bai-dang.jsp", request, response);
-                break;
-            case "category":
-                request.setAttribute("postAll", daoPost.getPostofCategoryByID(Integer.valueOf(idManager)));
-                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
-                break;
-            case "vieclamdaungtuyen":
-                if (account != null) {
-                    List<Post> postApplied1 = daoPost.getPostApplied(account.getEmail());
-                    request.setAttribute("jobApplied", postApplied1);
-                }
-                UtilControl.phanQuyenServletCandi1(account, "candi-viec-lam-da-ung-tuyen.jsp", "/Login?action=login", request, response);
-                break;
-            case "timkiem":
-                if(categoryId.equals("0")) {
-                    postAll = daoPost.getPostSearch(keywords);
-                } else {
-                    postAll = daoPost.getPostSearchCategory(keywords, categoryId);
-                }
-                request.setAttribute("postAll", postAll);
-                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp",request,response);
-                break;
-
         }
     }
 

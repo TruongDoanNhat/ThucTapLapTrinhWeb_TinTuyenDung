@@ -208,17 +208,17 @@
                     <div data-v-7dd9989e="" class="flex-m mb-3">
                         <div data-v-2a31697a="" data-v-7dd9989e="" class="mr-2 avatar"
                              style="width: 32px; height: 32px; flex: 0 0 32px; "></div>
-                        <div data-v-7dd9989e="" class="helper-name">Lê Thành Nghĩa</div>
+                        <div data-v-7dd9989e="" class="helper-name">TopViecLam</div>
                     </div>
                     <div data-v-7dd9989e="" class="flex-sb contact">
                         <div data-v-7dd9989e="" class="flex-m contact-item"><i data-v-7dd9989e=""
                                                                                class="fas fa-phone circle contact-icon flex-cm mr-2"></i>
-                            <a data-v-7dd9989e="" href="tel:0964967743" class="text-decoration-none">
+                            <a data-v-7dd9989e="" href="tel:068686888" class="text-decoration-none">
                                 0964967743
                             </a></div>
                         <div data-v-7dd9989e="" class="flex-m contact-item contact-email"><i data-v-7dd9989e=""
                                                                                              class="fas fa-envelope circle contact-icon1 flex-cm mr-2"></i>
-                            <a data-v-7dd9989e="" title="lethanhnghia0938@gmail.com" href="mailto:lethanhnghia0938@gmail.com"
+                            <a data-v-7dd9989e="" title="topvieclam@gmail.com" href="mailto:lethanhnghia0938@gmail.com"
                                class="text-decoration-none">
                                 lethanhnghia0938@gmail.com
                             </a></div>

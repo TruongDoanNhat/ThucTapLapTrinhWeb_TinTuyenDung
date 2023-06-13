@@ -5,7 +5,6 @@ import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Account;
 
 import java.sql.Date;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,6 @@ public class DAOAccount {
     private String message = "error!";
     private static Account account = null;
     private Date updateDate = Date.valueOf(LocalDate.now());
-
 
 
     ;
@@ -82,6 +80,7 @@ public class DAOAccount {
                 .mapToBean(Account.class).list());
         return listAccount.size() > 0 ? true : false;
     }
+
     public Account getAccountResetPassword(String username, String email) {
         Account a;
         String query = "select * from account where username = ? and email = ?";
@@ -112,6 +111,7 @@ public class DAOAccount {
         }
         return null;
     }
+
     // tạo tài khoản cho candidate
     public boolean registerCandi(String email, String username, String password, String name, int type, int role, int status, Date createDate) {
         String queryAccount = "INSERT INTO account (companyID,email,username,password,name,type,role,status,createDate,updateDate) VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -253,6 +253,7 @@ public class DAOAccount {
                     .stream().collect(Collectors.toList());
         });
     }
+
     public int getTotalAccount() {
         String query = "SELECT COUNT(*) FROM account";
         return JDBIConnector.get().withHandle(handle -> {
@@ -293,29 +294,48 @@ public class DAOAccount {
         }
     }
 
-    public List<Account> getAccountSearch(String keywords) {
+    public int getAccountSearchSize(String keywords) {
         String query = "select * from account where name LIKE ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
                     .bind(0, "%" + keywords + "%")
                     .mapToBean(Account.class)
-                    .stream().collect(Collectors.toList());
+                    .stream().collect(Collectors.toList()).size();
         });
     }
 
-    public List<Account> getAccountSearch(String keywords, String role) {
+    public int getAccountSearchSize(String keywords, String role) {
         String query = "select * from account where name LIKE ? and role = ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
                     .bind(0, "%" + keywords + "%")
                     .bind(1, role)
                     .mapToBean(Account.class)
-                    .stream().collect(Collectors.toList());
+                    .stream().collect(Collectors.toList()).size();
         });
     }
 
-
-
+    public List<Account> getAccountSearch(String keywords, int trang) {
+        String query = "select * from account where name LIKE ?  LIMIT 5 OFFSET ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, "%" + keywords + "%")
+                    .bind(1, (trang - 1) * 5)
+                    .mapToBean(Account.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
+    public List<Account> getAccountSearch(String keywords, String role, int trang) {
+        String query = "select * from account where name LIKE ? and role = ?  LIMIT 5 OFFSET ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, "%" + keywords + "%")
+                    .bind(1, role)
+                    .bind(2, (trang - 1) * 5)
+                    .mapToBean(Account.class)
+                    .stream().collect(Collectors.toList());
+        });
+    }
 
 
     public static void main(String[] args) {
