@@ -33,7 +33,7 @@
                                         <li><a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp">Trang chủ</a></li>
                                         <li><a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam">Việc làm </a>
                                         </li>
-                                        <li><a href="<%=request.getContextPath()%>/candidate/Post?action=vieclamdaungtuyen">Đã ứng tuyển</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/candidate/Post_details?action=vieclamdaungtuyen">Đã ứng tuyển</a></li>
                                         <li><a href="<%=request.getContextPath()%>/visitor/danh-sach-cong-ty-candi.jsp">Công ty</a>
                                         </li>
                                         <li><a>Trang</a>

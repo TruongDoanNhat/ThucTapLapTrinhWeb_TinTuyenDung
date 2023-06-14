@@ -76,13 +76,6 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("postAll", daoPost.getPostofCategoryByID(Integer.valueOf(idManager)));
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
-            case "vieclamdaungtuyen":
-                if (account != null) {
-                    List<Post> postApplied1 = daoPost.getPostApplied(account.getEmail());
-                    request.setAttribute("jobApplied", postApplied1);
-                }
-                UtilControl.phanQuyenServletCandi1(account, "candi-viec-lam-da-ung-tuyen.jsp", "/Login?action=login", request, response);
-                break;
             case "timkiem":
                 if (!keywords.matches("[\\p{L}\\s]+")) {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
