@@ -156,6 +156,7 @@ public class PostServlet extends HttpServlet {
                 if (tongBaiViet % 5 != 0) {
                     soBaiViet++;
                 }
+                daoPost.updatePostEndDate();
                 postAll = daoPost.getPostAll(t);
                 request.setAttribute("postAll", postAll);
                 request.setAttribute("sobd", soBaiViet);
