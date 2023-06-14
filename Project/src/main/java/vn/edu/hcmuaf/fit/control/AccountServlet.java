@@ -55,6 +55,7 @@ public class AccountServlet extends HttpServlet {
                 request.setAttribute("listAccount", listAccount);
                 UtilControl.forward("Admin-quan-li-nguoi-dung.jsp", request, response);
                 break;
+
             case "lock":
                 if (!(DAOAccount.getAccountQuery(username).getType() == 2)) {
                     d.updateStatusAccount(username, Account.LOCK);
@@ -90,6 +91,7 @@ public class AccountServlet extends HttpServlet {
                 request.setAttribute("role", role);
                 UtilControl.forward("Admin-quan-li-nguoi-dung.jsp", request, response);
                 break;
+
         }
     }
 
