@@ -254,6 +254,34 @@
                 </div>
             </div>
         </div>
+        <!-- Phân trang -->
+<%--        <div style="margin: 0 auto; text-align: center;">--%>
+<%--            <%--%>
+<%--                if (request.getAttribute("trang") != null || request.getAttribute("sobd") != null) {--%>
+<%--                    int sobd = (int) request.getAttribute("sobd");--%>
+<%--                    int t = (int) request.getAttribute("trang");--%>
+<%--                    for (int pageNumber = t - 2; pageNumber <= t + 2; pageNumber++) { // Lặp qua 5 trang gần trang hiện tại (2 trang trước và 2 trang sau)--%>
+<%--                        if (pageNumber >= 1 && pageNumber <= sobd) { // Kiểm tra xem trang có nằm trong phạm vi từ 1 đến tổng số trang hay không--%>
+<%--                            if (pageNumber == t) { // Kiểm tra xem đây có phải là trang hiện tại hay không--%>
+<%--            %>--%>
+<%--            <span class="page-item active"><%= pageNumber %></span> <!-- Hiển thị số trang hiện tại -->--%>
+<%--            <% } else { // Nếu không phải là trang hiện tại--%>
+<%--                if (request.getAttribute("categoryId") == null) {--%>
+<%--            %>--%>
+<%--            <!-- Tạo liên kết đến trang khác -->--%>
+<%--            <a href="Post?action=danhsanhvieclam&trang=<%= pageNumber %>"--%>
+<%--               class="page-link"><%= pageNumber %>--%>
+<%--            </a>--%>
+<%--            <% } else {%>--%>
+<%--            <a href="Post?action=search&trang=<%= pageNumber %>&categoryId=<%=request.getAttribute("categoryId")%>"--%>
+<%--               class="page-link"><%= pageNumber %>--%>
+<%--            </a>--%>
+<%--            <% } %>--%>
+<%--            <% } %>--%>
+<%--            <% } %>--%>
+<%--            <% } %>--%>
+<%--            <% } %>--%>
+<%--        </div>--%>
     </div>
     <!-- Job List Area End -->
     <!--Pagination Start -->
@@ -264,11 +292,27 @@
                     <div class="single-wrap d-flex justify-content-center">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a>
-                                </li>
+                                <%
+                                    if (request.getAttribute("trang") != null || request.getAttribute("sobd") != null) {
+                                        int sobd = (int) request.getAttribute("sobd");
+                                        int t = (int) request.getAttribute("trang");
+                                        for (int pageNumber = t - 2; pageNumber <= t + 2; pageNumber++) { // Lặp qua 5 trang gần trang hiện tại (2 trang trước và 2 trang sau)
+                                            if (pageNumber >= 1 && pageNumber <= sobd) { // Kiểm tra xem trang có nằm trong phạm vi từ 1 đến tổng số trang hay không
+                                                if (pageNumber == t) { // Kiểm tra xem đây có phải là trang hiện tại hay không
+                                %>
+                                <li class="page-item active"><a class="page-link" href=""><%= pageNumber %></a></li>
+                                <% } else { // Nếu không phải là trang hiện tại
+                                    if (request.getAttribute("categoryId") == null) {
+                                %>
+                                <li class="page-item"><a class="page-link" href="Post?action=danhsanhvieclam&trang=<%= pageNumber %>"><%= pageNumber %></a></li>
+                                <% } else {%>
+                                <li class="page-item"><a class="page-link"href="Post?action=timkiem&trang=<%= pageNumber %>&categoryId=<%=request.getAttribute("categoryId")%>"><%= pageNumber %></a></li>
+                                <% } %>
+                                <% } %>
+                                <% } %>
+                                <% } %>
+                                <% } %>
+                               <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a></li>
                             </ul>
                         </nav>
                     </div>

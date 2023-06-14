@@ -29,7 +29,6 @@ public class PostServlet extends HttpServlet {
         Account account = UtilSession.getInstance().getValue(request, "account");
         String url2 = UtilSession.getInstance().getUrlSession(request, "url2");
         List<Post> postAll;
-        int id = UtilSession.getInstance().getValue(request, "account").getId();
         String action = request.getParameter("action");
         String idManager = request.getParameter("id");
         String keywords = request.getParameter("keywords") == null ? "" : request.getParameter("keywords");
@@ -49,7 +48,7 @@ public class PostServlet extends HttpServlet {
             case "xemthongtinvieclam":
                 String id2 = request.getParameter("id");
                 int idPost = Integer.parseInt(id2);
-
+        int id = UtilSession.getInstance().getValue(request, "account").getId();
                 List<CV> cvs3 = cv.getCV(id);
                 request.setAttribute("cvs", cvs3);
 
@@ -65,8 +64,8 @@ public class PostServlet extends HttpServlet {
                 break;
             case "danhsanhvieclam":
                 tongBaiViet = daoPost.getPostAllApproveSize();
-                soBaiViet = tongBaiViet / 3;
-                if (tongBaiViet % 3 != 0) {
+                soBaiViet = tongBaiViet / 5;
+                if (tongBaiViet % 5 != 0) {
                     soBaiViet++;
                 }
                 List<Post> postAll1 = daoPost.getPostAllApprove(t);//lay danh sách việc làm
@@ -85,12 +84,20 @@ public class PostServlet extends HttpServlet {
                 UtilControl.phanQuyenServletCandi1(account, "candi-viec-lam-da-ung-tuyen.jsp", "/Login?action=login", request, response);
                 break;
             case "timkiem":
-                if (categoryId.equals("0")) {
-                    postAll = daoPost.getPostSearch(keywords, t);
-                } else {
-                    postAll = daoPost.getPostSearchCategory(keywords, categoryId);
+                if (!keywords.matches("[\\p{L}\\s]+")) {
+                    DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
+                            String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
                 }
-                request.setAttribute("postAll", postAll);
+                tongBaiViet = categoryId.equals("0") ? daoPost.getPostSearchApprove(keywords,"2") : daoPost.getPostSearchCategory(keywords, categoryId,"2");
+                soBaiViet = tongBaiViet / 5;
+                if (tongBaiViet % 5 != 0) {
+                    soBaiViet++;
+                }
+                List<Post> postSearch = categoryId.equals("0") ? daoPost.getPostSearchApprove(keywords,"2",t) : daoPost.getPostSearchCategory(keywords, categoryId,"2",t);
+                request.setAttribute("sobd", soBaiViet);
+                request.setAttribute("trang", t);
+                request.setAttribute("categoryId", categoryId);
+                request.setAttribute("postAll", postSearch);
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
             // ------------------------ RESOLVE BUSINESS ------------------------

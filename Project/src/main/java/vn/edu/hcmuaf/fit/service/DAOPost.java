@@ -91,10 +91,28 @@ public class DAOPost {
             return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, status).mapToBean(Post.class).stream().collect(Collectors.toList()).size();
         });
     }
-    public List<Post> getPostSearchCategory(String keywords, String categoryId) {
-        String query = "select * from post where title LIKE ? and categoryId = ?";
+    public int getPostSearchCategory(String keywords, String categoryId,String status) {
+        String query = "select * from post where title LIKE ? and categoryId = ? and status = 2";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, categoryId).mapToBean(Post.class).stream().collect(Collectors.toList());
+            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, categoryId).mapToBean(Post.class).stream().collect(Collectors.toList()).size();
+        });
+    }
+    public List<Post> getPostSearchCategory(String keywords, String categoryId,String status , int trang) {
+        String query = "select * from post where title LIKE ? and categoryId = ? and status = 2 LIMIT 5 OFFSET ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, categoryId).bind(2, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
+        });
+    }
+    public  int getPostSearchApprove(String keywords, String status) {
+        String query = "select * from post where title LIKE ? and status = 2";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, "%" + keywords + "%").mapToBean(Post.class).stream().collect(Collectors.toList()).size();
+        });
+    }
+    public  List<Post> getPostSearchApprove(String keywords, String status, int trang) {
+        String query = "select * from post where title LIKE ? and status = 2 LIMIT 5 OFFSET ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(2, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
     }
 
@@ -118,6 +136,7 @@ public class DAOPost {
             return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
     }
+
 
     // xoa post
     public void deletePost(String idPost) {
@@ -169,7 +188,7 @@ public class DAOPost {
         });
     }
     public int getPostAllApproveSize() {
-        String query = "SELECT * FROM post WHERE status = ?";
+        String query = "SELECT * FROM post WHERE status = ? ";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, Post.status_approve)
                     .mapToBean(Post.class).stream().collect(Collectors.toList()).size();
@@ -183,7 +202,7 @@ public class DAOPost {
     }
 
     public List<Post> getPostApprove() {
-        String query = "select * from post where status = ?";
+        String query = "select * from post where status = ? LIMIT 5";
         List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, Post.status_approve).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
