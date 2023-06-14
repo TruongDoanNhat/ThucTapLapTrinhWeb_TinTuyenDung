@@ -13,9 +13,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    Date date = new Date();
     DAOPost daoPost = new DAOPost();
-
 %>
 <html>
 <head>
@@ -70,6 +68,7 @@
                         </div>
                         <%
                             List<Post> postApplied  = (List<Post>) request.getAttribute("jobApplied");
+                            List<PostApplied> postapplied2 = (List<PostApplied>) request.getAttribute("postapplied2");
                             for (Post p :postApplied) {
                         %>
 
@@ -87,10 +86,7 @@
                                         </h4>
                                     </a>
                                     <ul>
-                                        <%--                    <li> ${dp.getAddressByCompanyID()}--%>
-                                        <%--     </li>--%>
                                         <li>
-                                            <%--         <i class="fas fa-map-marker-alt"></i>--%>
                                         </li>
                                         <li><%=p.getSalary()%> VNĐ</li>
                                     </ul>
@@ -159,10 +155,7 @@
                                                 </h4>
                                             </a>
                                             <ul>
-                                                <%--                    <li> ${dp.getAddressByCompanyID()}--%>
-                                                <%--     </li>--%>
                                                 <li>
-                                                    <%--         <i class="fas fa-map-marker-alt"></i>--%>
                                                 </li>
                                                 <li><%=p.getSalary()%> VNĐ</li>
                                             </ul>
@@ -185,11 +178,6 @@
                                 <%--                                chỉnh cài đặt gợi ý việc làm</a>.</p>--%>
                             </div>
                             <div class="box-group-body">
-
-
-                                <%--                            <% } %>--%>
-
-
                             </div>
                             <div class="text-center">
                                 <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" target="_blank" class="btn btn-suggestion-more btn-primary-hover">

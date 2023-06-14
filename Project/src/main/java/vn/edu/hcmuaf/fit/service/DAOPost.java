@@ -324,7 +324,7 @@ public class DAOPost {
         return rs;
     }
 
-    public List<Post> getPostApplied(String idAccount) {
+    public List<Post> getPostApplied(int idAccount) {
         String query = "SELECT p.*  FROM postapplied pa JOIN account a ON pa.accountId=a.id JOIN post p ON pa.postId=p.id WHERE a.id=?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, idAccount).mapToBean(Post.class).stream().collect(Collectors.toList());

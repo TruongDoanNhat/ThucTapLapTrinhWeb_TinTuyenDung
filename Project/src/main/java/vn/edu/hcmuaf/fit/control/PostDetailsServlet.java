@@ -1,7 +1,9 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.model.CV;
 import vn.edu.hcmuaf.fit.model.Post;
+import vn.edu.hcmuaf.fit.model.PostApplied;
 import vn.edu.hcmuaf.fit.service.DAOCV;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 
@@ -22,15 +24,10 @@ public class  PostDetailsServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         DAOPost p = new DAOPost();
         DAOCV cv = new DAOCV();
-        Account account = UtilSession.getInstance().getValue(request, "account");
+        int id = UtilSession.getInstance().getValue(request, "account").getId();
         String action = request.getParameter("action");
-        String id = request.getParameter("id");
         String cvId = request.getParameter("cv");
         String postId = request.getParameter("postId");
-        if (id != null) {
-            request.setAttribute("postDetails", p.getPostDetails(id));
-            request.getRequestDispatcher("thong-tin-viec-lam-candi.jsp").forward(request, response);
-        }
 
         switch (action) {
             case "nopcv":
@@ -38,8 +35,10 @@ public class  PostDetailsServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/candidate/Post_details?action=vieclamdaungtuyen");
                 break;
             case "vieclamdaungtuyen":
-//                    List<Post> postApplied = p.getPostApplied(account.getId());
-//                    request.setAttribute("jobApplied", postApplied);
+                List<Post> postApplied = p.getPostApplied(id);
+                List<PostApplied> postApplied2 = cv.getPostApplied(id);
+                request.setAttribute("jobApplied", postApplied);
+                request.setAttribute("jobApplied2", postApplied2);
                 UtilControl.forward("candi-viec-lam-da-ung-tuyen.jsp", request, response);
                 break;
         }
