@@ -150,6 +150,11 @@ public class DAOPost {
         JDBIConnector.get().withHandle(handle -> handle.createUpdate(query).bind(0, status).bind(1, idPost).execute());
     }
 
+    public void updatePostEndDate() {
+        String query = "UPDATE post set status = 4 WHERE post.endDate < CURDATE()";
+        JDBIConnector.get().withHandle(handle -> handle.createUpdate(query).execute());
+    }
+
     // update trạng thái cho bài viết và thêm idBill
     public void updatePost(Integer idPost, int status, int idBill) {
         String query = "UPDATE post set status = ?, billId = ? WHERE id = ?";
@@ -181,12 +186,14 @@ public class DAOPost {
             return handle.createQuery(query).bind(0, Post.status_unpaid).bind(1, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
     }
+
     public int getTotalPostPaid() {
         String query = "SELECT COUNT(*) FROM post WHERE status <> 0";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).mapTo(Integer.class).one();
         });
     }
+
     public int getPostAllApproveSize() {
         String query = "SELECT * FROM post WHERE status = ? ";
         return JDBIConnector.get().withHandle(handle -> {
@@ -194,6 +201,7 @@ public class DAOPost {
                     .mapToBean(Post.class).stream().collect(Collectors.toList()).size();
         });
     }
+
     public List<Post> getPostAllApprove(int trang) {
         String query = "SELECT * FROM post WHERE status = ? LIMIT 5 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
