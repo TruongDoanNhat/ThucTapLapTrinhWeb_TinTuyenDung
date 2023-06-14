@@ -14,6 +14,12 @@ public class DAOPost {
     private DAOBill daoBill = new DAOBill();
     private String message = "error!";
 
+    private static Post post = null;
+
+    public static Post getPost() {
+        return post;
+    }
+
     public Date getDateNow() {
         return new Date();
     }
@@ -291,10 +297,10 @@ public class DAOPost {
         return rs;
     }
 
-    public List<Post> getPostApplied(String emailAccount) {
-        String query = "SELECT p.*  FROM postapplied pa JOIN account a ON pa.accountEmail=a.email JOIN post p ON pa.postId=p.id WHERE a.email=?";
+    public List<Post> getPostApplied(String idAccount) {
+        String query = "SELECT p.*  FROM postapplied pa JOIN account a ON pa.accountId=a.id JOIN post p ON pa.postId=p.id WHERE a.id=?";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, emailAccount).mapToBean(Post.class).stream().collect(Collectors.toList());
+            return handle.createQuery(query).bind(0, idAccount).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
     }
 
