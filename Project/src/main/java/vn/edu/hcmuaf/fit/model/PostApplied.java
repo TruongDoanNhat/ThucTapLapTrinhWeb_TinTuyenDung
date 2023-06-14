@@ -66,11 +66,11 @@ public class PostApplied implements Serializable {
         this.cvId = cvId;
     }
 
-    public Date getCreateDate() {
+    public java.util.Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(java.util.Date createDate) {
         this.createDate = createDate;
     }
 }

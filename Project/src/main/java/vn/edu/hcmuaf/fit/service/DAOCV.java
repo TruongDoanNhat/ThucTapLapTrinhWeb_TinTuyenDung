@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.CV;
+import vn.edu.hcmuaf.fit.model.PostApplied;
 
 import java.util.Date;
 import java.util.List;
@@ -13,6 +14,13 @@ public class DAOCV {
         String query = "select * from cv where accountId = ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, idCandi).mapToBean(CV.class).stream().collect(Collectors.toList());
+        });
+    }
+
+    public List<PostApplied> getPostApplied(int idCandi) {
+        String query = "select * from cv where accountId = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idCandi).mapToBean(PostApplied.class).stream().collect(Collectors.toList());
         });
     }
 
