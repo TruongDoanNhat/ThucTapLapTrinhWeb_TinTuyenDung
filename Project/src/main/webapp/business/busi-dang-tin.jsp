@@ -75,7 +75,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/business/busi-quan-li-cv.jsp">
+                <a class="nav-link" href="<%=request.getContextPath()%>/business/CV?action=busiquanlycv">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -320,7 +320,7 @@
                         </div>
                         <div class="control-group">
                             <div class="controls">
-                                <button type="submit" id="dang" class="btn">Đăng</button>
+                                <%=request.getContextPath()%>/business/CV?action=busiquanlycv
                             </div>
                         </div>
                     </form>

@@ -36,9 +36,9 @@ public class  PostDetailsServlet extends HttpServlet {
                 break;
             case "vieclamdaungtuyen":
                 List<Post> postApplied = p.getPostApplied(id);
-                List<PostApplied> postApplied2 = cv.getPostApplied(id);
+//                List<PostApplied> postApplied2 = cv.getPostApplied(id);
                 request.setAttribute("jobApplied", postApplied);
-                request.setAttribute("jobApplied2", postApplied2);
+//                request.setAttribute("jobApplied2", postApplied2);
                 UtilControl.forward("candi-viec-lam-da-ung-tuyen.jsp", request, response);
                 break;
         }
