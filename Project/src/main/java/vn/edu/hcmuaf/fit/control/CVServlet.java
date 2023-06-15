@@ -1,7 +1,10 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.CV;
+import vn.edu.hcmuaf.fit.model.Post;
+import vn.edu.hcmuaf.fit.model.PostApplied;
 import vn.edu.hcmuaf.fit.service.DAOCV;
+import vn.edu.hcmuaf.fit.service.DAOPost;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "CV", value = {"/candidate/CV"})
+@WebServlet(name = "CV", value = {"/candidate/CV", "/business/CV"})
 public class CVServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,7 +50,14 @@ public class CVServlet extends HttpServlet {
             case "xemcv" :
                 CV cvs2 = cv.getDetailCV(id);
                 request.setAttribute("cv", cvs2);
-                UtilControl.forward("candi-thong-tin-cv.jsp", request, response);
+                UtilControl.forward("/visitor/thong-tin-cv-candi.jsp", request, response);
+                break;
+            case "busiquanlycv" :
+                List<CV> quanlycv = cv.getCVApplied(id);
+//                List<PostApplied> postApplied = cv.getPostApplied(id);
+                request.setAttribute("cvList", quanlycv);
+//                request.setAttribute("postApplied", postApplied);
+                UtilControl.forward("busi-quan-ly-cv.jsp", request, response);
                 break;
         }
     }

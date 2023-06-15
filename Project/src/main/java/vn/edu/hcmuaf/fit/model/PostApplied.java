@@ -8,18 +8,29 @@ public class PostApplied implements Serializable {
     private int id;
     private int accountId;
     private int postId;
-    private String fileCV;
+    private int cvId;
     private Date createDate;
 
     public PostApplied(){
 
     }
 
-    public PostApplied(int id, int accountId, int postId, String fileCV, Date createDate) {
+    @Override
+    public String toString() {
+        return "PostApplied{" +
+                "id=" + id +
+                ", accountId=" + accountId +
+                ", postId=" + postId +
+                ", cvId=" + cvId +
+                ", createDate=" + createDate +
+                '}';
+    }
+
+    public PostApplied(int id, int accountId, int postId, int cvId, Date createDate) {
         this.id = id;
         this.accountId = accountId;
         this.postId = postId;
-        this.fileCV = fileCV;
+        this.cvId = cvId;
         this.createDate = createDate;
     }
 
@@ -47,12 +58,12 @@ public class PostApplied implements Serializable {
         this.postId = postId;
     }
 
-    public String getFileCV() {
-        return fileCV;
+    public int getCvId() {
+        return cvId;
     }
 
-    public void setFileCV(String fileCV) {
-        this.fileCV = fileCV;
+    public void setCvId(int cvId) {
+        this.cvId = cvId;
     }
 
     public java.util.Date getCreateDate() {
@@ -61,16 +72,5 @@ public class PostApplied implements Serializable {
 
     public void setCreateDate(java.util.Date createDate) {
         this.createDate = createDate;
-    }
-
-    @Override
-    public String toString() {
-        return "PostAplied{" +
-                "id=" + id +
-                ", accountId=" + accountId +
-                ", postId=" + postId +
-                ", fileCV='" + fileCV + '\'' +
-                ", createDate=" + createDate +
-                '}';
     }
 }

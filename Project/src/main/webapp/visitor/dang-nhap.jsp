@@ -94,8 +94,7 @@
                     </a>
                 </div>
             </form>
-
-        </div>
+        </div>  !
     </div>
 </section>
 </body>

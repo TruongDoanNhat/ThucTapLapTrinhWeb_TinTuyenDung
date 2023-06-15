@@ -143,21 +143,22 @@
                         </ul>
                         <% if(UtilSession.getInstance().getValue(request,"account").getRole() == 1) { %>
                         <div class="apply-btn2">
-                            <a href="#" class="btn" onclick="toggleForm()">Ứng Tuyển</a>
+                            <a class="btn" onclick="toggleForm()">Ứng Tuyển</a>
                         </div>
                         <div id="hiddenForm" class="hidden-form-container">
                             <!-- Form content goes here -->
-                            <form>
+                            <form action="<%=request.getContextPath()%>/candidate/Post_details?action=nopcv" method="post">
+                                <input type="hidden" name="postId" value="<%= post2.getId() %>">
                                 <!-- Form fields -->
                                 <% for (CV cv : cvs) { %>
                                             <label class="checkbox inline">
-                                                <input type="radio" id="cv" name="cv">
+                                                <input type="radio" id="cv" name="cv" value="<%=cv.getId()%>">
                                                 <%=cv.getTitle()%>
                                             </label>
                             <br>
                                 <% } %>
                                 <div class="apply-btn2">
-                                    <input class="btn" type="submit" value="Nộp CV">
+                                    <button type="submit" id="nopcv" class="btn">Nộp CV</button>
                                 </div>
                             </form>
                         </div>
@@ -279,7 +280,6 @@
         margin: 0;
     }
 
-    .hidden-form-container.active input[type="file"],
     .hidden-form-container.active input[type="submit"] {
         display: block;
         margin-top: 10px;

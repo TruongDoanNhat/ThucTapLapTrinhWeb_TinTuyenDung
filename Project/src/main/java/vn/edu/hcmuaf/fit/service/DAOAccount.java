@@ -15,9 +15,6 @@ public class DAOAccount {
     private static Account account = null;
     private Date updateDate = Date.valueOf(LocalDate.now());
 
-
-    ;
-
     public String getMessage() {
         return message;
     }
