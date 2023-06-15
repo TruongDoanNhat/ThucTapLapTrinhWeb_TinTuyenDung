@@ -140,7 +140,7 @@
                                     Việc làm phù hợp với bạn
                                 </div>
                                 <%
-                                    List<Post> listpost = daoPost.getPostApprove()  ;
+                                    List<Post> listpost = daoPost.getPostApproveTop5();
                                     for (Post p : listpost) {
                                 %>
                                 <div class="single-job-items mb-30">

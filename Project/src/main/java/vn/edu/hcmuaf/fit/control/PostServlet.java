@@ -48,14 +48,14 @@ public class PostServlet extends HttpServlet {
             case "xemthongtinvieclam":
                 String id2 = request.getParameter("id");
                 int idPost = Integer.parseInt(id2);
-        int id = UtilSession.getInstance().getValue(request, "account").getId();
-                List<CV> cvs3 = cv.getCV(id);
-                request.setAttribute("cvs", cvs3);
+                int id = UtilSession.getInstance().getValue(request, "account").getId();
 
+                List<CV> cvs = cv.getCV(id);
                 Post post2 = daoPost.getPostDetail(idPost);
                 Company company = daoPost.getCompanyFromPost(idPost);
                 Account account1 = daoPost.getAccountFromPost(idPost);
 
+                request.setAttribute("cvs", cvs);
                 request.setAttribute("post2", post2);
                 request.setAttribute("company", company);
                 request.setAttribute("account1", account1);
@@ -69,6 +69,9 @@ public class PostServlet extends HttpServlet {
                     soBaiViet++;
                 }
                 List<Post> postAll1 = daoPost.getPostAllApprove(t);//lay danh sách việc làm
+                request.setAttribute("sobd", soBaiViet);
+                request.setAttribute("trang", t);
+                request.setAttribute("tongBaiViet",tongBaiViet);
                 request.setAttribute("postAll", postAll1);// gáng danh sách việc làm
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
@@ -76,6 +79,15 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("postAll", daoPost.getPostofCategoryByID(Integer.valueOf(idManager)));
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
+
+            case "vieclamdaungtuyen":
+                if (account != null) {
+                    List<Post> postApplied1 = daoPost.getPostApplied(account.getEmail());
+                    request.setAttribute("jobApplied", postApplied1);
+                }
+                UtilControl.forward("candi-viec-lam-da-ung-tuyen.jsp",request,response);
+                break;
+
             case "timkiem":
                 if (!keywords.matches("[\\p{L}\\s]+")) {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
@@ -89,7 +101,9 @@ public class PostServlet extends HttpServlet {
                 List<Post> postSearch = categoryId.equals("0") ? daoPost.getPostSearchApprove(keywords,"2",t) : daoPost.getPostSearchCategory(keywords, categoryId,"2",t);
                 request.setAttribute("sobd", soBaiViet);
                 request.setAttribute("trang", t);
+                request.setAttribute("tongBaiViet",tongBaiViet);
                 request.setAttribute("categoryId", categoryId);
+                request.setAttribute("keywords", keywords);
                 request.setAttribute("postAll", postSearch);
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;

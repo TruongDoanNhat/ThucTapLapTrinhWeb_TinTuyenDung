@@ -1,4 +1,7 @@
-<%@ page import="vn.edu.hcmuaf.fit.model.Account" %><%--
+<%@ page import="vn.edu.hcmuaf.fit.model.Account" %>
+<%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.CV" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.PostApplied" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 06/01/2023
@@ -6,7 +9,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<% List<CV> cvList = (List<CV>) request.getAttribute("cvList"); %>
+<%--<% List<PostApplied> postApplied = (List<PostApplied>) request.getAttribute("postApplied"); %>--%>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -69,7 +73,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link active" href="<%=request.getContextPath()%>/business/busi-quan-li-cv.jsp">
+                <a class="nav-link active" href="<%=request.getContextPath()%>/business/CV?action=busiquanlycv">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -236,188 +240,41 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <% for(CV cvs : cvList) { %>
                                 <tr class="bg-gray">
                                     <td>
                                         <div class="d-flex px-2 py-1">
-                                            <%--                                            <% ArrayList<Post> list = (ArrayList<Post>) request.getAttribute("list");--%>
-                                            <%--                                                for (Post p : list) { %>--%>
                                             <div>
                                                 <img src="assets/img/team-2.jpg" class="avatar avatar-sm me-3"
                                                      alt="user1">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">John Michael</h6>
-                                                <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                                                <h6 class="mb-0 text-sm"><%=cvs.getName()%></h6>
+                                                <p class="text-xs text-secondary mb-0"><%=cvs.getEmail()%></p>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="text-xs font-weight-bold mb-0">Manager</p>
+                                        <p class="text-xs font-weight-bold mb-0"><%=cvs.getRank()%></p>
                                         <p class="text-xs text-secondary mb-0">Organization</p>
                                     </td>
                                     <td class="align-middle text-center text-sm">
                                         <span class="badge badge-sm bg-gradient-secondary">Chưa duyệt</span>
                                     </td>
                                     <td class="align-middle text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                        <span class="text-secondary text-xs font-weight-bold">????</span>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
+                                        <a href="<%=request.getContextPath()%>/business/CV?action=xemcv&id=<%=cvs.getId()%>" class="text-secondary font-weight-bold text-xs"
                                            data-toggle="tooltip" data-original-title="Xem user">
                                             Xem
                                         </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <img src="assets/img/team-3.jpg" class="avatar avatar-sm me-3"
-                                                     alt="user2">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                                <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">Programator</p>
-                                        <p class="text-xs text-secondary mb-0">Developer</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Chưa duyệt</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                                    </td>
-                                    <td class="align-middle">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                           data-toggle="tooltip" data-original-title="Edit user">
-                                            Xem
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="bg-gray">
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <img src="assets/img/team-4.jpg" class="avatar avatar-sm me-3"
-                                                     alt="user3">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                                                <p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">Executive</p>
-                                        <p class="text-xs text-secondary mb-0">Projects</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-success">Đã duyệt</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
-                                    </td>
-                                    <td class="align-middle">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                           data-toggle="tooltip" data-original-title="Edit user">
-                                            Xem
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="bg-gray">
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <img src="assets/img/team-3.jpg" class="avatar avatar-sm me-3"
-                                                     alt="user4">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">Michael Levi</h6>
-                                                <p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">Programator</p>
-                                        <p class="text-xs text-secondary mb-0">Developer</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-success">Đã duyệt</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
-                                    </td>
-                                    <td class="align-middle">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                           data-toggle="tooltip" data-original-title="Edit user">
-                                            Xem
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <img src="assets/img/team-2.jpg" class="avatar avatar-sm me-3"
-                                                     alt="user5">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">Richard Gran</h6>
-                                                <p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                                        <p class="text-xs text-secondary mb-0">Executive</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Chưa duyệt</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
-                                    </td>
-                                    <td class="align-middle">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                           data-toggle="tooltip" data-original-title="Edit user">
-                                            Xem
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <img src="assets/img/team-4.jpg" class="avatar avatar-sm me-3"
-                                                     alt="user6">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                                                <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">Programtor</p>
-                                        <p class="text-xs text-secondary mb-0">Developer</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Chưa duyệt</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
-                                    </td>
-                                    <td class="align-middle">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                           data-toggle="tooltip" data-original-title="Edit user">
-                                            Xem
-                                        </a>
-                                    </td>
-                                </tr>
+                                <% } %>
+<%--                                    <td class="align-middle text-center text-sm">--%>
+<%--                                        <span class="badge badge-sm bg-gradient-success">Đã duyệt</span>--%>
+<%--                                    </td>--%>
                                 </tbody>
                             </table>
                         </div>
@@ -425,7 +282,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 

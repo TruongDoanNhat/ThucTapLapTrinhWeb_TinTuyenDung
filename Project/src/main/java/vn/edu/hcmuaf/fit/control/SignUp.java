@@ -78,6 +78,7 @@ public class SignUp extends HttpServlet {
         } else {
             switch (action) {
                 case "candidate":
+
                     UtilControl.forward("visitor/dang-ky-candi.jsp", request, response);
                     break;
                 case "business":
