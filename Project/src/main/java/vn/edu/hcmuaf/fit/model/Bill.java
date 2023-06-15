@@ -9,18 +9,17 @@ public class Bill {
     private String numAccount;
     private String money;
     private Date createDate;
-    private int accountId;
+
     private int status;
 
     public Bill() {
     }
 
-    public Bill(int id, String numAccount, String money, Date createDate, int accountId, int status) {
+    public Bill(int id, String numAccount, String money, Date createDate, int status) {
         this.id = id;
         this.numAccount = numAccount;
         this.money = money;
         this.createDate = createDate;
-        this.accountId = accountId;
         this.status = status;
     }
 
@@ -31,7 +30,6 @@ public class Bill {
                 ", numAccount='" + numAccount + '\'' +
                 ", money='" + money + '\'' +
                 ", createDate=" + createDate +
-                ", accountId=" + accountId +
                 ", status=" + status +
                 '}';
     }
@@ -76,11 +74,4 @@ public class Bill {
         this.createDate = createDate;
     }
 
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
 }
