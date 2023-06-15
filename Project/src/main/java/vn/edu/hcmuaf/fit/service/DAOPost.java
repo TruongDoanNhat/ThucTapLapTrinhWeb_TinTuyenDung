@@ -202,7 +202,14 @@ public class DAOPost {
     }
 
     public List<Post> getPostApprove() {
-        String query = "select * from post where status = ? LIMIT 5";
+        String query = "select * from post where status = ?";
+        List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, Post.status_approve).mapToBean(Post.class).stream().collect(Collectors.toList());
+        });
+        return listPost;
+    }
+    public List<Post> getPostApproveTop5() {
+        String query = "select * from post where status = ?  LIMIT 5 ";
         List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, Post.status_approve).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
