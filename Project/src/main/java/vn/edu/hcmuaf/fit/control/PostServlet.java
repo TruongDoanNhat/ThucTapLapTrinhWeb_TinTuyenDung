@@ -48,14 +48,14 @@ public class PostServlet extends HttpServlet {
             case "xemthongtinvieclam":
                 String id2 = request.getParameter("id");
                 int idPost = Integer.parseInt(id2);
-        int id = UtilSession.getInstance().getValue(request, "account").getId();
-                List<CV> cvs3 = cv.getCV(id);
-                request.setAttribute("cvs", cvs3);
+                int id = UtilSession.getInstance().getValue(request, "account").getId();
 
+                List<CV> cvs = cv.getCV(id);
                 Post post2 = daoPost.getPostDetail(idPost);
                 Company company = daoPost.getCompanyFromPost(idPost);
                 Account account1 = daoPost.getAccountFromPost(idPost);
 
+                request.setAttribute("cvs", cvs);
                 request.setAttribute("post2", post2);
                 request.setAttribute("company", company);
                 request.setAttribute("account1", account1);

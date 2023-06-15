@@ -46,7 +46,7 @@ font-family: system-ui;">
         </div>
     </div>
 </div>
-<jsp:include page="../visitor/header-candi.jsp"></jsp:include>
+<jsp:include page="header-candi.jsp"></jsp:include>
 <main>
 
     <div data-v-c4f347a8="" class="container-fluid1 py-4" style="margin-top: 30px">
@@ -179,7 +179,7 @@ font-family: system-ui;">
         </div>
     </div>
 </main>
-<jsp:include page="../visitor/footter-candi.jsp"></jsp:include>
+<jsp:include page="footter-candi.jsp"></jsp:include>
 
 </body>
 <!-- JS here -->

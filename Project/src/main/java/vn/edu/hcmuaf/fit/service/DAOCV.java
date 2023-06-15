@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.CV;
+import vn.edu.hcmuaf.fit.model.Post;
 import vn.edu.hcmuaf.fit.model.PostApplied;
 
 import java.util.Date;
@@ -17,17 +18,17 @@ public class DAOCV {
         });
     }
 
-    public List<PostApplied> getPostApplied(int idCandi) {
-        String query = "select * from cv where accountId = ?";
+    public List<PostApplied> getPostApplied(int id) {
+        String query = "select * from postapplied where accountId = ?";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, idCandi).mapToBean(PostApplied.class).stream().collect(Collectors.toList());
+            return handle.createQuery(query).bind(0, id).mapToBean(PostApplied.class).stream().collect(Collectors.toList());
         });
     }
 
-    public CV getDetailCV(int idCandi) {
+    public CV getDetailCV(int id) {
         String query = "select * from cv where accountId = ?";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, idCandi).mapToBean(CV.class).stream().findFirst().get();
+            return handle.createQuery(query).bind(0, id).mapToBean(CV.class).stream().findFirst().get();
         });
     }
 
@@ -46,5 +47,12 @@ public class DAOCV {
 
         JDBIConnector.get().withHandle(handle -> handle.createUpdate(query).bind(0, accountId).bind(1, postId).bind(2, cvId).bind(3, getDateNow()).execute());
         return true;
+    }
+
+    public List<CV> getCVApplied(int idAccount) {
+        String query = "SELECT c.* FROM post p JOIN account a ON p.accountId = a.id JOIN postapplied pa ON pa.postId = p.id JOIN cv c ON pa.cvId = c.id WHERE p.accountId = a.id AND pa.postId = p.id AND a.id = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idAccount).mapToBean(CV.class).stream().collect(Collectors.toList());
+        });
     }
 }
