@@ -19,10 +19,6 @@ public class LoginGoogle extends HttpServlet {
             request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
         } else {
             response.sendRedirect(request.getContextPath() + "/Login?action=google&code=" + code);
-//            System.out.println(userGoogle.toString());
-//                HttpSession session = request.getSession(true);
-//                session.setAttribute("account", userGoogle);
-//            response.sendRedirect("visitor/trang-chu-candi.jsp");
         }
     }
 

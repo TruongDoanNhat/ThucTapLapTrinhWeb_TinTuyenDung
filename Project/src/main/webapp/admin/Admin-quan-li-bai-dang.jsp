@@ -203,7 +203,7 @@
                        class="btn btn-link"><%= pageNumber %>
                     </a>
                     <% } else {%>
-                    <a href="PostManager?action=timkiem&trang=<%= pageNumber %>&status=<%=request.getAttribute("status")%>"
+                    <a href="PostManager?action=search&trang=<%= pageNumber %>&status=<%=request.getAttribute("status")%>"
                        class="btn btn-link"><%= pageNumber %>
                     </a>
                     <% } %>

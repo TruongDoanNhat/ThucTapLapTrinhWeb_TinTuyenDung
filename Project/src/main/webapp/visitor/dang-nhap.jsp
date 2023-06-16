@@ -28,7 +28,7 @@
         <!-- Logo -->
         <div class="logo-log">
 
-            <a href="#">
+            <a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp">
                 <img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt="logo">
             </a>
         </div>

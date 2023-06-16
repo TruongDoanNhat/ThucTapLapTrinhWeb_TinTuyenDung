@@ -1,7 +1,10 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.Util.Util;
+import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.model.Log;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
+import vn.edu.hcmuaf.fit.service.DAOLog;
 import vn.edu.hcmuaf.fit.service.MailService;
 
 import javax.servlet.ServletException;
@@ -9,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -34,6 +38,9 @@ public class SignUp extends HttpServlet {
         String password = request.getParameter("password");
         password = Util.encryptionPassword(password);
         String email = request.getParameter("email");
+        HttpSession session = request.getSession();
+        Integer countSignUp = (Integer) session.getAttribute("countSignUp");
+        String emailRegisterAttempts = (String) session.getAttribute("emailRegisterAttempts");
         String phone = request.getParameter("phone");
         String companyName = request.getParameter("companyName");
         String address = request.getParameter("location");
@@ -49,6 +56,14 @@ public class SignUp extends HttpServlet {
                 if (d.registerCandi(email, user_name, password, name, type, role, 0, date)) {
                     response.sendRedirect("visitor/dang-nhap.jsp");
                 } else {
+                    if (countSignUp == null && emailRegisterAttempts == null){
+                        session.setAttribute("countSignUp",0);
+                        session.setAttribute("emailRegisterAttempts", email);
+                    }else if (countSignUp >= 2 && emailRegisterAttempts.equals(email)){
+                        DAOLog.getInstance().insert(Log.ALERT, -1, String.valueOf(request.getRequestURL()), "Email " + email + "đang cố gắng đăng kí", 0);
+                    }else {
+                        session.setAttribute("countSignUp", countSignUp + 1);
+                    }
                     String message = d.getMessage();
                     request.setAttribute("message", message);
                     UtilControl.forward(role, "admin/dang-ky-Admin.jsp", "visitor/dang-ky-candi.jsp", "visitor/dang-ky-busi.jsp", request, response);
@@ -78,7 +93,6 @@ public class SignUp extends HttpServlet {
         } else {
             switch (action) {
                 case "candidate":
-
                     UtilControl.forward("visitor/dang-ky-candi.jsp", request, response);
                     break;
                 case "business":
@@ -93,7 +107,6 @@ public class SignUp extends HttpServlet {
             }
         }
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

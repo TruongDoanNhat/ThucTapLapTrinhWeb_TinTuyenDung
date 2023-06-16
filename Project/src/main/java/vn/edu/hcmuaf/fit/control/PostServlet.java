@@ -82,7 +82,7 @@ public class PostServlet extends HttpServlet {
 
             case "vieclamdaungtuyen":
                 if (account != null) {
-                    List<Post> postApplied1 = daoPost.getPostApplied(account.getEmail());
+                    List<Post> postApplied1 = daoPost.getPostApplied(account.getId());
                     request.setAttribute("jobApplied", postApplied1);
                 }
                 UtilControl.forward("candi-viec-lam-da-ung-tuyen.jsp",request,response);
