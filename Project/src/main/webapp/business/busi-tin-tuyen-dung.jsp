@@ -180,7 +180,7 @@
             </div>
         </div>
         <a class="btn bg-gradient-primary mt-3 w-100"
-           href="<%=request.getContextPath()%>/business/busi-cap-nhat-thong-tin-xac-thuc.jsp">Nâng cấp tài khoản</a>
+           href="<%=request.getContextPath()%>/business/busi-tai-khoan.jsp">Nâng cấp tài khoản</a>
     </div>
 </aside>
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
