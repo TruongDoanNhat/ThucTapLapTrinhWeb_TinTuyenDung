@@ -320,7 +320,7 @@
                                     <a class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold"
                                        href="javascript:;"><i
                                             aria-hidden="true"></i>Hết
-                                        hạng</a>
+                                        hạn</a>
                                 </div>
                                 <%
                                         }

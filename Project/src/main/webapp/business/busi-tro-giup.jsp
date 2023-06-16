@@ -214,13 +214,13 @@
                         <div data-v-7dd9989e="" class="flex-m contact-item"><i data-v-7dd9989e=""
                                                                                class="fas fa-phone circle contact-icon flex-cm mr-2"></i>
                             <a data-v-7dd9989e="" href="tel:068686888" class="text-decoration-none">
-                                0964967743
+                                068686888
                             </a></div>
                         <div data-v-7dd9989e="" class="flex-m contact-item contact-email"><i data-v-7dd9989e=""
                                                                                              class="fas fa-envelope circle contact-icon1 flex-cm mr-2"></i>
-                            <a data-v-7dd9989e="" title="topvieclam@gmail.com" href="mailto:lethanhnghia0938@gmail.com"
+                            <a data-v-7dd9989e="" title="topvieclam@gmail.com" href="mailto:cskh@gmail.com"
                                class="text-decoration-none">
-                                lethanhnghia0938@gmail.com
+                                cskh@gmail.com
                             </a></div>
                     </div>
                 </div>

@@ -92,7 +92,6 @@ public class Pay extends HttpServlet {
                                     String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã thanh toán tổng số tiền: " + pay, 0);
                             DAOLog.getInstance().insert(Log.INFO, account != null ? account.getId() : -1,
                                     "", "Đã thanh toán tổng số tiền: " + pay + ". Mọi thắc mắc vui lòng liên hệ chúng tôi qua email ", 1);
-
                         } catch (Exception e) {
                             status = "failed";
                             request.setAttribute("status", status);
