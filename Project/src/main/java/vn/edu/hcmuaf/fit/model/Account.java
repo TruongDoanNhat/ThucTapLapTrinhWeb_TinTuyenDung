@@ -7,13 +7,12 @@ import java.time.ZoneId;
 import java.sql.Date;
 
 public class Account implements Serializable {
-    private static final long serialVersionUID = 1L;
-
     public static final int ADMIN = 0;
     public static final int CANDIDATE = 1;
     public static final int BUSINESS = 2;
     public static final int ACTIVATED = 1;
     public static final int LOCK = 2;
+    private static final long serialVersionUID = 1L;
     private int id;
     private int companyId;
     private String email;
@@ -49,6 +48,10 @@ public class Account implements Serializable {
         this.status = status;
         this.createDate = create_date;
         this.updateDate = update_date;
+    }
+
+    public static void main(String[] args) {
+
     }
 
     public int getId() {
@@ -162,9 +165,5 @@ public class Account implements Serializable {
             return "LOCK";
         }
         return "NOT ACTIVATED";
-    }
-
-    public static void main(String[] args) {
-
     }
 }

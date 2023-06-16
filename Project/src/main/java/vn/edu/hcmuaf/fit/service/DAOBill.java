@@ -121,7 +121,7 @@ public class DAOBill {
 
     // thêm bill vào database
     public boolean insertBill(String numAccount, String money) {
-        String query = "INSERT INTO `bill` (numAccount,money,createDate,accountId,status) VALUES (?,?,now(),?)";
+        String query = "INSERT INTO `bill` (numAccount,money,createDate,status) VALUES (?,?,now(),?)";
         JDBIConnector.get().withHandle(handle -> handle.createUpdate(query).bind(0, numAccount).bind(1, money).bind(3, Bill.STATUS_NOT_SEEN).execute());
         return true;
     }
@@ -151,7 +151,7 @@ public class DAOBill {
     }
 
     // tổng doanh thu khi search co thang, nam, status
-    public  List<QuanLyDoanhThu>  getQuanliDoanhThuSearch(String month, String year, String statusSearch) {
+    public List<QuanLyDoanhThu> getQuanliDoanhThuSearch(String month, String year, String statusSearch) {
         String query = "SELECT b.id, b.numAccount,b.money,b.createDate,p.accountId,b.status, a.`name`, count(p.billId) as 'soBai' from post p join bill b on b.id = p.billId join account a on a.id = p.accountId " + " WHERE MONTH(b.createDate) = ? and YEAR(b.createDate) = ? AND b.status = ? " + "GROUP BY  b.id, b.numAccount,b.money,b.createDate,p.accountId,b.status, a.`name` ORDER BY b.createDate DESC";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, month).bind(1, year).bind(2, statusSearch).mapToBean(QuanLyDoanhThu.class).stream().collect(Collectors.toList());
@@ -167,7 +167,7 @@ public class DAOBill {
     }
 
     // tổng doanh thu khi search co thang, nam
-    public List<QuanLyDoanhThu>  getQuanliDoanhThuSearch(String month, String year) {
+    public List<QuanLyDoanhThu> getQuanliDoanhThuSearch(String month, String year) {
         String query = "SELECT b.id, b.numAccount,b.money,b.createDate,p.accountId,b.status, a.`name`, count(p.billId) as 'soBai' from post p join bill b on b.id = p.billId join account a on a.id = p.accountId " + " WHERE MONTH(b.createDate) = ? and YEAR(b.createDate) = ? " + "GROUP BY  b.id, b.numAccount,b.money,b.createDate,p.accountId,b.status, a.`name` ORDER BY b.createDate DESC";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, month).bind(1, year).mapToBean(QuanLyDoanhThu.class).stream().collect(Collectors.toList());
@@ -183,7 +183,7 @@ public class DAOBill {
     }
 
     // tổng doanh thu khi search co status search
-    public List<QuanLyDoanhThu>  getQuanliDoanhThuSearch(String statusSearch) {
+    public List<QuanLyDoanhThu> getQuanliDoanhThuSearch(String statusSearch) {
         String query = "SELECT b.id, b.numAccount,b.money,b.createDate,p.accountId,b.status, a.`name`, count(p.billId) as 'soBai' from post p join bill b on b.id = p.billId join account a on a.id = p.accountId " + " WHERE b.status = ? " + "GROUP BY  b.id, b.numAccount,b.money,b.createDate,p.accountId,b.status, a.`name` ORDER BY b.createDate DESC";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, statusSearch).mapToBean(QuanLyDoanhThu.class).stream().collect(Collectors.toList());

@@ -32,7 +32,7 @@ public class PostServlet extends HttpServlet {
         String action = request.getParameter("action");
         String idManager = request.getParameter("id");
         String keywords = request.getParameter("keywords") == null ? "" : request.getParameter("keywords");
-        String status = request.getParameter("status") == null ? "0" : request.getParameter("status");
+
         String categoryId = request.getParameter("categoryId") == null ? "0" : request.getParameter("categoryId");
         String trang = request.getParameter("trang");
 
@@ -71,7 +71,7 @@ public class PostServlet extends HttpServlet {
                 List<Post> postAll1 = daoPost.getPostAllApprove(t);//lay danh sách việc làm
                 request.setAttribute("sobd", soBaiViet);
                 request.setAttribute("trang", t);
-                request.setAttribute("tongBaiViet",tongBaiViet);
+                request.setAttribute("tongBaiViet", tongBaiViet);
                 request.setAttribute("postAll", postAll1);// gáng danh sách việc làm
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
@@ -85,7 +85,7 @@ public class PostServlet extends HttpServlet {
                     List<Post> postApplied1 = daoPost.getPostApplied(account.getId());
                     request.setAttribute("jobApplied", postApplied1);
                 }
-                UtilControl.forward("candi-viec-lam-da-ung-tuyen.jsp",request,response);
+                UtilControl.forward("candi-viec-lam-da-ung-tuyen.jsp", request, response);
                 break;
 
             case "timkiem":
@@ -93,15 +93,15 @@ public class PostServlet extends HttpServlet {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
                             String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
                 }
-                tongBaiViet = categoryId.equals("0") ? daoPost.getPostSearchApprove(keywords,"2") : daoPost.getPostSearchCategory(keywords, categoryId,"2");
+                tongBaiViet = categoryId.equals("0") ? daoPost.getPostSearchApprove(keywords, "2") : daoPost.getPostSearchCategory(keywords, categoryId, "2");
                 soBaiViet = tongBaiViet / 5;
                 if (tongBaiViet % 5 != 0) {
                     soBaiViet++;
                 }
-                List<Post> postSearch = categoryId.equals("0") ? daoPost.getPostSearchApprove(keywords,"2",t) : daoPost.getPostSearchCategory(keywords, categoryId,"2",t);
+                List<Post> postSearch = categoryId.equals("0") ? daoPost.getPostSearchApprove(keywords, "2", t) : daoPost.getPostSearchCategory(keywords, categoryId, "2", t);
                 request.setAttribute("sobd", soBaiViet);
                 request.setAttribute("trang", t);
-                request.setAttribute("tongBaiViet",tongBaiViet);
+                request.setAttribute("tongBaiViet", tongBaiViet);
                 request.setAttribute("categoryId", categoryId);
                 request.setAttribute("keywords", keywords);
                 request.setAttribute("postAll", postSearch);
@@ -182,7 +182,8 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("Admin-quan-li-bai-dang.jsp", request, response);
                 break;
             case "search":
-                if (!keywords.matches("[\\p{L}\\s]+")) {
+                String status = request.getParameter("status") == null ? "0" : request.getParameter("status");
+                if (!keywords.matches("[\\p{L}\\s]*")) {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
                             String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
                 }
@@ -191,11 +192,17 @@ public class PostServlet extends HttpServlet {
                 if (tongBaiViet % 5 != 0) {
                     soBaiViet++;
                 }
-                List<Post> postAllSearch = status.equals("0") ? daoPost.getPostSearch(keywords, t) : daoPost.getPostSearchStatus(keywords, status, t);
+                List<Post> postAllSearch;
+                if (status.equals("0")) {
+                    postAllSearch = daoPost.getPostSearch(keywords, t);
+                } else {
+                    request.setAttribute("status", status);
+                    postAllSearch = daoPost.getPostSearchStatus(keywords, status, t);
+                }
+                request.setAttribute("keywords", keywords);
                 request.setAttribute("postAll", postAllSearch);
                 request.setAttribute("sobd", soBaiViet);
                 request.setAttribute("trang", t);
-                request.setAttribute("status", status);
                 UtilControl.forward("Admin-quan-li-bai-dang.jsp", request, response);
                 break;
             case "approve":
