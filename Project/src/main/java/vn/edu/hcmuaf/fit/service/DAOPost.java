@@ -104,7 +104,7 @@ public class DAOPost {
         });
     }
     public List<Post> getPostSearchCategory(String keywords, String categoryId,String status , int trang) {
-        String query = "select * from post where title LIKE ? and categoryId = ? and status = ? LIMIT 5 OFFSET ?";
+        String query = "select * from post where title LIKE ? and categoryId = ? and status = ? ORDER BY createDate DESC LIMIT 5 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, categoryId).bind(2,status).bind(3, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
@@ -116,9 +116,9 @@ public class DAOPost {
         });
     }
     public  List<Post> getPostSearchApprove(String keywords, String status, int trang) {
-        String query = "select * from post where title LIKE ? and status = ? LIMIT 5 OFFSET ?";
+        String query = "select * from post where title LIKE ? and status = ?ORDER BY createDate DESC LIMIT 5 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(2,status).bind(3, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
+            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1,status).bind(2, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
     }
 
