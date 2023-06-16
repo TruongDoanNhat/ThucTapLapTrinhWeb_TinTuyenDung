@@ -27,10 +27,4 @@ public class GoogleUtils {
         UserGoogle  googlePojo = new Gson().fromJson(response, UserGoogle .class);
         return googlePojo;
     }
-
-//    public static void main(String[] args) throws IOException {
-//        String str = "20130340@st.hcmuaf.edu.vn";
-//        String[] arrOfStr = str.split("@");
-//        System.out.println(arrOfStr[0]);
-//    }
 }
