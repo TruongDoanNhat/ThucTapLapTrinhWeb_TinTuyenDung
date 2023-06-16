@@ -81,7 +81,7 @@
         <div class="container">
             <div class="row">
                 <!-- Left content -->
-                <div class="col-xl-3 col-lg-3 col-md-4 padding-left">
+                <div class="col-xl-3 col-lg-3 col-md-4 padding-left"style="padding:50px 100px;padding-right: 5%">
                     <div class="row">
                         <div class="col-12">
                             <div class="small-section-tittle2 mb-45">
@@ -90,17 +90,21 @@
                         </div>
                     </div>
                     <!-- Job Category Listing start -->
-                    <div class="job-category-listing mb-50">
+                    <div class="job-category-listing mb-50" style="width: 120%">
                         <!-- single one -->
                         <div class="single-listing">
-                            <div class="small-section-tittle2">
+                            <div class="small-section-tittle2" style="padding-bottom: 20px">
                                 <h4> Danh mục </h4>
                             </div>
+                            <form action="<%=request.getContextPath()%>/Post?action=timkiem" method="post" class="search-box"style="width: 110%">
+                            <div class="" >
+                                <button class="btn" type="submit" style="padding: 21px 50px">Tìm việc</button>
+                            </div>
                             <!-- Select job items start -->
-                            <div class="">
+                            <div class="" >
                                 <%List<Category> listCategory = DAOCategory.getInstance().getCategoryAll();%>
                                 <select  id="select1" style=" margin-top: 20px; text-transform: none;
-                                     height: 30px;width: 99%;  border: none; appearance: none;"data-placeholder="Chọn lĩnh vực" name="categoryId">
+                                     height: 30px;width: 150%;  border: none; appearance: none;"data-placeholder="Chọn lĩnh vực" name="categoryId">
                                     <option value="0">Tất cả</option>
                                     <% for (Category c : listCategory) {%>
                                     <option value="<%=c.getId()%>"><%=c.getName()%>
@@ -108,8 +112,9 @@
                                     <% }%>
                                 </select>
                             </div>
-                            <div class="select-Categories pt-80 pb-50">
-                            </div>
+
+
+                            </form>
                             <!-- select-Categories End -->
                         </div>
                         <div class="single-listing">

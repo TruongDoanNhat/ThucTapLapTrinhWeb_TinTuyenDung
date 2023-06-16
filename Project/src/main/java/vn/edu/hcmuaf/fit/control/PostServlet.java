@@ -98,11 +98,17 @@ public class PostServlet extends HttpServlet {
                 if (tongBaiViet % 5 != 0) {
                     soBaiViet++;
                 }
-                List<Post> postSearch = categoryId.equals("0") ? daoPost.getPostSearchApprove(keywords, "2", t) : daoPost.getPostSearchCategory(keywords, categoryId, "2", t);
+                List<Post> postSearch ;
+                if (categoryId.equals("0")) {
+                 postSearch = daoPost.getPostSearchApprove(keywords, "2", t);
+                }else {
+                    request.setAttribute("categoryId", categoryId);
+                    postSearch = daoPost.getPostSearchCategory(keywords, categoryId, "2", t);
+                }
                 request.setAttribute("sobd", soBaiViet);
                 request.setAttribute("trang", t);
                 request.setAttribute("tongBaiViet", tongBaiViet);
-                request.setAttribute("categoryId", categoryId);
+
                 request.setAttribute("keywords", keywords);
                 request.setAttribute("postAll", postSearch);
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
