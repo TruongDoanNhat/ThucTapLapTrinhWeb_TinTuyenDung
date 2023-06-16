@@ -19,7 +19,7 @@ public class DAOCV {
     }
 
     public List<PostApplied> getPostApplied(int id) {
-        String query = "select * from postapplied where accountId = ?";
+        String query = "select pa.* FROM postapplied pa JOIN post p ON pa.postId = p.id JOIN cv c ON pa.cvId = c.id  WHERE p.accountId = ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, id).mapToBean(PostApplied.class).stream().collect(Collectors.toList());
         });
