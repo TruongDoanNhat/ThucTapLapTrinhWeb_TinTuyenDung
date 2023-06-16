@@ -212,11 +212,12 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("Admin-quan-li-bai-dang.jsp", request, response);
                 break;
             case "approve":
+                Post post = daoPost.getPostDetail(Integer.valueOf(idManager));
                 DAOLog.getInstance().insert(Log.INFO, account != null ? account.getId() : -1,
                         String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã duyệt bài viết có id: " + idManager, 0);
-
+                DAOLog.getInstance().insert(Log.INFO, post.getAccountId(),
+                        "", "Bài viết " + post.getTitle() + " tạo ngày "+ post.getCreateDate() + " đã được duyệt ", 1);
                 daoPost.updatePost(Integer.valueOf(idManager), Post.status_approve);
-
                 response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
                 break;
             case "lock":
