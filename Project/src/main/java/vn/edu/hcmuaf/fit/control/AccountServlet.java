@@ -24,7 +24,6 @@ public class AccountServlet extends HttpServlet {
         String username = request.getParameter("username");
         String role = request.getParameter("role") == null ? "3" : request.getParameter("role");
         String keywords = request.getParameter("keywords") == null ? "" : request.getParameter("keywords");
-        ;
         Account account = UtilSession.getInstance().getValue(request, "account");
         List<Account> listAccount;
         DAOAccount d = new DAOAccount();
@@ -84,11 +83,17 @@ public class AccountServlet extends HttpServlet {
                 if (tongTaiKhoan % 5 != 0) {
                     tongSoTrang++;
                 }
-                listAccount = role.equals("3") ? d.getAccountSearch(keywords, trang) : d.getAccountSearch(keywords, role, trang);
-                request.setAttribute("listAccount", listAccount);
+                if (role.equals("3")) {
+                    listAccount = d.getAccountSearch(keywords, trang);
+                } else {
+                    request.setAttribute("role", role);
+                    listAccount = d.getAccountSearch(keywords, role, trang);
+                }
+               request.setAttribute("listAccount", listAccount);
                 request.setAttribute("tongSoTrang", tongSoTrang);
                 request.setAttribute("trang", trang);
-                request.setAttribute("role", role);
+
+                request.setAttribute("keywords", keywords);
                 UtilControl.forward("Admin-quan-li-nguoi-dung.jsp", request, response);
                 break;
 

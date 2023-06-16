@@ -12,6 +12,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     DAOCompany daoCompany = new DAOCompany();
+    String roles = request.getAttribute("role") == null ? "3" : (String) request.getAttribute("role");
+    String keywords = request.getAttribute("keywords") == null ? "" : (String) request.getAttribute("keywords");
 %>
 <html>
 <head>
@@ -141,14 +143,16 @@
                     %>
                     <span class="current-page"><%= pageNumber %></span> <!-- Hiển thị số trang hiện tại -->
                     <% } else { // Nếu không phải là trang hiện tại
-                        if (request.getAttribute("role") == null) {
+//                        if (request.getAttribute("role") == null) {
+                        if (roles.equals("3") && keywords.equals("")) {
+
                     %>
                     <!-- Tạo liên kết đến trang khác -->
                     <a href="AccountManager?action=accountManager&trang=<%= pageNumber %>"
                        class="btn btn-link"><%= pageNumber %>
                     </a>
                     <% } else {%>
-                    <a href="AccountManager?action=search&trang=<%= pageNumber %>&role=<%=request.getAttribute("role")%>"
+                    <a href="AccountManager?action=search&trang=<%= pageNumber %>&keywords=<%=keywords%>&role=<%=roles%>"
                        class="btn btn-link"><%= pageNumber %>
                     </a>
                     <% } %>
@@ -156,10 +160,6 @@
                     <% } %>
                     <% } %>
                     <% } %>
-                    <%--                    <c:forEach begin="1" end="${soAccount}" var="t">--%>
-                    <%--                        <a href="<%=request.getContextPath()%>/admin/AccountManager?action=accountManager&trang=${t}"--%>
-                    <%--                           class="btn btn-link">${t}</a>--%>
-                    <%--                    </c:forEach>--%>
                 </div>
             </div>
             <!-- ============================================================== -->
