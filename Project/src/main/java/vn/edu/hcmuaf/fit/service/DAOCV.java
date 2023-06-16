@@ -25,10 +25,10 @@ public class DAOCV {
         });
     }
 
-    public CV getDetailCV(int id) {
-        String query = "select * from cv where accountId = ?";
+    public CV getDetailCV(String CvId) {
+        String query = "select * from cv where id = ?";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, id).mapToBean(CV.class).stream().findFirst().get();
+            return handle.createQuery(query).bind(0, CvId).mapToBean(CV.class).stream().findFirst().get();
         });
     }
 
