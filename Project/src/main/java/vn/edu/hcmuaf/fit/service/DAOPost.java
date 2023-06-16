@@ -187,7 +187,7 @@ public class DAOPost {
     }
 
     public List<Post> getPostAll(int trang) {
-        String query = "SELECT * FROM post WHERE status <> ? LIMIT 5 OFFSET ?";
+        String query = "SELECT * FROM post WHERE status <> ? ORDER BY createDate DESC LIMIT 5 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, Post.status_unpaid).bind(1, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
         });

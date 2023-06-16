@@ -8,7 +8,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% List<Post> postAll = (List<Post>) request.getAttribute("postAll"); %>
+<% List<Post> postAll = (List<Post>) request.getAttribute("postAll");
+    String status = request.getAttribute("status") == null ? "0" : (String) request.getAttribute("status");
+    String keywords = request.getAttribute("keywords") == null ? "" : (String) request.getAttribute("keywords");
+%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -180,6 +183,13 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            <%
+                                if (postAll.size() == 0) {
+                            %>
+                            <span style="text-align: center; color: black"> KHÔNG CÓ DỮ LIỆU </span>
+                            <%
+                                }
+                            %>
                         </div>
                     </div>
                 </div>
@@ -196,14 +206,14 @@
                     %>
                     <span class="current-page"><%= pageNumber %></span> <!-- Hiển thị số trang hiện tại -->
                     <% } else { // Nếu không phải là trang hiện tại
-                        if (request.getAttribute("status") == null) {
+                        if (status.equals("0") && keywords.equals("")) {
                     %>
                     <!-- Tạo liên kết đến trang khác -->
                     <a href="PostManager?action=quanlybaidang&trang=<%= pageNumber %>"
                        class="btn btn-link"><%= pageNumber %>
                     </a>
                     <% } else {%>
-                    <a href="PostManager?action=timkiem&trang=<%= pageNumber %>&status=<%=request.getAttribute("status")%>"
+                    <a href="PostManager?action=search&trang=<%= pageNumber %>&keywords=<%=keywords%>&status=<%=status%>"
                        class="btn btn-link"><%= pageNumber %>
                     </a>
                     <% } %>
