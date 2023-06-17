@@ -176,6 +176,21 @@ CREATE TABLE `image`  (
 -- ----------------------------
 -- Records of image
 -- ----------------------------
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (1, '/assets/img/icon/image_job1.jpg', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (2, '/assets/img/icon/image_job2.png', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (3, '/assets/img/icon/image_job3.jpg', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (4, '/assets/img/icon/image_job4.jpg', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (5, '/assets/img/icon/image_job5.png', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (6, '/assets/img/icon/image_job6.png', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (7, '/assets/img/icon/image_job7.png', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (8, '/assets/img/icon/image_jobPHP.png', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (9, '/assets/img/icon/job-list1.png', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (10, '/assets/img/icon/job-list3.png', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (11, '/assets/img/icon/job-list4.png', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (12, '/assets/img/icon/job-list5.png', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (13, '/assets/img/icon/job-list6.png', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (14, '/assets/img/icon/job-list7.png', '0', '2023-06-18', NULL);
+INSERT INTO `image` (`id`, `url`, `type`, `createDate`, `updateDate`) VALUES (15, '/assets/img/icon/job-list2.png', '0', '2023-06-18', NULL);
 
 -- ----------------------------
 -- Table structure for post
