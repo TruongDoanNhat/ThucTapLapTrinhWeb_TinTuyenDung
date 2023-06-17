@@ -3,6 +3,7 @@ package vn.edu.hcmuaf.fit.service;
 import vn.edu.hcmuaf.fit.control.UtilControl;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.model.Log;
+import vn.edu.hcmuaf.fit.model.Post;
 
 import javax.sound.sampled.Port;
 import java.util.List;
@@ -65,6 +66,19 @@ public class DAOLog {
         });
     }
 
+    public int getTotalNotification(int idBusi) {
+        String query = "SELECT COUNT(*) FROM log where userId = ? and status = 1 ";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idBusi).mapTo(Integer.class).one();
+        });
+    }
+
+    public List<Log> getNotificationtAll(int idBusi, int trang) {
+        String query = "select * from log where userId = ? and status = 1  ORDER BY  createDate DESC LIMIT 5 OFFSET ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idBusi).bind(1, (trang - 1) * 5).mapToBean(Log.class).stream().collect(Collectors.toList());
+        });
+    }
     public static void main(String[] args) {
     }
 }

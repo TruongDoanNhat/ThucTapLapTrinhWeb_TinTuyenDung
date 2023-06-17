@@ -320,7 +320,7 @@
                         </div>
                         <div class="control-group">
                             <div class="controls">
-                                <%=request.getContextPath()%>/business/CV?action=busiquanlycv
+                                <button type="submit" id="dang" class="btn">Đăng</button>
                             </div>
                         </div>
                     </form>

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="vn.edu.hcmuaf.fit.model.Log" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 06/01/2023
@@ -6,6 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<Log> listAll = (List<Log>) request.getAttribute("listAll");
+%>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -168,7 +172,8 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp"
+                       class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>
@@ -189,139 +194,63 @@
             </h6></div>
             <div data-v-18bc4a1a="" class="container-fluid page-content">
                 <div data-v-18bc4a1a="" class="shadow-sm bg-white rounded mb-3">
+                    <% for (Log log : listAll) {
+                    %>
                     <div data-v-18bc4a1a="">
                         <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
                             <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
                                                                               class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
                             </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">16/11/2022</div>
+                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center"><%=log.getCreateDate()%>
+                            </div>
                             <a data-v-18bc4a1a="" href="javascript:void(0)"
                                class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Ứng dụng di động TopCV - Nhà tuyển dụng cập nhật phiên bản mới
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
+                                <%=log.getContent()%>
+                                <%--                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span>--%>
+                            </a>
+                        </div>
                         <hr data-v-18bc4a1a="" class="m-0">
                     </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">12/10/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                TopHR Insights #12: Chiến lược xây dựng nguồn ứng viên IT bền vững
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">29/08/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo về sự thay đổi của box tin Việc làm từ xa (Remote)
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">05/08/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo về việc thay đổi cấp độ tài khoản để đạt hạng Khách hàng thân thiết
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">01/08/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo cập nhật cấp độ xác thực tài khoản nhà tuyển dụng
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">22/07/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo nâng cấp và bảo trì hệ thống
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">14/07/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo nâng cấp và bảo trì hệ thống
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-warning">Thông báo</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">07/07/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                THÔNG BÁO LỊCH NGHỈ TEAMBUILDING THÁNG 07/2022
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-primary1">Tính năng</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">01/07/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Thông báo Nâng cấp Toppy AI - Cân bằng &amp; tối ưu hiệu quả tin đăng trên toàn hệ thống
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <hr data-v-18bc4a1a="" class="m-0">
-                    </div>
-                    <div data-v-18bc4a1a="">
-                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">
-                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""
-                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-primary1">Tính năng</span>
-                            </div>
-                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">29/06/2022</div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
-                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
-                                Cập nhật tính năng Tìm CV
-                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>
-                        <!--                        <hr data-v-18bc4a1a="" class="m-0">-->
-                    </div>
+                    <% } %>
+                    <%--                    <div data-v-18bc4a1a="">--%>
+                    <%--                        <div data-v-18bc4a1a="" class="d-flex2 px-3 p-3">--%>
+                    <%--                            <div data-v-18bc4a1a="" class="notice-type"><span data-v-18bc4a1a=""--%>
+                    <%--                                                                              class="transparent-1 badge p-2 ml-auto w-100 badge-primary1">Tính năng</span>--%>
+                    <%--                            </div>--%>
+                    <%--                            <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center">29/06/2022</div>--%>
+                    <%--                            <a data-v-18bc4a1a="" href="javascript:void(0)"--%>
+                    <%--                               class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">--%>
+                    <%--                                Cập nhật tính năng Tìm CV--%>
+                    <%--                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span></a></div>--%>
+                    <%--                        <hr data-v-18bc4a1a="" class="m-0">--%>
+                    <%--                    </div>--%>
                 </div>
                 <nav data-v-18bc4a1a="">
-                    <ul class="pagination justify-content-center mb-0"><!---->
-                        <li class="page-item active"><a href="#change" class="page-link mr-1 rounded shadow-sm">1</a>
+                    <!-- Hiển thị nút phân trang -->
+                    <ul class="pagination justify-content-center mb-0">
+                        <% if (request.getAttribute("trang") != null || request.getAttribute("tongSoTrang") != null) {
+                            int tongSoTrang = (int) request.getAttribute("tongSoTrang");
+                            int trang = (int) request.getAttribute("trang");
+
+                            for (int pageNumber = trang - 2; pageNumber <= trang + 2; pageNumber++) { // Lặp qua 5 trang gần trang hiện tại (2 trang trước và 2 trang sau)
+                                if (pageNumber >= 1 && pageNumber <= tongSoTrang) { // Kiểm tra xem trang có nằm trong phạm vi từ 1 đến tổng số trang hay không
+                                    if (pageNumber == trang) { // Kiểm tra xem đây có phải là trang hiện tại hay không
+                        %>
+                        <li class="page-item active">
+                            <a href="#change" class="page-link mr-1 rounded shadow-sm"><%= pageNumber %></a>
                         </li>
-                        <li class="page-item"><a href="#change" class="page-link mr-1 rounded shadow-sm">2</a></li>
-                        <li class="page-item"><a href="#change" class="page-link mr-1 rounded shadow-sm">3</a></li>
-                        <li class="page-item"><a href="#next" class="page-link mr-1 rounded shadow-sm"><i
-                                class="fal fa-angle-right"></i></a></li>
-                        <li class="page-item"><a href="#last" class="page-link mr-1 rounded shadow-sm"><i
-                                class="fal fa-angle-double-right"></i></a></li>
+                        <% } else { // Nếu không phải là trang hiện tại %>
+                        <li class="page-item">
+                            <!-- Tạo liên kết đến trang khác -->
+                            <a href="Log?action=logBusi&trang=<%= pageNumber %>" class="page-link"><%= pageNumber %></a>
+                        </li>
+                        <% }
+                        }
+                        }
+                        } %>
                     </ul>
                 </nav>
+
             </div>
         </main>
     </div>
