@@ -66,9 +66,5 @@ public class DAOLog {
     }
 
     public static void main(String[] args) {
-        List<Log> log = DAOLog.getInstance().getAllListLogAdmin(2, 1);
-        for (Log l : log) {
-            System.out.println(UtilControl.dateToCreate(l.getCreateDate()));
-        }
     }
 }

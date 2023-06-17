@@ -89,7 +89,7 @@ public class PostServlet extends HttpServlet {
                 break;
 
             case "timkiem":
-                if (!keywords.matches("[\\p{L}\\s]+")) {
+                if (!keywords.matches("[\\p{L}\\s]*")) {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
                             String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
                 }
@@ -231,7 +231,7 @@ public class PostServlet extends HttpServlet {
                 break;
             case "remove":
                 Post postRemove = daoPost.getPostDetail(Integer.valueOf(idManager));
-                DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
+                DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
                         String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " không duyệt bài viết có id: " + idManager, 0);
                 DAOLog.getInstance().insert(Log.INFO, postRemove.getAccountId(),
                         "", "Bài viết không được duyệt (nội dung không hợp lệ): " + postRemove.getTitle() + ". Mọi thắc mắc vui lòng liên hệ chúng tôi qua email", 1);
