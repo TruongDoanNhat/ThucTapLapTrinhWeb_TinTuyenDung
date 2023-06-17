@@ -213,6 +213,7 @@
                        class="btn btn-link"><%= pageNumber %>
                     </a>
                     <% } else {%>
+
                     <a href="PostManager?action=search&trang=<%= pageNumber %>&keywords=<%=keywords%>&status=<%=status%>"
                        class="btn btn-link"><%= pageNumber %>
                     </a>

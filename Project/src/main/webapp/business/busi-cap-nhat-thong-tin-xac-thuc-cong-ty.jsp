@@ -175,7 +175,7 @@
             </div>
         </div>
         <a class="btn bg-gradient-primary mt-3 w-100"
-           href="<%=request.getContextPath()%>/business/busi-cap-nhat-thong-tin-xac-thuc.jsp">Nâng cấp tài khoản</a>
+           href="<%=request.getContextPath()%>/business/busi-tai-khoan.jsp">Nâng cấp tài khoản</a>
     </div>
 </aside>
 <!--  end nav left -->
@@ -193,7 +193,7 @@
                        class="list-group-item list-group-item-action border-0 bg-none">
                         <i data-v-61ae721f="" class="fa mr-2 fa-lock"></i> Đổi mật khẩu
                     </a>
-                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/business/busi-cap-nhat-thong-tin-xac-thuc.jsp" aria-current="page"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/business/busi-tai-khoan.jsp" aria-current="page"
                        class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-none ">
                         <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Thông tin cá nhân
                     </a>

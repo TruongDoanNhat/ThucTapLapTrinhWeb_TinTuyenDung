@@ -24,6 +24,7 @@ public class CVServlet extends HttpServlet {
         DAOCV cv = new DAOCV();
         String action = request.getParameter("action");
         int id = UtilSession.getInstance().getValue(request, "account").getId();
+        String cvId = request.getParameter("id");
 
         switch (action) {
             case "taocv" :
@@ -48,15 +49,15 @@ public class CVServlet extends HttpServlet {
                 UtilControl.forward("candi-quan-ly-cv.jsp", request, response);
                 break;
             case "xemcv" :
-                CV cvs2 = cv.getDetailCV(id);
+                CV cvs2 = cv.getDetailCV(cvId);
                 request.setAttribute("cv", cvs2);
                 UtilControl.forward("/visitor/thong-tin-cv-candi.jsp", request, response);
                 break;
             case "busiquanlycv" :
                 List<CV> quanlycv = cv.getCVApplied(id);
-//                List<PostApplied> postApplied = cv.getPostApplied(id);
+                List<PostApplied> postApplied = cv.getPostApplied(id);
                 request.setAttribute("cvList", quanlycv);
-//                request.setAttribute("postApplied", postApplied);
+                request.setAttribute("postApplied", postApplied);
                 UtilControl.forward("busi-quan-ly-cv.jsp", request, response);
                 break;
         }

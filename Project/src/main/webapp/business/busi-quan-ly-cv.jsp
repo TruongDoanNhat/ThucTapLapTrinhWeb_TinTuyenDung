@@ -1,7 +1,8 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Account" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.CV" %>
-<%@ page import="vn.edu.hcmuaf.fit.model.PostApplied" %><%--
+<%@ page import="vn.edu.hcmuaf.fit.model.PostApplied" %>
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 06/01/2023
@@ -10,7 +11,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% List<CV> cvList = (List<CV>) request.getAttribute("cvList"); %>
-<%--<% List<PostApplied> postApplied = (List<PostApplied>) request.getAttribute("postApplied"); %>--%>
+<% List<PostApplied> postApplied = (List<PostApplied>) request.getAttribute("postApplied"); %>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -177,7 +178,7 @@
             </div>
         </div>
         <a class="btn bg-gradient-primary mt-3 w-100"
-           href="<%=request.getContextPath()%>/business/busi-cap-nhat-thong-tin-xac-thuc.jsp">Nâng cấp tài khoản</a>
+           href="<%=request.getContextPath()%>/business/busi-tai-khoan.jsp">Nâng cấp tài khoản</a>
     </div>
 </aside>
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -240,13 +241,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% for(CV cvs : cvList) { %>
+                                <% java.util.Collections.reverse(cvList); // Đảo ngược danh sách cvList
+                                    for (CV cvs : cvList) { %>
                                 <tr class="bg-gray">
                                     <td>
                                         <div class="d-flex px-2 py-1">
                                             <div>
-                                                <img src="assets/img/team-2.jpg" class="avatar avatar-sm me-3"
-                                                     alt="user1">
+                                                <img src="assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="mb-0 text-sm"><%=cvs.getName()%></h6>
@@ -261,22 +262,33 @@
                                     <td class="align-middle text-center text-sm">
                                         <span class="badge badge-sm bg-gradient-secondary">Chưa duyệt</span>
                                     </td>
+                                    <%
+                                        // Tìm ngày nộp cho CV hiện tại
+                                        Date submissionDate = null;
+                                        for (PostApplied postapplied : postApplied) {
+                                            if (cvs.getId() == postapplied.getCvId()) {
+                                                submissionDate = postapplied.getCreateDate();
+                                                break;
+                                            }
+                                        }
+                                    %>
                                     <td class="align-middle text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">????</span>
+                                        <span class="text-secondary text-xs font-weight-bold"><%=submissionDate%></span>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="<%=request.getContextPath()%>/business/CV?action=xemcv&id=<%=cvs.getId()%>" class="text-secondary font-weight-bold text-xs"
-                                           data-toggle="tooltip" data-original-title="Xem user">
-                                            Xem
-                                        </a>
+                                        <a href="<%=request.getContextPath()%>/business/CV?action=xemcv&id=<%=cvs.getId()%>"
+                                           class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                                           data-original-title="Xem user">Xem</a>
                                     </td>
                                 </tr>
                                 <% } %>
-<%--                                    <td class="align-middle text-center text-sm">--%>
-<%--                                        <span class="badge badge-sm bg-gradient-success">Đã duyệt</span>--%>
-<%--                                    </td>--%>
                                 </tbody>
+
+
                             </table>
+                            <%--                                    <td class="align-middle text-center text-sm">--%>
+                            <%--                                        <span class="badge badge-sm bg-gradient-success">Đã duyệt</span>--%>
+                            <%--                                    </td>--%>
                         </div>
                     </div>
                 </div>

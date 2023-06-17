@@ -122,7 +122,7 @@ public class DAOBill {
     // thêm bill vào database
     public boolean insertBill(String numAccount, String money) {
         String query = "INSERT INTO `bill` (numAccount,money,createDate,status) VALUES (?,?,now(),?)";
-        JDBIConnector.get().withHandle(handle -> handle.createUpdate(query).bind(0, numAccount).bind(1, money).bind(3, Bill.STATUS_NOT_SEEN).execute());
+        JDBIConnector.get().withHandle(handle -> handle.createUpdate(query).bind(0, numAccount).bind(1, money).bind(2, Bill.STATUS_NOT_SEEN).execute());
         return true;
     }
 

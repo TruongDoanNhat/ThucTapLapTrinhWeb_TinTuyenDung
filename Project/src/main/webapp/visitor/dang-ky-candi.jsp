@@ -26,7 +26,7 @@
     <div class="noi-dung">
         <!-- Logo -->
         <div class="logo-log">
-            <a href="trang-chu-candi.jsp">
+            <a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp">
                 <img src="<%=request.getContextPath()%>/assets/img/logo/logo.png" alt="logo">
 
             </a>
@@ -34,13 +34,31 @@
         <div class="form">
             <h2 class="form-heading in">Chào mừng bạn đến với TopViecLam</h2>
             <form action="<%=request.getContextPath()%>/SignUp" method="post">
-                <%
-                    if (message != null) {
-                %>
-                <jsp:include page="error.jsp"></jsp:include>
-                <%
-                    }
-                %>
+<%--                <%--%>
+<%--                    if (message != null) {--%>
+<%--                %>--%>
+<%--                <jsp:include page="error.jsp"></jsp:include>--%>
+<%--                <%--%>
+<%--                    }--%>
+<%--                %>--%>
+    <%
+        if (message != null) {
+    %>
+    <div style="width: 95%;
+                                            height: calc(1.5em + 0.75rem + 2px);
+                                            padding: 0.375rem 0.75rem;
+                                            background: #E05E74; border-radius: 5px;
+                                            border: 2px solid black">
+        <label style="color: #4d0203;
+                                                  font-size: 1rem;
+                                                  font-weight: 400;
+                                                  line-height: 1.5;">
+            <b> ERROR! </b> <%=message%>
+        </label>
+    </div>
+    <%
+        }
+    %>
                 <div class="input-form">
                     <span>Họ và tên</span>
                     <input id="name" name="hoten" autofocus onkeyup="daoNutDN(), checkPass()" type="text" class="input"

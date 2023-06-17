@@ -98,11 +98,17 @@ public class PostServlet extends HttpServlet {
                 if (tongBaiViet % 5 != 0) {
                     soBaiViet++;
                 }
-                List<Post> postSearch = categoryId.equals("0") ? daoPost.getPostSearchApprove(keywords, "2", t) : daoPost.getPostSearchCategory(keywords, categoryId, "2", t);
+                List<Post> postSearch ;
+                if (categoryId.equals("0")) {
+                 postSearch = daoPost.getPostSearchApprove(keywords, "2", t);
+                }else {
+                    request.setAttribute("categoryId", categoryId);
+                    postSearch = daoPost.getPostSearchCategory(keywords, categoryId, "2", t);
+                }
                 request.setAttribute("sobd", soBaiViet);
                 request.setAttribute("trang", t);
                 request.setAttribute("tongBaiViet", tongBaiViet);
-                request.setAttribute("categoryId", categoryId);
+
                 request.setAttribute("keywords", keywords);
                 request.setAttribute("postAll", postSearch);
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
@@ -206,11 +212,12 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("Admin-quan-li-bai-dang.jsp", request, response);
                 break;
             case "approve":
+                Post post = daoPost.getPostDetail(Integer.valueOf(idManager));
                 DAOLog.getInstance().insert(Log.INFO, account != null ? account.getId() : -1,
                         String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã duyệt bài viết có id: " + idManager, 0);
-
+                DAOLog.getInstance().insert(Log.INFO, post.getAccountId(),
+                        "", "Bài viết " + post.getTitle() + " tạo ngày "+ post.getCreateDate() + " đã được duyệt ", 1);
                 daoPost.updatePost(Integer.valueOf(idManager), Post.status_approve);
-
                 response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
                 break;
             case "lock":
