@@ -61,7 +61,6 @@ public class UpdateServlet extends HttpServlet {
                     String.valueOf(request.getRequestURL()),
                     (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh")
                             + " đã cập nhật " + content, 0);
-
     }
 
     @Override

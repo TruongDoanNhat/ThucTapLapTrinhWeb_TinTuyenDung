@@ -62,7 +62,7 @@ public class DAOAccount {
 
     // lấy danh sách tài khoản
     public List<Account> getListAccount() {
-        List<Account> listAccount = new ArrayList<Account>();
+        List<Account> listAccount;
         String query = "select * from account";
         listAccount = JDBIConnector.get().withHandle(handle -> handle.createQuery(query).mapToBean(Account.class).list());
         return listAccount;
@@ -333,7 +333,6 @@ public class DAOAccount {
                     .stream().collect(Collectors.toList());
         });
     }
-
 
     public static void main(String[] args) {
 

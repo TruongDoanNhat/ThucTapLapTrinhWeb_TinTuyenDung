@@ -31,7 +31,6 @@ public class Login extends HttpServlet {
         HttpSession session = request.getSession();
         Integer countLogin = (Integer) session.getAttribute("countLogin");
         String userNameAttempts = (String) session.getAttribute("userNameAttempts");
-        System.out.println(userNameAttempts + "?");
         String message = "Đăng nhập thất bại. Tài khoản hoặc mật khẩu không đúng";
         String action = request.getParameter("action");
         if (action != null) {

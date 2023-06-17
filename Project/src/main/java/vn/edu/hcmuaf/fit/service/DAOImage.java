@@ -7,8 +7,6 @@ import java.util.List;
 
 public class DAOImage {
     private static List<Image> imageList = null;
-
-
     public static List<Image> listImage() {
         String query = "select * from image";
         imageList = JDBIConnector.get().withHandle(handle -> handle.createQuery(query)

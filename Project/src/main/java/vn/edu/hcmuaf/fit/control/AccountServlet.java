@@ -42,6 +42,7 @@ public class AccountServlet extends HttpServlet {
                     request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
                 }
                 break;
+            //                            ------------------------ RESOLVE ADMIN ------------------------
             case "accountManager":
                 tongTaiKhoan = d.getTotalAccount();
                 tongSoTrang = tongTaiKhoan / 5;
@@ -53,25 +54,6 @@ public class AccountServlet extends HttpServlet {
                 request.setAttribute("trang", trang);
                 request.setAttribute("listAccount", listAccount);
                 UtilControl.forward("Admin-quan-li-nguoi-dung.jsp", request, response);
-                break;
-
-            case "lock":
-                if (!(DAOAccount.getAccountQuery(username).getType() == 2)) {
-                    d.updateStatusAccount(username, Account.LOCK);
-                    response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");
-                } else {
-                    response.sendRedirect("visitor/error.jsp");
-                }
-                DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
-                        String.valueOf(request.getRequestURL()),
-                        (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã khóa tài khoản " + username, 0);
-                break;
-            case "unlock":
-                DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
-                        String.valueOf(request.getRequestURL()),
-                        (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã mở khóa tài khoản " + username, 0);
-                d.updateStatusAccount(username, Account.ACTIVATED);
-                response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");
                 break;
             case "search":
                 if (!keywords.matches("[\\p{L}\\s]*")) {
@@ -96,6 +78,27 @@ public class AccountServlet extends HttpServlet {
                 request.setAttribute("keywords", keywords);
                 UtilControl.forward("Admin-quan-li-nguoi-dung.jsp", request, response);
                 break;
+            case "lock":
+                if (!(DAOAccount.getAccountQuery(username).getType() == 2)) {
+                    DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
+                            String.valueOf(request.getRequestURL()),
+                            (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã khóa tài khoản " + username, 0);
+                    d.updateStatusAccount(username, Account.LOCK);
+                    response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");
+                } else {
+                    DAOLog.getInstance().insert(Log.DANGER, account != null ? account.getId() : -1,
+                            String.valueOf(request.getRequestURL()),
+                            (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " khóa không thành công tài khoản " + username, 0);
+                    response.sendRedirect("visitor/error.jsp");
+                }
+                break;
+            case "unlock":
+                DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
+                        String.valueOf(request.getRequestURL()),
+                        (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã mở khóa tài khoản " + username, 0);
+                d.updateStatusAccount(username, Account.ACTIVATED);
+                response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");
+                break;
 
         }
     }
@@ -104,5 +107,4 @@ public class AccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-
 }

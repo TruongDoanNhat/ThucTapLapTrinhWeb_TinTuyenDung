@@ -31,7 +31,6 @@ public class ResetPassword extends HttpServlet {
         String action = request.getParameter("action");
         switch (action) {
             case "forgotPassword":
-
                 if (getAccountResetPassword == null) {
                     request.setAttribute("message", "Email không tồn tại! Vui lòng nhập lại email!");
                     UtilControl.forward("visitor/quen-mat-khau.jsp", request, response);
@@ -46,8 +45,6 @@ public class ResetPassword extends HttpServlet {
                     password = Util.encryptionPassword(password);
                     d.updatePassword(username, password);
                     response.sendRedirect(request.getContextPath() + "/Login?action=login");
-
-
                 }
                 break;
             case "changePassword":
@@ -60,6 +57,8 @@ public class ResetPassword extends HttpServlet {
                     request.setAttribute("message", "Đổi mật khẩu thành công!");
                     response.sendRedirect("visitor/trang-chu-candi.jsp");
                 } else {
+                    DAOLog.getInstance().insert(Log.WARNING, getAccountResetPassword.getId(),
+                            "", "Thay đổi mật khẩu không thành công !", 1);
                     request.setAttribute("message", "Sai mật khẩu!");
                     UtilControl.forward("candidate/doi-mat-khau-candi.jsp", request, response);
 
