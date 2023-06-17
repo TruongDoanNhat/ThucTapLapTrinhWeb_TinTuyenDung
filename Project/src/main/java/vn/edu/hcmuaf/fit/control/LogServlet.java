@@ -39,6 +39,18 @@ public class LogServlet extends HttpServlet {
                 request.setAttribute("trang", trang);
                 UtilControl.forward("Admin-thong-bao.jsp", request, response);
                 break;
+            case "logBusi":
+                tongBaiViet = daoLog.getTotalNotification(account.getId());
+                tongSoTrang = tongBaiViet / 5;
+                if (tongBaiViet % 5 != 0) {
+                    tongSoTrang++;
+                }
+                listLog = daoLog.getNotificationtAll(account.getId(), trang);
+                request.setAttribute("listAll", listLog);
+                request.setAttribute("tongSoTrang", tongSoTrang);
+                request.setAttribute("trang", trang);
+                UtilControl.forward("busi-thong-bao-he-thong.jsp", request, response);
+                break;
         }
     }
 
