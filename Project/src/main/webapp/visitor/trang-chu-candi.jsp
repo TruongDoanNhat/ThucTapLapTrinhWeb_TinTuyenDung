@@ -71,14 +71,16 @@
                     <div class="row" style=" padding-bottom: 200px; padding-left: 140px;">
                         <div class="col-xl-8">
                             <!-- form -->
-                            <form action="<%=request.getContextPath()%>/Post?action=timkiem" method="post" class="search-box">
+                            <form action="<%=request.getContextPath()%>/Post?action=timkiem" method="post"
+                                  class="search-box">
                                 <div class="input-form">
                                     <input name="keywords" type="text" placeholder="Tìm kiếm việc làm">
                                 </div>
                                 <div class="select-form">
                                     <%List<Category> listCategory = DAOCategory.getInstance().getCategoryAll();%>
-                                    <select  id="select1" style=" margin-top: 20px; text-transform: none;
-                                     height: 30px;width: 99%;  border: none; appearance: none;"data-placeholder="Chọn lĩnh vực" name="categoryId">
+                                    <select id="select1" style=" margin-top: 20px; text-transform: none;
+                                     height: 30px;width: 99%;  border: none; appearance: none;"
+                                            data-placeholder="Chọn lĩnh vực" name="categoryId">
                                         <option value="0">Tất cả</option>
                                         <% for (Category c : listCategory) {%>
                                         <option value="<%=c.getId()%>"><%=c.getName()%>
@@ -86,7 +88,7 @@
                                         <% }%>
                                     </select>
                                 </div>
-                                <div class="search-form" >
+                                <div class="search-form">
                                     <button class="btn" type="submit" style="padding: 35px 55px">Tìm việc</button>
                                 </div>
                             </form>
@@ -98,8 +100,7 @@
     </div>
     <!-- slider Area End-->
     <!-- Our Services Start -->
-    <%--    lỗi từ 94 - 218 --%>
-    <div class="our-services section-pad-t30">
+    <div class="our-services" style="padding-top: 60px;">
         <div class="container">
             <!-- Section Tittle -->
             <div class="row">
@@ -111,7 +112,6 @@
                 </div>
             </div>
             <div class="row d-flex">
-
                 <%for (Category c : category) { %>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
@@ -128,17 +128,12 @@
                     </div>
                 </div>
                 <% }%>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-
-
-                </div>
                 <!-- More Btn -->
                 <!-- Section Button -->
-
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="browse-btn2 text-center mt-50">
+                    <div class="text-center mb-20">
                         <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" class="border-btn2">Xem
                             thêm</a>
                     </div>
@@ -165,10 +160,9 @@
         </div>
         <!-- Online CV Area End-->
         <!-- Featured_job_start -->
-        <section class="featured-job-area feature-padding">
+        <section style="padding-top: 60px; padding-bottom: 20px;">
             <div class="container">
                 <!-- Section Tittle -->
-
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle text-center">
@@ -193,25 +187,24 @@
                                 </div>
                                 <div class="job-tittle">
                                     <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=post.getId()%>">
-                                        <h4><%=post.getTitle()%>
-                                        </h4>
+                                        <h4 style=" white-space: nowrap; width: 600px; overflow: hidden; text-overflow: ellipsis;"><%=post.getTitle()%></h4>
                                     </a>
-                                    <ul>
-                                        <li>Cty Công nghệ & Truyền thông</li>
-                                        <li><i class="fas fa-map-marker-alt"></i><%= post.getAddress()%>
+                                    <ul style="white-space: nowrap;">
+                                        <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;">Cty Công nghệ & Truyền thông</li>
+                                        <li style="width: 300px; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-map-marker-alt"></i><%= post.getAddress()%>
                                         </li>
-                                        <li><%= post.getSalary()%>
+                                        <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;"><%= post.getSalary()%>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="items-link f-right">
+                            <div class="items-link f-right" style="width: 180px;">
                                 <a href="/Post_details?id=<%=post.getId()%>"><%= post.getType()%>
                                 </a>
                                 <%if (dp.dateToCreate(post.getCreateDate()) > 0) { %>
                                 <span><%=dp.dateToCreate(post.getCreateDate())%> ngày trước</span>
                                 <% } else { %>
-                                <span>Mới nhất</span>
+                                <span style="text-align: center;">Mới nhất</span>
                                 <% } %>
                             </div>
                         </div>
@@ -287,7 +280,8 @@
                                     <!-- founder -->
                                     <div class="testimonial-founder  ">
                                         <div class="founder-img mb-30">
-                                            <img src="<%=request.getContextPath()%>/assets/img/testmonial/testimonial-founder.png" alt="">
+                                            <img src="<%=request.getContextPath()%>/assets/img/testmonial/testimonial-founder.png"
+                                                 alt="">
                                             <span>Nguyễn Đình Nguyên</span>
                                             <p>Giám đốc sáng tạo</p>
                                         </div>
@@ -304,7 +298,8 @@
                                     <!-- founder -->
                                     <div class="testimonial-founder  ">
                                         <div class="founder-img mb-30">
-                                            <img src="<%=request.getContextPath()%>/assets/img/testmonial/testimonial-founder.png" alt="">
+                                            <img src="<%=request.getContextPath()%>/assets/img/testmonial/testimonial-founder.png"
+                                                 alt="">
                                             <span>Trương Đoàn Nhất</span>
                                             <p>Giám đốc điều hành</p>
                                         </div>
@@ -321,7 +316,8 @@
                                     <!-- founder -->
                                     <div class="testimonial-founder  ">
                                         <div class="founder-img mb-30">
-                                            <img src="<%=request.getContextPath()%>/assets/img/testmonial/testimonial-founder.png" alt="">
+                                            <img src="<%=request.getContextPath()%>/assets/img/testmonial/testimonial-founder.png"
+                                                 alt="">
                                             <span>Lê Hửu Phước</span>
                                             <p>Giám đốc dự án</p>
                                         </div>
@@ -389,7 +385,7 @@
         </div>
         <!-- Support Company End-->
         <!-- Blog Area Start -->
-        <div class="home-blog-area blog-h-padding">
+        <div class="home-blog-area" style="padding-top: 60px; padding-bottom: 20px;">
             <div class="container">
                 <!-- Section Tittle -->
                 <div class="row">
@@ -405,7 +401,8 @@
                         <div class="home-blog-single mb-30">
                             <div class="blog-img-cap">
                                 <div class="blog-img">
-                                    <a href="tin-tuc-chi-tiet-candi.jsp"> <img src="<%=request.getContextPath()%>/assets/img/blog/home-blog1.jpg">
+                                    <a href="tin-tuc-chi-tiet-candi.jsp"> <img
+                                            src="<%=request.getContextPath()%>/assets/img/blog/home-blog1.jpg">
                                     </a>
                                     <!-- Blog date -->
                                     <div class="blog-date text-center">
@@ -427,8 +424,9 @@
                         <div class="home-blog-single mb-30">
                             <div class="blog-img-cap">
                                 <div class="blog-img">
-                                    <a href="tin-tuc-chi-tiet-candi.jsp"> <img src="<%=request.getContextPath()%>/assets/img/blog/home-blog2.jpg"
-                                                                               alt=""></a>
+                                    <a href="tin-tuc-chi-tiet-candi.jsp"> <img
+                                            src="<%=request.getContextPath()%>/assets/img/blog/home-blog2.jpg"
+                                            alt=""></a>
                                     <!-- Blog date -->
                                     <div class="blog-date text-center">
                                         <span>24</span>
