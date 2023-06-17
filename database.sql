@@ -25,7 +25,7 @@ CREATE TABLE `account`  (
 -- Records of account
 -- ----------------------------
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (1, 1, '20130340@st.hcmuaf.edu.vn', 'busi', 's2t085INWPYloRMPvg5QKEtGClI=', 'Nguen', 0, 2, 1, '2023-04-05', NULL);
-INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (2, NULL, '20130340@st.hcmuaf.edu.vn', 'admin', 's2t085INWPYloRMPvg5QKEtGClI=', 'ADMIN', 1, 0, 1, '2023-04-09', NULL);
+INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (2, NULL, '20130340@st.hcmuaf.edu.vn', 'admin', 's2t085INWPYloRMPvg5QKEtGClI=', 'ADMIN', 2, 0, 1, '2023-04-09', NULL);
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (3, NULL, '20130348@st.hcmuaf.edu.vn', 'candi', 's2t085INWPYloRMPvg5QKEtGClI=', 'candi', 0, 1, 1, '2023-04-09', NULL);
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (4, NULL, 'pho.02.112002@gmail.com', 'candi2', 's2t085INWPYloRMPvg5QKEtGClI=', 'Nguyen Dinh Nguyen', 0, 1, 1, '2023-04-18', NULL);
 INSERT INTO `account` (`id`, `companyId`, `email`, `username`, `password`, `name`, `type`, `role`, `status`, `createDate`, `updateDate`) VALUES (5, NULL, 'alexander25xyz@gmail.com', 'cadi3', 's2t085INWPYloRMPvg5QKEtGClI=', 'Alex', 0, 1, 1, '2023-05-22', NULL);
@@ -450,26 +450,26 @@ CREATE TABLE `postApplied`  (
 -- ----------------------------
 -- Records of postApplied
 -- ----------------------------
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (1, 14, 1, 9, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (2, 3, 2, 2, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (3, 4, 3, 3, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (4, 3, 15, 1, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (5, 5, 101, 4, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (6, 11, 11, 6, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (7, 15, 111, 10, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (8, 3, 1, 1, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (9, 9, 9, 5, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (10, 14, 92, 1, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (11, 13, 4, 8, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (12, 11, 61, 6, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (13, 12, 49, 7, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (14, 13, 84, 8, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (15, 14, 53, 9, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (16, 15, 66, 10, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (17, 9, 102, 5, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (18, 9, 73, 5, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (19, 15, 42, 10, '2023-06-14');
-INSERT INTO `postapplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (20, 12, 88, 7, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (1, 14, 1, 9, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (2, 3, 2, 2, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (3, 4, 3, 3, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (4, 3, 15, 1, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (5, 5, 101, 4, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (6, 11, 11, 6, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (7, 15, 111, 10, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (8, 3, 1, 1, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (9, 9, 9, 5, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (10, 14, 92, 1, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (11, 13, 4, 8, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (12, 11, 61, 6, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (13, 12, 49, 7, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (14, 13, 84, 8, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (15, 14, 53, 9, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (16, 15, 66, 10, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (17, 9, 102, 5, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (18, 9, 73, 5, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (19, 15, 42, 10, '2023-06-14');
+INSERT INTO `postApplied` (`id`, `accountId`, `postId`, `cvId`, `createDate`) VALUES (20, 12, 88, 7, '2023-06-14');
 
 -- ----------------------------
 -- Table structure for log
