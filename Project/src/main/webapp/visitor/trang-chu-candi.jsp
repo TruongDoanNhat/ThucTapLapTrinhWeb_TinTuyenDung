@@ -182,16 +182,20 @@
                         <div class="single-job-items mb-30">
                             <div class="job-items">
                                 <div class="company-img">
-                                    <img src="<%=request.getContextPath()%>/assets/img/icon/job-list1.png"
-                                         alt="">
+                                    <img style=" width:85px; height:85px;"
+                                         src="<%=request.getContextPath()%><%=DAOImage.getURL(DAOCompany.getCompany(post.getAccountId()).getImageId())%>"
+                                         alt="Image">
                                 </div>
                                 <div class="job-tittle">
                                     <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=post.getId()%>">
-                                        <h4 style=" white-space: nowrap; width: 600px; overflow: hidden; text-overflow: ellipsis;"><%=post.getTitle()%></h4>
+                                        <h4 style=" white-space: nowrap; width: 600px; overflow: hidden; text-overflow: ellipsis;"><%=post.getTitle()%>
+                                        </h4>
                                     </a>
                                     <ul style="white-space: nowrap;">
-                                        <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;">Cty Công nghệ & Truyền thông</li>
-                                        <li style="width: 300px; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-map-marker-alt"></i><%= post.getAddress()%>
+                                        <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;"><%=DAOCompany.getCompany(post.getAccountId()).getName()%>
+                                        </li>
+                                        <li style="width: 300px; overflow: hidden; text-overflow: ellipsis;"><i
+                                                class="fas fa-map-marker-alt"></i><%= post.getAddress()%>
                                         </li>
                                         <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;"><%= post.getSalary()%>
                                         </li>

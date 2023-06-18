@@ -15,10 +15,10 @@ public class DAOCompany {
         return companyList;
     }
 
-    public Company getCompany(int idCompany) {
-        String query = "select * from company where id = (select companyId from account WHERE companyId = ?);";
+    public static Company getCompany(int idAccount) {
+        String query = "select * from company where id = (select companyId from account WHERE account.id = ?);";
         return JDBIConnector.get().withHandle(handle -> handle.createQuery(query)
-                .bind(0, idCompany)
+                .bind(0, idAccount)
                 .mapToBean(Company.class).stream().findFirst().get());
     }
 }
