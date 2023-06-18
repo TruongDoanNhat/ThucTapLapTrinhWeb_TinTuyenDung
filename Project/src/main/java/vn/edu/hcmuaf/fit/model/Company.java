@@ -6,7 +6,7 @@ import java.sql.Date;
 public class Company implements Serializable {
     private static final long serialVersionUID = 1L;
     private String id;
-    private String imageId;
+    private int imageId;
     private String name;
     private String phone;
     private String address;
@@ -18,7 +18,7 @@ public class Company implements Serializable {
 
     }
 
-    public Company(String id, String imageId, String name, String phone, String address, String description, Date createDate, Date updateDate) {
+    public Company(String id, int imageId, String name, String phone, String address, String description, Date createDate, Date updateDate) {
         this.id = id;
         this.imageId = imageId;
         this.name = name;
@@ -51,11 +51,11 @@ public class Company implements Serializable {
         this.id = id;
     }
 
-    public String getImageId() {
+    public int getImageId() {
         return imageId;
     }
 
-    public void setImageId(String imageId) {
+    public void setImageId(int imageId) {
         this.imageId = imageId;
     }
 
