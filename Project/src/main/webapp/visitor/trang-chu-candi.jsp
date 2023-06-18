@@ -6,6 +6,8 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Company" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOCategory" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOImage" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCompany" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -176,14 +178,14 @@
                         <%
                             List<Post> listpost = dp.getPostCreateNew();
                             for (Post post : listpost) {
+                                Company company = DAOCompany.getCompany(post.getAccountId());
                         %>
-
                         <!-- single-job-content -->
                         <div class="single-job-items mb-30">
                             <div class="job-items">
                                 <div class="company-img">
                                     <img style=" width:85px; height:85px;"
-                                         src="<%=request.getContextPath()%><%=DAOImage.getURL(DAOCompany.getCompany(post.getAccountId()).getImageId())%>"
+                                         src="<%=request.getContextPath()+DAOImage.getURL(company.getImageId())%>"
                                          alt="Image">
                                 </div>
                                 <div class="job-tittle">
@@ -192,7 +194,7 @@
                                         </h4>
                                     </a>
                                     <ul style="white-space: nowrap;">
-                                        <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;"><%=DAOCompany.getCompany(post.getAccountId()).getName()%>
+                                        <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;"><%=company.getName()%>
                                         </li>
                                         <li style="width: 300px; overflow: hidden; text-overflow: ellipsis;"><i
                                                 class="fas fa-map-marker-alt"></i><%= post.getAddress()%>

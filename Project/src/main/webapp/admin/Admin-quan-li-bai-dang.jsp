@@ -85,15 +85,15 @@
                                 <tr>
                                     <td><%=p.getId()%>
                                     </td>
-                                    <td><%=p.getTitle()%>
+                                    <td style="width: 220px;"><%=p.getTitle()%>
                                     </td>
                                     <td><%=p.getRank()%>
                                     </td>
-                                    <td><%=p.getCreateDate()%>
+                                    <td style="width: 85px"><%=p.getCreateDate()%>
                                     </td>
-                                    <td><%=p.getEndDate()%>
+                                    <td style="width: 85px"><%=p.getEndDate()%>
                                     </td>
-                                    <td><%=p.getAddress()%>
+                                    <td style="width: 150px;"><%=p.getAddress()%>
                                     </td>
                                     <%--                 chưa duyệt--%>
                                     <%

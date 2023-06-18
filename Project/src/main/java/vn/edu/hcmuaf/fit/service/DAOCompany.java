@@ -21,4 +21,5 @@ public class DAOCompany {
                 .bind(0, idAccount)
                 .mapToBean(Company.class).stream().findFirst().get());
     }
+
 }
