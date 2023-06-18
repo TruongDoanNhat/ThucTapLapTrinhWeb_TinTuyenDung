@@ -85,7 +85,7 @@
                                 <tr>
                                     <td><%=account.getId()%>
                                     </td>
-                                    <td><%=account.getName()%>
+                                    <td style="width: 130px;"><%=account.getName()%>
                                     </td>
                                     <td><%=account.getEmail()%>
                                     </td>
@@ -93,10 +93,10 @@
                                         if (role == 2) {%>
                                     <td>
                                         <a style="font-weight: bold"
-                                           href="<%=request.getContextPath()%>/CompanyManager?action=detailsCompany&id=<%=account.getCompanyId()%>"><%=account.getNameRole(role)%>
+                                           href="<%=request.getContextPath()%>/admin/CompanyManager?action=detailsCompany&idAccount=<%=account.getId()%>"><%=account.getNameRole(role)%>
                                         </a>
                                         <br>
-                                        <span>Công ty: <%=daoCompany.getCompany(account.getCompanyId()).getName()%></span>
+                                        <span>Công ty: <%=DAOCompany.getCompany(account.getId()).getName()%></span>
                                     </td>
                                     <% } else {%>
                                     <td><%=account.getNameRole(role)%>
@@ -104,7 +104,7 @@
                                     <% } %>
                                     <td><%=account.getNameStatus(account.getStatus())%>
                                     </td>
-                                    <td>
+                                    <td style="width: 85px">
                                         <%=account.getCreateDate()%>
                                     </td>
                                     <td>

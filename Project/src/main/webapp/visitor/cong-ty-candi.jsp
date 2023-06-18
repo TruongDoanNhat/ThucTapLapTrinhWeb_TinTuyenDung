@@ -11,13 +11,12 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOCategory" %>
 <%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOImage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% DAOPost dp = new DAOPost();
     List<Category> category = DAOCategory.getInstance().getCategoryAll();
 %>
-<% DAOCompany daoCompany = new DAOCompany();
-List<Company> companyList = DAOCompany.getInstance().getCompany("");
-    Company company = (Company) request.getAttribute("company");%>;
+<% Company company = (Company) request.getAttribute("company");%>;
 <html>
 <head>
     <meta charset="utf-8">
@@ -100,11 +99,11 @@ List<Company> companyList = DAOCompany.getInstance().getCompany("");
                             <div class="section-body">
                                 <div class="info">
                                     <div class="company-logo">
-                                        <img src="https://cdn.topcv.vn/37/company_logos/cong-ty-co-phan-dau-tu-giao-duc-va-phat-trien-nguon-luc-quoc-te-pasal-5ad4093c6754b_rs.jpg"
-                                             alt="" title="" class="company-image-logo">
+                                        <img src="<%=request.getContextPath() +DAOImage.getURL(company.getImageId())%>"
+                                             alt="image" title="" class="company-image-logo">
                                     </div>
                                     <div class="company-name">
-                                        <h4>Công ty Cổ Phần Đầu tư Giáo dục Và Phát triển Nguồn Lực Quốc Tế Pasal <i
+                                        <h4><%=company.getName()%><i
                                                 class="fa-solid fa-circle-check color-premium"></i></h4>
                                     </div>
                                 </div>
@@ -112,16 +111,17 @@ List<Company> companyList = DAOCompany.getInstance().getCompany("");
                                 <div class="content-contact">
                                     <div class="info-line">
                                         <i class="fa-solid ">Liên hệ: </i>
-                                        <a href="tel:0977619598">0977619598</a>
+                                        <a href=""><%=company.getPhone()%>
+                                        </a>
                                     </div>
                                     <div class="info-line">
                                         <i class="fa-solid">Website: </i>
-                                        <span><a class="" href="http://pasal.edu.vn"
-                                                 target="_blank">http://pasal.edu.vn</a></span>
+                                        <span><a class="" href=""
+                                                 target="_blank">company.com</a></span>
                                     </div>
                                     <div class="info-line">
                                         <i class="fa-solid ">Địa chỉ: </i>
-                                        <span>Head Office Số 2, Ngõ 54 Phỗ Vũ Trọng Phụng, Thanh Xuân, Hà Nội.</span>
+                                        <span><%=company.getAddress()%>.</span>
                                     </div>
                                 </div>
                             </div>
@@ -140,41 +140,13 @@ List<Company> companyList = DAOCompany.getInstance().getCompany("");
                             <li>
                                 <div class="<%=c.getId()%>">
                                     <h5>
-                                        <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%></a>
+                                        <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%>
+                                        </a>
                                     </h5>
                                     <span>(<%=dp.getPostofCategoryByID(c.getId()).size()%>)</span>
                                 </div>
                             </li>
                             <li>
-                                <%--                <a href="#" class="d-flex">--%>
-                                <%--                  <p>Chuyên viên tư vấn mảng tuyển dụng</p>--%>
-                                <%--                  <p>(5)</p>--%>
-                                <%--                </a>--%>
-                                <%--              </li>--%>
-                                <%--              <li>--%>
-                                <%--                <a href="#" class="d-flex">--%>
-                                <%--                  <p>Java Developer</p>--%>
-                                <%--                  <p>(3)</p>--%>
-                                <%--                </a>--%>
-                                <%--              </li>--%>
-                                <%--              <li>--%>
-                                <%--                <a href="#" class="d-flex">--%>
-                                <%--                  <p>Fullstack Developer</p>--%>
-                                <%--                  <p>(11)</p>--%>
-                                <%--                </a>--%>
-                                <%--              </li>--%>
-                                <%--              <li>--%>
-                                <%--                <a href="#" class="d-flex">--%>
-                                <%--                  <p>Lập trình viên PHP</p>--%>
-                                <%--                  <p>(12)</p>--%>
-                                <%--                </a>--%>
-                                <%--              </li>--%>
-                                <%--              <li>--%>
-                                <%--                <a href="#" class="d-flex">--%>
-                                <%--                  <p>Nhân viên Lập trình.NetDeveloper</p>--%>
-                                <%--                  <p>(9)</p>--%>
-                                <%--                </a>--%>
-                                <%--              </li>--%>
                                     <% }%>
                         </ul>
                     </aside>
@@ -222,9 +194,9 @@ List<Company> companyList = DAOCompany.getInstance().getCompany("");
             </div>
         </div>
     </div>
-        </section>
-        <!--================ Blog Area end =================-->
-        <jsp:include page="footter-candi.jsp"></jsp:include>
+</section>
+<!--================ Blog Area end =================-->
+<jsp:include page="footter-candi.jsp"></jsp:include>
 </body>
 <!-- JS here -->
 

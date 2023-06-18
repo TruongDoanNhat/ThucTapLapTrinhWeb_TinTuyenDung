@@ -21,4 +21,7 @@ public class DAOImage {
                 .bind(0, idImage)
                 .mapTo(String.class).stream().findFirst().get());
     }
+
+    public static void main(String[] args) {
+    }
 }
