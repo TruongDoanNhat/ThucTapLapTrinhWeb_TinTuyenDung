@@ -46,9 +46,16 @@ public class DAOPost {
     }
 
     public List<Post> getPostIdBusi(int idBusi, int trang) {
-        String query = "select * from post where accountId = ?  LIMIT 3 OFFSET ?";
+        String query = "select * from post where accountId = ? ORDER BY  createDate DESC LIMIT 3 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, idBusi).bind(1, (trang - 1) * 3).mapToBean(Post.class).stream().collect(Collectors.toList());
+        });
+    }
+
+    public List<Post> getPostExpired(int idBusi, int status) {
+        String query = "select * from post where accountId = ? and status = ? ORDER BY  endDate ASC LIMIT 8";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idBusi).bind(1, status).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
     }
 
