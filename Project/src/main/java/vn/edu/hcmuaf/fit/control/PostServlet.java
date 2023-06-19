@@ -143,6 +143,7 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("busi-gio-hang.jsp", request, response);
                 break;
             case "tintuyendung":
+                List<Post> postExpired;
                 String billID = request.getParameter("billID");
 
                 tongBaiViet = daoPost.getTotalPostBusi(account.getId());
@@ -151,7 +152,7 @@ public class PostServlet extends HttpServlet {
                     soBaiViet++;
                 }
                 postAll = daoPost.getPostIdBusi(account.getId(), t);
-
+                postExpired = daoPost.getPostExpired(account.getId(), 4);
                 if (billID != null) {
                     tongBaiViet = daoPost.getTotalPostIdBill(billID);
                     soBaiViet = tongBaiViet / 3;
@@ -168,11 +169,13 @@ public class PostServlet extends HttpServlet {
                     }
                 }
                 request.setAttribute("post", postAll);
+                request.setAttribute("postExpired",  postExpired);
                 request.setAttribute("sobv", soBaiViet);
                 request.setAttribute("trang", t);
 
                 UtilControl.forward("busi-tin-tuyen-dung.jsp", request, response);
                 break;
+
 //                            ------------------------ RESOLVE ADMIN ------------------------
             case "quanlybaidang":
                 tongBaiViet = daoPost.getTotalPostPaid();

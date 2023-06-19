@@ -74,9 +74,9 @@ public class DAOLog {
     }
 
     public List<Log> getNotificationtAll(int idBusi, int trang) {
-        String query = "select * from log where userId = ? and status = 1  ORDER BY  createDate DESC LIMIT 5 OFFSET ?";
+        String query = "select * from log where userId = ? and status = 1  ORDER BY  createDate DESC LIMIT 6 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, idBusi).bind(1, (trang - 1) * 5).mapToBean(Log.class).stream().collect(Collectors.toList());
+            return handle.createQuery(query).bind(0, idBusi).bind(1, (trang - 1) * 6).mapToBean(Log.class).stream().collect(Collectors.toList());
         });
     }
     public static void main(String[] args) {

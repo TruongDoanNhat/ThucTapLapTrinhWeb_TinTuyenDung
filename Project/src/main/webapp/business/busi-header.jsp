@@ -22,7 +22,7 @@
      navbar-scroll="true">
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-            <a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp"><h6 class="font-weight-bolder mb-0">Trang Chủ</h6></a>
+            <a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp"><h6 class="font-weight-bolder mb-0">Trang Chủ TopViecLam</h6></a>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -36,8 +36,6 @@
                        href="<%=request.getContextPath()%>/business/CV?action=busiquanlycv">Xem CV</a>
                     <a class="btn btn-outline-primary btn-sm mb-0 me-3"
                        href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp">Trợ giúp</a>
-                </li>
-
                 </li>
             </ul>
         </div>
