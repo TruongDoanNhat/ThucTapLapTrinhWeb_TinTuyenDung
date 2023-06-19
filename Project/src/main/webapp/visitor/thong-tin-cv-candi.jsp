@@ -1,5 +1,6 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.CV" %>
 <%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -51,6 +52,7 @@ font-family: system-ui;">
 
     <div data-v-c4f347a8="" class="container-fluid1 py-4" style="margin-top: 30px">
         <div data-v-c4f347a8="" class="d-flex shadow-sm">
+            <% if(UtilSession.getInstance().getValue(request,"account").getRole() == 1) { %>
             <div data-v-c4f347a8="">
                 <div data-v-61ae721f="" data-v-c4f347a8="" class="list-group1 rounded">
                     <a data-v-61ae721f="" href="<%=request.getContextPath()%>/visitor/doi-mat-khau-candi.jsp"
@@ -74,6 +76,7 @@ font-family: system-ui;">
                     </a>
                 </div>
             </div>
+            <% } %>
             <div data-v-c4f347a8="" class="bg-white w-100 rounded">
                 <!--               form -->
                 <div style="background-color: #E9E7EA;
