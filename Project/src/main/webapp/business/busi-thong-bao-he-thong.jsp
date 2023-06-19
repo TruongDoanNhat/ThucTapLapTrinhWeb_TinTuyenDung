@@ -203,11 +203,11 @@
                             </div>
                             <div data-v-18bc4a1a="" class="px-3 notice-date align-self-center"><%=log.getCreateDate()%>
                             </div>
-                            <a data-v-18bc4a1a="" href="javascript:void(0)"
+                            <p data-v-18bc4a1a="" href="javascript:void(0)"
                                class="px-3 notice-content align-self-center text-dark text-decoration-none font-weight-bold">
                                 <%=log.getContent()%>
                                 <%--                                <span data-v-18bc4a1a="" class="badge badge-primary">Mới</span>--%>
-                            </a>
+                            </p>
                         </div>
                         <hr data-v-18bc4a1a="" class="m-0">
                     </div>
