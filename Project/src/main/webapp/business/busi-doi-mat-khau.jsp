@@ -195,7 +195,7 @@
                        class="list-group-item list-group-item-action border-0  bg-none">
                         <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Thông tin cá nhân
                     </a>
-                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/business/busi-cap-nhat-thong-tin-xac-thuc-cong-ty.jsp"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/business/busi-thong-tin-cong-ty.jsp"
                        class="list-group-item list-group-item-action border-0 bg-none">
                         <i data-v-61ae721f="" class="fa mr-2 fa-building"></i> Thông tin công ty
                     </a>
