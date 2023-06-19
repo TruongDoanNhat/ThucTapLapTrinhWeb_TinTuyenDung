@@ -242,7 +242,7 @@ public class DAOAccount {
     }
 
     public List<Account> getAllAccount(int trang) {
-        String query = "select * from account LIMIT 5 OFFSET ?";
+        String query = "select * from account order by createDate desc LIMIT 5 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
                     .bind(0, (trang - 1) * 5)
@@ -313,7 +313,7 @@ public class DAOAccount {
     }
 
     public List<Account> getAccountSearch(String keywords, int trang) {
-        String query = "select * from account where name LIKE ?  LIMIT 5 OFFSET ?";
+        String query = "select * from account where name LIKE ? order by createDate desc LIMIT 5 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
                     .bind(0, "%" + keywords + "%")
@@ -323,7 +323,7 @@ public class DAOAccount {
         });
     }
     public List<Account> getAccountSearch(String keywords, String role, int trang) {
-        String query = "select * from account where name LIKE ? and role = ?  LIMIT 5 OFFSET ?";
+        String query = "select * from account where name LIKE ? and role = ?  order by createDate desc LIMIT 5 OFFSET ? ";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query)
                     .bind(0, "%" + keywords + "%")
@@ -335,6 +335,7 @@ public class DAOAccount {
     }
 
     public static void main(String[] args) {
-
+    DAOAccount d = new DAOAccount();
+        System.out.println(d.getAccountSearch("","0",1));
     }
 }

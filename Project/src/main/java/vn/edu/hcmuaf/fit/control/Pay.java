@@ -103,7 +103,7 @@ public class Pay extends HttpServlet {
                 break;
             case "xoa":
                 dp.deletePost(id);
-                response.sendRedirect("Post?action=giohang");
+                response.sendRedirect("business/Post?action=giohang");
                 break;
         }
     }
