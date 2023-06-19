@@ -24,6 +24,15 @@ public class DAOPost {
         return new Date();
     }
 
+    public List<Post> getPost(int accountId) {
+        String query = "SELECT * FROM post WHERE accountId = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, accountId).mapToBean(Post.class).stream().collect(Collectors.toList());
+        });
+    }
+
+
+
     public String castDate() {
         DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return simpleDateFormat.format(getDateNow());

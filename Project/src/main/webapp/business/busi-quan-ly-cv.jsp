@@ -2,7 +2,10 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.CV" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.PostApplied" %>
-<%@ page import="java.util.Date" %><%--
+<%@ page import="java.util.Date" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 06/01/2023
@@ -12,6 +15,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% List<CV> cvList = (List<CV>) request.getAttribute("cvList"); %>
 <% List<PostApplied> postApplied = (List<PostApplied>) request.getAttribute("postApplied"); %>
+<% List<Post> postList = (List<Post>) request.getAttribute("post"); %>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -194,28 +198,28 @@
                     <div class="card-header pb-0">
                         <h6>Quản lý CV ứng viên</h6>
                     </div>
-                    <div class="con flex">
-                        <div class="input-group w-60 format  ">
-                            <button type="submit" class="input-group-text text-body"><i class="fas fa-search"
-                                                                                        aria-hidden="true"></i></button>
-                            <input type="text" class="form-control" placeholder="Tìm kiếm tên, email, số điện thoại"
-                                   name="actiom">
-                        </div>
-                        <div class=" input-group w-50">
-                            <select required name="cars" id="cars" class="multiselect__tags format boder w-50">
-                                <option disabled selected hidden>Việc làm</option>
-                                <option value="ai">AI</option>
-                                <option value="lap-trinh-game">Lập trình game</option>
-                                <option value="tkdh">Thiết kế đồ họa</option>
-                            </select>
-                            <div class=" input-group w-30">
-                                <select name="cars" id="cars2" class="multiselect__tags format boder">
-                                    <option value="">Tất cả</option>
-                                    <option value="">Đã duyệt</option>
-                                    <option value="">Chưa duyệt</option>
-                                </select>
-                            </div>
-                        </div>
+<%--                    <div class="con flex">--%>
+<%--                        <div class="input-group w-60 format  ">--%>
+<%--                            <button type="submit" class="input-group-text text-body"><i class="fas fa-search"--%>
+<%--                                                                                        aria-hidden="true"></i></button>--%>
+<%--                            <input type="text" class="form-control" placeholder="Tìm kiếm tên, email, số điện thoại"--%>
+<%--                                   name="actiom">--%>
+<%--                        </div>--%>
+<%--                        <div class=" input-group w-50">--%>
+<%--                            <select required name="cars" id="cars" class="multiselect__tags format boder w-50">--%>
+<%--                                <option disabled selected hidden>Việc làm</option>--%>
+<%--                                <option value="ai">AI</option>--%>
+<%--                                <option value="lap-trinh-game">Lập trình game</option>--%>
+<%--                                <option value="tkdh">Thiết kế đồ họa</option>--%>
+<%--                            </select>--%>
+<%--                            <div class=" input-group w-30">--%>
+<%--                                <select name="cars" id="cars2" class="multiselect__tags format boder">--%>
+<%--                                    <option value="">Tất cả</option>--%>
+<%--                                    <option value="">Đã duyệt</option>--%>
+<%--                                    <option value="">Chưa duyệt</option>--%>
+<%--                                </select>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
 
                     </div>
 
@@ -232,17 +236,33 @@
                                         Việc làm
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Trạng thái
-                                    </th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Ngày ứng tuyển
                                     </th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% java.util.Collections.reverse(cvList); // Đảo ngược danh sách cvList
-                                    for (CV cvs : cvList) { %>
+                                <%
+                                    // Tạo một Map để lưu trữ cặp khóa-giá trị (cvId, postTitle)
+                                    Map<Integer, String> cvPostMap = new HashMap<>();
+
+                                    // Duyệt qua danh sách postApplied để xây dựng map
+                                    for (PostApplied postapplied : postApplied) {
+                                        int cvId = postapplied.getCvId();
+                                        int postId = postapplied.getPostId();
+
+                                        // Duyệt qua danh sách postList để tìm tên bài đăng
+                                        for (Post post : postList) {
+                                            if (post.getId() == postId) {
+                                                String postTitle = post.getTitle();
+                                                // Lưu trữ cặp khóa-giá trị vào map
+                                                cvPostMap.put(cvId, postTitle);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                %>
+                                <%for (CV cvs : cvList) { %>
                                 <tr class="bg-gray">
                                     <td>
                                         <div class="d-flex px-2 py-1">
@@ -256,11 +276,19 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="text-xs font-weight-bold mb-0"><%=cvs.getRank()%></p>
-                                        <p class="text-xs text-secondary mb-0">Organization</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Chưa duyệt</span>
+                                        <% // Lấy tên bài đăng từ map
+                                            String postTitle = cvPostMap.get(cvs.getId());
+                                            // Lấy postId từ postApplied tương ứng với cvId
+                                            int postId = 0;
+                                            for (PostApplied postapplied : postApplied) {
+                                                if (cvs.getId() == postapplied.getCvId()) {
+                                                    postId = postapplied.getPostId();
+                                                    break;
+                                                }
+                                            }
+                                        %>
+                                        <a  href="<%=request.getContextPath()%>/business/Post?action=xemthongtinvieclam&id=<%= postId %>" class="text-xs font-weight-bold mb-0"><%=postTitle%></a>
+                                        <p class="text-xs text-secondary mb-0"><%=cvs.getRank()%></p>
                                     </td>
                                     <%
                                         // Tìm ngày nộp cho CV hiện tại
