@@ -60,7 +60,24 @@ public class ResetPassword extends HttpServlet {
                     DAOLog.getInstance().insert(Log.WARNING, getAccountResetPassword.getId(),
                             "", "Thay đổi mật khẩu không thành công !", 1);
                     request.setAttribute("message", "Sai mật khẩu!");
-                    UtilControl.forward("candidate/doi-mat-khau-candi.jsp", request, response);
+                    UtilControl.forward("candidate/candi-doi-mat-khau.jsp", request, response);
+
+                }
+                break;
+            case "changePasswordBusi":
+                oldPassword = Util.encryptionPassword(oldPassword);
+                if (oldPassword.equals(UtilSession.getInstance().getValue(request, "account").getPassword())) {
+                    String newEncryptedPassword = Util.encryptionPassword(newPassword);
+                    DAOAccount.getAccount().setPassword(newEncryptedPassword);
+                    d.updatePassword(UtilSession.getInstance().getValue(request, "account").getUsername(), newEncryptedPassword);
+                    UtilSession.getInstance().getValue(request, "account").setPassword(newEncryptedPassword);
+                    request.setAttribute("message", "Đổi mật khẩu thành công!");
+                    response.sendRedirect("business/busi-trang-chu.jsp");
+                } else {
+                    DAOLog.getInstance().insert(Log.WARNING, getAccountResetPassword.getId(),
+                            "", "Thay đổi mật khẩu không thành công !", 1);
+                    request.setAttribute("message", "Sai mật khẩu!");
+                    UtilControl.forward("business/busi-doi-mat-khau.jsp", request, response);
 
                 }
                 break;

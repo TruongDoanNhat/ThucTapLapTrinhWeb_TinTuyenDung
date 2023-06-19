@@ -133,7 +133,7 @@
     </div>
 
 </main>
-<jsp:include page="footter-candi.jsp"></jsp:include>
+<jsp:include page="/visitor/footter-candi.jsp"></jsp:include>
 
 </body>
 <!-- All JS Custom Plugins Link Here here -->
