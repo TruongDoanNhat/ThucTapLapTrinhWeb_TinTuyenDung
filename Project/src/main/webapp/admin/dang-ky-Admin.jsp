@@ -61,12 +61,12 @@
                         </div>
                         <div class="control-group">
                             <div class="controls row-fluid">
-                                <input class="span12" type="password" id="password"  name="password" placeholder="Mật khẩu">
+                                <input class="span12" type="text" id="hoten"  name="hoten" placeholder="Nhập họ và tên">
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="controls row-fluid">
-                                <input class="span12" type="password" id="password-again"  name="password-again" placeholder="Nhập lại mật khẩu">
+                                <input class="span12" type="password" id="password"  name="password" placeholder="Mật khẩu">
                             </div>
                         </div>
                         <div class="control-group">

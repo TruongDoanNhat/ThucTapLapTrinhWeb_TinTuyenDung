@@ -89,7 +89,7 @@ public class AccountServlet extends HttpServlet {
                     DAOLog.getInstance().insert(Log.DANGER, account != null ? account.getId() : -1,
                             String.valueOf(request.getRequestURL()),
                             (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " khóa không thành công tài khoản " + username, 0);
-                    response.sendRedirect("visitor/error.jsp");
+                    response.sendRedirect(request.getContextPath() +"/visitor/error.jsp");
                 }
                 break;
             case "unlock":
