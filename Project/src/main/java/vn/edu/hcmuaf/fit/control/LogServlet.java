@@ -41,8 +41,8 @@ public class LogServlet extends HttpServlet {
                 break;
             case "logBusi":
                 tongBaiViet = daoLog.getTotalNotification(account.getId());
-                tongSoTrang = tongBaiViet / 5;
-                if (tongBaiViet % 5 != 0) {
+                tongSoTrang = tongBaiViet / 6;
+                if (tongBaiViet % 6 != 0) {
                     tongSoTrang++;
                 }
                 listLog = daoLog.getNotificationtAll(account.getId(), trang);

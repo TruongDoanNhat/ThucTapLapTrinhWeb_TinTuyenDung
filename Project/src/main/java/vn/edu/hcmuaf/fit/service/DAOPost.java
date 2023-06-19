@@ -53,7 +53,7 @@ public class DAOPost {
     }
 
     public List<Post> getPostExpired(int idBusi, int status) {
-        String query = "select * from post where accountId = ? and status = ? ORDER BY  endDate ASC LIMIT 8";
+        String query = "select * from post where accountId = ? and status = ? ORDER BY  endDate DESC LIMIT 8";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, idBusi).bind(1, status).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
