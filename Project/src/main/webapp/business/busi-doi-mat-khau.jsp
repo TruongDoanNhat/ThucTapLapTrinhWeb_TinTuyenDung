@@ -1,4 +1,4 @@
-<%--
+<%@ page import="vn.edu.hcmuaf.fit.model.Account" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 06/01/2023
@@ -203,19 +203,19 @@
             </div>
             <div data-v-c4f347a8="" class="bg-white w-100 rounded">
                 <!--               form -->
-                <form data-v-c4f347a8="">
+                <form data-v-c4f347a8="" action="<%=request.getContextPath()%>/ResetPassword?action=changePasswordBusi" method="post">
                     <div data-v-c4f347a8="" class="active">
                         <div data-v-c4f347a8="" class="card-header bg-white font-weight-bold1 border-0 fs-16">
                             <h5> Đổi mật khẩu </h5>
                         </div>
-
+                        <% Account account = (Account) session.getAttribute("account");%>
                         <div data-v-c4f347a8="" class="card-body setting-form">
                             <div data-v-c4f347a8="" class="row">
                                 <div data-v-c4f347a8="" class="form-group col-md-6">
                                     <label data-v-c4f347a8=""> Nhập mật khẩu cũ </label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
-                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" type="text"
+                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative" >
+                                            <input data-v-8c64d55c="" type="password" name="oldPassword"
                                                    placeholder="Nhập mật khẩu hiện tại" autocomplete="true"
                                                    class="form-control">
                                         </div>
@@ -227,7 +227,7 @@
                                     <label data-v-c4f347a8=""> Nhập mật khẩu mới </label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" id="ncSqdCYZxB" type="text"
+                                            <input data-v-8c64d55c="" id="ncSqdCYZxB" type="password" name="newPassword"
                                                    placeholder="Nhập mật khẩu mới" autocomplete="true"
                                                    class="form-control">
                                         </div>
@@ -239,7 +239,7 @@
                                     <label data-v-c4f347a8=""> Nhập lại mật khẩu </label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" type="text"
+                                            <input data-v-8c64d55c="" type="password" name="rpassword"
                                                    placeholder="Nhập lại mật khẩu mới" autocomplete="true"
                                                    class="form-control">
                                         </div>
