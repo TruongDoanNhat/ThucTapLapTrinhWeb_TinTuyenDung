@@ -10,7 +10,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
-
+<% Account account = (Account) session.getAttribute("account");%>
 
 <html>
 <head>
@@ -84,7 +84,10 @@
                                 <!--                                -->
                                 <!--
                                                           avt end-->
-                            <% Account account = (Account) session.getAttribute("account");%>
+                                <div data-v-c4f347a8="" class="form-group col-md-6">
+                                    <label data-v-c4f347a8="" class="col-form-label">Ngày tạo: <%=account.getCreateDate()%></label>
+
+                                </div>
                                 <div data-v-c4f347a8="" class="row" style="width: 60%">
                                     <div data-v-c4f347a8="" class="form-group col-md-6">
                                         <label data-v-c4f347a8="">Họ và tên</label>

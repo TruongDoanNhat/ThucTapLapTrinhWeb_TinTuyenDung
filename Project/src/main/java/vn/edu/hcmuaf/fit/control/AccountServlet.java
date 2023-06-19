@@ -32,12 +32,24 @@ public class AccountServlet extends HttpServlet {
         int tongSoTrang;
 
         switch (action) {
+            //                            ------------------------ RESOLVE CANDI ------------------------
             case "updateAccount":
                 String name = request.getParameter("name");
                 if (account != null) {
                     account.setName(name);
                     d.updateAccountCandi(account.getUsername(), account.getName());
                     response.sendRedirect(request.getContextPath() + "/candidate/candi-tai-khoan.jsp");
+                } else {
+                    request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
+                }
+                break;
+            //                            ------------------------ RESOLVE BUSI ------------------------
+            case "updateAccountBusi":
+                String name2 = request.getParameter("name");
+                if (account != null) {
+                    account.setName(name2);
+                    d.updateAccountCandi(account.getUsername(), account.getName());
+                    response.sendRedirect(request.getContextPath() + "/business/busi-tai-khoan.jsp");
                 } else {
                     request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
                 }

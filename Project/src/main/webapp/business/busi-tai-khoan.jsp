@@ -1,4 +1,4 @@
-<%--
+<%@ page import="vn.edu.hcmuaf.fit.model.Account" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 05/01/2023
@@ -194,7 +194,7 @@
                        class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-white">
                         <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Thông tin cá nhân
                     </a>
-                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/business/busi-cap-nhat-thong-tin-xac-thuc-cong-ty.jsp"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/business/busi-thong-tin-cong-ty.jsp"
                        class="list-group-item list-group-item-action border-0 bg-none">
                         <i data-v-61ae721f="" class="fa mr-2 fa-building"></i> Thông tin công ty
                     </a>
@@ -202,7 +202,7 @@
             </div>
             <div data-v-c4f347a8="" class="bg-white w-100 rounded">
                 <!--               form -->
-                <form data-v-c4f347a8="">
+                <form data-v-c4f347a8="" action="<%=request.getContextPath()%>/Account?action=updateAccountBusi" method="post">
                     <div data-v-c4f347a8="" class="active">
                         <div data-v-c4f347a8="" class="card-header bg-white font-weight-bold1 border-0 fs-16">
                             <h5> Cập nhật thông tin cá nhân</h5>
@@ -233,17 +233,17 @@
                                                 </label>
                                             </div>
                                             <input data-v-c4f347a8="" type="text" name="avatar" class="d-none1">
-                                            <button data-v-c4f347a8="" type="button" class="btn min-width btn-dark"
-                                                    style="margin: 10px 50px;">
-                                                Đổi avatar
-                                            </button>
+<%--                                            <button data-v-c4f347a8="" type="button" class="btn min-width btn-dark"--%>
+<%--                                                    style="margin: 10px 50px;">--%>
+<%--                                                Đổi avatar--%>
+<%--                                            </button>--%>
                                         </div>
                                     </div>
                                 </div>
                                 <!--     avt end-->
+                                <% Account account = (Account) session.getAttribute("account");%>
                                 <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8="" class="col-form-label">Email:
-                                        20130348@st.hcmuaf.edu.vn</label>
+                                    <label data-v-c4f347a8="" class="col-form-label">Ngày tạo: <%=account.getCreateDate()%></label>
 
                                 </div>
                             </div>
@@ -252,48 +252,19 @@
                                     <label data-v-c4f347a8="">Họ và tên</label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" id="ncSqdCYZxB" type="text"
+                                            <input data-v-8c64d55c="" id="name" name="name" type="text"
                                                    placeholder="Nhập họ và tên" autocomplete="true"
-                                                   class="form-control">
+                                                   class="form-control" value="<%=account.getName()%>">
                                         </div>
                                     </div>
-                                </div>
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8="">Giới tính</label>
-                                    <select class="form-control cursor-pointer">
-                                        <option> Nam</option>
-                                        <option> Nữ</option>
-                                    </select>
                                 </div>
                             </div>
                             <div data-v-c4f347a8="" class="row">
                                 <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <div data-v-c4f347a8="" class="d-flex justify-content-between">
-                                        <label data-v-c4f347a8="">Số điện thoại</label>
-                                        <div data-v-c4f347a8="">
-                                            <a data-v-c4f347a8="" href="#" class="text-primary">Cập nhật</a>
-                                        </div>
-                                    </div>
-                                    <div data-v-55ff225c="" data-v-c4f347a8="" class="mask-input">
-                                        <input data-v-55ff225c="" readonly="readonly" placeholder="Số điện thoại"
-                                               class="form-control hidden-spin-button">
-                                        <span data-v-55ff225c="" class="suffix text-primary">
-                                            <i data-v-c4f347a8="" data-v-55ff225c="" class="fa fa-circle-check"></i> Đã xác thực
-                                       </span>
-                                    </div>
-                                </div>
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8="">Vị trí</label>
-                                    <div data-v-b88e49a4="" data-v-c4f347a8="">
-                                        <select class="form-control cursor-pointer">
-                                            <option value="truong-phong">Trưởng phòng</option>
-                                            <option value="pho-phong">Phó phòng</option>
-                                            <option value="nhan-vien">Nhân viên</option>
-                                            <option value="giam-doc">Giám đốc</option>
-                                        </select>
-                                        <span class="multiselect__option invalid-feedback">
-                                            <span data-v-b88e49a4=""> Vị trí không được bỏ trống </span>
-                                        </span>
+                                    <label data-v-c4f347a8="">Email</label>
+                                    <div data-v-55ff225c="" data-v-c4f347a8="">
+                                        <input data-v-55ff225c="" readonly="readonly"
+                                               class="form-control hidden-spin-button" value="<%=account.getEmail()%>">
                                     </div>
                                 </div>
                             </div>
