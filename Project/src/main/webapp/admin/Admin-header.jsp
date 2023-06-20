@@ -26,14 +26,6 @@
                         <li><a href="<%=request.getContextPath()%>/admin/Log?action=logManager"><i class="icon-bell "></i></a>
                         </li>
                     </ul>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Cài đặt giao diện
-                        <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Logo</a></li>
-                            <li><a href="#">Màu sắc</a></li>
-                            <li><a href="#">Ảnh</a></li>
-                        </ul>
-                    </li>
                     <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<%=request.getContextPath()%>/admin/images/user.png" class="nav-avatar"/>
                         <c:if test="${sessionScope.account == null}">
