@@ -55,4 +55,11 @@ public class DAOCV {
             return handle.createQuery(query).bind(0, idAccount).mapToBean(CV.class).stream().collect(Collectors.toList());
         });
     }
+
+    public int getTotalCVApplied(int idAccount) {
+        String query = "SELECT COUNT(*) FROM post p JOIN account a ON p.accountId = a.id JOIN postapplied pa ON pa.postId = p.id JOIN cv c ON pa.cvId = c.id WHERE p.accountId = a.id AND pa.postId = p.id AND a.id = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idAccount).mapTo(Integer.class).one();
+        });
+    }
 }
