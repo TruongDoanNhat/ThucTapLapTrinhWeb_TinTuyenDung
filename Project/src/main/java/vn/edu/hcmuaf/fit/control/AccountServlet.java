@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.model.Company;
 import vn.edu.hcmuaf.fit.model.Log;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
 import vn.edu.hcmuaf.fit.service.DAOLog;
@@ -45,6 +46,31 @@ public class AccountServlet extends HttpServlet {
                     }
                 } else {
                         request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
+                }
+                break;
+            //                            ------------------------ RESOLVE BUSI ------------------------
+            case "updateCompany":
+                String companyId = request.getParameter("companyId");
+                String nameCompany = request.getParameter("name");
+                String address = request.getParameter("address");
+                String phone = request.getParameter("phone");
+                String description = request.getParameter("description");
+                if (account != null) {
+                    // Lấy thông tin công ty hiện tại của tài khoản
+                    Company company = account.getCompany();
+
+                    // Cập nhật thông tin công ty
+                    company.setName(nameCompany);
+                    company.setAddress(address);
+                    company.setPhone(phone);
+                    company.setDescription(description);
+
+                    d.updateCompany(companyId, nameCompany, address, phone, description);
+
+                        response.sendRedirect(request.getContextPath() + "/business/busi-thong-tin-cong-ty.jsp");
+
+                } else {
+                    request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
                 }
                 break;
             //                            ------------------------ RESOLVE ADMIN ------------------------

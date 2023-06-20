@@ -1,4 +1,4 @@
-<%--
+<%@ page import="vn.edu.hcmuaf.fit.model.Account" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 05/01/2023
@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% Account account = (Account) session.getAttribute("account");
+%>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -205,7 +207,8 @@
             </div>
             <div data-v-c4f347a8="" class="bg-white w-100 rounded">
                 <!--               form -->
-                <form data-v-c4f347a8="">
+                <form data-v-c4f347a8="" action="<%=request.getContextPath()%>/Account?action=updateCompany" method="post">
+                    <input type="hidden" name="companyId" value="<%=account.getCompany().getId()%>">
                     <div data-v-c4f347a8="" class="active">
                         <div data-v-c4f347a8="" class="card-header bg-white font-weight-bold1 border-0 fs-16">
                             <h5> Cập nhật thông tin công ty </h5>
@@ -221,81 +224,26 @@
                                              style="width: 40px; height: 40px; flex: 0 0 40px;">
                                             <img src="../admin/images/user.png">
                                         </div>
-                                        <div data-v-c4f347a8="">
-                                            <div data-v-ea13fd1a="" data-v-c4f347a8="" class="file-upload mt-2 d-none1"
-                                                 type="file" name="avatar">
-                                                <%--@declare id="audio-file"--%><div data-v-ea13fd1a="" class="mx-4">
-                                                    <span data-v-ea13fd1a="" class="text-muted">
-                                                        <span data-v-ea13fd1a="">Chọn hoặc kéo file vào đây</span>
-                                                    </span>
-                                                </div>
-                                                <input data-v-ea13fd1a="" id="avatar" type="file" accept="image/*">
-                                                <label data-v-ea13fd1a="" for="audio-file"
-                                                       class="btn btn-secondary text-primary btn-sm mt-2">
-                                                    <i data-v-ea13fd1a="" class="fas fa-upload"></i> Chọn file
-                                                </label>
-                                            </div>
-                                            <input data-v-c4f347a8="" type="text" name="avatar" class="d-none1">
-<%--                                            <button data-v-c4f347a8="" type="button" class="btn min-width btn-dark" style="margin: 10px 50px;">--%>
-<%--                                                Đổi logo--%>
-<%--                                            </button>--%>
-                                        </div>
                                     </div>
                                 </div>
                                 <!--                                avt end-->
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8="">Email</label>
-                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
-                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" type="text"
-                                                   placeholder="Nhập email" autocomplete="true"
-                                                   class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div data-v-c4f347a8="" class="row">
                                 <div data-v-c4f347a8="" class="form-group col-md-6">
                                     <label data-v-c4f347a8="">Tên công ty</label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" id="ncSqdCYZxB" type="text"
+                                            <input data-v-8c64d55c="" id="nameCompany" name="nameCompany" type="text"
                                                    placeholder="Nhập tên công ty" autocomplete="true"
-                                                   class="form-control">
+                                                   class="form-control" value="<%=account.getCompany().getName()%>">
                                         </div>
                                     </div>
                                 </div>
                                 <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8="">Lĩnh vực hoạt động</label>
-                                    <select class="form-control cursor-pointer" >
-
-                                        <option>IT</option>
-                                        <option>Kế toán</option>
-                                        <option>Luật</option>
-                                        <option>Chứng khoáng</option>
-                                        <option>Xây dựng</option>
-                                        <option>Thời trang</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div data-v-c4f347a8="" class="row">
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8="">Mã số thuế</label>
+                                    <label data-v-c4f347a8=""> Ngày tạo: </label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" type="text"
-                                                   placeholder="Nhập mã số thuế" autocomplete="true"
-                                                   class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8="">Website</label>
-                                    <div data-v-8c64d55c="" data-v-c4f347a8="">
-                                        <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" type="text"
-                                                   placeholder="http://" autocomplete="true"
-                                                   class="form-control">
+                                            <label data-v-8c64d55c="" style="font-size: 20px"> value="<%=account.getCompany().getCreateDate()%>"</label>
                                         </div>
                                     </div>
                                 </div>
@@ -305,9 +253,9 @@
                                     <label data-v-c4f347a8="">Địa chỉ</label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" type="text"
+                                            <input data-v-8c64d55c="" id="address" name="address" type="text"
                                                    placeholder="Nhập địa chỉ" autocomplete="true"
-                                                   class="form-control">
+                                                   class="form-control" value="<%=account.getCompany().getAddress()%>">
                                         </div>
                                     </div>
                                 </div>
@@ -315,9 +263,9 @@
                                     <label data-v-c4f347a8="">Điện thoai</label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <input data-v-8c64d55c="" type="text"
+                                            <input data-v-8c64d55c="" id="phone" name="phone" type="text"
                                                    placeholder="Nhập số điện thoại" autocomplete="true"
-                                                   class="form-control">
+                                                   class="form-control" value="<%=account.getCompany().getPhone()%>">
                                         </div>
                                     </div>
                                 </div>
@@ -328,7 +276,7 @@
                                         <label data-v-c4f347a8="">Mô tả công ty</label>
                                     </div>
                                     <div data-v-55ff225c="" data-v-c4f347a8="" class="mask-input ">
-                                        <textarea class="form-control">
+                                        <textarea class="form-control" id="description" name="description" value="<%=account.getCompany().getDescription()%>">
 
                                         </textarea>
                                     </div>
