@@ -85,8 +85,7 @@
                                 <tr>
                                     <td><%=account.getId()%>
                                     </td>
-                                    <td style="width: 130px;"><%=account.getName()%>
-                                    </td>
+                                    <td style="width: 130px;"><%=account.getUsername()%> - <%=account.getName()%>
                                     <td><%=account.getEmail()%>
                                     </td>
                                     <%
