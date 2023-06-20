@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DAOPost {
-    private DAOBill daoBill = new DAOBill();
-    private String message = "error!";
 
     private static Post post = null;
 
@@ -33,11 +31,6 @@ public class DAOPost {
 
 
 
-    public String castDate() {
-        DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return simpleDateFormat.format(getDateNow());
-    }
-
     public int getTotalPostBusi(int idBusi) {
         String query = "SELECT COUNT(*) FROM post where accountId = ?";
         return JDBIConnector.get().withHandle(handle -> {
@@ -56,6 +49,27 @@ public class DAOPost {
         String query = "select * from post where accountId = ? and status = ? ORDER BY  endDate DESC LIMIT 8";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, idBusi).bind(1, status).mapToBean(Post.class).stream().collect(Collectors.toList());
+        });
+    }
+
+    public int getTotalPost(int idBusi) {
+        String query = "SELECT COUNT(*) FROM post where accountId = ? and status <> 0";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idBusi).mapTo(Integer.class).one();
+        });
+    }
+
+    public int getTotalPost2(int idBusi) {
+        String query = "SELECT COUNT(*) FROM post where accountId = ? and status = 2";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idBusi).mapTo(Integer.class).one();
+        });
+    }
+
+    public int getTotalPost4(int idBusi) {
+        String query = "SELECT COUNT(*) FROM post where accountId = ? and status = 4 ";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idBusi).mapTo(Integer.class).one();
         });
     }
 
