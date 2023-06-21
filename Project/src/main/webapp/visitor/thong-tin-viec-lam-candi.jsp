@@ -152,16 +152,20 @@
                             <form action="<%=request.getContextPath()%>/candidate/Post_details?action=nopcv" method="post">
                                 <input type="hidden" name="postId" value="<%= post2.getId() %>">
                                 <!-- Form fields -->
+                                <% if (cvs.isEmpty()) { %>
+                                <div class="apply-btn2"> <a href="<%=request.getContextPath() + "/candidate/candi-tao-cv.jsp"%>" id="taocv" class="btn">Tạo CV</a> </div>
+                                <% } else { %>
                                 <% for (CV cv : cvs) { %>
-                                            <label class="checkbox inline">
-                                                <input type="radio" id="cv" name="cv" value="<%=cv.getId()%>">
-                                                <%=cv.getTitle()%>
-                                            </label>
-                            <br>
+                                <label class="checkbox inline">
+                                    <input type="radio" id="cv" name="cv" value="<%=cv.getId()%>">
+                                    <%=cv.getTitle()%>
+                                </label>
+                                <br>
                                 <% } %>
                                 <div class="apply-btn2">
                                     <button type="submit" id="nopcv" class="btn">Nộp CV</button>
                                 </div>
+                                <% } %>
                             </form>
                         </div>
                         <% } %>
