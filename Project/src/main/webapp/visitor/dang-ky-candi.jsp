@@ -53,7 +53,7 @@
                                                   font-size: 1rem;
                                                   font-weight: 400;
                                                   line-height: 1.5;">
-            <b> ERROR! </b> <%=message%>
+            <%=message%>
         </label>
     </div>
     <%

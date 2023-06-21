@@ -4,7 +4,10 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
-<%@ page import="vn.edu.hcmuaf.fit.model.PostApplied" %><%--
+<%@ page import="vn.edu.hcmuaf.fit.model.PostApplied" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCompany" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Company" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOImage" %><%--
   Created by IntelliJ IDEA.
   User: Dell
   Date: 1/4/2023
@@ -60,7 +63,7 @@
         <div class="container">
             <div id="chat-app" class="row">
                 <div class="col-md-8">
-                    <div class="box-group">
+                    <div class="box-group" style="background: lightcyan">
                         <div class="box-group-header">
                             <div class="box-group-title">
                                 Việc làm đã ứng tuyển
@@ -69,7 +72,9 @@
                         <%
                             List<Post> postApplied  = (List<Post>) request.getAttribute("jobApplied");
                             List<PostApplied> postapplied2 = (List<PostApplied>) request.getAttribute("postapplied2");
-                            for (Post p :postApplied) {
+                            for (Post post :postApplied) {
+                                Company company = DAOCompany.getCompany(post.getAccountId());
+                                DAOPost dp = new DAOPost();
                         %>
 
 
@@ -77,32 +82,37 @@
                         <div class="single-job-items mb-30">
                             <div class="job-items">
                                 <div class="company-img">
-                                    <a href="<%=request.getContextPath()%>/candidate/Post?action=xemthongtinvieclam&id=<%=p.getId()%>"><img
-                                            src="<%=request.getContextPath()%>/assets/img/icon/job-list1.png" alt="ảnh không được hiển thị"></a>
+                                    <img style=" width:75px; height:85px;"
+                                         src="<%=request.getContextPath()+DAOImage.getURL(company.getImageId())%>"
+                                         alt="Image">
                                 </div>
-                                <div class="job-tittle job-tittle2">
-                                    <a href="<%=request.getContextPath()%>/candidate/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                        <h4><%=p.getTitle()%>
+                                <div class="job-tittle">
+                                    <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=post.getId()%>">
+                                        <h4 style=" white-space: nowrap; width: 600px; overflow: hidden; text-overflow: ellipsis;"><%=post.getTitle()%>
                                         </h4>
                                     </a>
-                                    <ul>
-                                        <li>
+                                    <ul style="white-space: nowrap;">
+                                        <li style="width: 180px; overflow: hidden; text-overflow: ellipsis;"><%=company.getName()%>
                                         </li>
-                                        <li><%=p.getSalary()%> VNĐ</li>
+                                        <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;"><i
+                                                class="fas fa-map-marker-alt"></i><%= post.getAddress()%>
+                                        </li>
+                                        <li style="width: 100px; overflow: hidden; text-overflow: ellipsis;"><%= post.getSalary()%>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="items-link items-link2 f-right">
-                                <a href="/Post_details?id=<%=p.getId()%>">
-                                    <%=p.getType()%>
+                            <div class="items-link f-right" style="width: 180px;">
+                                <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=post.getId()%>"><%= post.getType()%>
                                 </a>
-                                <%if (daoPost.dateToCreate(p.getCreateDate()) > 0) { %>
-                                <span><%=daoPost.dateToCreate(p.getCreateDate())%> ngày trước</span>
+                                <%if (dp.dateToCreate(post.getCreateDate()) > 0) { %>
+                                <span><%=dp.dateToCreate(post.getCreateDate())%> ngày trước</span>
                                 <% } else { %>
-                                <span>Mới nhất</span>
+                                <span style="text-align: center;">Mới nhất</span>
                                 <% } %>
                             </div>
                         </div>
+
 
                         <% } else { %>
                         <div class='empty-job'>
@@ -140,35 +150,42 @@
                                     Việc làm phù hợp với bạn
                                 </div>
                                 <%
+
+                                    DAOPost dp = new DAOPost();
                                     List<Post> listpost = daoPost.getPostApproveTop5();
                                     for (Post p : listpost) {
+                                        Company company = DAOCompany.getCompany(p.getAccountId());
                                 %>
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="<%=request.getContextPath()%>/candidate/Post?action=xemthongtinvieclam&id=<%=p.getId()%>"><img
-                                                    src="<%=request.getContextPath()%>/assets/img/icon/job-list1.png" alt="ảnh không được hiển thị"></a>
+                                            <img style=" width:75px; height:85px;"
+                                                 src="<%=request.getContextPath()+DAOImage.getURL(company.getImageId())%>"
+                                                 alt="Image">
                                         </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="<%=request.getContextPath()%>/candidate/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                                <h4><%=p.getTitle()%>
+                                        <div class="job-tittle">
+                                            <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
+                                                <h4 style=" white-space: nowrap; width: 600px; overflow: hidden; text-overflow: ellipsis;"><%=p.getTitle()%>
                                                 </h4>
                                             </a>
-                                            <ul>
-                                                <li>
+                                            <ul style="white-space: nowrap;">
+                                                <li style="width: 180px; overflow: hidden; text-overflow: ellipsis;"><%=company.getName()%>
                                                 </li>
-                                                <li><%=p.getSalary()%> VNĐ</li>
+                                                <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;"><i
+                                                        class="fas fa-map-marker-alt"></i><%= p.getAddress()%>
+                                                </li>
+                                                <li style="width: 100px; overflow: hidden; text-overflow: ellipsis;"><%= p.getSalary()%>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                            <%=p.getType()%>
+                                    <div class="items-link f-right" style="width: 180px;">
+                                        <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>"><%= p.getType()%>
                                         </a>
-                                        <%if (daoPost.dateToCreate(p.getCreateDate()) > 0) { %>
-                                        <span><%=daoPost.dateToCreate(p.getCreateDate())%> ngày trước</span>
+                                        <%if (dp.dateToCreate(p.getCreateDate()) > 0) { %>
+                                        <span><%=dp.dateToCreate(p.getCreateDate())%> ngày trước</span>
                                         <% } else { %>
-                                        <span>Mới nhất</span>
+                                        <span style="text-align: center;">Mới nhất</span>
                                         <% } %>
                                     </div>
                                 </div>

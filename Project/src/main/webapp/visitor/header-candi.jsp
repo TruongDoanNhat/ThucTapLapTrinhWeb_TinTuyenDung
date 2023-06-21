@@ -73,7 +73,7 @@
                                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
 
                                     <c:if test="${sessionScope.account != null}">
-                                        <a href="../candidate/candi-tai-khoan.jsp">
+                                        <a href="<%=request.getContextPath()%>/candidate/candi-tai-khoan.jsp">
                                             <i class="fa fa-user"></i>
                                             <span> Xin chào ${sessionScope.account.name}</span>
                                         </a>

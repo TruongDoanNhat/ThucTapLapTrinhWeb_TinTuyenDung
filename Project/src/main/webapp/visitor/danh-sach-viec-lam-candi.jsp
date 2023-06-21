@@ -5,7 +5,10 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.Category" %>
-<%@ page import="vn.edu.hcmuaf.fit.service.DAOCategory" %><%--
+<%@ page import="vn.edu.hcmuaf.fit.model.Company" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCategory" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOImage" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCompany" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 05/01/2023
@@ -14,7 +17,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% DAOPost dp = new DAOPost();
-    List<Post> post = (List<Post>) request.getAttribute("postAll");
+    List<Post> listpost = (List<Post>) request.getAttribute("postAll");
     int tongBaiViet = (int) request.getAttribute("tongBaiViet");
 %>
 <html>
@@ -146,34 +149,39 @@
                             <!-- Count of Job list End -->
                             <div class="container">
                                 <%
-                                    for (Post p : post) {
+                                    for (Post post : listpost) {
+                                        Company company = DAOCompany.getCompany(post.getAccountId());
                                 %>
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>"><img
-                                                    src="<%=request.getContextPath()%>/assets/img/icon/job-list1.png" alt="ảnh không được hiển thị"></a>
+                                            <img style=" width:75px; height:85px;"
+                                                 src="<%=request.getContextPath()+DAOImage.getURL(company.getImageId())%>"
+                                                 alt="Image">
                                         </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                                <h4><%=p.getTitle()%>
+                                        <div class="job-tittle">
+                                            <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=post.getId()%>">
+                                                <h4 style=" white-space: nowrap; width: 600px; overflow: hidden; text-overflow: ellipsis;"><%=post.getTitle()%>
                                                 </h4>
                                             </a>
-                                            <ul>
-                                                <li>
+                                            <ul style="white-space: nowrap;">
+                                                <li style="width: 180px; overflow: hidden; text-overflow: ellipsis;"><%=company.getName()%>
                                                 </li>
-                                                <li><%=p.getSalary()%> VNĐ</li>
+                                                <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;"><i
+                                                        class="fas fa-map-marker-alt"></i><%= post.getAddress()%>
+                                                </li>
+                                                <li style="width: 100px; overflow: hidden; text-overflow: ellipsis;"><%= post.getSalary()%>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                            <%=p.getType()%>
+                                    <div class="items-link f-right" style="width: 180px;">
+                                        <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=post.getId()%>"><%= post.getType()%>
                                         </a>
-                                        <%if (dp.dateToCreate(p.getCreateDate()) > 0) { %>
-                                        <span><%=dp.dateToCreate(p.getCreateDate())%> ngày trước</span>
+                                        <%if (dp.dateToCreate(post.getCreateDate()) > 0) { %>
+                                        <span><%=dp.dateToCreate(post.getCreateDate())%> ngày trước</span>
                                         <% } else { %>
-                                        <span>Mới nhất</span>
+                                        <span style="text-align: center;">Mới nhất</span>
                                         <% } %>
                                     </div>
                                 </div>
@@ -209,7 +217,7 @@
                                 %>
                                 <li class="page-item"><a class="page-link" href="Post?action=danhsanhvieclam&trang=<%= pageNumber %>"><%= pageNumber %></a></li>
                                 <% } else {%>
-                                <li class="page-item"><a class="page-link"href="Post?action=timkiem&trang=<%= pageNumber %>&keywords=<%=request.getAttribute("keywords")%>&categoryId=<%=request.getAttribute("categoryId")%>"><%= pageNumber %></a></li>
+                                <li class="page-item"><a class="page-link"href="Post?action=timkiem&trang=<%= pageNumber %>&keywords=<%=request.getAttribute("keywords") == null ? "" : request.getAttribute("keywords") %>&categoryId=<%=request.getAttribute("categoryId")%>"><%= pageNumber %></a></li>
                                 <% } %>
                                 <% } %>
                                 <% } %>

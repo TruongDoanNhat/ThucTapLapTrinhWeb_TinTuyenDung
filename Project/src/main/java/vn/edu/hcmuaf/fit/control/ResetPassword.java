@@ -61,7 +61,7 @@ public class ResetPassword extends HttpServlet {
                         response.sendRedirect("visitor/trang-chu-candi.jsp");
                     }
                 } else {
-                    DAOLog.getInstance().insert(Log.WARNING, getAccountResetPassword.getId(),
+                    DAOLog.getInstance().insert(Log.WARNING, UtilSession.getInstance().getValue(request, "account").getId(),
                             "", "Thay đổi mật khẩu không thành công !", 1);
                     request.setAttribute("message", "Sai mật khẩu!");
                     if( UtilSession.getInstance().getValue(request,"account").getRole() == 2){

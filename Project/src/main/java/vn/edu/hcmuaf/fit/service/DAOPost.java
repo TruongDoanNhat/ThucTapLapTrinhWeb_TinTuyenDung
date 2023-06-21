@@ -119,6 +119,7 @@ public class DAOPost {
         });
     }
 
+
     public int getPostSearchStatus(String keywords, String status) {
         String query = "select * from post where title LIKE ? and status = ?";
         return JDBIConnector.get().withHandle(handle -> {
@@ -132,6 +133,21 @@ public class DAOPost {
             return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, categoryId).bind(2, status).mapToBean(Post.class).stream().collect(Collectors.toList()).size();
         });
     }
+
+    public int getPostOfCategoryApprove( String categoryId,String status) {
+        String query = "select * from post where categoryId = ? and status = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0,categoryId).bind(1, status).mapToBean(Post.class).stream().collect(Collectors.toList()).size();
+        });
+    }
+    public List<Post> getPostOfCategoryApprove( String categoryId,String status , int trang) {
+        String query = "select * from post where categoryId = ? and status = ? LIMIT 5 OFFSET ? ";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0,categoryId).bind(1, status).bind(2, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
+        });
+    }
+
+    
 
     public List<Post> getPostSearchCategory(String keywords, String categoryId, String status, int trang) {
         String query = "select * from post where title LIKE ? and categoryId = ? and status = ? ORDER BY createDate DESC LIMIT 5 OFFSET ?";
@@ -283,7 +299,7 @@ public class DAOPost {
     }
 
     public List<Post> getPostofCategoryByID(int categoryId) {
-        String query = "select * from post where categoryId = ?";
+        String query = "select * from post where categoryId = ? and status = 2";
         List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, categoryId).mapToBean(Post.class).stream().collect(Collectors.toList());
         });

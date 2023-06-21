@@ -49,7 +49,7 @@
         <div data-v-c4f347a8="" class="d-flex shadow-sm" >
             <div data-v-c4f347a8="">
                 <div data-v-61ae721f="" data-v-c4f347a8="" class="list-group1 rounded">
-                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/visitor/doi-mat-khau-candi.jsp"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/candi-doi-mat-khau.jsp"
                        class="list-group-item list-group-item-action border-0  bg-white" >
                         <i data-v-61ae721f="" class="fa mr-2 fa-lock"></i> Đổi mật khẩu
                     </a>
@@ -77,7 +77,24 @@
                         </div>
                         <% Account account = (Account) session.getAttribute("account");%>
                         <div data-v-c4f347a8="" class="card-body setting-form">
-
+                            <%
+                                if (message != null) {
+                            %>
+                            <div style="width: 50%;
+                                            height: calc(1.5em + 0.75rem + 2px);
+                                            padding: 0.375rem 0.75rem;
+                                            background: #E05E74; border-radius: 5px;
+                                            border: 2px solid black">
+                                <label style="color: #4d0203;
+                                                  font-size: 1rem;
+                                                  font-weight: 400;
+                                                  line-height: 1.5;">
+                                    <b> ERROR! </b> <%=message%>
+                                </label>
+                            </div>
+                            <%
+                                }
+                            %>
                             <div data-v-c4f347a8="" class="row">
                                 <div data-v-c4f347a8="" class="form-group col-md-6">
                                     <label data-v-c4f347a8="">Nhập mật khẩu</label>
