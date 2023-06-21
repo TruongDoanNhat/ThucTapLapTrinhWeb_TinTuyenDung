@@ -104,14 +104,16 @@
                             <div id="t" class="small-section-tittle">
                                 <h4>Mô tả công việc</h4>
                             </div>
-                            <%=post2.getDescription()%>
+                            <ul style=" white-space: pre-wrap;">
+                                <%=post2.getDescription()%>
+                            </ul>
                         </div>
                         <div class="post-details2  mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
                                 <h4>Yêu cầu ứng viên</h4>
                             </div>
-                            <ul>
+                            <ul style=" white-space: pre-wrap;">
                                 <%=post2.getRequest()%>
                             </ul>
                         </div>
@@ -120,7 +122,7 @@
                             <div class="small-section-tittle">
                                 <h4>Quyền lợi</h4>
                             </div>
-                            <ul>
+                            <ul style=" white-space: pre-wrap;">
                                 <%=post2.getRights()%>
                             </ul>
                         </div>
