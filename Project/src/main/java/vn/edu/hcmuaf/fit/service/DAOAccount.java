@@ -208,23 +208,7 @@ public class DAOAccount {
         }
     }
 
-    public void updateCompany(String companyId, String name, String phone, String address, String description) {
-        String query = "UPDATE company SET name = ?, phone = ?, address = ?, description = ? , updateDate = ? WHERE id = ?";
-        try {
-            JDBIConnector.get().withHandle(handle ->
-                    handle.createUpdate(query)
-                            .bind(0, name)
-                            .bind(1, phone)
-                            .bind(2, address)
-                            .bind(3, description)
-                            .bind(4, companyId)
-                            .bind(5, updateDate)
-                            .execute()
-            );
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
 
     public boolean checkUsernameExists(String username) {

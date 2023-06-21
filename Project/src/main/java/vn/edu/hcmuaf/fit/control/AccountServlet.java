@@ -49,30 +49,7 @@ public class AccountServlet extends HttpServlet {
                 }
                 break;
             //                            ------------------------ RESOLVE BUSI ------------------------
-            case "updateCompany":
-                String companyId = request.getParameter("companyId");
-                String nameCompany = request.getParameter("name");
-                String address = request.getParameter("address");
-                String phone = request.getParameter("phone");
-                String description = request.getParameter("description");
-                if (account != null) {
-                    // Lấy thông tin công ty hiện tại của tài khoản
-                    Company company = account.getCompany();
-
-                    // Cập nhật thông tin công ty
-                    company.setName(nameCompany);
-                    company.setAddress(address);
-                    company.setPhone(phone);
-                    company.setDescription(description);
-
-                    d.updateCompany(companyId, nameCompany, address, phone, description);
-
-                        response.sendRedirect(request.getContextPath() + "/business/busi-thong-tin-cong-ty.jsp");
-
-                } else {
-                    request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
-                }
-                break;
+           
             //                            ------------------------ RESOLVE ADMIN ------------------------
             case "accountManager":
                 tongTaiKhoan = d.getTotalAccount();

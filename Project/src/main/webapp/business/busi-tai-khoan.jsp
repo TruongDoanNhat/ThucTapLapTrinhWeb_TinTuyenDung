@@ -216,28 +216,28 @@
                                         <label data-v-c4f347a8="" class="col-form-label mr-2"></label>
                                         <div data-v-2a31697a="" data-v-c4f347a8="" class="mr-2  avatar"
                                              style="width: 40px; height: 40px; flex: 0 0 40px;">
-                                            <img src="../admin/images/user.png">
+                                            <img src="https://i.pinimg.com/564x/eb/57/6f/eb576ff023487bcb1fa3ad61ee7b23ee.jpg">
                                         </div>
-                                        <div data-v-c4f347a8="">
-                                            <div data-v-ea13fd1a="" data-v-c4f347a8="" class="file-upload mt-2 d-none1"
-                                                 type="file" name="avatar">
-                                                <%--@declare id="audio-file"--%><div data-v-ea13fd1a="" class="mx-4">
-                                                    <span data-v-ea13fd1a="" class="text-muted">
-                                                        <span data-v-ea13fd1a="">Chọn hoặc kéo file vào đây</span>
-                                                    </span>
-                                                </div>
-                                                <input data-v-ea13fd1a="" id="avatar" type="file" accept="image/*">
-                                                <label data-v-ea13fd1a="" for="audio-file"
-                                                       class="btn btn-secondary text-primary btn-sm mt-2">
-                                                    <i data-v-ea13fd1a="" class="fas fa-upload"></i> Chọn file
-                                                </label>
-                                            </div>
-                                            <input data-v-c4f347a8="" type="text" name="avatar" class="d-none1">
+<%--                                        <div data-v-c4f347a8="">--%>
+<%--                                            <div data-v-ea13fd1a="" data-v-c4f347a8="" class="file-upload mt-2 d-none1"--%>
+<%--                                                 type="file" name="avatar">--%>
+<%--                                                &lt;%&ndash;@declare id="audio-file"&ndash;%&gt;<div data-v-ea13fd1a="" class="mx-4">--%>
+<%--                                                    <span data-v-ea13fd1a="" class="text-muted">--%>
+<%--                                                        <span data-v-ea13fd1a="">Chọn hoặc kéo file vào đây</span>--%>
+<%--                                                    </span>--%>
+<%--                                                </div>--%>
+<%--                                                <input data-v-ea13fd1a="" id="avatar" type="file" accept="image/*">--%>
+<%--                                                <label data-v-ea13fd1a="" for="audio-file"--%>
+<%--                                                       class="btn btn-secondary text-primary btn-sm mt-2">--%>
+<%--                                                    <i data-v-ea13fd1a="" class="fas fa-upload"></i> Chọn file--%>
+<%--                                                </label>--%>
+<%--                                            </div>--%>
+<%--                                            <input data-v-c4f347a8="" type="text" name="avatar" class="d-none1">--%>
 <%--                                            <button data-v-c4f347a8="" type="button" class="btn min-width btn-dark"--%>
 <%--                                                    style="margin: 10px 50px;">--%>
 <%--                                                Đổi avatar--%>
 <%--                                            </button>--%>
-                                        </div>
+<%--                                        </div>--%>
                                     </div>
                                 </div>
                                 <!--     avt end-->
