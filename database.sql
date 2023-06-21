@@ -122,7 +122,7 @@ INSERT INTO `category` VALUES (3, 'Mạng', '2023-04-05');
 INSERT INTO `category` VALUES (4, 'Hệ thống thông tin', '2023-04-05');
 INSERT INTO `category` VALUES (5, 'Big Data và Machine Learning', '2023-05-22');
 INSERT INTO `category` VALUES (6, 'Thiết kế giao diện (UI/UX)', '2023-06-02');
-INSERT INTO `category` VALUES (7, 'Phân tích kinh doanh (Business Analytics)', '2023-06-02');
+INSERT INTO `category` VALUES (7, 'Business Analytics', '2023-06-02');
 INSERT INTO `category` VALUES (8, 'Lập trình PHP', '2023-06-02');
 
 -- ----------------------------

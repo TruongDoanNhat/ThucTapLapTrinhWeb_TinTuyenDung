@@ -198,7 +198,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Tin đã đăng</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        <%=daoPost.getTotalPost(UtilSession.getInstance().getValue(request,"account").getId())%>
+                                        <%=daoPost.getTotalPost(UtilSession.getInstance().getValue(request, "account").getId())%>
                                     </h5>
                                 </div>
                             </div>
@@ -219,7 +219,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Tin hiển thị</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        <%=daoPost.getTotalPost2(UtilSession.getInstance().getValue(request,"account").getId())%>
+                                        <%=daoPost.getTotalPost2(UtilSession.getInstance().getValue(request, "account").getId())%>
                                     </h5>
                                 </div>
                             </div>
@@ -240,7 +240,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Tin hết hạn</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        <%=daoPost.getTotalPost4(UtilSession.getInstance().getValue(request,"account").getId())%>
+                                        <%=daoPost.getTotalPost4(UtilSession.getInstance().getValue(request, "account").getId())%>
                                     </h5>
                                 </div>
                             </div>
@@ -261,7 +261,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">CV đã tiếp nhận</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        <%=daoCV.getTotalCVApplied(UtilSession.getInstance().getValue(request,"account").getId())%>
+                                        <%=daoCV.getTotalCVApplied(UtilSession.getInstance().getValue(request, "account").getId())%>
                                     </h5>
                                 </div>
                             </div>
@@ -282,13 +282,10 @@
                          style="background-image: url('assets/img/ivancik.jpg');">
                         <span class="mask bg-gradient-dark"></span>
                         <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                            <!--                            <h5 class="text-white font-weight-bolder mb-4 pt-2">Tuyển dụng cuối năm chẳng cần lăn tăn về-->
-                            <!--                                giá</h5>-->
-                            <!--                            <p class="text-white">Ưu đãi lên đến 40% với đơn hàng lớn</p>-->
-                            <!--                            <p class="text-white"> Chiết khấu thêm 3% với đơn hàng 0 đồng</p>-->
+                            <h5 class="text-white font-weight-bolder mb-4 pt-2">Khám phá các thông tin tuyển dụng của chúng tôi</h5>
                             <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto"
-                               href="javascript:;">
-                                Khám phá ngay
+                               href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp">
+                                Đến trang chủ TopViecLam
                                 <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -301,12 +298,11 @@
                          style="background-image: url('assets/img/ivancik.jpg');">
                         <span class="mask bg-gradient-dark"></span>
                         <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                            <h5 class="text-white font-weight-bolder mb-4 pt-2">HR Insider 4.0</h5>
-                            <p class="text-white">Cổng thông tin toàn diện về tuyển dụng và quản trị nhân sự dành cho
-                                HR, Manager </p>
+                            <h5 class="text-white font-weight-bolder mb-4 pt-2">Đăng tin tuyển dụng mới</h5>
+                            <p class="text-white">Tìm các ứng viên sáng giá cho công ty của bạn </p>
                             <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto"
-                               href="javascript:;">
-                                Tìm hiểu ngay
+                               href="<%=request.getContextPath()%>/business/busi-dang-tin.jsp">
+                                Đến ngay
                                 <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
                             </a>
                         </div>

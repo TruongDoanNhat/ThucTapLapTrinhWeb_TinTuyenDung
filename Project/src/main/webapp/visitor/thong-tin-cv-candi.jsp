@@ -52,7 +52,7 @@ font-family: system-ui;">
 
     <div data-v-c4f347a8="" class="container-fluid1 py-4" style="margin-top: 30px">
         <div data-v-c4f347a8="" class="d-flex shadow-sm">
-            <% if(UtilSession.getInstance().getValue(request,"account").getRole() == 1) { %>
+            <% if (UtilSession.getInstance().getValue(request, "account").getRole() == 1) { %>
             <div data-v-c4f347a8="">
                 <div data-v-61ae721f="" data-v-c4f347a8="" class="list-group1 rounded">
                     <a data-v-61ae721f="" href="<%=request.getContextPath()%>/visitor/doi-mat-khau-candi.jsp"
@@ -138,42 +138,39 @@ font-family: system-ui;">
     margin-right: 20px;">E</span> <%=cvs.getEmail()%>
                             </li>
                         </ul>
-                    </div>
-                    <div style="margin:0;
+                        <br>
+                        <div style="margin:0;
     font-weight: bold;
     letter-spacing: 1px;">
-                        <ul>
-                            <li>From <%=cvs.getAddress()%>
-                            </li>
-                            <li>Vị trí ứng tuyển: <%=cvs.getRank()%>
-                            </li>
-                            <li>Mức lương mong muốn: <%=cvs.getSalary()%>
-                            </li>
-                        </ul>
-                    </div>
-                    <div style="margin:20px 0 10px;  white-space: pre-wrap;">
-                        <h2>GIỚI THIỆU BẢN THÂN</h2>
-                        <%=cvs.getIntroduce()%>
+                            <ul>
+                                <li>From <%=cvs.getAddress()%>
+                                </li>
+                                <li>Vị trí ứng tuyển: <%=cvs.getRank()%>
+                                </li>
+                                <li>Mức lương mong muốn: <%=cvs.getSalary()%>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div style="margin:20px 0 10px;">
-                        <h2>KINH NGHIỆM LÀM VIỆC</h2>
-
+                        <h2>KINH NGHIỆM</h2>
                         <div style="margin:20px 0 10px; white-space: pre-wrap;">
                             <%=cvs.getExp()%>
                         </div>
-
                         <h2 class="skills" style="margin:20px 0 10px;">
                             KỸ NĂNG
                         </h2>
                         <%=cvs.getSkill()%>
-
                     </div>
-                    <div class="project">
-                        <h2>TRÌNH ĐỘ HỌC VẤN</h2>
+                    <div style="margin:20px 0 10px;  white-space: pre-wrap;">
+                        <h2>GIỚI THIỆU BẢN THÂN</h2>
+                        <%=cvs.getIntroduce()%>
                         <div style="margin:20px 0 10px; white-space: pre-wrap;">
+                            <h2>TRÌNH ĐỘ HỌC VẤN</h2>
                             <%=cvs.getLv()%>
                         </div>
                     </div>
+
                 </div>
                 <!--                end form-->
             </div>
