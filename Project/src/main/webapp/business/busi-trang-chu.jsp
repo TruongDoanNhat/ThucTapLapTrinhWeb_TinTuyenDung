@@ -1,5 +1,6 @@
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
 <%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOBill" %><%--
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOCV" %><%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -172,7 +173,8 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp"
+                       class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>
@@ -320,20 +322,14 @@
                                 <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
                             </div>
                         </div>
-                        <h6 class="ms-2 mt-4 mb-0"> Hoạt động tháng</h6>
-                        <p class="text-sm ms-2"> (<span class="font-weight-bolder">+23%</span>) so với tháng trước </p>
-
+                        <h6 class="ms-2 mt-4 mb-0"> Thống kê hoạt động các tháng</h6>
                     </div>
                 </div>
             </div>
             <div class="col-lg-7">
                 <div class="card z-index-2">
                     <div class="card-header pb-0">
-                        <h6>Tổng quan</h6>
-                        <p class="text-sm">
-                            <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">thêm 4%</span> trong năm 2021
-                        </p>
+                        <h6>Thống kê hoạt động trên tuần</h6>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -358,7 +354,7 @@
     new Chart(ctx, {
         type: "bar",
         data: {
-            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [{
                 label: "Sales",
                 tension: 0.4,
@@ -366,7 +362,9 @@
                 borderRadius: 4,
                 borderSkipped: false,
                 backgroundColor: "#fff",
-                data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+                data: [<% for(int i : DAOBill.doanhThuNamBusi(UtilSession.getInstance().getValue(request,"account").getId())){%>
+                    <%=i%>,
+                    <%}%>],
                 maxBarThickness: 6
             },],
         },
@@ -437,9 +435,9 @@
     new Chart(ctx2, {
         type: "line",
         data: {
-            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "CN"],
             datasets: [{
-                label: "Mobile apps",
+                label: "Tuần này",
                 tension: 0.4,
                 borderWidth: 0,
                 pointRadius: 0,
@@ -447,12 +445,15 @@
                 borderWidth: 3,
                 backgroundColor: gradientStroke1,
                 fill: true,
-                data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                // data: [5,10,16,1,12,12,18],
+                data: [<% for(int i : DAOPost.getTotalPostWeekBusi(UtilSession.getInstance().getValue(request,"account").getId())){%>
+                    <%=i%>,
+                    <%}%>],
                 maxBarThickness: 6
 
             },
                 {
-                    label: "Websites",
+                    label: "Tuần trước",
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 0,
@@ -460,7 +461,10 @@
                     borderWidth: 3,
                     backgroundColor: gradientStroke2,
                     fill: true,
-                    data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+                    // data: [5,10,16,1,12,12,18],
+                    data: [<% for(int i : DAOPost.getTotalPostPreviousWeekBusi(UtilSession.getInstance().getValue(request,"account").getId())){%>
+                        <%=i%>,
+                        <%}%>],
                     maxBarThickness: 6
                 },
             ],
