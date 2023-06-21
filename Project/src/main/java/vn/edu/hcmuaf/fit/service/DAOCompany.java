@@ -22,4 +22,20 @@ public class DAOCompany {
                 .mapToBean(Company.class).stream().findFirst().get());
     }
 
+    public static void updateCompany(String companyId, String name, String phone, String address, String description) {
+        String query = "UPDATE company SET name = ?, phone = ?, address = ?, description = ? , updateDate = now() WHERE id = ?";
+        try {
+            JDBIConnector.get().withHandle(handle ->
+                    handle.createUpdate(query)
+                            .bind(0, name)
+                            .bind(1, phone)
+                            .bind(2, address)
+                            .bind(3, description)
+                            .bind(4, companyId)
+                            .execute()
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

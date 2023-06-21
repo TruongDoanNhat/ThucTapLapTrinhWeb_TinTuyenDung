@@ -1,6 +1,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
 <%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %>
-<%@ page import="vn.edu.hcmuaf.fit.service.DAOBill" %><%--
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOBill" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCV" %><%--
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOCV" %><%--
   Created by IntelliJ IDEA.
   User: DELL

@@ -246,7 +246,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div data-v-c4f347a8="" class="form-group mb-0"><a data-v-c4f347a8="" href="/app/dashboard"
+                            <div data-v-c4f347a8="" class="form-group mb-0"><a data-v-c4f347a8="" href="<%=request.getContextPath() + "/business/busi-doi-mat-khau.jsp"%>"
                                                                                class="btn min-width btn btn-secondary mr-2 btn-lg">Hủy</a>
                                 <button data-v-c4f347a8="" type="submit" class="btn min-width btn btn-primary btn-lg">
                                     <!---->
