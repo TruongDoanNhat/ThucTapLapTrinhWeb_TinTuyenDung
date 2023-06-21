@@ -108,7 +108,29 @@ public class DAOBill {
         }
         return rs;
     }
-
+    public static int[] doanhThuNamBusi(int idBusi) {
+        int[] rs = new int[12];
+        String query = "SELECT MONTH(bill.createDate) month , SUM(bill.money) total" +
+                " FROM bill join post on bill.id = post.billId" +
+                " WHERE YEAR(bill.createDate) = YEAR(now()) AND post.accountId = ?" +
+                "   GROUP BY MONTH(bill.createDate)";
+        List<QuanLyThongKe> list = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .bind(0, idBusi)
+                    .mapToBean(QuanLyThongKe.class)
+                    .collect(Collectors.toList());
+        });
+        for (int i = 0; i < 12; ++i) {
+            rs[i] = 0;
+            for (int j = 0; j < list.size(); j++) {
+                if (i == list.get(j).getMonth()) {
+                    rs[i - 1] = list.get(j).getTotal();
+                    break;
+                }
+            }
+        }
+        return rs;
+    }
     private int[] getInts(int[] rs, String query) {
         List<Integer> list = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).mapTo(Long.class).map(l -> l.intValue()).stream().collect(Collectors.toList());
