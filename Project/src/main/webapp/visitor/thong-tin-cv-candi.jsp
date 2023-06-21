@@ -102,10 +102,6 @@ font-family: system-ui;">
     font-size: xxx-large;
     margin:0px 0 5px ;"><%=cvs.getName()%>
                         </h1>
-                        <div style="margin:0;
-    font-weight: bold;
-    letter-spacing: 3px;">Frond-End Developer
-                        </div>
                         <ul style="padding:0;
     list-style: none;">
                             <li>
@@ -143,7 +139,9 @@ font-family: system-ui;">
                             </li>
                         </ul>
                     </div>
-                    <div>
+                    <div style="margin:0;
+    font-weight: bold;
+    letter-spacing: 1px;">
                         <ul>
                             <li>From <%=cvs.getAddress()%>
                             </li>
@@ -153,14 +151,14 @@ font-family: system-ui;">
                             </li>
                         </ul>
                     </div>
-                    <div style="margin:20px 0 10px;">
+                    <div style="margin:20px 0 10px;  white-space: pre-wrap;">
                         <h2>GIỚI THIỆU BẢN THÂN</h2>
                         <%=cvs.getIntroduce()%>
                     </div>
                     <div style="margin:20px 0 10px;">
                         <h2>KINH NGHIỆM LÀM VIỆC</h2>
 
-                        <div style="margin:20px 0 10px;">
+                        <div style="margin:20px 0 10px; white-space: pre-wrap;">
                             <%=cvs.getExp()%>
                         </div>
 
@@ -172,7 +170,7 @@ font-family: system-ui;">
                     </div>
                     <div class="project">
                         <h2>TRÌNH ĐỘ HỌC VẤN</h2>
-                        <div style="margin:20px 0 10px;">
+                        <div style="margin:20px 0 10px; white-space: pre-wrap;">
                             <%=cvs.getLv()%>
                         </div>
                     </div>
