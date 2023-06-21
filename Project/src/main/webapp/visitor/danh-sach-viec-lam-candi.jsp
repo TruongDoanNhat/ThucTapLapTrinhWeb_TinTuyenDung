@@ -217,7 +217,7 @@
                                 %>
                                 <li class="page-item"><a class="page-link" href="Post?action=danhsanhvieclam&trang=<%= pageNumber %>"><%= pageNumber %></a></li>
                                 <% } else {%>
-                                <li class="page-item"><a class="page-link"href="Post?action=timkiem&trang=<%= pageNumber %>&keywords=<%=request.getAttribute("keywords")%>&categoryId=<%=request.getAttribute("categoryId")%>"><%= pageNumber %></a></li>
+                                <li class="page-item"><a class="page-link"href="Post?action=timkiem&trang=<%= pageNumber %>&keywords=<%=request.getAttribute("keywords") == null ? "" : request.getAttribute("keywords") %>&categoryId=<%=request.getAttribute("categoryId")%>"><%= pageNumber %></a></li>
                                 <% } %>
                                 <% } %>
                                 <% } %>

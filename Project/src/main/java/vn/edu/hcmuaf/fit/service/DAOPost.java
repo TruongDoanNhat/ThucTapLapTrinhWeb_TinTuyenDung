@@ -299,7 +299,7 @@ public class DAOPost {
     }
 
     public List<Post> getPostofCategoryByID(int categoryId) {
-        String query = "select * from post where categoryId = ?";
+        String query = "select * from post where categoryId = ? and status = 2";
         List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, categoryId).mapToBean(Post.class).stream().collect(Collectors.toList());
         });

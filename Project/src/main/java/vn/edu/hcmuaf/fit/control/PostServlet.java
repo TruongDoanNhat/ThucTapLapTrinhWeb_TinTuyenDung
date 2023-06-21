@@ -34,7 +34,6 @@ public class PostServlet extends HttpServlet {
         String keywords = request.getParameter("keywords") == null ? "" : request.getParameter("keywords");
         String categoryId = request.getParameter("categoryId") == null ? "0" : request.getParameter("categoryId");
         String trang = request.getParameter("trang");
-        String idCategory = request.getParameter("categoryId");
         int tongBaiViet;
         int soBaiViet;
         if (trang == null) {
@@ -75,24 +74,19 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
             case "category":
-                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
-                request.setAttribute("postAll", daoPost.getPostofCategoryByID(Integer.valueOf(idManager)));
-                break;
-            case "cate":
-                tongBaiViet = daoPost.getPostOfCategoryApprove(idCategory,"2");
+                tongBaiViet = daoPost.getPostOfCategoryApprove(idManager, "2");
                 soBaiViet = tongBaiViet / 5;
                 if (tongBaiViet % 5 != 0) {
                     soBaiViet++;
                 }
-                List<Post> posta = daoPost.getPostOfCategoryApprove(idCategory,"2",t);
-                request.setAttribute("postAll", posta);
+                List<Post> postAllOfCategoryApprove = daoPost.getPostOfCategoryApprove(idManager, "2", t);
+                request.setAttribute("postAll", postAllOfCategoryApprove);
                 request.setAttribute("sobd", soBaiViet);
                 request.setAttribute("trang", t);
-                request.setAttribute("categoryId",idCategory);
+                request.setAttribute("categoryId", idManager);
                 request.setAttribute("tongBaiViet", tongBaiViet);
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
-
             case "vieclamdaungtuyen":
                 if (account != null) {
                     List<Post> postApplied1 = daoPost.getPostApplied(account.getId());
@@ -111,10 +105,10 @@ public class PostServlet extends HttpServlet {
                 if (tongBaiViet % 5 != 0) {
                     soBaiViet++;
                 }
-                List<Post> postSearch ;
+                List<Post> postSearch;
                 if (categoryId.equals("0")) {
-                 postSearch = daoPost.getPostSearchApprove(keywords, "2", t);
-                }else {
+                    postSearch = daoPost.getPostSearchApprove(keywords, "2", t);
+                } else {
                     request.setAttribute("categoryId", categoryId);
                     postSearch = daoPost.getPostSearchCategory(keywords, categoryId, "2", t);
                 }
@@ -182,7 +176,7 @@ public class PostServlet extends HttpServlet {
                     }
                 }
                 request.setAttribute("post", postAll);
-                request.setAttribute("postExpired",  postExpired);
+                request.setAttribute("postExpired", postExpired);
                 request.setAttribute("sobv", soBaiViet);
                 request.setAttribute("trang", t);
 
@@ -232,7 +226,7 @@ public class PostServlet extends HttpServlet {
                 DAOLog.getInstance().insert(Log.INFO, account != null ? account.getId() : -1,
                         String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã duyệt bài viết có id: " + idManager, 0);
                 DAOLog.getInstance().insert(Log.INFO, post.getAccountId(),
-                        "", "Bài viết " + post.getTitle() + " tạo ngày "+ post.getCreateDate() + " đã được duyệt ", 1);
+                        "", "Bài viết " + post.getTitle() + " tạo ngày " + post.getCreateDate() + " đã được duyệt ", 1);
                 daoPost.updatePost(Integer.valueOf(idManager), Post.status_approve);
                 response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
                 break;

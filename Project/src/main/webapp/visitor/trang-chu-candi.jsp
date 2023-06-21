@@ -79,12 +79,11 @@
                                     <input name="keywords" type="text" placeholder="Tìm kiếm việc làm">
                                 </div>
                                 <div class="select-form">
-                                    <%List<Category> listCategory = DAOCategory.getInstance().getCategoryAll();%>
                                     <select id="select1" style=" margin-top: 20px; text-transform: none;
                                      height: 30px;width: 99%;  border: none; appearance: none;"
                                             data-placeholder="Chọn lĩnh vực" name="categoryId">
                                         <option value="0">Tất cả</option>
-                                        <% for (Category c : listCategory) {%>
+                                        <% for (Category c : category) {%>
                                         <option value="<%=c.getId()%>"><%=c.getName()%>
                                         </option>
                                         <% }%>
@@ -114,7 +113,7 @@
                 </div>
             </div>
             <div class="row d-flex">
-                <%for (Category c : category) { %>
+                <% for (Category c : category) { %>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
@@ -122,10 +121,10 @@
                         </div>
                         <div class="<%=c.getId()%>">
                             <h5>
-                                <a href="<%=request.getContextPath()%>/Category?action=cate&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%>
+                                <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%>
                                 </a>
                             </h5>
-<%--                            <span>(<%=dp.%>)</span>--%>
+                            <span>(<%=dp.getPostofCategoryByID(c.getId()).size()%>)</span>
                         </div>
                     </div>
                 </div>
