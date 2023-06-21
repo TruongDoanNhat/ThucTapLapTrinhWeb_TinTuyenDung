@@ -104,14 +104,16 @@
                             <div id="t" class="small-section-tittle">
                                 <h4>Mô tả công việc</h4>
                             </div>
-                            <%=post2.getDescription()%>
+                            <ul style=" white-space: pre-wrap;">
+                                <%=post2.getDescription()%>
+                            </ul>
                         </div>
                         <div class="post-details2  mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
                                 <h4>Yêu cầu ứng viên</h4>
                             </div>
-                            <ul>
+                            <ul style=" white-space: pre-wrap;">
                                 <%=post2.getRequest()%>
                             </ul>
                         </div>
@@ -120,7 +122,7 @@
                             <div class="small-section-tittle">
                                 <h4>Quyền lợi</h4>
                             </div>
-                            <ul>
+                            <ul style=" white-space: pre-wrap;">
                                 <%=post2.getRights()%>
                             </ul>
                         </div>
@@ -150,16 +152,20 @@
                             <form action="<%=request.getContextPath()%>/candidate/Post_details?action=nopcv" method="post">
                                 <input type="hidden" name="postId" value="<%= post2.getId() %>">
                                 <!-- Form fields -->
+                                <% if (cvs.isEmpty()) { %>
+                                <div class="apply-btn2"> <a href="<%=request.getContextPath() + "/candidate/candi-tao-cv.jsp"%>" id="taocv" class="btn">Tạo CV</a> </div>
+                                <% } else { %>
                                 <% for (CV cv : cvs) { %>
-                                            <label class="checkbox inline">
-                                                <input type="radio" id="cv" name="cv" value="<%=cv.getId()%>">
-                                                <%=cv.getTitle()%>
-                                            </label>
-                            <br>
+                                <label class="checkbox inline">
+                                    <input type="radio" id="cv" name="cv" value="<%=cv.getId()%>">
+                                    <%=cv.getTitle()%>
+                                </label>
+                                <br>
                                 <% } %>
                                 <div class="apply-btn2">
                                     <button type="submit" id="nopcv" class="btn">Nộp CV</button>
                                 </div>
+                                <% } %>
                             </form>
                         </div>
                         <% } %>
