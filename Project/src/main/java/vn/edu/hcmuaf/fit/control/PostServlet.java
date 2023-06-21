@@ -32,10 +32,9 @@ public class PostServlet extends HttpServlet {
         String action = request.getParameter("action");
         String idManager = request.getParameter("id");
         String keywords = request.getParameter("keywords") == null ? "" : request.getParameter("keywords");
-
         String categoryId = request.getParameter("categoryId") == null ? "0" : request.getParameter("categoryId");
         String trang = request.getParameter("trang");
-
+        String idCategory = request.getParameter("categoryId");
         int tongBaiViet;
         int soBaiViet;
         if (trang == null) {
@@ -76,7 +75,21 @@ public class PostServlet extends HttpServlet {
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
             case "category":
+                UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 request.setAttribute("postAll", daoPost.getPostofCategoryByID(Integer.valueOf(idManager)));
+                break;
+            case "cate":
+                tongBaiViet = daoPost.getPostOfCategoryApprove(idCategory,"2");
+                soBaiViet = tongBaiViet / 5;
+                if (tongBaiViet % 5 != 0) {
+                    soBaiViet++;
+                }
+                List<Post> posta = daoPost.getPostOfCategoryApprove(idCategory,"2",t);
+                request.setAttribute("postAll", posta);
+                request.setAttribute("sobd", soBaiViet);
+                request.setAttribute("trang", t);
+                request.setAttribute("categoryId",idCategory);
+                request.setAttribute("tongBaiViet", tongBaiViet);
                 UtilControl.forward("visitor/danh-sach-viec-lam-candi.jsp", request, response);
                 break;
 

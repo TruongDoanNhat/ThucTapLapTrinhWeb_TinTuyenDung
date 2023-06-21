@@ -52,7 +52,7 @@
         <div data-v-c4f347a8="" class="d-flex shadow-sm">
             <div data-v-c4f347a8="">
                 <div data-v-61ae721f="" data-v-c4f347a8="" class="list-group1 rounded">
-                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/visitor/doi-mat-khau-candi.jsp"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/candi-doi-mat-khau.jsp"
                        class="list-group-item list-group-item-action border-0 bg-none">
                         <i data-v-61ae721f="" class="fa mr-2 fa-lock"></i> Đổi mật khẩu
                     </a>

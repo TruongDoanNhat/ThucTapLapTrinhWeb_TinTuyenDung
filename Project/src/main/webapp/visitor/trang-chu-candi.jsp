@@ -122,10 +122,10 @@
                         </div>
                         <div class="<%=c.getId()%>">
                             <h5>
-                                <a href="<%=request.getContextPath()%>/Category?action=category&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%>
+                                <a href="<%=request.getContextPath()%>/Category?action=cate&id=<%=c.getId()%>&name=<%=c.getName()%>"><%=c.getName()%>
                                 </a>
                             </h5>
-                            <span>(<%=dp.getPostofCategoryByID(c.getId()).size()%>)</span>
+<%--                            <span>(<%=dp.%>)</span>--%>
                         </div>
                     </div>
                 </div>
@@ -205,7 +205,7 @@
                                 </div>
                             </div>
                             <div class="items-link f-right" style="width: 180px;">
-                                <a href="/Post_details?id=<%=post.getId()%>"><%= post.getType()%>
+                                <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=post.getId()%>"><%= post.getType()%>
                                 </a>
                                 <%if (dp.dateToCreate(post.getCreateDate()) > 0) { %>
                                 <span><%=dp.dateToCreate(post.getCreateDate())%> ngày trước</span>

@@ -57,7 +57,7 @@ public class ResetPassword extends HttpServlet {
                     request.setAttribute("message", "Đổi mật khẩu thành công!");
                     response.sendRedirect("visitor/trang-chu-candi.jsp");
                 } else {
-                    DAOLog.getInstance().insert(Log.WARNING, getAccountResetPassword.getId(),
+                    DAOLog.getInstance().insert(Log.WARNING, UtilSession.getInstance().getValue(request, "account").getId(),
                             "", "Thay đổi mật khẩu không thành công !", 1);
                     request.setAttribute("message", "Sai mật khẩu!");
                     UtilControl.forward("candidate/candi-doi-mat-khau.jsp", request, response);
