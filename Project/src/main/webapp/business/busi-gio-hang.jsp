@@ -346,7 +346,7 @@
                                         <div class="cc-field">
                                             <div class="cc-title"> Mã thẻ
                                             </div>
-                                            <input type="text" name="numAccount" class="input cc-txt text-validated"
+                                            <input type="text" id="numAccount" name="numAccount" onkeyup="daoNutDN()" class="input cc-txt text-validated"
                                                    placeholder="0000 0000 0000 0000"/>
                                         </div>
                                     </div>
@@ -405,14 +405,14 @@
                                         <div class="cc-field">
                                             <div class="cc-title">Mã CVV <span class="numberCircle">?</span>
                                             </div>
-                                            <input type="text" class="input cc-txt"/>
+                                            <input type="text" class="input cc-txt" id="numberCircle" onkeyup="daoNutDN()"/>
                                         </div>
                                     </div>
                                     <div class="row-cc">
                                         <div class="cc-field">
                                             <div class="cc-title">Họ và tên trên thẻ
                                             </div>
-                                            <input type="text" class="input cc-txt"/>
+                                            <input type="text" class="input cc-txt" id="name" onkeyup="daoNutDN()"/>
                                             <div class="cc-title">Số tiền
                                             </div>
                                             <input type="text" id="pay2" name="pay2" readonly style="width: auto"
@@ -423,7 +423,7 @@
                                 </div>
                                 <div class="button-master-container">
                                     <div class="button-container button-finish">
-                                        <button class="pay-btn" type="submit">Thanh toán</button>
+                                        <button class="pay-btn" type="submit" id="thanhtoan">Thanh toán</button>
                                     </div>
                                 </div>
                             </form>
@@ -527,6 +527,22 @@
 <script src="<%=request.getContextPath()%>/business/assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <script>
+    document.getElementById("thanhtoan").disabled = true;
+
+    function daoNutDN() {
+        var a = document.getElementById("numAccount").value;
+        var c = document.getElementById("numberCircle").value;
+        var n = document.getElementById("name").value;
+
+
+        if (a.length > 0 && c.length > 0 && n.length > 0) {
+            document.getElementById("thanhtoan").disabled = false;
+        } else {
+            document.getElementById("thanhtoan").disabled = true;
+        }
+    }
+</script>
+<script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
         var options = {
@@ -610,5 +626,6 @@
     btn.onclick = checkAll;
 
 </script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>

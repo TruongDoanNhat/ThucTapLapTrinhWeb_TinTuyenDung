@@ -187,7 +187,7 @@
         <div data-v-c4f347a8="" class="d-flex shadow-sm">
             <div data-v-c4f347a8="">
                 <div data-v-61ae721f="" data-v-c4f347a8="" class="list-group rounded">
-                    <a data-v-61ae721f="" href="/app/account/settings/password-login"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/business/busi-doi-mat-khau.jsp.jsp"
                        class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-white">
                         <i data-v-61ae721f="" class="fa mr-2 fa-lock"></i> Đổi mật khẩu
                     </a>
@@ -195,7 +195,7 @@
                        class="list-group-item list-group-item-action border-0  bg-none">
                         <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Thông tin cá nhân
                     </a>
-                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/business/busi-cap-nhat-thong-tin-xac-thuc-cong-ty.jsp"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/business/busi-thong-tin-cong-ty.jsp"
                        class="list-group-item list-group-item-action border-0 bg-none">
                         <i data-v-61ae721f="" class="fa mr-2 fa-building"></i> Thông tin công ty
                     </a>
@@ -203,7 +203,7 @@
             </div>
             <div data-v-c4f347a8="" class="bg-white w-100 rounded">
                 <!--               form -->
-                <form data-v-c4f347a8="" action="<%=request.getContextPath()%>/ResetPassword?action=changePasswordBusi" method="post">
+                <form data-v-c4f347a8="" action="<%=request.getContextPath()%>/ResetPassword?action=changePassword" method="post">
                     <div data-v-c4f347a8="" class="active">
                         <div data-v-c4f347a8="" class="card-header bg-white font-weight-bold1 border-0 fs-16">
                             <h5> Đổi mật khẩu </h5>

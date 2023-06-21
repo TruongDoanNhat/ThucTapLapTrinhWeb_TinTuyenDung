@@ -1,4 +1,7 @@
-<%--
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
+<%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOBill" %><%--
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCV" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 03/01/2023
@@ -6,6 +9,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    DAOPost daoPost = new DAOPost();
+    DAOCV daoCV = new DAOCV();
+%>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -166,7 +173,8 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp"
+                       class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>
@@ -181,6 +189,27 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4">
         <div class="row">
+            <div class="col-xl-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Tin đã đăng</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        <%=daoPost.getTotalPost(UtilSession.getInstance().getValue(request,"account").getId())%>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
@@ -189,7 +218,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Tin hiển thị</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        530
+                                        <%=daoPost.getTotalPost2(UtilSession.getInstance().getValue(request,"account").getId())%>
                                     </h5>
                                 </div>
                             </div>
@@ -210,7 +239,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Tin hết hạn</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        230
+                                        <%=daoPost.getTotalPost4(UtilSession.getInstance().getValue(request,"account").getId())%>
                                     </h5>
                                 </div>
                             </div>
@@ -231,34 +260,13 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">CV đã tiếp nhận</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        346
+                                        <%=daoCV.getTotalCVApplied(UtilSession.getInstance().getValue(request,"account").getId())%>
                                     </h5>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
                                     <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">CV ứng tuyển mới</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        103
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -314,20 +322,14 @@
                                 <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
                             </div>
                         </div>
-                        <h6 class="ms-2 mt-4 mb-0"> Hoạt động tháng</h6>
-                        <p class="text-sm ms-2"> (<span class="font-weight-bolder">+23%</span>) so với tháng trước </p>
-
+                        <h6 class="ms-2 mt-4 mb-0"> Thống kê hoạt động các tháng</h6>
                     </div>
                 </div>
             </div>
             <div class="col-lg-7">
                 <div class="card z-index-2">
                     <div class="card-header pb-0">
-                        <h6>Tổng quan</h6>
-                        <p class="text-sm">
-                            <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">thêm 4%</span> trong năm 2021
-                        </p>
+                        <h6>Thống kê hoạt động trên tuần</h6>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -352,7 +354,7 @@
     new Chart(ctx, {
         type: "bar",
         data: {
-            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [{
                 label: "Sales",
                 tension: 0.4,
@@ -360,7 +362,9 @@
                 borderRadius: 4,
                 borderSkipped: false,
                 backgroundColor: "#fff",
-                data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+                data: [<% for(int i : DAOBill.doanhThuNamBusi(UtilSession.getInstance().getValue(request,"account").getId())){%>
+                    <%=i%>,
+                    <%}%>],
                 maxBarThickness: 6
             },],
         },
@@ -431,9 +435,9 @@
     new Chart(ctx2, {
         type: "line",
         data: {
-            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "CN"],
             datasets: [{
-                label: "Mobile apps",
+                label: "Tuần này",
                 tension: 0.4,
                 borderWidth: 0,
                 pointRadius: 0,
@@ -441,12 +445,15 @@
                 borderWidth: 3,
                 backgroundColor: gradientStroke1,
                 fill: true,
-                data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                // data: [5,10,16,1,12,12,18],
+                data: [<% for(int i : DAOPost.getTotalPostWeekBusi(UtilSession.getInstance().getValue(request,"account").getId())){%>
+                    <%=i%>,
+                    <%}%>],
                 maxBarThickness: 6
 
             },
                 {
-                    label: "Websites",
+                    label: "Tuần trước",
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 0,
@@ -454,7 +461,10 @@
                     borderWidth: 3,
                     backgroundColor: gradientStroke2,
                     fill: true,
-                    data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+                    // data: [5,10,16,1,12,12,18],
+                    data: [<% for(int i : DAOPost.getTotalPostPreviousWeekBusi(UtilSession.getInstance().getValue(request,"account").getId())){%>
+                        <%=i%>,
+                        <%}%>],
                     maxBarThickness: 6
                 },
             ],

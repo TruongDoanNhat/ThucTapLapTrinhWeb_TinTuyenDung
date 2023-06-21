@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DAOPost {
-    private DAOBill daoBill = new DAOBill();
-    private String message = "error!";
 
     private static Post post = null;
 
@@ -31,13 +29,6 @@ public class DAOPost {
         });
     }
 
-
-
-    public String castDate() {
-        DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return simpleDateFormat.format(getDateNow());
-    }
-
     public int getTotalPostBusi(int idBusi) {
         String query = "SELECT COUNT(*) FROM post where accountId = ?";
         return JDBIConnector.get().withHandle(handle -> {
@@ -46,9 +37,37 @@ public class DAOPost {
     }
 
     public List<Post> getPostIdBusi(int idBusi, int trang) {
-        String query = "select * from post where accountId = ?  LIMIT 3 OFFSET ?";
+        String query = "select * from post where accountId = ? ORDER BY  createDate DESC LIMIT 3 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, idBusi).bind(1, (trang - 1) * 3).mapToBean(Post.class).stream().collect(Collectors.toList());
+        });
+    }
+
+    public List<Post> getPostExpired(int idBusi, int status) {
+        String query = "select * from post where accountId = ? and status = ? ORDER BY  endDate DESC LIMIT 8";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idBusi).bind(1, status).mapToBean(Post.class).stream().collect(Collectors.toList());
+        });
+    }
+
+    public int getTotalPost(int idBusi) {
+        String query = "SELECT COUNT(*) FROM post where accountId = ? and status <> 0";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idBusi).mapTo(Integer.class).one();
+        });
+    }
+
+    public int getTotalPost2(int idBusi) {
+        String query = "SELECT COUNT(*) FROM post where accountId = ? and status = 2";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idBusi).mapTo(Integer.class).one();
+        });
+    }
+
+    public int getTotalPost4(int idBusi) {
+        String query = "SELECT COUNT(*) FROM post where accountId = ? and status = 4 ";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idBusi).mapTo(Integer.class).one();
         });
     }
 
@@ -107,12 +126,14 @@ public class DAOPost {
             return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, status).mapToBean(Post.class).stream().collect(Collectors.toList()).size();
         });
     }
-    public int getPostSearchCategory(String keywords, String categoryId,String status) {
+
+    public int getPostSearchCategory(String keywords, String categoryId, String status) {
         String query = "select * from post where title LIKE ? and categoryId = ? and status = ?";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, categoryId).bind(2,status).mapToBean(Post.class).stream().collect(Collectors.toList()).size();
+            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, categoryId).bind(2, status).mapToBean(Post.class).stream().collect(Collectors.toList()).size();
         });
     }
+
     public int getPostOfCategoryApprove( String categoryId,String status) {
         String query = "select * from post where categoryId = ? and status = ?";
         return JDBIConnector.get().withHandle(handle -> {
@@ -126,22 +147,26 @@ public class DAOPost {
         });
     }
 
-    public List<Post> getPostSearchCategory(String keywords, String categoryId,String status , int trang) {
+    
+
+    public List<Post> getPostSearchCategory(String keywords, String categoryId, String status, int trang) {
         String query = "select * from post where title LIKE ? and categoryId = ? and status = ? ORDER BY createDate DESC LIMIT 5 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, categoryId).bind(2,status).bind(3, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
+            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, categoryId).bind(2, status).bind(3, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
     }
-    public  int getPostSearchApprove(String keywords, String status) {
+
+    public int getPostSearchApprove(String keywords, String status) {
         String query = "select * from post where title LIKE ? and status = ?";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1,status).mapToBean(Post.class).stream().collect(Collectors.toList()).size();
+            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, status).mapToBean(Post.class).stream().collect(Collectors.toList()).size();
         });
     }
-    public  List<Post> getPostSearchApprove(String keywords, String status, int trang) {
+
+    public List<Post> getPostSearchApprove(String keywords, String status, int trang) {
         String query = "select * from post where title LIKE ? and status = ?ORDER BY createDate DESC LIMIT 5 OFFSET ?";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1,status).bind(2, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
+            return handle.createQuery(query).bind(0, "%" + keywords + "%").bind(1, status).bind(2, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
         });
     }
 
@@ -245,6 +270,7 @@ public class DAOPost {
         });
         return listPost;
     }
+
     public List<Post> getPostApproveTop5() {
         String query = "select * from post where status = ?  LIMIT 5 ";
         List<Post> listPost = JDBIConnector.get().withHandle(handle -> {
@@ -344,6 +370,30 @@ public class DAOPost {
         return getInts(rs, query);
     }
 
+    public static int[] getTotalPostWeekBusi(int id) {
+        int[] rs = new int[7];
+        String query = " SELECT IFNULL(total,0) total  \n" + "FROM (  \n" + " SELECT 'Monday' AS day UNION   \n" + " SELECT 'Tuesday' UNION   \n" + " SELECT 'Wednesday' UNION  \n" + " SELECT 'Thursday' UNION  \n" + " SELECT 'Friday' UNION  \n" + " SELECT 'Saturday' UNION   \n" + " SELECT 'Sunday') d   \n" + "LEFT JOIN (SELECT DAYNAME(createDate) day, COUNT(id) total FROM post\n" + "WHERE createDate >= CURDATE() - INTERVAL WEEKDAY(CURDATE()) + 7 DAY AND createDate <= CURDATE() AND accountId = ?  \n" + " GROUP BY day) p ON d.day = p.day\n" + "ORDER BY FIND_IN_SET(d.day,'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday')  ";
+        List<Integer> list = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, id).mapTo(Long.class).map(l -> l.intValue()).stream().collect(Collectors.toList());
+        });
+        for (int i = 0; i < list.size(); i++) {
+            rs[i] = list.get(i);
+        }
+        return rs;
+    }
+    public static int[] getTotalPostPreviousWeekBusi(int id) {
+        int[] rs = new int[7];
+        String query = " SELECT IFNULL(total,0) total  \n" + "FROM (  \n" + " SELECT 'Monday' AS day UNION   \n" + " SELECT 'Tuesday' UNION   \n" + " SELECT 'Wednesday' UNION  \n" + " SELECT 'Thursday' UNION  \n" + " SELECT 'Friday' UNION  \n" + " SELECT 'Saturday' UNION   \n" + " SELECT 'Sunday') d   \n" + "LEFT JOIN (SELECT DAYNAME(createDate) day, COUNT(id) total FROM post\n" + "WHERE \n" +
+                "   WEEK(createDate, 1) =\n" +
+                "   WEEK(CURDATE() - INTERVAL 1 WEEK, 1)   AND accountId = ? \n" +" GROUP BY day) p ON d.day = p.day\n" + "ORDER BY FIND_IN_SET(d.day,'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday')  ";
+        List<Integer> list = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, id).mapTo(Long.class).map(l -> l.intValue()).stream().collect(Collectors.toList());
+        });
+        for (int i = 0; i < list.size(); i++) {
+            rs[i] = list.get(i);
+        }
+        return rs;
+    }
     private int[] getInts(int[] rs, String query) {
         List<Integer> list = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).mapTo(Long.class).map(l -> l.intValue()).stream().collect(Collectors.toList());

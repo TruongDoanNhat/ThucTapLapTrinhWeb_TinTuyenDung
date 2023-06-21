@@ -9,7 +9,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% List<Post> post = (List<Post>) request.getAttribute("post");
+<%  List<Post> post = (List<Post>) request.getAttribute("post");
+    List<Post> postExpired = (List<Post>) request.getAttribute("postExpired");
     String billId = (String) request.getAttribute("billId");
 %>
 <html>
@@ -329,8 +330,8 @@
 
                             <%
                                 if (request.getAttribute("trang") != null || request.getAttribute("sobd") != null) {
-                                int t = (int) request.getAttribute("trang");
-                                int sobv = (int) request.getAttribute("sobv");
+                                    int t = (int) request.getAttribute("trang");
+                                    int sobv = (int) request.getAttribute("sobv");
                             %>
 
                             <!-- Hiển thị nút phân trang -->
@@ -347,7 +348,8 @@
                                     }
                                     href += "&trang=" + i;
                                 %>
-                                <a href="<%= href %>" class="btn btn-link"><%= i %></a>
+                                <a href="<%= href %>" class="btn btn-link"><%= i %>
+                                </a>
                                 <% }
                                 }
                                 }
@@ -363,102 +365,33 @@
                     <div class="card-header pb-0 px-3">
                         <div class="row">
                             <div class="col-md-6">
-                                <h6 class="mb-0">Trạng thái tin tuyển dụng</h6>
-                            </div>
-                            <div class="col-md-6 d-flex justify-content-end align-items-center">
-                                <i class="far fa-calendar-alt me-2"></i>
-                                <small>tháng 1, 2023</small>
+                                <h6 class="mb-0">Post đã hết hạn gần đây</h6>
                             </div>
                         </div>
                     </div>
                     <div class="card-body pt-4 p-3">
-                        <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Mới nhất</h6>
+                        <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3"></h6>
                         <ul class="list-group">
-                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                <div class="d-flex align-items-center">
-                                    <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
-                                        <i class="fas fa-arrow-down"></i></button>
-                                    <div class="d-flex flex-column">
-                                        <a href="<%=request.getContextPath()%>/visitor/thong-tin-viec-lam-candi.jsp">
-                                            <h6 class="mb-1 text-dark text-sm">Phát triển phần mềm</h6>
-                                        </a>
-                                        <span class="text-xs">03/01/2023, at 12:30 AM</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold">
-                                    Chưa duyệt
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                <div class="d-flex align-items-center">
-                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
-                                        <i class="fas fa-arrow-up"></i></button>
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-1 text-dark text-sm">Tester</h6>
-                                        <span class="text-xs">03/01/2023, at 07:00 AM</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                                    Đã duyệt
-                                </div>
-                            </li>
-                        </ul>
-                        <h6 class="text-uppercase text-body text-xs font-weight-bolder my-3">Gần đây</h6>
-                        <ul class="list-group">
-                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                <div class="d-flex align-items-center">
-                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
-                                        <i class="fas fa-arrow-up"></i></button>
-                                    <div class="d-flex flex-column">
-                                        <a href="<%=request.getContextPath()%>/visitor/thong-tin-viec-lam-candi.jsp">
-                                            <h6 class="mb-1 text-dark text-sm">AI</h6>
-                                        </a>
-                                        <span class="text-xs">01/01/2023, at 11:30 AM</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                                    Đã duyệt
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                <div class="d-flex align-items-center">
-                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
-                                        <i class="fas fa-arrow-up"></i></button>
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-1 text-dark text-sm">Lập trình Dot Net</h6>
-                                        <span class="text-xs">02/01/2023, at 14:30 PM</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                                    Đã duyệt
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                <div class="d-flex align-items-center">
-                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
-                                        <i class="fas fa-arrow-up"></i></button>
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-1 text-dark text-sm">Data analyst</h6>
-                                        <span class="text-xs">05/01/2023, at 16:00 PM</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                                    Đã duyệt
-                                </div>
-                            </li>
+                            <%
+                                for (Post p : postExpired) {
+                            %>
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                 <div class="d-flex align-items-center">
                                     <button class="btn btn-icon-only btn-rounded btn-outline-dark mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
                                         <i class="fas fa-exclamation"></i></button>
                                     <div class="d-flex flex-column">
-                                        <h6 class="mb-1 text-dark text-sm">Lập trình website</h6>
-                                        <span class="text-xs">25/12/2022, at 12:00 AM</span>
+                                        <h6 class="mb-1 text-dark text-sm"><%=p.getTitle()%>
+                                        </h6>
+                                        <span class="text-xs"><%=p.getEndDate()%></span>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
                                     Hết hạn
                                 </div>
                             </li>
+                            <%
+                                }
+                            %>
                         </ul>
                     </div>
                 </div>

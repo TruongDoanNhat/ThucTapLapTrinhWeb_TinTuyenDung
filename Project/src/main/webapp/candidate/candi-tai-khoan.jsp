@@ -10,7 +10,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
-
+<% Account account = (Account) session.getAttribute("account");%>
 
 <html>
 <head>
@@ -63,12 +63,12 @@
                     </a>
                     <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/candi-tao-cv.jsp" aria-current="page"
                        class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-white">
-                        <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Tạo CV
+                        <i data-v-61ae721f="" class="fa mr-2 fa-upload"></i> Tạo CV
                     </a>
                     <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/CV?action=quanlycv"
                        aria-current="page"
                        class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-white">
-                        <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Quản lý CV
+                        <i data-v-61ae721f="" class="fa mr-2 fa-tv"></i> Quản lý CV
                     </a>
                 </div>
             </div>
@@ -84,7 +84,10 @@
                                 <!--                                -->
                                 <!--
                                                           avt end-->
-                            <% Account account = (Account) session.getAttribute("account");%>
+                                <div data-v-c4f347a8="" class="form-group col-md-6">
+                                    <label data-v-c4f347a8="" class="col-form-label">Ngày tạo: <%=account.getCreateDate()%></label>
+
+                                </div>
                                 <div data-v-c4f347a8="" class="row" style="width: 60%">
                                     <div data-v-c4f347a8="" class="form-group col-md-6">
                                         <label data-v-c4f347a8="">Họ và tên</label>

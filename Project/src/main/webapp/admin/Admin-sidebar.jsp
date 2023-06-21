@@ -48,22 +48,9 @@
                 <i class="menu-icon icon-hand-up"></i> Cập nhật</a>
         </li>
         <li>
-            <a class="collapsed" data-toggle="collapse" href="#togglePages2">
+            <a href="<%=request.getContextPath()%>/admin/Update?action=contact">
                 <i class="menu-icon icon-cog"></i>
-                <i class="icon-chevron-down pull-right"></i>
-                <i class="icon-chevron-up pull-right"></i>
-                Cài đặt giao diện</a>
-            <ul id="togglePages2" class="collapse unstyled">
-                <%--                                <li><a href=""><i class="icon-inbox"></i> Màu sắc </a></li>--%>
-                <li>
-                    <a href="<%=request.getContextPath()%>/admin/Admin-tin-tuc.jsp">
-                        <i class="icon-inbox"></i>Tin tức</a>
-                </li>
-                <li>
-                    <a href="<%=request.getContextPath()%>/admin/Update?action=contact">
-                        <i class="icon-inbox"></i>Liên hệ</a>
-                </li>
-            </ul>
+                Cài đặt</a>
         </li>
     </ul>
     <ul class="widget widget-menu unstyled">

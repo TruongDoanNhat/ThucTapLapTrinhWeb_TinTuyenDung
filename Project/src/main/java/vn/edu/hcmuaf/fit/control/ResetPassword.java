@@ -55,30 +55,20 @@ public class ResetPassword extends HttpServlet {
                     d.updatePassword(UtilSession.getInstance().getValue(request, "account").getUsername(), newEncryptedPassword);
                     UtilSession.getInstance().getValue(request, "account").setPassword(newEncryptedPassword);
                     request.setAttribute("message", "Đổi mật khẩu thành công!");
-                    response.sendRedirect("visitor/trang-chu-candi.jsp");
+                    if( UtilSession.getInstance().getValue(request,"account").getRole() == 2){
+                        response.sendRedirect("business/busi-trang-chu.jsp");
+                    }else {
+                        response.sendRedirect("visitor/trang-chu-candi.jsp");
+                    }
                 } else {
                     DAOLog.getInstance().insert(Log.WARNING, UtilSession.getInstance().getValue(request, "account").getId(),
                             "", "Thay đổi mật khẩu không thành công !", 1);
                     request.setAttribute("message", "Sai mật khẩu!");
+                    if( UtilSession.getInstance().getValue(request,"account").getRole() == 2){
+                        UtilControl.forward("business/busi-doi-mat-khau.jsp", request, response);
+                    }else {
                     UtilControl.forward("candidate/candi-doi-mat-khau.jsp", request, response);
-
-                }
-                break;
-            case "changePasswordBusi":
-                oldPassword = Util.encryptionPassword(oldPassword);
-                if (oldPassword.equals(UtilSession.getInstance().getValue(request, "account").getPassword())) {
-                    String newEncryptedPassword = Util.encryptionPassword(newPassword);
-                    DAOAccount.getAccount().setPassword(newEncryptedPassword);
-                    d.updatePassword(UtilSession.getInstance().getValue(request, "account").getUsername(), newEncryptedPassword);
-                    UtilSession.getInstance().getValue(request, "account").setPassword(newEncryptedPassword);
-                    request.setAttribute("message", "Đổi mật khẩu thành công!");
-                    response.sendRedirect("business/busi-trang-chu.jsp");
-                } else {
-                    DAOLog.getInstance().insert(Log.WARNING, getAccountResetPassword.getId(),
-                            "", "Thay đổi mật khẩu không thành công !", 1);
-                    request.setAttribute("message", "Sai mật khẩu!");
-                    UtilControl.forward("business/busi-doi-mat-khau.jsp", request, response);
-
+                    }
                 }
                 break;
         }

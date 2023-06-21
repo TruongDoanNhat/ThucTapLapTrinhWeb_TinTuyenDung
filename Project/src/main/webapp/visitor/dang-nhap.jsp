@@ -78,7 +78,7 @@
                 <div class="input-form">
                     <input type="submit" name="btndangnhap_candi" style="width: 95%" id="btndangnhap" value="Đăng Nhập">
                 </div>
-                <div class="container_swap">
+                 <div class="container_swap">
 
                     <div class="div_left">
                         <p>Đăng ký cho <a class="in" href='<c:url value="/SignUp?action=business"/>'>Doanh nghiệp</a>/<a
