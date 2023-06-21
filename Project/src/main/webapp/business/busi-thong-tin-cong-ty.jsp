@@ -1,4 +1,7 @@
-<%@ page import="vn.edu.hcmuaf.fit.model.Account" %><%--
+<%@ page import="vn.edu.hcmuaf.fit.model.Account" %>
+<%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCompany" %>
+<%@ page import="vn.edu.hcmuaf.fit.model.Company" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 05/01/2023
@@ -6,7 +9,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Account account = (Account) session.getAttribute("account");
+<% Account account = UtilSession.getInstance().getValue(request, "account");
+    Company company = DAOCompany.getCompany(account.getCompanyId());
 %>
 <html>
 <head>
@@ -39,8 +43,8 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="<%=request.getContextPath()%>/business/busi-trang-chu.jsp" >
-            <img src="../assets/img/logo/logo.png" >
+        <a class="navbar-brand m-0" href="<%=request.getContextPath()%>/business/busi-trang-chu.jsp">
+            <img src="../assets/img/logo/logo.png">
             <span class="ms-1 font-weight-bold">for Business</span>
         </a>
     </div>
@@ -122,7 +126,7 @@
                 <a class="nav-link  " href="<%=request.getContextPath()%>/business/Log?action=logBusi">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 
-                        <i  class=" fa fa-bell cursor-pointer text-dark"></i>
+                        <i class=" fa fa-bell cursor-pointer text-dark"></i>
 
                     </div>
                     <span class="nav-link-text ms-1">Thông báo hệ thống</span>
@@ -172,7 +176,8 @@
                 <div class="docs-info">
                     <h6 class="text-white up mb-0">Hộp thư hỗ trợ</h6>
                     <p class="text-xs font-weight-bold">Hãy liên hệ với chúng tôi</p>
-                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp" class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
+                    <a href="<%=request.getContextPath()%>/business/busi-tro-giup.jsp"
+                       class="btn btn-white btn-sm w-100 mb-0">Tư vấn viên</a>
                 </div>
             </div>
         </div>
@@ -195,7 +200,8 @@
                        class="list-group-item list-group-item-action border-0 bg-none">
                         <i data-v-61ae721f="" class="fa mr-2 fa-lock"></i> Đổi mật khẩu
                     </a>
-                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/business/busi-tai-khoan.jsp" aria-current="page"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/business/busi-tai-khoan.jsp"
+                       aria-current="page"
                        class="list-group-item list-group-item-action border-0 nuxt-link-exact-active nuxt-link-active bg-none ">
                         <i data-v-61ae721f="" class="fa mr-2 fa-user"></i> Thông tin cá nhân
                     </a>
@@ -207,8 +213,9 @@
             </div>
             <div data-v-c4f347a8="" class="bg-white w-100 rounded">
                 <!--               form -->
-                <form data-v-c4f347a8="" action="<%=request.getContextPath()%>/Account?action=updateCompany" method="post">
-                    <input type="hidden" name="companyId" value="<%=account.getCompany().getId()%>">
+                <form data-v-c4f347a8="" action="<%=request.getContextPath()%>/business/Company?action=updateCompany"
+                      method="post">
+                    <input type="hidden" name="companyId" value="<%=company.getId()%>">
                     <div data-v-c4f347a8="" class="active">
                         <div data-v-c4f347a8="" class="card-header bg-white font-weight-bold1 border-0 fs-16">
                             <h5> Cập nhật thông tin công ty </h5>
@@ -217,12 +224,12 @@
                         <div data-v-c4f347a8="" class="card-body setting-form">
                             <div data-v-c4f347a8="" class="row">
                                 <!--                                avt-->
-                                <div data-v-c4f347a8="" class="form-group col-md-6" >
+                                <div data-v-c4f347a8="" class="form-group col-md-6">
                                     <div data-v-c4f347a8="" class="d-flex align-items-center">
                                         <label data-v-c4f347a8="" class="col-form-label mr-2"></label>
                                         <div data-v-2a31697a="" data-v-c4f347a8="" class="mr-2  avatar"
                                              style="width: 40px; height: 40px; flex: 0 0 40px;">
-                                            <img src="../admin/images/user.png">
+                                            <img src="https://i.pinimg.com/564x/eb/57/6f/eb576ff023487bcb1fa3ad61ee7b23ee.jpg">
                                         </div>
                                     </div>
                                 </div>
@@ -235,7 +242,7 @@
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
                                             <input data-v-8c64d55c="" id="nameCompany" name="nameCompany" type="text"
                                                    placeholder="Nhập tên công ty" autocomplete="true"
-                                                   class="form-control" value="<%=account.getCompany().getName()%>">
+                                                   class="form-control" value="<%=company.getName()%>">
                                         </div>
                                     </div>
                                 </div>
@@ -243,7 +250,9 @@
                                     <label data-v-c4f347a8=""> Ngày tạo: </label>
                                     <div data-v-8c64d55c="" data-v-c4f347a8="">
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
-                                            <label data-v-8c64d55c="" style="font-size: 20px"> value="<%=account.getCompany().getCreateDate()%>"</label>
+                                            <label data-v-8c64d55c=""
+                                                   style="font-size: 20px"><%=company.getCreateDate()%>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -255,7 +264,7 @@
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
                                             <input data-v-8c64d55c="" id="address" name="address" type="text"
                                                    placeholder="Nhập địa chỉ" autocomplete="true"
-                                                   class="form-control" value="<%=account.getCompany().getAddress()%>">
+                                                   class="form-control" value="<%=company.getAddress()%>">
                                         </div>
                                     </div>
                                 </div>
@@ -265,7 +274,7 @@
                                         <div data-v-8c64d55c="" class="input-container ml-auto position-relative">
                                             <input data-v-8c64d55c="" id="phone" name="phone" type="text"
                                                    placeholder="Nhập số điện thoại" autocomplete="true"
-                                                   class="form-control" value="<%=account.getCompany().getPhone()%>">
+                                                   class="form-control" value="<%=company.getPhone()%>">
                                         </div>
                                     </div>
                                 </div>
@@ -276,15 +285,15 @@
                                         <label data-v-c4f347a8="">Mô tả công ty</label>
                                     </div>
                                     <div data-v-55ff225c="" data-v-c4f347a8="" class="mask-input ">
-                                        <textarea class="form-control" id="description" name="description" value="<%=account.getCompany().getDescription()%>">
-
+                                        <textarea style="width: 920px; height: 200px;" class="form-control" id="description" name="description">
+<%=company.getDescription()%>
                                         </textarea>
                                     </div>
                                 </div>
 
                             </div>
 
-                            <div data-v-c4f347a8="" class="form-group mb-0"><a data-v-c4f347a8="" href="/app/dashboard"
+                            <div data-v-c4f347a8="" class="form-group mb-0"><a data-v-c4f347a8="" href="<%=request.getContextPath() + "/business/busi-thong-tin-cong-ty.jsp"%>"
                                                                                class="btn min-width btn btn-secondary mr-2 btn-lg">Hủy</a>
                                 <button data-v-c4f347a8="" type="submit" class="btn min-width btn btn-primary btn-lg">
                                     <!---->
