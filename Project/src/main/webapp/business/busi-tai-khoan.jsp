@@ -202,7 +202,7 @@
             </div>
             <div data-v-c4f347a8="" class="bg-white w-100 rounded">
                 <!--               form -->
-                <form data-v-c4f347a8="" action="<%=request.getContextPath()%>/Account?action=updateAccountBusi" method="post">
+                <form data-v-c4f347a8="" action="<%=request.getContextPath()%>/Account?action=updateAccount" method="post">
                     <div data-v-c4f347a8="" class="active">
                         <div data-v-c4f347a8="" class="card-header bg-white font-weight-bold1 border-0 fs-16">
                             <h5> Cập nhật thông tin cá nhân</h5>

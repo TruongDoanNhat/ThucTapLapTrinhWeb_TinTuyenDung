@@ -1,6 +1,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
 <%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.DAOBill" %><%--
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCV" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 03/01/2023
@@ -8,6 +9,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    DAOPost daoPost = new DAOPost();
+    DAOCV daoCV = new DAOCV();
+%>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -192,7 +197,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Tin đã đăng</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        103
+                                        <%=daoPost.getTotalPost(UtilSession.getInstance().getValue(request,"account").getId())%>
                                     </h5>
                                 </div>
                             </div>
@@ -213,7 +218,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Tin hiển thị</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        530
+                                        <%=daoPost.getTotalPost2(UtilSession.getInstance().getValue(request,"account").getId())%>
                                     </h5>
                                 </div>
                             </div>
@@ -234,7 +239,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Tin hết hạn</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        230
+                                        <%=daoPost.getTotalPost4(UtilSession.getInstance().getValue(request,"account").getId())%>
                                     </h5>
                                 </div>
                             </div>
@@ -255,7 +260,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">CV đã tiếp nhận</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        346
+                                        <%=daoCV.getTotalCVApplied(UtilSession.getInstance().getValue(request,"account").getId())%>
                                     </h5>
                                 </div>
                             </div>

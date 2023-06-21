@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.model.Company;
 import vn.edu.hcmuaf.fit.model.Log;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
 import vn.edu.hcmuaf.fit.service.DAOLog;
@@ -38,18 +39,36 @@ public class AccountServlet extends HttpServlet {
                 if (account != null) {
                     account.setName(name);
                     d.updateAccountCandi(account.getUsername(), account.getName());
-                    response.sendRedirect(request.getContextPath() + "/candidate/candi-tai-khoan.jsp");
+                    if (UtilSession.getInstance().getValue(request, "account").getRole() == 2) {
+                        response.sendRedirect(request.getContextPath() + "/business/busi-tai-khoan.jsp");
+                    } else {
+                        response.sendRedirect(request.getContextPath() + "/candidate/candi-tai-khoan.jsp");
+                    }
                 } else {
-                    request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
+                        request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
                 }
                 break;
             //                            ------------------------ RESOLVE BUSI ------------------------
-            case "updateAccountBusi":
-                String name2 = request.getParameter("name");
+            case "updateCompany":
+                String companyId = request.getParameter("companyId");
+                String nameCompany = request.getParameter("name");
+                String address = request.getParameter("address");
+                String phone = request.getParameter("phone");
+                String description = request.getParameter("description");
                 if (account != null) {
-                    account.setName(name2);
-                    d.updateAccountCandi(account.getUsername(), account.getName());
-                    response.sendRedirect(request.getContextPath() + "/business/busi-tai-khoan.jsp");
+                    // Lấy thông tin công ty hiện tại của tài khoản
+                    Company company = account.getCompany();
+
+                    // Cập nhật thông tin công ty
+                    company.setName(nameCompany);
+                    company.setAddress(address);
+                    company.setPhone(phone);
+                    company.setDescription(description);
+
+                    d.updateCompany(companyId, nameCompany, address, phone, description);
+
+                        response.sendRedirect(request.getContextPath() + "/business/busi-thong-tin-cong-ty.jsp");
+
                 } else {
                     request.getRequestDispatcher("visitor/dang-nhap.jsp").forward(request, response);
                 }
@@ -101,7 +120,7 @@ public class AccountServlet extends HttpServlet {
                     DAOLog.getInstance().insert(Log.DANGER, account != null ? account.getId() : -1,
                             String.valueOf(request.getRequestURL()),
                             (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " khóa không thành công tài khoản " + username, 0);
-                    response.sendRedirect(request.getContextPath() +"/visitor/error.jsp");
+                    response.sendRedirect(request.getContextPath() + "/visitor/error.jsp");
                 }
                 break;
             case "unlock":

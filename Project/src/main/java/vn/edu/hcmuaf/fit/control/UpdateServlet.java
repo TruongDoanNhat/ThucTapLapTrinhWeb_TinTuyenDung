@@ -37,7 +37,7 @@ public class UpdateServlet extends HttpServlet {
                 break;
             case "contact":
                 request.setAttribute("contact", contact);
-                UtilControl.forward("Admin-chinh-sua-lien-he.jsp", request, response);
+                UtilControl.forward("Admin-cài-đặt.jsp", request, response);
                 break;
             case "change":
                 String money = request.getParameter("money");
