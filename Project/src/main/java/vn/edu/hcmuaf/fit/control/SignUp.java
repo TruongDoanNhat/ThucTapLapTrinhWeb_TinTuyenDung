@@ -1,7 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.Util.Util;
-import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.model.Log;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
 import vn.edu.hcmuaf.fit.service.DAOLog;
@@ -60,7 +59,7 @@ public class SignUp extends HttpServlet {
                         session.setAttribute("countSignUp",0);
                         session.setAttribute("emailRegisterAttempts", email);
                     }else if (countSignUp >= 2 && emailRegisterAttempts.equals(email)){
-                        DAOLog.getInstance().insert(Log.ALERT, -1, String.valueOf(request.getRequestURL()), "Email " + email + "đang cố gắng đăng kí", 0);
+                        DAOLog.getInstance().insert(Log.ALERT, -1, String.valueOf(request.getRequestURL())  + ", địa chỉ IP: "+request.getRemoteAddr(), "Email " + email + "đang cố gắng đăng kí", 0);
                     }else {
                         session.setAttribute("countSignUp", countSignUp + 1);
                     }

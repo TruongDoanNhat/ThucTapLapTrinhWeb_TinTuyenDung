@@ -1,9 +1,6 @@
 package vn.edu.hcmuaf.fit.model;
 
 import java.io.Serializable;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.sql.Date;
 
 public class Account implements Serializable {
@@ -29,8 +26,9 @@ public class Account implements Serializable {
 
     }
 
-    public Account(String email, String name, int role, int status) {
+    public Account(String email, String username, String name, int role, int status) {
         this.email = email;
+        this.username = username;
         this.name = name;
         this.role = role;
         this.status = status;

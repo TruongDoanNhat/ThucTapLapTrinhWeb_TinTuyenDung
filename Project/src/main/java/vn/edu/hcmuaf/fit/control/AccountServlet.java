@@ -1,7 +1,6 @@
 package vn.edu.hcmuaf.fit.control;
 
 import vn.edu.hcmuaf.fit.model.Account;
-import vn.edu.hcmuaf.fit.model.Company;
 import vn.edu.hcmuaf.fit.model.Log;
 import vn.edu.hcmuaf.fit.service.DAOAccount;
 import vn.edu.hcmuaf.fit.service.DAOLog;
@@ -66,7 +65,7 @@ public class AccountServlet extends HttpServlet {
             case "search":
                 if (!keywords.matches("[\\p{L}\\s]*")) {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
-                            String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
+                            String.valueOf(request.getRequestURL())  + ", địa chỉ IP: "+request.getRemoteAddr(), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
                 }
                 tongTaiKhoan = role.equals("3") ? d.getAccountSearchSize(keywords) : d.getAccountSearchSize(keywords, role);
                 tongSoTrang = tongTaiKhoan / 5;
@@ -89,20 +88,20 @@ public class AccountServlet extends HttpServlet {
             case "lock":
                 if (!(DAOAccount.getAccountQuery(username).getType() == 2)) {
                     DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
-                            String.valueOf(request.getRequestURL()),
+                            String.valueOf(request.getRequestURL())  + ", địa chỉ IP: "+request.getRemoteAddr(),
                             (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã khóa tài khoản " + username, 0);
                     d.updateStatusAccount(username, Account.LOCK);
                     response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");
                 } else {
                     DAOLog.getInstance().insert(Log.DANGER, account != null ? account.getId() : -1,
-                            String.valueOf(request.getRequestURL()),
+                            String.valueOf(request.getRequestURL())  + ", địa chỉ IP: "+request.getRemoteAddr(),
                             (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " khóa không thành công tài khoản " + username, 0);
                     response.sendRedirect(request.getContextPath() + "/visitor/error.jsp");
                 }
                 break;
             case "unlock":
                 DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
-                        String.valueOf(request.getRequestURL()),
+                        String.valueOf(request.getRequestURL())  + ", địa chỉ IP: "+request.getRemoteAddr(),
                         (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã mở khóa tài khoản " + username, 0);
                 d.updateStatusAccount(username, Account.ACTIVATED);
                 response.sendRedirect(request.getContextPath() + "/admin/AccountManager?action=accountManager");

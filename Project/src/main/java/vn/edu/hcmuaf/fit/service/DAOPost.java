@@ -1,11 +1,12 @@
 package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
-import vn.edu.hcmuaf.fit.model.*;
+import vn.edu.hcmuaf.fit.model.Account;
+import vn.edu.hcmuaf.fit.model.Company;
+import vn.edu.hcmuaf.fit.model.Post;
+import vn.edu.hcmuaf.fit.model.PostApplied;
 import vn.edu.hcmuaf.fit.service.modelQuanLy.QuanLyThongKe;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -366,13 +367,13 @@ public class DAOPost {
 
     public int[] getTotalPostWeek() {
         int[] rs = new int[7];
-        String query = " SELECT IFNULL(total,0) total  \n" + "FROM (  \n" + " SELECT 'Monday' AS day UNION   \n" + " SELECT 'Tuesday' UNION   \n" + " SELECT 'Wednesday' UNION  \n" + " SELECT 'Thursday' UNION  \n" + " SELECT 'Friday' UNION  \n" + " SELECT 'Saturday' UNION   \n" + " SELECT 'Sunday') d   \n" + "LEFT JOIN (SELECT DAYNAME(createDate) day, COUNT(id) total FROM post\n" + "WHERE createDate >= CURDATE() - INTERVAL WEEKDAY(CURDATE()) + 7 DAY AND createDate <= CURDATE()    \n" + " GROUP BY day) p ON d.day = p.day\n" + "ORDER BY FIND_IN_SET(d.day,'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday')  ";
+        String query = " SELECT IFNULL(total,0) total  \n" + "FROM (  \n" + " SELECT 'Monday' AS day UNION   \n" + " SELECT 'Tuesday' UNION   \n" + " SELECT 'Wednesday' UNION  \n" + " SELECT 'Thursday' UNION  \n" + " SELECT 'Friday' UNION  \n" + " SELECT 'Saturday' UNION   \n" + " SELECT 'Sunday') d   \n" + "LEFT JOIN (SELECT DAYNAME(createDate) day, COUNT(id) total FROM post\n" + "WHERE createDate >= CURDATE() - INTERVAL WEEKDAY(CURDATE()) DAY AND createDate <= CURDATE()    \n" + " GROUP BY day) p ON d.day = p.day\n" + "ORDER BY FIND_IN_SET(d.day,'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday')  ";
         return getInts(rs, query);
     }
 
     public static int[] getTotalPostWeekBusi(int id) {
         int[] rs = new int[7];
-        String query = " SELECT IFNULL(total,0) total  \n" + "FROM (  \n" + " SELECT 'Monday' AS day UNION   \n" + " SELECT 'Tuesday' UNION   \n" + " SELECT 'Wednesday' UNION  \n" + " SELECT 'Thursday' UNION  \n" + " SELECT 'Friday' UNION  \n" + " SELECT 'Saturday' UNION   \n" + " SELECT 'Sunday') d   \n" + "LEFT JOIN (SELECT DAYNAME(createDate) day, COUNT(id) total FROM post\n" + "WHERE createDate >= CURDATE() - INTERVAL WEEKDAY(CURDATE()) + 7 DAY AND createDate <= CURDATE() AND accountId = ?  \n" + " GROUP BY day) p ON d.day = p.day\n" + "ORDER BY FIND_IN_SET(d.day,'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday')  ";
+        String query = " SELECT IFNULL(total,0) total  \n" + "FROM (  \n" + " SELECT 'Monday' AS day UNION   \n" + " SELECT 'Tuesday' UNION   \n" + " SELECT 'Wednesday' UNION  \n" + " SELECT 'Thursday' UNION  \n" + " SELECT 'Friday' UNION  \n" + " SELECT 'Saturday' UNION   \n" + " SELECT 'Sunday') d   \n" + "LEFT JOIN (SELECT DAYNAME(createDate) day, COUNT(id) total FROM post\n" + "WHERE createDate >= CURDATE() - INTERVAL WEEKDAY(CURDATE()) DAY AND createDate <= CURDATE() AND accountId = ?  \n" + " GROUP BY day) p ON d.day = p.day\n" + "ORDER BY FIND_IN_SET(d.day,'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday')  ";
         List<Integer> list = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, id).mapTo(Long.class).map(l -> l.intValue()).stream().collect(Collectors.toList());
         });

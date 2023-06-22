@@ -1,18 +1,15 @@
 package vn.edu.hcmuaf.fit.control;
 
-import vn.edu.hcmuaf.fit.model.Account;
-import vn.edu.hcmuaf.fit.model.CV;
 import vn.edu.hcmuaf.fit.model.Post;
-import vn.edu.hcmuaf.fit.model.PostApplied;
 import vn.edu.hcmuaf.fit.service.DAOCV;
 import vn.edu.hcmuaf.fit.service.DAOPost;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "/Post_details", value = "/candidate/Post_details")

@@ -1,6 +1,5 @@
 package vn.edu.hcmuaf.fit.control;
 
-import com.mysql.cj.ServerVersion;
 import vn.edu.hcmuaf.fit.Util.Util;
 import vn.edu.hcmuaf.fit.model.Account;
 import vn.edu.hcmuaf.fit.model.Log;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Calendar;
 
 @WebServlet(name = "ResetPassword", value = "/ResetPassword")
 public class ResetPassword extends HttpServlet {

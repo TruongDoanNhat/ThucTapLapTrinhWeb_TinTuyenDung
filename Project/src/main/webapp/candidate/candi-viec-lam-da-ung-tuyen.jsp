@@ -70,56 +70,14 @@
                             </div>
                         </div>
                         <%
-                            List<Post> postApplied  = (List<Post>) request.getAttribute("jobApplied");
-                            List<PostApplied> postapplied2 = (List<PostApplied>) request.getAttribute("postapplied2");
-                            for (Post post :postApplied) {
-                                Company company = DAOCompany.getCompany(post.getAccountId());
-                                DAOPost dp = new DAOPost();
-                        %>
-
-
-                        <%if(postApplied.size()>0)  { %>
-                        <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <img style=" width:75px; height:85px;"
-                                         src="<%=request.getContextPath()+DAOImage.getURL(company.getImageId())%>"
-                                         alt="Image">
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=post.getId()%>">
-                                        <h4 style=" white-space: nowrap; width: 600px; overflow: hidden; text-overflow: ellipsis;"><%=post.getTitle()%>
-                                        </h4>
-                                    </a>
-                                    <ul style="white-space: nowrap;">
-                                        <li style="width: 180px; overflow: hidden; text-overflow: ellipsis;"><%=company.getName()%>
-                                        </li>
-                                        <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;"><i
-                                                class="fas fa-map-marker-alt"></i><%= post.getAddress()%>
-                                        </li>
-                                        <li style="width: 100px; overflow: hidden; text-overflow: ellipsis;"><%= post.getSalary()%>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right" style="width: 180px;">
-                                <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=post.getId()%>"><%= post.getType()%>
-                                </a>
-                                <%if (dp.dateToCreate(post.getCreateDate()) > 0) { %>
-                                <span><%=dp.dateToCreate(post.getCreateDate())%> ngày trước</span>
-                                <% } else { %>
-                                <span style="text-align: center;">Mới nhất</span>
-                                <% } %>
-                            </div>
-                        </div>
-
-
-                        <% } else { %>
+                            List<Post> postApplied = (List<Post>) request.getAttribute("jobApplied");
+                            if (postApplied.size() == 0) { %>
                         <div class='empty-job'>
                             <div class="box-group-body">
                                 <div class="empty-job">
                                     <div class="image-empty">
-                                        <img src="https://www.topcv.vn/v4/image/history-apply/empty.png" alt="empty apply">
+                                        <img src="https://www.topcv.vn/v4/image/history-apply/empty.png"
+                                             alt="empty apply">
                                     </div>
                                     <h3 class="title">Bạn chưa ứng tuyển công việc nào!</h3>
                                     <div class="caption">
@@ -131,14 +89,55 @@
                                         </p>
                                     </div>
                                     <div class="btn-action">
-                                        <a href="<%=request.getContextPath()%>/candidate/Post?action=danhsanhvieclam" target="_blank"
+                                        <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam"
+                                           target="_blank"
                                            class="btn btn-primary btn-primary-hover">Tìm việc ngay</a>
                                     </div>
                                 </div>
                                 <div class="feed-jobs">
                                 </div>
                             </div>
-                            <% } %>
+                            <% } else {
+                                for (Post post : postApplied) {
+                                    Company company = DAOCompany.getCompany(post.getAccountId());
+                                    DAOPost dp = new DAOPost();
+                            %>
+
+
+                            <div class="single-job-items mb-30">
+                                <div class="job-items">
+                                    <div class="company-img">
+                                        <img style=" width:75px; height:85px;"
+                                             src="<%=request.getContextPath()+DAOImage.getURL(company.getImageId())%>"
+                                             alt="Image">
+                                    </div>
+                                    <div class="job-tittle">
+                                        <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=post.getId()%>">
+                                            <h4 style=" white-space: nowrap; width: 600px; overflow: hidden; text-overflow: ellipsis;"><%=post.getTitle()%>
+                                            </h4>
+                                        </a>
+                                        <ul style="white-space: nowrap;">
+                                            <li style="width: 180px; overflow: hidden; text-overflow: ellipsis;"><%=company.getName()%>
+                                            </li>
+                                            <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;"><i
+                                                    class="fas fa-map-marker-alt"></i><%= post.getAddress()%>
+                                            </li>
+                                            <li style="width: 100px; overflow: hidden; text-overflow: ellipsis;"><%= post.getSalary()%>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="items-link f-right" style="width: 180px;">
+                                    <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=post.getId()%>"><%= post.getType()%>
+                                    </a>
+                                    <%if (dp.dateToCreate(post.getCreateDate()) > 0) { %>
+                                    <span><%=dp.dateToCreate(post.getCreateDate())%> ngày trước</span>
+                                    <% } else { %>
+                                    <span style="text-align: center;">Mới nhất</span>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <% }%>
                             <% } %>
                             <div class="text-center">
                             </div>
@@ -151,10 +150,44 @@
                                 </div>
                                 <%
 
-                                    DAOPost dp = new DAOPost();
-                                    List<Post> listpost = daoPost.getPostApproveTop5();
-                                    for (Post p : listpost) {
-                                        Company company = DAOCompany.getCompany(p.getAccountId());
+                                    DAOPost
+                                            dp
+                                            =
+                                            new
+                                                    DAOPost
+                                                    (
+                                                    );
+                                    List
+                                            <
+                                                    Post
+                                                    >
+                                            listpost
+                                            =
+                                            daoPost
+                                                    .
+                                                    getPostApproveTop5
+                                                            (
+                                                            );
+                                    for
+                                    (
+                                            Post
+                                                    p
+                                            :
+                                            listpost
+                                    ) {
+                                        Company
+                                                company
+                                                =
+                                                DAOCompany
+                                                        .
+                                                        getCompany
+                                                                (
+                                                                        p
+                                                                                .
+                                                                                getAccountId
+                                                                                        (
+                                                                                        )
+                                                                );
                                 %>
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
@@ -165,25 +198,70 @@
                                         </div>
                                         <div class="job-tittle">
                                             <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>">
-                                                <h4 style=" white-space: nowrap; width: 600px; overflow: hidden; text-overflow: ellipsis;"><%=p.getTitle()%>
+                                                <h4 style=" white-space: nowrap; width: 600px; overflow: hidden; text-overflow: ellipsis;"><%=p
+                                                        .
+                                                        getTitle
+                                                                (
+                                                                )%>
                                                 </h4>
                                             </a>
                                             <ul style="white-space: nowrap;">
-                                                <li style="width: 180px; overflow: hidden; text-overflow: ellipsis;"><%=company.getName()%>
+                                                <li style="width: 180px; overflow: hidden; text-overflow: ellipsis;"><%=company
+                                                        .
+                                                        getName
+                                                                (
+                                                                )%>
                                                 </li>
                                                 <li style="width: 200px; overflow: hidden; text-overflow: ellipsis;"><i
-                                                        class="fas fa-map-marker-alt"></i><%= p.getAddress()%>
+                                                        class="fas fa-map-marker-alt"></i><%= p
+                                                        .
+                                                        getAddress
+                                                                (
+                                                                )%>
                                                 </li>
-                                                <li style="width: 100px; overflow: hidden; text-overflow: ellipsis;"><%= p.getSalary()%>
+                                                <li style="width: 100px; overflow: hidden; text-overflow: ellipsis;"><%= p
+                                                        .
+                                                        getSalary
+                                                                (
+                                                                )%>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="items-link f-right" style="width: 180px;">
-                                        <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>"><%= p.getType()%>
+                                        <a href="<%=request.getContextPath()%>/Post?action=xemthongtinvieclam&id=<%=p.getId()%>"><%= p
+                                                .
+                                                getType
+                                                        (
+                                                        )%>
                                         </a>
-                                        <%if (dp.dateToCreate(p.getCreateDate()) > 0) { %>
-                                        <span><%=dp.dateToCreate(p.getCreateDate())%> ngày trước</span>
+                                        <%
+                                            if
+                                            (
+                                                    dp
+                                                            .
+                                                            dateToCreate
+                                                                    (
+                                                                            p
+                                                                                    .
+                                                                                    getCreateDate
+                                                                                            (
+                                                                                            )
+                                                                    )
+                                                            >
+                                                            0
+                                            ) {
+                                        %>
+                                        <span><%=dp
+                                                .
+                                                dateToCreate
+                                                        (
+                                                                p
+                                                                        .
+                                                                        getCreateDate
+                                                                                (
+                                                                                )
+                                                        )%> ngày trước</span>
                                         <% } else { %>
                                         <span style="text-align: center;">Mới nhất</span>
                                         <% } %>
@@ -197,7 +275,8 @@
                             <div class="box-group-body">
                             </div>
                             <div class="text-center">
-                                <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" target="_blank" class="btn btn-suggestion-more btn-primary-hover">
+                                <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" target="_blank"
+                                   class="btn btn-suggestion-more btn-primary-hover">
                                     Xem tất cả
                                 </a>
                             </div>

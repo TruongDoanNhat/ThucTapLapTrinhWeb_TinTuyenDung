@@ -6,7 +6,6 @@ import vn.edu.hcmuaf.fit.model.Account;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -240,7 +239,7 @@ public class DAOAccount {
     public void castAccountGG(UserGoogle userGoogle) {
         String emailGG = userGoogle.getEmail();
         String[] arrOfStr = emailGG.split("@");
-        this.account = new Account(emailGG, arrOfStr[0], 1, 1);
+        this.account = new Account(emailGG, arrOfStr[0],arrOfStr[0], 1, 1);
     }
 
     public List<Account> getAllAccount(int trang) {

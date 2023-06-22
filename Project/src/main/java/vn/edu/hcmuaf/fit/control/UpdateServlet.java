@@ -58,7 +58,7 @@ public class UpdateServlet extends HttpServlet {
         }
         if (!content.equals(""))
             DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
-                    String.valueOf(request.getRequestURL()),
+                    String.valueOf(request.getRequestURL())  + ", địa chỉ IP: "+request.getRemoteAddr(),
                     (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh")
                             + " đã cập nhật " + content, 0);
     }

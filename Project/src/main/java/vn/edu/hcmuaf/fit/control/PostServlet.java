@@ -98,7 +98,7 @@ public class PostServlet extends HttpServlet {
             case "timkiem":
                 if (!keywords.matches("[\\p{L}\\s]*")) {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
-                            String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
+                            String.valueOf(request.getRequestURL()) + ", địa chỉ IP: "+request.getRemoteAddr(), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
                 }
                 tongBaiViet = categoryId.equals("0") ? daoPost.getPostSearchApprove(keywords, "2") : daoPost.getPostSearchCategory(keywords, categoryId, "2");
                 soBaiViet = tongBaiViet / 5;
@@ -201,7 +201,7 @@ public class PostServlet extends HttpServlet {
                 String status = request.getParameter("status") == null ? "0" : request.getParameter("status");
                 if (!keywords.matches("[\\p{L}\\s]*")) {
                     DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
-                            String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
+                            String.valueOf(request.getRequestURL())  + ", địa chỉ IP: "+request.getRemoteAddr(), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " tìm kiếm từ khóa mức độ chuyên sâu cao - Từ khóa: " + keywords, 0);
                 }
                 tongBaiViet = status.equals("0") ? daoPost.getPostSearch(keywords) : daoPost.getPostSearchStatus(keywords, status);
                 soBaiViet = tongBaiViet / 5;
@@ -224,7 +224,7 @@ public class PostServlet extends HttpServlet {
             case "approve":
                 Post post = daoPost.getPostDetail(Integer.valueOf(idManager));
                 DAOLog.getInstance().insert(Log.INFO, account != null ? account.getId() : -1,
-                        String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã duyệt bài viết có id: " + idManager, 0);
+                        String.valueOf(request.getRequestURL()  + ", địa chỉ IP: "+request.getRemoteAddr()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " đã duyệt bài viết có id: " + idManager, 0);
                 DAOLog.getInstance().insert(Log.INFO, post.getAccountId(),
                         "", "Bài viết " + post.getTitle() + " tạo ngày " + post.getCreateDate() + " đã được duyệt ", 1);
                 daoPost.updatePost(Integer.valueOf(idManager), Post.status_approve);
@@ -233,7 +233,7 @@ public class PostServlet extends HttpServlet {
             case "lock":
                 Post postLock = daoPost.getPostDetail(Integer.valueOf(idManager));
                 DAOLog.getInstance().insert(Log.ALERT, account != null ? account.getId() : -1,
-                        String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " khóa bài viết có id: " + idManager, 0);
+                        String.valueOf(request.getRequestURL())  + ", địa chỉ IP: "+request.getRemoteAddr(), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " khóa bài viết có id: " + idManager, 0);
                 DAOLog.getInstance().insert(Log.INFO, postLock.getAccountId(),
                         "", "Bài viết đã khóa (nội dung không hợp lệ): " + postLock.getTitle() + ". Mọi thắc mắc vui lòng liên hệ chúng tôi qua email ", 1);
                 daoPost.updatePost(Integer.valueOf(idManager), Post.status_lock);
@@ -242,7 +242,7 @@ public class PostServlet extends HttpServlet {
             case "remove":
                 Post postRemove = daoPost.getPostDetail(Integer.valueOf(idManager));
                 DAOLog.getInstance().insert(Log.WARNING, account != null ? account.getId() : -1,
-                        String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " không duyệt bài viết có id: " + idManager, 0);
+                        String.valueOf(request.getRequestURL())  + ", địa chỉ IP: "+request.getRemoteAddr(), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " không duyệt bài viết có id: " + idManager, 0);
                 DAOLog.getInstance().insert(Log.INFO, postRemove.getAccountId(),
                         "", "Bài viết không được duyệt (nội dung không hợp lệ): " + postRemove.getTitle() + ". Mọi thắc mắc vui lòng liên hệ chúng tôi qua email", 1);
                 daoPost.updatePost(Integer.valueOf(idManager), Post.status_unpaid);
@@ -250,7 +250,7 @@ public class PostServlet extends HttpServlet {
                 break;
             case "delete":
                 DAOLog.getInstance().insert(Log.DANGER, account != null ? account.getId() : -1,
-                        String.valueOf(request.getRequestURL()), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " xóa bài viết có id: " + idManager, 0);
+                        String.valueOf(request.getRequestURL())  + ", địa chỉ IP: "+request.getRemoteAddr(), (account != null ? "Tài khoản " + account.getUsername() : "Người dùng ẩn danh") + " xóa bài viết có id: " + idManager, 0);
                 daoPost.deletePost(idManager);
                 response.sendRedirect(request.getContextPath() + "/admin/PostManager?action=quanlybaidang");
                 break;
