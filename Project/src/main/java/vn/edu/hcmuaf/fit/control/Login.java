@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 
 @WebServlet(name = "Login", value = {"/Login", "/Logout"})
 public class Login extends HttpServlet {
@@ -48,6 +50,9 @@ public class Login extends HttpServlet {
                     UserGoogle userGoogle = GoogleUtils.getUserInfo(accessToken);
                     d.castAccountGG(userGoogle);
                     UtilSession.getInstance().putAccountSession(request, "account", (Account) d.getAccount());
+                    if (!d.checkEmail(d.getAccount().getEmail())) {
+                        d.registerCandi(d.getAccount().getEmail(), d.getAccount().getUsername(), Util.encryptionPassword(d.getAccount().getEmail()), d.getAccount().getName(), 0, d.getAccount().getRole(), d.getAccount().getStatus(), Date.valueOf(LocalDate.now()));
+                    }
                     response.sendRedirect("visitor/trang-chu-candi.jsp");
                     break;
             }
@@ -108,7 +113,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("countLogin", 0);
                     session.setAttribute("userNameAttempts", username);
                 } else if (countLogin >= 2 && userNameAttempts.equals(username)) { // case 2: login attempts >= 3
-                    DAOLog.getInstance().insert(Log.DANGER, -1, String.valueOf(request.getRequestURL()), "Tài khoản " + username + "đang cố gắng đăng nhập ", 0);
+                    DAOLog.getInstance().insert(Log.DANGER, -1, String.valueOf(request.getRequestURL()) + ", địa chỉ IP: " + request.getRemoteAddr(), "Tài khoản " + username + "đang cố gắng đăng nhập ", 0);
                     message = "Tài khoản tạm thời bị khóa. Vui lòng đăng nhập lại sau!";
                 } else {
                     session.setAttribute("countLogin", countLogin + 1);
