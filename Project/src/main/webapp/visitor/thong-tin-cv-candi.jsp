@@ -154,20 +154,16 @@ font-family: system-ui;">
                     </div>
                     <div style="margin:20px 0 10px;">
                         <h2>KINH NGHIỆM</h2>
-                        <div style="margin:20px 0 10px; white-space: pre-wrap;">
-                            <%=cvs.getExp()%>
+                        <div style="margin:20px 0 10px; white-space: pre-wrap;"><%=cvs.getExp()%>
                         </div>
                         <h2 class="skills" style="margin:20px 0 10px;">
                             KỸ NĂNG
-                        </h2>
-                        <%=cvs.getSkill()%>
+                        </h2><%=cvs.getSkill()%>
                     </div>
                     <div style="margin:20px 0 10px;  white-space: pre-wrap;">
-                        <h2>GIỚI THIỆU BẢN THÂN</h2>
-                        <%=cvs.getIntroduce()%>
+                        <h2>GIỚI THIỆU BẢN THÂN</h2><%=cvs.getIntroduce()%>
                         <div style="margin:20px 0 10px; white-space: pre-wrap;">
-                            <h2>TRÌNH ĐỘ HỌC VẤN</h2>
-                            <%=cvs.getLv()%>
+                            <h2>TRÌNH ĐỘ HỌC VẤN</h2><%=cvs.getLv()%>
                         </div>
                     </div>
 
