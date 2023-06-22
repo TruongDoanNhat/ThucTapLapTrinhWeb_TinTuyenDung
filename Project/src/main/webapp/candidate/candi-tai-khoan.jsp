@@ -84,10 +84,6 @@
                                 <!--                                -->
                                 <!--
                                                           avt end-->
-                                <div data-v-c4f347a8="" class="form-group col-md-6">
-                                    <label data-v-c4f347a8="" class="col-form-label">Ngày tạo: <%=account.getCreateDate()%></label>
-
-                                </div>
                                 <div data-v-c4f347a8="" class="row" style="width: 60%">
                                     <div data-v-c4f347a8="" class="form-group col-md-6">
                                         <label data-v-c4f347a8="">Họ và tên</label>
