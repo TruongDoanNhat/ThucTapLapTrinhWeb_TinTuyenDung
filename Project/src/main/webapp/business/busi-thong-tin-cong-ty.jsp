@@ -285,8 +285,7 @@
                                         <label data-v-c4f347a8="">Mô tả công ty</label>
                                     </div>
                                     <div data-v-55ff225c="" data-v-c4f347a8="" class="mask-input ">
-                                        <textarea style="width: 920px; height: 200px;" class="form-control" id="description" name="description">
-                                                        <%=company.getDescription()%>
+                                        <textarea style="width: 920px; height: 200px;" class="form-control" id="description" name="description"><%=company.getDescription()%>
                                         </textarea>
                                     </div>
                                 </div>
