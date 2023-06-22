@@ -55,7 +55,7 @@ font-family: system-ui;">
             <% if (UtilSession.getInstance().getValue(request, "account").getRole() == 1) { %>
             <div data-v-c4f347a8="">
                 <div data-v-61ae721f="" data-v-c4f347a8="" class="list-group1 rounded">
-                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/visitor/doi-mat-khau-candi.jsp"
+                    <a data-v-61ae721f="" href="<%=request.getContextPath()%>/candidate/candi-doi-mat-khau.jsp"
                        class="list-group-item list-group-item-action border-0 bg-none">
                         <i data-v-61ae721f="" class="fa mr-2 fa-lock"></i> Đổi mật khẩu
                     </a>
@@ -154,20 +154,16 @@ font-family: system-ui;">
                     </div>
                     <div style="margin:20px 0 10px;">
                         <h2>KINH NGHIỆM</h2>
-                        <div style="margin:20px 0 10px; white-space: pre-wrap;">
-                            <%=cvs.getExp()%>
+                        <div style="margin:20px 0 10px; white-space: pre-wrap;"><%=cvs.getExp()%>
                         </div>
                         <h2 class="skills" style="margin:20px 0 10px;">
                             KỸ NĂNG
-                        </h2>
-                        <%=cvs.getSkill()%>
+                        </h2><%=cvs.getSkill()%>
                     </div>
                     <div style="margin:20px 0 10px;  white-space: pre-wrap;">
-                        <h2>GIỚI THIỆU BẢN THÂN</h2>
-                        <%=cvs.getIntroduce()%>
+                        <h2>GIỚI THIỆU BẢN THÂN</h2><%=cvs.getIntroduce()%>
                         <div style="margin:20px 0 10px; white-space: pre-wrap;">
-                            <h2>TRÌNH ĐỘ HỌC VẤN</h2>
-                            <%=cvs.getLv()%>
+                            <h2>TRÌNH ĐỘ HỌC VẤN</h2><%=cvs.getLv()%>
                         </div>
                     </div>
 
