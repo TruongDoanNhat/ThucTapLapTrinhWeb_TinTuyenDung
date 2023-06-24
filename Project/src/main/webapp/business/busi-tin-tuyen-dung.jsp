@@ -1,5 +1,6 @@
 <%@ page import="vn.edu.hcmuaf.fit.model.Post" %>
 <%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOCV" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -12,6 +13,7 @@
 <%  List<Post> post = (List<Post>) request.getAttribute("post");
     List<Post> postExpired = (List<Post>) request.getAttribute("postExpired");
     String billId = (String) request.getAttribute("billId");
+    DAOCV cv = new DAOCV();
 %>
 <html>
 <head>
@@ -272,6 +274,9 @@
                                     <a class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold"><i
                                             aria-hidden="true"></i>Đã
                                         duyệt</a>
+                                    <br>
+                                    <br>
+                                    <a href="<%=request.getContextPath()%>/business/CV?action=xemcvdaungtuyen&id=<%=p.getId()%>">Ứng viên: <%=cv.getTotalCVAppliedTo1Post(p.getId())%></a>
                                 </div>
                                     <%
                                         break;
@@ -322,6 +327,9 @@
                                        href="javascript:;"><i
                                             aria-hidden="true"></i>Hết
                                         hạn</a>
+                                    <br>
+                                    <br>
+                                    <a href="<%=request.getContextPath()%>/business/CV?action=xemcvdaungtuyen&id=<%=p.getId()%>">Ứng viên: <%=cv.getTotalCVAppliedTo1Post(p.getId())%></a>
                                 </div>
                                 <%
                                         }

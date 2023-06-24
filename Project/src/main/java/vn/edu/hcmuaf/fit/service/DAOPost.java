@@ -18,6 +18,15 @@ public class DAOPost {
         return post;
     }
 
+    public static boolean checkApplied(int postId, int accountId) {
+        String query = "SELECT * FROM postapplied where accountId = ? and postId = ?";
+        List<PostApplied> list = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, accountId).bind(1, postId).mapToBean(PostApplied.class).stream().collect(Collectors.toList());
+        });
+
+        return list.size() > 0 ? true : false;
+    }
+
     public Date getDateNow() {
         return new Date();
     }
@@ -134,20 +143,20 @@ public class DAOPost {
         });
     }
 
-    public int getPostOfCategoryApprove( String categoryId,String status) {
+    public int getPostOfCategoryApprove(String categoryId, String status) {
         String query = "select * from post where categoryId = ? and status = ?";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0,categoryId).bind(1, status).mapToBean(Post.class).stream().collect(Collectors.toList()).size();
-        });
-    }
-    public List<Post> getPostOfCategoryApprove( String categoryId,String status , int trang) {
-        String query = "select * from post where categoryId = ? and status = ? LIMIT 5 OFFSET ? ";
-        return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query).bind(0,categoryId).bind(1, status).bind(2, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
+            return handle.createQuery(query).bind(0, categoryId).bind(1, status).mapToBean(Post.class).stream().collect(Collectors.toList()).size();
         });
     }
 
-    
+    public List<Post> getPostOfCategoryApprove(String categoryId, String status, int trang) {
+        String query = "select * from post where categoryId = ? and status = ? LIMIT 5 OFFSET ? ";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, categoryId).bind(1, status).bind(2, (trang - 1) * 5).mapToBean(Post.class).stream().collect(Collectors.toList());
+        });
+    }
+
 
     public List<Post> getPostSearchCategory(String keywords, String categoryId, String status, int trang) {
         String query = "select * from post where title LIKE ? and categoryId = ? and status = ? ORDER BY createDate DESC LIMIT 5 OFFSET ?";
@@ -217,7 +226,9 @@ public class DAOPost {
 
 
     // thêm bài viết vào csdl
-    public boolean insertPost(String categoryId, String title, String quantity, String salary, String address, String type, String rank, String gen, String description, String rights, String request, int status, Date endDate) {
+    public boolean insertPost(String categoryId, String title, String quantity, String salary, String
+            address, String type, String rank, String gen, String description, String rights, String request,
+                              int status, Date endDate) {
         int accountId = DAOAccount.getAccount().getId();
         String query = "INSERT INTO `post` (`categoryId`, `accountId`, `title`, `quantity`, `salary`, `address`, `type`, `rank`, `gen`," + " `description`, `rights`, `request`, `status`, `createDate`, `endDate`, `billId`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -381,11 +392,12 @@ public class DAOPost {
         }
         return rs;
     }
+
     public static int[] getTotalPostPreviousWeekBusi(int id) {
         int[] rs = new int[7];
         String query = " SELECT IFNULL(total,0) total  \n" + "FROM (  \n" + " SELECT 'Monday' AS day UNION   \n" + " SELECT 'Tuesday' UNION   \n" + " SELECT 'Wednesday' UNION  \n" + " SELECT 'Thursday' UNION  \n" + " SELECT 'Friday' UNION  \n" + " SELECT 'Saturday' UNION   \n" + " SELECT 'Sunday') d   \n" + "LEFT JOIN (SELECT DAYNAME(createDate) day, COUNT(id) total FROM post\n" + "WHERE \n" +
                 "   WEEK(createDate, 1) =\n" +
-                "   WEEK(CURDATE() - INTERVAL 1 WEEK, 1)   AND accountId = ? \n" +" GROUP BY day) p ON d.day = p.day\n" + "ORDER BY FIND_IN_SET(d.day,'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday')  ";
+                "   WEEK(CURDATE() - INTERVAL 1 WEEK, 1)   AND accountId = ? \n" + " GROUP BY day) p ON d.day = p.day\n" + "ORDER BY FIND_IN_SET(d.day,'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday')  ";
         List<Integer> list = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, id).mapTo(Long.class).map(l -> l.intValue()).stream().collect(Collectors.toList());
         });
@@ -394,6 +406,7 @@ public class DAOPost {
         }
         return rs;
     }
+
     private int[] getInts(int[] rs, String query) {
         List<Integer> list = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).mapTo(Long.class).map(l -> l.intValue()).stream().collect(Collectors.toList());
