@@ -4,6 +4,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.control.UtilSession" %>
 <%@ page import="vn.edu.hcmuaf.fit.model.CV" %>
 <%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.DAOPost" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -55,8 +56,10 @@
     <!-- Breadcrumb Start-->
 
     <div class="ctn-breadcrumb-detail">
-        <a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp" class="text-highlight bold">Trang chủ</a> <i class="fa-solid fa-angle-right"></i>
-        <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" class="text-highlight bold">Việc làm</a> <i class="fa-solid fa-angle-right"></i>
+        <a href="<%=request.getContextPath()%>/visitor/trang-chu-candi.jsp" class="text-highlight bold">Trang chủ</a> <i
+            class="fa-solid fa-angle-right"></i>
+        <a href="<%=request.getContextPath()%>/Post?action=danhsanhvieclam" class="text-highlight bold">Việc làm</a> <i
+            class="fa-solid fa-angle-right"></i>
         <span class="text-dark-blue"><%=post2.getTitle()%></span>
     </div>
     <!-- Breadcrumb End -->
@@ -71,13 +74,16 @@
                     <div class="single-job-items mb-50">
                         <div class="job-items">
                             <div class="company-img company-img-details">
-                                <a href="#"><img src="<%=request.getContextPath()%>/assets/img/icon/job-list1.png" alt=""></a>
+                                <a href="#"><img src="<%=request.getContextPath()%>/assets/img/icon/job-list1.png"
+                                                 alt=""></a>
                             </div>
                             <div class="job-tittle">
-                                <h4><%=post2.getTitle()%></h4>
+                                <h4><%=post2.getTitle()%>
+                                </h4>
                                 </a>
                                 <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i><%=post2.getAddress()%></li>
+                                    <li><i class="fas fa-map-marker-alt"></i><%=post2.getAddress()%>
+                                    </li>
                                     <li><%=post2.getSalary()%> VNĐ</li>
                                 </ul>
                             </div>
@@ -140,17 +146,28 @@
                             <li>Mức lương: <span><%=post2.getSalary()%> VNĐ</span></li>
                             <li>Hạn nộp hồ sơ: <span><%=post2.getEndDate()%></span></li>
                         </ul>
-                        <% if(UtilSession.getInstance().getValue(request,"account").getRole() == 1) { %>
+                        <% if (UtilSession.getInstance().getValue(request, "account").getRole() == 1) {
+                            if (DAOPost.checkApplied(post2.getId(), UtilSession.getInstance().getValue(request, "account").getId())) {
+                        %>
+                        <div class="apply-btn2"><span class="btn">Đã Ứng Tuyển</span>
+                        </div>
+                        <%
+                        } else {
+                        %>
+
                         <div class="apply-btn2">
                             <a class="btn" onclick="toggleForm()">Ứng Tuyển</a>
                         </div>
                         <div id="hiddenForm" class="hidden-form-container">
                             <!-- Form content goes here -->
-                            <form action="<%=request.getContextPath()%>/candidate/Post_details?action=nopcv" method="post">
+                            <form action="<%=request.getContextPath()%>/candidate/Post_details?action=nopcv"
+                                  method="post">
                                 <input type="hidden" name="postId" value="<%= post2.getId() %>">
                                 <!-- Form fields -->
                                 <% if (cvs.isEmpty()) { %>
-                                <div class="apply-btn2"> <a href="<%=request.getContextPath() + "/candidate/candi-tao-cv.jsp"%>" id="taocv" class="btn">Tạo CV</a> </div>
+                                <div class="apply-btn2"><a
+                                        href="<%=request.getContextPath() + "/candidate/candi-tao-cv.jsp"%>" id="taocv"
+                                        class="btn">Tạo CV</a></div>
                                 <% } else { %>
                                 <% for (CV cv : cvs) { %>
                                 <label class="checkbox inline">
@@ -166,22 +183,26 @@
                             </form>
                         </div>
                         <% } %>
+                        <%
+                            }
+                        %>
                     </div>
-                        <!-- Small Section Tittle -->
-                        <div class="small-section-tittle">
-                            <h4><a href="#">Thông tin công ty</a></h4>
-                        </div>
-                        <span><%=company.getName()%></span>
-                        <p><%=company.getDescription()%></p>
-                        <ul>
-                            <li>Tên: <span><%=company.getName()%> </span></li>
-                            <li>Phone : <span><%=company.getPhone()%></span></li>
-                            <li>Email: <span><%=account1.getEmail()%></span></li>
-                        </ul>
+                    <!-- Small Section Tittle -->
+                    <div class="small-section-tittle">
+                        <h4><a href="#">Thông tin công ty</a></h4>
                     </div>
+                    <span><%=company.getName()%></span>
+                    <p><%=company.getDescription()%>
+                    </p>
+                    <ul>
+                        <li>Tên: <span><%=company.getName()%> </span></li>
+                        <li>Phone : <span><%=company.getPhone()%></span></li>
+                        <li>Email: <span><%=account1.getEmail()%></span></li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- job post company End -->
 </main>

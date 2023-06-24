@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 
 public class DAOCV {
 
+
+
     public List<CV> getCV(int idCandi) {
         String query = "select * from cv where accountId = ?";
         return JDBIConnector.get().withHandle(handle -> {
@@ -24,7 +26,12 @@ public class DAOCV {
             return handle.createQuery(query).bind(0, id).mapToBean(PostApplied.class).stream().collect(Collectors.toList());
         });
     }
-
+    public List<PostApplied> getPostApplied2(int id) {
+        String query = "select pa.* FROM postapplied pa JOIN post p ON pa.postId = p.id JOIN cv c ON pa.cvId = c.id WHERE p.accountId = ? ORDER BY  createDate DESC";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, id).mapToBean(PostApplied.class).stream().collect(Collectors.toList());
+        });
+    }
     public CV getDetailCV(String CvId) {
         String query = "select * from cv where id = ?";
         return JDBIConnector.get().withHandle(handle -> {
@@ -56,10 +63,24 @@ public class DAOCV {
         });
     }
 
+    public List<CV> getCVApplied2(String idPost) {
+        String query = "SELECT c.* FROM post p JOIN account a ON p.accountId = a.id JOIN postapplied pa ON pa.postId = p.id JOIN cv c ON pa.cvId = c.id WHERE p.accountId = a.id AND pa.postId = p.id AND p.id = ? ORDER BY  createDate DESC";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idPost).mapToBean(CV.class).stream().collect(Collectors.toList());
+        });
+    }
+
     public int getTotalCVApplied(int idAccount) {
         String query = "SELECT COUNT(*) FROM post p JOIN account a ON p.accountId = a.id JOIN postapplied pa ON pa.postId = p.id JOIN cv c ON pa.cvId = c.id WHERE p.accountId = a.id AND pa.postId = p.id AND a.id = ?";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(query).bind(0, idAccount).mapTo(Integer.class).one();
+        });
+    }
+
+    public int getTotalCVAppliedTo1Post(int idPost) {
+        String query = "SELECT COUNT(*) AS NumCVs FROM postapplied WHERE postId = ?";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query).bind(0, idPost).mapTo(Integer.class).one();
         });
     }
 }

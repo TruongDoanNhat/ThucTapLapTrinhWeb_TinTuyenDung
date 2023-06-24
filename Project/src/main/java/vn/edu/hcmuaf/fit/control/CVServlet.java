@@ -63,6 +63,16 @@ public class CVServlet extends HttpServlet {
                 request.setAttribute("postApplied", postApplied);
                 UtilControl.forward("busi-quan-ly-cv.jsp", request, response);
                 break;
+            case "xemcvdaungtuyen" :
+
+                List<CV> quanlycv2 = cv.getCVApplied2(cvId);
+                List<PostApplied> postApplied2 = cv.getPostApplied(id);
+                List<Post> post2 = p.getPost(id);
+                request.setAttribute("cvList", quanlycv2);
+                request.setAttribute("post", post2);
+                request.setAttribute("postApplied", postApplied2);
+                UtilControl.forward("busi-quan-ly-cv.jsp", request, response);
+                break;
         }
     }
 
